@@ -1,0 +1,214 @@
+// ==================== Puerts Polyfill for V8 API Compatibility ====================
+// This polyfill provides compatibility layer for existing V8-based JavaScript code
+// to work with Puerts without modification.
+
+(function (globalThis) {
+  'use strict';
+
+  // ==================== Console API ====================
+  if (typeof console === 'undefined') {
+    globalThis.console = {};
+  }
+
+  console.log = function (...args) {
+    if (globalThis.__handleLog) {
+      globalThis.__handleLog('log', args.map(a => String(a)).join(' '));
+    }
+  };
+
+  console.warn = function (...args) {
+    if (globalThis.__handleLog) {
+      globalThis.__handleLog('warn', args.map(a => String(a)).join(' '));
+    }
+  };
+
+  console.error = function (...args) {
+    if (globalThis.__handleLog) {
+      globalThis.__handleLog('error', args.map(a => String(a)).join(' '));
+    }
+  };
+
+  console.assert = function (condition, ...args) {
+    if (!condition) {
+      const message = args.length > 0 ? args.map(a => String(a)).join(' ') : 'Assertion failed';
+      console.error('Assertion failed:', message);
+      if (globalThis.__handleError) {
+        globalThis.__handleError('Assertion failed: ' + message, new Error().stack || '');
+      }
+    }
+  };
+
+  // ==================== Actor Property Accessors ====================
+
+  // Boolean accessors
+  globalThis.getActorBoolean = function (actorId, fieldId) {
+    if (!globalThis.__getActorBoolean) {
+      throw new Error('getActorBoolean callback not registered');
+    }
+    return globalThis.__getActorBoolean(actorId, fieldId);
+  };
+
+  globalThis.setActorBoolean = function (actorId, fieldId, value) {
+    if (!globalThis.__setActorBoolean) {
+      throw new Error('setActorBoolean callback not registered');
+    }
+    globalThis.__setActorBoolean(actorId, fieldId, Boolean(value));
+  };
+
+  // Float accessors
+  globalThis.getActorFloat = function (actorId, fieldId) {
+    if (!globalThis.__getActorFloat) {
+      throw new Error('getActorFloat callback not registered');
+    }
+    return globalThis.__getActorFloat(actorId, fieldId);
+  };
+
+  globalThis.setActorFloat = function (actorId, fieldId, value) {
+    if (!globalThis.__setActorFloat) {
+      throw new Error('setActorFloat callback not registered');
+    }
+    globalThis.__setActorFloat(actorId, fieldId, Number(value));
+  };
+
+  // Vector3 accessors
+  globalThis.getActorVector3 = function (actorId, fieldId) {
+    if (!globalThis.__getActorVector3) {
+      throw new Error('getActorVector3 callback not registered');
+    }
+    const dto = globalThis.__getActorVector3(actorId, fieldId);
+    return { x: dto.x, y: dto.y, z: dto.z };
+  };
+
+  globalThis.setActorVector3 = function (actorId, fieldId, value) {
+    if (!globalThis.__setActorVector3) {
+      throw new Error('setActorVector3 callback not registered');
+    }
+    if (typeof value !== 'object' || value === null) {
+      throw new Error('setActorVector3 requires an object with x, y, z properties');
+    }
+    globalThis.__setActorVector3(actorId, fieldId, {
+      x: Number(value.x || 0),
+      y: Number(value.y || 0),
+      z: Number(value.z || 0)
+    });
+  };
+
+  // Quaternion accessors
+  globalThis.getActorQuaternion = function (actorId, fieldId) {
+    if (!globalThis.__getActorQuaternion) {
+      throw new Error('getActorQuaternion callback not registered');
+    }
+    const dto = globalThis.__getActorQuaternion(actorId, fieldId);
+    return { x: dto.x, y: dto.y, z: dto.z, w: dto.w };
+  };
+
+  globalThis.setActorQuaternion = function (actorId, fieldId, value) {
+    if (!globalThis.__setActorQuaternion) {
+      throw new Error('setActorQuaternion callback not registered');
+    }
+    if (typeof value !== 'object' || value === null) {
+      throw new Error('setActorQuaternion requires an object with x, y, z, w properties');
+    }
+    globalThis.__setActorQuaternion(actorId, fieldId, {
+      x: Number(value.x || 0),
+      y: Number(value.y || 0),
+      z: Number(value.z || 0),
+      w: Number(value.w || 1)
+    });
+  };
+
+  // String accessors
+  globalThis.getActorString = function (actorId, fieldId) {
+    if (!globalThis.__getActorString) {
+      throw new Error('getActorString callback not registered');
+    }
+    return globalThis.__getActorString(actorId, fieldId);
+  };
+
+  globalThis.setActorString = function (actorId, fieldId, value) {
+    if (!globalThis.__setActorString) {
+      throw new Error('setActorString callback not registered');
+    }
+    globalThis.__setActorString(actorId, fieldId, String(value));
+  };
+
+  // ==================== Service Call API ====================
+
+  globalThis.callService = function (serviceName, args, callback) {
+    if (!globalThis.__callService) {
+      throw new Error('callService callback not registered');
+    }
+
+    try {
+      // Serialize arguments to JSON
+      const argsJson = JSON.stringify(args || {});
+
+      // Call C# service
+      const resultJson = globalThis.__callService(serviceName, argsJson);
+
+      // Parse result
+      const result = resultJson ? JSON.parse(resultJson) : null;
+
+      // Handle callback if provided
+      if (typeof callback === 'function') {
+        callback(result);
+      }
+
+      return result;
+    } catch (error) {
+      console.error('callService error:', error.message);
+      if (typeof callback === 'function') {
+        callback(null, error);
+      }
+      throw error;
+    }
+  };
+
+  // Promise-based service call
+  globalThis.callServiceAsync = function (serviceName, args) {
+    return new Promise((resolve, reject) => {
+      try {
+        globalThis.callService(serviceName, args, (result, error) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(result);
+          }
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };
+
+  // ==================== Global Error Handler ====================
+
+  globalThis.addEventListener = globalThis.addEventListener || function () { };
+  globalThis.removeEventListener = globalThis.removeEventListener || function () { };
+
+  // Capture unhandled errors
+  const originalErrorHandler = globalThis.onerror;
+  globalThis.onerror = function (message, source, lineno, colno, error) {
+    if (globalThis.__handleError) {
+      const errorMessage = error ? error.message : String(message);
+      const stackTrace = error ? error.stack : `at ${source}:${lineno}:${colno}`;
+      globalThis.__handleError(errorMessage, stackTrace);
+    }
+
+    if (originalErrorHandler) {
+      return originalErrorHandler.apply(this, arguments);
+    }
+    return false;
+  };
+
+  // ==================== Utility Functions ====================
+
+  globalThis.assert = function (condition, message) {
+    console.assert(condition, message);
+  };
+
+  // ==================== Initialization ====================
+
+  console.log('[Polyfill] V8 compatibility layer loaded');
+
+})(typeof globalThis !== 'undefined' ? globalThis : this);
