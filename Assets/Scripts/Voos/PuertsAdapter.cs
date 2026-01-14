@@ -14,6 +14,16 @@ namespace Voos
     private Dictionary<string, BrainContext> brainContexts = new Dictionary<string, BrainContext>();
     private VoosEngine voosEngine;
 
+    // 委托缓存，减少GC压力
+    private Func<object, string> cachedJsonStringifyFunc;
+    private Func<string, object> cachedJsonParseFunc;
+    private Action<string, object> cachedSetGlobalFunc;
+
+    // 性能监控
+    private int updateAgentCallCount = 0;
+    private float totalUpdateAgentTime = 0f;
+    private System.Diagnostics.Stopwatch performanceTimer;
+
     /// <summary>
     /// Brain上下文，存储每个Brain的JS函数引用
     /// </summary>
@@ -34,6 +44,30 @@ namespace Voos
       if (!scriptEngine.IsInitialized)
       {
         scriptEngine.Initialize();
+      }
+
+      // 初始化性能监控
+      performanceTimer = new System.Diagnostics.Stopwatch();
+
+      // 初始化委托缓存
+      InitializeDelegateCache();
+    }
+
+    /// <summary>
+    /// 初始化委托缓存
+    /// </summary>
+    private void InitializeDelegateCache()
+    {
+      try
+      {
+        cachedJsonStringifyFunc = scriptEngine.Eval<Func<object, string>>("(obj) => JSON.stringify(obj)");
+        cachedJsonParseFunc = scriptEngine.Eval<Func<string, object>>("(json) => JSON.parse(json)");
+        cachedSetGlobalFunc = scriptEngine.Eval<Action<string, object>>("(k, v) => globalThis[k] = v;");
+        Debug.Log("[PuertsAdapter] Delegate cache initialized");
+      }
+      catch (Exception ex)
+      {
+        Debug.LogError($"[PuertsAdapter] Failed to initialize delegate cache: {ex.Message}");
       }
     }
 
@@ -191,6 +225,11 @@ namespace Voos
     {
       outputJson = null;
 
+      if (PuertsScriptEngine.EnablePerformanceMonitoring)
+      {
+        performanceTimer.Restart();
+      }
+
       try
       {
         if (!brainContexts.ContainsKey(brainUid))
@@ -206,15 +245,30 @@ namespace Voos
           return false;
         }
 
-        // 解析输入JSON为JS对象
-        var stateObj = scriptEngine.Eval<object>($"({inputJson})");
+        // 使用缓存的JSON解析函数
+        object stateObj;
+        if (cachedJsonParseFunc != null)
+        {
+          stateObj = cachedJsonParseFunc(inputJson);
+        }
+        else
+        {
+          stateObj = scriptEngine.Eval<object>($"({inputJson})");
+        }
 
         // 调用updateAgent函数
         context.updateAgentFunc(stateObj);
 
-        // 将结果序列化回JSON
-        var jsonStringifyFunc = scriptEngine.Eval<Func<object, string>>("(obj) => JSON.stringify(obj)");
-        outputJson = jsonStringifyFunc(stateObj);
+        // 使用缓存的JSON序列化函数
+        if (cachedJsonStringifyFunc != null)
+        {
+          outputJson = cachedJsonStringifyFunc(stateObj);
+        }
+        else
+        {
+          var jsonStringifyFunc = scriptEngine.Eval<Func<object, string>>("(obj) => JSON.stringify(obj)");
+          outputJson = jsonStringifyFunc(stateObj);
+        }
 
         // 调用postMessageFlush（如果存在）
         if (context.postMessageFlushFunc != null)
@@ -226,6 +280,20 @@ namespace Voos
           catch (Exception ex)
           {
             Debug.LogWarning($"[PuertsAdapter] postMessageFlush error: {ex.Message}");
+          }
+        }
+
+        updateAgentCallCount++;
+
+        if (PuertsScriptEngine.EnablePerformanceMonitoring)
+        {
+          performanceTimer.Stop();
+          float elapsed = (float)performanceTimer.Elapsed.TotalMilliseconds;
+          totalUpdateAgentTime += elapsed;
+
+          if (updateAgentCallCount % 100 == 0)
+          {
+            Debug.Log($"[PuertsAdapter] UpdateAgent avg time: {totalUpdateAgentTime / updateAgentCallCount:F2}ms ({updateAgentCallCount} calls)");
           }
         }
 
@@ -264,7 +332,24 @@ namespace Voos
     public void Dispose()
     {
       brainContexts.Clear();
+      cachedJsonStringifyFunc = null;
+      cachedJsonParseFunc = null;
+      cachedSetGlobalFunc = null;
       // 注意：不要在这里Dispose scriptEngine，因为它是单例
+    }
+
+    /// <summary>
+    /// 获取性能统计
+    /// </summary>
+    public string GetPerformanceStats()
+    {
+      if (updateAgentCallCount == 0)
+      {
+        return "No UpdateAgent calls yet";
+      }
+
+      float avgTime = totalUpdateAgentTime / updateAgentCallCount;
+      return $"UpdateAgent calls: {updateAgentCallCount}, Avg time: {avgTime:F2}ms, Total time: {totalUpdateAgentTime:F2}ms";
     }
   }
 }

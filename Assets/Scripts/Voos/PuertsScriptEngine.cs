@@ -16,6 +16,14 @@ namespace Voos
     private bool isInitialized = false;
     private string polyfillCode;
 
+    // 调试和性能监控
+    public static bool DebugMode = false;
+    public static bool EnablePerformanceMonitoring = false;
+    private System.Diagnostics.Stopwatch performanceTimer;
+    private int evalCount = 0;
+    private int errorCount = 0;
+    private float totalEvalTime = 0f;
+
     /// <summary>
     /// 获取单例实例
     /// </summary>
@@ -44,6 +52,7 @@ namespace Voos
     private PuertsScriptEngine()
     {
       // 私有构造函数，确保单例
+      performanceTimer = new System.Diagnostics.Stopwatch();
     }
 
     /// <summary>
@@ -196,13 +205,39 @@ console.error = console.error || function() {};
         throw new InvalidOperationException("PuertsScriptEngine not initialized");
       }
 
+      if (EnablePerformanceMonitoring)
+      {
+        performanceTimer.Restart();
+      }
+
       try
       {
+        if (DebugMode)
+        {
+          Debug.Log($"[PuertsScriptEngine] Evaluating {chunkName} ({code.Length} chars)");
+        }
+
         jsEnv.Eval(code, chunkName);
+        evalCount++;
+
+        if (EnablePerformanceMonitoring)
+        {
+          performanceTimer.Stop();
+          float elapsed = (float)performanceTimer.Elapsed.TotalMilliseconds;
+          totalEvalTime += elapsed;
+          Debug.Log($"[PuertsScriptEngine] Eval {chunkName} took {elapsed:F2}ms (avg: {totalEvalTime / evalCount:F2}ms)");
+        }
       }
       catch (Exception ex)
       {
-        Debug.LogError($"[PuertsScriptEngine] Eval error in {chunkName}: {ex.Message}");
+        errorCount++;
+        string errorMsg = ExtractErrorMessage(ex, chunkName);
+        Debug.LogError($"[PuertsScriptEngine] Eval error in {chunkName}: {errorMsg}");
+
+        if (DebugMode)
+        {
+          Debug.LogError($"[PuertsScriptEngine] Stack trace: {ex.StackTrace}");
+        }
         throw;
       }
     }
@@ -217,13 +252,41 @@ console.error = console.error || function() {};
         throw new InvalidOperationException("PuertsScriptEngine not initialized");
       }
 
+      if (EnablePerformanceMonitoring)
+      {
+        performanceTimer.Restart();
+      }
+
       try
       {
-        return jsEnv.Eval<T>(code, chunkName);
+        if (DebugMode)
+        {
+          Debug.Log($"[PuertsScriptEngine] Evaluating<{typeof(T).Name}> {chunkName} ({code.Length} chars)");
+        }
+
+        T result = jsEnv.Eval<T>(code, chunkName);
+        evalCount++;
+
+        if (EnablePerformanceMonitoring)
+        {
+          performanceTimer.Stop();
+          float elapsed = (float)performanceTimer.Elapsed.TotalMilliseconds;
+          totalEvalTime += elapsed;
+          Debug.Log($"[PuertsScriptEngine] Eval<{typeof(T).Name}> {chunkName} took {elapsed:F2}ms (avg: {totalEvalTime / evalCount:F2}ms)");
+        }
+
+        return result;
       }
       catch (Exception ex)
       {
-        Debug.LogError($"[PuertsScriptEngine] Eval error in {chunkName}: {ex.Message}");
+        errorCount++;
+        string errorMsg = ExtractErrorMessage(ex, chunkName);
+        Debug.LogError($"[PuertsScriptEngine] Eval<{typeof(T).Name}> error in {chunkName}: {errorMsg}");
+
+        if (DebugMode)
+        {
+          Debug.LogError($"[PuertsScriptEngine] Stack trace: {ex.StackTrace}");
+        }
         throw;
       }
     }
@@ -289,6 +352,50 @@ console.error = console.error || function() {};
     {
       Dispose();
       Initialize();
+    }
+
+    /// <summary>
+    /// 提取错误消息，包含行号信息
+    /// </summary>
+    private string ExtractErrorMessage(Exception ex, string chunkName)
+    {
+      string message = ex.Message;
+
+      // 尝试提取行号信息
+      // Puerts错误格式通常包含 "at line X" 或 "line X"
+      var lineMatch = System.Text.RegularExpressions.Regex.Match(message, @"line\s+(\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+      if (lineMatch.Success)
+      {
+        int lineNum = int.Parse(lineMatch.Groups[1].Value);
+        return $"{message} (in {chunkName} at line {lineNum})";
+      }
+
+      return $"{message} (in {chunkName})";
+    }
+
+    /// <summary>
+    /// 获取性能统计信息
+    /// </summary>
+    public string GetPerformanceStats()
+    {
+      if (evalCount == 0)
+      {
+        return "No evaluations yet";
+      }
+
+      float avgTime = totalEvalTime / evalCount;
+      return $"Evals: {evalCount}, Errors: {errorCount}, Avg Time: {avgTime:F2}ms, Total Time: {totalEvalTime:F2}ms";
+    }
+
+    /// <summary>
+    /// 重置性能统计
+    /// </summary>
+    public void ResetPerformanceStats()
+    {
+      evalCount = 0;
+      errorCount = 0;
+      totalEvalTime = 0f;
+      Debug.Log("[PuertsScriptEngine] Performance stats reset");
     }
   }
 }

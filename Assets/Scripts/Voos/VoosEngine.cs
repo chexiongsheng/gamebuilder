@@ -21,6 +21,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using SD = System.Diagnostics;
 using NET = UnityEngine.Networking;
+using Voos; // 添加Voos命名空间以使用PuertsAdapter等类
 
 /**
  * The engine takes some input JavaScript and a Unity scene, serializes it, runs the JS on the serialized version, then deserializes the result to the Unity scene. This should be ran every frame.
@@ -195,6 +196,10 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   [SerializeField] TerrainManager terrainSystem;
   [SerializeField] GameBuilderStage gbStage;
   [SerializeField] BuiltinPrefabLibrary builtinPrefabLibrary;
+
+  // Puerts支持
+  public static bool UsePuerts = false; // 配置开关：true使用Puerts，false使用V8
+  private Voos.PuertsAdapter puertsAdapter = null;
 
   V8InUnity.Services services = null;
 
@@ -819,42 +824,84 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   // Returns error messages if any. Will never return null.
   public bool SetModule(string moduleKey, string javascript)
   {
-    V8InUnity.Native.StringFunction handleCompileError = msg =>
+    if (UsePuerts)
     {
-      int lineNum = ExtractFirstLineNumberForModuleError(moduleKey, msg);
-      var args = new ModuleCompileError { message = msg, moduleKey = moduleKey, lineNum = lineNum };
-      OnModuleCompileError?.Invoke(args);
-    };
+      EnsurePuertsAdapter();
 
-    // TODO OPT: we can avoid extra compiles here by keeping a simple hash of
-    // JS. Now that the behavior system is doing synchronous syncs, redundant
-    // calls are more likely.
-    OnBeforeModuleCompile?.Invoke(moduleKey);
-    bool ok = V8InUnity.Native.SetModule(brainUid, moduleKey, javascript, handleCompileError);
-    if (ok)
-    {
-      compiledModules.Add(moduleKey);
+      System.Action<string> handleCompileError = msg =>
+      {
+        int lineNum = ExtractFirstLineNumberForModuleError(moduleKey, msg);
+        var args = new ModuleCompileError { message = msg, moduleKey = moduleKey, lineNum = lineNum };
+        OnModuleCompileError?.Invoke(args);
+      };
+
+      OnBeforeModuleCompile?.Invoke(moduleKey);
+      bool ok = puertsAdapter.SetModule(brainUid, moduleKey, javascript, handleCompileError);
+      if (ok)
+      {
+        compiledModules.Add(moduleKey);
+      }
+      else
+      {
+        if (!compiledModules.Contains(moduleKey))
+        {
+          System.Action<string> dummyErrorHandler = msg => { };
+          bool backupOk = puertsAdapter.SetModule(brainUid, moduleKey, "// Dummy", dummyErrorHandler);
+          if (!backupOk)
+          {
+            throw new System.Exception("Could not compile backup dummy module? Major problems..");
+          }
+        }
+      }
+      return ok;
     }
     else
     {
-      // To be safe, we should always have some valid module for the key. Other
-      // code may expect it. So, if we've never compiled something, compile a
-      // dummy script.
-      if (!compiledModules.Contains(moduleKey))
+      V8InUnity.Native.StringFunction handleCompileError = msg =>
       {
-        bool backupOk = V8InUnity.Native.SetModule(brainUid, moduleKey, "// Dummy", handleCompileError);
-        if (!backupOk)
+        int lineNum = ExtractFirstLineNumberForModuleError(moduleKey, msg);
+        var args = new ModuleCompileError { message = msg, moduleKey = moduleKey, lineNum = lineNum };
+        OnModuleCompileError?.Invoke(args);
+      };
+
+      // TODO OPT: we can avoid extra compiles here by keeping a simple hash of
+      // JS. Now that the behavior system is doing synchronous syncs, redundant
+      // calls are more likely.
+      OnBeforeModuleCompile?.Invoke(moduleKey);
+      bool ok = V8InUnity.Native.SetModule(brainUid, moduleKey, javascript, handleCompileError);
+      if (ok)
+      {
+        compiledModules.Add(moduleKey);
+      }
+      else
+      {
+        // To be safe, we should always have some valid module for the key. Other
+        // code may expect it. So, if we've never compiled something, compile a
+        // dummy script.
+        if (!compiledModules.Contains(moduleKey))
         {
-          throw new System.Exception("Could not compile backup dummy module? Major problems..");
+          bool backupOk = V8InUnity.Native.SetModule(brainUid, moduleKey, "// Dummy", handleCompileError);
+          if (!backupOk)
+          {
+            throw new System.Exception("Could not compile backup dummy module? Major problems..");
+          }
         }
       }
+      return ok;
     }
-    return ok;
   }
 
   public bool Recompile(string js)
   {
-    return V8InUnity.Native.ResetBrain(brainUid, js);
+    if (UsePuerts)
+    {
+      EnsurePuertsAdapter();
+      return puertsAdapter.ResetBrain(brainUid, js);
+    }
+    else
+    {
+      return V8InUnity.Native.ResetBrain(brainUid, js);
+    }
   }
 
   void ApplyVelocityChanges(VelocityChange[] changes, TorqueRequest[] torques)
@@ -1048,9 +1095,178 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     };
   }
 
+  // ==================== Puerts适配器方法 ====================
+  // 这些方法将VoosEngine的内部API适配为Puerts所需的签名
+
+  bool GetActorBooleanForPuerts(string actorId, string fieldId)
+  {
+    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
+    {
+      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
+      return false;
+    }
+    GetActorBoolean(actorIdNum, fieldIdNum, out bool value);
+    return value;
+  }
+
+  void SetActorBooleanForPuerts(string actorId, string fieldId, bool value)
+  {
+    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
+    {
+      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
+      return;
+    }
+    SetActorBoolean(actorIdNum, fieldIdNum, value);
+  }
+
+  float GetActorFloatForPuerts(string actorId, string fieldId)
+  {
+    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
+    {
+      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
+      return 0f;
+    }
+    GetActorFloat(actorIdNum, fieldIdNum, out float value);
+    return value;
+  }
+
+  void SetActorFloatForPuerts(string actorId, string fieldId, float value)
+  {
+    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
+    {
+      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
+      return;
+    }
+    SetActorFloat(actorIdNum, fieldIdNum, value);
+  }
+
+  PuertsCallbacks.Vector3Dto GetActorVector3ForPuerts(string actorId, string fieldId)
+  {
+    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
+    {
+      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
+      return new PuertsCallbacks.Vector3Dto(0, 0, 0);
+    }
+    GetActorVector3(actorIdNum, fieldIdNum, out float x, out float y, out float z);
+    return new PuertsCallbacks.Vector3Dto(x, y, z);
+  }
+
+  void SetActorVector3ForPuerts(string actorId, string fieldId, PuertsCallbacks.Vector3Dto value)
+  {
+    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
+    {
+      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
+      return;
+    }
+    SetActorVector3(actorIdNum, fieldIdNum, value.x, value.y, value.z);
+  }
+
+  PuertsCallbacks.QuaternionDto GetActorQuaternionForPuerts(string actorId, string fieldId)
+  {
+    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
+    {
+      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
+      return new PuertsCallbacks.QuaternionDto(0, 0, 0, 1);
+    }
+    GetActorQuaternion(actorIdNum, fieldIdNum, out float x, out float y, out float z, out float w);
+    return new PuertsCallbacks.QuaternionDto(x, y, z, w);
+  }
+
+  void SetActorQuaternionForPuerts(string actorId, string fieldId, PuertsCallbacks.QuaternionDto value)
+  {
+    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
+    {
+      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
+      return;
+    }
+    SetActorQuaternion(actorIdNum, fieldIdNum, value.x, value.y, value.z, value.w);
+  }
+
+  string GetActorStringForPuerts(string actorId, string fieldId)
+  {
+    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
+    {
+      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
+      return "";
+    }
+    string value = GetActorString(actorIdNum, fieldIdNum);
+    return value ?? "";
+  }
+
+  void SetActorStringForPuerts(string actorId, string fieldId, string value)
+  {
+    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
+    {
+      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
+      return;
+    }
+    SetActorString(actorIdNum, fieldIdNum, value);
+  }
+
+  string CallServiceForPuerts(string serviceName, string argsJson)
+  {
+    // Services.CallService的签名是: void CallService(string serviceName, string argsJson, System.IntPtr reportResultPtr)
+    // 但Puerts需要同步返回结果，所以我们需要一个不同的实现
+    // TODO: 实现同步CallService
+    Debug.LogWarning($"[VoosEngine] CallServiceForPuerts not yet fully implemented: {serviceName}");
+    return "{}";
+  }
+
+  void HandleErrorForPuerts(string errorMessage, string stackTrace)
+  {
+    // HandleV8RuntimeError的签名是: void HandleV8RuntimeError(string message)
+    // 需要合并errorMessage和stackTrace
+    string fullMessage = string.IsNullOrEmpty(stackTrace)
+      ? errorMessage
+      : $"{errorMessage}\n{stackTrace}";
+    HandleV8RuntimeError(fullMessage);
+  }
+
+  void HandleLogForPuerts(string level, string message)
+  {
+    // HandleV8SystemLog的签名是: void HandleV8SystemLog(string message)
+    // 需要将level和message合并
+    string fullMessage = $"[{level}] {message}";
+    HandleV8SystemLog(fullMessage);
+  }
+
+  void EnsurePuertsAdapter()
+  {
+    if (puertsAdapter == null)
+    {
+      puertsAdapter = new PuertsAdapter(this);
+
+      // 注册回调
+      puertsAdapter.RegisterCallbacks(
+        getActorBoolean: GetActorBooleanForPuerts,
+        setActorBoolean: SetActorBooleanForPuerts,
+        getActorFloat: GetActorFloatForPuerts,
+        setActorFloat: SetActorFloatForPuerts,
+        getActorVector3: GetActorVector3ForPuerts,
+        setActorVector3: SetActorVector3ForPuerts,
+        getActorQuaternion: GetActorQuaternionForPuerts,
+        setActorQuaternion: SetActorQuaternionForPuerts,
+        getActorString: GetActorStringForPuerts,
+        setActorString: SetActorStringForPuerts,
+        callService: CallServiceForPuerts,
+        handleError: HandleErrorForPuerts,
+        handleLog: HandleLogForPuerts
+      );
+    }
+  }
+
   public Util.Maybe<TResponse> CommunicateWithAgent<TRequest, TResponse>(TRequest request)
   {
-    return V8InUnity.Native.UpdateAgent<TRequest, TResponse>(brainUid, agentUid, request, GetNativeUpdateCallbacks());
+    if (UsePuerts)
+    {
+      // TODO: Puerts暂不支持泛型UpdateAgent，需要实现
+      Debug.LogWarning("[VoosEngine] CommunicateWithAgent not yet implemented for Puerts");
+      return Util.Maybe<TResponse>.CreateEmpty();
+    }
+    else
+    {
+      return V8InUnity.Native.UpdateAgent<TRequest, TResponse>(brainUid, agentUid, request, GetNativeUpdateCallbacks());
+    }
   }
 
   void MaybeShowActorCountWarning(int currentNumActors)
@@ -1284,11 +1500,26 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     }
 
     var callbacks = GetNativeUpdateCallbacks();
-    Util.Maybe<TickResponse> maybeResponse = V8InUnity.Native.UpdateAgent<TickRequest, TickResponse>(
-      brainUid, agentUid,
-      CreateTickRequest(),
-      updateAgentByteBuffer,
-      callbacks);
+
+    Util.Maybe<TickResponse> maybeResponse;
+    if (UsePuerts)
+    {
+      // TODO: Puerts暂不支持字节数组传递，需要实现UpdateAgentJsonBytes
+      Debug.LogWarning("[VoosEngine] Puerts byte buffer not yet implemented, using V8");
+      maybeResponse = V8InUnity.Native.UpdateAgent<TickRequest, TickResponse>(
+        brainUid, agentUid,
+        CreateTickRequest(),
+        updateAgentByteBuffer,
+        callbacks);
+    }
+    else
+    {
+      maybeResponse = V8InUnity.Native.UpdateAgent<TickRequest, TickResponse>(
+        brainUid, agentUid,
+        CreateTickRequest(),
+        updateAgentByteBuffer,
+        callbacks);
+    }
 
     if (maybeResponse.IsEmpty())
     {
