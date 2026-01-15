@@ -75,22 +75,31 @@
     if (!globalThis.__getActorVector3) {
       throw new Error('getActorVector3 callback not registered');
     }
-    const dto = globalThis.__getActorVector3.Invoke(actorId, fieldId);
-    return { x: dto.x, y: dto.y, z: dto.z };
+    // C# out parameters need to be wrapped with $ref and unwrapped with $unref
+    const outX = puer.$ref();
+    const outY = puer.$ref();
+    const outZ = puer.$ref();
+    globalThis.__getActorVector3.Invoke(actorId, fieldId, outX, outY, outZ);
+    return {
+      x: puer.$unref(outX),
+      y: puer.$unref(outY),
+      z: puer.$unref(outZ)
+    };
   };
 
-  globalThis.setActorVector3 = function (actorId, fieldId, value) {
+  globalThis.setActorVector3 = function (actorId, fieldId, x, y, z) {
     if (!globalThis.__setActorVector3) {
       throw new Error('setActorVector3 callback not registered');
     }
-    if (typeof value !== 'object' || value === null) {
-      throw new Error('setActorVector3 requires an object with x, y, z properties');
-    }
-    globalThis.__setActorVector3.Invoke(actorId, fieldId, {
-      x: Number(value.x || 0),
-      y: Number(value.y || 0),
-      z: Number(value.z || 0)
-    });
+	
+    // Pass x, y, z as separate parameters
+    globalThis.__setActorVector3.Invoke(
+      actorId,
+      fieldId,
+      x,
+      y,
+      z
+    );
   };
 
   // Quaternion accessors
@@ -98,23 +107,34 @@
     if (!globalThis.__getActorQuaternion) {
       throw new Error('getActorQuaternion callback not registered');
     }
-    const dto = globalThis.__getActorQuaternion.Invoke(actorId, fieldId);
-    return { x: dto.x, y: dto.y, z: dto.z, w: dto.w };
+    // C# out parameters need to be wrapped with $ref and unwrapped with $unref
+    const outX = puer.$ref();
+    const outY = puer.$ref();
+    const outZ = puer.$ref();
+    const outW = puer.$ref();
+    globalThis.__getActorQuaternion.Invoke(actorId, fieldId, outX, outY, outZ, outW);
+    return {
+      x: puer.$unref(outX),
+      y: puer.$unref(outY),
+      z: puer.$unref(outZ),
+      w: puer.$unref(outW)
+    };
   };
 
-  globalThis.setActorQuaternion = function (actorId, fieldId, value) {
+  globalThis.setActorQuaternion = function (actorId, fieldId, x, y, z, w) {
     if (!globalThis.__setActorQuaternion) {
       throw new Error('setActorQuaternion callback not registered');
     }
-    if (typeof value !== 'object' || value === null) {
-      throw new Error('setActorQuaternion requires an object with x, y, z, w properties');
-    }
-    globalThis.__setActorQuaternion.Invoke(actorId, fieldId, {
-      x: Number(value.x || 0),
-      y: Number(value.y || 0),
-      z: Number(value.z || 0),
-      w: Number(value.w || 1)
-    });
+
+    // Pass x, y, z, w as separate parameters
+    globalThis.__setActorQuaternion.Invoke(
+      actorId,
+      fieldId,
+      x,
+      y,
+      z,
+	  w
+    );
   };
 
   // String accessors

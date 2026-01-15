@@ -1140,46 +1140,51 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     SetActorFloat(actorIdNum, fieldIdNum, value);
   }
 
-  PuertsCallbacks.Vector3Dto GetActorVector3ForPuerts(string actorId, string fieldId)
+  void GetActorVector3ForPuerts(string actorId, string fieldId, out float x, out float y, out float z)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
       Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      return new PuertsCallbacks.Vector3Dto(0, 0, 0);
+      x = 0;
+      y = 0;
+      z = 0;
+      return;
     }
-    GetActorVector3(actorIdNum, fieldIdNum, out float x, out float y, out float z);
-    return new PuertsCallbacks.Vector3Dto(x, y, z);
+    GetActorVector3(actorIdNum, fieldIdNum, out x, out y, out z);
   }
 
-  void SetActorVector3ForPuerts(string actorId, string fieldId, PuertsCallbacks.Vector3Dto value)
+  void SetActorVector3ForPuerts(string actorId, string fieldId, float x, float y, float z)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
       Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
       return;
     }
-    SetActorVector3(actorIdNum, fieldIdNum, value.x, value.y, value.z);
+    SetActorVector3(actorIdNum, fieldIdNum, x, y, z);
   }
 
-  PuertsCallbacks.QuaternionDto GetActorQuaternionForPuerts(string actorId, string fieldId)
+  void GetActorQuaternionForPuerts(string actorId, string fieldId, out float x, out float y, out float z, out float w)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
       Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      return new PuertsCallbacks.QuaternionDto(0, 0, 0, 1);
+      x = 0;
+      y = 0;
+      z = 0;
+      w = 1;
+      return;
     }
-    GetActorQuaternion(actorIdNum, fieldIdNum, out float x, out float y, out float z, out float w);
-    return new PuertsCallbacks.QuaternionDto(x, y, z, w);
+    GetActorQuaternion(actorIdNum, fieldIdNum, out x, out y, out z, out w);
   }
 
-  void SetActorQuaternionForPuerts(string actorId, string fieldId, PuertsCallbacks.QuaternionDto value)
+  void SetActorQuaternionForPuerts(string actorId, string fieldId, float x, float y, float z, float w)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
       Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
       return;
     }
-    SetActorQuaternion(actorIdNum, fieldIdNum, value.x, value.y, value.z, value.w);
+    SetActorQuaternion(actorIdNum, fieldIdNum, x, y, z, w);
   }
 
   string GetActorStringForPuerts(string actorId, string fieldId)

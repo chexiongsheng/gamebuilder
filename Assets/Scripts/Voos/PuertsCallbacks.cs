@@ -33,23 +33,27 @@ namespace Voos
 
     /// <summary>
     /// 获取Actor的Vector3属性
+    /// 返回值通过out参数传递，避免结构体封装开销
     /// </summary>
-    public delegate Vector3Dto GetActorVector3Delegate(string actorId, string fieldId);
+    public delegate void GetActorVector3Delegate(string actorId, string fieldId, out float x, out float y, out float z);
 
     /// <summary>
     /// 设置Actor的Vector3属性
+    /// 直接传递x, y, z参数，避免结构体封装开销
     /// </summary>
-    public delegate void SetActorVector3Delegate(string actorId, string fieldId, Vector3Dto value);
+    public delegate void SetActorVector3Delegate(string actorId, string fieldId, float x, float y, float z);
 
     /// <summary>
     /// 获取Actor的Quaternion属性
+    /// 返回值通过out参数传递，避免结构体封装开销
     /// </summary>
-    public delegate QuaternionDto GetActorQuaternionDelegate(string actorId, string fieldId);
+    public delegate void GetActorQuaternionDelegate(string actorId, string fieldId, out float x, out float y, out float z, out float w);
 
     /// <summary>
     /// 设置Actor的Quaternion属性
+    /// 直接传递x, y, z, w参数，避免结构体封装开销
     /// </summary>
-    public delegate void SetActorQuaternionDelegate(string actorId, string fieldId, QuaternionDto value);
+    public delegate void SetActorQuaternionDelegate(string actorId, string fieldId, float x, float y, float z, float w);
 
     /// <summary>
     /// 获取Actor的String属性
