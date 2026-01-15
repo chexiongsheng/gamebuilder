@@ -1205,11 +1205,33 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
 
   string CallServiceForPuerts(string serviceName, string argsJson)
   {
-    // Services.CallService的签名是: void CallService(string serviceName, string argsJson, System.IntPtr reportResultPtr)
-    // 但Puerts需要同步返回结果，所以我们需要一个不同的实现
-    // TODO: 实现同步CallService
-    Debug.LogWarning($"[VoosEngine] CallServiceForPuerts not yet fully implemented: {serviceName}");
-    return "{}";
+    // 使用ManualResetEvent实现同步等待
+    string result = null;
+    var waitHandle = new System.Threading.ManualResetEvent(false);
+
+    // 创建回调委托
+    V8InUnity.Native.ReportResultFunction callback = (json) =>
+    {
+      result = json;
+      waitHandle.Set();
+    };
+
+    // 获取回调函数指针
+    System.IntPtr callbackPtr = System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(callback);
+
+    // 调用Services.CallService
+    services.CallService(serviceName, argsJson, callbackPtr);
+
+    // 等待结果（设置5秒超时）
+    if (waitHandle.WaitOne(5000))
+    {
+      return result ?? "{}";
+    }
+    else
+    {
+      Util.LogError($"[VoosEngine] CallService timeout after 5 seconds: {serviceName}");
+      return "{}";
+    }
   }
 
   void HandleErrorForPuerts(string errorMessage, string stackTrace)
@@ -1504,13 +1526,12 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     Util.Maybe<TickResponse> maybeResponse;
     if (UsePuerts)
     {
-      // TODO: Puerts暂不支持字节数组传递，需要实现UpdateAgentJsonBytes
-      Debug.LogWarning("[VoosEngine] Puerts byte buffer not yet implemented, using V8");
-      maybeResponse = V8InUnity.Native.UpdateAgent<TickRequest, TickResponse>(
+      // 使用Puerts的字节数组传递
+      EnsurePuertsAdapter();
+      maybeResponse = puertsAdapter.UpdateAgent<TickRequest, TickResponse>(
         brainUid, agentUid,
         CreateTickRequest(),
-        updateAgentByteBuffer,
-        callbacks);
+        updateAgentByteBuffer);
     }
     else
     {

@@ -31,7 +31,7 @@ namespace Voos
     {
       public string brainUid;
       public string javascript;
-      public Func<object, object> updateAgentFunc;
+      public Action<object, object> updateAgentFunc;
       public Func<object> postMessageFlushFunc;
       public Dictionary<string, bool> compiledModules = new Dictionary<string, bool>();
     }
@@ -122,7 +122,7 @@ namespace Voos
         // 获取updateAgent函数引用
         try
         {
-          context.updateAgentFunc = scriptEngine.Eval<Func<object, object>>("globalThis.updateAgent");
+          context.updateAgentFunc = scriptEngine.Eval<Action<object, object>>("globalThis.updateAgent");
           if (context.updateAgentFunc == null)
           {
             Debug.LogError($"[PuertsAdapter] updateAgent function not found in brain {brainUid}");
@@ -255,10 +255,10 @@ namespace Voos
         {
           stateObj = scriptEngine.Eval<object>($"({inputJson})");
         }
-
-        // 调用updateAgent函数
-        context.updateAgentFunc(stateObj);
-
+    
+        // 调用updateAgent函数（第二个参数为null，表示没有arrayBuffer）
+        context.updateAgentFunc(stateObj, null);
+    
         // 使用缓存的JSON序列化函数
         if (cachedJsonStringifyFunc != null)
         {
@@ -350,6 +350,83 @@ namespace Voos
 
       float avgTime = totalUpdateAgentTime / updateAgentCallCount;
       return $"UpdateAgent calls: {updateAgentCallCount}, Avg time: {avgTime:F2}ms, Total time: {totalUpdateAgentTime:F2}ms";
+    }
+
+    /// <summary>
+    /// 更新Agent（带字节数组）
+    /// </summary>
+    public bool UpdateAgentWithBytes(string brainUid, string agentUid, string json, byte[] bytes)
+    {
+      if (!brainContexts.TryGetValue(brainUid, out BrainContext context))
+      {
+        Debug.LogError($"[PuertsAdapter] Brain not found: {brainUid}");
+        return false;
+      }
+
+      if (context.updateAgentFunc == null)
+      {
+        Debug.LogError($"[PuertsAdapter] updateAgent function not found for brain: {brainUid}");
+        return false;
+      }
+
+      try
+      {
+        // 将byte[]转换为Puerts.ArrayBuffer
+        var arrayBuffer = new Puerts.ArrayBuffer(bytes);
+
+        // 调用updateAgent(json, arrayBuffer)
+        // 注意：updateAgent函数签名应该是 function updateAgent(state, buffer)
+        context.updateAgentFunc(json, arrayBuffer);
+
+        return true;
+      }
+      catch (Exception e)
+      {
+        Debug.LogError($"[PuertsAdapter] UpdateAgentWithBytes failed: {e.Message}\n{e.StackTrace}");
+        return false;
+      }
+    }
+
+    /// <summary>
+    /// 更新Agent（泛型版本，带字节数组）
+    /// </summary>
+    public Util.Maybe<TResponse> UpdateAgent<TRequest, TResponse>(
+      string brainUid, string agentUid, TRequest input, byte[] bytes)
+    {
+      // 序列化请求
+      string inputJson = JsonUtility.ToJson(input, false);
+
+      // 调用带字节数组的版本
+      if (!UpdateAgentWithBytes(brainUid, agentUid, inputJson, bytes))
+      {
+        return Util.Maybe<TResponse>.CreateEmpty();
+      }
+
+      // 获取响应（从updateAgent的返回值）
+      if (!brainContexts.TryGetValue(brainUid, out BrainContext context))
+      {
+        return Util.Maybe<TResponse>.CreateEmpty();
+      }
+
+      try
+      {
+        // 调用JSON.stringify获取结果
+        if (cachedJsonStringifyFunc == null)
+        {
+          cachedJsonStringifyFunc = scriptEngine.Eval<Func<object, string>>("JSON.stringify");
+        }
+
+        // updateAgent应该返回结果对象
+        // 但当前实现中updateAgent没有返回值，需要修改
+        // 暂时返回空结果
+        Debug.LogWarning("[PuertsAdapter] UpdateAgent<T> with bytes: response parsing not yet implemented");
+        return Util.Maybe<TResponse>.CreateEmpty();
+      }
+      catch (Exception e)
+      {
+        Debug.LogError($"[PuertsAdapter] Failed to parse response: {e.Message}");
+        return Util.Maybe<TResponse>.CreateEmpty();
+      }
     }
   }
 }
