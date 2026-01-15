@@ -12,19 +12,19 @@
 
   console.log = function (...args) {
     if (globalThis.__handleLog) {
-      globalThis.__handleLog('log', args.map(a => String(a)).join(' '));
+      globalThis.__handleLog.Invoke('log', args.map(a => String(a)).join(' '));
     }
   };
 
   console.warn = function (...args) {
     if (globalThis.__handleLog) {
-      globalThis.__handleLog('warn', args.map(a => String(a)).join(' '));
+      globalThis.__handleLog.Invoke('warn', args.map(a => String(a)).join(' '));
     }
   };
 
   console.error = function (...args) {
     if (globalThis.__handleLog) {
-      globalThis.__handleLog('error', args.map(a => String(a)).join(' '));
+      globalThis.__handleLog.Invoke('error', args.map(a => String(a)).join(' '));
     }
   };
 
@@ -33,7 +33,7 @@
       const message = args.length > 0 ? args.map(a => String(a)).join(' ') : 'Assertion failed';
       console.error('Assertion failed:', message);
       if (globalThis.__handleError) {
-        globalThis.__handleError('Assertion failed: ' + message, new Error().stack || '');
+        globalThis.__handleError.Invoke('Assertion failed: ' + message, new Error().stack || '');
       }
     }
   };
@@ -45,14 +45,14 @@
     if (!globalThis.__getActorBoolean) {
       throw new Error('getActorBoolean callback not registered');
     }
-    return globalThis.__getActorBoolean(actorId, fieldId);
+    return globalThis.__getActorBoolean.Invoke(actorId, fieldId);
   };
 
   globalThis.setActorBoolean = function (actorId, fieldId, value) {
     if (!globalThis.__setActorBoolean) {
       throw new Error('setActorBoolean callback not registered');
     }
-    globalThis.__setActorBoolean(actorId, fieldId, Boolean(value));
+    globalThis.__setActorBoolean.Invoke(actorId, fieldId, Boolean(value));
   };
 
   // Float accessors
@@ -60,14 +60,14 @@
     if (!globalThis.__getActorFloat) {
       throw new Error('getActorFloat callback not registered');
     }
-    return globalThis.__getActorFloat(actorId, fieldId);
+    return globalThis.__getActorFloat.Invoke(actorId, fieldId);
   };
 
   globalThis.setActorFloat = function (actorId, fieldId, value) {
     if (!globalThis.__setActorFloat) {
       throw new Error('setActorFloat callback not registered');
     }
-    globalThis.__setActorFloat(actorId, fieldId, Number(value));
+    globalThis.__setActorFloat.Invoke(actorId, fieldId, Number(value));
   };
 
   // Vector3 accessors
@@ -75,7 +75,7 @@
     if (!globalThis.__getActorVector3) {
       throw new Error('getActorVector3 callback not registered');
     }
-    const dto = globalThis.__getActorVector3(actorId, fieldId);
+    const dto = globalThis.__getActorVector3.Invoke(actorId, fieldId);
     return { x: dto.x, y: dto.y, z: dto.z };
   };
 
@@ -86,7 +86,7 @@
     if (typeof value !== 'object' || value === null) {
       throw new Error('setActorVector3 requires an object with x, y, z properties');
     }
-    globalThis.__setActorVector3(actorId, fieldId, {
+    globalThis.__setActorVector3.Invoke(actorId, fieldId, {
       x: Number(value.x || 0),
       y: Number(value.y || 0),
       z: Number(value.z || 0)
@@ -98,7 +98,7 @@
     if (!globalThis.__getActorQuaternion) {
       throw new Error('getActorQuaternion callback not registered');
     }
-    const dto = globalThis.__getActorQuaternion(actorId, fieldId);
+    const dto = globalThis.__getActorQuaternion.Invoke(actorId, fieldId);
     return { x: dto.x, y: dto.y, z: dto.z, w: dto.w };
   };
 
@@ -109,7 +109,7 @@
     if (typeof value !== 'object' || value === null) {
       throw new Error('setActorQuaternion requires an object with x, y, z, w properties');
     }
-    globalThis.__setActorQuaternion(actorId, fieldId, {
+    globalThis.__setActorQuaternion.Invoke(actorId, fieldId, {
       x: Number(value.x || 0),
       y: Number(value.y || 0),
       z: Number(value.z || 0),
@@ -122,18 +122,42 @@
     if (!globalThis.__getActorString) {
       throw new Error('getActorString callback not registered');
     }
-    return globalThis.__getActorString(actorId, fieldId);
+    return globalThis.__getActorString.Invoke(actorId, fieldId);
   };
 
   globalThis.setActorString = function (actorId, fieldId, value) {
     if (!globalThis.__setActorString) {
       throw new Error('setActorString callback not registered');
     }
-    globalThis.__setActorString(actorId, fieldId, String(value));
+    globalThis.__setActorString.Invoke(actorId, fieldId, String(value));
   };
 
   // ==================== Service Call API ====================
 
+  // callVoosService - Main service call API (compatible with V8 engine)
+  globalThis.callVoosService = function (serviceName, ...args) {
+    if (!globalThis.__callService) {
+      throw new Error('callService callback not registered');
+    }
+
+    try {
+      const argsJson = args.length > 0 ? JSON.stringify(args) : '[]';
+      const resultJson = globalThis.__callService.Invoke(serviceName, argsJson);
+      if (resultJson && resultJson !== '') {
+        try {
+          return JSON.parse(resultJson);
+        } catch (e) {
+          return resultJson;
+        }
+      }
+      return undefined;
+    } catch (error) {
+      console.error('callVoosService error:', error.message);
+      throw error;
+    }
+  };
+
+  // Legacy callback-based service call API
   globalThis.callService = function (serviceName, args, callback) {
     if (!globalThis.__callService) {
       throw new Error('callService callback not registered');
@@ -144,7 +168,7 @@
       const argsJson = JSON.stringify(args || {});
 
       // Call C# service
-      const resultJson = globalThis.__callService(serviceName, argsJson);
+      const resultJson = globalThis.__callService.Invoke(serviceName, argsJson);
 
       // Parse result
       const result = resultJson ? JSON.parse(resultJson) : null;
@@ -181,6 +205,40 @@
     });
   };
 
+  // handleError - Error handling API
+  globalThis.handleError = function (error) {
+    if (!globalThis.__handleError) {
+      console.error('handleError callback not registered:', error);
+      return;
+    }
+
+    if (typeof error === 'string') {
+      globalThis.__handleError.Invoke(error, '');
+    } else if (error && error.message) {
+      globalThis.__handleError.Invoke(error.message, error.stack || '');
+    } else {
+      globalThis.__handleError.Invoke(String(error), '');
+    }
+  };
+
+  // log - Logging API
+  globalThis.log = function (...args) {
+    const message = args.map(arg => {
+      if (typeof arg === 'object') {
+        try {
+          return JSON.stringify(arg);
+        } catch (e) {
+          return String(arg);
+        }
+      }
+      return String(arg);
+    }).join(' ');
+
+    if (globalThis.__handleLog) {
+      globalThis.__handleLog.Invoke('log', message);
+    }
+  };
+
   // ==================== Global Error Handler ====================
 
   globalThis.addEventListener = globalThis.addEventListener || function () { };
@@ -192,7 +250,7 @@
     if (globalThis.__handleError) {
       const errorMessage = error ? error.message : String(message);
       const stackTrace = error ? error.stack : `at ${source}:${lineno}:${colno}`;
-      globalThis.__handleError(errorMessage, stackTrace);
+      globalThis.__handleError.Invoke(errorMessage, stackTrace);
     }
 
     if (originalErrorHandler) {
