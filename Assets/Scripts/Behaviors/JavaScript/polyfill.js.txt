@@ -157,7 +157,7 @@
   // callVoosService - Main service call API (compatible with V8 engine)
   // Note: This is a synchronous-looking API but internally uses async callback
   // It's kept for backward compatibility with existing code
-  globalThis.callVoosService = function (serviceName, ...args) {
+  globalThis.callVoosService = function (serviceName, arg) {
     if (!globalThis.__voosEngine) {
       throw new Error('VoosEngine not registered');
     }
@@ -170,7 +170,7 @@
     let completed = false;
 
     try {
-      const argsJson = args.length > 0 ? JSON.stringify(args) : '[]';
+      const argsJson = JSON.stringify(arg);
 
       globalThis.__voosEngine.CallServiceForPuerts(serviceName, argsJson, function (resultJson) {
         completed = true;
