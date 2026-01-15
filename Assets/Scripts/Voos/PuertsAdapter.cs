@@ -85,7 +85,7 @@ namespace Voos
       PuertsCallbacks.SetActorQuaternionDelegate setActorQuaternion,
       PuertsCallbacks.GetActorStringDelegate getActorString,
       PuertsCallbacks.SetActorStringDelegate setActorString,
-      PuertsCallbacks.CallServiceDelegate callService,
+      PuertsCallbacks.CallServiceAsyncDelegate callServiceAsync,
       PuertsCallbacks.HandleErrorDelegate handleError,
       PuertsCallbacks.HandleLogDelegate handleLog)
     {
@@ -95,7 +95,7 @@ namespace Voos
         getActorVector3, setActorVector3,
         getActorQuaternion, setActorQuaternion,
         getActorString, setActorString,
-        callService, handleError, handleLog);
+        callServiceAsync, handleError, handleLog);
     }
 
     /// <summary>

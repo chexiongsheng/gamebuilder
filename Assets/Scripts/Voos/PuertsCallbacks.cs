@@ -64,9 +64,19 @@ namespace Voos
     // ==================== 服务调用委托 ====================
 
     /// <summary>
-    /// 调用服务
+    /// 调用服务（同步版本，返回结果字符串）
     /// </summary>
     public delegate string CallServiceDelegate(string serviceName, string argsJson);
+
+    /// <summary>
+    /// 服务结果回调委托（用于异步调用）
+    /// </summary>
+    public delegate void ServiceResultCallback(string resultJson);
+
+    /// <summary>
+    /// 调用服务（异步版本，通过回调返回结果）
+    /// </summary>
+    public delegate void CallServiceAsyncDelegate(string serviceName, string argsJson, System.Action<string> callback);
 
     // ==================== 错误处理和日志委托 ====================
 

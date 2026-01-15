@@ -249,7 +249,7 @@ console.error = console.error || function() {};
       PuertsCallbacks.SetActorQuaternionDelegate setActorQuaternion,
       PuertsCallbacks.GetActorStringDelegate getActorString,
       PuertsCallbacks.SetActorStringDelegate setActorString,
-      PuertsCallbacks.CallServiceDelegate callService,
+      PuertsCallbacks.CallServiceAsyncDelegate callServiceAsync,
       PuertsCallbacks.HandleErrorDelegate handleError,
       PuertsCallbacks.HandleLogDelegate handleLog)
     {
@@ -274,7 +274,7 @@ console.error = console.error || function() {};
         setGlobal("__setActorQuaternion", setActorQuaternion);
         setGlobal("__getActorString", getActorString);
         setGlobal("__setActorString", setActorString);
-        setGlobal("__callService", callService);
+        setGlobal("__callServiceAsync", callServiceAsync);
         setGlobal("__handleError", handleError);
         setGlobal("__handleLog", handleLog);
 

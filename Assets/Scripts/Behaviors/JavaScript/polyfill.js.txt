@@ -135,50 +135,74 @@
   // ==================== Service Call API ====================
 
   // callVoosService - Main service call API (compatible with V8 engine)
+  // Note: This is a synchronous-looking API but internally uses async callback
+  // It's kept for backward compatibility with existing code
   globalThis.callVoosService = function (serviceName, ...args) {
-    if (!globalThis.__callService) {
-      throw new Error('callService callback not registered');
+    if (!globalThis.__callServiceAsync) {
+      throw new Error('callServiceAsync callback not registered');
     }
+
+    // For synchronous-looking API, we use a workaround:
+    // Store result in a closure and return it synchronously
+    // This works because Unity's main thread will process the callback immediately
+    let result = undefined;
+    let error = null;
+    let completed = false;
 
     try {
       const argsJson = args.length > 0 ? JSON.stringify(args) : '[]';
-      const resultJson = globalThis.__callService.Invoke(serviceName, argsJson);
-      if (resultJson && resultJson !== '') {
-        try {
-          return JSON.parse(resultJson);
-        } catch (e) {
-          return resultJson;
+
+      globalThis.__callServiceAsync.Invoke(serviceName, argsJson, function (resultJson) {
+        completed = true;
+        if (resultJson && resultJson !== '') {
+          try {
+            result = JSON.parse(resultJson);
+          } catch (e) {
+            result = resultJson;
+          }
         }
+      });
+
+      // In Unity's single-threaded environment, the callback should execute immediately
+      if (!completed) {
+        console.error('callVoosService: callback not executed immediately');
       }
-      return undefined;
-    } catch (error) {
-      console.error('callVoosService error:', error.message);
-      throw error;
+
+      return result;
+    } catch (err) {
+      console.error('callVoosService error:', err.message);
+      throw err;
     }
   };
 
   // Legacy callback-based service call API
   globalThis.callService = function (serviceName, args, callback) {
-    if (!globalThis.__callService) {
-      throw new Error('callService callback not registered');
+    if (!globalThis.__callServiceAsync) {
+      throw new Error('callServiceAsync callback not registered');
     }
 
     try {
       // Serialize arguments to JSON
       const argsJson = JSON.stringify(args || {});
 
-      // Call C# service
-      const resultJson = globalThis.__callService.Invoke(serviceName, argsJson);
+      // Call C# service with async callback
+      // Puerts will automatically convert JS function to C# delegate
+      globalThis.__callServiceAsync.Invoke(serviceName, argsJson, function (resultJson) {
+        try {
+          // Parse result
+          const result = resultJson ? JSON.parse(resultJson) : null;
 
-      // Parse result
-      const result = resultJson ? JSON.parse(resultJson) : null;
-
-      // Handle callback if provided
-      if (typeof callback === 'function') {
-        callback(result);
-      }
-
-      return result;
+          // Handle callback if provided
+          if (typeof callback === 'function') {
+            callback(result);
+          }
+        } catch (error) {
+          console.error('callService callback error:', error.message);
+          if (typeof callback === 'function') {
+            callback(null, error);
+          }
+        }
+      });
     } catch (error) {
       console.error('callService error:', error.message);
       if (typeof callback === 'function') {

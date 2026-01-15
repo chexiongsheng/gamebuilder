@@ -1203,35 +1203,11 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     SetActorString(actorIdNum, fieldIdNum, value);
   }
 
-  string CallServiceForPuerts(string serviceName, string argsJson)
+  void CallServiceForPuerts(string serviceName, string argsJson, System.Action<string> callback)
   {
-    // 使用ManualResetEvent实现同步等待
-    string result = null;
-    var waitHandle = new System.Threading.ManualResetEvent(false);
-
-    // 创建回调委托
-    V8InUnity.Native.ReportResultFunction callback = (json) =>
-    {
-      result = json;
-      waitHandle.Set();
-    };
-
-    // 获取回调函数指针
-    System.IntPtr callbackPtr = System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate(callback);
-
-    // 调用Services.CallService
-    services.CallService(serviceName, argsJson, callbackPtr);
-
-    // 等待结果（设置5秒超时）
-    if (waitHandle.WaitOne(5000))
-    {
-      return result ?? "{}";
-    }
-    else
-    {
-      Util.LogError($"[VoosEngine] CallService timeout after 5 seconds: {serviceName}");
-      return "{}";
-    }
+    // 直接调用Services的异步版本CallService，传递委托
+    // Puerts会自动将JS函数转换为C#委托
+    services.CallService(serviceName, argsJson, callback);
   }
 
   void HandleErrorForPuerts(string errorMessage, string stackTrace)
@@ -1270,7 +1246,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
         setActorQuaternion: SetActorQuaternionForPuerts,
         getActorString: GetActorStringForPuerts,
         setActorString: SetActorStringForPuerts,
-        callService: CallServiceForPuerts,
+        callServiceAsync: CallServiceForPuerts,
         handleError: HandleErrorForPuerts,
         handleLog: HandleLogForPuerts
       );
