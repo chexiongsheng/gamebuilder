@@ -1098,7 +1098,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   // ==================== Puerts适配器方法 ====================
   // 这些方法将VoosEngine的内部API适配为Puerts所需的签名
 
-  bool GetActorBooleanForPuerts(string actorId, string fieldId)
+  public bool GetActorBooleanForPuerts(string actorId, string fieldId)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
@@ -1109,7 +1109,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     return value;
   }
 
-  void SetActorBooleanForPuerts(string actorId, string fieldId, bool value)
+  public void SetActorBooleanForPuerts(string actorId, string fieldId, bool value)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
@@ -1119,7 +1119,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     SetActorBoolean(actorIdNum, fieldIdNum, value);
   }
 
-  float GetActorFloatForPuerts(string actorId, string fieldId)
+  public float GetActorFloatForPuerts(string actorId, string fieldId)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
@@ -1130,7 +1130,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     return value;
   }
 
-  void SetActorFloatForPuerts(string actorId, string fieldId, float value)
+  public void SetActorFloatForPuerts(string actorId, string fieldId, float value)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
@@ -1140,7 +1140,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     SetActorFloat(actorIdNum, fieldIdNum, value);
   }
 
-  void GetActorVector3ForPuerts(string actorId, string fieldId, out float x, out float y, out float z)
+  public void GetActorVector3ForPuerts(string actorId, string fieldId, out float x, out float y, out float z)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
@@ -1153,7 +1153,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     GetActorVector3(actorIdNum, fieldIdNum, out x, out y, out z);
   }
 
-  void SetActorVector3ForPuerts(string actorId, string fieldId, float x, float y, float z)
+  public void SetActorVector3ForPuerts(string actorId, string fieldId, float x, float y, float z)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
@@ -1163,7 +1163,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     SetActorVector3(actorIdNum, fieldIdNum, x, y, z);
   }
 
-  void GetActorQuaternionForPuerts(string actorId, string fieldId, out float x, out float y, out float z, out float w)
+  public void GetActorQuaternionForPuerts(string actorId, string fieldId, out float x, out float y, out float z, out float w)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
@@ -1177,7 +1177,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     GetActorQuaternion(actorIdNum, fieldIdNum, out x, out y, out z, out w);
   }
 
-  void SetActorQuaternionForPuerts(string actorId, string fieldId, float x, float y, float z, float w)
+  public void SetActorQuaternionForPuerts(string actorId, string fieldId, float x, float y, float z, float w)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
@@ -1187,7 +1187,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     SetActorQuaternion(actorIdNum, fieldIdNum, x, y, z, w);
   }
 
-  string GetActorStringForPuerts(string actorId, string fieldId)
+  public string GetActorStringForPuerts(string actorId, string fieldId)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
@@ -1198,7 +1198,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     return value ?? "";
   }
 
-  void SetActorStringForPuerts(string actorId, string fieldId, string value)
+  public void SetActorStringForPuerts(string actorId, string fieldId, string value)
   {
     if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
     {
@@ -1208,14 +1208,14 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     SetActorString(actorIdNum, fieldIdNum, value);
   }
 
-  void CallServiceForPuerts(string serviceName, string argsJson, System.Action<string> callback)
+  public void CallServiceForPuerts(string serviceName, string argsJson, System.Action<string> callback)
   {
     // 直接调用Services的异步版本CallService，传递委托
     // Puerts会自动将JS函数转换为C#委托
     services.CallService(serviceName, argsJson, callback);
   }
 
-  void HandleErrorForPuerts(string errorMessage, string stackTrace)
+  public void HandleErrorForPuerts(string errorMessage, string stackTrace)
   {
     // HandleV8RuntimeError的签名是: void HandleV8RuntimeError(string message)
     // 需要合并errorMessage和stackTrace
@@ -1225,7 +1225,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     HandleV8RuntimeError(fullMessage);
   }
 
-  void HandleLogForPuerts(string level, string message)
+  public void HandleLogForPuerts(string level, string message)
   {
     // HandleV8SystemLog的签名是: void HandleV8SystemLog(string message)
     // 需要将level和message合并
@@ -1238,23 +1238,8 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     if (puertsAdapter == null)
     {
       puertsAdapter = new PuertsAdapter(this);
-
-      // 注册回调
-      puertsAdapter.RegisterCallbacks(
-        getActorBoolean: GetActorBooleanForPuerts,
-        setActorBoolean: SetActorBooleanForPuerts,
-        getActorFloat: GetActorFloatForPuerts,
-        setActorFloat: SetActorFloatForPuerts,
-        getActorVector3: GetActorVector3ForPuerts,
-        setActorVector3: SetActorVector3ForPuerts,
-        getActorQuaternion: GetActorQuaternionForPuerts,
-        setActorQuaternion: SetActorQuaternionForPuerts,
-        getActorString: GetActorStringForPuerts,
-        setActorString: SetActorStringForPuerts,
-        callServiceAsync: CallServiceForPuerts,
-        handleError: HandleErrorForPuerts,
-        handleLog: HandleLogForPuerts
-      );
+      // 直接传递 VoosEngine 实例到 JS，让 JS 直接调用公共方法
+      puertsAdapter.RegisterVoosEngine(this);
     }
   }
 

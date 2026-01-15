@@ -72,30 +72,11 @@ namespace Voos
     }
 
     /// <summary>
-    /// 注册回调到JS环境
+    /// 注册 VoosEngine 实例到 JS 环境
     /// </summary>
-    public void RegisterCallbacks(
-      PuertsCallbacks.GetActorBooleanDelegate getActorBoolean,
-      PuertsCallbacks.SetActorBooleanDelegate setActorBoolean,
-      PuertsCallbacks.GetActorFloatDelegate getActorFloat,
-      PuertsCallbacks.SetActorFloatDelegate setActorFloat,
-      PuertsCallbacks.GetActorVector3Delegate getActorVector3,
-      PuertsCallbacks.SetActorVector3Delegate setActorVector3,
-      PuertsCallbacks.GetActorQuaternionDelegate getActorQuaternion,
-      PuertsCallbacks.SetActorQuaternionDelegate setActorQuaternion,
-      PuertsCallbacks.GetActorStringDelegate getActorString,
-      PuertsCallbacks.SetActorStringDelegate setActorString,
-      PuertsCallbacks.CallServiceAsyncDelegate callServiceAsync,
-      PuertsCallbacks.HandleErrorDelegate handleError,
-      PuertsCallbacks.HandleLogDelegate handleLog)
+    public void RegisterVoosEngine(VoosEngine engine)
     {
-      scriptEngine.RegisterCallbacks(
-        getActorBoolean, setActorBoolean,
-        getActorFloat, setActorFloat,
-        getActorVector3, setActorVector3,
-        getActorQuaternion, setActorQuaternion,
-        getActorString, setActorString,
-        callServiceAsync, handleError, handleLog);
+      scriptEngine.RegisterVoosEngine(engine);
     }
 
     /// <summary>

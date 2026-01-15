@@ -236,22 +236,9 @@ console.error = console.error || function() {};
     }
 
     /// <summary>
-    /// 注册C#回调到JS全局环境
+    /// 注册 VoosEngine 实例到 JS 全局环境
     /// </summary>
-    public void RegisterCallbacks(
-      PuertsCallbacks.GetActorBooleanDelegate getActorBoolean,
-      PuertsCallbacks.SetActorBooleanDelegate setActorBoolean,
-      PuertsCallbacks.GetActorFloatDelegate getActorFloat,
-      PuertsCallbacks.SetActorFloatDelegate setActorFloat,
-      PuertsCallbacks.GetActorVector3Delegate getActorVector3,
-      PuertsCallbacks.SetActorVector3Delegate setActorVector3,
-      PuertsCallbacks.GetActorQuaternionDelegate getActorQuaternion,
-      PuertsCallbacks.SetActorQuaternionDelegate setActorQuaternion,
-      PuertsCallbacks.GetActorStringDelegate getActorString,
-      PuertsCallbacks.SetActorStringDelegate setActorString,
-      PuertsCallbacks.CallServiceAsyncDelegate callServiceAsync,
-      PuertsCallbacks.HandleErrorDelegate handleError,
-      PuertsCallbacks.HandleLogDelegate handleLog)
+    public void RegisterVoosEngine(VoosEngine engine)
     {
       if (!isInitialized)
       {
@@ -263,26 +250,15 @@ console.error = console.error || function() {};
         // 导出设置全局变量的函数
         var setGlobal = jsEnv.Eval<Action<string, object>>("(k, v) => globalThis[k] = v;");
 
-        // 注册委托到全局对象
-        setGlobal("__getActorBoolean", getActorBoolean);
-        setGlobal("__setActorBoolean", setActorBoolean);
-        setGlobal("__getActorFloat", getActorFloat);
-        setGlobal("__setActorFloat", setActorFloat);
-        setGlobal("__getActorVector3", getActorVector3);
-        setGlobal("__setActorVector3", setActorVector3);
-        setGlobal("__getActorQuaternion", getActorQuaternion);
-        setGlobal("__setActorQuaternion", setActorQuaternion);
-        setGlobal("__getActorString", getActorString);
-        setGlobal("__setActorString", setActorString);
-        setGlobal("__callServiceAsync", callServiceAsync);
-        setGlobal("__handleError", handleError);
-        setGlobal("__handleLog", handleLog);
+        // 直接注册 VoosEngine 实例到全局对象
+        // JS 可以直接调用 engine 的公共方法
+        setGlobal("__voosEngine", engine);
 
-        Debug.Log("[PuertsScriptEngine] Callbacks registered successfully");
+        Debug.Log("[PuertsScriptEngine] VoosEngine registered successfully");
       }
       catch (Exception ex)
       {
-        Debug.LogError($"[PuertsScriptEngine] Failed to register callbacks: {ex.Message}");
+        Debug.LogError($"[PuertsScriptEngine] Failed to register VoosEngine: {ex.Message}");
         throw;
       }
     }
