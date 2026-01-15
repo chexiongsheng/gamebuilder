@@ -173,37 +173,38 @@ namespace Voos
 
         var context = brainContexts[brainUid];
 
-        // 使用Puerts的模块系统
-        // 注意：这里需要将模块注册到全局的getVoosModule函数中
-        string moduleWrapper = $@"
-(function() {{
-  if (typeof globalThis.__voosModules === 'undefined') {{
-    globalThis.__voosModules = {{}};
-  }}
-  
-  // 创建模块作用域
-  const module = {{ exports: {{}} }};
-  const exports = module.exports;
-  
-  // 执行模块代码
-  {javascript}
-  
-  // 注册模块
-  globalThis.__voosModules['{moduleKey}'] = module.exports;
-  
-  // 提供getVoosModule函数
-  if (typeof globalThis.getVoosModule === 'undefined') {{
-    globalThis.getVoosModule = function(moduleName) {{
-      if (!globalThis.__voosModules[moduleName]) {{
-        throw new Error('Module not found: ' + moduleName);
-      }}
-      return globalThis.__voosModules[moduleName];
-    }};
-  }}
-}})();
+        // 使用ExecuteModule来支持ES模块语法（export关键字）
+        // 1. 先注册模块到内存加载器
+        string modulePath = $"voos_module_{moduleKey}.mjs";
+        scriptEngine.RegisterModule(modulePath, javascript);
+
+        // 2. 创建一个包装器模块来导入并注册到全局
+        string wrapperCode = $@"
+import * as module from '{modulePath}';
+
+if (typeof globalThis.__voosModules === 'undefined') {{
+  globalThis.__voosModules = {{}};
+}}
+
+// 注册模块
+globalThis.__voosModules['{moduleKey}'] = module;
+
+// 提供getVoosModule函数
+if (typeof globalThis.getVoosModule === 'undefined') {{
+  globalThis.getVoosModule = function(moduleName) {{
+    if (!globalThis.__voosModules[moduleName]) {{
+      throw new Error('Module not found: ' + moduleName);
+    }}
+    return globalThis.__voosModules[moduleName];
+  }};
+}}
 ";
 
-        scriptEngine.Eval(moduleWrapper, $"module_{moduleKey}");
+        // 3. 注册并执行包装器
+        string wrapperPath = $"voos_wrapper_{moduleKey}.mjs";
+        scriptEngine.RegisterModule(wrapperPath, wrapperCode);
+        scriptEngine.ExecuteModule(wrapperPath);
+
         context.compiledModules[moduleKey] = true;
 
         Debug.Log($"[PuertsAdapter] Module {moduleKey} compiled successfully");
@@ -255,10 +256,10 @@ namespace Voos
         {
           stateObj = scriptEngine.Eval<object>($"({inputJson})");
         }
-    
+
         // 调用updateAgent函数（第二个参数为null，表示没有arrayBuffer）
         context.updateAgentFunc(stateObj, null);
-    
+
         // 使用缓存的JSON序列化函数
         if (cachedJsonStringifyFunc != null)
         {
