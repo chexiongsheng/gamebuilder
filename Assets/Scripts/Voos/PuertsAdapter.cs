@@ -394,38 +394,72 @@ if (typeof globalThis.getVoosModule === 'undefined') {{
     public Util.Maybe<TResponse> UpdateAgent<TRequest, TResponse>(
       string brainUid, string agentUid, TRequest input, byte[] bytes)
     {
-      // 序列化请求
-      string inputJson = JsonUtility.ToJson(input, false);
-
-      // 调用带字节数组的版本
-      if (!UpdateAgentWithBytes(brainUid, agentUid, inputJson, bytes))
+      if (!brainContexts.TryGetValue(brainUid, out BrainContext context))
       {
+        Debug.LogError($"[PuertsAdapter] Brain not found: {brainUid}");
         return Util.Maybe<TResponse>.CreateEmpty();
       }
 
-      // 获取响应（从updateAgent的返回值）
-      if (!brainContexts.TryGetValue(brainUid, out BrainContext context))
+      if (context.updateAgentFunc == null)
       {
+        Debug.LogError($"[PuertsAdapter] updateAgent function not found for brain: {brainUid}");
         return Util.Maybe<TResponse>.CreateEmpty();
       }
 
       try
       {
-        // 调用JSON.stringify获取结果
+        // 序列化请求为JSON
+        string inputJson = JsonUtility.ToJson(input, false);
+
+        // 初始化JSON解析函数（如果需要）
+        if (cachedJsonParseFunc == null)
+        {
+          cachedJsonParseFunc = scriptEngine.Eval<Func<string, object>>("JSON.parse");
+        }
         if (cachedJsonStringifyFunc == null)
         {
           cachedJsonStringifyFunc = scriptEngine.Eval<Func<object, string>>("JSON.stringify");
         }
 
-        // updateAgent应该返回结果对象
-        // 但当前实现中updateAgent没有返回值，需要修改
-        // 暂时返回空结果
-        Debug.LogWarning("[PuertsAdapter] UpdateAgent<T> with bytes: response parsing not yet implemented");
-        return Util.Maybe<TResponse>.CreateEmpty();
+        // 将JSON解析为JS对象
+        object requestObj = cachedJsonParseFunc(inputJson);
+
+        // 调用updateAgent函数
+        // updateAgent会修改requestObj，添加响应数据
+        if (bytes != null && bytes.Length > 0)
+        {
+          var arrayBuffer = new Puerts.ArrayBuffer(bytes);
+          context.updateAgentFunc(requestObj, arrayBuffer);
+        }
+        else
+        {
+          context.updateAgentFunc(requestObj, null);
+        }
+
+        // 将修改后的JS对象序列化回JSON
+        string outputJson = cachedJsonStringifyFunc(requestObj);
+
+        // 反序列化为响应类型
+        TResponse response = JsonUtility.FromJson<TResponse>(outputJson);
+
+        // 调用postMessageFlush（如果存在）
+        if (context.postMessageFlushFunc != null)
+        {
+          try
+          {
+            context.postMessageFlushFunc();
+          }
+          catch (Exception ex)
+          {
+            Debug.LogWarning($"[PuertsAdapter] postMessageFlush error: {ex.Message}");
+          }
+        }
+
+        return Util.Maybe<TResponse>.CreateWith(response);
       }
       catch (Exception e)
       {
-        Debug.LogError($"[PuertsAdapter] Failed to parse response: {e.Message}");
+        Debug.LogError($"[PuertsAdapter] UpdateAgent<T> failed: {e.Message}\n{e.StackTrace}");
         return Util.Maybe<TResponse>.CreateEmpty();
       }
     }

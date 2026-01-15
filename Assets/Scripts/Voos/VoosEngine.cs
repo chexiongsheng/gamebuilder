@@ -198,7 +198,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   [SerializeField] BuiltinPrefabLibrary builtinPrefabLibrary;
 
   // Puerts支持
-  public static bool UsePuerts = false; // 配置开关：true使用Puerts，false使用V8
+  public static bool UsePuerts = true; // 配置开关：true使用Puerts，false使用V8
   private Voos.PuertsAdapter puertsAdapter = null;
 
   V8InUnity.Services services = null;
@@ -1281,9 +1281,8 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   {
     if (UsePuerts)
     {
-      // TODO: Puerts暂不支持泛型UpdateAgent，需要实现
-      Debug.LogWarning("[VoosEngine] CommunicateWithAgent not yet implemented for Puerts");
-      return Util.Maybe<TResponse>.CreateEmpty();
+      // 使用PuertsAdapter的UpdateAgent方法
+      return puertsAdapter.UpdateAgent<TRequest, TResponse>(brainUid, agentUid, request, new byte[0]);
     }
     else
     {
