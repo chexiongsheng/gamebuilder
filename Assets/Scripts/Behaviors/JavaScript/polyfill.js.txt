@@ -263,6 +263,24 @@
     }
   };
 
+  // sysLog - System logging API (alias for log)
+  globalThis.sysLog = function (...args) {
+    const message = args.map(arg => {
+      if (typeof arg === 'object') {
+        try {
+          return JSON.stringify(arg);
+        } catch (e) {
+          return String(arg);
+        }
+      }
+      return String(arg);
+    }).join(' ');
+
+    if (globalThis.__handleLog) {
+      globalThis.__handleLog.Invoke('log', message);
+    }
+  };
+
   // ==================== Global Error Handler ====================
 
   globalThis.addEventListener = globalThis.addEventListener || function () { };
