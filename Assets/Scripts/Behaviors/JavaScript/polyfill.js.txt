@@ -328,6 +328,12 @@
   };
 
   // ==================== Initialization ====================
+  
+  globalThis.updateAgentPostMessageFlush = function (request, arrayBuffer) {
+	  updateAgent(request, arrayBuffer);
+	  postMessageFlush(request, arrayBuffer);
+	  return arrayBuffer;
+  }
 
   console.log('[Polyfill] V8 compatibility layer loaded');
 

@@ -31,7 +31,7 @@ namespace Voos
     {
       public string brainUid;
       public string javascript;
-      public Action<object, object> updateAgentFunc;
+      public Func<object, object, ArrayBuffer> updateAgentFunc;
       public Func<object> postMessageFlushFunc;
       public Dictionary<string, bool> compiledModules = new Dictionary<string, bool>();
     }
@@ -103,7 +103,7 @@ namespace Voos
         // 获取updateAgent函数引用
         try
         {
-          context.updateAgentFunc = scriptEngine.Eval<Action<object, object>>("globalThis.updateAgent");
+          context.updateAgentFunc = scriptEngine.Eval<Func<object, object, ArrayBuffer>>("globalThis.updateAgentPostMessageFlush");
           if (context.updateAgentFunc == null)
           {
             Debug.LogError($"[PuertsAdapter] updateAgent function not found in brain {brainUid}");
@@ -389,6 +389,7 @@ if (typeof globalThis.getVoosModule === 'undefined') {{
 
       try
       {
+        // TODO: 根据puerts的特点进行优化
         // 序列化请求为JSON
         string inputJson = JsonUtility.ToJson(input, false);
 
@@ -410,7 +411,8 @@ if (typeof globalThis.getVoosModule === 'undefined') {{
         if (bytes != null && bytes.Length > 0)
         {
           var arrayBuffer = new Puerts.ArrayBuffer(bytes);
-          context.updateAgentFunc(requestObj, arrayBuffer);
+          arrayBuffer = context.updateAgentFunc(requestObj, arrayBuffer);
+          Array.Copy(arrayBuffer.Bytes, bytes, Math.Min(arrayBuffer.Count, bytes.Length));
         }
         else
         {
