@@ -293,4 +293,13 @@ globalThis.updateAgentPostMessageFlush = function (request, arrayBuffer) {
 	  return arrayBuffer;
 }
 
+globalThis.__voosModules = {};
+
+globalThis.getVoosModule = function(moduleName) {
+  if (!globalThis.__voosModules[moduleName]) {
+    throw new Error('Module not found: ' + moduleName);
+  }
+  return globalThis.__voosModules[moduleName];
+};
+
 console.log('[Polyfill] V8 compatibility layer loaded');

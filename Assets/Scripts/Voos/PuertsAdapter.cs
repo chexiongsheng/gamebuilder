@@ -163,23 +163,8 @@ namespace Voos
         // 2. 创建一个包装器模块来导入并注册到全局
         string wrapperCode = $@"
 import * as module from '{modulePath}';
-
-if (typeof globalThis.__voosModules === 'undefined') {{
-  globalThis.__voosModules = {{}};
-}}
-
 // 注册模块
 globalThis.__voosModules['{moduleKey}'] = module;
-
-// 提供getVoosModule函数
-if (typeof globalThis.getVoosModule === 'undefined') {{
-  globalThis.getVoosModule = function(moduleName) {{
-    if (!globalThis.__voosModules[moduleName]) {{
-      throw new Error('Module not found: ' + moduleName);
-    }}
-    return globalThis.__voosModules[moduleName];
-  }};
-}}
 ";
 
         // 3. 注册并执行包装器
