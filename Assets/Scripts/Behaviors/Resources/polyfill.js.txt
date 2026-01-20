@@ -302,4 +302,8 @@ globalThis.getVoosModule = function(moduleName) {
   return globalThis.__voosModules[moduleName];
 };
 
+export function setGlobal(k, v) {
+  globalThis[k] = v;
+}
+
 console.log('[Polyfill] V8 compatibility layer loaded');

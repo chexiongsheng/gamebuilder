@@ -179,6 +179,8 @@ namespace Voos
       }
     }
 
+    ScriptObject exportsFunctions = null;
+
     /// <summary>
     /// 加载Polyfill适配层
     /// </summary>
@@ -186,7 +188,7 @@ namespace Voos
     {
       try
       {
-        jsEnv.ExecuteModule("polyfill.js");
+        exportsFunctions = jsEnv.ExecuteModule("polyfill.js");
         Debug.Log("[PuertsScriptEngine] Polyfill loaded successfully");
       }
       catch (Exception ex)
@@ -209,7 +211,7 @@ namespace Voos
       try
       {
         // 导出设置全局变量的函数
-        var setGlobal = jsEnv.Eval<Action<string, object>>("(k, v) => globalThis[k] = v;");
+        var setGlobal = exportsFunctions.Get<Action<string, object>>("setGlobal");
 
         // 直接注册 VoosEngine 实例到全局对象
         // JS 可以直接调用 engine 的公共方法
