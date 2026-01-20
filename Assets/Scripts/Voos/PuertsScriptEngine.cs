@@ -103,7 +103,6 @@ namespace Voos
     private ScriptEnv jsEnv;
     private MemoryModuleLoader memoryLoader;
     private bool isInitialized = false;
-    private string polyfillCode;
 
     // 调试和性能监控
     public static bool DebugMode = false;
@@ -185,24 +184,8 @@ namespace Voos
     /// </summary>
     private void LoadPolyfill()
     {
-      if (string.IsNullOrEmpty(polyfillCode))
-      {
-        // 尝试从文件加载polyfill
-        string polyfillPath = Path.Combine(Application.dataPath, "Scripts", "Behaviors", "JavaScript", "polyfill.js.txt");
-        if (File.Exists(polyfillPath))
-        {
-          polyfillCode = File.ReadAllText(polyfillPath);
-          Debug.Log($"[PuertsScriptEngine] Loaded polyfill from {polyfillPath}");
-        }
-        else
-        {
-          throw new Exception("Polyfill code is not set and polyfill.js.txt file not found");
-        }
-      }
-
       try
       {
-        memoryLoader.RegisterModule("polyfill.js", polyfillCode);
         jsEnv.ExecuteModule("polyfill.js");
         Debug.Log("[PuertsScriptEngine] Polyfill loaded successfully");
       }
@@ -210,18 +193,6 @@ namespace Voos
       {
         Debug.LogError($"[PuertsScriptEngine] Failed to load polyfill: {ex.Message}");
         throw;
-      }
-    }
-
-    /// <summary>
-    /// 设置Polyfill代码
-    /// </summary>
-    public void SetPolyfillCode(string code)
-    {
-      polyfillCode = code;
-      if (isInitialized)
-      {
-        LoadPolyfill();
       }
     }
 
