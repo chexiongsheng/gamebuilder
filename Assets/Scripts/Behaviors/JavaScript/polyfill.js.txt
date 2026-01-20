@@ -5,39 +5,6 @@
 (function (globalThis) {
   'use strict';
 
-  // ==================== Console API ====================
-  if (typeof console === 'undefined') {
-    globalThis.console = {};
-  }
-
-  console.log = function (...args) {
-    if (globalThis.__voosEngine) {
-      globalThis.__voosEngine.HandleLogForPuerts('log', args.map(a => String(a)).join(' '));
-    }
-  };
-
-  console.warn = function (...args) {
-    if (globalThis.__voosEngine) {
-      globalThis.__voosEngine.HandleLogForPuerts('warn', args.map(a => String(a)).join(' '));
-    }
-  };
-
-  console.error = function (...args) {
-    if (globalThis.__voosEngine) {
-      globalThis.__voosEngine.HandleLogForPuerts('error', args.map(a => String(a)).join(' '));
-    }
-  };
-
-  console.assert = function (condition, ...args) {
-    if (!condition) {
-      const message = args.length > 0 ? args.map(a => String(a)).join(' ') : 'Assertion failed';
-      console.error('Assertion failed:', message);
-      if (globalThis.__voosEngine) {
-        globalThis.__voosEngine.HandleErrorForPuerts('Assertion failed: ' + message, new Error().stack || '');
-      }
-    }
-  };
-
   // ==================== Actor Property Accessors ====================
 
   // Boolean accessors
