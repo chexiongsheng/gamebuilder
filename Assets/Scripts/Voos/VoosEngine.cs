@@ -1230,7 +1230,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     // HandleV8SystemLog的签名是: void HandleV8SystemLog(string message)
     // 需要将level和message合并
     string fullMessage = $"[{level}] {message}";
-    HandleV8SystemLog(fullMessage);
+    UnityEngine.Debug.Log(fullMessage);
   }
 
   void EnsurePuertsAdapter()
