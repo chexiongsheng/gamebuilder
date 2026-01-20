@@ -68,7 +68,7 @@
   };
 
   // Quaternion accessors
-  globalThis.getActorQuaternion = function (actorId, fieldId) {
+  globalThis.getActorQuaternion = function (actorId, fieldId, quaternion) {
     if (!globalThis.__voosEngine) {
       throw new Error('VoosEngine not registered');
     }
@@ -78,12 +78,12 @@
     const outZ = puer.$ref();
     const outW = puer.$ref();
     globalThis.__voosEngine.GetActorQuaternionForPuerts(actorId, fieldId, outX, outY, outZ, outW);
-    return {
-      x: puer.$unref(outX),
-      y: puer.$unref(outY),
-      z: puer.$unref(outZ),
-      w: puer.$unref(outW)
-    };
+    
+    quaternion.x = puer.$unref(outX);
+    quaternion.y = puer.$unref(outY);
+    quaternion.z = puer.$unref(outZ);
+    quaternion.w = puer.$unref(outW);
+
   };
 
   globalThis.setActorQuaternion = function (actorId, fieldId, x, y, z, w) {
