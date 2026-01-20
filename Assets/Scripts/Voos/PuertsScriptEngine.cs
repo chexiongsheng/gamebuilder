@@ -196,24 +196,14 @@ namespace Voos
         }
         else
         {
-          // 使用内嵌的最小polyfill
-          polyfillCode = @"
-// Minimal polyfill
-if (typeof globalThis === 'undefined') {
-  var globalThis = this;
-}
-console = console || {};
-console.log = console.log || function() {};
-console.warn = console.warn || function() {};
-console.error = console.error || function() {};
-";
-          Debug.LogWarning($"[PuertsScriptEngine] Polyfill file not found at {polyfillPath}, using minimal polyfill");
+          throw new Exception("Polyfill code is not set and polyfill.js.txt file not found");
         }
       }
 
       try
       {
-        jsEnv.Eval(polyfillCode, "polyfill.js");
+        memoryLoader.RegisterModule("polyfill.js", polyfillCode);
+        jsEnv.ExecuteModule("polyfill.js");
         Debug.Log("[PuertsScriptEngine] Polyfill loaded successfully");
       }
       catch (Exception ex)

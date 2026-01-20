@@ -2,8 +2,8 @@
 // This polyfill provides compatibility layer for existing V8-based JavaScript code
 // to work with Puerts without modification.
 
-(function (globalThis) {
-  'use strict';
+//(function (globalThis) {
+//  'use strict';
 
   // ==================== Actor Property Accessors ====================
 
@@ -302,4 +302,4 @@
 
   console.log('[Polyfill] V8 compatibility layer loaded');
 
-})(typeof globalThis !== 'undefined' ? globalThis : this);
+//})(typeof globalThis !== 'undefined' ? globalThis : this);
