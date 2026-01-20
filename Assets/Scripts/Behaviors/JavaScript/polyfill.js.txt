@@ -38,7 +38,7 @@
   };
 
   // Vector3 accessors
-  globalThis.getActorVector3 = function (actorId, fieldId) {
+  globalThis.getActorVector3 = function (actorId, fieldId, pos) {
     if (!globalThis.__voosEngine) {
       throw new Error('VoosEngine not registered');
     }
@@ -47,11 +47,9 @@
     const outY = puer.$ref();
     const outZ = puer.$ref();
     globalThis.__voosEngine.GetActorVector3ForPuerts(actorId, fieldId, outX, outY, outZ);
-    return {
-      x: puer.$unref(outX),
-      y: puer.$unref(outY),
-      z: puer.$unref(outZ)
-    };
+    pos.x = puer.$unref(outX);
+    pos.y = puer.$unref(outY);
+    pos.z = puer.$unref(outZ);
   };
 
   globalThis.setActorVector3 = function (actorId, fieldId, x, y, z) {
