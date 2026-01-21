@@ -46,6 +46,7 @@
  *   log("My spawn point is " + props.spawnPoint);
  * }
  */
+//处理消息时都会包在apiv2.js.txt的startHandlingMessage/endHandlingMessage间，这两个函数通过setUpGlobals_去设置全局变量（mem、card、props、temp）
 var props = {};
 
 /**
