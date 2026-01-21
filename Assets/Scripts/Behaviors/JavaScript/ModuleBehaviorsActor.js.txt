@@ -61,6 +61,7 @@ class MessageHandlingContext {
 
     const api = new HandlerApi(this.actor_, use, deliveredMessage);
     // Set up APIv2 for message-specific stuff.
+    //console.error(`handleMessage: ${JSON.stringify(deliveredMessage)} ${new Error().stack}`);
     ApiV2Context.instance.startHandlingMessage(api);
     try {
       if (this.isLegacy_) {
