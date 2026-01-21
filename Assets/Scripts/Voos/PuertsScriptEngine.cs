@@ -179,7 +179,7 @@ namespace Voos
       }
     }
 
-    ScriptObject exportsFunctions = null;
+    internal ScriptObject ExportsFunctions = null;
 
     /// <summary>
     /// 加载Polyfill适配层
@@ -188,7 +188,7 @@ namespace Voos
     {
       try
       {
-        exportsFunctions = jsEnv.ExecuteModule("polyfill.js");
+        ExportsFunctions = jsEnv.ExecuteModule("polyfill.js");
         Debug.Log("[PuertsScriptEngine] Polyfill loaded successfully");
       }
       catch (Exception ex)
@@ -211,7 +211,7 @@ namespace Voos
       try
       {
         // 导出设置全局变量的函数
-        var setGlobal = exportsFunctions.Get<Action<string, object>>("setGlobal");
+        var setGlobal = ExportsFunctions.Get<Action<string, object>>("setGlobal");
 
         // 直接注册 VoosEngine 实例到全局对象
         // JS 可以直接调用 engine 的公共方法
@@ -273,58 +273,6 @@ namespace Voos
       }
     }
 
-    /// <summary>
-    /// 执行字符串脚本并返回结果
-    /// </summary>
-    public T Eval<T>(string code, string chunkName = "chunk")
-    {
-      if (!isInitialized)
-      {
-        throw new InvalidOperationException("PuertsScriptEngine not initialized");
-      }
-
-      if (EnablePerformanceMonitoring)
-      {
-        performanceTimer.Restart();
-      }
-
-      try
-      {
-        if (DebugMode)
-        {
-          Debug.Log($"[PuertsScriptEngine] Evaluating<{typeof(T).Name}> {chunkName} ({code.Length} chars)");
-        }
-
-        T result = jsEnv.Eval<T>(code, chunkName);
-        evalCount++;
-
-        if (EnablePerformanceMonitoring)
-        {
-          performanceTimer.Stop();
-          float elapsed = (float)performanceTimer.Elapsed.TotalMilliseconds;
-          totalEvalTime += elapsed;
-          Debug.Log($"[PuertsScriptEngine] Eval<{typeof(T).Name}> {chunkName} took {elapsed:F2}ms (avg: {totalEvalTime / evalCount:F2}ms)");
-        }
-
-        return result;
-      }
-      catch (Exception ex)
-      {
-        errorCount++;
-        string errorMsg = ExtractErrorMessage(ex, chunkName);
-        Debug.LogError($"[PuertsScriptEngine] Eval<{typeof(T).Name}> error in {chunkName}: {errorMsg}");
-
-        if (DebugMode)
-        {
-          Debug.LogError($"[PuertsScriptEngine] Stack trace: {ex.StackTrace}");
-        }
-        throw;
-      }
-    }
-
-    /// <summary>
-    /// 每帧更新，处理JS异步任务
-    /// </summary>
     public void Tick()
     {
       if (isInitialized && jsEnv != null)

@@ -17,7 +17,6 @@ namespace Voos
     // 委托缓存，减少GC压力
     private Func<object, string> cachedJsonStringifyFunc;
     private Func<string, object> cachedJsonParseFunc;
-    private Action<string, object> cachedSetGlobalFunc;
 
     // 性能监控
     private int updateAgentCallCount = 0;
@@ -32,7 +31,6 @@ namespace Voos
       public string brainUid;
       public string javascript;
       public Func<object, object, ArrayBuffer> updateAgentFunc;
-      public Func<object> postMessageFlushFunc;
       public Dictionary<string, bool> compiledModules = new Dictionary<string, bool>();
     }
 
@@ -60,9 +58,8 @@ namespace Voos
     {
       try
       {
-        cachedJsonStringifyFunc = scriptEngine.Eval<Func<object, string>>("(obj) => JSON.stringify(obj)");
-        cachedJsonParseFunc = scriptEngine.Eval<Func<string, object>>("(json) => JSON.parse(json)");
-        cachedSetGlobalFunc = scriptEngine.Eval<Action<string, object>>("(k, v) => globalThis[k] = v;");
+        cachedJsonStringifyFunc = scriptEngine.ExportsFunctions.Get<Func<object, string>>("jsonStringify");
+        cachedJsonParseFunc = scriptEngine.ExportsFunctions.Get<Func<string, object>>("jsonParse");
         Debug.Log("[PuertsAdapter] Delegate cache initialized");
       }
       catch (Exception ex)
@@ -104,7 +101,7 @@ namespace Voos
         // 获取updateAgent函数引用
         try
         {
-          context.updateAgentFunc = scriptEngine.Eval<Func<object, object, ArrayBuffer>>("globalThis.updateAgentPostMessageFlush");
+          context.updateAgentFunc = scriptEngine.ExportsFunctions.Get< Func<object, object, ArrayBuffer>>("updateAgentPostMessageFlush");
           if (context.updateAgentFunc == null)
           {
             Debug.LogError($"[PuertsAdapter] updateAgent function not found in brain {brainUid}");
@@ -115,17 +112,6 @@ namespace Voos
         {
           Debug.LogError($"[PuertsAdapter] Failed to get updateAgent function: {ex.Message}");
           return false;
-        }
-
-        // 获取postMessageFlush函数引用（可选）
-        try
-        {
-          context.postMessageFlushFunc = scriptEngine.Eval<Func<object>>("globalThis.postMessageFlush");
-        }
-        catch
-        {
-          // postMessageFlush是可选的
-          context.postMessageFlushFunc = null;
         }
 
         Debug.Log($"[PuertsAdapter] Brain {brainUid} reset successfully");
@@ -187,94 +173,6 @@ globalThis.__voosModules['{moduleKey}'] = module;
     }
 
     /// <summary>
-    /// 更新Agent（调用updateAgent函数）
-    /// </summary>
-    public bool UpdateAgent(string brainUid, string agentUid, string inputJson, out string outputJson)
-    {
-      outputJson = null;
-
-      if (PuertsScriptEngine.EnablePerformanceMonitoring)
-      {
-        performanceTimer.Restart();
-      }
-
-      try
-      {
-        if (!brainContexts.ContainsKey(brainUid))
-        {
-          Debug.LogError($"[PuertsAdapter] Brain {brainUid} not found");
-          return false;
-        }
-
-        var context = brainContexts[brainUid];
-        if (context.updateAgentFunc == null)
-        {
-          Debug.LogError($"[PuertsAdapter] updateAgent function not available for brain {brainUid}");
-          return false;
-        }
-
-        // 使用缓存的JSON解析函数
-        object stateObj;
-        if (cachedJsonParseFunc != null)
-        {
-          stateObj = cachedJsonParseFunc(inputJson);
-        }
-        else
-        {
-          stateObj = scriptEngine.Eval<object>($"({inputJson})");
-        }
-
-        // 调用updateAgent函数（第二个参数为null，表示没有arrayBuffer）
-        context.updateAgentFunc(stateObj, null);
-
-        // 使用缓存的JSON序列化函数
-        if (cachedJsonStringifyFunc != null)
-        {
-          outputJson = cachedJsonStringifyFunc(stateObj);
-        }
-        else
-        {
-          var jsonStringifyFunc = scriptEngine.Eval<Func<object, string>>("(obj) => JSON.stringify(obj)");
-          outputJson = jsonStringifyFunc(stateObj);
-        }
-
-        // 调用postMessageFlush（如果存在）
-        if (context.postMessageFlushFunc != null)
-        {
-          try
-          {
-            context.postMessageFlushFunc();
-          }
-          catch (Exception ex)
-          {
-            Debug.LogWarning($"[PuertsAdapter] postMessageFlush error: {ex.Message}");
-          }
-        }
-
-        updateAgentCallCount++;
-
-        if (PuertsScriptEngine.EnablePerformanceMonitoring)
-        {
-          performanceTimer.Stop();
-          float elapsed = (float)performanceTimer.Elapsed.TotalMilliseconds;
-          totalUpdateAgentTime += elapsed;
-
-          if (updateAgentCallCount % 100 == 0)
-          {
-            Debug.Log($"[PuertsAdapter] UpdateAgent avg time: {totalUpdateAgentTime / updateAgentCallCount:F2}ms ({updateAgentCallCount} calls)");
-          }
-        }
-
-        return true;
-      }
-      catch (Exception ex)
-      {
-        Debug.LogError($"[PuertsAdapter] UpdateAgent error for brain {brainUid}, agent {agentUid}: {ex.Message}\n{ex.StackTrace}");
-        return false;
-      }
-    }
-
-    /// <summary>
     /// 检查模块是否已编译
     /// </summary>
     public bool HasModuleCompiled(string brainUid, string moduleKey)
@@ -302,7 +200,6 @@ globalThis.__voosModules['{moduleKey}'] = module;
       brainContexts.Clear();
       cachedJsonStringifyFunc = null;
       cachedJsonParseFunc = null;
-      cachedSetGlobalFunc = null;
       // 注意：不要在这里Dispose scriptEngine，因为它是单例
     }
 
@@ -379,16 +276,6 @@ globalThis.__voosModules['{moduleKey}'] = module;
         // 序列化请求为JSON
         string inputJson = JsonUtility.ToJson(input, false);
 
-        // 初始化JSON解析函数（如果需要）
-        if (cachedJsonParseFunc == null)
-        {
-          cachedJsonParseFunc = scriptEngine.Eval<Func<string, object>>("JSON.parse");
-        }
-        if (cachedJsonStringifyFunc == null)
-        {
-          cachedJsonStringifyFunc = scriptEngine.Eval<Func<object, string>>("JSON.stringify");
-        }
-
         // 将JSON解析为JS对象
         object requestObj = cachedJsonParseFunc(inputJson);
 
@@ -410,19 +297,6 @@ globalThis.__voosModules['{moduleKey}'] = module;
 
         // 反序列化为响应类型
         TResponse response = JsonUtility.FromJson<TResponse>(outputJson);
-
-        // 调用postMessageFlush（如果存在）
-        if (context.postMessageFlushFunc != null)
-        {
-          try
-          {
-            context.postMessageFlushFunc();
-          }
-          catch (Exception ex)
-          {
-            Debug.LogWarning($"[PuertsAdapter] postMessageFlush error: {ex.Message}");
-          }
-        }
 
         return Util.Maybe<TResponse>.CreateWith(response);
       }

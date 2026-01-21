@@ -287,7 +287,7 @@ globalThis.assert = function (condition, message) {
 
 // ==================== Initialization ====================
 
-globalThis.updateAgentPostMessageFlush = function (request, arrayBuffer) {
+export function updateAgentPostMessageFlush (request, arrayBuffer) {
 	  updateAgent(request, arrayBuffer);
 	  postMessageFlush(request, arrayBuffer);
 	  return arrayBuffer;
@@ -295,7 +295,7 @@ globalThis.updateAgentPostMessageFlush = function (request, arrayBuffer) {
 
 globalThis.__voosModules = {};
 
-globalThis.getVoosModule = function(moduleName) {
+globalThis.getVoosModule = function (moduleName) {
   if (!globalThis.__voosModules[moduleName]) {
     throw new Error('Module not found: ' + moduleName);
   }
@@ -304,6 +304,14 @@ globalThis.getVoosModule = function(moduleName) {
 
 export function setGlobal(k, v) {
   globalThis[k] = v;
+}
+
+export function jsonStringify(obj) {
+  return JSON.stringify(obj);
+}
+
+export function jsonParse(json) {
+  return JSON.parse(json);
 }
 
 console.log('[Polyfill] V8 compatibility layer loaded');
