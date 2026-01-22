@@ -824,84 +824,41 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   // Returns error messages if any. Will never return null.
   public bool SetModule(string moduleKey, string javascript)
   {
-    if (UsePuerts)
+    EnsurePuertsAdapter();
+
+    System.Action<string> handleCompileError = msg =>
     {
-      EnsurePuertsAdapter();
+      int lineNum = ExtractFirstLineNumberForModuleError(moduleKey, msg);
+      var args = new ModuleCompileError { message = msg, moduleKey = moduleKey, lineNum = lineNum };
+      OnModuleCompileError?.Invoke(args);
+    };
 
-      System.Action<string> handleCompileError = msg =>
-      {
-        int lineNum = ExtractFirstLineNumberForModuleError(moduleKey, msg);
-        var args = new ModuleCompileError { message = msg, moduleKey = moduleKey, lineNum = lineNum };
-        OnModuleCompileError?.Invoke(args);
-      };
-
-      OnBeforeModuleCompile?.Invoke(moduleKey);
-      bool ok = puertsAdapter.SetModule(brainUid, moduleKey, javascript, handleCompileError);
-      if (ok)
-      {
-        compiledModules.Add(moduleKey);
-      }
-      else
-      {
-        if (!compiledModules.Contains(moduleKey))
-        {
-          System.Action<string> dummyErrorHandler = msg => { };
-          bool backupOk = puertsAdapter.SetModule(brainUid, moduleKey, "// Dummy", dummyErrorHandler);
-          if (!backupOk)
-          {
-            throw new System.Exception("Could not compile backup dummy module? Major problems..");
-          }
-        }
-      }
-      return ok;
+    OnBeforeModuleCompile?.Invoke(moduleKey);
+    bool ok = puertsAdapter.SetModule(brainUid, moduleKey, javascript, handleCompileError);
+    if (ok)
+    {
+      compiledModules.Add(moduleKey);
     }
     else
     {
-      V8InUnity.Native.StringFunction handleCompileError = msg =>
+      if (!compiledModules.Contains(moduleKey))
       {
-        int lineNum = ExtractFirstLineNumberForModuleError(moduleKey, msg);
-        var args = new ModuleCompileError { message = msg, moduleKey = moduleKey, lineNum = lineNum };
-        OnModuleCompileError?.Invoke(args);
-      };
-
-      // TODO OPT: we can avoid extra compiles here by keeping a simple hash of
-      // JS. Now that the behavior system is doing synchronous syncs, redundant
-      // calls are more likely.
-      OnBeforeModuleCompile?.Invoke(moduleKey);
-      bool ok = V8InUnity.Native.SetModule(brainUid, moduleKey, javascript, handleCompileError);
-      if (ok)
-      {
-        compiledModules.Add(moduleKey);
-      }
-      else
-      {
-        // To be safe, we should always have some valid module for the key. Other
-        // code may expect it. So, if we've never compiled something, compile a
-        // dummy script.
-        if (!compiledModules.Contains(moduleKey))
+        System.Action<string> dummyErrorHandler = msg => { };
+        bool backupOk = puertsAdapter.SetModule(brainUid, moduleKey, "// Dummy", dummyErrorHandler);
+        if (!backupOk)
         {
-          bool backupOk = V8InUnity.Native.SetModule(brainUid, moduleKey, "// Dummy", handleCompileError);
-          if (!backupOk)
-          {
-            throw new System.Exception("Could not compile backup dummy module? Major problems..");
-          }
+          throw new System.Exception("Could not compile backup dummy module? Major problems..");
         }
       }
-      return ok;
     }
+    return ok;
+    
   }
 
   public bool Recompile(string js)
   {
-    if (UsePuerts)
-    {
-      EnsurePuertsAdapter();
-      return puertsAdapter.ResetBrain(brainUid, js);
-    }
-    else
-    {
-      return V8InUnity.Native.ResetBrain(brainUid, js);
-    }
+    EnsurePuertsAdapter();
+    return puertsAdapter.ResetBrain(brainUid, js);
   }
 
   void ApplyVelocityChanges(VelocityChange[] changes, TorqueRequest[] torques)
@@ -1075,26 +1032,6 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     // Native already logs this to Unity log, so ignore it.
   }
 
-  V8InUnity.Native.UpdateCallbacks GetNativeUpdateCallbacks()
-  {
-    return new V8InUnity.Native.UpdateCallbacks
-    {
-      handleError = HandleV8RuntimeError,
-      handleLog = HandleV8SystemLog,
-      callService = services.CallService,
-      getActorBoolean = GetActorBoolean,
-      setActorBoolean = SetActorBoolean,
-      getActorVector3 = GetActorVector3,
-      setActorVector3 = SetActorVector3,
-      getActorQuaternion = GetActorQuaternion,
-      setActorQuaternion = SetActorQuaternion,
-      setActorString = SetActorString,
-      getActorString = GetActorString,
-      setActorFloat = SetActorFloat,
-      getActorFloat = GetActorFloat
-    };
-  }
-
   // ==================== Puerts适配器方法 ====================
   // 这些方法将VoosEngine的内部API适配为Puerts所需的签名
 
@@ -1245,15 +1182,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
 
   public Util.Maybe<TResponse> CommunicateWithAgent<TRequest, TResponse>(TRequest request)
   {
-    if (UsePuerts)
-    {
-      // 使用PuertsAdapter的UpdateAgent方法
-      return puertsAdapter.UpdateAgent<TRequest, TResponse>(brainUid, agentUid, request, new byte[0]);
-    }
-    else
-    {
-      return V8InUnity.Native.UpdateAgent<TRequest, TResponse>(brainUid, agentUid, request, GetNativeUpdateCallbacks());
-    }
+    return puertsAdapter.UpdateAgent<TRequest, TResponse>(brainUid, agentUid, request, new byte[0]);
   }
 
   void MaybeShowActorCountWarning(int currentNumActors)
@@ -1486,26 +1415,12 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
       PumpQueuedCollisions(writer);
     }
 
-    var callbacks = GetNativeUpdateCallbacks();
-
     Util.Maybe<TickResponse> maybeResponse;
-    if (UsePuerts)
-    {
-      // 使用Puerts的字节数组传递
-      EnsurePuertsAdapter();
-      maybeResponse = puertsAdapter.UpdateAgent<TickRequest, TickResponse>(
-        brainUid, agentUid,
-        CreateTickRequest(),
-        updateAgentByteBuffer);
-    }
-    else
-    {
-      maybeResponse = V8InUnity.Native.UpdateAgent<TickRequest, TickResponse>(
-        brainUid, agentUid,
-        CreateTickRequest(),
-        updateAgentByteBuffer,
-        callbacks);
-    }
+    EnsurePuertsAdapter();
+    maybeResponse = puertsAdapter.UpdateAgent<TickRequest, TickResponse>(
+      brainUid, agentUid,
+      CreateTickRequest(),
+      updateAgentByteBuffer);
 
     if (maybeResponse.IsEmpty())
     {
