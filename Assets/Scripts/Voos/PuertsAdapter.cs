@@ -97,7 +97,7 @@ namespace Voos
         //System.IO.File.WriteAllText("brain.js", javascript);
         //scriptEngine.RegisterModule($"brain_{brainUid}", javascript);
         //scriptEngine.ExecuteModule($"brain_{brainUid}");
-        // 目前还只能通过Eval，主要是它的mem,card这种是通过全局变量的切换来实现私有的
+        // 没大重构js前还只能通过Eval，主要是它的mem,card这种是通过全局变量的切换来实现私有的
         scriptEngine.Eval(javascript, $"brain_{brainUid}");
 
         // 获取updateAgent函数引用
