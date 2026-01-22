@@ -148,8 +148,9 @@ public class UserMain : MonoBehaviour
 
   public bool InEditMode()
   {
-    return editMain.IsActive();
+    return editMain != null && editMain.IsActive();
   }
+
 
   public Vector2 GetMousePos()
   {
@@ -639,7 +640,9 @@ public class UserMain : MonoBehaviour
   // If targetActor == null, the user will be actorless.
   public void MigrateUserTo(VoosActor targetActor)
   {
+    if (playMain == null) return;
     PlayMain pm = playMain.GetComponent<PlayMain>();
+
     PlayerBody targetPlayerBody = targetActor?.GetPlayerBody();
 
     if (targetActor != null && (!targetActor.GetIsPlayerControllable() || null == targetPlayerBody))
@@ -667,8 +670,10 @@ public class UserMain : MonoBehaviour
 
   public VoosActor GetPlayerActor()
   {
+    if (playMain == null) return null;
     return playMain.GetComponent<PlayMain>().GetPlayerActor();
   }
+
 
   public bool IsHeaderMenuActive()
   {
