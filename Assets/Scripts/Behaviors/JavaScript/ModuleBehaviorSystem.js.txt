@@ -49,6 +49,7 @@ class ModuleBehaviorSystem {
 
   getNamesById() { return this.namesById_; }
 
+  // BehaviorSystem.cs 里的CallBehaviorUseMethod发送消息触发，puerts可以修改成Delegate来调用
   callBehaviorUseMethod(useId, actorId, methodName, args) {
     const actor = this.getActor(actorId);
     if (actor === null || actor === undefined || !(actor instanceof Actor)) {
@@ -66,6 +67,7 @@ class ModuleBehaviorSystem {
     assert(use instanceof ModuleBehaviorUse, `Couldn't get use for useId ${useId}`);
 
     const mod = getVoosModule(use.behavior.getModuleKey());
+    // console.error(`call module: ${use.behavior.getModuleKey()} ${new Error().stack}`);
 
     if (methodName in mod) {
       // Hmm...we're really overloading HandlerApi/ApiV2 for this case..
@@ -154,6 +156,7 @@ class ModuleBehaviorSystem {
           }
           else {
             if (actor.isLocalActor || deliverLocallyEvenIfRemote) {
+              //console.error(`handleMessage1: ${JSON.stringify(deliveredMessage)} ${new Error().stack}`);
               actor.handleMessage(deliveredMessage);
             }
             else if (shouldRemoteForward) {
@@ -186,6 +189,7 @@ class ModuleBehaviorSystem {
           const shouldSend = actor.isOffstageEffective ? options.offstage : options.onstage;
           if (shouldSend) {
             if (actor.isLocalActor || deliverLocallyEvenIfRemote) {
+              //console.error(`handleMessage2: ${JSON.stringify(deliveredMessage)} ${new Error().stack}`);
               actor.handleMessage(deliveredMessage);
             }
             else if (shouldRemoteForward) {
@@ -206,6 +210,7 @@ class ModuleBehaviorSystem {
           this.forActorsHandling_("Init", actor => {
             if (actor.isLocalActor) {
               const initMessage = this.makeMessageDelivery("Init", {}, gameTimeSeconds);
+              //console.error(`handleMessage3: ${JSON.stringify(deliveredMessage)} ${new Error().stack}`);
               actor.handleMessage(initMessage);
             }
           });
