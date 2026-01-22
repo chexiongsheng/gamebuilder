@@ -116,7 +116,7 @@ public class AnalyticsSender {
   private void SendHit(Dictionary<string,string> fields) {
     StringBuilder sb = new StringBuilder(prefix);
     foreach (KeyValuePair<string, string> pair in fields) {
-      sb.AppendFormat("&{0}={1}", WWW.EscapeURL(pair.Key), WWW.EscapeURL(pair.Value));
+      sb.AppendFormat("&{0}={1}", UnityWebRequest.EscapeURL(pair.Key), UnityWebRequest.EscapeURL(pair.Value));
     }
     string payload = sb.ToString();
     try {
