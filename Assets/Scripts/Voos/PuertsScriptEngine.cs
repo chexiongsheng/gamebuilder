@@ -188,6 +188,7 @@ namespace Voos
     {
       try
       {
+        jsEnv.ExecuteModule("puerts/module.mjs");
         ExportsFunctions = jsEnv.ExecuteModule("polyfill.js");
         Debug.Log("[PuertsScriptEngine] Polyfill loaded successfully");
       }

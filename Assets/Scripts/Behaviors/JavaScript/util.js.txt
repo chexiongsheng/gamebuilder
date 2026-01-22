@@ -178,18 +178,6 @@ function assertValidMessageName(value, label = "Argument") {
 }
 
 /**
- * 
- * @param {number} x The number to clamp
- * @param {number} a The minimum
- * @param {number} b The maximum
- * @returns {number} min(b, max(a, x))
- */
-function clamp(x, a, b) {
-  assert(a <= b);
-  return Math.min(b, Math.max(a, x));
-}
-
-/**
  * Convenience function for values that may be undefined.
  * @param value The value
  * @param defaultValue The default to return if 'value' is undefined.
@@ -263,14 +251,6 @@ function decodeUndefineds(array) {
 }
 
 runUnitTests('util.js.txt', {
-  testClamp: function () {
-    assert(clamp(5, 1, 10) == 5);
-    assert(clamp(1, 5, 10) == 5);
-    assert(clamp(15, 1, 10) == 10);
-    assert(clamp(-5, -10, -1) == -5);
-    assert(clamp(-50, -10, -1) == -10);
-    assert(clamp(5, -10, -1) == -1);
-  },
   testIsString: function () {
     assert(isString("foo"));
     assert(!isString(123));

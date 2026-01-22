@@ -1,4 +1,7 @@
+const require = puer.module.createRequire('');
 // ==================== Actor Property Accessors ====================
+
+globalThis.THREE = require("three.cjs");
 
 // Boolean accessors
 globalThis.getActorBoolean = function (actorId, fieldId) {

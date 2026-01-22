@@ -94,8 +94,10 @@ namespace Voos
         var context = brainContexts[brainUid];
         context.javascript = javascript;
 
-        // TDOO: 目前是字符串合并然后Eval，修改成按模块加载会报错，需要修改js，但目前暂时尽量不修改js，后续再说
-        // 编译脚本
+        //System.IO.File.WriteAllText("brain.js", javascript);
+        //scriptEngine.RegisterModule($"brain_{brainUid}", javascript);
+        //scriptEngine.ExecuteModule($"brain_{brainUid}");
+        // 目前还只能通过Eval，主要是它的mem,card这种是通过全局变量的切换来实现私有的
         scriptEngine.Eval(javascript, $"brain_{brainUid}");
 
         // 获取updateAgent函数引用
