@@ -17,6 +17,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using System.IO;
 using CommandTerminal;
 
@@ -102,24 +103,27 @@ public class IconLoader : MonoBehaviour
       onError?.Invoke(iconName);
       yield break;
     }
-    WWW www = new WWW("file://" + filePath);
-    while (!www.isDone)
+    UnityWebRequest www = UnityWebRequestTexture.GetTexture("file://" + filePath);
+    yield return www.SendWebRequest();
+
+    if (www.isNetworkError || www.isHttpError)
     {
-      if (!string.IsNullOrEmpty(www.error))
-      {
-        Debug.LogError("Error loading icon " + iconName + ": " + www.error);
-        onError?.Invoke(iconName);
-        yield break;
-      }
-      yield return new WaitForSeconds(0.25f);
+      Debug.LogError("Error loading icon " + iconName + ": " + www.error);
+      onError?.Invoke(iconName);
+      www.Dispose();
+      yield break;
     }
-    if (www.texture == null)
+
+    Texture2D texture = DownloadHandlerTexture.GetContent(www);
+    if (texture == null)
     {
       Debug.LogError("Error loading icon (texture is null): " + iconName);
       onError?.Invoke(iconName);
+      www.Dispose();
       yield break;
     }
-    onLoaded.Invoke(iconName, www.texture);
+    onLoaded.Invoke(iconName, texture);
+    www.Dispose();
   }
 
   [RegisterCommand(Help = "Debug icon picker")]

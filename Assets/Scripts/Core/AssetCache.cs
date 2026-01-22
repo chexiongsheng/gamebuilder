@@ -19,6 +19,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 using PolyToolkit;
 using System;
 
@@ -414,16 +415,17 @@ public class AssetCache : MonoBehaviour
 
     IEnumerator LoadAndCacheImage(ImageVoosAsset asset)
     {
-      WWW request = new WWW(asset.url);
-      yield return request;
+      UnityWebRequest request = UnityWebRequestTexture.GetTexture(asset.url);
+      yield return request.SendWebRequest();
       Debug.Assert(request.isDone);
       GameObject renderable = Instantiate(cache.imageRenderablePrefab);
-      renderable.GetComponentInChildren<Renderer>().material.mainTexture = request.texture;
+      renderable.GetComponentInChildren<Renderer>().material.mainTexture = DownloadHandlerTexture.GetContent(request);
 
       string uri = asset.GetUri();
-      cache.CreateCacheEntry(uri, renderable, request.texture);
+      cache.CreateCacheEntry(uri, renderable, DownloadHandlerTexture.GetContent(request));
 
       cache.downloadedImageUrls.Add(asset.url);
+      request.Dispose();
     }
 
     IEnumerator LoadAndCacheBuiltin(BuiltinVoosAsset asset)

@@ -17,6 +17,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class GisSearchManager : MonoBehaviour
 {
@@ -46,17 +47,20 @@ public class GisSearchManager : MonoBehaviour
   IEnumerator SearchRoutine(string searchstring, OnActorableSearchResult resultCallback, System.Action<bool> onComplete)
   {
     string query = $"https://www.googleapis.com/customsearch/v1?key={APIkey}&cx={searchID}&q={searchstring}&searchType=image&rights={usageRights}&safe=active";
-    WWW temp = new WWW(query);
-    yield return temp;
+    UnityWebRequest temp = UnityWebRequest.Get(query);
+    yield return temp.SendWebRequest();
 
-    if (temp == null || !temp.error.IsNullOrEmpty() || temp.text == null)
+    if (temp.isNetworkError || temp.isHttpError || temp.downloadHandler.text == null)
     {
+      temp.Dispose();
       yield break;
     }
 
     try
     {
-      GISRawResult result = JsonUtility.FromJson<GISRawResult>(temp.text);
+      GISRawResult result = JsonUtility.FromJson<GISRawResult>(temp.downloadHandler.text);
+      temp.Dispose();
+
       if (result == null || result.items == null || result.items.Length == 0)
       {
         yield break;
@@ -96,11 +100,12 @@ public class GisSearchManager : MonoBehaviour
       yield break;
     }
 
-    WWW temp = new WWW(imageResult.thumbnailUrl);
-    yield return temp;
+    UnityWebRequest temp = UnityWebRequestTexture.GetTexture(imageResult.thumbnailUrl);
+    yield return temp.SendWebRequest();
 
-    if (temp == null || !temp.error.IsNullOrEmpty())
+    if (temp.isNetworkError || temp.isHttpError)
     {
+      temp.Dispose();
       yield break;
     }
 
@@ -110,8 +115,9 @@ public class GisSearchManager : MonoBehaviour
     _newresult.renderableReference.assetType = AssetType.Image;
     _newresult.name = imageResult.name;
     _newresult.renderableReference.uri = new ImageVoosAsset(imageResult.url).GetUri();
-    _newresult.thumbnail = temp.texture;
+    _newresult.thumbnail = DownloadHandlerTexture.GetContent(temp);
     resultCallback(_newresult);
+    temp.Dispose();
   }
 }
 
