@@ -1,7 +1,9 @@
-const require = puer.module.createRequire('');
-// ==================== Actor Property Accessors ====================
+import * as three from "three.mjs";
 
-globalThis.THREE = require("three.cjs");
+globalThis.THREE = three;
+//const require = puer.module.createRequire('');
+
+//globalThis.THREE = require("three.cjs");
 
 const coreScripts = [
   "debug.js.txt",
@@ -67,6 +69,8 @@ const coreScripts = [
   "apiv2/remote/remote.js.txt",
   "apiv2/rendering/scene.js.txt"
 ];
+
+// ==================== Actor Property Accessors ====================
 
 // Boolean accessors
 globalThis.getActorBoolean = function (actorId, fieldId) {
