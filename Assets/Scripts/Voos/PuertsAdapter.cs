@@ -174,6 +174,11 @@ globalThis.__voosModules['{moduleKey}'] = module;
       }
     }
 
+    public void LoadAllBuiltinBehaviors()
+    {
+      scriptEngine.ExecuteModule("BehaviorLibrary/BehaviorLibraryIndex.mjs");
+    }
+
     /// <summary>
     /// 检查模块是否已编译
     /// </summary>
