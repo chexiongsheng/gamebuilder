@@ -164,8 +164,9 @@ namespace Voos
         // 创建JS环境，使用V8后端和自定义加载器
         jsEnv = new ScriptEnv(new BackendV8(memoryLoader));
 
-        // 加载polyfill代码
-        LoadPolyfill();
+        jsEnv.ExecuteModule("puerts/module.mjs");
+        ExportsFunctions = jsEnv.ExecuteModule("main.mjs");
+        Debug.Log("[PuertsScriptEngine] main.mjs loaded successfully");
 
         isInitialized = true;
         Debug.Log("[PuertsScriptEngine] Puerts environment initialized successfully");
@@ -180,24 +181,6 @@ namespace Voos
     }
 
     internal ScriptObject ExportsFunctions = null;
-
-    /// <summary>
-    /// 加载Polyfill适配层
-    /// </summary>
-    private void LoadPolyfill()
-    {
-      try
-      {
-        jsEnv.ExecuteModule("puerts/module.mjs");
-        ExportsFunctions = jsEnv.ExecuteModule("polyfill.mjs");
-        Debug.Log("[PuertsScriptEngine] Polyfill loaded successfully");
-      }
-      catch (Exception ex)
-      {
-        Debug.LogError($"[PuertsScriptEngine] Failed to load polyfill: {ex.Message}");
-        throw;
-      }
-    }
 
     /// <summary>
     /// 注册 VoosEngine 实例到 JS 全局环境
