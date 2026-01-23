@@ -126,69 +126,9 @@ namespace Voos
       }
     }
 
-    /// <summary>
-    /// 设置模块（编译ES6模块）
-    /// </summary>
-    public bool SetModule(string brainUid, string moduleKey, string javascript, Action<string> handleCompileError = null)
-    {
-      try
-      {
-        Debug.Log($"[PuertsAdapter] SetModule {moduleKey} for brain {brainUid}");
-
-        if (!brainContexts.ContainsKey(brainUid))
-        {
-          Debug.LogError($"[PuertsAdapter] Brain {brainUid} not found. Call ResetBrain first.");
-          return false;
-        }
-
-        var context = brainContexts[brainUid];
-
-        // 使用ExecuteModule来支持ES模块语法（export关键字）
-        // 1. 先注册模块到内存加载器
-        string modulePath = $"voos_module_{moduleKey}.mjs";
-        scriptEngine.RegisterModule(modulePath, javascript);
-
-        // 2. 创建一个包装器模块来导入并注册到全局
-        string wrapperCode = $@"
-import * as module from '{modulePath}';
-// 注册模块
-globalThis.__voosModules['{moduleKey}'] = module;
-";
-
-        // 3. 注册并执行包装器
-        string wrapperPath = $"voos_wrapper_{moduleKey}.mjs";
-        scriptEngine.RegisterModule(wrapperPath, wrapperCode);
-        scriptEngine.ExecuteModule(wrapperPath);
-
-        context.compiledModules[moduleKey] = true;
-
-        Debug.Log($"[PuertsAdapter] Module {moduleKey} compiled successfully");
-        return true;
-      }
-      catch (Exception ex)
-      {
-        string errorMsg = $"Failed to compile module {moduleKey}: {ex.Message}";
-        Debug.LogError($"[PuertsAdapter] {errorMsg}\n{ex.StackTrace}");
-        handleCompileError?.Invoke(errorMsg);
-        return false;
-      }
-    }
-
     public void LoadAllBuiltinBehaviors()
     {
       scriptEngine.ExecuteModule("BehaviorLibrary/BehaviorLibraryIndex.mjs");
-    }
-
-    /// <summary>
-    /// 检查模块是否已编译
-    /// </summary>
-    public bool HasModuleCompiled(string brainUid, string moduleKey)
-    {
-      if (!brainContexts.ContainsKey(brainUid))
-      {
-        return false;
-      }
-      return brainContexts[brainUid].compiledModules.ContainsKey(moduleKey);
     }
 
     /// <summary>
