@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "com.tencent.puerts.core": "file:D:/puerts/unity/upms/core",
-    "com.tencent.puerts.v8": "file:D:/puerts/unity/upms/v8",
+    "com.tencent.puerts.core": "file:../core",
+    "com.tencent.puerts.v8": "file:../v8",
     "com.unity.ads": "2.3.1",
     "com.unity.analytics": "3.2.2",
     "com.unity.burst": "1.1.2",
