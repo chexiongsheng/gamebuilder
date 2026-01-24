@@ -2998,7 +2998,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
 
   byte PINIT_END_SENTINEL = 79;
 
-  public void SerializePlayerInitPayloadV2(NET.NetworkWriter writer)
+  public void SerializePlayerInitPayloadV2(NetworkWriter writer)
   {
     writer.Write(GetNumActors());
 
@@ -3013,7 +3013,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     writer.Write(PINIT_END_SENTINEL);
   }
 
-  public void DeserializePlayerInitV2(NET.NetworkReader reader)
+  public void DeserializePlayerInitV2(NetworkReader reader)
   {
 #if USE_PUN
     Debug.Assert(state == State.Uninit, "DeserializePlayerInitV2 called before init'd?");
