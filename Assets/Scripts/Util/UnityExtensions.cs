@@ -17,7 +17,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using NET = UnityEngine.Networking;
 
 public static class UnityExtensions
 {
@@ -77,7 +76,7 @@ public static class UnityExtensions
 
   // A "Voos Name" may be a 32-char GUID or just some string, like
   // __DEFAULT_BEHAVIOR__
-  public static void WriteVoosName(this NET.NetworkWriter writer, string name)
+  public static void WriteVoosName(this VoosNetworkWriter writer, string name)
   {
     if (name.IsNullOrEmpty())
     {
@@ -106,7 +105,7 @@ public static class UnityExtensions
 
   // A "Voos Name" may be a 32-char GUID or just some string, like
   // __DEFAULT_BEHAVIOR__
-  public static string ReadVoosName(this NET.NetworkReader reader)
+  public static string ReadVoosName(this VoosNetworkReader reader)
   {
     byte header = reader.ReadByte();
 
@@ -132,7 +131,7 @@ public static class UnityExtensions
     }
   }
 
-  public static void WriteUtf16(this UnityEngine.Networking.NetworkWriter writer, string s)
+  public static void WriteUtf16(this VoosNetworkWriter writer, string s)
   {
     if (s == null)
     {
@@ -154,7 +153,7 @@ public static class UnityExtensions
   private static System.Text.StringBuilder ReadUtf16Builder = new System.Text.StringBuilder();
 
   // NOTE: Not thread-safe.
-  public static string ReadUtf16(this UnityEngine.Networking.NetworkReader reader)
+  public static string ReadUtf16(this VoosNetworkReader reader)
   {
     var builder = ReadUtf16Builder;
     builder.Clear();
@@ -169,7 +168,7 @@ public static class UnityExtensions
     return builder.ToString();
   }
 
-  public static void WriteColor(this UnityEngine.Networking.NetworkWriter writer, Color c)
+  public static void WriteColor(this VoosNetworkWriter writer, Color c)
   {
     writer.Write(c.r);
     writer.Write(c.g);
@@ -177,7 +176,7 @@ public static class UnityExtensions
     writer.Write(c.a);
   }
 
-  public static Color ReadColor(this UnityEngine.Networking.NetworkReader reader)
+  public static Color ReadColor(this VoosNetworkReader reader)
   {
     return new Color(
       reader.ReadSingle(),
@@ -186,30 +185,35 @@ public static class UnityExtensions
       reader.ReadSingle());
   }
 
-  public static void WriteVoosBoolean(this UnityEngine.Networking.NetworkWriter writer, bool val)
+  public static void WriteVoosBoolean(this VoosNetworkWriter writer, bool val)
   {
     writer.Write((byte)(val ? 1 : 0));
   }
 
-  public static bool ReadVoosBoolean(this UnityEngine.Networking.NetworkReader reader)
+  public static bool ReadVoosBoolean(this VoosNetworkReader reader)
   {
     return reader.ReadByte() == 1;
   }
 
-  public static void WriteVoosVector3(this UnityEngine.Networking.NetworkWriter writer, Vector3 v)
+  public static void WriteVoosVector3(this VoosNetworkWriter writer, Vector3 v)
   {
     writer.Write(v.x);
     writer.Write(v.y);
     writer.Write(v.z);
   }
 
-  public static Vector3 ReadVoosVector3(this UnityEngine.Networking.NetworkReader reader)
+  public static Vector3 ReadVoosVector3(this VoosNetworkReader reader)
   {
     return new Vector3(
       reader.ReadSingle(),
       reader.ReadSingle(),
       reader.ReadSingle()
     );
+  }
+
+  public static Quaternion ReadQuaternion(this VoosNetworkReader reader)
+  {
+    return reader.ReadQuaternion();
   }
 
   public static void SetAllMaterialsToShared(this GameObject root, Material sharedMaterial)

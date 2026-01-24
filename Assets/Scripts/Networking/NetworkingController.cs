@@ -1041,7 +1041,7 @@ public class NetworkingController : Photon.PunBehaviour
   {
     var voosBuffer = VOOS_INIT_BYTES_REUSED;
     Array.Clear(voosBuffer, 0, voosBuffer.Length);
-    var writer = new UNET.NetworkWriter(voosBuffer);
+    var writer = new VoosNetworkWriter(voosBuffer);
     voosEngine.SerializePlayerInitPayloadV2(writer);
     return Util.GZip(writer.ToArray());
   }
@@ -1124,7 +1124,7 @@ public class NetworkingController : Photon.PunBehaviour
     }
 
     byte[] unzippedVoosBytes = Util.UnGZip(zippedVoosBytes);
-    var voosReader = new UNET.NetworkReader(unzippedVoosBytes);
+    var voosReader = new VoosNetworkReader(unzippedVoosBytes);
 
     behaviorSystem.LoadDatabaseForNetworkInit(payload.behaviorDatabase);
     voosEngine.DeserializePlayerInitV2(voosReader);

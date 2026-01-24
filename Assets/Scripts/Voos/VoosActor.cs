@@ -18,7 +18,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using NetworkWriter = VoosNetworkWriter;
+using NetworkReader = VoosNetworkReader;
 
 public partial class VoosActor : MonoBehaviour
 {

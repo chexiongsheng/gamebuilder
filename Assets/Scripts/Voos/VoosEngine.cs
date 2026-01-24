@@ -18,9 +18,10 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using SD = System.Diagnostics;
 using NET = UnityEngine.Networking;
+using NetworkWriter = VoosNetworkWriter;
+using NetworkReader = VoosNetworkReader;
 using Voos; // 添加Voos命名空间以使用PuertsAdapter等类
 
 /**
