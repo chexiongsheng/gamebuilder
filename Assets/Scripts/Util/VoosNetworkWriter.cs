@@ -76,6 +76,16 @@ public class VoosNetworkWriter
   }
 
   /// <summary>
+  /// Writes a boolean value as a single byte (0 for false, 1 for true).
+  /// Compatible with JavaScript's writeBoolean method.
+  /// </summary>
+  /// <param name="value">The boolean value to write</param>
+  public void Write(bool value)
+  {
+    Write((byte)(value ? 1 : 0));
+  }
+
+  /// <summary>
   /// Writes a 16-bit unsigned integer in little-endian format.
   /// </summary>
   /// <param name="value">The ushort value to write</param>

@@ -76,6 +76,16 @@ public class VoosNetworkReader
   }
 
   /// <summary>
+  /// Reads a boolean value from a single byte (0 for false, non-zero for true).
+  /// Compatible with JavaScript's readBoolean method.
+  /// </summary>
+  /// <returns>The boolean value</returns>
+  public bool ReadBoolean()
+  {
+    return ReadByte() == 1;
+  }
+
+  /// <summary>
   /// Reads a 16-bit unsigned integer in little-endian format.
   /// </summary>
   /// <returns>The ushort value</returns>
