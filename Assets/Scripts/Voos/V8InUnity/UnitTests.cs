@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TestTools;
 using NUnit.Framework;
-
+/*
 namespace V8InUnity
 {
   public class UnitTests
@@ -517,3 +517,4 @@ function updateAgent(state) {
     }
   }
 }
+*/

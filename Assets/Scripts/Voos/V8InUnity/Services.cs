@@ -291,7 +291,6 @@ namespace V8InUnity
 
     public static bool CacheReportResult = true;
     System.IntPtr firstReportResultPtr = System.IntPtr.Zero;
-    Native.ReportResultFunction cachedReportResult = null;
 
     /// <summary>
     /// CallService with delegate callback (for Puerts)
@@ -311,41 +310,6 @@ namespace V8InUnity
       }
     }
 
-    // Ideally this wouldn't live here, but for now, whatever.
-    internal void CallService(string serviceName, string argsJson, System.IntPtr reportResultPtr)
-    {
-      Native.ReportResultFunction nativeReportResult;
-
-      if (CacheReportResult)
-      {
-        if (cachedReportResult == null)
-        {
-          cachedReportResult = Marshal.GetDelegateForFunctionPointer<Native.ReportResultFunction>(reportResultPtr);
-          firstReportResultPtr = reportResultPtr;
-        }
-
-        nativeReportResult = cachedReportResult;
-        Debug.Assert(firstReportResultPtr == reportResultPtr, $"Different reportResultPtr was given!");
-      }
-      else
-      {
-        nativeReportResult = Marshal.GetDelegateForFunctionPointer<Native.ReportResultFunction>(reportResultPtr);
-      }
-
-      // 将Native.ReportResultFunction包装为System.Action<string>
-      System.Action<string> reportResult = (result) => nativeReportResult(result);
-
-      try
-      {
-        ExecuteService(serviceName, argsJson, reportResult);
-      }
-      catch (System.Exception e)
-      {
-        // We cannot let exceptions escape. It will tend to crash the process.
-        Util.LogError($"Exception during CallService({serviceName}):\n{e}");
-        reportResult("false");
-      }
-    }
     /// <summary>
     /// Core service execution logic, shared by both CallService overloads
     /// </summary>

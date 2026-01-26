@@ -94,8 +94,10 @@ namespace Voos
         var context = brainContexts[brainUid];
         context.javascript = javascript;
 
-        // TDOO: 目前是字符串合并然后Eval，修改成按模块加载会报错，需要修改js，但目前暂时尽量不修改js，后续再说
-        // 编译脚本
+        //System.IO.File.WriteAllText("brain.js", javascript);
+        //scriptEngine.RegisterModule($"brain_{brainUid}", javascript);
+        //scriptEngine.ExecuteModule($"brain_{brainUid}");
+        // 没大重构js前还只能通过Eval，主要是它的mem,card这种是通过全局变量的切换来实现私有的
         scriptEngine.Eval(javascript, $"brain_{brainUid}");
 
         // 获取updateAgent函数引用
@@ -124,64 +126,9 @@ namespace Voos
       }
     }
 
-    /// <summary>
-    /// 设置模块（编译ES6模块）
-    /// </summary>
-    public bool SetModule(string brainUid, string moduleKey, string javascript, Action<string> handleCompileError = null)
+    public void LoadAllBuiltinBehaviors()
     {
-      try
-      {
-        Debug.Log($"[PuertsAdapter] SetModule {moduleKey} for brain {brainUid}");
-
-        if (!brainContexts.ContainsKey(brainUid))
-        {
-          Debug.LogError($"[PuertsAdapter] Brain {brainUid} not found. Call ResetBrain first.");
-          return false;
-        }
-
-        var context = brainContexts[brainUid];
-
-        // 使用ExecuteModule来支持ES模块语法（export关键字）
-        // 1. 先注册模块到内存加载器
-        string modulePath = $"voos_module_{moduleKey}.mjs";
-        scriptEngine.RegisterModule(modulePath, javascript);
-
-        // 2. 创建一个包装器模块来导入并注册到全局
-        string wrapperCode = $@"
-import * as module from '{modulePath}';
-// 注册模块
-globalThis.__voosModules['{moduleKey}'] = module;
-";
-
-        // 3. 注册并执行包装器
-        string wrapperPath = $"voos_wrapper_{moduleKey}.mjs";
-        scriptEngine.RegisterModule(wrapperPath, wrapperCode);
-        scriptEngine.ExecuteModule(wrapperPath);
-
-        context.compiledModules[moduleKey] = true;
-
-        Debug.Log($"[PuertsAdapter] Module {moduleKey} compiled successfully");
-        return true;
-      }
-      catch (Exception ex)
-      {
-        string errorMsg = $"Failed to compile module {moduleKey}: {ex.Message}";
-        Debug.LogError($"[PuertsAdapter] {errorMsg}\n{ex.StackTrace}");
-        handleCompileError?.Invoke(errorMsg);
-        return false;
-      }
-    }
-
-    /// <summary>
-    /// 检查模块是否已编译
-    /// </summary>
-    public bool HasModuleCompiled(string brainUid, string moduleKey)
-    {
-      if (!brainContexts.ContainsKey(brainUid))
-      {
-        return false;
-      }
-      return brainContexts[brainUid].compiledModules.ContainsKey(moduleKey);
+      scriptEngine.ExecuteModule("BehaviorLibrary/BehaviorLibraryIndex.mjs");
     }
 
     /// <summary>

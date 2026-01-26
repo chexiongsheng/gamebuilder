@@ -90,7 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sources:
-  - {fileID: 4900000, guid: 060d94b064cdc91489c7a33537ec50c4, type: 3}
   - {fileID: 4900000, guid: f5241c862f9289e4c96af689ea8f6650, type: 3}
   - {fileID: 4900000, guid: 1eff5557003ccb84782de069fa7925f0, type: 3}
   - {fileID: 4900000, guid: 67bc5157ee9ddc04e9f61dbe46fbc1c3, type: 3}
@@ -184,21 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viewID: 0
   ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 2
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 114367149697629670}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
 --- !u!114 &114826552152075388
 MonoBehaviour:
   m_ObjectHideFlags: 0

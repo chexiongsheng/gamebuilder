@@ -821,87 +821,204 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     return compiledModules.Contains(moduleKey);
   }
 
+  public static readonly string[] BehaviorLibraryKeys = new string[]
+  {
+    // ActionCards
+    "builtin:Add Velocity Card",
+    "builtin:Alight Card",
+    "builtin:AutoPilotSetDestination",
+    "builtin:Board Card",
+    "builtin:BroadcastMessageActionCard",
+    "builtin:CameraShakeActionCard",
+    "builtin:Cause Damage Card",
+    "builtin:Change Camera Action Card",
+    "builtin:Change Tint",
+    "builtin:Change Variable",
+    "builtin:ChangeColor",
+    "builtin:DebugAction",
+    "builtin:Destroy Self Action Card",
+    "builtin:DialogueActionCard",
+    "builtin:End Game LOSE Card",
+    "builtin:End Game WIN Card",
+    "builtin:ExplodeActionCard",
+    "builtin:Fire Projectile At Card",
+    "builtin:Fire Projectile Card",
+    "builtin:FireProjectileAtGroupCard",
+    "builtin:Go Onstage",
+    "builtin:Grab Action",
+    "builtin:Heal Damage Card",
+    "builtin:Hide Action Card",
+    "builtin:Jump Card",
+    "builtin:Light Off Action",
+    "builtin:Light On Action",
+    "builtin:Move Action",
+    "builtin:Play Animation Action",
+    "builtin:Play Sound",
+    "builtin:Remove From Stage",
+    "builtin:Reset Game Card",
+    "builtin:Return To Spawn Point Action",
+    "builtin:ReturnToCheckpointActionCard",
+    "builtin:Revive Action",
+    "builtin:Say Something Action",
+    "builtin:Score Point Action",
+    "builtin:SendMessage",
+    "builtin:SendMessageActionCard2",
+    "builtin:SendMessageRandomActionCard",
+    "builtin:Set Checkpoint Card",
+    "builtin:ShowTextAction",
+    "builtin:Spawn Particle Effect",
+    "builtin:SpawnActorActionCard",
+    "builtin:SpawnAtIntervals",
+    "builtin:Teleport Action",
+    "builtin:Transfer Player Action",
+    "builtin:UseGrabbedItemActionCard",
+
+    // CameraCards
+    "builtin:3P Camera Card",
+    "builtin:FPS Camera Card",
+    "builtin:Top Down Camera Card",
+
+    // DeprecatedCards
+    "builtin:Cause Damage Self Card",
+    "builtin:Cause Damage To Target Card",
+    "builtin:HealthBarsCard",
+    "builtin:MoveOscillate",
+    "builtin:Player Controls Basic WASD",
+    "builtin:Player Controls Car",
+    "builtin:Player Controls Plane",
+    "builtin:Player Controls Point and Click",
+    "builtin:SendMessageActionCard",
+    "builtin:Someone Scores X Points",
+
+    // DeprecatedPanels
+    "builtin:AI Controls Panel",
+    "builtin:Player Controls Panel",
+    "builtin:Win Loss Panel",
+
+    // EventCards
+    "builtin:Actor Clicked Event Card",
+    "builtin:Actor Count Predicate Card",
+    "builtin:Collision Event Card",
+    "builtin:Game Start Event Card",
+    "builtin:InRangeEventCard",
+    "builtin:Killed All Actors Tagged",
+    "builtin:Player Button Event Card",
+    "builtin:Random Predicate Card",
+    "builtin:ReceiveMessageEventCard",
+    "builtin:Scored X Points Event Card",
+    "builtin:SeesActorEventCard",
+    "builtin:Spawned As Clone Event Card",
+    "builtin:Terrain Collision Event Card",
+    "builtin:Variable Predicate Card",
+
+    // LegacyBehaviors
+    "builtin:Blink",
+    "builtin:Button",
+    "builtin:Coin",
+    "builtin:Default Behavior",
+    "builtin:Destroy clones on reset",
+    "builtin:Destroy If Unclaimed Clone",
+    "builtin:Dialog box",
+    "builtin:Does damage",
+    "builtin:Elevator",
+    //"builtin:FireProjectile",
+    "builtin:Follow nearest",
+    "builtin:Follow",
+    "builtin:Grabbable",
+    "builtin:Grabbing",
+    "builtin:Grid Spawner",
+    "builtin:Hide in play mode",
+    "builtin:Isometric Auto-Run Controls",
+    "builtin:Key",
+    "builtin:Look at",
+    "builtin:Mountable",
+    "builtin:Mounting",
+    "builtin:Move forward",
+    "builtin:Openable gate",
+    "builtin:Physics",
+    "builtin:Place block",
+    "builtin:Player Controls",
+    "builtin:Respawning",
+    "builtin:Run in circles",
+    "builtin:Score on death",
+    "builtin:Score or win on contact",
+    "builtin:Self-destruct",
+    "builtin:Side to side",
+    "builtin:Snake forward",
+    "builtin:Spawner",
+    "builtin:Takes damage",
+    "builtin:Team",
+    "builtin:Text box",
+    "builtin:Throw something",
+    "builtin:Trampoline",
+    "builtin:Turn randomly",
+    "builtin:Win by points",
+    "builtin:Wizard Controller",
+
+    // MoveCards
+    "builtin:Back And Forth",
+    "builtin:MoveAutoPilot",
+    "builtin:MoveChase",
+    "builtin:MoveInOneDirection",
+    "builtin:MoveLookAt",
+    "builtin:MovePath",
+    "builtin:MoveRandomWalk",
+    "builtin:Player Camera Look",
+    "builtin:Player Speed Based Turn",
+    "builtin:Player Speed Throttle",
+    "builtin:Player Walk Card",
+    "builtin:Spin",
+    "builtin:Turn",
+
+    // Panels
+    "builtin:Action on Event Panel",
+    "builtin:Always Panel",
+    "builtin:Boardable Panel",
+    "builtin:Camera Panel",
+    "builtin:Game Start Panel",
+    "builtin:Grab Panel",
+    "builtin:Grabbable Item Panel",
+    "builtin:Health Panel",
+    "builtin:Movement Panel",
+    "builtin:Player Controls Panel v2",
+    "builtin:Screen Panel",
+    "builtin:Switch Panel",
+    "builtin:TimerActionPanel",
+
+    // ScreenCards
+    "builtin:FloatingHealthBar",
+    "builtin:HealthBar",
+    "builtin:ScoreBoard",
+    "builtin:ShowVariableCard",
+    "builtin:Static Text Card",
+
+    // Specs
+    "builtin:spec_GActionCard",
+    "builtin:spec_GActionMessage",
+    "builtin:spec_GEvent",
+    "builtin:spec_GEventCard"
+  };
+
+  public void LoadAllBuiltinBehaviors()
+  {
+    EnsurePuertsAdapter();
+    puertsAdapter.LoadAllBuiltinBehaviors();
+    foreach (var moduleKey in BehaviorLibraryKeys)
+    {
+      compiledModules.Add(moduleKey);
+    }
+  }
+
   // Returns error messages if any. Will never return null.
   public bool SetModule(string moduleKey, string javascript)
   {
-    if (UsePuerts)
-    {
-      EnsurePuertsAdapter();
-
-      System.Action<string> handleCompileError = msg =>
-      {
-        int lineNum = ExtractFirstLineNumberForModuleError(moduleKey, msg);
-        var args = new ModuleCompileError { message = msg, moduleKey = moduleKey, lineNum = lineNum };
-        OnModuleCompileError?.Invoke(args);
-      };
-
-      OnBeforeModuleCompile?.Invoke(moduleKey);
-      bool ok = puertsAdapter.SetModule(brainUid, moduleKey, javascript, handleCompileError);
-      if (ok)
-      {
-        compiledModules.Add(moduleKey);
-      }
-      else
-      {
-        if (!compiledModules.Contains(moduleKey))
-        {
-          System.Action<string> dummyErrorHandler = msg => { };
-          bool backupOk = puertsAdapter.SetModule(brainUid, moduleKey, "// Dummy", dummyErrorHandler);
-          if (!backupOk)
-          {
-            throw new System.Exception("Could not compile backup dummy module? Major problems..");
-          }
-        }
-      }
-      return ok;
-    }
-    else
-    {
-      V8InUnity.Native.StringFunction handleCompileError = msg =>
-      {
-        int lineNum = ExtractFirstLineNumberForModuleError(moduleKey, msg);
-        var args = new ModuleCompileError { message = msg, moduleKey = moduleKey, lineNum = lineNum };
-        OnModuleCompileError?.Invoke(args);
-      };
-
-      // TODO OPT: we can avoid extra compiles here by keeping a simple hash of
-      // JS. Now that the behavior system is doing synchronous syncs, redundant
-      // calls are more likely.
-      OnBeforeModuleCompile?.Invoke(moduleKey);
-      bool ok = V8InUnity.Native.SetModule(brainUid, moduleKey, javascript, handleCompileError);
-      if (ok)
-      {
-        compiledModules.Add(moduleKey);
-      }
-      else
-      {
-        // To be safe, we should always have some valid module for the key. Other
-        // code may expect it. So, if we've never compiled something, compile a
-        // dummy script.
-        if (!compiledModules.Contains(moduleKey))
-        {
-          bool backupOk = V8InUnity.Native.SetModule(brainUid, moduleKey, "// Dummy", handleCompileError);
-          if (!backupOk)
-          {
-            throw new System.Exception("Could not compile backup dummy module? Major problems..");
-          }
-        }
-      }
-      return ok;
-    }
+    throw new NotImplementedException($"Try load module ${moduleKey} dynamic.");
   }
 
   public bool Recompile(string js)
   {
-    if (UsePuerts)
-    {
-      EnsurePuertsAdapter();
-      return puertsAdapter.ResetBrain(brainUid, js);
-    }
-    else
-    {
-      return V8InUnity.Native.ResetBrain(brainUid, js);
-    }
+    EnsurePuertsAdapter();
+    return puertsAdapter.ResetBrain(brainUid, js);
   }
 
   void ApplyVelocityChanges(VelocityChange[] changes, TorqueRequest[] torques)
@@ -1075,26 +1192,6 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     // Native already logs this to Unity log, so ignore it.
   }
 
-  V8InUnity.Native.UpdateCallbacks GetNativeUpdateCallbacks()
-  {
-    return new V8InUnity.Native.UpdateCallbacks
-    {
-      handleError = HandleV8RuntimeError,
-      handleLog = HandleV8SystemLog,
-      callService = services.CallService,
-      getActorBoolean = GetActorBoolean,
-      setActorBoolean = SetActorBoolean,
-      getActorVector3 = GetActorVector3,
-      setActorVector3 = SetActorVector3,
-      getActorQuaternion = GetActorQuaternion,
-      setActorQuaternion = SetActorQuaternion,
-      setActorString = SetActorString,
-      getActorString = GetActorString,
-      setActorFloat = SetActorFloat,
-      getActorFloat = GetActorFloat
-    };
-  }
-
   // ==================== Puerts适配器方法 ====================
   // 这些方法将VoosEngine的内部API适配为Puerts所需的签名
 
@@ -1245,15 +1342,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
 
   public Util.Maybe<TResponse> CommunicateWithAgent<TRequest, TResponse>(TRequest request)
   {
-    if (UsePuerts)
-    {
-      // 使用PuertsAdapter的UpdateAgent方法
-      return puertsAdapter.UpdateAgent<TRequest, TResponse>(brainUid, agentUid, request, new byte[0]);
-    }
-    else
-    {
-      return V8InUnity.Native.UpdateAgent<TRequest, TResponse>(brainUid, agentUid, request, GetNativeUpdateCallbacks());
-    }
+    return puertsAdapter.UpdateAgent<TRequest, TResponse>(brainUid, agentUid, request, new byte[0]);
   }
 
   void MaybeShowActorCountWarning(int currentNumActors)
@@ -1486,26 +1575,12 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
       PumpQueuedCollisions(writer);
     }
 
-    var callbacks = GetNativeUpdateCallbacks();
-
     Util.Maybe<TickResponse> maybeResponse;
-    if (UsePuerts)
-    {
-      // 使用Puerts的字节数组传递
-      EnsurePuertsAdapter();
-      maybeResponse = puertsAdapter.UpdateAgent<TickRequest, TickResponse>(
-        brainUid, agentUid,
-        CreateTickRequest(),
-        updateAgentByteBuffer);
-    }
-    else
-    {
-      maybeResponse = V8InUnity.Native.UpdateAgent<TickRequest, TickResponse>(
-        brainUid, agentUid,
-        CreateTickRequest(),
-        updateAgentByteBuffer,
-        callbacks);
-    }
+    EnsurePuertsAdapter();
+    maybeResponse = puertsAdapter.UpdateAgent<TickRequest, TickResponse>(
+      brainUid, agentUid,
+      CreateTickRequest(),
+      updateAgentByteBuffer);
 
     if (maybeResponse.IsEmpty())
     {

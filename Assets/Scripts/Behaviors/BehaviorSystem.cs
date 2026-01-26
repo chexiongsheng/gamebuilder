@@ -739,13 +739,7 @@ public class BehaviorSystem : MonoBehaviour
 
   void SyncAllUsedBehaviors()
   {
-    foreach (var entry in db.brains.GetAll())
-    {
-      foreach (var use in entry.value.behaviorUses)
-      {
-        SyncBehavior(use.behaviorUri);
-      }
-    }
+    voosEngine.LoadAllBuiltinBehaviors();
   }
 
   public void LoadDatabaseForNetworkInit(Behaviors.Database.Jsonable saved)
