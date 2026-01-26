@@ -218,7 +218,7 @@ public class TerrainDatabase
     return blockMap.Count;
   }
 
-  void SerializeSideMap(SortedDictionary<Cell, SideInfo> map, UnityEngine.Networking.NetworkWriter writer)
+  void SerializeSideMap(SortedDictionary<Cell, SideInfo> map, VoosNetworkWriter writer)
   {
     writer.Write(map.Count);
     foreach (var pair in map)
@@ -246,7 +246,7 @@ public class TerrainDatabase
       + 1 // extra byte cuz NetworkWriter is buggy:
           // https://bitbucket.org/Unity-Technologies/networking/src/78ca8544bbf4e87c310ce2a9a3fc33cdad2f9bb1/Runtime/NetworkBuffer.cs?at=5.3&fileviewer=file-view-default#NetworkBuffer.cs-160
     ];
-    var writer = new UnityEngine.Networking.NetworkWriter(buffer);
+    var writer = new VoosNetworkWriter(buffer);
     writer.Write(CurrentVersion);
 
     // Write dummy block count
@@ -269,7 +269,7 @@ public class TerrainDatabase
     westSideMap.Clear();
   }
 
-  void LoadLegacy(UnityEngine.Networking.NetworkReader reader)
+  void LoadLegacy(VoosNetworkReader reader)
   {
     int count = reader.ReadInt32();
     Util.Log($"loading {count} legacy cells");
@@ -288,7 +288,7 @@ public class TerrainDatabase
     }
   }
 
-  Cell ReadCell(UnityEngine.Networking.NetworkReader reader)
+  Cell ReadCell(VoosNetworkReader reader)
   {
     int x = reader.ReadByte() - cellArrayOffsetX;
     int y = reader.ReadByte() - cellArrayOffsetY;
@@ -302,7 +302,7 @@ public class TerrainDatabase
     Clear();
 
     // Util.Log($"loading terrain data of {cellBytes.Length} bytes");
-    var reader = new UnityEngine.Networking.NetworkReader(cellBytes);
+    var reader = new VoosNetworkReader(cellBytes);
     // Again - kinda awkward to have the deserialize code here.
     int version = reader.ReadInt32();
 
