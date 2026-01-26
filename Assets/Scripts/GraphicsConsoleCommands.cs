@@ -35,11 +35,11 @@ public class GraphicsConsoleCommands
   {
     if (args.Length == 0)
     {
-      Log($"{QualitySettings.globalTextureMipmapLimit}");
+      Log($"{QualitySettings.masterTextureLimit}");
       return;
     }
     int lim = args[0].Int;
-    QualitySettings.globalTextureMipmapLimit = lim;
+    QualitySettings.masterTextureLimit = lim;
   }
 
   [RegisterCommand(Help = "")]
