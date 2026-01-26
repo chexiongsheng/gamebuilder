@@ -84,6 +84,10 @@ public class UserMain : MonoBehaviour
 
   [HideInInspector] public SystemMenu systemMenu;
 
+  // [FIX] Track if we have applied the initial fix
+  bool initialFixApplied = false;
+  float timeSinceStart = 0f;
+
   Color? lastTintPushedToUserBody = null;
 
   const float MIN_MOUSEWHEEL_SENSITIVITY_WIN = .1f;
@@ -348,8 +352,94 @@ public class UserMain : MonoBehaviour
     Util.FindIfNotSet(this, ref inputFieldOracle);
   }
 
+  void Start()
+  {
+    // [FIX] Ensure UI and Camera are in a visible state at startup
+    ForceFixCanvasState();
+    
+    // [FIX] Ensure basic lighting is available even if Setup() is delayed
+    if (RenderSettings.ambientMode != UnityEngine.Rendering.AmbientMode.Flat)
+    {
+        RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
+        RenderSettings.ambientLight = Color.white;
+    }
+  }
+
+  void ForceFixCanvasState()
+  {
+    var canvases = FindObjectsOfType<Canvas>();
+    foreach(var c in canvases)
+    {
+        // Disable blocking canvases that might be accidentally left on
+        if (c.name.Contains("FullScreenMenus") || c.name.Contains("PopupCanvas"))
+        {
+            if (c.enabled)
+            {
+                c.enabled = false;
+            }
+        }
+        // Enable gameplay canvases that are essential
+        else if (c.name.Contains("MainCanvas") || c.name.Contains("PlayerCanvas"))
+        {
+            if (!c.enabled)
+            {
+                c.enabled = true;
+            }
+        }
+    }
+    
+    var cam = GetCamera();
+    if (cam != null)
+    {
+        // [FIX] Always ensure we can see everything
+        if (cam.cullingMask != -1)
+        {
+            cam.cullingMask = -1;
+        }
+        
+        // [FIX] Ensure PostProcessLayer is disabled as it might be causing black screen
+        var components = cam.GetComponents<MonoBehaviour>();
+        foreach(var comp in components)
+        {
+            if (comp.GetType().Name.Contains("PostProcessLayer"))
+            {
+                if (comp.enabled)
+                {
+                    comp.enabled = false;
+                }
+            }
+        }
+
+        // [FIX] Ensure camera settings are sane
+        if (cam.clearFlags == CameraClearFlags.Nothing || cam.clearFlags == CameraClearFlags.SolidColor)
+        {
+            // Only force to Skybox if it looks suspicious (SolidColor might be intentional, but Nothing is bad)
+            // Actually, let's trust Skybox is safer for now if user sees black
+            if (cam.clearFlags == CameraClearFlags.Nothing)
+            {
+                 cam.clearFlags = CameraClearFlags.Skybox;
+            }
+        }
+    }
+
+    // [FIX] Ensure there is some light
+    if (GameObject.Find("DiagnosisLight") == null && FindObjectsOfType<Light>().Length == 0)
+    {
+        var lightGO = new GameObject("DiagnosisLight");
+        var light = lightGO.AddComponent<Light>();
+        light.type = LightType.Directional;
+        light.intensity = 1.0f;
+        light.color = Color.white;
+        lightGO.transform.rotation = Quaternion.Euler(50, -30, 0);
+    }
+  }
+
   public void Setup()
   {
+    // Ensure ambient light is sufficient to see the scene
+    RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
+    RenderSettings.ambientLight = Color.white;
+
     transform.SetParent(null, false);
     Util.FindIfNotSet(this, ref voosEngine);
     Util.FindIfNotSet(this, ref networkingController);
@@ -402,7 +492,10 @@ public class UserMain : MonoBehaviour
       av.transform.SetParent(null);
     }
 
-    navigationControls.UpdateTargetThirdPersonPivot(userBody.thirdPersonCameraPivotAnchor);
+    if (userBody != null)
+    {
+      navigationControls.UpdateTargetThirdPersonPivot(userBody.thirdPersonCameraPivotAnchor);
+    }
 
     SetEditMode(CanEdit() ? GameBuilderApplication.CurrentGameOptions.playOptions.startInBuildMode : false);
 
@@ -412,6 +505,9 @@ public class UserMain : MonoBehaviour
     {
       headerMenu.OpenMultiplayerMenu();
     }
+
+    // [FIX] Ensure UI state is correct after setup
+    ForceFixCanvasState();
   }
 
   public bool CanEdit()
@@ -472,6 +568,7 @@ public class UserMain : MonoBehaviour
 
     // curMask = curMask.WithBit(LayerMask.NameToLayer("PrefabWorld"), false);
     // curMask = curMask.WithBit(LayerMask.NameToLayer("OffstageGhost"), false);
+    curMask = curMask.WithBit(LayerMask.NameToLayer("Default"), true);
     curMask = curMask.WithBit(LayerMask.NameToLayer("Player"), true && !navigationControls.hidingPlayerLayer);
     curMask = curMask.WithBit(LayerMask.NameToLayer("PlayerEditMode"), !navigationControls.hidingPlayerLayer && !HidingAvatarInTopDown());
     GetCamera().cullingMask = curMask.WithBit(LayerMask.NameToLayer("VoosActor"), true);
@@ -611,6 +708,7 @@ public class UserMain : MonoBehaviour
     userBody.transform.localRotation = Quaternion.identity;
 
     navigationControls.ToggleEditCullingMask(on);
+    UpdateCameraMask();
 
     if (!editMode) navigationControls.TryCaptureCursor();
 
@@ -885,6 +983,26 @@ public class UserMain : MonoBehaviour
 
   void Update()
   {
+    // [FIX] Apply delayed fix to ensure UI is correct after initialization
+    // Some UI elements might initialize after Start/Setup, so we check again after a short delay.
+    if (!initialFixApplied)
+    {
+        timeSinceStart += Time.deltaTime;
+        // Try to fix at 0.5s, 1.0s and 2.0s to be safe
+        if (timeSinceStart > 0.5f && timeSinceStart < 0.6f)
+        {
+             ForceFixCanvasState();
+        }
+        if (timeSinceStart > 1.0f && timeSinceStart < 1.1f)
+        {
+             ForceFixCanvasState();
+        }
+        if (timeSinceStart > 2.0f)
+        {
+            ForceFixCanvasState();
+            initialFixApplied = true;
+        }
+    }
 
     if (IsMultiplayerHost())
     {

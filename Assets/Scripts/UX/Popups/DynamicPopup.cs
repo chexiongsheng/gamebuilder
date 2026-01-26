@@ -52,10 +52,13 @@ public class DynamicPopup : MonoBehaviour
   Popup currentPopup = null;
 
   float timeOfLastOpen = -1;
+  Canvas canvas;
 
   void Awake()
   {
     containerObject.SetActive(false);
+    canvas = GetComponent<Canvas>();
+    if (canvas != null) canvas.enabled = false;
   }
 
   public bool IsOpen()
@@ -90,6 +93,7 @@ public class DynamicPopup : MonoBehaviour
   {
     if (currentPopup == null) return;
     containerObject.SetActive(false);
+    if (canvas != null) canvas.enabled = false;
     currentPopup = null;
     foreach (var inst in buttonInstances)
     {
@@ -125,6 +129,7 @@ public class DynamicPopup : MonoBehaviour
     if (popupQueue.Count > 0)
     {
       currentPopup = popupQueue.Dequeue();
+      if (canvas != null) canvas.enabled = true;
 
       popupMessageUI.buttonParent.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().childForceExpandWidth = currentPopup.fullWidthButtons;
 
