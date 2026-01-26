@@ -20,7 +20,7 @@ using UnityEditor;
 [InitializeOnLoad]
 public class CheckUnityVersion
 {
-  private const string EXPECTED_UNITY_VERSION = "2018.4.12f1";
+  private const string EXPECTED_UNITY_VERSION = "2022.3.62f1c1";
   static CheckUnityVersion()
   {
     if (Application.unityVersion != EXPECTED_UNITY_VERSION)
