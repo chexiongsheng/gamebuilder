@@ -1336,8 +1336,6 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     if (puertsAdapter == null)
     {
       puertsAdapter = new PuertsAdapter(this);
-      // 直接传递 VoosEngine 实例到 JS，让 JS 直接调用公共方法
-      puertsAdapter.RegisterVoosEngine(this);
     }
   }
 

@@ -37,18 +37,14 @@ namespace Voos
     public PuertsAdapter(VoosEngine engine)
     {
       this.voosEngine = engine;
-      this.scriptEngine = PuertsScriptEngine.Instance;
+      this.scriptEngine = null;
 
-      if (!scriptEngine.IsInitialized)
-      {
-        scriptEngine.Initialize();
-      }
+      
 
       // 初始化性能监控
       performanceTimer = new System.Diagnostics.Stopwatch();
 
-      // 初始化委托缓存
-      InitializeDelegateCache();
+      
     }
 
     /// <summary>
@@ -84,6 +80,11 @@ namespace Voos
       try
       {
         Debug.Log($"[PuertsAdapter] ResetBrain for {brainUid}");
+        scriptEngine = new PuertsScriptEngine();
+        scriptEngine.Initialize();
+        RegisterVoosEngine(voosEngine);
+        // 初始化委托缓存
+        InitializeDelegateCache();
 
         // 创建或更新Brain上下文
         if (!brainContexts.ContainsKey(brainUid))

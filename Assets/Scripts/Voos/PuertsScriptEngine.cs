@@ -113,21 +113,6 @@ namespace Voos
     private float totalEvalTime = 0f;
 
     /// <summary>
-    /// 获取单例实例
-    /// </summary>
-    public static PuertsScriptEngine Instance
-    {
-      get
-      {
-        if (instance == null)
-        {
-          instance = new PuertsScriptEngine();
-        }
-        return instance;
-      }
-    }
-
-    /// <summary>
     /// 获取JS环境实例
     /// </summary>
     public ScriptEnv JsEnv => jsEnv;
@@ -137,7 +122,7 @@ namespace Voos
     /// </summary>
     public bool IsInitialized => isInitialized;
 
-    private PuertsScriptEngine()
+    public PuertsScriptEngine()
     {
       // 私有构造函数，确保单例
       performanceTimer = new System.Diagnostics.Stopwatch();
