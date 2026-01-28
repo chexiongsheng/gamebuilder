@@ -9,99 +9,11 @@ using Debug = UnityEngine.Debug;
 namespace Voos
 {
   /// <summary>
-  /// 内存模块加载器 - 支持从内存中加载JavaScript模块
-  /// </summary>
-  public class MemoryModuleLoader : ILoader, IModuleChecker
-  {
-    private Dictionary<string, string> modules = new Dictionary<string, string>();
-    private ILoader fallbackLoader;
-
-    public MemoryModuleLoader(ILoader fallbackLoader = null)
-    {
-      this.fallbackLoader = fallbackLoader ?? new DefaultLoader();
-    }
-
-    /// <summary>
-    /// 注册一个内存模块
-    /// </summary>
-    public void RegisterModule(string modulePath, string code)
-    {
-      modules[modulePath] = code;
-      if (PuertsScriptEngine.DebugMode)
-      {
-        Debug.Log($"[MemoryModuleLoader] Registered module: {modulePath} ({code.Length} chars)");
-      }
-    }
-
-    /// <summary>
-    /// 移除一个内存模块
-    /// </summary>
-    public void UnregisterModule(string modulePath)
-    {
-      modules.Remove(modulePath);
-    }
-
-    /// <summary>
-    /// 清空所有内存模块
-    /// </summary>
-    public void Clear()
-    {
-      modules.Clear();
-    }
-
-    public bool FileExists(string filepath)
-    {
-      // 先检查内存中是否有该模块
-      if (modules.ContainsKey(filepath))
-      {
-        return true;
-      }
-      // 回退到默认加载器
-      return fallbackLoader?.FileExists(filepath) ?? false;
-    }
-
-    public string ReadFile(string filepath, out string debugpath)
-    {
-      // 先从内存中读取
-      if (modules.TryGetValue(filepath, out string code))
-      {
-        debugpath = $"memory://{filepath}";
-        return code;
-      }
-      // 回退到默认加载器
-      if (fallbackLoader != null)
-      {
-        return fallbackLoader.ReadFile(filepath, out debugpath);
-      }
-      debugpath = filepath;
-      return null;
-    }
-
-    public bool IsESM(string filepath)
-    {
-      // 内存模块默认都是ESM
-      if (modules.ContainsKey(filepath))
-      {
-        return true;
-      }
-      // 回退到默认加载器
-      if (fallbackLoader is IModuleChecker checker)
-      {
-        return checker.IsESM(filepath);
-      }
-      // 默认判断：不是.cjs结尾的都是ESM
-      return !filepath.EndsWith(".cjs");
-    }
-  }
-
-  /// <summary>
   /// Puerts脚本引擎封装
   /// </summary>
   public class PuertsScriptEngine : IDisposable
   {
-    private static PuertsScriptEngine instance;
     private ScriptEnv jsEnv;
-    private MemoryModuleLoader memoryLoader;
     private bool isInitialized = false;
 
     // 调试和性能监控
@@ -124,7 +36,6 @@ namespace Voos
 
     public PuertsScriptEngine()
     {
-      // 私有构造函数，确保单例
       performanceTimer = new System.Diagnostics.Stopwatch();
     }
 
@@ -143,11 +54,7 @@ namespace Voos
       {
         Debug.Log("[PuertsScriptEngine] Initializing Puerts environment...");
 
-        // 创建内存模块加载器
-        memoryLoader = new MemoryModuleLoader();
-
-        // 创建JS环境，使用V8后端和自定义加载器
-        jsEnv = new ScriptEnv(new BackendV8(memoryLoader));
+        jsEnv = new ScriptEnv(new BackendV8());
 
         jsEnv.ExecuteModule("puerts/module.mjs");
         ExportsFunctions = jsEnv.ExecuteModule("main.mjs");
@@ -269,7 +176,6 @@ namespace Voos
         jsEnv = null;
       }
       isInitialized = false;
-      instance = null;
     }
 
     /// <summary>
@@ -326,24 +232,6 @@ namespace Voos
     }
 
     /// <summary>
-    /// 注册内存模块（用于ExecuteModule）
-    /// </summary>
-    public void RegisterModule(string modulePath, string code)
-    {
-      if (!isInitialized)
-      {
-        throw new InvalidOperationException("PuertsScriptEngine not initialized");
-      }
-
-      if (memoryLoader == null)
-      {
-        throw new InvalidOperationException("MemoryModuleLoader not available");
-      }
-
-      memoryLoader.RegisterModule(modulePath, code);
-    }
-
-    /// <summary>
     /// 执行ES模块（支持export语法）
     /// </summary>
     public void ExecuteModule(string modulePath)
@@ -387,17 +275,6 @@ namespace Voos
           Debug.LogError($"[PuertsScriptEngine] Stack trace: {ex.StackTrace}");
         }
         throw;
-      }
-    }
-
-    /// <summary>
-    /// 移除内存模块
-    /// </summary>
-    public void UnregisterModule(string modulePath)
-    {
-      if (memoryLoader != null)
-      {
-        memoryLoader.UnregisterModule(modulePath);
       }
     }
   }
