@@ -39,8 +39,8 @@ GameObject:
   - component: {fileID: 224166691500683418}
   - component: {fileID: 23623555027292428}
   - component: {fileID: 33315055283661376}
-  - component: {fileID: 222486754355941574}
   - component: {fileID: 114340706032852048}
+
   m_Layer: 0
   m_Name: TextMeshPro
   m_TagString: Untagged
@@ -315,14 +315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textField: {fileID: 114340706032852048}
   backPanel: {fileID: 4782653831890498}
---- !u!222 &222486754355941574
-CanvasRenderer:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1705083578059918}
-  m_CullTransparentMesh: 0
 --- !u!224 &224166691500683418
+
 RectTransform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

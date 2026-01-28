@@ -246,8 +246,8 @@ GameObject:
   - component: {fileID: 5065198826147740645}
   - component: {fileID: 5065198826147740665}
   - component: {fileID: 5065198826147740666}
-  - component: {fileID: 5065198826147740667}
   - component: {fileID: 5065198826147740644}
+
   m_Layer: 0
   m_Name: TextMeshPro
   m_TagString: Untagged
@@ -320,15 +320,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5065198826147740646}
   m_Mesh: {fileID: 0}
---- !u!222 &5065198826147740667
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5065198826147740646}
-  m_CullTransparentMesh: 0
 --- !u!114 &5065198826147740644
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
