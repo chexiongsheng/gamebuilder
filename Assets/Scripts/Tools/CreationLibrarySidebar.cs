@@ -36,9 +36,12 @@ public class CreationLibrarySidebar : Sidebar
   [SerializeField] Texture2D challengeCategoryIcon;
   [SerializeField] Texture2D allCategoryIcon;
   [SerializeField] Texture2D decorationCategoryIcon;
+  [SerializeField] Texture2D savedCategoryIcon;
+  [SerializeField] Texture2D gisCategoryIcon;
 
 
   [SerializeField] Texture2D soundsCategoryIcon;
+
   [SerializeField] Texture2D particlesCategoryIcon;
   [SerializeField] CreationLibraryParticles particleLibrary;
   [SerializeField] CreationLibrarySounds soundLibrary;
@@ -46,9 +49,13 @@ public class CreationLibrarySidebar : Sidebar
   [SerializeField] ActorPrefabWorkshopMenu actorPrefabWorkshopMenuPrefab;
   private static string CATEGORY_CHALLENGE = "Cooking challenge";
   private static string CATEGORY_ALL = "All";
+  private static string CATEGORY_DECORATIONS = "Decor";
+  private static string CATEGORY_CUSTOM = "Custom";
+  private static string CATEGORY_GIS = "Images from web";
 
 
   private static string CATEGORY_PARTICLES = "Particles";
+
   private static string CATEGORY_SOUNDS = "Sounds";
   [SerializeField] List<CategoryButton> dynamicCategories;
   private EditMain editMain;

@@ -36,12 +36,12 @@ public class AssetCache : MonoBehaviour
 
   private Transform cacheRoot;
 
-
-
+  private Dictionary<string, List<ProcessAsset>> activeDownloadWaiters = new Dictionary<string, List<ProcessAsset>>();
 
   private List<string> downloadedImageUrls = new List<string>();
 
   BuiltinPrefabLibrary builtinPrefabLibrary;
+
   WorkshopAssetSource steamWorkshop;
 
   public int GetNumActiveDownloads()
@@ -452,8 +452,9 @@ public class AssetCache : MonoBehaviour
 
   public bool AnyAttributionsToShow()
   {
-    return downloadedPolyAssets.Count + downloadedImageUrls.Count > 0;
+    return downloadedImageUrls.Count > 0;
   }
+
 
   public string GetAttributionsString()
   {
