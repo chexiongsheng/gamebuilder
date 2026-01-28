@@ -65,14 +65,6 @@ namespace Voos
     }
 
     /// <summary>
-    /// 注册 VoosEngine 实例到 JS 环境
-    /// </summary>
-    public void RegisterVoosEngine(VoosEngine engine)
-    {
-      scriptEngine.RegisterVoosEngine(engine);
-    }
-
-    /// <summary>
     /// 重置Brain（编译主脚本）
     /// </summary>
     public bool ResetBrain(string brainUid, string javascript)
@@ -82,7 +74,7 @@ namespace Voos
         Debug.Log($"[PuertsAdapter] ResetBrain for {brainUid}");
         scriptEngine = new PuertsScriptEngine();
         scriptEngine.Initialize();
-        RegisterVoosEngine(voosEngine);
+        scriptEngine.RegisterVoosEngine(voosEngine);
         // 初始化委托缓存
         InitializeDelegateCache();
 
