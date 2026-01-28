@@ -419,6 +419,8 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     Application.wantsToQuit -= OnWantsToQuit;
     sceneController.OnBeforeReloadMainScene -= Teardown;
     sceneController.onBeforeQuitToSplash -= Teardown;
+    puertsAdapter.Dispose();
+    puertsAdapter = null;
   }
 
   bool OnWantsToQuit()
