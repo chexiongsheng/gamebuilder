@@ -348,6 +348,8 @@ public class UserMain : MonoBehaviour
     Util.FindIfNotSet(this, ref inputFieldOracle);
   }
 
+  //可以通过修改相机设置来修复黑屏问题，只需要取消Post-process Layer的Directly to Camera Target勾选即可
+  /*
   void ForceFixCanvasState()
   {
     var cam = GetCamera();
@@ -376,6 +378,7 @@ public class UserMain : MonoBehaviour
         }
     }
   }
+  */
 
   public void Setup()
   {
@@ -446,7 +449,7 @@ public class UserMain : MonoBehaviour
     }
 
     // [FIX] Ensure UI state is correct after setup
-    ForceFixCanvasState();
+    // ForceFixCanvasState();
   }
 
   public bool CanEdit()
