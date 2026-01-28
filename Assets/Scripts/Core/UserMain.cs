@@ -84,10 +84,6 @@ public class UserMain : MonoBehaviour
 
   [HideInInspector] public SystemMenu systemMenu;
 
-  // [FIX] Track if we have applied the initial fix
-  bool initialFixApplied = false;
-  float timeSinceStart = 0f;
-
   Color? lastTintPushedToUserBody = null;
 
   const float MIN_MOUSEWHEEL_SENSITIVITY_WIN = .1f;
@@ -352,19 +348,6 @@ public class UserMain : MonoBehaviour
     Util.FindIfNotSet(this, ref inputFieldOracle);
   }
 
-  void Start()
-  {
-    // [FIX] Ensure UI and Camera are in a visible state at startup
-    ForceFixCanvasState();
-    
-    // [FIX] Ensure basic lighting is available even if Setup() is delayed
-    if (RenderSettings.ambientMode != UnityEngine.Rendering.AmbientMode.Flat)
-    {
-        RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
-        RenderSettings.ambientLight = Color.white;
-    }
-  }
-
   void ForceFixCanvasState()
   {
     var canvases = FindObjectsOfType<Canvas>();
@@ -436,10 +419,6 @@ public class UserMain : MonoBehaviour
 
   public void Setup()
   {
-    // Ensure ambient light is sufficient to see the scene
-    RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
-    RenderSettings.ambientLight = Color.white;
-
     transform.SetParent(null, false);
     Util.FindIfNotSet(this, ref voosEngine);
     Util.FindIfNotSet(this, ref networkingController);
@@ -568,7 +547,6 @@ public class UserMain : MonoBehaviour
 
     // curMask = curMask.WithBit(LayerMask.NameToLayer("PrefabWorld"), false);
     // curMask = curMask.WithBit(LayerMask.NameToLayer("OffstageGhost"), false);
-    curMask = curMask.WithBit(LayerMask.NameToLayer("Default"), true);
     curMask = curMask.WithBit(LayerMask.NameToLayer("Player"), true && !navigationControls.hidingPlayerLayer);
     curMask = curMask.WithBit(LayerMask.NameToLayer("PlayerEditMode"), !navigationControls.hidingPlayerLayer && !HidingAvatarInTopDown());
     GetCamera().cullingMask = curMask.WithBit(LayerMask.NameToLayer("VoosActor"), true);
@@ -708,7 +686,6 @@ public class UserMain : MonoBehaviour
     userBody.transform.localRotation = Quaternion.identity;
 
     navigationControls.ToggleEditCullingMask(on);
-    UpdateCameraMask();
 
     if (!editMode) navigationControls.TryCaptureCursor();
 
@@ -983,27 +960,6 @@ public class UserMain : MonoBehaviour
 
   void Update()
   {
-    // [FIX] Apply delayed fix to ensure UI is correct after initialization
-    // Some UI elements might initialize after Start/Setup, so we check again after a short delay.
-    if (!initialFixApplied)
-    {
-        timeSinceStart += Time.deltaTime;
-        // Try to fix at 0.5s, 1.0s and 2.0s to be safe
-        if (timeSinceStart > 0.5f && timeSinceStart < 0.6f)
-        {
-             ForceFixCanvasState();
-        }
-        if (timeSinceStart > 1.0f && timeSinceStart < 1.1f)
-        {
-             ForceFixCanvasState();
-        }
-        if (timeSinceStart > 2.0f)
-        {
-            ForceFixCanvasState();
-            initialFixApplied = true;
-        }
-    }
-
     if (IsMultiplayerHost())
     {
       UpdateBuildPermissionsForNewUsers();

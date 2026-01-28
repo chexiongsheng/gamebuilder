@@ -33,25 +33,13 @@ public class MenuPanelManager : MonoBehaviour
   MultiplayerMenu multiplayerMenu;
 
   List<IMenuPanelInterface> openPanels = new List<IMenuPanelInterface>();
-  Canvas canvas;
 
   public void Setup()
   {
-    canvas = GetComponent<Canvas>();
-    UpdateCanvasState();
-
     SetupGameLibrary();
     SetupWorkshopLibrary();
     SetupMultiplayerMenu();
     Util.FindIfNotSet(this, ref multiplayerWarning);
-  }
-
-  void UpdateCanvasState()
-  {
-    if (canvas != null)
-    {
-      canvas.enabled = openPanels.Count > 0;
-    }
   }
 
   public void SetLibraryHeaderText(string newtext)
@@ -65,7 +53,6 @@ public class MenuPanelManager : MonoBehaviour
     if (openPanels.Count > 0)
     {
       openPanels.Last().Close();
-      // Close() will trigger the close event, which calls Remove and UpdateCanvasState
       return true;
     }
     return false;
@@ -83,13 +70,11 @@ public class MenuPanelManager : MonoBehaviour
   {
     gameLibraryMenu.Open();
     openPanels.Add(gameLibraryMenu);
-    UpdateCanvasState();
   }
 
   public void CloseGameLibrary()
   {
     openPanels.Remove(gameLibraryMenu);
-    UpdateCanvasState();
   }
 
   public bool IsOpen()
@@ -112,14 +97,12 @@ public class MenuPanelManager : MonoBehaviour
       multiplayerWarning.Close();
       multiplayerMenu.Open();
       openPanels.Add(multiplayerMenu);
-      UpdateCanvasState();
     });
   }
 
   public void CloseMultiplayerMenu()
   {
     openPanels.Remove(multiplayerMenu);
-    UpdateCanvasState();
   }
 
 
@@ -134,7 +117,6 @@ public class MenuPanelManager : MonoBehaviour
   {
     workshopMenu.Open();
     openPanels.Add(workshopMenu);
-    UpdateCanvasState();
   }
 
   void CloseSteamWorkshop()
@@ -144,7 +126,6 @@ public class MenuPanelManager : MonoBehaviour
       gameLibraryMenu.Refresh();
     }
     openPanels.Remove(workshopMenu);
-    UpdateCanvasState();
   }
 
   public void SetOpen(bool on)

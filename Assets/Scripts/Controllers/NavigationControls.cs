@@ -172,7 +172,6 @@ public class NavigationControls : MonoBehaviour, PlayerBody.ControllerInput
   {
     int curMask = targetCamera.cullingMask;
     curMask = curMask.WithBit(LayerMask.NameToLayer("OffstageGhost"), on);
-    curMask = curMask.WithBit(LayerMask.NameToLayer("Default"), true);
     targetCamera.cullingMask = curMask.WithBit(LayerMask.NameToLayer("EditModeOnly"), on);
   }
 
