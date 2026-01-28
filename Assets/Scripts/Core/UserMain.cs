@@ -348,6 +348,35 @@ public class UserMain : MonoBehaviour
     Util.FindIfNotSet(this, ref inputFieldOracle);
   }
 
+  void ForceFixCanvasState()
+  {
+    var cam = GetCamera();
+    if (cam != null)
+    {
+        //这提交的：https://github.com/chexiongsheng/gamebuilder/commit/ada2c87d7bd3d4d62178f29e08ce5dee258229e4
+        //会导致Popup Text和Laser Bolt渲染出来，去掉也不影响这个问题的修复
+        // [FIX] Always ensure we can see everything
+        //if (cam.cullingMask != -1)
+        //{
+        //    cam.cullingMask = -1;
+        //}
+        
+        // 黑屏修复的关键在这里
+        // [FIX] Ensure PostProcessLayer is disabled as it might be causing black screen
+        var components = cam.GetComponents<MonoBehaviour>();
+        foreach(var comp in components)
+        {
+            if (comp.GetType().Name.Contains("PostProcessLayer"))
+            {
+                if (comp.enabled)
+                {
+                    comp.enabled = false;
+                }
+            }
+        }
+    }
+  }
+
   public void Setup()
   {
     transform.SetParent(null, false);
@@ -402,7 +431,10 @@ public class UserMain : MonoBehaviour
       av.transform.SetParent(null);
     }
 
-    navigationControls.UpdateTargetThirdPersonPivot(userBody.thirdPersonCameraPivotAnchor);
+    if (userBody != null)
+    {
+      navigationControls.UpdateTargetThirdPersonPivot(userBody.thirdPersonCameraPivotAnchor);
+    }
 
     SetEditMode(CanEdit() ? GameBuilderApplication.CurrentGameOptions.playOptions.startInBuildMode : false);
 
@@ -412,6 +444,9 @@ public class UserMain : MonoBehaviour
     {
       headerMenu.OpenMultiplayerMenu();
     }
+
+    // [FIX] Ensure UI state is correct after setup
+    ForceFixCanvasState();
   }
 
   public bool CanEdit()
@@ -885,7 +920,6 @@ public class UserMain : MonoBehaviour
 
   void Update()
   {
-
     if (IsMultiplayerHost())
     {
       UpdateBuildPermissionsForNewUsers();

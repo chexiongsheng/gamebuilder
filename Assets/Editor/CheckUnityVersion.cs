@@ -20,20 +20,18 @@ using UnityEditor;
 [InitializeOnLoad]
 public class CheckUnityVersion
 {
-  private const string EXPECTED_UNITY_VERSION = "2018.4.12f1";
   static CheckUnityVersion()
   {
-    if (Application.unityVersion != EXPECTED_UNITY_VERSION)
-    {
-      EditorUtility.DisplayDialog(
-        "WARNING: Unexpected Unity version.",
-        string.Format(
-          "**** UNEXPECTED UNITY VERSION ****\n\n" +
-          "You are using Unity version:\n        {0}.\n" +
-          "The expected Unity version for this project is:\n        {1}.\n\n" +
-          "If you are intentionally upgrading, please edit Editor/CheckUnityVersion.cs and change EXPECTED_UNITY_VERSION to fix this warning.",
-          Application.unityVersion, EXPECTED_UNITY_VERSION), "OK");
-    }
+#if !UNITY_2022_3_OR_NEWER
+    EditorUtility.DisplayDialog(
+      "WARNING: Unity version too old.",
+      string.Format(
+        "**** UNITY VERSION TOO OLD ****\n\n" +
+        "You are using Unity version:\n        {0}.\n" +
+        "The minimum required Unity version for this project is:\n        2022.3.1 or newer.\n\n" +
+        "Please upgrade your Unity version to at least 2022.3.1.",
+        Application.unityVersion), "OK");
+#endif
   }
 }
 
