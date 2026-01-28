@@ -1173,7 +1173,7 @@ public partial class VoosActor : MonoBehaviour
   // "ClearVelocity" instead of setting it directly.
   public void SetVelocity(Vector3 newVelocity)
   {
-    if (GetRigidBody() != null && Vector3.Distance(GetRigidBody().velocity, newVelocity) > 1e-6)
+    if (GetRigidBody() != null && !GetRigidBody().isKinematic && Vector3.Distance(GetRigidBody().velocity, newVelocity) > 1e-6)
     {
       GetRigidBody().velocity = newVelocity;
     }
@@ -1193,7 +1193,7 @@ public partial class VoosActor : MonoBehaviour
 
   public void SetAngularVelocity(Vector3 newAngularVelocity)
   {
-    if (GetRigidBody() != null)
+    if (GetRigidBody() != null && !GetRigidBody().isKinematic)
     {
       GetRigidBody().angularVelocity = newAngularVelocity;
     }
