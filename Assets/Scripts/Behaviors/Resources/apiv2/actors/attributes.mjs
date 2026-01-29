@@ -85,11 +85,11 @@ function setCommentText(newText) {
  */
 function setVar(name, value) {
   assertString(name);
-  mem.__variables = mem.__variables || {};
+  getMem().__variables = getMem().__variables || {};
   if (value === undefined) {
-    delete mem.__variables[name];
+    delete getMem().__variables[name];
   } else {
-    mem.__variables[name] = value;
+    getMem().__variables[name] = value;
   }
 }
 
@@ -100,7 +100,7 @@ function setVar(name, value) {
  */
 function deleteVar(name) {
   assertString(name);
-  if (mem.__variables) delete mem.__variables[name];
+  if (getMem().__variables) delete getMem().__variables[name];
 }
 
 // Old name, DEPRECATED:

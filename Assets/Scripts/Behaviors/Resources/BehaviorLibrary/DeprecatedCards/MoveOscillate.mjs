@@ -31,21 +31,21 @@ export const PROPS = [
 // really want these mem values to be local to script
 // (in case you have other oscillators on this actor)
 export function onResetGame() {
-  mem.oscValue = 0;
-  mem.sineParam = 0;
+  getMem().oscValue = 0;
+  getMem().sineParam = 0;
 }
 
 export function onActiveTick() {
   // update clock for sine wave
   const freq = props.Speed * 0.1;
-  mem.sineParam = (mem.sineParam || 0) + (2 * Math.PI * freq * deltaTime());
-  if (mem.sineParam > Math.PI * 2) {
-    mem.sineParam -= Math.PI * 2;
+  getMem().sineParam = (getMem().sineParam || 0) + (2 * Math.PI * freq * deltaTime());
+  if (getMem().sineParam > Math.PI * 2) {
+    getMem().sineParam -= Math.PI * 2;
   }
 
   // get the new oscillator value
   const amp = props.Distance / 2;
-  const oscValue = Math.sin(mem.sineParam) * amp;
+  const oscValue = Math.sin(getMem().sineParam) * amp;
 
   //find the direction of the oscillation
   let dir = vec3(props.DirectionX, props.DirectionY, props.DirectionZ);
@@ -58,12 +58,12 @@ export function onActiveTick() {
     dir.normalize().multiplyScalar(oscValue);
     setPos(dir.add(getSpawnPos()))
   } else {
-    const oscDelta = oscValue - (mem.oscValue || 0);
+    const oscDelta = oscValue - (getMem().oscValue || 0);
     dir.normalize().multiplyScalar(oscDelta);
     setPos(vec3add(getPos(), dir));
   }
 
-  mem.oscValue = oscValue;
+  getMem().oscValue = oscValue;
 }
 
 // please move this functionality into API

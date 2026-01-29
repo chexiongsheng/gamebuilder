@@ -25,14 +25,14 @@ export function onAction(actionMessage) {
   // Store original tint in actor memory rather than card memory,
   // for correct restore behavior in case we have more than one
   // color-changing card.
-  mem.origTintHex = mem.origTintHex || getTintHex();
+  getMem().origTintHex = getMem().origTintHex || getTintHex();
   setTintColor(props.Color);
 }
 
 export function onResetGame() {
-  if (mem.origTintHex) {
-    setTintHex(mem.origTintHex);
-    delete mem.origTintHex;
+  if (getMem().origTintHex) {
+    setTintHex(getMem().origTintHex);
+    delete getMem().origTintHex;
   }
 }
 

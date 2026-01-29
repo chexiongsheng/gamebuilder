@@ -15,21 +15,21 @@
  */
 
 export function onResetGame() {
-  if (!isClone() && mem.origIsOnstage !== undefined) {
+  if (!isClone() && getMem().origIsOnstage !== undefined) {
     // Restore.
-    if (mem.origIsOnstage) {
+    if (getMem().origIsOnstage) {
       goOnstage();
     } else {
       goOffstage();
     }
-    delete mem.origIsOnstage;
+    delete getMem().origIsOnstage;
   }
 }
 
 export function onAction() {
   if (isOffstage()) {
-    if (mem.origIsOnstage === undefined) {
-      mem.origIsOnstage = false;
+    if (getMem().origIsOnstage === undefined) {
+      getMem().origIsOnstage = false;
     }
     goOnstage();
   }

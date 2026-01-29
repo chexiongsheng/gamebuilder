@@ -31,15 +31,15 @@ export function OnTick(api) {
   // If this is not a clone, don't do anything
   if (!isClone()) return;
   // If the deadline has been exceeded, remove.
-  if (mem.unclaimedDeadline && getTime() > mem.unclaimedDeadline) {
+  if (getMem().unclaimedDeadline && getTime() > getMem().unclaimedDeadline) {
     destroySelf();
     return;
   }
-  if (mem.unclaimedDeadline && isClaimed()) {
+  if (getMem().unclaimedDeadline && isClaimed()) {
     // If we are claimed, so there is no deadline.
-    delete mem.unclaimedDeadline;
-  } else if (!mem.unclaimedDeadline && !isClaimed()) {
+    delete getMem().unclaimedDeadline;
+  } else if (!getMem().unclaimedDeadline && !isClaimed()) {
     // We are not claimed, so there should be deadline if there isn't one.
-    mem.unclaimedDeadline = getTime() + 5;
+    getMem().unclaimedDeadline = getTime() + 5;
   }
 }

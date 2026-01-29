@@ -41,19 +41,19 @@
  * @example
  * export function onCollision() {
  *   // Collided! Start spinning!
- *   mem.spinning = true;
+ *   getMem().spinning = true;
  * }
  *
  * export function onTick() {
- *   // If mem.spinning was set, spin.
- *   if (mem.spinning) {
+ *   // If getMem().spinning was set, spin.
+ *   if (getMem().spinning) {
  *     turn(0.1 * deltaTime());
  *   }
  * }
  *
  * export function onResetGame() {
  *   // Reset back to non-spinning state.
- *   mem.spinning = false;
+ *   getMem().spinning = false;
  * }
  */
 // DOC_ONLY: function onResetGame() {}

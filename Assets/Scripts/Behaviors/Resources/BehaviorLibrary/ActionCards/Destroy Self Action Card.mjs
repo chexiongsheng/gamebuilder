@@ -15,14 +15,14 @@
  */
 
 export function onResetGame() {
-  if (!isClone() && mem.origIsOnstage !== undefined) {
+  if (!isClone() && getMem().origIsOnstage !== undefined) {
     // Restore.
-    if (mem.origIsOnstage) {
+    if (getMem().origIsOnstage) {
       goOnstage();
     } else {
       goOffstage();
     }
-    delete mem.origIsOnstage;
+    delete getMem().origIsOnstage;
   }
 }
 
@@ -30,8 +30,8 @@ export function onAction(actionMessage) {
   if (isClone()) {
     destroySelf();
   } else if (isOnstage()) {
-    if (mem.origIsOnstage === undefined) {
-      mem.origIsOnstage = true;
+    if (getMem().origIsOnstage === undefined) {
+      getMem().origIsOnstage = true;
     }
     goOffstage();
   }

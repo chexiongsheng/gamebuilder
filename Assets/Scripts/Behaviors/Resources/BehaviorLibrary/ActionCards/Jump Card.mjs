@@ -24,7 +24,7 @@ export function onTick() {
   if (getAttrib("isDead", false)) {
     return;
   }
-  mem.jumpCooldown = Math.max(0, (mem.jumpCooldown || 0) - deltaTime());
+  getMem().jumpCooldown = Math.max(0, (getMem().jumpCooldown || 0) - deltaTime());
 
   if (isGrounded()) {
     card.lastGroundedTime = getTime();
@@ -43,8 +43,8 @@ export function onAction() {
   // If we're a player and not grounded, don't jump.
   if (isPlayerControllable() && !sortOfGrounded) return;
 
-  if (mem.jumpCooldown <= 0) {
-    mem.jumpCooldown = 0.1;
+  if (getMem().jumpCooldown <= 0) {
+    getMem().jumpCooldown = 0.1;
     // After jumping we don't want to allow an extra coyote-jump while in air.
     delete card.lastGroundedTime;
     // The 50 is additional gravity we put on the player character to prevent

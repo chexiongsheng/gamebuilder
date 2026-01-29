@@ -45,7 +45,7 @@ export const PROPS = [
 ]
 
 export function onInit() {
-  mem.health = props.StartingHealth;
+  getMem().health = props.StartingHealth;
   // Same as reviving.
   onRevive();
   updateVars();
@@ -53,8 +53,8 @@ export function onInit() {
 
 function updateVars() {
   // Publish these vars for the benefit of other cards/actors:
-  setVar("isDead", !!mem.isDead);
-  setVar("health", mem.health || props.StartingHealth);
+  setVar("isDead", !!getMem().isDead);
+  setVar("health", getMem().health || props.StartingHealth);
   setVar("startingHealth", props.StartingHealth);
 }
 
@@ -88,7 +88,7 @@ export function onDamage(damageMessage) {
   }
 
   // If we are already dead, no further damage can be taken.
-  if (mem.isDead) {
+  if (getMem().isDead) {
     return;
   }
 
@@ -102,7 +102,7 @@ export function onDamage(damageMessage) {
   // event.actor is the "event causer", so we set it to the causer of the damage.
   let event = { actor: damageMessage.causer || myself() };
 
-  mem.health = clamp(mem.health - amount, 0, props.StartingHealth);
+  getMem().health = clamp(getMem().health - amount, 0, props.StartingHealth);
   // Did we die?
   checkDeath(event);
   // Call any on-damage actions that were requested, if this in fact damage (amount > 0)
@@ -121,9 +121,9 @@ export function onDamage(damageMessage) {
  * When we receive a Revive message, we bring the actor back to life at full health.
  */
 export function onRevive() {
-  const wasDead = mem.isDead;
-  mem.health = props.StartingHealth;
-  mem.isDead = false;
+  const wasDead = getMem().isDead;
+  getMem().health = props.StartingHealth;
+  getMem().isDead = false;
   if (wasDead) {
     legacyApi().sendMessageToUnity("Respawned");
   }
@@ -136,7 +136,7 @@ export function onRevive() {
 
 /** @param {GEvent} event The event that may have caused our death. */
 function checkDeath(event) {
-  if (mem.isDead || typeof mem.health !== 'number' || mem.health > 0) {
+  if (getMem().isDead || typeof getMem().health !== 'number' || getMem().health > 0) {
     // Not dead, or already dead. In any case, nothing new.
     return;
   }
@@ -145,7 +145,7 @@ function checkDeath(event) {
   // Run the "when about to die" deck now.
   callActionDeck("preDeathDeck", { event: event });
 
-  mem.isDead = true;
+  getMem().isDead = true;
   // Do the engine-provided death effect.
   legacyApi().sendMessageToUnity("Died");
   if (props.hideWhileDying) {

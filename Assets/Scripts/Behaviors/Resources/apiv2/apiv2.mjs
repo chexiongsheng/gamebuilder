@@ -316,7 +316,7 @@ class ApiV2Context {
   }
 
   getInputState() {
-    const actor = exists(mem.hackObtainInputFrom) ? this.getActor(mem.hackObtainInputFrom) : this.getActor();
+    const actor = exists(getMem().hackObtainInputFrom) ? this.getActor(getMem().hackObtainInputFrom) : this.getActor();
     assert(actor, 'actor should not be null here...');
     return actor.getInternalActor().inputState;
   }

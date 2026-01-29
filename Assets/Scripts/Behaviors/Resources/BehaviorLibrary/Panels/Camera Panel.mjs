@@ -44,7 +44,7 @@ export function onTick() {
   const target = getCurrentTarget();
 
   // HACK: this redirects input from the target actor to ourselves.
-  mem.hackObtainInputFrom = target || null;
+  getMem().hackObtainInputFrom = target || null;
 
   if (isPlayerControllable()) {
     logError("The Camera Panel can't be used on a player. The camera must be a separate actor.");
@@ -74,7 +74,7 @@ export function onTick() {
 }
 
 export function onCardRemoved() {
-  delete mem.isCameraActor;
+  delete getMem().isCameraActor;
 }
 
 // This message requests us to set a new target, overriding props.target.

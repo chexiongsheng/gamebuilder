@@ -27,7 +27,7 @@ export function onControl() {
   if (getAttrib("isDead", false)) {
     return;
   }
-  mem.jumpCooldown = Math.max(0, (mem.jumpCooldown || 0) - deltaTime());
+  getMem().jumpCooldown = Math.max(0, (getMem().jumpCooldown || 0) - deltaTime());
   const velocity = getWorldThrottle();
   velocity.multiplyScalar(isSprinting() ? props.SprintSpeed : props.Speed);
   moveGlobal(velocity);
@@ -38,8 +38,8 @@ export function onJump() {
   if (getAttrib("isDead", false)) {
     return;
   }
-  if (isGrounded() && mem.jumpCooldown <= 0) {
-    mem.jumpCooldown = 0.1;
+  if (isGrounded() && getMem().jumpCooldown <= 0) {
+    getMem().jumpCooldown = 0.1;
     // The 50 is additional gravity we put on the player character to prevent
     // floatiness.
     const gravity = 9.81 + 50;
