@@ -432,9 +432,9 @@ function callEventDeck(deckName, onlyEdge = false) {
   // Is this an "edge"? An edge happens when we have no event in one frame but have
   // an event on the next.
   const hasEvent = !!eventToDeliver;
-  temp.eventFiredLastTick = temp.eventFiredLastTick || {};
-  const isEdge = hasEvent && !temp.eventFiredLastTick[deckName];
-  temp.eventFiredLastTick[deckName] = hasEvent;
+  getTemp().eventFiredLastTick = getTemp().eventFiredLastTick || {};
+  const isEdge = hasEvent && !getTemp().eventFiredLastTick[deckName];
+  getTemp().eventFiredLastTick[deckName] = hasEvent;
 
   return (isEdge || !onlyEdge) ? eventToDeliver : null;
 }

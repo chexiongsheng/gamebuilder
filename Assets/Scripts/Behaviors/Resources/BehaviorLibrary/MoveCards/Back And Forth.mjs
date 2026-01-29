@@ -58,13 +58,13 @@ function resetMotion() {
 }
 
 export function getCardStatus() {
-  temp.dirList = temp.dirList || [];
-  temp.dirList.length = 0;
-  getDirDescription(props.DistForward, "forward", "back", temp.dirList);
-  getDirDescription(props.DistUp, "up", "down", temp.dirList);
-  getDirDescription(props.DistRight, "right", "left", temp.dirList);
+  getTemp().dirList = getTemp().dirList || [];
+  getTemp().dirList.length = 0;
+  getDirDescription(props.DistForward, "forward", "back", getTemp().dirList);
+  getDirDescription(props.DistUp, "up", "down", getTemp().dirList);
+  getDirDescription(props.DistRight, "right", "left", getTemp().dirList);
   return {
-    description: `Moves back and forth (<color=yellow>${temp.dirList.join(', ')}</color>) with speed <color=yellow>${props.Speed.toFixed(1)}</color>, rest time <color=yellow>${props.RestTime.toFixed(1)}</color>.`
+    description: `Moves back and forth (<color=yellow>${getTemp().dirList.join(', ')}</color>) with speed <color=yellow>${props.Speed.toFixed(1)}</color>, rest time <color=yellow>${props.RestTime.toFixed(1)}</color>.`
   }
 }
 

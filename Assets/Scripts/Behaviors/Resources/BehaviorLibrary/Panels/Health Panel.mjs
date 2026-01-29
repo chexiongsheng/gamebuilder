@@ -83,7 +83,7 @@ export function onDamage(damageMessage) {
   // If we were just revived, don't take damage yet. This avoids race conditions when you
   // get revived and teleported away from damage and still have a stray damage message
   // from the situation you were in.
-  if (getTime() - (temp.reviveTime || 0) < 0.5) {
+  if (getTime() - (getTemp().reviveTime || 0) < 0.5) {
     return;
   }
 
@@ -130,7 +130,7 @@ export function onRevive() {
   if (props.hideWhileDying) {
     show();
   }
-  temp.reviveTime = getTime();
+  getTemp().reviveTime = getTime();
   delete getCard().death;
 }
 

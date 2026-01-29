@@ -46,12 +46,12 @@ export function onAction(actionMessage) {
     const dist = randBetween(props.RandomDistMin, props.RandomDistMax);
 
     // Try to vary the angle a bit (best effort).
-    if (temp.lastAngle) {
+    if (getTemp().lastAngle) {
       let attempts = 10;
-      while (Math.abs(temp.lastAngle - angle) < 1 && --attempts > 0) {
+      while (Math.abs(getTemp().lastAngle - angle) < 1 && --attempts > 0) {
         angle = randBetween(0, 6.29);
       }
-      temp.lastAngle = angle;
+      getTemp().lastAngle = angle;
     }
 
     p.x += dist * Math.sin(angle);

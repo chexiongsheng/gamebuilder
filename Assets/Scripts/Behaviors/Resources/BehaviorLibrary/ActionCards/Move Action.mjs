@@ -48,13 +48,13 @@ export function onResetGame() {
 }
 
 export function getCardStatus() {
-  temp.dirList = temp.dirList || [];
-  temp.dirList.length = 0;
-  getDirDescription(props.DistForward, "forward", "back", temp.dirList);
-  getDirDescription(props.DistUp, "up", "down", temp.dirList);
-  getDirDescription(props.DistRight, "right", "left", temp.dirList);
+  getTemp().dirList = getTemp().dirList || [];
+  getTemp().dirList.length = 0;
+  getDirDescription(props.DistForward, "forward", "back", getTemp().dirList);
+  getDirDescription(props.DistUp, "up", "down", getTemp().dirList);
+  getDirDescription(props.DistRight, "right", "left", getTemp().dirList);
   return {
-    description: `Moves (<color=green>${temp.dirList.join(', ')}</color>) with speed <color=yellow>${props.Speed.toFixed(1)}`
+    description: `Moves (<color=green>${getTemp().dirList.join(', ')}</color>) with speed <color=yellow>${props.Speed.toFixed(1)}`
   }
 }
 

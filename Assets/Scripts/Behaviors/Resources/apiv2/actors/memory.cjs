@@ -126,9 +126,9 @@ function setCard(c) {
  * 
  * @example
  * export function onTick() {
- *   if (!temp.cachedExpensiveThing) {
+ *   if (!getTemp().cachedExpensiveThing) {
  *     // Compute some expensive thing.
- *     temp.cachedExpensiveThing = computeSomeExpensiveThing();
+ *     getTemp().cachedExpensiveThing = computeSomeExpensiveThing();
  *   }
  *   // Use expensive thing here
  * }
