@@ -29,7 +29,7 @@ export function onTick() {
   }
   /** @type {GEvent?} */
   let winEvent = null;
-  callDeck(props.winEventDeck, "Check").forEach(result => winEvent = winEvent || result);
+  callDeck(getProps().winEventDeck, "Check").forEach(result => winEvent = winEvent || result);
   if (winEvent) {
     // Someone won the game. Call the win action deck.
     callActionDeck("winDeck", { event: winEvent })

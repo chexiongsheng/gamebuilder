@@ -27,8 +27,8 @@ export const PROPS = [
 ];
 
 export function onActiveTick() {
-  let vel = vec3scale(vec3(props.DirectionX, props.DirectionY, props.DirectionZ), props.Speed);
-  if (props.UseGlobalCoordinates) {
+  let vel = vec3scale(vec3(getProps().DirectionX, getProps().DirectionY, getProps().DirectionZ), getProps().Speed);
+  if (getProps().UseGlobalCoordinates) {
     moveGlobal(vel);
   } else {
     move(vel);
@@ -36,9 +36,9 @@ export function onActiveTick() {
 }
 
 export function getCardStatus() {
-  const dir = `(${props.DirectionX.toFixed(1)},${props.DirectionY.toFixed(1)},${props.DirectionZ.toFixed(1)})`;
-  const coordSys = props.UseGlobalCoordinates ? 'world' : 'self';
+  const dir = `(${getProps().DirectionX.toFixed(1)},${getProps().DirectionY.toFixed(1)},${getProps().DirectionZ.toFixed(1)})`;
+  const coordSys = getProps().UseGlobalCoordinates ? 'world' : 'self';
   return {
-    description: `Move in direction <color=yellow>${dir}</color> [${coordSys}] with speed <color=green>${props.Speed.toFixed(1)}.`
+    description: `Move in direction <color=yellow>${dir}</color> [${coordSys}] with speed <color=green>${getProps().Speed.toFixed(1)}.`
   }
 }

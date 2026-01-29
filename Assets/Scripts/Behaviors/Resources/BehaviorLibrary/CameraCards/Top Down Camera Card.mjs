@@ -26,7 +26,7 @@ export function onCameraTick(msg) {
   const target = msg.target;
   reparentIfNeeded(target);
 
-  const pitch = degToRad(clamp(props.Pitch, 0, 90));
+  const pitch = degToRad(clamp(getProps().Pitch, 0, 90));
 
   const pointUnderMouse = getTerrainPointUnderMouse();
   const aimOrigin = getPos(msg.target);
@@ -37,13 +37,13 @@ export function onCameraTick(msg) {
     aimDir = vec3length(aimDir) > 0.01 ? vec3normalized(aimDir) : vec3z();
   }
 
-  setYawPitchRoll(degToRad(props.Yaw), pitch, 0);
-  setPos(vec3add(getPos(target), getBackward(props.Distance)));
+  setYawPitchRoll(degToRad(getProps().Yaw), pitch, 0);
+  setPos(vec3add(getPos(target), getBackward(getProps().Distance)));
   setCameraSettings({
     cursorActive: true,
     aimOrigin: aimOrigin,
     aimDir: aimDir,
-    fov: props.FieldOfView || 60,
+    fov: getProps().FieldOfView || 60,
   });
 }
 

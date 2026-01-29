@@ -25,10 +25,10 @@ export const PROPS = [
 ];
 
 export function getCardErrorMessage() {
-  if (!exists(props.ToActor)) {
+  if (!exists(getProps().ToActor)) {
     return "*** Must specify To Actor.";
   }
-  if (!isPlayerControllable(props.ToActor)) {
+  if (!isPlayerControllable(getProps().ToActor)) {
     return "*** To Actor is not player controllable.";
   }
 }
@@ -54,16 +54,16 @@ export function onAction(actionMessage) {
     // has this card and it's not an error.
     return;
   }
-  if (getControllingPlayer(props.ToActor) && !props.EvenIfTaken) {
+  if (getControllingPlayer(getProps().ToActor) && !getProps().EvenIfTaken) {
     log("Not transferring; target actor already taken.");
     return;
   }
   send(sourceActor, "AssignPlayer", { playerId: null });
-  send(props.ToActor, "AssignPlayer", { playerId: playerId });
+  send(getProps().ToActor, "AssignPlayer", { playerId: playerId });
 }
 
 export function getCardStatus() {
   return {
-    description: `Transfer player from <color=yellow>${getCardTargetActorDescription('FromActor')}</color> to <color=green>${getDisplayName(props.ToActor)}</color>.`
+    description: `Transfer player from <color=yellow>${getCardTargetActorDescription('FromActor')}</color> to <color=green>${getDisplayName(getProps().ToActor)}</color>.`
   }
 }

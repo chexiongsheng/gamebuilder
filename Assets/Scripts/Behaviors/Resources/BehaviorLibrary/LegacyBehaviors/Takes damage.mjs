@@ -35,7 +35,7 @@
  * @param {HandlerApi} api
  */
 export function OnResetGame(api) {
-  api.memory.health = api.props.StartingHealth;
+  api.memory.health = api.getProps().StartingHealth;
 }
 
 /**
@@ -43,11 +43,11 @@ export function OnResetGame(api) {
  */
 export function OnTick(api) {
   if (api.memory.health === undefined) {
-    api.memory.health = api.props.StartingHealth;
+    api.memory.health = api.getProps().StartingHealth;
   }
 
-  api.memory.StartingHealth = api.props.StartingHealth;
-  api.memory.team = api.props.Team || 0;
+  api.memory.StartingHealth = api.getProps().StartingHealth;
+  api.memory.team = api.getProps().Team || 0;
 }
 
 /**
@@ -60,7 +60,7 @@ export async function OnHitByDamager(api) {
   const properties = api.props;
 
   if (memory.health > 0) {
-    memory.health = Math.min(api.props.StartingHealth, Math.max(0, memory.health - api.message.amount));
+    memory.health = Math.min(api.getProps().StartingHealth, Math.max(0, memory.health - api.message.amount));
     log(`new health ${memory.health}`);
 
     assert(memory.health !== undefined);
@@ -83,7 +83,7 @@ export async function OnHitByDamager(api) {
       api.sendSelfMessage('Died', { causer: api.message.damager });
       api.sendMessageToUnity('Died');
 
-      if (api.props.BroadcastDeath) {
+      if (api.getProps().BroadcastDeath) {
         api.sendMessageToAll('BroadcastDeath', { name: api.name });
       }
 
@@ -92,7 +92,7 @@ export async function OnHitByDamager(api) {
       assert(memory.health !== undefined);
       await api.sleep(secondsToRespawn);
 
-      if (api.props.DestroyCloneOnDie && isClone()) {
+      if (api.getProps().DestroyCloneOnDie && isClone()) {
         api.destroySelf();
       }
       else {

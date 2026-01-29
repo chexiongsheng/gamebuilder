@@ -35,15 +35,15 @@ export const PROPS = [
  */
 export function onAction() {
   setLight(
-    props.Range || 10,
-    props.ColorMode === "OVERRIDE" ? props.ColorOverride || new Color(1, 1, 1) : null,
-    vec3(props.OffsetX, props.OffsetY, props.OffsetZ));
+    getProps().Range || 10,
+    getProps().ColorMode === "OVERRIDE" ? getProps().ColorOverride || new Color(1, 1, 1) : null,
+    vec3(getProps().OffsetX, getProps().OffsetY, getProps().OffsetZ));
 }
 
 export function getCardStatus() {
-  const color = props.ColorMode === 'USE_TINT' ? '<color=white>same as tint</color>' :
-    (`<color=${colorToHex(props.ColorOverride)}>${colorToHex(props.ColorOverride)}</color>`);
+  const color = getProps().ColorMode === 'USE_TINT' ? '<color=white>same as tint</color>' :
+    (`<color=${colorToHex(getProps().ColorOverride)}>${colorToHex(getProps().ColorOverride)}</color>`);
   return {
-    description: `Turn lights on with range <color=yellow>${props.Range.toFixed(1)}</color> and color: ${color}`
+    description: `Turn lights on with range <color=yellow>${getProps().Range.toFixed(1)}</color> and color: ${color}`
   }
 }

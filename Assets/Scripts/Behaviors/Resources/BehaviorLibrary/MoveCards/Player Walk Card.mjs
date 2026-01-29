@@ -25,12 +25,12 @@ export function onActiveTick() {
     return;
   }
   const velocity = getWorldThrottle();
-  velocity.multiplyScalar(isSprinting() ? props.SprintSpeed : props.Speed);
+  velocity.multiplyScalar(isSprinting() ? getProps().SprintSpeed : getProps().Speed);
   moveGlobal(velocity);
 }
 
 export function getCardStatus() {
   return {
-    description: `(Player) Move based on WASD, speed <color=green>${props.Speed.toFixed(1)}</color>, sprint <color=green>${props.SprintSpeed.toFixed(1)}</color>.`
+    description: `(Player) Move based on WASD, speed <color=green>${getProps().Speed.toFixed(1)}</color>, sprint <color=green>${getProps().SprintSpeed.toFixed(1)}</color>.`
   }
 }

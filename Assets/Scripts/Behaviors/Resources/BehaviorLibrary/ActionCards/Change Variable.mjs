@@ -45,26 +45,26 @@ export function onAction(actionMessage) {
     return;
   }
   const msg = {
-    op: props.Operation,
-    name: props.VarName,
-    value: props.Value,
-    clamp: props.Clamp
+    op: getProps().Operation,
+    name: getProps().VarName,
+    value: getProps().Value,
+    clamp: getProps().Clamp
   };
-  if (props.Clamp) {
-    msg.clampMin = props.ClampMin;
-    msg.clampMax = props.ClampMax;
+  if (getProps().Clamp) {
+    msg.clampMin = getProps().ClampMin;
+    msg.clampMax = getProps().ClampMax;
   }
   send(target, "ChangeVar", msg);
 }
 
 export function getCardStatus() {
-  const name = `variable <color=green>${props.VarName}</color>`;
-  const val = `<color=orange>${props.Value}</color>`;
-  const op = `<color=yellow>${props.Operation}</color>`;
+  const name = `variable <color=green>${getProps().VarName}</color>`;
+  const val = `<color=orange>${getProps().Value}</color>`;
+  const op = `<color=yellow>${getProps().Operation}</color>`;
   const phrase =
-    props.Operation === 'SET' ? `${op} ${name} to ${val}` :
-      props.Operation === 'ADD' ? `${op} ${val} to ${name}` :
-        props.Operation === 'SUBTRACT' ? `${op} ${val} from ${name}` :
+    getProps().Operation === 'SET' ? `${op} ${name} to ${val}` :
+      getProps().Operation === 'ADD' ? `${op} ${val} to ${name}` :
+        getProps().Operation === 'SUBTRACT' ? `${op} ${val} from ${name}` :
           `${op} ${name} by ${val}`;
   return { description: phrase };
 }

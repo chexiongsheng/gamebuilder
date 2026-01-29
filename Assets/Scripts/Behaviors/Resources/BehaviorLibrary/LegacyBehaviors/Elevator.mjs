@@ -39,12 +39,12 @@ export function OnResetGame(api) {
  */
 export function OnTick(api) {
   const me = api.getActor();
-  const maxHeight = me.getSpawnPosition().y + api.props.height;
+  const maxHeight = me.getSpawnPosition().y + api.getProps().height;
   const minHeight = me.getSpawnPosition().y;
 
   const p = me.getPosition();
   if (api.memory.state == 'goUp') {
-    p.y += api.dt * api.props.speed;
+    p.y += api.dt * api.getProps().speed;
     if (p.y > maxHeight) {
       p.y = maxHeight;
       api.memory.state = 'still';
@@ -52,7 +52,7 @@ export function OnTick(api) {
     me.setPosition(p);
   }
   else if (api.memory.state == 'goDown') {
-    p.y -= api.dt * api.props.speed;
+    p.y -= api.dt * api.getProps().speed;
     if (p.y < minHeight) {
       p.y = minHeight;
       api.memory.state = 'still';

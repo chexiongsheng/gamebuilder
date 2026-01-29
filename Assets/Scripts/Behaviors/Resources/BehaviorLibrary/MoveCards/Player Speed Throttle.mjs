@@ -33,15 +33,15 @@ export function onActiveTick() {
   const throttle = getThrottle().z;
 
   let decel = 0;
-  if (getCard().speed > 0) decel = -props.Slowdown;
-  else if (getCard().speed < 0) decel = props.Slowdown;
+  if (getCard().speed > 0) decel = -getProps().Slowdown;
+  else if (getCard().speed < 0) decel = getProps().Slowdown;
 
-  const totalAccel = (throttle * props.Accel + decel) * deltaTime();
+  const totalAccel = (throttle * getProps().Accel + decel) * deltaTime();
 
   if (getCard().goingForward) {
-    getCard().speed = Math.max(0, Math.min(props.MaxSpeed, getCard().speed + totalAccel));
+    getCard().speed = Math.max(0, Math.min(getProps().MaxSpeed, getCard().speed + totalAccel));
   } else {
-    getCard().speed = Math.min(0, Math.max(-props.MaxSpeed, getCard().speed + totalAccel));
+    getCard().speed = Math.min(0, Math.max(-getProps().MaxSpeed, getCard().speed + totalAccel));
   }
 
   if (getCard().speed == 0 && throttle != 0) changeDirectionCheck();
@@ -63,7 +63,7 @@ function changeDirectionCheck() {
 
   if (wantTransition) {
     getCard().transitionTimer += deltaTime();
-    if (getCard().transitionTimer >= props.StopTime) {
+    if (getCard().transitionTimer >= getProps().StopTime) {
       getCard().transitionTimer = 0;
       getCard().goingForward = !getCard().goingForward;
     }

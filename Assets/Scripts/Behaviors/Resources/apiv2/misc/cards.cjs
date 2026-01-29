@@ -37,8 +37,8 @@
  *
  * export function getCardStatus() {
  *   return {
- *     title: 'Move (' + props.Speed + ')';
- *     description: 'Moves with a speed of <color=yellow>' + props.Speed;
+ *     title: 'Move (' + getProps().Speed + ')';
+ *     description: 'Moves with a speed of <color=yellow>' + getProps().Speed;
  *   }
  * }
  *
@@ -76,7 +76,7 @@
  * ];
  *
  * export function getCardErrorMessage() {
- *   if (props.interval < 1) {
+ *   if (getProps().interval < 1) {
  *     return "Interval can't be < 1!";
  *   }
  * }

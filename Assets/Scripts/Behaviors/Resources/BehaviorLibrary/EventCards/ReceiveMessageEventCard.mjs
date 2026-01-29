@@ -54,6 +54,6 @@ export function onResetGame() {
 
 export function getCardStatus() {
   return {
-    description: `When I receive the message <color=yellow>${props.Message}</color>.`
+    description: `When I receive the message <color=yellow>${getProps().Message}</color>.`
   }
 }

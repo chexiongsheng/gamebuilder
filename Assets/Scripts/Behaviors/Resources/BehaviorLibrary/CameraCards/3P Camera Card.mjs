@@ -40,7 +40,7 @@ export function onCameraTick(msg) {
 
   // Change yaw/pitch in response to user input.
   getCard().yaw += getLookAxes(target).x;
-  getCard().pitch = clamp(props.IsPitchLocked ? degToRad(props.LockedPitch) : getCard().pitch + getLookAxes(target).y,
+  getCard().pitch = clamp(getProps().IsPitchLocked ? degToRad(getProps().LockedPitch) : getCard().pitch + getLookAxes(target).y,
     degToRad(-80), degToRad(80));
   setYawPitchRoll(getCard().yaw, -getCard().pitch, 0);
 
@@ -49,12 +49,12 @@ export function onCameraTick(msg) {
     cursorActive: false,
     aimOrigin: getPos(),
     aimDir: getForward(),
-    fov: props.FieldOfView || 60,
+    fov: getProps().FieldOfView || 60,
   });
 }
 
 function computeCameraPos(target) {
-  const headPos = selfToWorldPos(vec3(props.HeadOffsetX, props.HeadOffsetY, props.HeadOffsetZ), target);
+  const headPos = selfToWorldPos(vec3(getProps().HeadOffsetX, getProps().HeadOffsetY, getProps().HeadOffsetZ), target);
 
   // Figure out what radius to use for the sphere cast. When the player
   // is looking up, we use a bigger radius to prevent the camera from
@@ -63,8 +63,8 @@ function computeCameraPos(target) {
     SPHERE_CAST_RADIUS_NORMAL;
 
   // Find the ideal camera position.
-  const idealCamPos = vec3add(vec3add(headPos, getRight(props.CamOffsetHoriz)),
-    getBackward(props.CamDistance));
+  const idealCamPos = vec3add(vec3add(headPos, getRight(getProps().CamOffsetHoriz)),
+    getBackward(getProps().CamDistance));
 
   // If from that position I can see the player's head directly
   // with no terrain in the way, that's a good position for the camera.
@@ -86,29 +86,29 @@ function computeCameraPos(target) {
   // then raycast back to see how far we can go with the camera in each
   // direction.
   let pos = headPos;
-  if (Math.abs(props.CamOffsetHoriz) > 0.01) {
-    const sign = props.CamOffsetHoriz > 0 ? 1 : -1;
+  if (Math.abs(getProps().CamOffsetHoriz) > 0.01) {
+    const sign = getProps().CamOffsetHoriz > 0 ? 1 : -1;
     hit = castAdvanced(
       headPos,
       getRight(sign),
-      Math.abs(props.CamOffsetHoriz),
+      Math.abs(getProps().CamOffsetHoriz),
       sphereCastRadius, CastMode.CLOSEST,
       /* includeActors */ false,
       /* includeSelf */ false,
       /* includeTerrain */ true);
-    const allowedDist = hit ? hit.distance - 0.1 : props.CamOffsetHoriz;
+    const allowedDist = hit ? hit.distance - 0.1 : getProps().CamOffsetHoriz;
     pos = vec3add(pos, getRight(sign * allowedDist));
   }
   hit = castAdvanced(
     pos,
     getBackward(),
-    props.CamDistance,
+    getProps().CamDistance,
     sphereCastRadius,
     CastMode.CLOSEST,
     /* includeActors */ false,
     /* includeSelf */ false,
     /* includeTerrain */ true);
-  const allowedDist = hit ? hit.distance - 0.1 : props.CamDistance;
+  const allowedDist = hit ? hit.distance - 0.1 : getProps().CamDistance;
   pos = vec3add(pos, getBackward(allowedDist));
   return pos;
 }

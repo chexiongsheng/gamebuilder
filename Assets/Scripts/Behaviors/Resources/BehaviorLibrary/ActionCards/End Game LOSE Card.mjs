@@ -40,8 +40,8 @@ export function onAction(actionMessage) {
   }
   getCard().gameEnd = { how: "gameover", endTime: getTime() };
   sendToAll("GameEnd", { gameEnd: getCard().gameEnd });
-  if (props.LoseSound) {
-    playSound(props.LoseSound);
+  if (getProps().LoseSound) {
+    playSound(getProps().LoseSound);
   }
   sendToSelfDelayed(DELAY_TO_RESET, "TimeToReset");
 }

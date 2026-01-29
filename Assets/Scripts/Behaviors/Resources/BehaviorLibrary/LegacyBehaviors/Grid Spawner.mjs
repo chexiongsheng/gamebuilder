@@ -35,14 +35,14 @@
  * @param {HandlerApi} api
  */
 export function OnResetGame(api) {
-  const S = api.props.spacing;
+  const S = api.getProps().spacing;
   const origin = api.position;
   const spawnPos = new THREE.Vector3();
-  for (var x = 0; x < api.props.cols; x++) {
-    for (var y = 0; y < api.props.rows; y++) {
+  for (var x = 0; x < api.getProps().cols; x++) {
+    for (var y = 0; y < api.getProps().rows; y++) {
       spawnPos.set(x * S, 0, y * S);
       spawnPos.add(origin);
-      api.clone(api.props.proto, spawnPos, ID_QUAT);
+      api.clone(api.getProps().proto, spawnPos, ID_QUAT);
     }
   }
 }

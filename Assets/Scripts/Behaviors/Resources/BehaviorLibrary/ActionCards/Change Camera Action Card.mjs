@@ -44,11 +44,11 @@ export function onAction(actionMessage) {
   if (getCard().waitingToRevert) return;
 
   const playerActor = getCardTargetActor("Target", actionMessage);
-  const oldCamera = changeCamera(playerActor, props.NewCamera);
+  const oldCamera = changeCamera(playerActor, getProps().NewCamera);
 
-  if (props.Temporary) {
+  if (getProps().Temporary) {
     getCard().waitingToRevert = true;
-    sendToSelfDelayed(props.Duration, "RevertCamera", {
+    sendToSelfDelayed(getProps().Duration, "RevertCamera", {
       playerActor: playerActor,
       oldCamera: oldCamera
     });
@@ -81,17 +81,17 @@ function changeCamera(playerActor, newCamera) {
 }
 
 export function getCardErrorMessage() {
-  if (!exists(props.NewCamera)) {
+  if (!exists(getProps().NewCamera)) {
     return "* Error: NewCamera field must be set";
   }
-  if (props.Target === 'SELF' && !isPlayerControllable()) {
+  if (getProps().Target === 'SELF' && !isPlayerControllable()) {
     return "* Error: this actor is not a player";
   }
 }
 
 export function getCardStatus() {
-  const dur = props.Temporary ? ` for <color=orange>${props.Duration.toFixed(1)}s</color>` : '';
+  const dur = getProps().Temporary ? ` for <color=orange>${getProps().Duration.toFixed(1)}s</color>` : '';
   return {
-    description: `Change camera of <color=yellow>${getCardTargetActorDescription('Target')}</color> to <color=green>${getDisplayName(props.NewCamera)}</color>${dur}`
+    description: `Change camera of <color=yellow>${getCardTargetActorDescription('Target')}</color> to <color=green>${getDisplayName(getProps().NewCamera)}</color>${dur}`
   }
 }

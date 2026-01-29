@@ -43,19 +43,19 @@ export function getCardErrorMessage() {
 export function onTick() {
   if (!getCard().shake) return;
   const t = getTime() - getCard().shake.startTime;
-  if (t > props.Duration) {
+  if (t > getProps().Duration) {
     stopShaking();
     return;
   }
   // Decay factor starts at 1 and linearly decreases to 0 as the effect progresses.
-  const decay = interp(0, 1, props.Duration, 0, t);
+  const decay = interp(0, 1, getProps().Duration, 0, t);
 
   const randomX = -0.5 + Math.random() * 2;
   const randomY = -0.5 + Math.random() * 2;
 
   // Request that offset.
-  requestCameraOffset(vec3(randomX * props.Amplitude * decay,
-    randomY * props.Amplitude * decay, 0), getCard().shake.actor);
+  requestCameraOffset(vec3(randomX * getProps().Amplitude * decay,
+    randomY * getProps().Amplitude * decay, 0), getCard().shake.actor);
 }
 
 function stopShaking() {

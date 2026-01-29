@@ -45,7 +45,7 @@ export const PROPS = [
 ]
 
 export function onInit() {
-  getMem().health = props.StartingHealth;
+  getMem().health = getProps().StartingHealth;
   // Same as reviving.
   onRevive();
   updateVars();
@@ -54,8 +54,8 @@ export function onInit() {
 function updateVars() {
   // Publish these vars for the benefit of other cards/actors:
   setVar("isDead", !!getMem().isDead);
-  setVar("health", getMem().health || props.StartingHealth);
-  setVar("startingHealth", props.StartingHealth);
+  setVar("health", getMem().health || getProps().StartingHealth);
+  setVar("startingHealth", getProps().StartingHealth);
 }
 
 export function onTick() {
@@ -102,7 +102,7 @@ export function onDamage(damageMessage) {
   // event.actor is the "event causer", so we set it to the causer of the damage.
   let event = { actor: damageMessage.causer || myself() };
 
-  getMem().health = clamp(getMem().health - amount, 0, props.StartingHealth);
+  getMem().health = clamp(getMem().health - amount, 0, getProps().StartingHealth);
   // Did we die?
   checkDeath(event);
   // Call any on-damage actions that were requested, if this in fact damage (amount > 0)
@@ -112,7 +112,7 @@ export function onDamage(damageMessage) {
     legacyApi().sendMessageToUnity("Damaged");
   }
   // Don't take damage for a while
-  // TEMP cooldown(props.DamageCooldown);
+  // TEMP cooldown(getProps().DamageCooldown);
   cooldown(0.5);
 }
 
@@ -122,12 +122,12 @@ export function onDamage(damageMessage) {
  */
 export function onRevive() {
   const wasDead = getMem().isDead;
-  getMem().health = props.StartingHealth;
+  getMem().health = getProps().StartingHealth;
   getMem().isDead = false;
   if (wasDead) {
     legacyApi().sendMessageToUnity("Respawned");
   }
-  if (props.hideWhileDying) {
+  if (getProps().hideWhileDying) {
     show();
   }
   getTemp().reviveTime = getTime();
@@ -148,7 +148,7 @@ function checkDeath(event) {
   getMem().isDead = true;
   // Do the engine-provided death effect.
   legacyApi().sendMessageToUnity("Died");
-  if (props.hideWhileDying) {
+  if (getProps().hideWhileDying) {
     hide();
   }
   // Note that we don't, by default, do anything special on death --
@@ -156,7 +156,7 @@ function checkDeath(event) {
 
   // Give a bit of a delay so the animations can play for proper
   // dramatic effect...
-  const deathDelay = props.overrideDeathDelay ? props.deathDelay : (isPlayerControllable() ? 3 : 0);
+  const deathDelay = getProps().overrideDeathDelay ? getProps().deathDelay : (isPlayerControllable() ? 3 : 0);
   getCard().death = {
     stage: 1,
     time: getTime() + deathDelay,
@@ -195,5 +195,5 @@ function maybeRunDeathActions() {
 }
 
 export function getDescription() {
-  return `${getDisplayName()} will start with ${props.StartingHealth} HP`;
+  return `${getDisplayName()} will start with ${getProps().StartingHealth} HP`;
 }

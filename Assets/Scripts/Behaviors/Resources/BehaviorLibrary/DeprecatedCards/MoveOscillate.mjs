@@ -37,24 +37,24 @@ export function onResetGame() {
 
 export function onActiveTick() {
   // update clock for sine wave
-  const freq = props.Speed * 0.1;
+  const freq = getProps().Speed * 0.1;
   getMem().sineParam = (getMem().sineParam || 0) + (2 * Math.PI * freq * deltaTime());
   if (getMem().sineParam > Math.PI * 2) {
     getMem().sineParam -= Math.PI * 2;
   }
 
   // get the new oscillator value
-  const amp = props.Distance / 2;
+  const amp = getProps().Distance / 2;
   const oscValue = Math.sin(getMem().sineParam) * amp;
 
   //find the direction of the oscillation
-  let dir = vec3(props.DirectionX, props.DirectionY, props.DirectionZ);
-  if (!props.UseGlobalCoordinates) {
+  let dir = vec3(getProps().DirectionX, getProps().DirectionY, getProps().DirectionZ);
+  if (!getProps().UseGlobalCoordinates) {
     dir = getLocalVec3(dir);
   }
 
   //move relative or move around the spawn position
-  if (props.AbsolutePosition) {
+  if (getProps().AbsolutePosition) {
     dir.normalize().multiplyScalar(oscValue);
     setPos(dir.add(getSpawnPos()))
   } else {

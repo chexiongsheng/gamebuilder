@@ -76,7 +76,7 @@ export function onInit() {
 
 function getDesiredPlayerNumber() {
   // For backward compat (we changed the prop type from number to enum).
-  return +(props.PlayerNumber || 0);
+  return +(getProps().PlayerNumber || 0);
 }
 
 export function onTick() {
@@ -95,7 +95,7 @@ export function onTick() {
     // If there is a getCard().assignedPlayer, that takes precedence over everything.
     setVar("playerAutoAssignAvailable", false);
     setControllingPlayer(getCard().assignedPlayer); // might be null to mean "nobody"
-  } else if (props.AutoAssign) {
+  } else if (getProps().AutoAssign) {
     setVar("playerAutoAssignAvailable", true);
     maybeAutoAssign();
   } else {
@@ -105,7 +105,7 @@ export function onTick() {
     const playerId = desiredPlayerNumber > 0 ? getPlayerByNumber(desiredPlayerNumber) : null;
     setControllingPlayer(playerId);
   }
-  if (props.AutoColor) {
+  if (getProps().AutoColor) {
     updateColor();
   }
   drawControlsLock();

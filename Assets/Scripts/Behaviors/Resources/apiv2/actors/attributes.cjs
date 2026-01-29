@@ -124,11 +124,11 @@ const setAttrib = setVar;
  * // Imagine this is a script that's part of an NPC whose job it is
  * // to heal the player when their hitpoints go below 3.
  * export function onTick() {
- *   const playerHp = getVar(props.player, "hp") || 0;
+ *   const playerHp = getVar(getProps().player, "hp") || 0;
  *   if (playerHp < 3) {
  *     log("Oh no, the player is low on hitpoints");
  *     // ...some logic here to heal the player, for example:
- *     send(props.player, "Heal", 10);
+ *     send(getProps().player, "Heal", 10);
  *     // Only do this at most once every 5 seconds.
  *     cooldown(5);
  *   }

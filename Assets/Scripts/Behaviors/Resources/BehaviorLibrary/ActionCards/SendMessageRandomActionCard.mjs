@@ -28,17 +28,17 @@ export function getCardStatus() {
   if (errorMessage) {
     return { errorMessage: errorMessage };
   }
-  const list = props.Messages.map((message, i) => `${message} [${props.Probabilities[i]}%]`).join(', ');
+  const list = getProps().Messages.map((message, i) => `${message} [${getProps().Probabilities[i]}%]`).join(', ');
   return {
     description: `Sends random message (<color=green>${list}</color>) to <color=yellow>${getCardTargetActorDescription('Target')}`
   }
 }
 
 function getError() {
-  if (props.Messages.length != props.Probabilities.length) {
+  if (getProps().Messages.length != getProps().Probabilities.length) {
     return "Error: Number of messages is not equal to number of probabilities";
   }
-  const sum = props.Probabilities.reduce((sum, probability) => probability + sum, 0);
+  const sum = getProps().Probabilities.reduce((sum, probability) => probability + sum, 0);
   if (sum !== 100) return "Error: Probabilities don't add up to 100";
   return null;
 }
@@ -54,8 +54,8 @@ export function onAction(actionMessage) {
   const messageName = getMessageToSend();
   if (!messageName) return;
 
-  if (props.Delay > 0) {
-    sendDelayed(props.Delay, target, messageName);
+  if (getProps().Delay > 0) {
+    sendDelayed(getProps().Delay, target, messageName);
   } else {
     send(target, messageName);
   }
@@ -64,9 +64,9 @@ export function onAction(actionMessage) {
 function getMessageToSend() {
   // roll is in [0, 99]
   let roll = Math.floor(Math.random() * 100);
-  for (let i = 0; i < props.Probabilities.length; i++) {
-    roll -= props.Probabilities[i];
-    if (roll < 0) return props.Messages[i];
+  for (let i = 0; i < getProps().Probabilities.length; i++) {
+    roll -= getProps().Probabilities[i];
+    if (roll < 0) return getProps().Messages[i];
   }
   // If the probabilities add up to 100, we should never get here.
   return null;

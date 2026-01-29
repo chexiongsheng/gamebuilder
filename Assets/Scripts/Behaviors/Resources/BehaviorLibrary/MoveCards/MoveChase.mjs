@@ -29,15 +29,15 @@ export const PROPS = [
 ];
 
 export function onActiveTick() {
-  const target = getClosestActor(getActorsInGroup(props.Targets, props.Range));
+  const target = getClosestActor(getActorsInGroup(getProps().Targets, getProps().Range));
   if (exists(target)) {
     lookAt(target, true);
-    moveToward(target, props.Speed, props.FollowDistance);
+    moveToward(target, getProps().Speed, getProps().FollowDistance);
   }
 }
 
 export function getCardStatus() {
   return {
-    description: `Chase <color=yellow>${getActorGroupDescription(props.Targets)}</color> with speed <color=green>${props.Speed.toFixed(1)}`
+    description: `Chase <color=yellow>${getActorGroupDescription(getProps().Targets)}</color> with speed <color=green>${getProps().Speed.toFixed(1)}`
   }
 }

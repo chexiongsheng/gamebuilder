@@ -37,14 +37,14 @@ export function onControl() {
   const throttle = getThrottle();
 
   if (throttle.z > 0) {
-    getCard().speed += deltaTime() * props.Accel * (getCard().reverse ? -1 : 1);
+    getCard().speed += deltaTime() * getProps().Accel * (getCard().reverse ? -1 : 1);
   } else {
-    const brakeAccel = throttle.z < -0.1 ? props.BrakeAccel : COAST_ACC;
+    const brakeAccel = throttle.z < -0.1 ? getProps().BrakeAccel : COAST_ACC;
     getCard().speed = getCard().speed > 0 ?
       Math.max(0, getCard().speed - brakeAccel * deltaTime()) :
       Math.min(0, getCard().speed + brakeAccel * deltaTime());
   }
-  getCard().speed = Math.min(Math.max(getCard().speed, -props.MaxSpeed), props.MaxSpeed);
+  getCard().speed = Math.min(Math.max(getCard().speed, -getProps().MaxSpeed), getProps().MaxSpeed);
   moveGlobal(getForward(getCard().speed));
 
   turn(throttle.x * TURN_SENSIVITY * deltaTime() * getCard().speed);

@@ -25,11 +25,11 @@ export const PROPS = [
 
 export function onInit() {
   delete getCard().spline;
-  if (exists(props.InitialDestination)) {
+  if (exists(getProps().InitialDestination)) {
     onSetDestination({
-      pos: getPos(props.InitialDestination),
-      forward: getForward(1, props.InitialDestination),
-      speed: props.InitialSpeed
+      pos: getPos(getProps().InitialDestination),
+      forward: getForward(1, getProps().InitialDestination),
+      speed: getProps().InitialSpeed
     });
   }
 }
@@ -88,7 +88,7 @@ function recomputeSpline(goalPos, goalForward, speed) {
   }
   const startPos = getPos();
   const startForward = getForward();
-  const smoothFactor = clamp(props.SmoothFactor, 2, 200);
+  const smoothFactor = clamp(getProps().SmoothFactor, 2, 200);
   getCard().spline = {
     goalPos: goalPos,
     goalForward: goalForward,

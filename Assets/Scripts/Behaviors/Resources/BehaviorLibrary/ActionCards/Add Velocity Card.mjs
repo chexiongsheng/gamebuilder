@@ -32,14 +32,14 @@ export function onAction(actionMessage) {
   if (!target) {
     return;
   }
-  let vel = vec3(props.VelX, props.VelY, props.VelZ);
-  vel = props.RelativeTo === "MYSELF" ? selfToWorldDir(vel) :
-    props.RelativeTo === "TARGET" ? selfToWorldDir(vel, target) : vel;
+  let vel = vec3(getProps().VelX, getProps().VelY, getProps().VelZ);
+  vel = getProps().RelativeTo === "MYSELF" ? selfToWorldDir(vel) :
+    getProps().RelativeTo === "TARGET" ? selfToWorldDir(vel, target) : vel;
   push(target, vel);
 }
 
 export function getCardStatus() {
   return {
-    description: `Push <color=yellow>${getCardTargetActorDescription('CardTargetActor')}</color> with velocity <color=green>${vec3toString(vec3(props.VelX, props.VelY, props.VelZ), 1)}</color> relative to <color=orange>${props.RelativeTo.toLowerCase()}`
+    description: `Push <color=yellow>${getCardTargetActorDescription('CardTargetActor')}</color> with velocity <color=green>${vec3toString(vec3(getProps().VelX, getProps().VelY, getProps().VelZ), 1)}</color> relative to <color=orange>${getProps().RelativeTo.toLowerCase()}`
   }
 }

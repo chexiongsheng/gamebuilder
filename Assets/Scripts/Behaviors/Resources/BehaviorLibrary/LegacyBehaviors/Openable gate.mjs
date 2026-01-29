@@ -41,7 +41,7 @@ export function OnResetGame(api) {
  * @param {HandlerApi} api
  */
 export function OnTouchEnter(api) {
-  if (api.props.IsLocked) {
+  if (api.getProps().IsLocked) {
     return;
   }
 
@@ -57,9 +57,9 @@ export function OnTick(api) {
   if (api.memory.opening) {
     const p0 = api.spawnPosition;
     const p = api.position;
-    if (p.distanceTo(p0) < api.props.OpenDistance) {
-      const ySign = api.props.OpenDown ? -1 : 1;
-      const yVel = ySign * api.props.OpenSpeed;
+    if (p.distanceTo(p0) < api.getProps().OpenDistance) {
+      const ySign = api.getProps().OpenDown ? -1 : 1;
+      const yVel = ySign * api.getProps().OpenSpeed;
       p.y += api.dt * yVel;
       api.position = p;
     }
@@ -70,7 +70,7 @@ export function OnTick(api) {
  * @param {HandlerApi} api
  */
 export function OnTryUnlock(api) {
-  if (api.message.lockNumber == api.props.LockNumber) {
+  if (api.message.lockNumber == api.getProps().LockNumber) {
     api.memory.opening = true;
   }
 }

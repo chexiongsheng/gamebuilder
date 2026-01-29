@@ -36,7 +36,7 @@ export function onTick() {
     const toTarget = getPos(actor).sub(getPos());
     const dist = toTarget.length();
 
-    if (dist > props.VisibleRange) {
+    if (dist > getProps().VisibleRange) {
       continue;
     }
 

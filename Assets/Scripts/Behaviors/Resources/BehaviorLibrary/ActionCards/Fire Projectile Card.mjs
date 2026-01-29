@@ -53,7 +53,7 @@ export const PROPS = [
  */
 export function onAction(actionMessage) {
   // Calculate the position where we should spawn the projectile.
-  const spawnPos = selfToWorldPos(vec3(props.OffsetX, props.OffsetY, props.OffsetZ));
+  const spawnPos = selfToWorldPos(vec3(getProps().OffsetX, getProps().OffsetY, getProps().OffsetZ));
 
   // Calculate the rotation of the projectile.
   const rot = computeShootRotation();
@@ -63,31 +63,31 @@ export function onAction(actionMessage) {
   shootDir.applyQuaternion(rot);
 
   // Spawn the projectile.
-  const proj = clone(props.Projectile, spawnPos, rot);
+  const proj = clone(getProps().Projectile, spawnPos, rot);
 
   // Set ourselves as the projectile's owner (for scoring).
   setVarPlease(proj, "owner", myself());
 
   // Push the projectile along our aim or forward direction.
-  push(proj, vec3scale(shootDir, props.Velocity));
+  push(proj, vec3scale(shootDir, getProps().Velocity));
 
   // Play sound.
-  if (props.Sound) {
-    playSound(props.Sound);
+  if (getProps().Sound) {
+    playSound(getProps().Sound);
   }
 }
 
 function computeShootRotation() {
-  const baseShootDir = (isPlayerControllable() && props.ShootDir === "CAMERA_AIM") ?
+  const baseShootDir = (isPlayerControllable() && getProps().ShootDir === "CAMERA_AIM") ?
     vec3normalized(getAimDirection()) : getForward();
   const mat = new THREE.Matrix4().lookAt(baseShootDir, vec3zero(), vec3(0, 1, 0));
   const rot = new Quaternion();
   rot.setFromRotationMatrix(mat);
 
-  if (!props.HasRotationOffset) return rot;
+  if (!getProps().HasRotationOffset) return rot;
 
   const euler = new THREE.Euler(
-    degToRad(props.OffsetRotX), degToRad(props.OffsetRotY), degToRad(props.OffsetRotZ), 'YXZ');
+    degToRad(getProps().OffsetRotX), degToRad(getProps().OffsetRotY), degToRad(getProps().OffsetRotZ), 'YXZ');
   const quat = new Quaternion();
   quat.setFromEuler(euler);
   rot.multiply(quat);
@@ -100,6 +100,6 @@ export function onGetActionDescription() {
 
 export function getCardStatus() {
   return {
-    description: `Fire projectile <color=white>${getDisplayName(props.Projectile)}</color> with velocity <color=yellow>${props.Velocity.toFixed(1)}</color>`
+    description: `Fire projectile <color=white>${getDisplayName(getProps().Projectile)}</color> with velocity <color=yellow>${getProps().Velocity.toFixed(1)}</color>`
   }
 }

@@ -22,5 +22,5 @@ export const PROPS = [
 ]
 
 export function onDrawScreen() {
-  uiText(props.X, props.Y, props.Text, colorFromHex(props.ColorHex) || UiColor.WHITE);
+  uiText(getProps().X, getProps().Y, getProps().Text, colorFromHex(getProps().ColorHex) || UiColor.WHITE);
 }

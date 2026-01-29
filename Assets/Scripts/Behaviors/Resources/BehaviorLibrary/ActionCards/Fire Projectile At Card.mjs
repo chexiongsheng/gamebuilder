@@ -44,10 +44,10 @@ export function onAction(actionMessage) {
   }
 
   // Face the target.
-  lookAt(target, !props.CanAimUpDown);
+  lookAt(target, !getProps().CanAimUpDown);
 
   // Calculate the position where we should spawn the projectile.
-  const spawnPos = selfToWorldPos(vec3(props.OffsetX, props.OffsetY, props.OffsetZ));
+  const spawnPos = selfToWorldPos(vec3(getProps().OffsetX, getProps().OffsetY, getProps().OffsetZ));
 
   // Get a vector to the target.
   const toTarget = vec3sub(getBoundsCenter(target), getPos());
@@ -64,22 +64,22 @@ export function onAction(actionMessage) {
   rot.setFromUnitVectors(vec3z(), shootDir);
 
   // Spawn the projectile.
-  const proj = clone(props.Projectile, spawnPos, rot);
+  const proj = clone(getProps().Projectile, spawnPos, rot);
 
   // Set ourselves as the projectile's owner (for scoring).
   setVarPlease(proj, "owner", myself());
 
   // Push the projectile along our aim or forward direction.
-  push(proj, vec3scale(shootDir, props.Velocity));
+  push(proj, vec3scale(shootDir, getProps().Velocity));
 
   // Play sound.
-  if (props.Sound) {
-    playSound(props.Sound);
+  if (getProps().Sound) {
+    playSound(getProps().Sound);
   }
 }
 
 export function getCardErrorMessage() {
-  if (props.Target === "MYSELF") {
+  if (getProps().Target === "MYSELF") {
     return "Target can't be set to MYSELF.";
   }
 }
@@ -90,6 +90,6 @@ export function onGetActionDescription() {
 
 export function getCardStatus() {
   return {
-    description: `Fire projectile <color=white>${getDisplayName(props.Projectile)}</color> at <color=green>${getCardTargetActorDescription('Target')}</color> with velocity <color=yellow>${props.Velocity.toFixed(1)}</color>`
+    description: `Fire projectile <color=white>${getDisplayName(getProps().Projectile)}</color> at <color=green>${getCardTargetActorDescription('Target')}</color> with velocity <color=yellow>${getProps().Velocity.toFixed(1)}</color>`
   }
 }

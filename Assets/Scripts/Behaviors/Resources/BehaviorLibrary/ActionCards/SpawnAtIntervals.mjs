@@ -31,21 +31,21 @@ export const PROPS = [
 export function onAction() {
   if (getCard().state) {
     // Just add more copies to spawn.
-    getCard().state.clonesLeft += props.Total;
+    getCard().state.clonesLeft += getProps().Total;
     return;
   }
   getCard().state = {
-    clonesLeft: +props.Total,
+    clonesLeft: +getProps().Total,
     nextCloneTime: getTime(),
   };
 }
 
 export function onTick() {
-  if (!exists(props.ActorToClone)) return;
+  if (!exists(getProps().ActorToClone)) return;
   if (!getCard().state) return;
   if (getTime() > getCard().state.nextCloneTime) {
-    getCard().state.nextCloneTime = getTime() + props.Interval;
-    clone(props.ActorToClone, getPos(), getRot());
+    getCard().state.nextCloneTime = getTime() + getProps().Interval;
+    clone(getProps().ActorToClone, getPos(), getRot());
     if (--getCard().state.clonesLeft <= 0) {
       delete getCard().state;
     }
@@ -57,13 +57,13 @@ export function onResetGame() {
 }
 
 export function getCardErrorMessage() {
-  if (!exists(props.ActorToClone)) {
+  if (!exists(getProps().ActorToClone)) {
     return "NEED ACTOR TO CLONE. Click card to fix.";
   }
 }
 
 export function getCardStatus() {
   return {
-    description: `Spawn <color=green>${props.Total}</color> copies of <color=white>${getDisplayName(props.ActorToClone)}</color> with interval of <color=yellow>${props.Interval.toFixed(1)}s</color> between spawns`
+    description: `Spawn <color=green>${getProps().Total}</color> copies of <color=white>${getDisplayName(getProps().ActorToClone)}</color> with interval of <color=yellow>${getProps().Interval.toFixed(1)}s</color> between spawns`
   }
 }

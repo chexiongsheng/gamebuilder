@@ -29,8 +29,8 @@ export const PROPS = [
 export function onAction(actionMessage) {
   // Let's try to figure out what player scored the point.
   let scoringActor = null;
-  if (props.OverrideWhoScores) {
-    scoringActor = props.WhoScores;
+  if (getProps().OverrideWhoScores) {
+    scoringActor = getProps().WhoScores;
   } else {
     scoringActor = actionMessage.event.actor || myself();
   }
@@ -52,15 +52,15 @@ export function onAction(actionMessage) {
 
   // Broadcast a PointScored message to everyone. If there is a scoreboard actor in the scene,
   // it will get this message and do the right thing.
-  sendToAll("PointScored", { player: player, amount: props.Points || 1 });
+  sendToAll("PointScored", { player: player, amount: getProps().Points || 1 });
 }
 
 export function getCardStatus() {
   let forWho = '';
-  if (props.OverrideWhoScores) {
-    forWho = ` for <color=orange>${getDisplayName(props.WhoScores)}`;
+  if (getProps().OverrideWhoScores) {
+    forWho = ` for <color=orange>${getDisplayName(getProps().WhoScores)}`;
   }
   return {
-    description: `Score <color=green>${props.Points} point${props.Points === 1 ? '' : 's'}</color>${forWho}`
+    description: `Score <color=green>${getProps().Points} point${getProps().Points === 1 ? '' : 's'}</color>${forWho}`
   }
 }

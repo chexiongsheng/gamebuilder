@@ -34,7 +34,7 @@ export function onInit() {
 }
 
 function getCurrentTarget() {
-  return getCard().overrideTarget === undefined ? props.target : getCard().overrideTarget;
+  return getCard().overrideTarget === undefined ? getProps().target : getCard().overrideTarget;
 }
 
 export function onTick() {
@@ -54,8 +54,8 @@ export function onTick() {
     return;
   }
 
-  if (props.cameraDeck.length > 0) {
-    callDeck(props.cameraDeck, "CameraTick", { target: target });
+  if (getProps().cameraDeck.length > 0) {
+    callDeck(getProps().cameraDeck, "CameraTick", { target: target });
   } else {
     // Revert to default camera properties.
     setCameraSettings({
@@ -77,7 +77,7 @@ export function onCardRemoved() {
   delete getMem().isCameraActor;
 }
 
-// This message requests us to set a new target, overriding props.target.
+// This message requests us to set a new target, overriding getProps().target.
 // It's effectively until game reset.
 //   msg.target: The new target. null is a valid value here, and means
 //   assign null as target.

@@ -26,5 +26,5 @@ export const PROPS = [
  * @param {GActionMessage} actionMessage 
  */
 export function onAction(actionMessage) {
-  send(myself(), "Damage", { causer: myself(), amount: props.Amount });
+  send(myself(), "Damage", { causer: myself(), amount: getProps().Amount });
 }

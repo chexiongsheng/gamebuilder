@@ -37,7 +37,7 @@ export function onAction(actionMessage) {
     send(target, 'SetDestination', {
       pos: getPos(destActor),
       forward: getForward(1, destActor),
-      speed: props.Speed
+      speed: getProps().Speed
     });
   }
 }

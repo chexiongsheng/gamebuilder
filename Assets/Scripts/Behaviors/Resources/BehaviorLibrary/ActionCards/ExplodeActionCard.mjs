@@ -32,29 +32,29 @@ export const PROPS = [
  */
 export function onAction(actionMessage) {
   const boundsCenter = getBoundsCenter();
-  const worldOffset = selfToWorldDir(vec3(props.CenterOffsetX, props.CenterOffsetY, props.CenterOffsetZ));
+  const worldOffset = selfToWorldDir(vec3(getProps().CenterOffsetX, getProps().CenterOffsetY, getProps().CenterOffsetZ));
   const center = vec3add(boundsCenter, worldOffset);
-  const actorsToPush = overlapSphere(center, props.BlastRadius);
+  const actorsToPush = overlapSphere(center, getProps().BlastRadius);
   for (const actor of actorsToPush) {
     const thisPos = getPos(actor);
     let toActor = vec3sub(thisPos, center);
     let distToActor = vec3length(toActor);
     toActor = distToActor < 0.01 ? vec3y(1) : vec3normalized(toActor);
-    let blastSpeed = interp(0, props.BlastSpeed, props.BlastRadius, 0, distToActor);
-    push(actor, vec3add(vec3scale(toActor, blastSpeed), vec3y(props.UpBlastSpeed)), false);
+    let blastSpeed = interp(0, getProps().BlastSpeed, getProps().BlastRadius, 0, distToActor);
+    push(actor, vec3add(vec3scale(toActor, blastSpeed), vec3y(getProps().UpBlastSpeed)), false);
     // Tell the actor to take damage. If it has a Health Panel, it will handle this.
-    if (props.Damage > 0) {
-      send(actor, "Damage", { causer: myself(), amount: props.Damage });
+    if (getProps().Damage > 0) {
+      send(actor, "Damage", { causer: myself(), amount: getProps().Damage });
     }
   }
-  spawnParticleEffect(props.Particles || "builtin:ExplosionParticles", center);
-  if (props.Sound) {
-    playSound(props.Sound);
+  spawnParticleEffect(getProps().Particles || "builtin:ExplosionParticles", center);
+  if (getProps().Sound) {
+    playSound(getProps().Sound);
   }
 }
 
 export function getCardStatus() {
   return {
-    description: `Explode with blast radius <color=yellow>${props.BlastRadius.toFixed(1)}</color> and speed <color=green>${props.BlastSpeed.toFixed(1)}</color>`
+    description: `Explode with blast radius <color=yellow>${getProps().BlastRadius.toFixed(1)}</color> and speed <color=green>${getProps().BlastSpeed.toFixed(1)}</color>`
   }
 }

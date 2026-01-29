@@ -19,7 +19,7 @@ export const PROPS = [
 ]
 
 export function onAction() {
-  if (props.Sound) {
-    playSound(props.Sound);
+  if (getProps().Sound) {
+    playSound(getProps().Sound);
   }
 }

@@ -50,7 +50,7 @@ export function onAction() {
     // The 50 is additional gravity we put on the player character to prevent
     // floatiness.
     const gravity = 9.81 + 50;
-    const jumpSpeed = Math.sqrt((props.JumpHeight || 1.8) * 2 * gravity);
+    const jumpSpeed = Math.sqrt((getProps().JumpHeight || 1.8) * 2 * gravity);
     addVelocity(vec3(0, jumpSpeed, 0));
     legacyApi().sendMessageToUnity("Jumped");
   }
@@ -58,6 +58,6 @@ export function onAction() {
 
 export function getCardStatus() {
   return {
-    description: `Jump with height <color=green>${props.JumpHeight.toFixed(1)}</color>`
+    description: `Jump with height <color=green>${getProps().JumpHeight.toFixed(1)}</color>`
   }
 }

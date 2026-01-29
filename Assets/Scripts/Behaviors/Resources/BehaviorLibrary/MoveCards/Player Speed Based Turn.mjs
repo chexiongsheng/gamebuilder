@@ -29,13 +29,13 @@ export const PROPS = [
 ];
 
 export function onActiveTick() {
-  if (props.Control === "KEYS") {
+  if (getProps().Control === "KEYS") {
     const speed = vec3length(getVelocity()) * (getThrottle().z >= 0 ? 1 : -1);
     // Throttle-based.
-    turn(getThrottle().x * props.KeySensivity * deltaTime() * speed);
+    turn(getThrottle().x * getProps().KeySensivity * deltaTime() * speed);
   } else {
     // Aim-based.
-    lookTowardDir(getAimDirection(), degToRad(props.TurnSpeed));
+    lookTowardDir(getAimDirection(), degToRad(getProps().TurnSpeed));
   }
 }
 

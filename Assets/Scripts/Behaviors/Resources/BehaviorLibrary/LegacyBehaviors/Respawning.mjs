@@ -35,10 +35,10 @@
  * @param {HandlerApi} api
  */
 function respawn(api) {
-  const dest = api.props.SpawnPoint;
+  const dest = api.getProps().SpawnPoint;
   if (dest && api.doesActorExist(dest)) {
     const pos = api.getOtherPosition(dest);
-    pos.y += api.props.YOffset;
+    pos.y += api.getProps().YOffset;
     api.position = pos;
     api.rotation = api.getOtherRotation(dest);
   }

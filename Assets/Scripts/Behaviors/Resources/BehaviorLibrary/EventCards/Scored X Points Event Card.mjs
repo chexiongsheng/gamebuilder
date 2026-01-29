@@ -29,9 +29,9 @@ export const PROPS = [
 
 export function onPointScored(msg) {
   let targetPlayer = null;
-  if (props.WhoScores === "ANOTHER_ACTOR") {
-    if (exists(props.ScoringActor)) {
-      targetPlayer = getControllingPlayer(props.ScoringActor);
+  if (getProps().WhoScores === "ANOTHER_ACTOR") {
+    if (exists(getProps().ScoringActor)) {
+      targetPlayer = getControllingPlayer(getProps().ScoringActor);
     }
   } else {
     targetPlayer = getControllingPlayer(myself());
@@ -46,20 +46,20 @@ export function onInit() {
 }
 
 export function onCheck() {
-  if (getCard().points >= props.NeededScore) {
+  if (getCard().points >= getProps().NeededScore) {
     return {};
   }
 }
 
 export function getCardErrorMessage() {
-  if (!isPlayerControllable() && props.WhoScores === "MYSELF") {
+  if (!isPlayerControllable() && getProps().WhoScores === "MYSELF") {
     return "Error: Actor is not a player.";
   }
 }
 
 export function getCardStatus() {
-  const scorerScores = props.WhoScores === 'ANOTHER_ACTOR' ? `<color=yellow>${getDisplayName(props.ScoringActor)}</color> scores` : '<color=yellow>I</color> score';
+  const scorerScores = getProps().WhoScores === 'ANOTHER_ACTOR' ? `<color=yellow>${getDisplayName(getProps().ScoringActor)}</color> scores` : '<color=yellow>I</color> score';
   return {
-    description: `When ${scorerScores} a total of <color=green>${props.NeededScore}</color> points`
+    description: `When ${scorerScores} a total of <color=green>${getProps().NeededScore}</color> points`
   }
 }

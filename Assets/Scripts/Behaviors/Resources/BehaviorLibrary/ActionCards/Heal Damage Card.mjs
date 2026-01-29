@@ -27,12 +27,12 @@ export const PROPS = [
 export function onAction(actionMessage) {
   const target = getCardTargetActor("Target", actionMessage);
   if (target) {
-    send(target, "Damage", { causer: myself(), amount: -props.Amount });
+    send(target, "Damage", { causer: myself(), amount: -getProps().Amount });
   }
 }
 
 export function getCardStatus() {
   return {
-    description: `Heal <color=green>${props.Amount}</color> points of damage on <color=yellow>${getCardTargetActorDescription('Target')}</color>`
+    description: `Heal <color=green>${getProps().Amount}</color> points of damage on <color=yellow>${getCardTargetActorDescription('Target')}</color>`
   }
 }

@@ -184,7 +184,7 @@ function overlapSphere(center, radius, tag) {
  *   if (!checkBox(center, dim)) {
  *     // Area is free of actors/terrain, so it's safe to spawn something
  *     // there. This assumes the spawned actor fits in the 3x3x3 box.
- *     clone(props.prefab, vec3(0, 0, 0));
+ *     clone(getProps().prefab, vec3(0, 0, 0));
  *   }
  *
  *   // Don't trigger again for 5 seconds. IMPORTANT! Otherwise we'd

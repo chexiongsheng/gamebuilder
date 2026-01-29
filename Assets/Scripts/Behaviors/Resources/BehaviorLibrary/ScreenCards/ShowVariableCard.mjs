@@ -45,55 +45,55 @@ const SPACING_BETWEEN_LABEL_AND_VALUE = 5;
 
 export function getCardStatus() {
   return {
-    description: `Show variable <color=yellow>${props.VarName}</color> on screen at <color=green>(${props.X}, ${props.Y})`
+    description: `Show variable <color=yellow>${getProps().VarName}</color> on screen at <color=green>(${getProps().X}, ${getProps().Y})`
   }
 }
 
 export function onDrawScreen() {
   const boxWidth = calcWidth();
   const boxHeight = calcHeight();
-  if (props.HasBackground) {
-    uiRect(props.X, props.Y, boxWidth, boxHeight, props.BackgroundColor, { opacity: props.Opacity });
+  if (getProps().HasBackground) {
+    uiRect(getProps().X, getProps().Y, boxWidth, boxHeight, getProps().BackgroundColor, { opacity: getProps().Opacity });
   }
   drawAlignedText(
-    props.X + props.Padding,
-    props.Y + props.Padding,
-    boxWidth - 2 * props.Padding,
-    props.Label,
-    props.LabelColor,
-    props.LabelSize,
-    props.LabelAlign);
+    getProps().X + getProps().Padding,
+    getProps().Y + getProps().Padding,
+    boxWidth - 2 * getProps().Padding,
+    getProps().Label,
+    getProps().LabelColor,
+    getProps().LabelSize,
+    getProps().LabelAlign);
   drawAlignedText(
-    props.X + props.Padding,
-    props.Y + props.Padding + SPACING_BETWEEN_LABEL_AND_VALUE + uiGetTextHeight(props.Label, props.LabelSize),
-    boxWidth - 2 * props.Padding,
+    getProps().X + getProps().Padding,
+    getProps().Y + getProps().Padding + SPACING_BETWEEN_LABEL_AND_VALUE + uiGetTextHeight(getProps().Label, getProps().LabelSize),
+    boxWidth - 2 * getProps().Padding,
     getVarValue(),
-    props.ValueColor,
-    props.ValueSize,
-    props.ValueAlign);
+    getProps().ValueColor,
+    getProps().ValueSize,
+    getProps().ValueAlign);
 }
 
 function calcWidth() {
   const val = getVarValue();
-  if (props.AutoSize) {
-    return 2 * props.Padding + Math.max(uiGetTextWidth(props.Label, props.LabelSize), uiGetTextWidth(val, props.ValueSize));
+  if (getProps().AutoSize) {
+    return 2 * getProps().Padding + Math.max(uiGetTextWidth(getProps().Label, getProps().LabelSize), uiGetTextWidth(val, getProps().ValueSize));
   } else {
-    return props.Width;
+    return getProps().Width;
   }
 }
 
 function calcHeight() {
   const val = getVarValue();
-  if (props.AutoSize) {
-    return uiGetTextHeight(props.Label, props.LabelSize) + uiGetTextHeight(val, props.ValueSize) + SPACING_BETWEEN_LABEL_AND_VALUE + 2 * props.Padding;
+  if (getProps().AutoSize) {
+    return uiGetTextHeight(getProps().Label, getProps().LabelSize) + uiGetTextHeight(val, getProps().ValueSize) + SPACING_BETWEEN_LABEL_AND_VALUE + 2 * getProps().Padding;
   } else {
-    return props.Height;
+    return getProps().Height;
   }
 }
 
 function getVarValue() {
   const actor = getCardTargetActor('Target');
-  return exists(actor) ? ("" + getVar(props.VarName, actor)) : '?';
+  return exists(actor) ? ("" + getVar(getProps().VarName, actor)) : '?';
 }
 
 function drawAlignedText(x, y, width, text, color, textSize, align) {

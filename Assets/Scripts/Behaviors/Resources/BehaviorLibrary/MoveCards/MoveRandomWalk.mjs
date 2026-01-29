@@ -51,11 +51,11 @@ export function onActiveTick() {
       turnUpdate();
     }
   } else {
-    getCard().walkDist += props.Speed * deltaTime();
-    moveForward(props.Speed);
+    getCard().walkDist += getProps().Speed * deltaTime();
+    moveForward(getProps().Speed);
   }
 
-  if (props.LimitRange && props.MaxRange < getDistanceTo(getSpawnPos())) {
+  if (getProps().LimitRange && getProps().MaxRange < getDistanceTo(getSpawnPos())) {
     // Wandered too far! Time to go home.
     getCard().returningHome = true;
   }
@@ -63,19 +63,19 @@ export function onActiveTick() {
 
 function turnUpdate() {
   //if speed is 0, just snap to target turn, get new targets, and return
-  if (props.TurnSpeed == 0) {
+  if (getProps().TurnSpeed == 0) {
     turn(getCard().turnAmountTarget);
     newTargets();
     return;
   }
 
-  const turnDelta = degToRad(props.TurnSpeed * deltaTime())
+  const turnDelta = degToRad(getProps().TurnSpeed * deltaTime())
     * Math.sign(getCard().turnAmountTarget - getCard().turnAmount);
   getCard().turnAmount += turnDelta
   turn(turnDelta);
 
-  if (props.MoveWhileTurning) {
-    moveForward(props.Speed);
+  if (getProps().MoveWhileTurning) {
+    moveForward(getProps().Speed);
   }
 }
 
@@ -83,11 +83,11 @@ function turnUpdate() {
 function newTargets() {
   getCard().walkDist = 0;
   getCard().walkDistTarget = THREE.Math.randFloat(
-    props.MinDistBetweenTurns, props.MaxDistBetweenTurns)
+    getProps().MinDistBetweenTurns, getProps().MaxDistBetweenTurns)
 
   getCard().turnAmount = 0;
   let randomDegrees = THREE.Math.randFloat(
-    props.MinTurn, props.MaxTurn);
+    getProps().MinTurn, getProps().MaxTurn);
 
   //make it randomly be clockwise versus counterclockwise
   randomDegrees = randomDegrees * (Math.random() > .5 ? -1 : 1);
@@ -109,17 +109,17 @@ function returnHomeUpdate() {
   const forward = getForward();
   const toHome = vec3sub(getSpawnPos(), getPos());
   const angleToHomeDegrees = radToDeg(forward.angleTo(toHome));
-  lookToward(getSpawnPos(), props.TurnSpeed > 0 ? degToRad(props.TurnSpeed) : 20, true);
+  lookToward(getSpawnPos(), getProps().TurnSpeed > 0 ? degToRad(getProps().TurnSpeed) : 20, true);
   if (vec3dot(getForward(), toHome) > 0 && angleToHomeDegrees < 30) {
-    moveForward(props.Speed);
+    moveForward(getProps().Speed);
   }
-  if (getDistanceTo(getSpawnPos()) < props.MaxRange / 2) {
+  if (getDistanceTo(getSpawnPos()) < getProps().MaxRange / 2) {
     getCard().returningHome = false;
   }
 }
 
 export function getCardStatus() {
   return {
-    description: `Wanders around randomly with speed <color=green>${props.Speed.toFixed(1)}</color>`
+    description: `Wanders around randomly with speed <color=green>${getProps().Speed.toFixed(1)}</color>`
   }
 }

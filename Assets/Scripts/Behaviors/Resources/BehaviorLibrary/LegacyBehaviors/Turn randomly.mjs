@@ -37,14 +37,14 @@ export function OnTick(api) {
   if (api.isDead()) {
     return;
   }
-  const intMin = api.props.IntervalMin;
-  const intMax = api.props.IntervalMax;
+  const intMin = api.getProps().IntervalMin;
+  const intMax = api.getProps().IntervalMax;
   api.memory.timer = (api.memory.timer || 0) - api.dt;
   api.memory.turnDir = api.memory.turnDir || 1;
   if (api.memory.timer < 0) {
     api.memory.timer = intMin + Math.random() * (intMax - intMin);
     api.memory.turnDir = -api.memory.turnDir;
   }
-  api.move.turnRight(api.dt * api.memory.turnDir * api.props.TurnSpeed);
+  api.move.turnRight(api.dt * api.memory.turnDir * api.getProps().TurnSpeed);
 }
 

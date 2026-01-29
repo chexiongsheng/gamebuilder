@@ -42,15 +42,15 @@ export function OnTouchEnter(api) {
   }
 
   // Guard friendly fire.
-  const myTeam = api.props.Team || 0;
+  const myTeam = api.getProps().Team || 0;
   const theirTeam = api.getOtherMemory(api.message.other, "team");
   if (myTeam && theirTeam && myTeam == theirTeam) {
     return;
   }
 
-  api.sendMessage(api.message.other, 'HitByDamager', { damager: api.name, amount: api.props.DamagePoints });
+  api.sendMessage(api.message.other, 'HitByDamager', { damager: api.name, amount: api.getProps().DamagePoints });
 
-  if (api.props.DestroyOnContact && api.getActor().getWasClonedByScript()) {
+  if (api.getProps().DestroyOnContact && api.getActor().getWasClonedByScript()) {
     api.destroySelf();
   }
 }

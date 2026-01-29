@@ -20,7 +20,7 @@ export const PROPS = [
 
 /** @param {GActionMessage} actionMessage */
 export function onAction(actionMessage) {
-  getCard().resetTime = getTime() + props.Delay;
+  getCard().resetTime = getTime() + getProps().Delay;
 }
 
 export function onTick() {

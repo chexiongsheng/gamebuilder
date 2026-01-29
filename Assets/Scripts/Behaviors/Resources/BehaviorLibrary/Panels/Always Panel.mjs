@@ -30,6 +30,6 @@ export function onTick() {
   // Note: we pass 1 for action duration just because we have to pass something, but since this
   // is an "Always" panel the action deck will be continually active and the duration doesn't
   // matter as long as it's positive, I guess?
-  callActionDeck("actionDeck", { event: { actor: myself() } }, 1, props.MinInterval || 0.5);
+  callActionDeck("actionDeck", { event: { actor: myself() } }, 1, getProps().MinInterval || 0.5);
 }
 

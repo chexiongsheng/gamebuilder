@@ -40,9 +40,9 @@ export function OnTick(api) {
  * @param {HandlerApi} api
  */
 export function OnResetGame(api) {
-  if (!api.props.source) {
+  if (!api.getProps().source) {
     logError(`Spawner ${api.actor.displayName}: You need to set a source actor to clone from!`);
     return;
   }
-  const clone = api.clone(api.props.source, api.getActor().getPosition(), api.getActor().getRotation());
+  const clone = api.clone(api.getProps().source, api.getActor().getPosition(), api.getActor().getRotation());
 }

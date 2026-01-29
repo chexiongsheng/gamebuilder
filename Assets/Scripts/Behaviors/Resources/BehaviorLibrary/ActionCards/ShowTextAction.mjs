@@ -33,13 +33,13 @@ export function onResetGame() {
 }
 
 export function onAction(actionMessage) {
-  sendToSelfDelayed(props.StartDelay, "StartShowing");
+  sendToSelfDelayed(getProps().StartDelay, "StartShowing");
 }
 
 export function onStartShowing() {
   getCard().showing = true;
   getCard().showTime = getTime();
-  sendToSelfDelayed(props.Duration, "StopShowing");
+  sendToSelfDelayed(getProps().Duration, "StopShowing");
 }
 
 export function onStopShowing() {
@@ -48,24 +48,24 @@ export function onStopShowing() {
 
 export function onLocalTick() {
   if (!getCard().showing) return;
-  const width = uiGetTextWidth(props.Text);
-  const height = uiGetTextHeight(props.Text);
-  const bgWidth = props.FullScreen ? 1610 : width + 20;
-  const bgHeight = props.FullScreen ? 910 : height + 20;
-  uiRect(800 - bgWidth / 2, 450 - bgHeight / 2, bgWidth, bgHeight, props.Background);
-  uiText(800 - width / 2, 450 - height / 2, props.Text, props.TextColor);
+  const width = uiGetTextWidth(getProps().Text);
+  const height = uiGetTextHeight(getProps().Text);
+  const bgWidth = getProps().FullScreen ? 1610 : width + 20;
+  const bgHeight = getProps().FullScreen ? 910 : height + 20;
+  uiRect(800 - bgWidth / 2, 450 - bgHeight / 2, bgWidth, bgHeight, getProps().Background);
+  uiText(800 - width / 2, 450 - height / 2, getProps().Text, getProps().TextColor);
 }
 
 export function getCardStatus() {
-  let msg = props.Text;
+  let msg = getProps().Text;
   if (msg.length > 20) {
     msg = msg.substr(0, 20) + '[...]'
   }
   let delay = '';
-  if (props.StartDelay > 0) {
-    delay = ` after delay of <color=orange>${props.StartDelay.toFixed(1)}s</color>`;
+  if (getProps().StartDelay > 0) {
+    delay = ` after delay of <color=orange>${getProps().StartDelay.toFixed(1)}s</color>`;
   }
   return {
-    description: `Show text '<color=yellow>${msg}</color>' for <color=green>${props.Duration.toFixed(1)}s</color>${delay}`
+    description: `Show text '<color=yellow>${msg}</color>' for <color=green>${getProps().Duration.toFixed(1)}s</color>${delay}`
   }
 }

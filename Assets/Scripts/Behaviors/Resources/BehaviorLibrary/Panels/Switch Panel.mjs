@@ -47,7 +47,7 @@ export function onTick() {
 }
 
 function checkSwitch() {
-  if (getCard().state > 0 && !props.SwitchBack) return;
+  if (getCard().state > 0 && !getProps().SwitchBack) return;
   const event = callEventDeck("SwitchDeck", true);
   if (event) {
     getCard().state = 1 - getCard().state;

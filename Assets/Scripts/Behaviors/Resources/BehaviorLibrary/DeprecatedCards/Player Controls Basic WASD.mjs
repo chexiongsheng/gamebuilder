@@ -29,7 +29,7 @@ export function onControl() {
   }
   getMem().jumpCooldown = Math.max(0, (getMem().jumpCooldown || 0) - deltaTime());
   const velocity = getWorldThrottle();
-  velocity.multiplyScalar(isSprinting() ? props.SprintSpeed : props.Speed);
+  velocity.multiplyScalar(isSprinting() ? getProps().SprintSpeed : getProps().Speed);
   moveGlobal(velocity);
   lookDir(getAimDirection(), true);
 }
@@ -43,7 +43,7 @@ export function onJump() {
     // The 50 is additional gravity we put on the player character to prevent
     // floatiness.
     const gravity = 9.81 + 50;
-    const jumpSpeed = Math.sqrt((props.JumpHeight || 1.8) * 2 * gravity);
+    const jumpSpeed = Math.sqrt((getProps().JumpHeight || 1.8) * 2 * gravity);
     addVelocity(vec3(0, jumpSpeed, 0));
     legacyApi().sendMessageToUnity("Jumped");
 

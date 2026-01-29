@@ -43,7 +43,7 @@
  *
  * export function onCollision() {
  *   // Shoot a rotten egg.
- *   clone(props.egg, getPointBehind(2));
+ *   clone(getProps().egg, getPointBehind(2));
  *   // Disable onCollision messages for 30 seconds. Otherwise if the player
  *   // hits the treasure chest 30 times, we'd have 30 dragons.
  *   cooldown(30);
@@ -299,7 +299,7 @@ function getMessageSender() {
  * export function onTick() {
  *   const even = Math.floor(getTime()) % 2 == 0;
  *   // Send the Ping message to the appropriate deck of cards depending on the timer:
- *   callDeck(even ? props.DeckA : props.DeckB, "Ping");
+ *   callDeck(even ? getProps().DeckA : getProps().DeckB, "Ping");
  * }
  */
 function callDeck(deckOrCard, messageName, arg) {
@@ -367,7 +367,7 @@ function callDeck(deckOrCard, messageName, arg) {
  * // key to listen to, and a deck of action cards to run when the
  * // key is pressed.
  * export function onKeyDown(msg) {
- *   if (msg.keyName === props.KeyToListenFor) {
+ *   if (msg.keyName === getProps().KeyToListenFor) {
  *     // Call the action deck. This handles all the bookkeeping of
  *     // sending the right messages at the right times to the deck.
  *     callActionDeck("ActionsToRun");

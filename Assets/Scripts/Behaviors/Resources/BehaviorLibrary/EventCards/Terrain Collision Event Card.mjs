@@ -31,7 +31,7 @@ export function onInit() {
 }
 
 export function onTerrainCollision(msg) {
-  if (props.AnyBlock || msg.blockStyle == +props.BlockStyle) {
+  if (getProps().AnyBlock || msg.blockStyle == +getProps().BlockStyle) {
     getCard().triggered = true;
     cooldown(0.05);
   }
@@ -52,9 +52,9 @@ function getBlockStyleEnumValues() {
 }
 
 function getCurBlockStyleName() {
-  if (props.AnyBlock) return 'ANY';
+  if (getProps().AnyBlock) return 'ANY';
   for (const key in BlockStyle) {
-    if (BlockStyle[key] == props.BlockStyle) return key;
+    if (BlockStyle[key] == getProps().BlockStyle) return key;
   }
   return '???';
 }

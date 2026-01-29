@@ -28,8 +28,8 @@ export const PROPS = [
 ];
 
 export function onLocalTick() {
-  const whose = props.whoseScreen || "THIS_PLAYER";
+  const whose = getProps().whoseScreen || "THIS_PLAYER";
   if (whose === "EVERYBODY" || getControllingPlayer() === getLocalPlayer()) {
-    callDeck(props.screenDeck, "DrawScreen");
+    callDeck(getProps().screenDeck, "DrawScreen");
   }
 }

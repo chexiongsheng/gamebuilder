@@ -32,7 +32,7 @@
  */
 export async function OnTick(api) {
   if (api.getActor().getWasClonedByScript()) {
-    await api.sleep(api.props.Seconds);
+    await api.sleep(api.getProps().Seconds);
     api.destroySelf();
   }
 }

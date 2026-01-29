@@ -33,7 +33,7 @@ export function onResetGame() {
 
 export function onTick() {
   // If Repeat is undefined, it's a legacy file. Repeat defaults to true.
-  if (props.Repeat === undefined) props.Repeat = true;
+  if (getProps().Repeat === undefined) getProps().Repeat = true;
   // If we haven't schedule our first event yet, do that now.
   if (!getCard().hasFired && !getCard().nextFireTime) {
     // First time, schedule.
@@ -42,7 +42,7 @@ export function onTick() {
   // If the repeat property is on and we don't have a schedule fire time,
   // schedule it now.  This handles the case where the user checks "Repeat"
   // after the timer has already fired.
-  if (props.Repeat && !getCard().nextFireTime) {
+  if (getProps().Repeat && !getCard().nextFireTime) {
     scheduleNextFireTime();
   }
   if (getTime() > getCard().nextFireTime) {
@@ -54,7 +54,7 @@ export function onTick() {
 
 function scheduleNextFireTime() {
   // Handle legacy properties: TimerAmountMin, TimerAmountMax:
-  let interval = ((props.TimerAmountMin !== undefined && props.TimerAmountMax !== undefined) ?
-    (props.TimerAmountMin + props.TimerAmountMax) / 2 : props.Interval) || 3;
+  let interval = ((getProps().TimerAmountMin !== undefined && getProps().TimerAmountMax !== undefined) ?
+    (getProps().TimerAmountMin + getProps().TimerAmountMax) / 2 : getProps().Interval) || 3;
   getCard().nextFireTime = getTime() + interval;
 }

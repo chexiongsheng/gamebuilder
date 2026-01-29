@@ -50,8 +50,8 @@ export function OnTick(api) {
   me.setIgnoreVerticalDesiredVelocity(true);
 
   const speed = me.getIsSprinting() ?
-    valueOr(api.props.SprintSpeed, 12) :
-    valueOr(api.props.Speed, 8);
+    valueOr(api.getProps().SprintSpeed, 12) :
+    valueOr(api.getProps().Speed, 8);
 
   const velocity = me.getWorldSpaceThrottle();
   velocity.multiplyScalar(speed);
@@ -67,7 +67,7 @@ export function OnJumpTriggered(api) {
   }
   if (api.getActor().getIsGrounded() && api.memory.jumpCooldown == 0) {
     api.memory.jumpCooldown = 0.1;
-    var jumpSpeed = valueOr(api.props.JumpSpeed, 15);
+    var jumpSpeed = valueOr(api.getProps().JumpSpeed, 15);
     kick(api.actor.name, new THREE.Vector3(0, jumpSpeed, 0));
   }
 }

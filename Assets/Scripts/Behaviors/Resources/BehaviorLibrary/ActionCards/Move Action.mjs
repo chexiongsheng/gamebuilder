@@ -23,15 +23,15 @@ export const PROPS = [
 
 /** @type {GActionMessage} actionMessage */
 export function onAction(actionMessage) {
-  if (props.Speed <= 0) return;
-  getCard().targetPos = selfToWorldPos(vec3(props.DistRight, props.DistUp, props.DistForward));
-  getCard().endTime = getTime() + 1 + getDistanceTo(getCard().targetPos) / props.Speed;
+  if (getProps().Speed <= 0) return;
+  getCard().targetPos = selfToWorldPos(vec3(getProps().DistRight, getProps().DistUp, getProps().DistForward));
+  getCard().endTime = getTime() + 1 + getDistanceTo(getCard().targetPos) / getProps().Speed;
 }
 
 export function onTick() {
   if (!getCard().targetPos) return;
   // Move towards target point, at given speed.
-  moveToward(getCard().targetPos, props.Speed);
+  moveToward(getCard().targetPos, getProps().Speed);
   // Stop trying to move after enough time has elapsed.
   if (getTime() > getCard().endTime) {
     resetCard();
@@ -50,11 +50,11 @@ export function onResetGame() {
 export function getCardStatus() {
   getTemp().dirList = getTemp().dirList || [];
   getTemp().dirList.length = 0;
-  getDirDescription(props.DistForward, "forward", "back", getTemp().dirList);
-  getDirDescription(props.DistUp, "up", "down", getTemp().dirList);
-  getDirDescription(props.DistRight, "right", "left", getTemp().dirList);
+  getDirDescription(getProps().DistForward, "forward", "back", getTemp().dirList);
+  getDirDescription(getProps().DistUp, "up", "down", getTemp().dirList);
+  getDirDescription(getProps().DistRight, "right", "left", getTemp().dirList);
   return {
-    description: `Moves (<color=green>${getTemp().dirList.join(', ')}</color>) with speed <color=yellow>${props.Speed.toFixed(1)}`
+    description: `Moves (<color=green>${getTemp().dirList.join(', ')}</color>) with speed <color=yellow>${getProps().Speed.toFixed(1)}`
   }
 }
 

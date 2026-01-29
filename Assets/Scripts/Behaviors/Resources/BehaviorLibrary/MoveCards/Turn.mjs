@@ -26,15 +26,15 @@ export function onResetGame() {
 }
 
 export function onAction() {
-  getCard().degreesLeft = props.Degrees;
+  getCard().degreesLeft = getProps().Degrees;
 }
 
 export function onTick() {
   if (getCard().degreesLeft) {
-    const degreesToTurn = min(getCard().degreesLeft, props.Speed * deltaTime());
+    const degreesToTurn = min(getCard().degreesLeft, getProps().Speed * deltaTime());
     getCard().degreesLeft -= degreesToTurn;
-    turn((props.Counterclockwise ? -1 : 1) * degToRad(degreesToTurn),
-      props.Axis === "X" ? vec3x() : props.Axis === "Z" ? vec3z() : vec3y());
+    turn((getProps().Counterclockwise ? -1 : 1) * degToRad(degreesToTurn),
+      getProps().Axis === "X" ? vec3x() : getProps().Axis === "Z" ? vec3z() : vec3y());
     if (getCard().degreesLeft < 0.01) {
       delete getCard().degreesLeft;
     }
@@ -43,7 +43,7 @@ export function onTick() {
 
 export function getCardStatus() {
   return {
-    description: `Turn <color=yellow>${props.Degrees} deg ${props.Counterclockwise ? 'counter' : ''}clockwise</color> ` +
-      `at speed <color=green>${props.Speed.toFixed(1)}</color> about the <color=orange>${props.Axis} axis</color>`
+    description: `Turn <color=yellow>${getProps().Degrees} deg ${getProps().Counterclockwise ? 'counter' : ''}clockwise</color> ` +
+      `at speed <color=green>${getProps().Speed.toFixed(1)}</color> about the <color=orange>${getProps().Axis} axis</color>`
   }
 }

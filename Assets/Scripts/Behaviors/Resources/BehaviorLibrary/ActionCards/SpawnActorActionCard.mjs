@@ -33,17 +33,17 @@ export const PROPS = [
  * @param {GActionMessage} actionMessage
  */
 export function onAction(actionMessage) {
-  if (!exists(props.ActorToClone)) {
+  if (!exists(getProps().ActorToClone)) {
     logError(`No ActorToClone set!`);
     return;
   }
-  const offset = vec3(props.XOffset, props.YOffset, props.ZOffset);
+  const offset = vec3(getProps().XOffset, getProps().YOffset, getProps().ZOffset);
   const p = getPos();
   p.add(offset);
 
-  if (props.RandomizePosition) {
+  if (getProps().RandomizePosition) {
     let angle = randBetween(0, 6.29);
-    const dist = randBetween(props.RandomDistMin, props.RandomDistMax);
+    const dist = randBetween(getProps().RandomDistMin, getProps().RandomDistMax);
 
     // Try to vary the angle a bit (best effort).
     if (getTemp().lastAngle) {
@@ -58,18 +58,18 @@ export function onAction(actionMessage) {
     p.z += dist * Math.cos(angle);
   }
 
-  clone(props.ActorToClone, p, getRot());
+  clone(getProps().ActorToClone, p, getRot());
   cooldown(0.1);
 }
 
 export function getCardErrorMessage() {
-  if (!exists(props.ActorToClone)) {
+  if (!exists(getProps().ActorToClone)) {
     return "NEED ACTOR TO CLONE. Click card to fix.";
   }
 }
 
 export function getCardStatus() {
   return {
-    description: `Spawn actor <color=white>${getDisplayName(props.ActorToClone)}</color>`
+    description: `Spawn actor <color=white>${getDisplayName(getProps().ActorToClone)}</color>`
   }
 }

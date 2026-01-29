@@ -30,9 +30,9 @@ export function onAction(actionMessage) {
   if (!target) {
     return;
   }
-  if (props.Delay > 0) {
-    sendDelayed(props.Delay, target, props.Message);
+  if (getProps().Delay > 0) {
+    sendDelayed(getProps().Delay, target, getProps().Message);
   } else {
-    send(target, props.Message);
+    send(target, getProps().Message);
   }
 }

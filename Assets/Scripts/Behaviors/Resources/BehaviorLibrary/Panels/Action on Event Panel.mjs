@@ -64,7 +64,7 @@ export const PROPS = [
 
 function getTriggerWhenProp() {
   // Backwards compat:
-  return props.triggerWhen || (props.onlyOnce ? 'ONCE_PER_GAME' : 'CONTINUOUS');
+  return getProps().triggerWhen || (getProps().onlyOnce ? 'ONCE_PER_GAME' : 'CONTINUOUS');
 }
 
 function processEvents(enabled) {
@@ -80,13 +80,13 @@ function processEvents(enabled) {
       getCard().triggered = true;
       // Activate the deck. There is an implicit default timeout to deactivate it.
       callActionDeck("actionDeck", { event: eventToDeliver },
-        props.ActionDuration === undefined ? 0.6 : props.ActionDuration,
-        props.MinInterval === undefined ? 0.5 : props.MinInterval);
-    } else if (props.advanced) {
+        getProps().ActionDuration === undefined ? 0.6 : getProps().ActionDuration,
+        getProps().MinInterval === undefined ? 0.5 : getProps().MinInterval);
+    } else if (getProps().advanced) {
       // Call the 'else' deck.
       callActionDeck("elseDeck", { event: {} },
-        props.ActionDuration === undefined ? 0.6 : props.ActionDuration,
-        props.MinInterval === undefined ? 0.5 : props.MinInterval);
+        getProps().ActionDuration === undefined ? 0.6 : getProps().ActionDuration,
+        getProps().MinInterval === undefined ? 0.5 : getProps().MinInterval);
     }
   } else {
     // Don't do anything. We have this here because we still need to call
@@ -100,7 +100,7 @@ export function onTick() {
 }
 
 export function onOffstageTick() {
-  processEvents(props.EnabledOffstage);
+  processEvents(getProps().EnabledOffstage);
 }
 
 export function onResetGame() {

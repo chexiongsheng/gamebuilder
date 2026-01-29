@@ -37,34 +37,34 @@ export function onActiveTick() {
   if (getTime() < getCard().restUntil) return;
   const targetPos = getCard().going ? getEndPos() : getCard().startPos;
   const distToTarget = getDistanceTo(targetPos);
-  const speed = interp(0, 0.25, 1, 1, distToTarget) * props.Speed;
+  const speed = interp(0, 0.25, 1, 1, distToTarget) * getProps().Speed;
   moveToward(targetPos, speed);
   if (distToTarget < 0.1) {
     // Close enough to target position. Rest a bit, then invert motion.
-    getCard().restUntil = getTime() + props.RestTime;
+    getCard().restUntil = getTime() + getProps().RestTime;
     getCard().going = !getCard().going;
   }
 }
 
 function getEndPos() {
   return vec3add(getSpawnPos(),
-    selfToWorldDir(vec3(props.DistRight, props.DistUp, props.DistForward)));
+    selfToWorldDir(vec3(getProps().DistRight, getProps().DistUp, getProps().DistForward)));
 }
 
 function resetMotion() {
   getCard().startPos = getSpawnPos();
   getCard().going = true;
-  getCard().restUntil = getTime() + props.RestTime;
+  getCard().restUntil = getTime() + getProps().RestTime;
 }
 
 export function getCardStatus() {
   getTemp().dirList = getTemp().dirList || [];
   getTemp().dirList.length = 0;
-  getDirDescription(props.DistForward, "forward", "back", getTemp().dirList);
-  getDirDescription(props.DistUp, "up", "down", getTemp().dirList);
-  getDirDescription(props.DistRight, "right", "left", getTemp().dirList);
+  getDirDescription(getProps().DistForward, "forward", "back", getTemp().dirList);
+  getDirDescription(getProps().DistUp, "up", "down", getTemp().dirList);
+  getDirDescription(getProps().DistRight, "right", "left", getTemp().dirList);
   return {
-    description: `Moves back and forth (<color=yellow>${getTemp().dirList.join(', ')}</color>) with speed <color=yellow>${props.Speed.toFixed(1)}</color>, rest time <color=yellow>${props.RestTime.toFixed(1)}</color>.`
+    description: `Moves back and forth (<color=yellow>${getTemp().dirList.join(', ')}</color>) with speed <color=yellow>${getProps().Speed.toFixed(1)}</color>, rest time <color=yellow>${getProps().RestTime.toFixed(1)}</color>.`
   }
 }
 

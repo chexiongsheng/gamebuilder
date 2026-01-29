@@ -20,7 +20,7 @@ export const PROPS = [
 
 /** @type {GActionMessage} actionMessage */
 export function onAction(actionMessage) {
-  if (props.AnimationName) {
-    playAnimation(props.AnimationName);
+  if (getProps().AnimationName) {
+    playAnimation(getProps().AnimationName);
   }
 }

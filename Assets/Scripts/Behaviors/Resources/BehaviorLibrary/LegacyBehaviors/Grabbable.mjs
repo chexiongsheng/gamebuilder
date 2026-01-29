@@ -79,7 +79,7 @@ export function OnWasGrabbed(api) {
   const grabber = api.getOtherActor(grabberName);
   me.setPosition(getGrabbedPosition(me, grabber));
 
-  if (api.props.FaceForward) {
+  if (api.getProps().FaceForward) {
     me.setRotation(grabber.getRotation());
   }
 }

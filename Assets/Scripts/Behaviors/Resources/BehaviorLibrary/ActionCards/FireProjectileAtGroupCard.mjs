@@ -34,20 +34,20 @@ export const PROPS = [
  */
 export function onAction(actionMessage) {
   // Figure out who we should target.
-  const target = getClosestActor(getActorsInGroup(props.Targets, props.Range));
+  const target = getClosestActor(getActorsInGroup(getProps().Targets, getProps().Range));
   if (!target) return;
   // Turn to face the target.
   lookAt(target, true);
   // Calculate the position where we should spawn the projectile.
-  const spawnPos = selfToWorldPos(vec3(0, props.OffsetY, props.OffsetZ));
-  const proj = clone(props.Projectile, spawnPos, getRot());
+  const spawnPos = selfToWorldPos(vec3(0, getProps().OffsetY, getProps().OffsetZ));
+  const proj = clone(getProps().Projectile, spawnPos, getRot());
   // Set ourselves as the projectile's owner (for scoring).
   setVarPlease(proj, "owner", myself());
   // Push the projectile along our forward direction.
-  push(proj, getForward(props.Velocity));
+  push(proj, getForward(getProps().Velocity));
   // Play sound.
-  if (props.Sound) {
-    playSound(props.Sound);
+  if (getProps().Sound) {
+    playSound(getProps().Sound);
   }
 }
 
@@ -57,6 +57,6 @@ export function onGetActionDescription() {
 
 export function getCardStatus() {
   return {
-    description: `Fire projectile <color=white>${getDisplayName(props.Projectile)}</color> at <color=green>${getActorGroupDescription(props.Targets)}</color> with velocity <color=yellow>${props.Velocity.toFixed(1)}</color>`
+    description: `Fire projectile <color=white>${getDisplayName(getProps().Projectile)}</color> at <color=green>${getActorGroupDescription(getProps().Targets)}</color> with velocity <color=yellow>${getProps().Velocity.toFixed(1)}</color>`
   }
 }

@@ -59,7 +59,7 @@ export function onAction(actionMessage) {
 }
 
 function getWinningPlayer(actionMessage) {
-  if (props.Everyone) return "@EVERYONE";
+  if (getProps().Everyone) return "@EVERYONE";
   let target = getCardTargetActor("Target", actionMessage);
   if (!target) {
     // If there is no actor target, then the only choice is myself.
@@ -84,11 +84,11 @@ function didIWin() {
 export function onGameEnd(msg) {
   getCard().gameEnd = deepCopy(msg.gameEnd);
   const won = didIWin();
-  if (won && props.WinSound) {
-    playSound(props.WinSound);
+  if (won && getProps().WinSound) {
+    playSound(getProps().WinSound);
   }
-  if (!won && props.LoseSound) {
-    playSound(props.LoseSound);
+  if (!won && getProps().LoseSound) {
+    playSound(getProps().LoseSound);
   }
 }
 

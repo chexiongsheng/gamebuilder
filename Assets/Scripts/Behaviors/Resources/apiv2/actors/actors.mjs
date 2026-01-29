@@ -96,7 +96,7 @@ function destroySelf() {
  * ]
  *
  * export function onTick() {
- *   if (!exists(props.target)) {
+ *   if (!exists(getProps().target)) {
  *     // User forgot to assign an actor to our "target" property,
  *     // or the assigned actor was deleted.
  *     log("Turret has no target set! Fix this in the Inspector!");
@@ -255,7 +255,7 @@ function goOnstage() {
  * // If I collide against any actors in the actorsOfInterest group,
  * // I set my color to green.
  * export function onCollision(msg) {
- *   if (isActorInGroup(msg.other, props.actorsOfInterest)) {
+ *   if (isActorInGroup(msg.other, getProps().actorsOfInterest)) {
  *     setTintHex("#00ff00");
  *   }
  * }

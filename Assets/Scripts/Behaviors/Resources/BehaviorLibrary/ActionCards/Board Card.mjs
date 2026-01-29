@@ -36,13 +36,13 @@ export function onAction(actionMessage) {
 }
 
 function findOutWhatToBoard() {
-  // props.MustBeAiming is new so old files don't have it (defaults to true):
-  const mustBeAiming = props.MustBeAiming === undefined ? true : props.MustBeAiming;
+  // getProps().MustBeAiming is new so old files don't have it (defaults to true):
+  const mustBeAiming = getProps().MustBeAiming === undefined ? true : getProps().MustBeAiming;
   if (mustBeAiming) {
     const target = getAimTarget();
     return canBoard(target) ? target : null;
   } else {
-    const actorsInRange = overlapSphere(getPos(), props.MaxDist);
+    const actorsInRange = overlapSphere(getPos(), getProps().MaxDist);
     let closest = null;
     for (const actor of actorsInRange) {
       if (!canBoard(actor)) continue;
@@ -53,8 +53,8 @@ function findOutWhatToBoard() {
 }
 
 function canBoard(actor) {
-  // props.MaxDist is the separation distance; This converts it to distance from center to center:
-  const maxDist = getBoundsRadiusOuter(actor) + getBoundsRadiusOuter() + props.MaxDist;
+  // getProps().MaxDist is the separation distance; This converts it to distance from center to center:
+  const maxDist = getBoundsRadiusOuter(actor) + getBoundsRadiusOuter() + getProps().MaxDist;
   // Actor needs to exist, needs to be boardable and needs to be close enough.
   return exists(actor) && getVar('boardable', actor) && getDistanceTo(actor) <= maxDist;
 }

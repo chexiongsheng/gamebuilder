@@ -94,7 +94,7 @@ function isClone(actor) {
  * ]
  *
  * export function onCollision() {
- *   const pos = vec3(props.spawnPosX, props.spawnPosY, props.spawnPosZ);
+ *   const pos = vec3(getProps().spawnPosX, getProps().spawnPosY, getProps().spawnPosZ);
  *   // Spawn the requested actor at the requested position.
  *   clone(actor, pos);
  *   // Don't do this again for 5 seconds.

@@ -23,7 +23,7 @@ export const PROPS = [
 ];
 
 export function onTick(api) {
-  const on = Math.floor(getTime() * 2 * props.Frequency) % 2 == 0;
+  const on = Math.floor(getTime() * 2 * getProps().Frequency) % 2 == 0;
   if (on) {
     setTint(1, 0.5, 0);
   }

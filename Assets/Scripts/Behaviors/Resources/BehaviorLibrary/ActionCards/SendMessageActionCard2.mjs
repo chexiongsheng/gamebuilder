@@ -34,22 +34,22 @@ export function onAction(actionMessage) {
     return;
   }
   const arg = {};
-  if (props.ForwardEventCauser && actionMessage.event && actionMessage.event.actor) {
+  if (getProps().ForwardEventCauser && actionMessage.event && actionMessage.event.actor) {
     arg.eventCauser = actionMessage.event.actor;
   }
-  if (props.Delay > 0) {
-    sendDelayed(props.Delay, target, props.Message, arg);
+  if (getProps().Delay > 0) {
+    sendDelayed(getProps().Delay, target, getProps().Message, arg);
   } else {
-    send(target, props.Message, arg);
+    send(target, getProps().Message, arg);
   }
 }
 
 export function getCardStatus() {
   let delay = '';
-  if (props.Delay > 0) {
-    delay = ` with delay <color=orange>${props.Delay.toFixed(1)}</color>`;
+  if (getProps().Delay > 0) {
+    delay = ` with delay <color=orange>${getProps().Delay.toFixed(1)}</color>`;
   }
   return {
-    description: `Send message <color=yellow>${props.Message}</color> to <color=green>${getCardTargetActorDescription('Target')}</color>${delay}`
+    description: `Send message <color=yellow>${getProps().Message}</color> to <color=green>${getCardTargetActorDescription('Target')}</color>${delay}`
   }
 }

@@ -20,11 +20,11 @@ export const PROPS = [
 ];
 
 export function onActiveTick() {
-  spin((props.Counterclockwise ? -1 : 1) * degToRad(props.Speed));
+  spin((getProps().Counterclockwise ? -1 : 1) * degToRad(getProps().Speed));
 }
 
 export function getCardStatus() {
   return {
-    description: `Spin <color=yellow>${props.Counterclockwise ? 'counter' : ''}clockwise</color> at <color=green>${props.Speed.toFixed(1)}</color> deg/sec.`
+    description: `Spin <color=yellow>${getProps().Counterclockwise ? 'counter' : ''}clockwise</color> at <color=green>${getProps().Speed.toFixed(1)}</color> deg/sec.`
   }
 }

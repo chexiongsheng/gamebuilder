@@ -26,21 +26,21 @@ export const PROPS = [
 ]
 
 export function onAction() {
-  if (props.ParticleEffect) {
+  if (getProps().ParticleEffect) {
     const euler = new THREE.Euler(
-      THREE.Math.degToRad(props.RotationX),
-      THREE.Math.degToRad(props.RotationY),
-      THREE.Math.degToRad(props.RotationZ));
+      THREE.Math.degToRad(getProps().RotationX),
+      THREE.Math.degToRad(getProps().RotationY),
+      THREE.Math.degToRad(getProps().RotationZ));
     const addRot = new Quaternion();
     addRot.setFromEuler(euler);
     const finalRot = getRot().multiply(addRot);
     const finalEuler = new THREE.Euler();
     finalEuler.setFromQuaternion(finalRot);
-    const spawnPos = selfToWorldPos(vec3(props.OffsetX, props.OffsetY, props.OffsetZ));
+    const spawnPos = selfToWorldPos(vec3(getProps().OffsetX, getProps().OffsetY, getProps().OffsetZ));
     spawnParticleEffect(
-      props.ParticleEffect,
+      getProps().ParticleEffect,
       spawnPos,
       finalEuler.toVector3(),
-      props.Scale);
+      getProps().Scale);
   }
 }

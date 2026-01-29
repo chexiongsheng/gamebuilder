@@ -22,7 +22,7 @@ export const PROPS = [
 ];
 
 export function onDrawScreen() {
-  getActorsInGroup(props.Who, props.Range).forEach(actor => {
+  getActorsInGroup(getProps().Who, getProps().Range).forEach(actor => {
     const { x, y, w, h } = getScreenRect(actor);
     const health = getAttrib("health", actor);
     const max = getAttrib("startingHealth", actor);

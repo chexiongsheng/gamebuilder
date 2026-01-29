@@ -291,7 +291,7 @@ function resetLocalRot() {
  *
  * export function onTick() { 
  *   // Always look at the target. Only change yaw.
- *   lookAt(props.target, true);
+ *   lookAt(getProps().target, true);
  * }
  */
 function lookAt(targetActorOrPoint, yawOnly = false) {

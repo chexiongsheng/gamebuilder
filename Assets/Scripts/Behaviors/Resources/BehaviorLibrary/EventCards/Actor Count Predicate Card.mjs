@@ -42,10 +42,10 @@ export const PROPS = [
 ];
 
 export function onCheck() {
-  const matches = getActorsInGroup(props.WithWhat, props.LimitRange ? props.Range : null, props.IncludeSelf);
+  const matches = getActorsInGroup(getProps().WithWhat, getProps().LimitRange ? getProps().Range : null, getProps().IncludeSelf);
   const curValue = matches ? matches.length : 0;
-  const compValue = +props.Value;
-  switch (props.Operator) {
+  const compValue = +getProps().Value;
+  switch (getProps().Operator) {
     case "==": return curValue === compValue;
     case "!=": return curValue !== compValue;
     case "<": return curValue < compValue;
@@ -53,13 +53,13 @@ export function onCheck() {
     case ">=": return curValue >= compValue;
     case "<=": return curValue <= compValue;
     default:
-      throw new Error("Invalid operator: " + props.Operator);
+      throw new Error("Invalid operator: " + getProps().Operator);
   }
 }
 
 export function getCardStatus() {
-  const range = props.LimitRange ? ` (range <color=orange>${props.Range.toFixed(1)}</color>)` : '';
+  const range = getProps().LimitRange ? ` (range <color=orange>${getProps().Range.toFixed(1)}</color>)` : '';
   return {
-    description: `When the # of <color=green>${getActorGroupDescription(props.WithWhat)}</color> is <color=yellow>${props.Operator} ${props.Value}</color>${range}`
+    description: `When the # of <color=green>${getActorGroupDescription(getProps().WithWhat)}</color> is <color=yellow>${getProps().Operator} ${getProps().Value}</color>${range}`
   }
 }

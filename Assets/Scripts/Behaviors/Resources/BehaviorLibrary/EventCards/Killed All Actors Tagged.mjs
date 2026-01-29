@@ -32,10 +32,10 @@ export function onCheck() {
 
 /** @param {GDeathMessage} deathMessage */
 export function onDeath(deathMessage) {
-  if (!isActorInGroup(deathMessage.actor, props.targets)) {
+  if (!isActorInGroup(deathMessage.actor, getProps().targets)) {
     return;
   }
-  for (let actor of getActorsInGroup(props.targets)) {
+  for (let actor of getActorsInGroup(getProps().targets)) {
     if (actor !== deathMessage.actor && isOnstage(actor)) {
       // Found at least one alive and onstage, so don't fire yet.
       return;
@@ -52,6 +52,6 @@ export function onResetGame() {
 
 export function getCardStatus() {
   return {
-    description: `When the last of <color=yellow>${getActorGroupDescription(props.targets)}</color> is killed.`
+    description: `When the last of <color=yellow>${getActorGroupDescription(getProps().targets)}</color> is killed.`
   }
 }

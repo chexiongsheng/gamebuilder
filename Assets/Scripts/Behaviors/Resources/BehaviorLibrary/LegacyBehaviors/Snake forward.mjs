@@ -36,6 +36,6 @@ export function OnTick(api) {
   if (api.isDead()) {
     return;
   }
-  const s = 0.1 * api.props.WiggleAmount;
-  api.move.turnRight(Math.sin(2 * Math.PI * api.time * api.props.WiggleSpeed) < 0 ? -s : s);
+  const s = 0.1 * api.getProps().WiggleAmount;
+  api.move.turnRight(Math.sin(2 * Math.PI * api.time * api.getProps().WiggleSpeed) < 0 ? -s : s);
 }

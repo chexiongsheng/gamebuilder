@@ -31,5 +31,5 @@
  * @param {HandlerApi} api
  */
 export function OnDied(api) {
-  api.sendMessageToAll('PointScored', { player: api.message.causer, amount: api.props.points });
+  api.sendMessageToAll('PointScored', { player: api.message.causer, amount: api.getProps().points });
 }

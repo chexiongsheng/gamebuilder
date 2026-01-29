@@ -31,13 +31,13 @@ export function onAction(actionMessage) {
   // Create popup text if we don't have it yet.
   if (!getCard().popupTextActor || !exists(getCard().popupTextActor)) {
     getCard().popupTextActor = clone("builtin:PopupText",
-      getPointAbove(getBoundsSize().y + INITIAL_OFFSET_ABOVE + props.OffsetAbove));
-    const scale = Math.min(Math.max(INITIAL_SCALE + (props.TextSize || 0) * 0.5, 1), 12);
-    send(getCard().popupTextActor, "SetText", { text: props.Message });
+      getPointAbove(getBoundsSize().y + INITIAL_OFFSET_ABOVE + getProps().OffsetAbove));
+    const scale = Math.min(Math.max(INITIAL_SCALE + (getProps().TextSize || 0) * 0.5, 1), 12);
+    send(getCard().popupTextActor, "SetText", { text: getProps().Message });
     send(getCard().popupTextActor, "SetScale", scale);
     send(getCard().popupTextActor, "SetParent", { parent: myself() });
   }
-  getCard().popupHideTime = getTime() + (props.HideDelay === undefined ? HIDE_DELAY_SECONDS : props.HideDelay);
+  getCard().popupHideTime = getTime() + (getProps().HideDelay === undefined ? HIDE_DELAY_SECONDS : getProps().HideDelay);
 }
 
 export function onResetGame() {
@@ -56,7 +56,7 @@ export function onTick() {
 }
 
 export function getCardStatus() {
-  let msg = props.Message;
+  let msg = getProps().Message;
   if (msg.length > 20) {
     msg = msg.substr(0, 20) + '[...]'
   }

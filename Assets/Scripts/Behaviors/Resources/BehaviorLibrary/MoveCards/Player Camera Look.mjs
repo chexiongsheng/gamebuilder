@@ -34,13 +34,13 @@ export function onActiveTick() {
   if (!isPlayerControllable()) return;
 
   let desiredDir = getAimDirection();
-  //if (Math.abs(props.PitchOffset) > 0.01) {
-  //  desiredDir.applyAxisAngle(getRight(), degToRad(props.PitchOffset));
+  //if (Math.abs(getProps().PitchOffset) > 0.01) {
+  //  desiredDir.applyAxisAngle(getRight(), degToRad(getProps().PitchOffset));
   //}
 
-  if (props.Gradual) {
-    lookTowardDir(desiredDir, props.TurnSpeed, !props.TiltUpDown);
+  if (getProps().Gradual) {
+    lookTowardDir(desiredDir, getProps().TurnSpeed, !getProps().TiltUpDown);
   } else {
-    lookDir(getAimDirection(), !props.TiltUpDown);
+    lookDir(getAimDirection(), !getProps().TiltUpDown);
   }
 }

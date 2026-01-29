@@ -30,16 +30,16 @@ export const PROPS = [
 ];
 
 export function onActiveTick() {
-  props.Targets = props.Targets === undefined ? "@TAG:player" : props.Targets; // for legacy games
-  const target = getClosestActor(getActorsInGroup(props.Targets, props.Range));
+  getProps().Targets = getProps().Targets === undefined ? "@TAG:player" : getProps().Targets; // for legacy games
+  const target = getClosestActor(getActorsInGroup(getProps().Targets, getProps().Range));
   if (target) {
-    lookAt(target, props.YawLock);
+    lookAt(target, getProps().YawLock);
   }
 }
 
 export function getCardStatus() {
-  const axes = props.YawLock ? "horizontal only" : "all 3 axes";
+  const axes = getProps().YawLock ? "horizontal only" : "all 3 axes";
   return {
-    description: `Look at <color=yellow>${getActorGroupDescription(props.Targets)}</color> (${axes})`
+    description: `Look at <color=yellow>${getActorGroupDescription(getProps().Targets)}</color> (${axes})`
   }
 }

@@ -35,8 +35,8 @@
  */
 export function OnTick(api) {
   const p = api.actor.spawnPosition.clone();
-  const d = api.props.amplitude * Math.sin(2 * Math.PI / api.props.period * api.time);
-  if (api.props.NorthSouth) {
+  const d = api.getProps().amplitude * Math.sin(2 * Math.PI / api.getProps().period * api.time);
+  if (api.getProps().NorthSouth) {
     p.z += d;
   }
   else {

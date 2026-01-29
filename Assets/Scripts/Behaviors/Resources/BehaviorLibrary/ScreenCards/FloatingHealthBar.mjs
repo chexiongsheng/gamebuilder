@@ -33,9 +33,9 @@ export const PROPS = [
 
 export function onDrawScreen() {
   const worldAnchor = getBoundsCenter();
-  worldAnchor.y += props.OffsetY;
+  worldAnchor.y += getProps().OffsetY;
 
-  if (props.OnlyIfVisible) {
+  if (getProps().OnlyIfVisible) {
     // Only draw if the world anchor position is visible from the camera.
     const cameraPos = getLocalCameraPos();
     if (cameraPos === null) return;
@@ -48,7 +48,7 @@ export function onDrawScreen() {
     }
   }
 
-  const screenSphere = getScreenSphere(worldAnchor, props.Size);
+  const screenSphere = getScreenSphere(worldAnchor, getProps().Size);
 
   if (!screenSphere) return;  // Off-screen.
 
@@ -57,19 +57,19 @@ export function onDrawScreen() {
   const left = screenSphere.center.x - width / 2;
   const top = screenSphere.center.y - height;
 
-  const cur = getVar("isDead") ? 0 : (getVar(props.AttribCur) || mem[props.AttribCur] || 0);
-  const max = Math.max(1, getVar(props.AttribMax) || mem[props.AttribMax] || 0);
+  const cur = getVar("isDead") ? 0 : (getVar(getProps().AttribCur) || mem[getProps().AttribCur] || 0);
+  const max = Math.max(1, getVar(getProps().AttribMax) || mem[getProps().AttribMax] || 0);
   const fraction = clamp(cur / max, 0, 1);
 
   const fgColor = getColorPropForHealthFraction(fraction, 'FgLow', 'FgMedium', 'FgHigh');
   const bgColor = getColorPropForHealthFraction(fraction, 'BgLow', 'BgMedium', 'BgHigh');
 
   // Background.
-  uiRect(left, top, width, height, bgColor, { opacity: props.Opacity });
+  uiRect(left, top, width, height, bgColor, { opacity: getProps().Opacity });
   // Filled part.
-  uiRect(left, top, width * fraction, height, fgColor, { opacity: props.Opacity });
+  uiRect(left, top, width * fraction, height, fgColor, { opacity: getProps().Opacity });
   // Border.
-  uiRect(left, top, width, height, fgColor, { style: "BORDER", opacity: props.Opacity });
+  uiRect(left, top, width, height, fgColor, { style: "BORDER", opacity: getProps().Opacity });
 }
 
 function getColorPropForHealthFraction(fraction, propLow, propMedium, propHigh) {

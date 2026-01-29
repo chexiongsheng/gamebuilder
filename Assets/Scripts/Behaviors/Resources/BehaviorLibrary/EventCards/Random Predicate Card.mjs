@@ -21,11 +21,11 @@ export const PROPS = [
 ];
 
 export function onCheck() {
-  return Math.random() < (props.Probability * 0.01);
+  return Math.random() < (getProps().Probability * 0.01);
 }
 
 export function getCardStatus() {
   return {
-    description: `Fires with probability <color=green>${props.Probability}%`
+    description: `Fires with probability <color=green>${getProps().Probability}%`
   }
 }

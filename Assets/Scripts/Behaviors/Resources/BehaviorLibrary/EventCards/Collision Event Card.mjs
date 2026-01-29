@@ -30,13 +30,13 @@ export const COLLISION_STICKY_DURATION = 0.2;
 
 export function onCollision(msg) {
   // (hack: some legacy files don't have this set)
-  props.withWhat = props.withWhat === undefined ? "@ANY" : props.withWhat;
+  getProps().withWhat = getProps().withWhat === undefined ? "@ANY" : getProps().withWhat;
 
-  if (!isActorInGroup(msg.other, props.withWhat)) {
+  if (!isActorInGroup(msg.other, getProps().withWhat)) {
     return;
   }
 
-  if (props.ignoreHidden && !isVisible(msg.other)) {
+  if (getProps().ignoreHidden && !isVisible(msg.other)) {
     return;
   }
 
@@ -72,7 +72,7 @@ export function onCheck() {
 }
 
 export function getCardStatus() {
-  const groupName = getActorGroupDescription(props.withWhat, true);
+  const groupName = getActorGroupDescription(getProps().withWhat, true);
   return {
     description: "When I collide with <color=yellow>" + groupName
   }

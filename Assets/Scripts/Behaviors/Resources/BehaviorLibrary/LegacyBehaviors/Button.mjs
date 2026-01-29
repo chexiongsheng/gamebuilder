@@ -22,7 +22,7 @@ export const PROPS = [
 ]
 
 export function onCollision() {
-  if (exists(props.target)) {
-    send(props.target, props.message);
+  if (exists(getProps().target)) {
+    send(getProps().target, getProps().message);
   }
 }

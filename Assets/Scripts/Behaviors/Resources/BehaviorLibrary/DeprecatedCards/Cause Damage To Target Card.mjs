@@ -28,5 +28,5 @@ export const PROPS = [
  */
 export function onAction(actionMessage) {
   if (!exists(actionMessage.event.actor)) return;
-  send(actionMessage.event.actor || myself(), "Damage", { causer: myself(), amount: props.Amount });
+  send(actionMessage.event.actor || myself(), "Damage", { causer: myself(), amount: getProps().Amount });
 }

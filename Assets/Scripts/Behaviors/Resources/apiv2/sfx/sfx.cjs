@@ -38,7 +38,7 @@
  * ];
  *
  * export function onCollision() {
- *   playSound(props.soundToPlay);
+ *   playSound(getProps().soundToPlay);
  *   cooldown(1);
  * } 
  */

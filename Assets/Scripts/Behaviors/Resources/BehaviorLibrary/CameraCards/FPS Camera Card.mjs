@@ -32,7 +32,7 @@ export function onCameraTick(msg) {
     getCard().yaw = getYaw(target) || 0;
   }
 
-  setPos(selfToWorldPos(vec3(props.OffsetX, props.OffsetY, props.OffsetZ), msg.target));
+  setPos(selfToWorldPos(vec3(getProps().OffsetX, getProps().OffsetY, getProps().OffsetZ), msg.target));
   getCard().yaw += getLookAxes(target).x;
   getCard().pitch = Math.min(Math.max(getCard().pitch + getLookAxes(target).y, degToRad(-80)), degToRad(80));
   setYawPitchRoll(getCard().yaw, -getCard().pitch, 0);
@@ -40,8 +40,8 @@ export function onCameraTick(msg) {
     cursorActive: false,
     aimOrigin: getPos(),
     aimDir: getForward(),
-    dontRenderActors: props.HidePlayer ? [msg.target] : null,
-    fov: props.FieldOfView || 60,
+    dontRenderActors: getProps().HidePlayer ? [msg.target] : null,
+    fov: getProps().FieldOfView || 60,
   });
 }
 

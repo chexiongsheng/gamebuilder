@@ -30,26 +30,26 @@ export const PROPS = [
  * @param {GActionMessage} actionMessage 
  */
 export function onAction(actionMessage) {
-  const targets = getActorsInGroup(props.Recipient);
-  if (props.Delay > 0) {
-    sendToManyDelayed(props.Delay, targets, props.Message);
+  const targets = getActorsInGroup(getProps().Recipient);
+  if (getProps().Delay > 0) {
+    sendToManyDelayed(getProps().Delay, targets, getProps().Message);
   } else {
-    sendToMany(targets, props.Message);
+    sendToMany(targets, getProps().Message);
   }
 }
 
 export function getCardErrorMessage() {
-  if (!props.Recipient) {
+  if (!getProps().Recipient) {
     return "NEED RECIPIENT: Click card to fix.";
   }
 }
 
 export function getCardStatus() {
   let delay = '';
-  if (props.Delay > 0) {
-    delay = ` with delay <color=orange>${props.Delay.toFixed(1)}</color>`;
+  if (getProps().Delay > 0) {
+    delay = ` with delay <color=orange>${getProps().Delay.toFixed(1)}</color>`;
   }
   return {
-    description: `Send message <color=yellow>${props.Message}</color> to <color=green>${getActorGroupDescription(props.Recipient)}</color>${delay}`
+    description: `Send message <color=yellow>${getProps().Message}</color> to <color=green>${getActorGroupDescription(getProps().Recipient)}</color>${delay}`
   }
 }

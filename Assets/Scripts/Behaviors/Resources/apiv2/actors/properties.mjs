@@ -39,11 +39,11 @@
  * ];
  *
  * export function onTick() {
- *   log("My target is " + props.target);
- *   log("My width is " + props.width);
- *   log("My height is " + props.height);
- *   log("I am " + (props.isHappy ? "happy" : "sad"));
- *   log("My spawn point is " + props.spawnPoint);
+ *   log("My target is " + getProps().target);
+ *   log("My width is " + getProps().width);
+ *   log("My height is " + getProps().height);
+ *   log("I am " + (getProps().isHappy ? "happy" : "sad"));
+ *   log("My spawn point is " + getProps().spawnPoint);
  * }
  */
 //处理消息时都会包在apiv2.js.txt的startHandlingMessage/endHandlingMessage间，这两个函数通过setUpGlobals_去设置全局变量（mem、card、props、temp）
@@ -76,9 +76,9 @@ function setProps(p) {
  * ];
  *
  * export function onTick() {
- *   log("My width is " + props.width);
- *   log("My speed is " + props.speed);
- *   log("My jump time is " + props.jumpTime);
+ *   log("My width is " + getProps().width);
+ *   log("My speed is " + getProps().speed);
+ *   log("My jump time is " + getProps().jumpTime);
  * }
  */
 function propNumber(name, defaultValue = 0, options = {}) {
@@ -111,9 +111,9 @@ function propNumber(name, defaultValue = 0, options = {}) {
   * ];
   *
   * export function onTick() {
-  *   log("My width is " + props.width);
-  *   log("My speed is " + props.speed);
-  *   log("My jump time is " + props.jumpTime);
+  *   log("My width is " + getProps().width);
+  *   log("My speed is " + getProps().speed);
+  *   log("My jump time is " + getProps().jumpTime);
   * }
   */
 function propDecimal(name, defaultValue = 0, options = {}) {
@@ -145,9 +145,9 @@ function propDecimal(name, defaultValue = 0, options = {}) {
   * ];
   *
   * export function onTick() {
-  *   log("I am " + (props.isHappy ? "happy" : "sad"));
-  *   log("I " + (props.canFly ? "can" : "can't") + " fly");
-  *   log("I'm " + (props.afraidOfHeights ? "really" : "not") + " afraid of heights.");
+  *   log("I am " + (getProps().isHappy ? "happy" : "sad"));
+  *   log("I " + (getProps().canFly ? "can" : "can't") + " fly");
+  *   log("I'm " + (getProps().afraidOfHeights ? "really" : "not") + " afraid of heights.");
   * }
   */
 function propBoolean(name, defaultValue = false, options = {}) {
@@ -179,9 +179,9 @@ function propBoolean(name, defaultValue = false, options = {}) {
   * ];
   *
   * export function onTick() {
-  *   log("My name is " + props.name);
-  *   log("I am from " + props.planet);
-  *   log("I always read " + props.author);
+  *   log("My name is " + getProps().name);
+  *   log("I am from " + getProps().planet);
+  *   log("I always read " + getProps().author);
   * }
   */
 function propString(name, defaultValue = '', options = {}) {
@@ -218,8 +218,8 @@ function propString(name, defaultValue = '', options = {}) {
  * ];
  *
  * export function onTick() {
- *   if (exists(props.target)) {
- *     log("My target is " + getDisplayName(props.target));
+ *   if (exists(getProps().target)) {
+ *     log("My target is " + getDisplayName(getProps().target));
  *   } else {
  *     log("I have no target! Did you forget to set it?");
  *   }
@@ -284,7 +284,7 @@ function propImage(name, options = {}) {
  * ];
  *
  * export function onCollision() {
- *   playSound(props.soundToPlay);
+ *   playSound(getProps().soundToPlay);
  * }
  */
 function propSound(name, defaultValue = Sounds.EXPLOSION, options = {}) {
@@ -308,7 +308,7 @@ function propSound(name, defaultValue = Sounds.EXPLOSION, options = {}) {
   * ];
   *
   * export function onCollision() {
-  *   spawnParticleEffect(props.ParticleEffect);
+  *   spawnParticleEffect(getProps().ParticleEffect);
   * }
   */
 function propParticleEffect(name, defaultValue = Particles.EXPLOSION, options = {}) {
@@ -338,7 +338,7 @@ function propParticleEffect(name, defaultValue = Particles.EXPLOSION, options = 
  * // but it's simple to demonstrate!)
  * export function onTick() {
  *   const even = Math.floor(getTime()) % 2 == 0;
- *   callActionDeck(even ? props.moveCardsEven : props.moveCardsOdd, "Move");
+ *   callActionDeck(even ? getProps().moveCardsEven : getProps().moveCardsOdd, "Move");
  * }
  */
 function propDeck(name, cardCategory, options = {}) {
@@ -368,7 +368,7 @@ function propDeck(name, cardCategory, options = {}) {
  * ];
  *
  * export function onTick() {
- *   setTintColor(props.favoriteColor);
+ *   setTintColor(getProps().favoriteColor);
  * }
  */
 function propColor(name, defaultValue = "#ffffff", options = {}) {
@@ -409,7 +409,7 @@ function propColor(name, defaultValue = "#ffffff", options = {}) {
  * ];
  * 
  * export function onTick() {
- *   log("Favorite weekday: " + props.weekday);  // prints Monday
+ *   log("Favorite weekday: " + getProps().weekday);  // prints Monday
  * }
  * 
  * @example
@@ -424,7 +424,7 @@ function propColor(name, defaultValue = "#ffffff", options = {}) {
  * ];
  * 
  * export function onTick() {
- *   switch (props.strategy) {
+ *   switch (getProps().strategy) {
  *     case "RANDOM":
  *       log("Picking random opponent.");
  *       break;
@@ -435,7 +435,7 @@ function propColor(name, defaultValue = "#ffffff", options = {}) {
  *       log("Picking strongest opponent.");
  *       break;
  *     default:
- *       log("*** Invalid strategy: " + props.strategy);
+ *       log("*** Invalid strategy: " + getProps().strategy);
  *       break;
  *   }
  * } 
@@ -527,9 +527,9 @@ function propCardTargetActor(name, options = {}) {
   * ];
   *
   * export function onTick() {
-  *   log("Sizes of blasts: " + props.sizes.join());
-  *   log("Speeds of blasts are: " + props.speeds.join());
-  *   log("Durations of blasts: " + props.durations.join());
+  *   log("Sizes of blasts: " + getProps().sizes.join());
+  *   log("Speeds of blasts are: " + getProps().speeds.join());
+  *   log("Durations of blasts: " + getProps().durations.join());
   * }
   */
 function propNumberArray(name, defaultValue = [], options = {}) {
@@ -561,9 +561,9 @@ function propNumberArray(name, defaultValue = [], options = {}) {
   * ];
   *
   * export function onTick() {
-  *   log("Names: " + props.sizes.join());
-  *   log("Descriptions: " + props.descriptions.join());
-  *   log("Dialogue: " + props.dialogue.join());
+  *   log("Names: " + getProps().sizes.join());
+  *   log("Descriptions: " + getProps().descriptions.join());
+  *   log("Dialogue: " + getProps().dialogue.join());
   * }
   */
 function propStringArray(name, defaultValue = [], options = {}) {
@@ -598,7 +598,7 @@ function propStringArray(name, defaultValue = [], options = {}) {
  * ];
  *
  * export function onTick() {
- *   log("Strategies: " + props.strategies.join());
+ *   log("Strategies: " + getProps().strategies.join());
  * }
  */
 function propEnumArray(name, allowedValues, defaultValue = [], options = {}) {
@@ -657,7 +657,7 @@ function propEnumArray(name, allowedValues, defaultValue = [], options = {}) {
   * ];
   *
   * export function onTick() {
-  *   log("Players: " + props.players.join());
+  *   log("Players: " + getProps().players.join());
   * }
   */
 function propActorArray(name, defaultValue = [], options = {}) {

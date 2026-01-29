@@ -22,7 +22,7 @@ export const PROPS = [
 ];
 
 export function onTick() {
-  const target = getClosestActor(getActorsInGroup(props.Who, props.Range));
+  const target = getClosestActor(getActorsInGroup(getProps().Who, getProps().Range));
   if (target) {
     // Trigger!
     getCard().triggeredEvent = { actor: target };
@@ -49,6 +49,6 @@ export function onResetGame() {
 
 export function getCardStatus() {
   return {
-    description: `When <color=yellow>${getActorGroupDescription(props.Who, true)}</color> is within distance <color=green>${props.Range.toFixed(1)}`
+    description: `When <color=yellow>${getActorGroupDescription(getProps().Who, true)}</color> is within distance <color=green>${getProps().Range.toFixed(1)}`
   }
 }

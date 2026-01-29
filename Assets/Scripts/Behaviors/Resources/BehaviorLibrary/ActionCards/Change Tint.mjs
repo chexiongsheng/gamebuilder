@@ -22,9 +22,9 @@ export const PROPS = [
 export function onAction(actionMessage) {
   getCard().originalTintHex = getCard().originalTintHex || getTintHex();
   // setTintColor(new THREE.Color(
-  //  props.ColorR / 255.0, props.ColorG / 255.0, props.ColorB / 255.0));
+  //  getProps().ColorR / 255.0, getProps().ColorG / 255.0, getProps().ColorB / 255.0));
   setTintColor(new THREE.Color(1, 0, 0));
-  // TEMP getCard().restoreTintTime = getTime() + props.Duration;
+  // TEMP getCard().restoreTintTime = getTime() + getProps().Duration;
   getCard().restoreTintTime = getTime() + 0.5;
 }
 

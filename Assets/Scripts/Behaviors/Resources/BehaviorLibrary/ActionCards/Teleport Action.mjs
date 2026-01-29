@@ -25,7 +25,7 @@ export const PROPS = [
 ]
 
 export function getCardErrorMessage() {
-  if (!exists(props.DestinationActor)) {
+  if (!exists(getProps().DestinationActor)) {
     return "*** Need a destination actor.";
   }
 }
@@ -34,14 +34,14 @@ export function getCardErrorMessage() {
 export function onAction(actionMessage) {
   const teleportee = getCardTargetActor('Teleportee', actionMessage);
   if (teleportee === myself()) {
-    setPos(getPos(props.DestinationActor));
+    setPos(getPos(getProps().DestinationActor));
   } else if (exists(teleportee)) {
-    setPosPlease(teleportee, getPos(props.DestinationActor));
+    setPosPlease(teleportee, getPos(getProps().DestinationActor));
   }
 }
 
 export function getCardStatus() {
   return {
-    description: `Teleport <color=yellow>${getCardTargetActorDescription('Teleportee')}</color> to where <color=green>${getDisplayName(props.DestinationActor)}</color> is.`
+    description: `Teleport <color=yellow>${getCardTargetActorDescription('Teleportee')}</color> to where <color=green>${getDisplayName(getProps().DestinationActor)}</color> is.`
   }
 }

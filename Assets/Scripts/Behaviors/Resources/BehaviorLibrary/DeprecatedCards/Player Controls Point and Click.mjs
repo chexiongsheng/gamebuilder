@@ -34,7 +34,7 @@ export function onControl() {
   checkIfArrived();
   if (getCard().targetPoint) {
     // Move toward target point.
-    moveToward(getCard().targetPoint, props.Speed);
+    moveToward(getCard().targetPoint, getProps().Speed);
     // Render a little dot so we can see where the target point is.
     const { x, y } = getScreenPoint(getCard().targetPoint);
     uiRect(x - 2, y - 2, 4, 4, UiColor.WHITE);
@@ -54,10 +54,10 @@ function checkIfArrived() {
 
 export function onMouseDown() {
   const clickedPoint = getTerrainPointUnderMouse();
-  if (!clickedPoint || props.Speed <= 0) return;
+  if (!clickedPoint || getProps().Speed <= 0) return;
 
   const distanceToTarget = getDistanceTo(clickedPoint);
-  const etaSeconds = distanceToTarget / props.Speed;
+  const etaSeconds = distanceToTarget / getProps().Speed;
 
   getCard().targetPoint = clickedPoint;
   // If we take twice as much as expected to get there, give up (we're probably stuck).

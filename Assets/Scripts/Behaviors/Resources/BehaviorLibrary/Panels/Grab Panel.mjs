@@ -59,7 +59,7 @@ export function onRequestGrabOrRelease() {
     // on the item's state (for example, it might already have been
     // grabbed by some other player). So we can't do anything
     // until we get a GrabResponse reply from the item.
-    const anchorOffset = vec3(0, props.HoldHeight, props.HoldDistance);
+    const anchorOffset = vec3(0, getProps().HoldHeight, getProps().HoldDistance);
     send(grabTarget, "GrabRequest", { grabber: myself(), anchorOffset: anchorOffset });
   }
 }
@@ -107,7 +107,7 @@ function getGrabTarget() {
   // the user to be able to pick up small objects in Isometric view, as
   // the aim is always level with the ground plane and there is no way
   // to aim "down".
-  const actorsNearby = overlapSphere(getPos(), props.MaxGrabDist);
+  const actorsNearby = overlapSphere(getPos(), getProps().MaxGrabDist);
   // Check if any of them are grabbable and are "forward" of us.
   const fwd = getForward();
   let bestCandidate = null;

@@ -24,24 +24,24 @@ const WAYPOINT_RANGE = 0.5;
 
 export function onActiveTick() {
   getCard().waypointNumber = getCard().waypointNumber || 0;
-  let waypoint = props.Waypoints[getCard().waypointNumber];
+  let waypoint = getProps().Waypoints[getCard().waypointNumber];
   // If the current waypoint does not exist, or if we are close enough to it,
   // advance to the next one.
   if (!exists(waypoint) || getDistanceTo(waypoint) < WAYPOINT_RANGE) {
     advanceToNextWaypoint();
   }
-  waypoint = props.Waypoints[getCard().waypointNumber];
+  waypoint = getProps().Waypoints[getCard().waypointNumber];
   if (exists(waypoint)) {
-    moveToward(waypoint, props.Speed);
+    moveToward(waypoint, getProps().Speed);
     lookToward(waypoint, 6, true);
   }
 }
 
 function advanceToNextWaypoint() {
   // Advance to next waypoint if possible.
-  getCard().waypointNumber = props.Loop ?
-    (getCard().waypointNumber >= props.Waypoints.length ? 0 : getCard().waypointNumber + 1) :
-    Math.min(getCard().waypointNumber + 1, props.Waypoints.length);
+  getCard().waypointNumber = getProps().Loop ?
+    (getCard().waypointNumber >= getProps().Waypoints.length ? 0 : getCard().waypointNumber + 1) :
+    Math.min(getCard().waypointNumber + 1, getProps().Waypoints.length);
 }
 
 export function onResetGame() {
@@ -50,7 +50,7 @@ export function onResetGame() {
 
 export function onCollision(msg) {
   // Bumping into the next waypoint is just as good as reaching it :)
-  let waypoint = props.Waypoints[getCard().waypointNumber];
+  let waypoint = getProps().Waypoints[getCard().waypointNumber];
   if (msg.other === waypoint) {
     // Advance.
     advanceToNextWaypoint();
@@ -59,12 +59,12 @@ export function onCollision(msg) {
 
 export function getCardStatus() {
   let count = 0;
-  for (let i = 0; i < props.Waypoints.length; i++) {
-    if (exists(props.Waypoints[i])) count++;
+  for (let i = 0; i < getProps().Waypoints.length; i++) {
+    if (exists(getProps().Waypoints[i])) count++;
   }
-  const loop = props.Loop ? "loop" : "no loop";
+  const loop = getProps().Loop ? "loop" : "no loop";
   return {
-    description: `Follows waypoints (<color=yellow>${count}</color> waypoints, <color=yellow>${loop}</color>), speed <color=green>${props.Speed.toFixed(1)}</color>`,
+    description: `Follows waypoints (<color=yellow>${count}</color> waypoints, <color=yellow>${loop}</color>), speed <color=green>${getProps().Speed.toFixed(1)}</color>`,
     errorMessage: (count > 0 ? null : "NEED WAYPOINTS! Click card to fix.")
   };
 }

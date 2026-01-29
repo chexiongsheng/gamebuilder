@@ -35,31 +35,31 @@ export const PROPS = [
 ];
 
 function getMyKeyName() {
-  switch (props.WhichButton) {
+  switch (getProps().WhichButton) {
     case "PRI": return KeyCode.PRIMARY_ACTION;
     case "SEC": return KeyCode.SECONDARY_ACTION;
     case "JUMP": return KeyCode.JUMP;
     default:
       // Note: old versions of this card accepted WhichKey as string, which means
       // it can be in uppercase, which is why we convert below:
-      return (props.WhichKey || "").toLowerCase();
+      return (getProps().WhichKey || "").toLowerCase();
   }
 }
 
 export function onKeyHeld(msg) {
-  if (msg.keyName === getMyKeyName() && (props.DetectWhen || "HELD") === "HELD") {
+  if (msg.keyName === getMyKeyName() && (getProps().DetectWhen || "HELD") === "HELD") {
     getCard().triggeredEvent = { actor: myself() };
   }
 }
 
 export function onKeyDown(msg) {
-  if (msg.keyName === getMyKeyName() && props.DetectWhen === "DOWN") {
+  if (msg.keyName === getMyKeyName() && getProps().DetectWhen === "DOWN") {
     getCard().triggeredEvent = { actor: myself() };
   }
 }
 
 export function onKeyUp(msg) {
-  if (msg.keyName === getMyKeyName() && props.DetectWhen === "UP") {
+  if (msg.keyName === getMyKeyName() && getProps().DetectWhen === "UP") {
     getCard().triggeredEvent = { actor: myself() };
   }
 }
@@ -89,20 +89,20 @@ function getKeyEnumValues() {
 
 export function getCardStatus() {
   const buttonName = "<color=yellow>" + getHumanReadableButtonName() + "</color>";
-  const action = "<color=green>" + (props.DetectWhen || "HELD") + "</color>";
-  const actionWithVerb = props.DetectWhen === "HELD" ? ("is " + action) : ("goes " + action);
+  const action = "<color=green>" + (getProps().DetectWhen || "HELD") + "</color>";
+  const actionWithVerb = getProps().DetectWhen === "HELD" ? ("is " + action) : ("goes " + action);
   return {
     description: "When " + buttonName + " " + actionWithVerb
   }
 }
 
 function getHumanReadableButtonName() {
-  switch (props.WhichButton) {
+  switch (getProps().WhichButton) {
     case "PRI": return "Left Click";
     case "SEC": return "Right Click";
     case "JUMP": return "Jump";
     default:
-      return "[" + (props.WhichKey || "").toUpperCase() + "]";
+      return "[" + (getProps().WhichKey || "").toUpperCase() + "]";
   }
 
 }

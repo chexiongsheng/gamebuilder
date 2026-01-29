@@ -26,7 +26,7 @@ export function onAction(actionMessage) {
   // for correct restore behavior in case we have more than one
   // color-changing card.
   getMem().origTintHex = getMem().origTintHex || getTintHex();
-  setTintColor(props.Color);
+  setTintColor(getProps().Color);
 }
 
 export function onResetGame() {
@@ -38,6 +38,6 @@ export function onResetGame() {
 
 export function getCardStatus() {
   return {
-    description: `Change color to: <color=${colorToHex(props.Color)}>${colorToHex(props.Color)}</color>`
+    description: `Change color to: <color=${colorToHex(getProps().Color)}>${colorToHex(getProps().Color)}</color>`
   }
 }

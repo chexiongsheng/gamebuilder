@@ -37,16 +37,16 @@ export function onAction(actionMessage) {
   const target = getCardTargetActor("WithWhom", actionMessage);
   if (!target) return;
   const replies = [];
-  maybeAddReply(replies, props.Message1, props.Reply1);
-  maybeAddReply(replies, props.Message2, props.Reply2);
-  maybeAddReply(replies, props.Message3, props.Reply3);
+  maybeAddReply(replies, getProps().Message1, getProps().Reply1);
+  maybeAddReply(replies, getProps().Message2, getProps().Reply2);
+  maybeAddReply(replies, getProps().Message3, getProps().Reply3);
 
   send(target, "LaunchDialogue", {
     requester: myself(),
-    speaker: props.SpeakerName || getDisplayName(),
-    color: props.SpeakerColor,
-    text: props.Text.replace(/\\n/g, "\n").replace("\r", ""),
-    cps: props.Speed,
+    speaker: getProps().SpeakerName || getDisplayName(),
+    color: getProps().SpeakerColor,
+    text: getProps().Text.replace(/\\n/g, "\n").replace("\r", ""),
+    cps: getProps().Speed,
     replies: replies
   });
 }

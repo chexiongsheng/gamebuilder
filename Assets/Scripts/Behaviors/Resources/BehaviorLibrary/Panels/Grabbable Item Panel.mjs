@@ -63,7 +63,7 @@ export function onGrabRequest(msg) {
   setSolid(false);
   setKinematic(true);
   attachToParent(msg.grabber);
-  send(msg.grabber, "GrabResponse", { accepted: true, item: myself(), canThrow: !!props.CanThrow });
+  send(msg.grabber, "GrabResponse", { accepted: true, item: myself(), canThrow: !!getProps().CanThrow });
   // Publish the name of the actor who grabbed this item as an attribute in case
   // other cards want to do something with it.
   setVar("owner", msg.grabber);
@@ -90,10 +90,10 @@ function updatePosition() {
 
   // pos is relative to the grabber (for now)
   let pos = getCard().grabbedState.anchorOffset.clone();
-  if (props.CustomOffset) {
-    pos.x += props.OffsetX;
-    pos.y += props.OffsetY;
-    pos.z += props.OffsetZ;
+  if (getProps().CustomOffset) {
+    pos.x += getProps().OffsetX;
+    pos.y += getProps().OffsetY;
+    pos.z += getProps().OffsetZ;
   }
   // Convert pos to world position.
   pos = selfToWorldPos(pos, getCard().grabbedState.grabber);
@@ -110,11 +110,11 @@ function updatePosition() {
   lookDir(grabberAim, false);
 
   // Apply rotation offset, if any.
-  if (props.CustomRotation) {
+  if (getProps().CustomRotation) {
     // turn() turns about a local axis, not a world axis.
-    turn(degToRad(props.RotationY), vec3y());
-    turn(degToRad(props.RotationX), vec3x());
-    turn(degToRad(props.RotationZ), vec3z());
+    turn(degToRad(getProps().RotationY), vec3y());
+    turn(degToRad(getProps().RotationX), vec3x());
+    turn(degToRad(getProps().RotationZ), vec3z());
   }
 }
 

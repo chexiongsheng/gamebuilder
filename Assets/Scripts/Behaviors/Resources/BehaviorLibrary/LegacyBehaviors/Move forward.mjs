@@ -35,6 +35,6 @@ export function OnTick(api) {
   if (api.isDead()) {
     return;
   }
-  api.move.forward(api.props.Speed);
+  api.move.forward(api.getProps().Speed);
 }
 

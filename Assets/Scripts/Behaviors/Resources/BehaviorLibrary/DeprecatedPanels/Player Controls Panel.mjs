@@ -40,12 +40,12 @@ export function onTick() {
   if (getCard().gameEnded) {
     return;
   }
-  callDeck(props.controlsDeck, 'Control');
-  let descs = callDeck(props.primaryActionDeck, 'GetActionDescription');
-  descs = callDeck(props.secondaryActionDeck, 'GetActionDescription');
+  callDeck(getProps().controlsDeck, 'Control');
+  let descs = callDeck(getProps().primaryActionDeck, 'GetActionDescription');
+  descs = callDeck(getProps().secondaryActionDeck, 'GetActionDescription');
 
-  // Old versions did not have props.playerNumber so default to 1 in that case.
-  const playerNumber = props.playerNumber === undefined ? 1 : props.playerNumber;
+  // Old versions did not have getProps().playerNumber so default to 1 in that case.
+  const playerNumber = getProps().playerNumber === undefined ? 1 : getProps().playerNumber;
   const playerId = playerNumber > 0 ? getPlayerByNumber(playerNumber) : null;
   setControllingPlayer(playerId);
 }

@@ -30,13 +30,13 @@ export const PROPS = [
 export function onAction() {
 
   //if no projectile, cancel and send a log message
-  if (!exists(props.Projectile)) {
+  if (!exists(getProps().Projectile)) {
     logError("Projectile has no target set! Fix this in the Inspector!");
     return;
   }
 
   //if projectile is self, cancel and send a log message
-  if (myself() == props.Projectile) {
+  if (myself() == getProps().Projectile) {
     logError("Actor can't be it's own projectile! Fix this in the Inspector!");
     return;
   }
@@ -47,19 +47,19 @@ export function onAction() {
   //determine spawn offset of projectile (so I dont just shoot myself)
   const pos = getPos();
 
-  const posOffset = vec3(props.ProjectileOffsetX,
-    props.ProjectileOffsetY,
-    props.ProjectileOffsetZ);
+  const posOffset = vec3(getProps().ProjectileOffsetX,
+    getProps().ProjectileOffsetY,
+    getProps().ProjectileOffsetZ);
   pos.add(getLocalVec3(posOffset));
 
   //set projectil rotation to match mine
   const rot = getRot();
 
   //create an instance of the projectile
-  const projectile = clone(props.Projectile, pos, rot);
+  const projectile = clone(getProps().Projectile, pos, rot);
 
   //apply velocity to the projectile based on shooting direction
-  kick(projectile, dir.multiplyScalar(props.Velocity));
+  kick(projectile, dir.multiplyScalar(getProps().Velocity));
 }
 
 // replace this with aim direction

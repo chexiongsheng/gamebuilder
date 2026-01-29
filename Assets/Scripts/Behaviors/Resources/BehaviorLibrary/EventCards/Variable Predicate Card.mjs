@@ -39,8 +39,8 @@ export const PROPS = [
 
 export function onCheck(msg) {
   const target = getCardTargetActor("Target", msg);
-  let curValue = getVar(props.VarName, target) || 0;
-  let compValue = props.Value;
+  let curValue = getVar(getProps().VarName, target) || 0;
+  let compValue = getProps().Value;
 
   // If both sides can be interpreted as numbers, compare as numbers.
   // Else, compare as string.
@@ -52,7 +52,7 @@ export function onCheck(msg) {
     compValue = "" + compValue;
   }
 
-  switch (props.Operator) {
+  switch (getProps().Operator) {
     case "==": return curValue === compValue;
     case "!=": return curValue !== compValue;
     case "<": return curValue < compValue;
@@ -60,12 +60,12 @@ export function onCheck(msg) {
     case ">=": return curValue >= compValue;
     case "<=": return curValue <= compValue;
     default:
-      throw new Error("Invalid operator: " + props.Operator);
+      throw new Error("Invalid operator: " + getProps().Operator);
   }
 }
 
 export function getCardStatus() {
   return {
-    description: `When variable <color=yellow>${props.VarName} ${props.Operator} ${props.Value}</color>`
+    description: `When variable <color=yellow>${getProps().VarName} ${getProps().Operator} ${getProps().Value}</color>`
   }
 }
