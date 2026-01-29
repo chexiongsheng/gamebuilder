@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { sendToAll, sendToSelfDelayed } from "../../apiv2/actors/messages.mjs";
+import { propSound } from "../../apiv2/actors/properties.mjs";
+import { resetGame } from "../../apiv2/misc/game.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { deepCopy } from "../../apiv2/misc/utility.mjs";
+import { playSound } from "../../apiv2/sfx/sfx.mjs";
+import { UiColor, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
+
 export const PROPS = [
   propSound('Sound', 'builtin:Lose')
 ]
@@ -56,7 +65,7 @@ export function onLocalTick() {
     return;
   }
   const elapsed = getTime() - getCard().gameEnd.endTime;
-  const boxWidth = min(elapsed * BOX_FILL_SPEED, 1600);
+  const boxWidth = Math.min(elapsed * BOX_FILL_SPEED, 1600);
 
   uiRect(800 - boxWidth / 2, BOX_TOP, boxWidth, BOX_HEIGHT, BOX_COLOR);
 

@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { exists } from "../../apiv2/actors/actors.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { getProps, propActor, propString } from "../../apiv2/actors/properties.mjs";
+
 // Button\nSend a custom message to another actor when touched.
 
 export const PROPS = [

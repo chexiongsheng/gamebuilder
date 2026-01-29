@@ -18,6 +18,10 @@
 
 // tag visual
 
+import { getProps, propNumber } from "../../apiv2/actors/properties.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { setTint } from "../../apiv2/rendering/color.mjs";
+
 export const PROPS = [
   propNumber('Frequency', 2)
 ];

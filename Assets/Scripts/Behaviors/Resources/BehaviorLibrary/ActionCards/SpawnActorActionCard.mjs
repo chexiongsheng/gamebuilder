@@ -15,6 +15,18 @@
  */
 
 
+import { exists } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";
+import { clone } from "../../apiv2/actors/cloning.mjs";
+import { getTemp } from "../../apiv2/actors/memory.mjs";
+import { cooldown } from "../../apiv2/actors/messages.mjs";
+import { getProps, propActor, propBoolean, propDecimal, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { vec3 } from "../../apiv2/misc/math.mjs";
+import { logError } from "../../apiv2/misc/utility.mjs";
+import { getPos } from "../../apiv2/transform/position-get.mjs";
+import { getRot } from "../../apiv2/transform/rotation-get.mjs";
+import { randBetween } from "../../math.mjs";
+
 export const PROPS = [
   propActor('ActorToClone', '', {
     label: "Actor to Clone",

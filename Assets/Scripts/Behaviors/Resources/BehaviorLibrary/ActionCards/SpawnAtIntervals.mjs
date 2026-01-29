@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+import { exists } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";
+import { clone } from "../../apiv2/actors/cloning.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getProps, propActor, propDecimal, propNumber } from "../../apiv2/actors/properties.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { getPos } from "../../apiv2/transform/position-get.mjs";
+import { getRot } from "../../apiv2/transform/rotation-get.mjs";
+
 export const PROPS = [
   propActor("ActorToClone", "", {
     label: "Actor to Clone",

@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { getSpawnPos } from "../../apiv2/transform/position-get.mjs";
+import { setPos } from "../../apiv2/transform/position-set.mjs";
+import { getSpawnRot } from "../../apiv2/transform/rotation-get.mjs";
+import { setRot } from "../../apiv2/transform/rotation-set.mjs";
+
 /** @param {GActionMessage} actionMessage */
 export function onAction(actionMessage) {
   setPos(getSpawnPos());

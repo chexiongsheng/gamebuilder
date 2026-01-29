@@ -26,6 +26,8 @@
 
 // tag win-conditions
 
+import { assert, log } from "../../util.mjs";
+
 /**
  * @param {HandlerApi} api
  */

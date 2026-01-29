@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { valueOr } from "../../util.mjs";
+import { kick } from "../../voosMain.mjs";
 import * as THREE from "three.mjs";
 
 // Shoot another object<size=70%>\nShoot clones of another object, like a baseball.

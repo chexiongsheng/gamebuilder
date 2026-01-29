@@ -15,6 +15,9 @@
  */
 
 
+import { callActionDeck } from "../../apiv2/actors/deck.mjs";
+import { propDeck } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propDeck('moveDeck', 'Move', {
     label: 'How do I move?'

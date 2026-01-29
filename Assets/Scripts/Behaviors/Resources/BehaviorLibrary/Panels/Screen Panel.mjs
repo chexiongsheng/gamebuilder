@@ -15,6 +15,10 @@
  */
 
 
+import { callDeck } from "../../apiv2/actors/deck.mjs";
+import { propDeck, propEnum } from "../../apiv2/actors/properties.mjs";
+import { getControllingPlayer, getLocalPlayer } from "../../apiv2/player_controls/controls.mjs";
+
 export const PROPS = [
   propDeck('screenDeck', 'Screen', {
     label: 'What appears on the screen?'
@@ -23,8 +27,8 @@ export const PROPS = [
     { value: "EVERYBODY", label: "Everybody" },
     { value: "THIS_PLAYER", label: "This Player" },
   ], {
-      label: "Whose screen?"
-    })
+    label: "Whose screen?"
+  })
 ];
 
 export function onLocalTick() {

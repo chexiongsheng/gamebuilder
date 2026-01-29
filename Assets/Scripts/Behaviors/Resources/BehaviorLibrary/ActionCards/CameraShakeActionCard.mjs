@@ -15,6 +15,15 @@
  */
 
 
+import { myself } from "../../apiv2/actors/actors.mjs";
+import { requestCameraOffset } from "../../apiv2/actors/camera_light.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getProps, propDecimal } from "../../apiv2/actors/properties.mjs";
+import { interp, vec3 } from "../../apiv2/misc/math.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { logError } from "../../apiv2/misc/utility.mjs";
+import { isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
+
 export const PROPS = [
   propDecimal('Amplitude', 0.2),
   propDecimal('Duration', 0.1),

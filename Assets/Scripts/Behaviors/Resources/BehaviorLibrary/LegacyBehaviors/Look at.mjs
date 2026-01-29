@@ -24,6 +24,8 @@
  * 
  *****************************************************************************/
 
+import { valueOr } from "../../util.mjs";
+
 // property Actor ObjectToLookAt
 // property Boolean YawOnly true
 

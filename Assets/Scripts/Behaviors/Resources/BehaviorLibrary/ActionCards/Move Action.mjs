@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+import { getCard, getTemp } from "../../apiv2/actors/memory.mjs";
+import { getProps, propDecimal } from "../../apiv2/actors/properties.mjs";
+import { vec3 } from "../../apiv2/misc/math.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { getDistanceTo, selfToWorldPos } from "../../apiv2/transform/position-get.mjs";
+import { moveToward } from "../../apiv2/transform/position-set.mjs";
+
 export const PROPS = [
   propDecimal("DistForward", 5),
   propDecimal("DistUp", 0),

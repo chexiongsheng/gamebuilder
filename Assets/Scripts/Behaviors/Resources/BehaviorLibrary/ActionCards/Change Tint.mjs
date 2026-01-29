@@ -15,6 +15,9 @@
  */
 
 import * as THREE from "three.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { getTintHex, setTintColor, setTintHex } from "../../apiv2/rendering/color.mjs";
 
 export const PROPS = [
   //TEMP propNumber("Duration", 1),

@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+import { propDecimal, propEnum, requireEqual } from "../../apiv2/actors/properties.mjs";
+import { degToRad, vec3length } from "../../apiv2/misc/math.mjs";
+import { deltaTime } from "../../apiv2/misc/time.mjs";
+import { getVelocity } from "../../apiv2/physics/velocity.mjs";
+import { getAimDirection, getThrottle, lookTowardDir, turn } from "../../apiv2/player_controls/controls.mjs";
+
 export const PROPS = [
   propEnum("Control", "KEYS", [
     { value: "KEYS", label: "Keys (A, D)" },

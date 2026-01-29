@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+import { propBoolean, propDecimal, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { getAimDirection, isPlayerControllable, lookDir, lookTowardDir } from "../../apiv2/player_controls/controls.mjs";
+
 // Player Controls: Basic WASD.
 
 export const PROPS = [

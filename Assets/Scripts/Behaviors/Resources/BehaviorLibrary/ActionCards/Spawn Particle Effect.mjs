@@ -15,6 +15,13 @@
  */
 
 import * as THREE from "three.mjs";
+import { getProps, propDecimal, propParticleEffect } from "../../apiv2/actors/properties.mjs";
+import { vec3 } from "../../apiv2/misc/math.mjs";
+import { spawnParticleEffect } from "../../apiv2/particles/particleeffects.mjs";
+import { selfToWorldPos } from "../../apiv2/transform/position-get.mjs";
+import { getRot } from "../../apiv2/transform/rotation-get.mjs";
+
+const Quaternion = THREE.Quaternion;
 
 export const PROPS = [
   propParticleEffect("ParticleEffect", Particles.EXPLOSION),

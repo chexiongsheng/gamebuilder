@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { propNumber } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propNumber("Points", 3)
 ]

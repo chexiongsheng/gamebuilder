@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+import { setCommentText } from "../../apiv2/actors/attributes.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { colorFromHex } from "../../apiv2/misc/colors.mjs";
+import { toFixedLength } from "../../apiv2/misc/utility.mjs";
+import { getAllPlayers, getLocalPlayer, getPlayerByNumber, getPlayerNumber } from "../../apiv2/multiplayer/players.mjs";
+import { RectStyle, UI_TEXT_CHAR_WIDTH, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
+import { assertString, logError } from "../../apiv2/util.mjs";
+
 export const PROPS = [
 
 ];

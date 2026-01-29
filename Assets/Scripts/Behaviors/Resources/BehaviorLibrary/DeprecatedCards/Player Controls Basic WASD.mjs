@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+import { getAttrib } from "../../apiv2/actors/attributes.mjs";
+import { getMem } from "../../apiv2/actors/memory.mjs";
+import { propDecimal } from "../../apiv2/actors/properties.mjs";
+import { legacyApi } from "../../apiv2/apiv2.mjs";
+import { vec3 } from "../../apiv2/misc/math.mjs";
+import { deltaTime } from "../../apiv2/misc/time.mjs";
+import { addVelocity } from "../../apiv2/physics/velocity.mjs";
+import { enableGravity, getAimDirection, getWorldThrottle, isGrounded, isSprinting, lookDir, moveGlobal } from "../../apiv2/player_controls/controls.mjs";
+
 // Player Controls: Basic WASD.
 
 export const PROPS = [

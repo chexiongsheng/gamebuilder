@@ -15,6 +15,8 @@
  */
 
 
+import { log } from "../../apiv2/misc/utility.mjs";
+
 export function onResetGame() {
 
 }

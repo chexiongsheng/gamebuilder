@@ -14,6 +14,18 @@
  * limitations under the License.
  */
 
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { getAttrib } from "../../apiv2/actors/attributes.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { sendToAll, sendToSelfDelayed } from "../../apiv2/actors/messages.mjs";
+import { propBoolean, propCardTargetActor, propSound, requireFalse } from "../../apiv2/actors/properties.mjs";
+import { resetGame } from "../../apiv2/misc/game.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { deepCopy } from "../../apiv2/misc/utility.mjs";
+import { getControllingPlayer, getLocalPlayer } from "../../apiv2/player_controls/controls.mjs";
+import { playSound } from "../../apiv2/sfx/sfx.mjs";
+import { UiColor, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
+
 export const PROPS = [
   propBoolean("Everyone", true, {
     label: "Everyone wins (co-op)"
@@ -104,7 +116,7 @@ export function onLocalTick() {
   const elapsed = getTime() - getCard().gameEnd.endTime;
   const won = didIWin();
 
-  const boxWidth = min(elapsed * BOX_FILL_SPEED, 1600);
+  const boxWidth = Math.min(elapsed * BOX_FILL_SPEED, 1600);
 
   uiRect(800 - boxWidth / 2, BOX_TOP, boxWidth, BOX_HEIGHT, won ? WON_COLOR : LOST_COLOR);
 

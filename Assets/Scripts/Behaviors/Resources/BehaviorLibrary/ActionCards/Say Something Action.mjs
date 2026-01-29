@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { clone } from "../../apiv2/actors/cloning.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { getProps, propDecimal, propNumber, propString } from "../../apiv2/actors/properties.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { getBoundsSize } from "../../apiv2/rendering/body.mjs";
+import { getPointAbove } from "../../apiv2/transform/rotation-get.mjs";
+
 export const PROPS = [
   propString("Message", "Hi, how are you?"),
   propDecimal("OffsetAbove", 0),

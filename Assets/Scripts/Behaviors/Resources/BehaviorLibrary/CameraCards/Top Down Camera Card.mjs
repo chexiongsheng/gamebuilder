@@ -14,6 +14,17 @@
  * limitations under the License.
  */
 
+import { exists } from "../../apiv2/actors/actors.mjs";
+import { setCameraSettings } from "../../apiv2/actors/camera_light.mjs";
+import { getProps, propDecimal } from "../../apiv2/actors/properties.mjs";
+import { attachToParent, detachFromParent, getParent } from "../../apiv2/hierarchy/parenting.mjs";
+import { getTerrainPointUnderMouse } from "../../apiv2/keyboard_mouse/mouse.mjs";
+import { clamp, degToRad, vec3add, vec3length, vec3normalized, vec3sub, vec3z } from "../../apiv2/misc/math.mjs";
+import { getPos } from "../../apiv2/transform/position-get.mjs";
+import { setPos } from "../../apiv2/transform/position-set.mjs";
+import { getBackward } from "../../apiv2/transform/rotation-get.mjs";
+import { setYawPitchRoll } from "../../apiv2/transform/rotation-set.mjs";
+
 export const PROPS = [
   propDecimal("Yaw", 45),
   propDecimal("Pitch", 45),

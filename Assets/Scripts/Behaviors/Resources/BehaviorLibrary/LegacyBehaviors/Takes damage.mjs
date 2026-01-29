@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+import { isClone } from "../../apiv2/actors/cloning.mjs";
+import { assert, log } from "../../util.mjs";
+import { kick } from "../../voosMain.mjs";
 import * as THREE from "three.mjs";
 
 // Takes damage<size=70%>\nMake it have health and be able to take damage.

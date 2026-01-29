@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+import { exists, getCardTargetActor, getCardTargetActorDescription, myself } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";
+import { getProps, propActor, propCardTargetActor } from "../../apiv2/actors/properties.mjs";
+import { setPosPlease } from "../../apiv2/remote/remote.mjs";
+import { getPos } from "../../apiv2/transform/position-get.mjs";
+import { setPos } from "../../apiv2/transform/position-set.mjs";
+
 export const PROPS = [
   propCardTargetActor('Teleportee', {
     label: 'Teleport what'

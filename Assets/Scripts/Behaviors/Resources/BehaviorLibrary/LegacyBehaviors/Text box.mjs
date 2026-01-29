@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { destroySelf } from "../../apiv2/actors/actors.mjs";
+import { setCommentText } from "../../apiv2/actors/attributes.mjs";
+import { attachToParent } from "../../apiv2/hierarchy/parenting.mjs";
+import { setScaleUniform } from "../../apiv2/transform/scale.mjs";
+
 // Text box\n<size=70%>To be used with 'Dialog box on touch'
 
 // tag utility

@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { getActorsInGroup } from "../../apiv2/actors/actors.mjs";
+import { getAttrib } from "../../apiv2/actors/attributes.mjs";
+import { propActorGroup, propDecimal } from "../../apiv2/actors/properties.mjs";
+import { getScreenRect, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
+
 export const PROPS = [
   propActorGroup("Who", "@TAG:enemy", {
     pickerPrompt: "Show health bars for who?"

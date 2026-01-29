@@ -24,6 +24,8 @@
  * 
  *****************************************************************************/
 
+import { log, stringOr, valueOr } from "../../util.mjs";
+
 // tag gamerules
 // property Actor TouchesWhat
 // property Actor WhoWinsOrScores

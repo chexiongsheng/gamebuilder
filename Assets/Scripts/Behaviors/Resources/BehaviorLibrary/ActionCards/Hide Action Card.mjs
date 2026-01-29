@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { hide } from "../../apiv2/rendering/visibility.mjs";
+
 /**
  * @param {GActionMessage} actionMessage
  */

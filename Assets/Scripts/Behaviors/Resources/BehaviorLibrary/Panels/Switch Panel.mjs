@@ -15,6 +15,10 @@
  */
 
 
+import { callActionDeck, callEventDeck } from "../../apiv2/actors/deck.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { propBoolean, propDeck } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propBoolean("SwitchBack", true, {
     label: 'Can switch back'

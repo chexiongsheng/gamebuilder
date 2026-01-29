@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+import * as THREE from "three.mjs";
+import { setLight } from "../../apiv2/actors/camera_light.mjs";
+import { getProps, propColor, propDecimal, propEnum, requireEqual } from "../../apiv2/actors/properties.mjs";
+import { colorToHex } from "../../apiv2/misc/colors.mjs";
+import { vec3 } from "../../apiv2/misc/math.mjs";
+
+const Color = THREE.Color;
+
 export const PROPS = [
   propDecimal("Range", 40),
 

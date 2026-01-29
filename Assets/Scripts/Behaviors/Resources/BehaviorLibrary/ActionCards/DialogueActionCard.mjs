@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { getCardTargetActor, myself } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { getProps, propCardTargetActor, propColor, propNumber, propString } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propCardTargetActor("WithWhom"),
   propString("SpeakerName"),

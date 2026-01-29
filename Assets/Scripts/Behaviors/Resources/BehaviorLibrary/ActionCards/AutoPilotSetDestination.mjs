@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+import { getCardTargetActor, getCardTargetActorDescription } from "../../apiv2/actors/actors.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { getProps, propCardTargetActor, propDecimal } from "../../apiv2/actors/properties.mjs";
+import { getPos } from "../../apiv2/transform/position-get.mjs";
+import { getForward } from "../../apiv2/transform/rotation-get.mjs";
+
 export const PROPS = [
   propCardTargetActor("CardTargetActor", {
     label: "Set on who?"

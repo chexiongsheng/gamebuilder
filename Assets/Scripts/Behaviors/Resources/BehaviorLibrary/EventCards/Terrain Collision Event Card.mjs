@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { cooldown } from "../../apiv2/actors/messages.mjs";
+import { getProps, propBoolean, propEnum, requireFalse } from "../../apiv2/actors/properties.mjs";
+import { BlockStyle } from "../../apiv2/terrain/blocks.mjs";
+
 export const PROPS = [
   propBoolean("AnyBlock", true, {
     label: "Any block type"

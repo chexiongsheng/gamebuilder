@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { myself } from "../../apiv2/actors/actors.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getProps, propEnum, requireEqual } from "../../apiv2/actors/properties.mjs";
+import { KeyCode } from "../../apiv2/keyboard_mouse/keyboard.mjs";
+
 export const PROPS = [
   propEnum("WhichButton", "PRI", [
     { value: "PRI", label: "Left click" },
@@ -30,8 +35,8 @@ export const PROPS = [
     { value: "DOWN", label: "Pressed" },
     { value: "UP", label: "Released" },
   ], {
-      label: 'Detect when:'
-    })
+    label: 'Detect when:'
+  })
 ];
 
 function getMyKeyName() {

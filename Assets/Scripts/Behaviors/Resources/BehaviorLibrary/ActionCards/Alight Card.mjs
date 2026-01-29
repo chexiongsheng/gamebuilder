@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { myself } from "../../apiv2/actors/actors.mjs";
+import { getVar } from "../../apiv2/actors/attributes.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+
 /**
  * @param {GActionMessage} actionMessage 
  */

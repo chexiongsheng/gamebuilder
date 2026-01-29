@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { getCardTargetActor, getCardTargetActorDescription, myself } from "../../apiv2/actors/actors.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { getProps, propCardTargetActor, propNumber } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propCardTargetActor("Target", {
     label: "Damage who?"

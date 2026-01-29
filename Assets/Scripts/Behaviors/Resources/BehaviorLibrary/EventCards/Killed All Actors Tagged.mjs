@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { getActorGroupDescription, getActorsInGroup, isActorInGroup, isOnstage } from "../../apiv2/actors/actors.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getProps, propActorGroup } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propActorGroup("targets", "@TAG:enemy", {
     label: "Kill what actors:",

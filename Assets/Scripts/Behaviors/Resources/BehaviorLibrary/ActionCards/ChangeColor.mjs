@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { getMem } from "../../apiv2/actors/memory.mjs";
+import { getProps, propColor } from "../../apiv2/actors/properties.mjs";
+import { colorToHex } from "../../apiv2/misc/colors.mjs";
+import { getTintHex, setTintColor, setTintHex } from "../../apiv2/rendering/color.mjs";
+
 export const PROPS = [
   propColor("Color", "#0000ff")
 ];

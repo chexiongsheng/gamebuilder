@@ -14,6 +14,18 @@
  * limitations under the License.
  */
 
+import { exists } from "../../apiv2/actors/actors.mjs";
+import { setCameraSettings } from "../../apiv2/actors/camera_light.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getProps, propBoolean, propDecimal } from "../../apiv2/actors/properties.mjs";
+import { attachToParent, detachFromParent, getParent } from "../../apiv2/hierarchy/parenting.mjs";
+import { degToRad, vec3 } from "../../apiv2/misc/math.mjs";
+import { getLookAxes } from "../../apiv2/player_controls/controls.mjs";
+import { getPos, selfToWorldPos } from "../../apiv2/transform/position-get.mjs";
+import { setPos } from "../../apiv2/transform/position-set.mjs";
+import { getForward, getYaw } from "../../apiv2/transform/rotation-get.mjs";
+import { setYawPitchRoll } from "../../apiv2/transform/rotation-set.mjs";
+
 export const PROPS = [
   propDecimal("OffsetX", 0),
   propDecimal("OffsetY", 1.5),

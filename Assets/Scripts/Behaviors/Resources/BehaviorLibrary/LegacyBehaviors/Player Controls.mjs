@@ -15,6 +15,10 @@
  */
 
 import * as THREE from "three.mjs";
+import { getPlayerByNumber } from "../../apiv2/multiplayer/players.mjs";
+import { getControllingPlayer, setControllingPlayer } from "../../apiv2/player_controls/controls.mjs";
+import { valueOr } from "../../util.mjs";
+import { kick } from "../../voosMain.mjs";
 
 // Player Controls<size=70%>\nBasic WASD movement
 

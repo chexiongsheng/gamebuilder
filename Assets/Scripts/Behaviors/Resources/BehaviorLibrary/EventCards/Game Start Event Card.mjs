@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { getCard } from "../../apiv2/actors/memory.mjs";
+
 /**
  * @return {GEvent|undefined} The event, if one occurred.
  */

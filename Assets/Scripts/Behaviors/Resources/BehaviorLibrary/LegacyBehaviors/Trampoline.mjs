@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { kick } from "../../voosMain.mjs";
 import * as THREE from "three.mjs";
 
 // Trampoline<size=70%>\nAnything that touches it will get launched in the sky!

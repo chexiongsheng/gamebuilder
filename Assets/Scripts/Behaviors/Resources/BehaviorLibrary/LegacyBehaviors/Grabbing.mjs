@@ -26,6 +26,8 @@
 
 // tag ability
 
+import { kick } from "../../voosMain.mjs";
+
 /**
  * @param {HandlerApi} api 
  */

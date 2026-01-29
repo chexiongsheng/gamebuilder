@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+import { getMem } from "../../apiv2/actors/memory.mjs";
+import { propBoolean, propDecimal } from "../../apiv2/actors/properties.mjs";
+import { vec3, vec3add } from "../../apiv2/misc/math.mjs";
+import { deltaTime } from "../../apiv2/misc/time.mjs";
+import { getPos, getSpawnPos } from "../../apiv2/transform/position-get.mjs";
+import { setPos } from "../../apiv2/transform/position-set.mjs";
+import { getForward, getRight, getUp } from "../../apiv2/transform/rotation-get.mjs";
+
 // Move: Oscillate
 // Oscillates along a direction
 
