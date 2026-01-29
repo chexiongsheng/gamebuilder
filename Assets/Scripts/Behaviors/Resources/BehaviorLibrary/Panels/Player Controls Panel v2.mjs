@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -67,11 +67,11 @@ export function onInit() {
   // If present, assignedPlayer is the player that we are assigned to until further notice.
   // This may be null to mean we are (intentionally) assigned to nobody, so this being null
   // is different from it being undefined.
-  delete card.assignedPlayer;
-  card.lastAutoAssignCheck = getTime();
-  card.lastPlayerNumber = null;
-  card.oldSelf = myself(); // to detect copy/paste
-  delete card.activeControlLocks;
+  delete getCard().assignedPlayer;
+  getCard().lastAutoAssignCheck = getTime();
+  getCard().lastPlayerNumber = null;
+  getCard().oldSelf = myself(); // to detect copy/paste
+  delete getCard().activeControlLocks;
 }
 
 function getDesiredPlayerNumber() {
@@ -83,18 +83,18 @@ export function onTick() {
   setVar("hasPlayerControlsPanel", true);
   setIsPlayerControllable(true);
   // If we were just copy/pasted, reinit.
-  if (myself() !== card.oldSelf) {
+  if (myself() !== getCard().oldSelf) {
     onInit();
   }
   // If we were assigned to a player and the player no longer exists, unassign.
-  if (card.assignedPlayer !== undefined && card.assignedPlayer !== null && !playerExists(card.assignedPlayer)) {
-    delete card.assignedPlayer;
+  if (getCard().assignedPlayer !== undefined && getCard().assignedPlayer !== null && !playerExists(getCard().assignedPlayer)) {
+    delete getCard().assignedPlayer;
   }
 
-  if (card.assignedPlayer !== undefined) {
-    // If there is a card.assignedPlayer, that takes precedence over everything.
+  if (getCard().assignedPlayer !== undefined) {
+    // If there is a getCard().assignedPlayer, that takes precedence over everything.
     setVar("playerAutoAssignAvailable", false);
-    setControllingPlayer(card.assignedPlayer); // might be null to mean "nobody"
+    setControllingPlayer(getCard().assignedPlayer); // might be null to mean "nobody"
   } else if (props.AutoAssign) {
     setVar("playerAutoAssignAvailable", true);
     maybeAutoAssign();
@@ -121,11 +121,11 @@ export function onCardRemoved() {
 
 function maybeAutoAssign() {
   // Run this logic once every 2 seconds, not every frame.
-  if (getTime() < (card.lastAutoAssignCheck || 0) + 2) {
+  if (getTime() < (getCard().lastAutoAssignCheck || 0) + 2) {
     return;
   }
   const allActors = getActors();
-  card.lastAutoAssignCheck = getTime();
+  getCard().lastAutoAssignCheck = getTime();
   // If we don't have priority, yield.
   if (!doWeHaveAutoAssignPriority(allActors)) return;
   // Okay, we have priority, so check if there is a player without an actor.
@@ -136,7 +136,7 @@ function maybeAutoAssign() {
   }
   for (const playerId of getAllPlayers()) {
     if (!playerHasActor[playerId]) {
-      card.assignedPlayer = playerId;
+      getCard().assignedPlayer = playerId;
       return;
     }
   }
@@ -145,9 +145,9 @@ function maybeAutoAssign() {
 function updateColor() {
   const player = getControllingPlayer();
   const playerNumber = player ? (getPlayerNumber(player) || 0) : 0;
-  if (playerNumber !== card.lastPlayerNumber) {
+  if (playerNumber !== getCard().lastPlayerNumber) {
     setTintHex(PLAYER_COLORS[playerNumber % PLAYER_COLORS.length]);
-    card.lastPlayerNumber = playerNumber;
+    getCard().lastPlayerNumber = playerNumber;
   }
 }
 
@@ -165,12 +165,12 @@ function doWeHaveAutoAssignPriority(allActors) {
 // msg.playerId is the player ID to assign to, or null to unassign.
 export function onAssignPlayer(msg) {
   assert(msg.playerId === null || typeof msg.playerId === 'string', 'msg.playerId in AssignPlayer message must be string or null');
-  card.assignedPlayer = msg.playerId;
+  getCard().assignedPlayer = msg.playerId;
 }
 
 // UnassignPlayer message requests us to unassign, returning to our default behavior.
 export function onUnassignPlayer() {
-  delete card.assignedPlayer;
+  delete getCard().assignedPlayer;
 }
 
 // DEPRECATED:
@@ -183,16 +183,16 @@ export function onRequestSetCamera(msg) {
 // Someone is requesting us to lock player controls.
 export function onLockControls(msg) {
   assert(msg.name, "LockControls: msg.name must be non-empty");
-  card.activeControlLocks = card.activeControlLocks || {};
-  card.activeControlLocks[msg.name] = msg.debugString || "";
+  getCard().activeControlLocks = getCard().activeControlLocks || {};
+  getCard().activeControlLocks[msg.name] = msg.debugString || "";
   setVar("ControlsLocked", true);
 }
 
 // Someone is requesting us to unlock player controls.
 export function onUnlockControls(msg) {
   assert(msg.name, "UnlockControls: msg.name must be non-empty");
-  if (card.activeControlLocks) delete card.activeControlLocks[msg.name];
-  setVar("ControlsLocked", card.activeControlLocks && Object.keys(card.activeControlLocks).length > 0);
+  if (getCard().activeControlLocks) delete getCard().activeControlLocks[msg.name];
+  setVar("ControlsLocked", getCard().activeControlLocks && Object.keys(getCard().activeControlLocks).length > 0);
 }
 
 function drawControlsLock() {
@@ -230,7 +230,7 @@ const DIA_KEY_CHOICES = {
 }
 
 function dialogueResetGame() {
-  delete card.dia;
+  delete getCard().dia;
 }
 
 // msg.requester: the actor requesting the dialogue
@@ -242,90 +242,90 @@ function dialogueResetGame() {
 //     text: the text of the reply
 //     message: message to send to the requester when this reply is chosen
 export function onLaunchDialogue(msg) {
-  if (card.dia) return;
-  card.dia = JSON.parse(JSON.stringify(msg));
-  card.dia.startTime = getTime();
-  card.dia.text = card.dia.text || "Missing dialogue text";
-  card.dia.replies = card.dia.replies || [];
+  if (getCard().dia) return;
+  getCard().dia = JSON.parse(JSON.stringify(msg));
+  getCard().dia.startTime = getTime();
+  getCard().dia.text = getCard().dia.text || "Missing dialogue text";
+  getCard().dia.replies = getCard().dia.replies || [];
   const textLines = msg.text.split("\n").length;
 
   let textWidth = uiGetTextWidth(msg.text);
-  for (const reply of card.dia.replies) {
+  for (const reply of getCard().dia.replies) {
     textWidth = Math.max(textWidth, uiGetTextWidth("[1]: " + reply.text));
   }
 
   const width = textWidth + 2 * DIA_PADDING;
   let height = textLines * DIA_LINE_HEIGHT +
-    (card.dia.speaker ? DIA_SPEAKER_LINE_HEIGHT : 0) +
+    (getCard().dia.speaker ? DIA_SPEAKER_LINE_HEIGHT : 0) +
     2 * DIA_PADDING +
     DIA_SPACE_BETWEEN_TEXT_AND_REPLIES +
-    DIA_LINE_HEIGHT * (card.dia.replies || [0]).length;
-  card.dia.rect = {
+    DIA_LINE_HEIGHT * (getCard().dia.replies || [0]).length;
+  getCard().dia.rect = {
     x: (uiGetScreenWidth() - width) / 2,
     y: (uiGetScreenHeight() - height) / 2,
     w: width,
     h: height
   };
-  card.dia.animating = true;
-  card.dia.charsShown = 0;
+  getCard().dia.animating = true;
+  getCard().dia.charsShown = 0;
   sendToSelf("LockControls", { name: DIA_LOCK_NAME });
 }
 
 // onTick, not onLocalTick because we only want to show UI on THIS player.
 function dialogueOnTick() {
-  if (!card.dia) return;
-  if (card.dia.animating) {
-    card.dia.charsShown += (card.dia.cps || 20) * deltaTime();
-    if (card.dia.charsShown >= card.dia.text.length) {
-      card.dia.animating = false;
+  if (!getCard().dia) return;
+  if (getCard().dia.animating) {
+    getCard().dia.charsShown += (getCard().dia.cps || 20) * deltaTime();
+    if (getCard().dia.charsShown >= getCard().dia.text.length) {
+      getCard().dia.animating = false;
     }
   }
-  const textToPrint = card.dia.text.substr(0, Math.ceil(card.dia.charsShown));
-  uiRect(card.dia.rect.x, card.dia.rect.y, card.dia.rect.w, card.dia.rect.h, 0x000020, { opacity: 0.85 });
-  uiRect(card.dia.rect.x, card.dia.rect.y, card.dia.rect.w, card.dia.rect.h, 0xffffff, { style: "BORDER" });
+  const textToPrint = getCard().dia.text.substr(0, Math.ceil(getCard().dia.charsShown));
+  uiRect(getCard().dia.rect.x, getCard().dia.rect.y, getCard().dia.rect.w, getCard().dia.rect.h, 0x000020, { opacity: 0.85 });
+  uiRect(getCard().dia.rect.x, getCard().dia.rect.y, getCard().dia.rect.w, getCard().dia.rect.h, 0xffffff, { style: "BORDER" });
 
-  let y = card.dia.rect.y + DIA_PADDING;
+  let y = getCard().dia.rect.y + DIA_PADDING;
 
-  if (card.dia.speaker) {
-    uiText(card.dia.rect.x + DIA_PADDING, y, "[ " + card.dia.speaker + " ]", card.dia.color);
+  if (getCard().dia.speaker) {
+    uiText(getCard().dia.rect.x + DIA_PADDING, y, "[ " + getCard().dia.speaker + " ]", getCard().dia.color);
     y += DIA_SPEAKER_LINE_HEIGHT;
   }
 
   for (const line of textToPrint.split("\n")) {
-    uiText(card.dia.rect.x + DIA_PADDING, y, line);
+    uiText(getCard().dia.rect.x + DIA_PADDING, y, line);
     y += DIA_LINE_HEIGHT;
   }
   y += DIA_SPACE_BETWEEN_TEXT_AND_REPLIES;
 
-  if (card.dia.animating) return;
+  if (getCard().dia.animating) return;
 
-  const repliesX = card.dia.rect.x + DIA_PADDING;
+  const repliesX = getCard().dia.rect.x + DIA_PADDING;
 
   // If no replies, just show prompt to press ENTER.
-  if (card.dia.replies.length === 0) {
+  if (getCard().dia.replies.length === 0) {
     blinkText(repliesX, y, "[ ENTER ]");
     return;
   }
 
   // Show possible replies.
-  for (let i = 0; i < card.dia.replies.length; i++) {
+  for (let i = 0; i < getCard().dia.replies.length; i++) {
     blinkText(repliesX, y, "[" + (i + 1) + "]");
-    uiText(repliesX + 60, y, card.dia.replies[i].text);
+    uiText(repliesX + 60, y, getCard().dia.replies[i].text);
     y += DIA_LINE_HEIGHT;
   }
 }
 
 function dialogueOnKeyDown(msg) {
-  if (!card.dia) return;
+  if (!getCard().dia) return;
 
   const choice = DIA_KEY_CHOICES[msg.keyName];
-  if (card.dia.replies.length === 0 && choice === -1) {
+  if (getCard().dia.replies.length === 0 && choice === -1) {
     dismissDialogue();
   }
-  if (choice >= 0 && choice < card.dia.replies.length) {
+  if (choice >= 0 && choice < getCard().dia.replies.length) {
     // Reply chosen.
-    if (exists(card.dia.requester)) {
-      send(card.dia.requester, card.dia.replies[choice].message);
+    if (exists(getCard().dia.requester)) {
+      send(getCard().dia.requester, getCard().dia.replies[choice].message);
     }
     dismissDialogue();
   }
@@ -338,5 +338,5 @@ function blinkText(x, y, text) {
 
 function dismissDialogue() {
   sendToSelf("UnlockControls", { name: DIA_LOCK_NAME });
-  delete card.dia;
+  delete getCard().dia;
 }

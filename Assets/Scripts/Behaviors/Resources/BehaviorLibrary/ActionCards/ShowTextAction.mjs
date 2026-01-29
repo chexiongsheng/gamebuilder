@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ export const PROPS = [
 ];
 
 function resetState() {
-  delete card.showing;
-  delete card.showTime;
+  delete getCard().showing;
+  delete getCard().showTime;
 }
 
 export function onResetGame() {
@@ -37,8 +37,8 @@ export function onAction(actionMessage) {
 }
 
 export function onStartShowing() {
-  card.showing = true;
-  card.showTime = getTime();
+  getCard().showing = true;
+  getCard().showTime = getTime();
   sendToSelfDelayed(props.Duration, "StopShowing");
 }
 
@@ -47,7 +47,7 @@ export function onStopShowing() {
 }
 
 export function onLocalTick() {
-  if (!card.showing) return;
+  if (!getCard().showing) return;
   const width = uiGetTextWidth(props.Text);
   const height = uiGetTextHeight(props.Text);
   const bgWidth = props.FullScreen ? 1610 : width + 20;

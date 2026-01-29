@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,8 +28,8 @@ export const PROPS = [
 ]
 
 export function onInit() {
-  card.lastHealth = null;
-  card.lastDecreaseTime = null;
+  getCard().lastHealth = null;
+  getCard().lastDecreaseTime = null;
 }
 
 export function onDrawScreen() {
@@ -43,11 +43,11 @@ export function onDrawScreen() {
   const MARGIN = 5;
 
   const cur = getVar("isDead") ? 0 : (getVar(props.AttribCur) || mem[props.AttribCur] || 0);
-  if (card.lastHealth !== null && card.lastHealth > cur) {
-    card.lastDecreaseTime = getTime();
+  if (getCard().lastHealth !== null && getCard().lastHealth > cur) {
+    getCard().lastDecreaseTime = getTime();
   }
-  card.lastHealth = cur;
-  const barBgColor = (card.lastDecreaseTime && getTime() - card.lastDecreaseTime < 0.2) ? UiColor.MAROON : UiColor.BLACK;
+  getCard().lastHealth = cur;
+  const barBgColor = (getCard().lastDecreaseTime && getTime() - getCard().lastDecreaseTime < 0.2) ? UiColor.MAROON : UiColor.BLACK;
 
   uiRect(props.X, props.Y, props.Width, HEIGHT, barBgColor, {
     opacity: props.Opacity || 0.5

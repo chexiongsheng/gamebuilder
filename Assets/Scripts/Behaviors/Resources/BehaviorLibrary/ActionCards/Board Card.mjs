@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -68,7 +68,7 @@ export function onBoardingAccepted(msg) {
   setControllingPlayer(null);
   // Send message (to Player Controls panel) asking to assign no player.
   send(myself(), 'AssignPlayer', { playerId: null });
-  card.isBoarded = true;
+  getCard().isBoarded = true;
 }
 
 export function onAlightFromBoardable(msg) {
@@ -86,8 +86,8 @@ export function onAlightFromBoardable(msg) {
 }
 
 export function onResetGame() {
-  if (card.isBoarded) {
-    delete card.isBoarded;
+  if (getCard().isBoarded) {
+    delete getCard().isBoarded;
     detachFromParent();
     show();
   }

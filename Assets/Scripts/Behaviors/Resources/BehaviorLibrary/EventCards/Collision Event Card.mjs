@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,28 +41,28 @@ export function onCollision(msg) {
   }
 
   /** @type {GEvent} */
-  card.triggeredEvent = {
+  getCard().triggeredEvent = {
     actor: msg.other
   };
-  card.stickyUntil = getTime() + COLLISION_STICKY_DURATION;
+  getCard().stickyUntil = getTime() + COLLISION_STICKY_DURATION;
 }
 
 // onCheck isn't necessarily always called, so it's important we clear our
 // triggered event on reset.
 export function onResetGame() {
-  delete card.triggeredEvent;
-  delete card.stickyUntil;
+  delete getCard().triggeredEvent;
+  delete getCard().stickyUntil;
 }
 
 /**
  * @return {GEvent|undefined} The event, if one occurred.
  */
 export function onCheck() {
-  if (card.triggeredEvent !== undefined) {
-    const rv = card.triggeredEvent;
-    if (getTime() > card.stickyUntil) {
-      delete card.stickyUntil;
-      delete card.triggeredEvent;
+  if (getCard().triggeredEvent !== undefined) {
+    const rv = getCard().triggeredEvent;
+    if (getTime() > getCard().stickyUntil) {
+      delete getCard().stickyUntil;
+      delete getCard().triggeredEvent;
     }
     return rv;
   }

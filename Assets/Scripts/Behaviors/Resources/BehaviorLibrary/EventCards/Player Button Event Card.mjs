@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,26 +48,26 @@ function getMyKeyName() {
 
 export function onKeyHeld(msg) {
   if (msg.keyName === getMyKeyName() && (props.DetectWhen || "HELD") === "HELD") {
-    card.triggeredEvent = { actor: myself() };
+    getCard().triggeredEvent = { actor: myself() };
   }
 }
 
 export function onKeyDown(msg) {
   if (msg.keyName === getMyKeyName() && props.DetectWhen === "DOWN") {
-    card.triggeredEvent = { actor: myself() };
+    getCard().triggeredEvent = { actor: myself() };
   }
 }
 
 export function onKeyUp(msg) {
   if (msg.keyName === getMyKeyName() && props.DetectWhen === "UP") {
-    card.triggeredEvent = { actor: myself() };
+    getCard().triggeredEvent = { actor: myself() };
   }
 }
 
 export function onCheck() {
-  if (card.triggeredEvent !== undefined) {
-    const rv = card.triggeredEvent;
-    delete card.triggeredEvent;
+  if (getCard().triggeredEvent !== undefined) {
+    const rv = getCard().triggeredEvent;
+    delete getCard().triggeredEvent;
     return rv;
   }
   else {
@@ -76,7 +76,7 @@ export function onCheck() {
 }
 
 export function onResetGame() {
-  delete card.triggeredEvent;
+  delete getCard().triggeredEvent;
 }
 
 function getKeyEnumValues() {

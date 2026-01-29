@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,23 +20,23 @@ export const PROPS = [
 
 /** @param {GActionMessage} actionMessage */
 export function onAction(actionMessage) {
-  card.originalTintHex = card.originalTintHex || getTintHex();
+  getCard().originalTintHex = getCard().originalTintHex || getTintHex();
   // setTintColor(new THREE.Color(
   //  props.ColorR / 255.0, props.ColorG / 255.0, props.ColorB / 255.0));
   setTintColor(new THREE.Color(1, 0, 0));
-  // TEMP card.restoreTintTime = getTime() + props.Duration;
-  card.restoreTintTime = getTime() + 0.5;
+  // TEMP getCard().restoreTintTime = getTime() + props.Duration;
+  getCard().restoreTintTime = getTime() + 0.5;
 }
 
 export function onTick() {
-  if (card.restoreTintTime) {
-    if (getTime() > card.restoreTintTime) {
-      delete card.restoreTintTime;
-      setTintHex(card.originalTintHex);
+  if (getCard().restoreTintTime) {
+    if (getTime() > getCard().restoreTintTime) {
+      delete getCard().restoreTintTime;
+      setTintHex(getCard().originalTintHex);
     }
     else {
       const red = Math.floor(getTime() * 6) % 2 == 0;
-      setTintHex(red ? "#ff0000" : card.originalTintHex);
+      setTintHex(red ? "#ff0000" : getCard().originalTintHex);
     }
   }
 }

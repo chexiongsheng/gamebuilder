@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ export const PROPS = [
 ]
 
 export function onTick() {
-  if (card.ended) {
+  if (getCard().ended) {
     return;
   }
   /** @type {GEvent?} */
@@ -33,10 +33,10 @@ export function onTick() {
   if (winEvent) {
     // Someone won the game. Call the win action deck.
     callActionDeck("winDeck", { event: winEvent })
-    card.ended = true;
+    getCard().ended = true;
   }
 }
 
 export function onResetGame() {
-  delete card.ended;
+  delete getCard().ended;
 }

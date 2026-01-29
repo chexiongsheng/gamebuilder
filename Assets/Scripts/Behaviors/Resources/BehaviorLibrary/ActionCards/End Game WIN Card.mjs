@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,23 +38,23 @@ const DELAY_TO_RESET = 5;
 
 export function onInit() {
   // If not null, then this is the game-end state (describes how the game ended, who won, etc).
-  card.gameEnd = null;
+  getCard().gameEnd = null;
 }
 
 /**
  * @param {GActionMessage} actionMessage
  */
 export function onAction(actionMessage) {
-  if (card.gameEnd) {
+  if (getCard().gameEnd) {
     // Game was already won/lost, so activating this card has no effect.
     return;
   }
-  card.gameEnd = {
+  getCard().gameEnd = {
     how: "victory",
     winnerPlayer: getWinningPlayer(actionMessage),
     endTime: getTime()
   };
-  sendToAll("GameEnd", { gameEnd: card.gameEnd });
+  sendToAll("GameEnd", { gameEnd: getCard().gameEnd });
   sendToSelfDelayed(DELAY_TO_RESET, "TimeToReset");
 }
 
@@ -78,11 +78,11 @@ function getWinningPlayer(actionMessage) {
 }
 
 function didIWin() {
-  return card.gameEnd.winnerPlayer === "@EVERYONE" || card.gameEnd.winnerPlayer === getLocalPlayer();
+  return getCard().gameEnd.winnerPlayer === "@EVERYONE" || getCard().gameEnd.winnerPlayer === getLocalPlayer();
 }
 
 export function onGameEnd(msg) {
-  card.gameEnd = deepCopy(msg.gameEnd);
+  getCard().gameEnd = deepCopy(msg.gameEnd);
   const won = didIWin();
   if (won && props.WinSound) {
     playSound(props.WinSound);
@@ -97,11 +97,11 @@ export function onTimeToReset() {
 }
 
 export function onLocalTick() {
-  if (!card.gameEnd || card.gameEnd.how !== "victory") {
+  if (!getCard().gameEnd || getCard().gameEnd.how !== "victory") {
     // Game not ended, not was not a victory, so we should stay quiet.
     return;
   }
-  const elapsed = getTime() - card.gameEnd.endTime;
+  const elapsed = getTime() - getCard().gameEnd.endTime;
   const won = didIWin();
 
   const boxWidth = min(elapsed * BOX_FILL_SPEED, 1600);

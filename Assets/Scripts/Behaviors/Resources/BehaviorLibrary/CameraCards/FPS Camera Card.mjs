@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,14 +28,14 @@ export function onCameraTick(msg) {
   reparentIfNeeded(target);
 
   // If yaw is unset (null), initialize with the target's yaw.
-  if (card.yaw === null) {
-    card.yaw = getYaw(target) || 0;
+  if (getCard().yaw === null) {
+    getCard().yaw = getYaw(target) || 0;
   }
 
   setPos(selfToWorldPos(vec3(props.OffsetX, props.OffsetY, props.OffsetZ), msg.target));
-  card.yaw += getLookAxes(target).x;
-  card.pitch = Math.min(Math.max(card.pitch + getLookAxes(target).y, degToRad(-80)), degToRad(80));
-  setYawPitchRoll(card.yaw, -card.pitch, 0);
+  getCard().yaw += getLookAxes(target).x;
+  getCard().pitch = Math.min(Math.max(getCard().pitch + getLookAxes(target).y, degToRad(-80)), degToRad(80));
+  setYawPitchRoll(getCard().yaw, -getCard().pitch, 0);
   setCameraSettings({
     cursorActive: false,
     aimOrigin: getPos(),
@@ -46,8 +46,8 @@ export function onCameraTick(msg) {
 }
 
 export function onInit() {
-  card.yaw = null;  // null means "unset"
-  card.pitch = 0;
+  getCard().yaw = null;  // null means "unset"
+  getCard().pitch = 0;
 }
 
 export function reparentIfNeeded(target) {

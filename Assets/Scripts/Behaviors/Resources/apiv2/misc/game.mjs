@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -68,13 +68,13 @@
  * 
  * @example
  * export function onInit() {
- *   card.collisionCount = 0;
+ *   getCard().collisionCount = 0;
  * }
  * 
  * @example
  * export function onCollision() {
- *   card.collisionCount++;
- *   log("I collided " + card.collisionCount + "times"); 
+ *   getCard().collisionCount++;
+ *   log("I collided " + getCard().collisionCount + "times"); 
  * }
  */
 // DOC_ONLY: function onInit() {}

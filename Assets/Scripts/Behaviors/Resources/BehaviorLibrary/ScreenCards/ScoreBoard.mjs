@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,7 +40,7 @@ export function onInit() {
   // Table of scores.
   //   key: player ID (string)
   //   value: current score (integer)
-  card.scores = {};
+  getCard().scores = {};
 }
 
 export function onTick() {
@@ -70,7 +70,7 @@ export function onPointScored(msg) {
     return;
   }
   assertString(msg.player, "ScoreBoard: player ID must be a string.");
-  card.scores[msg.player] = (card.scores[msg.player] || 0) + (msg.amount || 1);
+  getCard().scores[msg.player] = (getCard().scores[msg.player] || 0) + (msg.amount || 1);
 }
 
 function formatScoreBoardText() {
@@ -85,7 +85,7 @@ function formatScoreBoardText() {
   pieces.push('\n');
   for (let i = 1; i <= players.length; i++) {
     const playerId = getPlayerByNumber(i);
-    pieces.push(toFixedLength(card.scores[playerId] || 0, BOX_WIDTH_CHARS - 1, true));
+    pieces.push(toFixedLength(getCard().scores[playerId] || 0, BOX_WIDTH_CHARS - 1, true));
     pieces.push(' ');
   }
   return pieces.join('');

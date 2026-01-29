@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,21 +22,21 @@ export const PROPS = [
 ];
 
 export function onResetGame() {
-  delete card.degreesLeft;
+  delete getCard().degreesLeft;
 }
 
 export function onAction() {
-  card.degreesLeft = props.Degrees;
+  getCard().degreesLeft = props.Degrees;
 }
 
 export function onTick() {
-  if (card.degreesLeft) {
-    const degreesToTurn = min(card.degreesLeft, props.Speed * deltaTime());
-    card.degreesLeft -= degreesToTurn;
+  if (getCard().degreesLeft) {
+    const degreesToTurn = min(getCard().degreesLeft, props.Speed * deltaTime());
+    getCard().degreesLeft -= degreesToTurn;
     turn((props.Counterclockwise ? -1 : 1) * degToRad(degreesToTurn),
       props.Axis === "X" ? vec3x() : props.Axis === "Z" ? vec3z() : vec3y());
-    if (card.degreesLeft < 0.01) {
-      delete card.degreesLeft;
+    if (getCard().degreesLeft < 0.01) {
+      delete getCard().degreesLeft;
     }
   }
 }

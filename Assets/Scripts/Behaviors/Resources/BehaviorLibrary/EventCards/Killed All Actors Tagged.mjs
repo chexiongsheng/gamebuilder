@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +23,9 @@ export const PROPS = [
 
 /** @return {GEvent|undefined} The event that fired, if any. */
 export function onCheck() {
-  if (card.triggeredEvent) {
-    const e = card.triggeredEvent;
-    delete card.triggeredEvent;
+  if (getCard().triggeredEvent) {
+    const e = getCard().triggeredEvent;
+    delete getCard().triggeredEvent;
     return e;
   }
 }
@@ -43,11 +43,11 @@ export function onDeath(deathMessage) {
   }
   // Do not pass an actor here, since that doesn't entirely make sense.
   /** @type {GEvent} */
-  card.triggeredEvent = {};
+  getCard().triggeredEvent = {};
 }
 
 export function onResetGame() {
-  delete card.triggeredEvent;
+  delete getCard().triggeredEvent;
 }
 
 export function getCardStatus() {

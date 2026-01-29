@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,23 +24,23 @@ export const PROPS = [
 /** @type {GActionMessage} actionMessage */
 export function onAction(actionMessage) {
   if (props.Speed <= 0) return;
-  card.targetPos = selfToWorldPos(vec3(props.DistRight, props.DistUp, props.DistForward));
-  card.endTime = getTime() + 1 + getDistanceTo(card.targetPos) / props.Speed;
+  getCard().targetPos = selfToWorldPos(vec3(props.DistRight, props.DistUp, props.DistForward));
+  getCard().endTime = getTime() + 1 + getDistanceTo(getCard().targetPos) / props.Speed;
 }
 
 export function onTick() {
-  if (!card.targetPos) return;
+  if (!getCard().targetPos) return;
   // Move towards target point, at given speed.
-  moveToward(card.targetPos, props.Speed);
+  moveToward(getCard().targetPos, props.Speed);
   // Stop trying to move after enough time has elapsed.
-  if (getTime() > card.endTime) {
+  if (getTime() > getCard().endTime) {
     resetCard();
   }
 }
 
 function resetCard() {
-  delete card.targetPos;
-  delete card.endTime;
+  delete getCard().targetPos;
+  delete getCard().endTime;
 }
 
 export function onResetGame() {

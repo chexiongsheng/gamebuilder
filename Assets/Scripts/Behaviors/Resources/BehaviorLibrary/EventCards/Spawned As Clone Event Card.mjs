@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,16 +18,16 @@
  * @return {GEvent|undefined} The event, if one occurred.
  */
 export function onCheck() {
-  if (card.fire) {
-    delete card.fire;
+  if (getCard().fire) {
+    delete getCard().fire;
     return {};
   }
 }
 
 export function onResetGame() {
-  delete card.fire;
+  delete getCard().fire;
 }
 
 export function onSpawnAsClone() {
-  card.fire = true;
+  getCard().fire = true;
 }

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ export const PROPS = [
 ];
 
 export function onInit() {
-  delete card.spline;
+  delete getCard().spline;
   if (exists(props.InitialDestination)) {
     onSetDestination({
       pos: getPos(props.InitialDestination),
@@ -42,38 +42,38 @@ export function onSetDestination(msg) {
 }
 
 export function onActiveTick() {
-  if (!card.spline) return;
+  if (!getCard().spline) return;
   // Must be kinematic for this to work.
   setKinematic(true);
 
-  const dsdp = Math.max(calcLocalDsDp(card.spline.xfunc, card.spline.yfunc, card.spline.zfunc, card.spline.p), 0.001);
-  const dsdt = card.spline.speed;
+  const dsdp = Math.max(calcLocalDsDp(getCard().spline.xfunc, getCard().spline.yfunc, getCard().spline.zfunc, getCard().spline.p), 0.001);
+  const dsdt = getCard().spline.speed;
   const dpdt = dsdt / dsdp;
-  const newP = card.spline.p + deltaTime() * dpdt;
-  card.spline.p = clamp(newP, 0, 1);
+  const newP = getCard().spline.p + deltaTime() * dpdt;
+  getCard().spline.p = clamp(newP, 0, 1);
   const desiredPos = getDesiredPos();
   const desiredVel = vec3scale(getDesiredVelocityP(), dpdt);
   setPos(desiredPos);
   lookDir(vec3normalized(desiredVel));
   if (newP >= 1) {
     // Arrived.
-    delete card.spline;
+    delete getCard().spline;
   }
 }
 
 function getDesiredPos() {
   return vec3(
-    polynomialEval(card.spline.xfunc, card.spline.p),
-    polynomialEval(card.spline.yfunc, card.spline.p),
-    polynomialEval(card.spline.zfunc, card.spline.p)
+    polynomialEval(getCard().spline.xfunc, getCard().spline.p),
+    polynomialEval(getCard().spline.yfunc, getCard().spline.p),
+    polynomialEval(getCard().spline.zfunc, getCard().spline.p)
   );
 }
 
 function getDesiredVelocityP() {
   return vec3(
-    polynomialEval(card.spline.dxdp, card.spline.p),
-    polynomialEval(card.spline.dydp, card.spline.p),
-    polynomialEval(card.spline.dzdp, card.spline.p)
+    polynomialEval(getCard().spline.dxdp, getCard().spline.p),
+    polynomialEval(getCard().spline.dydp, getCard().spline.p),
+    polynomialEval(getCard().spline.dzdp, getCard().spline.p)
   );
 }
 
@@ -82,14 +82,14 @@ function getDesiredVelocityP() {
 function recomputeSpline(goalPos, goalForward, speed) {
   // I always wanted to write a function called recomputeSpline because it's such
   // a cool name. I wish this function was as cool as the name implies.
-  if (card.spline && vec3equal(card.spline.goalPos, goalPos) && vec3equal(card.spline.goalForward, goalForward)) {
+  if (getCard().spline && vec3equal(getCard().spline.goalPos, goalPos) && vec3equal(getCard().spline.goalForward, goalForward)) {
     // Redundant.
     return;
   }
   const startPos = getPos();
   const startForward = getForward();
   const smoothFactor = clamp(props.SmoothFactor, 2, 200);
-  card.spline = {
+  getCard().spline = {
     goalPos: goalPos,
     goalForward: goalForward,
     speed: speed,
@@ -98,9 +98,9 @@ function recomputeSpline(goalPos, goalForward, speed) {
     zfunc: polynomialFit(startPos.z, goalPos.z, startForward.z * smoothFactor, goalForward.z * smoothFactor),
     p: 0
   };
-  card.spline.dxdp = polynomialDerivative(card.spline.xfunc);
-  card.spline.dydp = polynomialDerivative(card.spline.yfunc);
-  card.spline.dzdp = polynomialDerivative(card.spline.zfunc);
+  getCard().spline.dxdp = polynomialDerivative(getCard().spline.xfunc);
+  getCard().spline.dydp = polynomialDerivative(getCard().spline.yfunc);
+  getCard().spline.dzdp = polynomialDerivative(getCard().spline.zfunc);
 }
 
 // Finds coefficients for a quadratic OR cubic polynomial f(p) such that:

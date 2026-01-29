@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,11 +33,11 @@ export const PROPS = [
 ];
 
 export function onInit() {
-  card.gameEnded = false;
+  getCard().gameEnded = false;
 }
 
 export function onTick() {
-  if (card.gameEnded) {
+  if (getCard().gameEnded) {
     return;
   }
   callDeck(props.controlsDeck, 'Control');
@@ -51,14 +51,14 @@ export function onTick() {
 }
 
 export function onPrimaryAction() {
-  if (card.gameEnded) return;
+  if (getCard().gameEnded) return;
   // Call with a short pulse interval because we want it to pulse every time we
   // get onPrimaryAction.
   callActionDeck("primaryActionDeck", undefined, undefined, 0.01);
 }
 
 export function onSecondaryAction() {
-  if (card.gameEnded) return;
+  if (getCard().gameEnded) return;
   callActionDeck("secondaryActionDeck");
 }
 
@@ -68,7 +68,7 @@ export function onCardRemoved() {
 }
 
 export function onGameEnd(msg) {
-  card.gameEnded = true;
+  getCard().gameEnded = true;
 }
 
 

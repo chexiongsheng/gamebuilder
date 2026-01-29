@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -131,7 +131,7 @@ export function onRevive() {
     show();
   }
   temp.reviveTime = getTime();
-  delete card.death;
+  delete getCard().death;
 }
 
 /** @param {GEvent} event The event that may have caused our death. */
@@ -157,7 +157,7 @@ function checkDeath(event) {
   // Give a bit of a delay so the animations can play for proper
   // dramatic effect...
   const deathDelay = props.overrideDeathDelay ? props.deathDelay : (isPlayerControllable() ? 3 : 0);
-  card.death = {
+  getCard().death = {
     stage: 1,
     time: getTime() + deathDelay,
     event: event
@@ -165,32 +165,32 @@ function checkDeath(event) {
 }
 
 function maybeRunDeathActions() {
-  if (!card.death || !card.death.stage) return;
-  switch (card.death.stage) {
+  if (!getCard().death || !getCard().death.stage) return;
+  switch (getCard().death.stage) {
     case 0:
       // Not dying.
       break;
     case 1:
       // Waiting for the death timer.
-      if (getTime() < card.death.time) return;
+      if (getTime() < getCard().death.time) return;
       // Fire the death message (in the next frame we will handle the death actions).
       /** @type {GDeathMessage} */
       let deathMessage = { actor: myself() };
       sendToAll("Death", deathMessage);
       // Don't run actions yet, to give time for the message receivers to do something
       // before the actor actually dies.
-      card.death.stage = 2;
+      getCard().death.stage = 2;
       break;
     case 2:
       // Time to run the death action cards.
-      callActionDeck("deathDeck", { event: card.death.event });
+      callActionDeck("deathDeck", { event: getCard().death.event });
       // TODO: what if one of the cards is Destroy Self and another card is some
       // effect like spin, etc, in that case we'd want to delay the destruction
       // until the spin effect has ran for a bit? Maybe not?
-      delete card.death;
+      delete getCard().death;
       break;
     default:
-      throw new Error("Invalid card.death.stage " + card.death.stage);
+      throw new Error("Invalid getCard().death.stage " + getCard().death.stage);
   }
 }
 

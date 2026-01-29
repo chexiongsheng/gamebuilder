@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,28 +27,28 @@ export const PROPS = [
 ];
 
 export function onResetGame() {
-  delete card.nextFireTime;
-  delete card.hasFired;
+  delete getCard().nextFireTime;
+  delete getCard().hasFired;
 }
 
 export function onTick() {
   // If Repeat is undefined, it's a legacy file. Repeat defaults to true.
   if (props.Repeat === undefined) props.Repeat = true;
   // If we haven't schedule our first event yet, do that now.
-  if (!card.hasFired && !card.nextFireTime) {
+  if (!getCard().hasFired && !getCard().nextFireTime) {
     // First time, schedule.
     scheduleNextFireTime();
   }
   // If the repeat property is on and we don't have a schedule fire time,
   // schedule it now.  This handles the case where the user checks "Repeat"
   // after the timer has already fired.
-  if (props.Repeat && !card.nextFireTime) {
+  if (props.Repeat && !getCard().nextFireTime) {
     scheduleNextFireTime();
   }
-  if (getTime() > card.nextFireTime) {
+  if (getTime() > getCard().nextFireTime) {
     callActionDeck("actionDeck");
-    card.hasFired = true;
-    delete card.nextFireTime;
+    getCard().hasFired = true;
+    delete getCard().nextFireTime;
   }
 }
 
@@ -56,5 +56,5 @@ function scheduleNextFireTime() {
   // Handle legacy properties: TimerAmountMin, TimerAmountMax:
   let interval = ((props.TimerAmountMin !== undefined && props.TimerAmountMax !== undefined) ?
     (props.TimerAmountMin + props.TimerAmountMax) / 2 : props.Interval) || 3;
-  card.nextFireTime = getTime() + interval;
+  getCard().nextFireTime = getTime() + interval;
 }

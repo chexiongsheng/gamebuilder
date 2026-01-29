@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,8 +32,8 @@ export function onInit() {
 }
 
 function resetState() {
-  delete card.riderActor;
-  delete card.riderPlayer;
+  delete getCard().riderActor;
+  delete getCard().riderPlayer;
   setControllingPlayer(null);
   setIsPlayerControllable(true);
 }
@@ -43,8 +43,8 @@ export function onTick() {
     logError('Boardable panel is incompatible with Player Controls panel. Please remove the Player Controls panel.')
     return;
   }
-  if (card.riderActor) {
-    callActionDeck('WhileBoardedDeck', { event: { actor: card.riderActor } });
+  if (getCard().riderActor) {
+    callActionDeck('WhileBoardedDeck', { event: { actor: getCard().riderActor } });
   }
 }
 
@@ -55,21 +55,21 @@ export function onRequestBoard(msg) {
     logError('Only players can board a Boardable actor. Not a player: ' + getDisplayName(msg.actor));
     return;
   }
-  if (card.riderActor) {
+  if (getCard().riderActor) {
     // Already boarded by another actor.
     return;
   }
   send(msg.actor, 'BoardingAccepted', { boardable: myself() });
-  card.riderActor = msg.actor;
-  card.riderPlayer = playerId;
+  getCard().riderActor = msg.actor;
+  getCard().riderPlayer = playerId;
   setControllingPlayer(playerId);
   callActionDeck('OnBoardedDeck', { event: { actor: msg.actor } });
 }
 
 export function onRequestAlight() {
-  const riderActor = card.riderActor;
+  const riderActor = getCard().riderActor;
   if (!exists(riderActor)) return;
-  send(riderActor, 'AlightFromBoardable', { boardable: myself(), playerId: card.riderPlayer });
+  send(riderActor, 'AlightFromBoardable', { boardable: myself(), playerId: getCard().riderPlayer });
   resetState();
   moveForward(0);
   callActionDeck('AlightedDeck', { event: { actor: riderActor } });

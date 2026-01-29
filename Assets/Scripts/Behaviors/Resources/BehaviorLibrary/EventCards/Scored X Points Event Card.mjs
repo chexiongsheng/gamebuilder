@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,16 +37,16 @@ export function onPointScored(msg) {
     targetPlayer = getControllingPlayer(myself());
   }
   if (targetPlayer && msg.player === targetPlayer) {
-    card.points += msg.amount || 1;
+    getCard().points += msg.amount || 1;
   }
 }
 
 export function onInit() {
-  card.points = 0;
+  getCard().points = 0;
 }
 
 export function onCheck() {
-  if (card.points >= props.NeededScore) {
+  if (getCard().points >= props.NeededScore) {
     return {};
   }
 }

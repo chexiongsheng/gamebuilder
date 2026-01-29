@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,12 +21,12 @@ export const PROPS = [
 ]
 
 export function onTick() {
-  if (!card.fired) {
-    card.fired = true;
+  if (!getCard().fired) {
+    getCard().fired = true;
     callActionDeck("actionDeck");
   }
 }
 
 export function onResetGame() {
-  delete card.fired;
+  delete getCard().fired;
 }

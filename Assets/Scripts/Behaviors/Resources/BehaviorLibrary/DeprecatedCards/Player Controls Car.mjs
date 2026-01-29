@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ export function onControl() {
   const COAST_ACC = 2;
   const TURN_SENSIVITY = 0.15;
 
-  card.speed = card.speed || 0;
+  getCard().speed = getCard().speed || 0;
 
   enableGravity(true);
   enableKeepUpright(true);
@@ -37,19 +37,19 @@ export function onControl() {
   const throttle = getThrottle();
 
   if (throttle.z > 0) {
-    card.speed += deltaTime() * props.Accel * (card.reverse ? -1 : 1);
+    getCard().speed += deltaTime() * props.Accel * (getCard().reverse ? -1 : 1);
   } else {
     const brakeAccel = throttle.z < -0.1 ? props.BrakeAccel : COAST_ACC;
-    card.speed = card.speed > 0 ?
-      Math.max(0, card.speed - brakeAccel * deltaTime()) :
-      Math.min(0, card.speed + brakeAccel * deltaTime());
+    getCard().speed = getCard().speed > 0 ?
+      Math.max(0, getCard().speed - brakeAccel * deltaTime()) :
+      Math.min(0, getCard().speed + brakeAccel * deltaTime());
   }
-  card.speed = Math.min(Math.max(card.speed, -props.MaxSpeed), props.MaxSpeed);
-  moveGlobal(getForward(card.speed));
+  getCard().speed = Math.min(Math.max(getCard().speed, -props.MaxSpeed), props.MaxSpeed);
+  moveGlobal(getForward(getCard().speed));
 
-  turn(throttle.x * TURN_SENSIVITY * deltaTime() * card.speed);
+  turn(throttle.x * TURN_SENSIVITY * deltaTime() * getCard().speed);
 
-  if (card.reverse) {
+  if (getCard().reverse) {
     uiRect(750, 300, 130, 40, UiColor.BLACK);
     uiText(760, 310, "REVERSE", UiColor.RED);
   }
@@ -58,12 +58,12 @@ export function onControl() {
 }
 
 export function onResetGame() {
-  delete card.speed;
-  delete card.reverse;
+  delete getCard().speed;
+  delete getCard().reverse;
 }
 
 export function onKeyDown(msg) {
   if (msg.keyName === "x") {
-    card.reverse = !card.reverse;
+    getCard().reverse = !getCard().reverse;
   }
 }

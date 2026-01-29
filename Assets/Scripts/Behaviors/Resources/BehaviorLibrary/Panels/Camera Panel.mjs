@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,14 +27,14 @@ export const PROPS = [
 ];
 
 export function onInit() {
-  // If card.overrideTarget is present, this overrides the target property.
+  // If getCard().overrideTarget is present, this overrides the target property.
   // Note that it may be null, and this still means "set the target to null".
   // If this is undefined, this means "use the property".
-  delete card.overrideTarget;
+  delete getCard().overrideTarget;
 }
 
 function getCurrentTarget() {
-  return card.overrideTarget === undefined ? props.target : card.overrideTarget;
+  return getCard().overrideTarget === undefined ? props.target : getCard().overrideTarget;
 }
 
 export function onTick() {
@@ -84,7 +84,7 @@ export function onCardRemoved() {
 export function onAssignTarget(msg) {
   assert(msg.target !== undefined, "CameraPanel.onSetTarget: msg.target must be the target actor");
   onUnassignTarget();
-  card.overrideTarget = msg.target;
+  getCard().overrideTarget = msg.target;
 }
 
 // Requests us to forget our previous override target.
@@ -93,5 +93,5 @@ export function onUnassignTarget() {
   if (exists(oldTarget)) {
     setCameraActorPlease(oldTarget, null);
   }
-  delete card.overrideTarget;
+  delete getCard().overrideTarget;
 }

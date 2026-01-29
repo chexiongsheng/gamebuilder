@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,17 +20,17 @@ export const PROPS = [
 
 /** @param {GActionMessage} actionMessage */
 export function onAction(actionMessage) {
-  card.resetTime = getTime() + props.Delay;
+  getCard().resetTime = getTime() + props.Delay;
 }
 
 export function onTick() {
-  if (card.resetTime && getTime() > card.resetTime) {
+  if (getCard().resetTime && getTime() > getCard().resetTime) {
     log("Resetting...");
-    delete card.resetTime;
+    delete getCard().resetTime;
     ApiV2Context.instance.api.sendMessageToAll("ResetGame");
   }
 }
 
 export function onResetGame() {
-  delete card.resetTime;
+  delete getCard().resetTime;
 }

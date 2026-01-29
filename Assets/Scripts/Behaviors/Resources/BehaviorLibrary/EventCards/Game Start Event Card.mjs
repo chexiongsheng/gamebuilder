@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +18,13 @@
  * @return {GEvent|undefined} The event, if one occurred.
  */
 export function onCheck() {
-  if (!card.fired) {
-    card.fired = true;
+  if (!getCard().fired) {
+    getCard().fired = true;
     // Do not pass actor here for now..kinda hacky..
     return {};
   }
 }
 
 export function onResetGame() {
-  delete card.fired;
+  delete getCard().fired;
 }

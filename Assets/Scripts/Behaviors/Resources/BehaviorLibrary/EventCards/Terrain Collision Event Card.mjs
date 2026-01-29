@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,19 +27,19 @@ export const PROPS = [
 ];
 
 export function onInit() {
-  card.triggered = false;
+  getCard().triggered = false;
 }
 
 export function onTerrainCollision(msg) {
   if (props.AnyBlock || msg.blockStyle == +props.BlockStyle) {
-    card.triggered = true;
+    getCard().triggered = true;
     cooldown(0.05);
   }
 }
 
 export function onCheck() {
-  const rv = card.triggered === true ? {} : undefined;
-  card.triggered = false;
+  const rv = getCard().triggered === true ? {} : undefined;
+  getCard().triggered = false;
   return rv;
 }
 

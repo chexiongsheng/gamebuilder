@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -79,12 +79,12 @@ function setMem(m) {
  *
  * @example
  * export function onTick() {
- *   if (!card.asleep) {
- *     card.sheepCount++;
- *     log("I counted " + card.sheepCount + " sheep.");
- *     if (card.sheepCount > 99) {
+ *   if (!getCard().asleep) {
+ *     getCard().sheepCount++;
+ *     log("I counted " + getCard().sheepCount + " sheep.");
+ *     if (getCard().sheepCount > 99) {
  *       // So sleepy...
- *       card.asleep = true;
+ *       getCard().asleep = true;
  *     }
  *   } else {
  *     log("Zzzzz....");
@@ -92,8 +92,8 @@ function setMem(m) {
  * }
  *
  * export function onResetGame() {
- *   card.asleep = false;
- *   card.sheepCount = 0;
+ *   getCard().asleep = false;
+ *   getCard().sheepCount = 0;
  * }
  */
 var card = {};

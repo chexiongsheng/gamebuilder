@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -89,7 +89,7 @@
  *
  * <p>You can use it to do any cleanup you need, for example,
  * delete stuff from actor memory or reset any actor properties
- * that are controlled by your card.</p>
+ * that are controlled by your getCard().</p>
  *
  * <p>You don't need to clean up {@link card} memory, because
  * your card is getting deleted anyway. The only cleanup you need

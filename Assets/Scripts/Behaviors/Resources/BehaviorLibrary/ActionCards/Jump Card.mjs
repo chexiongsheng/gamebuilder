@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ export function onTick() {
   getMem().jumpCooldown = Math.max(0, (getMem().jumpCooldown || 0) - deltaTime());
 
   if (isGrounded()) {
-    card.lastGroundedTime = getTime();
+    getCard().lastGroundedTime = getTime();
   }
 }
 
@@ -36,7 +36,7 @@ export function onAction() {
     return;
   }
 
-  const timeSinceGround = getTime() - (card.lastGroundedTime || 0);
+  const timeSinceGround = getTime() - (getCard().lastGroundedTime || 0);
   // Allow some coyote-time.
   const sortOfGrounded = isGrounded() || timeSinceGround < 0.1;
 
@@ -46,7 +46,7 @@ export function onAction() {
   if (getMem().jumpCooldown <= 0) {
     getMem().jumpCooldown = 0.1;
     // After jumping we don't want to allow an extra coyote-jump while in air.
-    delete card.lastGroundedTime;
+    delete getCard().lastGroundedTime;
     // The 50 is additional gravity we put on the player character to prevent
     // floatiness.
     const gravity = 9.81 + 50;

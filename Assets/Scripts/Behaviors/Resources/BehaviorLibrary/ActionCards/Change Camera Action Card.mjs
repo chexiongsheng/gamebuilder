@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ export const PROPS = [
 ]
 
 export function onInit() {
-  delete card.waitingToRevert;
+  delete getCard().waitingToRevert;
 }
 
 /**
@@ -41,13 +41,13 @@ export function onAction(actionMessage) {
     return;
   }
 
-  if (card.waitingToRevert) return;
+  if (getCard().waitingToRevert) return;
 
   const playerActor = getCardTargetActor("Target", actionMessage);
   const oldCamera = changeCamera(playerActor, props.NewCamera);
 
   if (props.Temporary) {
-    card.waitingToRevert = true;
+    getCard().waitingToRevert = true;
     sendToSelfDelayed(props.Duration, "RevertCamera", {
       playerActor: playerActor,
       oldCamera: oldCamera
@@ -56,7 +56,7 @@ export function onAction(actionMessage) {
 }
 
 export function onRevertCamera(msg) {
-  delete card.waitingToRevert;
+  delete getCard().waitingToRevert;
   changeCamera(msg.playerActor, msg.oldCamera);
 }
 

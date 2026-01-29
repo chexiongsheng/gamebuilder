@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,21 +36,21 @@ export const PROPS = [
 const SIGNAL_COOLDOWN_TIME = 0.2;
 
 export function onInit() {
-  card.state = 0;
-  card.event = {};
-  card.lastEventTime = null;
+  getCard().state = 0;
+  getCard().event = {};
+  getCard().lastEventTime = null;
 }
 
 export function onTick() {
   checkSwitch();
-  callActionDeck(card.state === 0 ? "State1Deck" : "State2Deck", { event: card.event });
+  callActionDeck(getCard().state === 0 ? "State1Deck" : "State2Deck", { event: getCard().event });
 }
 
 function checkSwitch() {
-  if (card.state > 0 && !props.SwitchBack) return;
+  if (getCard().state > 0 && !props.SwitchBack) return;
   const event = callEventDeck("SwitchDeck", true);
   if (event) {
-    card.state = 1 - card.state;
+    getCard().state = 1 - getCard().state;
   }
 }
 

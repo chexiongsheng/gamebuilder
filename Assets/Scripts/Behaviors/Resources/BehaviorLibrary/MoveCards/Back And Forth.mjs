@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,26 +23,26 @@ export const PROPS = [
 ];
 
 export function onResetGame() {
-  delete card.startPos;
-  delete card.going;
-  delete card.restUntil;
+  delete getCard().startPos;
+  delete getCard().going;
+  delete getCard().restUntil;
 }
 
 export function onActiveTick() {
   // If we didn't compute the motion parameters yet or if the user changed
   // the spawn position, recompute.
-  if (!card.startPos || !vec3equal(getSpawnPos(), card.startPos, 0.01)) {
+  if (!getCard().startPos || !vec3equal(getSpawnPos(), getCard().startPos, 0.01)) {
     resetMotion();
   }
-  if (getTime() < card.restUntil) return;
-  const targetPos = card.going ? getEndPos() : card.startPos;
+  if (getTime() < getCard().restUntil) return;
+  const targetPos = getCard().going ? getEndPos() : getCard().startPos;
   const distToTarget = getDistanceTo(targetPos);
   const speed = interp(0, 0.25, 1, 1, distToTarget) * props.Speed;
   moveToward(targetPos, speed);
   if (distToTarget < 0.1) {
     // Close enough to target position. Rest a bit, then invert motion.
-    card.restUntil = getTime() + props.RestTime;
-    card.going = !card.going;
+    getCard().restUntil = getTime() + props.RestTime;
+    getCard().going = !getCard().going;
   }
 }
 
@@ -52,9 +52,9 @@ function getEndPos() {
 }
 
 function resetMotion() {
-  card.startPos = getSpawnPos();
-  card.going = true;
-  card.restUntil = getTime() + props.RestTime;
+  getCard().startPos = getSpawnPos();
+  getCard().going = true;
+  getCard().restUntil = getTime() + props.RestTime;
 }
 
 export function getCardStatus() {

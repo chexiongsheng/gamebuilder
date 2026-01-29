@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,19 +24,19 @@ const DIST_THRESHOLD = 0.2;
 
 export function onInit() {
   // The target point we are trying to move to; if null, we have no target point.
-  card.targetPoint = null;
+  getCard().targetPoint = null;
   // At what time we stop trying to move to the target point (if we take longer than
   // this, it's probably because we're stuck).
-  card.endMoveTime = null;
+  getCard().endMoveTime = null;
 }
 
 export function onControl() {
   checkIfArrived();
-  if (card.targetPoint) {
+  if (getCard().targetPoint) {
     // Move toward target point.
-    moveToward(card.targetPoint, props.Speed);
+    moveToward(getCard().targetPoint, props.Speed);
     // Render a little dot so we can see where the target point is.
-    const { x, y } = getScreenPoint(card.targetPoint);
+    const { x, y } = getScreenPoint(getCard().targetPoint);
     uiRect(x - 2, y - 2, 4, 4, UiColor.WHITE);
   } else {
     // Don't move
@@ -46,7 +46,7 @@ export function onControl() {
 }
 
 function checkIfArrived() {
-  if (card.targetPoint && (getDistanceTo(card.targetPoint) <= DIST_THRESHOLD || getTime() > card.endMoveTime)) {
+  if (getCard().targetPoint && (getDistanceTo(getCard().targetPoint) <= DIST_THRESHOLD || getTime() > getCard().endMoveTime)) {
     // Arrived or timed out. Reset state.
     onInit();
   }
@@ -59,7 +59,7 @@ export function onMouseDown() {
   const distanceToTarget = getDistanceTo(clickedPoint);
   const etaSeconds = distanceToTarget / props.Speed;
 
-  card.targetPoint = clickedPoint;
+  getCard().targetPoint = clickedPoint;
   // If we take twice as much as expected to get there, give up (we're probably stuck).
-  card.endMoveTime = getTime() + etaSeconds * 2;
+  getCard().endMoveTime = getTime() + etaSeconds * 2;
 }

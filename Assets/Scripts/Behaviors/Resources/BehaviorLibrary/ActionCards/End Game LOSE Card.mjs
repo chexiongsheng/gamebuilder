@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,19 +27,19 @@ const DELAY_TO_RESET = 5;
 
 export function onInit() {
   // If not null, then this is the game-end state (describes how the game ended, who won, etc).
-  card.gameEnd = null;
+  getCard().gameEnd = null;
 }
 
 /**
  * @param {GActionMessage} actionMessage
  */
 export function onAction(actionMessage) {
-  if (card.gameEnd) {
+  if (getCard().gameEnd) {
     // Game was already won/lost, so activating this card has no effect.
     return;
   }
-  card.gameEnd = { how: "gameover", endTime: getTime() };
-  sendToAll("GameEnd", { gameEnd: card.gameEnd });
+  getCard().gameEnd = { how: "gameover", endTime: getTime() };
+  sendToAll("GameEnd", { gameEnd: getCard().gameEnd });
   if (props.LoseSound) {
     playSound(props.LoseSound);
   }
@@ -47,15 +47,15 @@ export function onAction(actionMessage) {
 }
 
 export function onGameEnd(msg) {
-  card.gameEnd = deepCopy(msg.gameEnd);
+  getCard().gameEnd = deepCopy(msg.gameEnd);
 }
 
 export function onLocalTick() {
-  if (!card.gameEnd || card.gameEnd.how !== "gameover") {
+  if (!getCard().gameEnd || getCard().gameEnd.how !== "gameover") {
     // Game not ended, not was not a victory, so we should stay quiet.
     return;
   }
-  const elapsed = getTime() - card.gameEnd.endTime;
+  const elapsed = getTime() - getCard().gameEnd.endTime;
   const boxWidth = min(elapsed * BOX_FILL_SPEED, 1600);
 
   uiRect(800 - boxWidth / 2, BOX_TOP, boxWidth, BOX_HEIGHT, BOX_COLOR);
@@ -71,7 +71,7 @@ export function onLocalTick() {
 }
 
 export function onKeyDown(msg) {
-  if (card.gameEnd && card.gameEnd.how === "gameover" && msg.keyName === 'r') {
+  if (getCard().gameEnd && getCard().gameEnd.how === "gameover" && msg.keyName === 'r') {
     resetGame();
   }
 }

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,15 +34,15 @@ export function onCameraTick(msg) {
   reparentIfNeeded(target);
 
   // If yaw is unset (null), initialize with the target's yaw.
-  if (card.yaw === null) {
-    card.yaw = getYaw(target) || 0;
+  if (getCard().yaw === null) {
+    getCard().yaw = getYaw(target) || 0;
   }
 
   // Change yaw/pitch in response to user input.
-  card.yaw += getLookAxes(target).x;
-  card.pitch = clamp(props.IsPitchLocked ? degToRad(props.LockedPitch) : card.pitch + getLookAxes(target).y,
+  getCard().yaw += getLookAxes(target).x;
+  getCard().pitch = clamp(props.IsPitchLocked ? degToRad(props.LockedPitch) : getCard().pitch + getLookAxes(target).y,
     degToRad(-80), degToRad(80));
-  setYawPitchRoll(card.yaw, -card.pitch, 0);
+  setYawPitchRoll(getCard().yaw, -getCard().pitch, 0);
 
   setPos(computeCameraPos(target));
   setCameraSettings({
@@ -114,8 +114,8 @@ function computeCameraPos(target) {
 }
 
 export function onInit() {
-  card.yaw = null;  // null means "unset".
-  card.pitch = 0;
+  getCard().yaw = null;  // null means "unset".
+  getCard().pitch = 0;
 }
 
 export function reparentIfNeeded(target) {

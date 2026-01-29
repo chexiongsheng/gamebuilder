@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,16 +30,16 @@ export const PROPS = [
 
 //a better way to do this?
 export function onResetGame() {
-  card.walkDist = 0;
-  card.walkDistTarget = 0;
-  card.turnAmount = 0
-  card.turnAmountTarget = 0;
-  card.returningHome = false;
+  getCard().walkDist = 0;
+  getCard().walkDistTarget = 0;
+  getCard().turnAmount = 0
+  getCard().turnAmountTarget = 0;
+  getCard().returningHome = false;
   newTargets();
 }
 
 export function onActiveTick() {
-  if (card.returningHome) {
+  if (getCard().returningHome) {
     returnHomeUpdate();
     return;
   }
@@ -51,27 +51,27 @@ export function onActiveTick() {
       turnUpdate();
     }
   } else {
-    card.walkDist += props.Speed * deltaTime();
+    getCard().walkDist += props.Speed * deltaTime();
     moveForward(props.Speed);
   }
 
   if (props.LimitRange && props.MaxRange < getDistanceTo(getSpawnPos())) {
     // Wandered too far! Time to go home.
-    card.returningHome = true;
+    getCard().returningHome = true;
   }
 }
 
 function turnUpdate() {
   //if speed is 0, just snap to target turn, get new targets, and return
   if (props.TurnSpeed == 0) {
-    turn(card.turnAmountTarget);
+    turn(getCard().turnAmountTarget);
     newTargets();
     return;
   }
 
   const turnDelta = degToRad(props.TurnSpeed * deltaTime())
-    * Math.sign(card.turnAmountTarget - card.turnAmount);
-  card.turnAmount += turnDelta
+    * Math.sign(getCard().turnAmountTarget - getCard().turnAmount);
+  getCard().turnAmount += turnDelta
   turn(turnDelta);
 
   if (props.MoveWhileTurning) {
@@ -81,28 +81,28 @@ function turnUpdate() {
 
 // grabs a new distance to walk and turn
 function newTargets() {
-  card.walkDist = 0;
-  card.walkDistTarget = THREE.Math.randFloat(
+  getCard().walkDist = 0;
+  getCard().walkDistTarget = THREE.Math.randFloat(
     props.MinDistBetweenTurns, props.MaxDistBetweenTurns)
 
-  card.turnAmount = 0;
+  getCard().turnAmount = 0;
   let randomDegrees = THREE.Math.randFloat(
     props.MinTurn, props.MaxTurn);
 
   //make it randomly be clockwise versus counterclockwise
   randomDegrees = randomDegrees * (Math.random() > .5 ? -1 : 1);
 
-  card.turnAmountTarget = degToRad(randomDegrees);
+  getCard().turnAmountTarget = degToRad(randomDegrees);
 }
 
 // have we reached that distance?
 function reachedTargetDist() {
-  return (card.walkDist || 0) >= (card.walkDistTarget || 0);
+  return (getCard().walkDist || 0) >= (getCard().walkDistTarget || 0);
 }
 
 // have we reached the target turn amount?
 function reachedTargetTurn() {
-  return Math.abs((card.turnAmountTarget || 0) - (card.turnAmount || 0)) < .01;
+  return Math.abs((getCard().turnAmountTarget || 0) - (getCard().turnAmount || 0)) < .01;
 }
 
 function returnHomeUpdate() {
@@ -114,7 +114,7 @@ function returnHomeUpdate() {
     moveForward(props.Speed);
   }
   if (getDistanceTo(getSpawnPos()) < props.MaxRange / 2) {
-    card.returningHome = false;
+    getCard().returningHome = false;
   }
 }
 

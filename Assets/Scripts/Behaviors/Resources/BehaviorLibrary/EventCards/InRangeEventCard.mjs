@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ export function onTick() {
   const target = getClosestActor(getActorsInGroup(props.Who, props.Range));
   if (target) {
     // Trigger!
-    card.triggeredEvent = { actor: target };
+    getCard().triggeredEvent = { actor: target };
   }
 }
 
@@ -33,9 +33,9 @@ export function onTick() {
  * @return {GEvent|undefined} The event, if one occurred.
  */
 export function onCheck() {
-  if (card.triggeredEvent !== undefined) {
-    const rv = card.triggeredEvent;
-    delete card.triggeredEvent;
+  if (getCard().triggeredEvent !== undefined) {
+    const rv = getCard().triggeredEvent;
+    delete getCard().triggeredEvent;
     return rv;
   }
   else {
@@ -44,7 +44,7 @@ export function onCheck() {
 }
 
 export function onResetGame() {
-  delete card.triggeredEvent;
+  delete getCard().triggeredEvent;
 }
 
 export function getCardStatus() {

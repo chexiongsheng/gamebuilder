@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,29 +29,29 @@ const INITIAL_SCALE = 6;
  */
 export function onAction(actionMessage) {
   // Create popup text if we don't have it yet.
-  if (!card.popupTextActor || !exists(card.popupTextActor)) {
-    card.popupTextActor = clone("builtin:PopupText",
+  if (!getCard().popupTextActor || !exists(getCard().popupTextActor)) {
+    getCard().popupTextActor = clone("builtin:PopupText",
       getPointAbove(getBoundsSize().y + INITIAL_OFFSET_ABOVE + props.OffsetAbove));
     const scale = Math.min(Math.max(INITIAL_SCALE + (props.TextSize || 0) * 0.5, 1), 12);
-    send(card.popupTextActor, "SetText", { text: props.Message });
-    send(card.popupTextActor, "SetScale", scale);
-    send(card.popupTextActor, "SetParent", { parent: myself() });
+    send(getCard().popupTextActor, "SetText", { text: props.Message });
+    send(getCard().popupTextActor, "SetScale", scale);
+    send(getCard().popupTextActor, "SetParent", { parent: myself() });
   }
-  card.popupHideTime = getTime() + (props.HideDelay === undefined ? HIDE_DELAY_SECONDS : props.HideDelay);
+  getCard().popupHideTime = getTime() + (props.HideDelay === undefined ? HIDE_DELAY_SECONDS : props.HideDelay);
 }
 
 export function onResetGame() {
   // Popup is a script clone, so it gets destroyed automatically.
-  delete card.popupTextActor;
-  delete card.popupHideTime;
+  delete getCard().popupTextActor;
+  delete getCard().popupHideTime;
 }
 
 export function onTick() {
-  if (card.popupHideTime && getTime() > card.popupHideTime) {
+  if (getCard().popupHideTime && getTime() > getCard().popupHideTime) {
     // Hide the popup.
-    send(card.popupTextActor, "Destroy");
-    delete card.popupTextActor;
-    delete card.popupHideTime;
+    send(getCard().popupTextActor, "Destroy");
+    delete getCard().popupTextActor;
+    delete getCard().popupHideTime;
   }
 }
 

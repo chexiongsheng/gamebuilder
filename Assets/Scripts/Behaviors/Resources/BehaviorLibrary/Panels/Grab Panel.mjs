@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,31 +24,31 @@ export const PROPS = [
 ]
 
 function resetState() {
-  delete card.grabbedItem;
-  delete card.canThrow;
+  delete getCard().grabbedItem;
+  delete getCard().canThrow;
 }
 
 export function onTick() {
   // Cleanup: if the grabbed item got deleted, forget it:
-  if (card.grabbedItem && !exists(card.grabbedItem)) {
+  if (getCard().grabbedItem && !exists(getCard().grabbedItem)) {
     resetState();
   }
   // Publish the name of the currently grabbed item for the benefit
   // of other actors who may want to check this.
-  setVar("grabbedItem", card.grabbedItem || "");
+  setVar("grabbedItem", getCard().grabbedItem || "");
 }
 
 export function onRequestGrabOrRelease() {
-  if (card.grabbedItem) {
+  if (getCard().grabbedItem) {
     // I am currently holding an item, drop it.
-    send(card.grabbedItem, "GrabRelease");
+    send(getCard().grabbedItem, "GrabRelease");
     // Give it a push, if it's throwable.
-    if (card.canThrow) {
+    if (getCard().canThrow) {
       const kickDir = getForward();
       kickDir.y += 0.2; // For a bit of an arc
       kickDir.normalize();
       kickDir.multiplyScalar(15);
-      push(card.grabbedItem, kickDir);
+      push(getCard().grabbedItem, kickDir);
     }
     resetState();
     return;
@@ -67,8 +67,8 @@ export function onRequestGrabOrRelease() {
 /* @type {GGrabResponseMessage} msg */
 export function onGrabResponse(msg) {
   if (!msg.accepted) return;
-  card.grabbedItem = msg.item;
-  card.canThrow = !!msg.canThrow;
+  getCard().grabbedItem = msg.item;
+  getCard().canThrow = !!msg.canThrow;
 }
 
 export function onResetGame() {
@@ -79,8 +79,8 @@ export function onResetGame() {
 
 // TODO: display this action description on screen on onLocalTick:
 //export function onGetActionDescription() {
-//  if (card.grabbedItem) {
-//    return (card.canThrow ? "Throw " : "Drop ") + getDisplayName(card.grabbedItem);
+//  if (getCard().grabbedItem) {
+//    return (getCard().canThrow ? "Throw " : "Drop ") + getDisplayName(getCard().grabbedItem);
 //  }
 //  const grabTarget = getGrabTarget();
 //  if (grabTarget) {
@@ -91,7 +91,7 @@ export function onResetGame() {
 
 // Figures out what is the target of the grab.
 function getGrabTarget() {
-  if (card.grabbedItem) {
+  if (getCard().grabbedItem) {
     // Already grabbing something, so can't grab anything else.
     return null;
   }

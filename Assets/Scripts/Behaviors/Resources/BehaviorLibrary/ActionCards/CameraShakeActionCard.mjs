@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ export function onAction(actionMessage) {
     logError("Camera Shake only works on a player actor.");
     return;
   }
-  card.shake = {
+  getCard().shake = {
     actor: myself(),
     startTime: getTime()
   };
@@ -41,8 +41,8 @@ export function getCardErrorMessage() {
 }
 
 export function onTick() {
-  if (!card.shake) return;
-  const t = getTime() - card.shake.startTime;
+  if (!getCard().shake) return;
+  const t = getTime() - getCard().shake.startTime;
   if (t > props.Duration) {
     stopShaking();
     return;
@@ -55,11 +55,11 @@ export function onTick() {
 
   // Request that offset.
   requestCameraOffset(vec3(randomX * props.Amplitude * decay,
-    randomY * props.Amplitude * decay, 0), card.shake.actor);
+    randomY * props.Amplitude * decay, 0), getCard().shake.actor);
 }
 
 function stopShaking() {
-  delete card.shake;
+  delete getCard().shake;
 }
 
 export function onResetGame() {

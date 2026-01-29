@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,14 +23,14 @@ export const PROPS = [
 const WAYPOINT_RANGE = 0.5;
 
 export function onActiveTick() {
-  card.waypointNumber = card.waypointNumber || 0;
-  let waypoint = props.Waypoints[card.waypointNumber];
+  getCard().waypointNumber = getCard().waypointNumber || 0;
+  let waypoint = props.Waypoints[getCard().waypointNumber];
   // If the current waypoint does not exist, or if we are close enough to it,
   // advance to the next one.
   if (!exists(waypoint) || getDistanceTo(waypoint) < WAYPOINT_RANGE) {
     advanceToNextWaypoint();
   }
-  waypoint = props.Waypoints[card.waypointNumber];
+  waypoint = props.Waypoints[getCard().waypointNumber];
   if (exists(waypoint)) {
     moveToward(waypoint, props.Speed);
     lookToward(waypoint, 6, true);
@@ -39,18 +39,18 @@ export function onActiveTick() {
 
 function advanceToNextWaypoint() {
   // Advance to next waypoint if possible.
-  card.waypointNumber = props.Loop ?
-    (card.waypointNumber >= props.Waypoints.length ? 0 : card.waypointNumber + 1) :
-    Math.min(card.waypointNumber + 1, props.Waypoints.length);
+  getCard().waypointNumber = props.Loop ?
+    (getCard().waypointNumber >= props.Waypoints.length ? 0 : getCard().waypointNumber + 1) :
+    Math.min(getCard().waypointNumber + 1, props.Waypoints.length);
 }
 
 export function onResetGame() {
-  delete card.waypointNumber;
+  delete getCard().waypointNumber;
 }
 
 export function onCollision(msg) {
   // Bumping into the next waypoint is just as good as reaching it :)
-  let waypoint = props.Waypoints[card.waypointNumber];
+  let waypoint = props.Waypoints[getCard().waypointNumber];
   if (msg.other === waypoint) {
     // Advance.
     advanceToNextWaypoint();

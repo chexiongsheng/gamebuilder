@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -70,14 +70,14 @@ function getTriggerWhenProp() {
 function processEvents(enabled) {
   // If we already triggered and triggerWhen is 'once per game', there is nothing
   // more to do.
-  if (getTriggerWhenProp() === 'ONCE_PER_GAME' && card.triggered) {
+  if (getTriggerWhenProp() === 'ONCE_PER_GAME' && getCard().triggered) {
     return;
   }
 
   const eventToDeliver = callEventDeck("eventDeck", getTriggerWhenProp() === 'ONCE_EVENT');
   if (enabled) {
     if (eventToDeliver) {
-      card.triggered = true;
+      getCard().triggered = true;
       // Activate the deck. There is an implicit default timeout to deactivate it.
       callActionDeck("actionDeck", { event: eventToDeliver },
         props.ActionDuration === undefined ? 0.6 : props.ActionDuration,
@@ -104,7 +104,7 @@ export function onOffstageTick() {
 }
 
 export function onResetGame() {
-  delete card.triggered;
-  delete card.lastEventTime;
+  delete getCard().triggered;
+  delete getCard().lastEventTime;
 }
 

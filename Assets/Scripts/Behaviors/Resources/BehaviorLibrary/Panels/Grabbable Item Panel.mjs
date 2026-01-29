@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,7 +40,7 @@ export const PROPS = [
 ]
 
 export function onGrabRequest(msg) {
-  if (card.grabbedState) {
+  if (getCard().grabbedState) {
     // Already grabbed by someone.
     send(msg.grabber, "GrabResponse",
       { accepted: false, item: myself() });
@@ -52,7 +52,7 @@ export function onGrabRequest(msg) {
   assertVector3(msg.anchorOffset, "GrabRequest must contain anchorOffset");
 
   // Remember our settings for restoring later.
-  card.grabbedState = {
+  getCard().grabbedState = {
     solid: isSolid(),
     kinematic: isKinematic(),
     grabber: msg.grabber,
@@ -70,33 +70,33 @@ export function onGrabRequest(msg) {
 }
 
 function updatePosition() {
-  if (!card.grabbedState) return;
+  if (!getCard().grabbedState) return;
 
-  const grabberPos = getPos(card.grabbedState.grabber);
-  const grabberCenter = getBoundsCenter(card.grabbedState.grabber);
-  const grabberForward = getForward(1, card.grabbedState.grabber);
+  const grabberPos = getPos(getCard().grabbedState.grabber);
+  const grabberCenter = getBoundsCenter(getCard().grabbedState.grabber);
+  const grabberForward = getForward(1, getCard().grabbedState.grabber);
   let grabberAim;
 
   let forwardToAim;
-  if (isPlayerControllable(card.grabbedState.grabber)) {
-    grabberAim = getAimDirection(card.grabbedState.grabber);
+  if (isPlayerControllable(getCard().grabbedState.grabber)) {
+    grabberAim = getAimDirection(getCard().grabbedState.grabber);
     forwardToAim = new Quaternion(0, 0, 0, 1);
     forwardToAim.setFromUnitVectors(
-      getForward(1, card.grabbedState.grabber),
+      getForward(1, getCard().grabbedState.grabber),
       grabberAim);
   } else {
     grabberAim = grabberForward;
   }
 
   // pos is relative to the grabber (for now)
-  let pos = card.grabbedState.anchorOffset.clone();
+  let pos = getCard().grabbedState.anchorOffset.clone();
   if (props.CustomOffset) {
     pos.x += props.OffsetX;
     pos.y += props.OffsetY;
     pos.z += props.OffsetZ;
   }
   // Convert pos to world position.
-  pos = selfToWorldPos(pos, card.grabbedState.grabber);
+  pos = selfToWorldPos(pos, getCard().grabbedState.grabber);
   // pos = vector from owner bounds center to the position, in world space.
   pos.sub(grabberCenter);
   // Apply the quaternion to pos to rotate it in the same way that forward
@@ -145,11 +145,11 @@ function maybeRestore(isResetGame) {
   if (!isResetGame) {
     detachFromParent();
   }
-  if (card.grabbedState) {
-    setSolid(card.grabbedState.solid);
-    setKinematic(card.grabbedState.kinematic);
+  if (getCard().grabbedState) {
+    setSolid(getCard().grabbedState.solid);
+    setKinematic(getCard().grabbedState.kinematic);
     setVar("owner", null);
-    delete card.grabbedState;
+    delete getCard().grabbedState;
   }
 }
 

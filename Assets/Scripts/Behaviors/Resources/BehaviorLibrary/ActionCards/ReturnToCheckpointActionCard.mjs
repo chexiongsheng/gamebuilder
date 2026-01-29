@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,16 +16,16 @@
 
 /** @param {GActionMessage} actionMessage */
 export function onAction(actionMessage) {
-  const pos = card.lastCheckPos || getSpawnPos();
+  const pos = getCard().lastCheckPos || getSpawnPos();
   setPos(pos);
   sendToSelf('Revive');
 }
 
 export function onResetGame() {
-  delete card.lastCheckPos;
+  delete getCard().lastCheckPos;
 }
 
 export function onSetCheckpoint(msg) {
   log(`Checkpoint reached! Pos is ${msg.pos}`);
-  card.lastCheckPos = msg.pos;
+  getCard().lastCheckPos = msg.pos;
 }

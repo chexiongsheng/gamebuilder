@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,12 +29,12 @@ export const PROPS = [
 ];
 
 export function onAction() {
-  if (card.state) {
+  if (getCard().state) {
     // Just add more copies to spawn.
-    card.state.clonesLeft += props.Total;
+    getCard().state.clonesLeft += props.Total;
     return;
   }
-  card.state = {
+  getCard().state = {
     clonesLeft: +props.Total,
     nextCloneTime: getTime(),
   };
@@ -42,18 +42,18 @@ export function onAction() {
 
 export function onTick() {
   if (!exists(props.ActorToClone)) return;
-  if (!card.state) return;
-  if (getTime() > card.state.nextCloneTime) {
-    card.state.nextCloneTime = getTime() + props.Interval;
+  if (!getCard().state) return;
+  if (getTime() > getCard().state.nextCloneTime) {
+    getCard().state.nextCloneTime = getTime() + props.Interval;
     clone(props.ActorToClone, getPos(), getRot());
-    if (--card.state.clonesLeft <= 0) {
-      delete card.state;
+    if (--getCard().state.clonesLeft <= 0) {
+      delete getCard().state;
     }
   }
 }
 
 export function onResetGame() {
-  delete card.state;
+  delete getCard().state;
 }
 
 export function getCardErrorMessage() {

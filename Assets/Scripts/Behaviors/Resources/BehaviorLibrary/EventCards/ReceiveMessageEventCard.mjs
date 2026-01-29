@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +22,9 @@ export const PROPS = [
  * @return {GEvent|undefined} The event, if one occurred.
  */
 export function onCheck() {
-  if (card.triggeredEvent !== undefined) {
-    const rv = card.triggeredEvent;
-    delete card.triggeredEvent;
+  if (getCard().triggeredEvent !== undefined) {
+    const rv = getCard().triggeredEvent;
+    delete getCard().triggeredEvent;
     return rv;
   }
   else {
@@ -45,11 +45,11 @@ export function handleOtherMessage(msg, meta) {
   // If the message contains an explicit event causer, use it.
   // Otherwise the sender is the event causer.
   const causer = msg.eventCauser || getMessageSender();
-  card.triggeredEvent = exists(causer) ? { actor: causer } : {};
+  getCard().triggeredEvent = exists(causer) ? { actor: causer } : {};
 }
 
 export function onResetGame() {
-  delete card.triggeredEvent;
+  delete getCard().triggeredEvent;
 }
 
 export function getCardStatus() {

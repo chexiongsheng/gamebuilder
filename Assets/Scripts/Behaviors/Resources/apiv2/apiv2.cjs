@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -455,8 +455,8 @@ class ApiV2ActionDeckHelper {
   constructor() {
     // The card global must exist (can only be used within a card's message handling context).
     assert(card, "ApiV2ActionDeckHelper can only be used within a card context.");
-    card.actionDeckState = card.actionDeckState || {};
-    this.state_ = card.actionDeckState;
+    getCard().actionDeckState = getCard().actionDeckState || {};
+    this.state_ = getCard().actionDeckState;
 
     // IMPORTANT: This class CANNOT have any state outside of the card global, because
     // this is the only part of it that survives from one frame to the other, as

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,16 +18,16 @@ export const PROPS = [
 ];
 
 export function onCheck() {
-  if (card.triggered) {
-    delete card.triggered;
+  if (getCard().triggered) {
+    delete getCard().triggered;
     return {};
   }
 }
 
 export function onActorClicked() {
-  card.triggered = true;
+  getCard().triggered = true;
 }
 
 export function onResetGame() {
-  delete card.triggered;
+  delete getCard().triggered;
 }

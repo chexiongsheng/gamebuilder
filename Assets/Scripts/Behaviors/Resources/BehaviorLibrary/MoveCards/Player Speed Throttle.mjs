@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,29 +27,29 @@ export function onActiveTick() {
     return;
   }
 
-  card.speed = card.speed || 0;
-  card.transitionTimer = card.transitionTimer || 0;
+  getCard().speed = getCard().speed || 0;
+  getCard().transitionTimer = getCard().transitionTimer || 0;
 
   const throttle = getThrottle().z;
 
   let decel = 0;
-  if (card.speed > 0) decel = -props.Slowdown;
-  else if (card.speed < 0) decel = props.Slowdown;
+  if (getCard().speed > 0) decel = -props.Slowdown;
+  else if (getCard().speed < 0) decel = props.Slowdown;
 
   const totalAccel = (throttle * props.Accel + decel) * deltaTime();
 
-  if (card.goingForward) {
-    card.speed = Math.max(0, Math.min(props.MaxSpeed, card.speed + totalAccel));
+  if (getCard().goingForward) {
+    getCard().speed = Math.max(0, Math.min(props.MaxSpeed, getCard().speed + totalAccel));
   } else {
-    card.speed = Math.min(0, Math.max(-props.MaxSpeed, card.speed + totalAccel));
+    getCard().speed = Math.min(0, Math.max(-props.MaxSpeed, getCard().speed + totalAccel));
   }
 
-  if (card.speed == 0 && throttle != 0) changeDirectionCheck();
+  if (getCard().speed == 0 && throttle != 0) changeDirectionCheck();
 
-  if (Math.abs(card.speed) < 0.1) {
+  if (Math.abs(getCard().speed) < 0.1) {
     moveGlobal(vec3zero());
   } else {
-    moveGlobal(getForward(card.speed));
+    moveGlobal(getForward(getCard().speed));
   }
 
 }
@@ -58,21 +58,21 @@ function changeDirectionCheck() {
   const throttle = getThrottle().z;
 
   const wantTransition =
-    (throttle > 0 && !card.goingForward) ||
-    (throttle < 0 && card.goingForward);
+    (throttle > 0 && !getCard().goingForward) ||
+    (throttle < 0 && getCard().goingForward);
 
   if (wantTransition) {
-    card.transitionTimer += deltaTime();
-    if (card.transitionTimer >= props.StopTime) {
-      card.transitionTimer = 0;
-      card.goingForward = !card.goingForward;
+    getCard().transitionTimer += deltaTime();
+    if (getCard().transitionTimer >= props.StopTime) {
+      getCard().transitionTimer = 0;
+      getCard().goingForward = !getCard().goingForward;
     }
   } else {
-    card.transitionTimer = 0;
+    getCard().transitionTimer = 0;
   }
 }
 
 export function onResetGame() {
-  delete card.speed;
+  delete getCard().speed;
 }
 
