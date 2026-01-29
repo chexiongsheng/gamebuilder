@@ -37,9 +37,11 @@ public class CreationLibrarySidebar : Sidebar
   [SerializeField] Texture2D allCategoryIcon;
   [SerializeField] Texture2D decorationCategoryIcon;
   [SerializeField] Texture2D savedCategoryIcon;
-  [SerializeField] Texture2D polyCategoryIcon;
   [SerializeField] Texture2D gisCategoryIcon;
+
+
   [SerializeField] Texture2D soundsCategoryIcon;
+
   [SerializeField] Texture2D particlesCategoryIcon;
   [SerializeField] CreationLibraryParticles particleLibrary;
   [SerializeField] CreationLibrarySounds soundLibrary;
@@ -49,9 +51,11 @@ public class CreationLibrarySidebar : Sidebar
   private static string CATEGORY_ALL = "All";
   private static string CATEGORY_DECORATIONS = "Decor";
   private static string CATEGORY_CUSTOM = "Custom";
-  private static string CATEGORY_POLY = "Objects from web";
   private static string CATEGORY_GIS = "Images from web";
+
+
   private static string CATEGORY_PARTICLES = "Particles";
+
   private static string CATEGORY_SOUNDS = "Sounds";
   [SerializeField] List<CategoryButton> dynamicCategories;
   private EditMain editMain;
@@ -129,11 +133,8 @@ public class CreationLibrarySidebar : Sidebar
     allCategories.Add(new Util.Tuple<string, Texture2D>(CATEGORY_DECORATIONS, decorationCategoryIcon));
     allCategories.Add(new Util.Tuple<string, Texture2D>(CATEGORY_CUSTOM, savedCategoryIcon));
 
-    //NO_POLY_TOOLKIT_INTERNAL_CHECK 
-    if (!PolyToolkitInternal.PtSettings.Instance.authConfig.apiKey.Contains("INSERT YOUR"))
-    {
-      allCategories.Add(new Util.Tuple<string, Texture2D>(CATEGORY_POLY, polyCategoryIcon));
-    }
+
+
     if (GisSearchManager.APIkey != "PUT YOUR KEY HERE")
     {
       allCategories.Add(new Util.Tuple<string, Texture2D>(CATEGORY_GIS, gisCategoryIcon));
@@ -352,7 +353,8 @@ ImportFromPath(path);
     creationLibraryUI.categoriesList.SetActive(searchString == "" && selectedCategory == null);
     creationLibraryUI.inCategoryLabel.text = selectedCategory;
     creationLibraryUI.webSearchHint.gameObject.SetActive(
-      selectedCategory == CATEGORY_POLY || selectedCategory == CATEGORY_GIS);
+      selectedCategory == CATEGORY_GIS);
+
 
     particleLibrary.Hide();
     soundLibrary.Close();
@@ -389,10 +391,8 @@ ImportFromPath(path);
         {
           ShowSaved();
         }
-        else if (selectedCategory == CATEGORY_POLY)
-        {
-          ShowPoly();
-        }
+
+
         else if (selectedCategory == CATEGORY_GIS)
         {
           ShowGIS();
@@ -447,21 +447,8 @@ ImportFromPath(path);
     }
   }
 
-  void ShowPoly()
-  {
-    foreach (SquareImageButtonUI result in internalResults)
-    {
-      SetResultShowing(result, false);
-      ShouldShowInternalResult = (_result) =>
-{
-  return false;
-};
-    }
-    foreach (SquareImageButtonUI result in webResults)
-    {
-      SetResultShowing(result, result.GetSearchResult().renderableReference.assetType == AssetType.Poly);
-    }
-  }
+
+
 
   void ShowGIS()
   {
@@ -695,10 +682,11 @@ ImportFromPath(path);
       if (percent > 1) timers.Remove(key);
     }
 
-    if (selectedCategory == CATEGORY_POLY || selectedCategory == CATEGORY_GIS)
+    if (selectedCategory == CATEGORY_GIS)
     {
       creationLibraryUI.webSearchHint.gameObject.SetActive(webResults.Count == 0);
     }
+
   }
 
   void OnResult(ActorableSearchResult incomingResult, bool isInternal)
@@ -738,17 +726,13 @@ ImportFromPath(path);
     else
     {
       webResults.Add(newResult);
-      if (incomingResult.renderableReference.assetType == AssetType.Poly)
-      {
-        SetResultShowing(newResult,
-          selectedCategory == CATEGORY_POLY);
-      }
-      else if (incomingResult.renderableReference.assetType == AssetType.Image)
+      if (incomingResult.renderableReference.assetType == AssetType.Image)
       {
         SetResultShowing(newResult,
           selectedCategory == CATEGORY_GIS);
       }
     }
+
   }
 
   void OnParticleEffectSelected(string pfxId)

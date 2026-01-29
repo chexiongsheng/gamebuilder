@@ -516,12 +516,8 @@ public class GameBuilderConsoleCommands : MonoBehaviour
     }
   }
 
-  [RegisterCommand(Help = "Clears the cache of models from the web (Poly)")]
-  static void CommandClearPolyCache(CommandArg[] args)
-  {
-    PolyToolkit.PolyApi.ClearCache();
-    Log($"OK cleared Poly cache");
-  }
+
+
 
   [RegisterCommand(Help = "Enable speculative collision detection on selected actors")]
   static void CommandSpecCol(CommandArg[] args)
