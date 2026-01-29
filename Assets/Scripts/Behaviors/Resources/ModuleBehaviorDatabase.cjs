@@ -1,4 +1,3 @@
-const THREE = require("three.cjs");
 /*
  * Copyright 2019 Google LLC
  *
@@ -15,6 +14,7 @@ const THREE = require("three.cjs");
  * limitations under the License.
  */
 
+const THREE = require("three.cjs");
 
 // Handler prefix for legacy messages (APIv1)
 const MESSAGE_HANDLER_FUNCTION_NAME_PREFIX_LEGACY = "On"; // upper-case "O"!

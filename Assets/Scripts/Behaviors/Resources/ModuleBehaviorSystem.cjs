@@ -1,4 +1,3 @@
-const THREE = require("three.cjs");
 /*
  * Copyright 2019 Google LLC
  *
@@ -15,6 +14,7 @@ const THREE = require("three.cjs");
  * limitations under the License.
  */
 
+const THREE = require("three.cjs");
 
 // NOTE this is actually limited by Photon's max view ID right now..
 const MAX_ACTORS = 1100;

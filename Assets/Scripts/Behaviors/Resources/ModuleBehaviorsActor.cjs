@@ -1,4 +1,3 @@
-const THREE = require("three.cjs");
 /*
  * Copyright 2019 Google LLC
  *
@@ -15,6 +14,7 @@ const THREE = require("three.cjs");
  * limitations under the License.
  */
 
+const THREE = require("three.cjs");
 
 let MEM_CHECK_MODE = 'useOnly';
 

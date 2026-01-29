@@ -1,4 +1,3 @@
-import * as THREE from "three.mjs";
 /*
  * Copyright 2019 Google LLC
  *
@@ -15,6 +14,7 @@ import * as THREE from "three.mjs";
  * limitations under the License.
  */
 
+import * as THREE from "three.mjs";
 
 // NOTE this is actually limited by Photon's max view ID right now..
 const MAX_ACTORS = 1100;

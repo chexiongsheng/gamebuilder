@@ -1,4 +1,3 @@
-import * as THREE from "three.mjs";
 /*
  * Copyright 2019 Google LLC
  *
@@ -15,6 +14,7 @@ import * as THREE from "three.mjs";
  * limitations under the License.
  */
 
+import * as THREE from "three.mjs";
 
 // Handler prefix for legacy messages (APIv1)
 const MESSAGE_HANDLER_FUNCTION_NAME_PREFIX_LEGACY = "On"; // upper-case "O"!

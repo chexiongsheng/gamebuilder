@@ -1,4 +1,3 @@
-const THREE = require("three.cjs");
 /*
  * Copyright 2019 Google LLC
  *
@@ -14,6 +13,8 @@ const THREE = require("three.cjs");
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+const THREE = require("three.cjs");
 
 // KEEP SYNC'D WITH Services.cs
 const MAX_PHYSICS_QUERY_RESULTS = 500;
