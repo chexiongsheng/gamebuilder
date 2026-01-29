@@ -16,6 +16,226 @@
 
 // TODO clean up all this as a single class instead of globals and crap.
 
+globalThis.__voosModules = {};
+
+function getVoosModule (moduleName) {
+  if (!globalThis.__voosModules[moduleName]) {
+    throw new Error('Module not found: ' + moduleName);
+  }
+  return globalThis.__voosModules[moduleName];
+};
+
+// ==================== Actor Property Accessors ====================
+
+// Boolean accessors
+function getActorBoolean (actorId, fieldId) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+  return globalThis.__voosEngine.GetActorBooleanForPuerts(actorId, fieldId);
+};
+
+function setActorBoolean (actorId, fieldId, value) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+  globalThis.__voosEngine.SetActorBooleanForPuerts(actorId, fieldId, Boolean(value));
+};
+
+// Float accessors
+function getActorFloat (actorId, fieldId) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+  return globalThis.__voosEngine.GetActorFloatForPuerts(actorId, fieldId);
+};
+
+function setActorFloat (actorId, fieldId, value) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+  globalThis.__voosEngine.SetActorFloatForPuerts(actorId, fieldId, Number(value));
+};
+
+// Vector3 accessors
+function getActorVector3 (actorId, fieldId, pos) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+  // C# out parameters need to be wrapped with $ref and unwrapped with $unref
+  const outX = puer.$ref();
+  const outY = puer.$ref();
+  const outZ = puer.$ref();
+  globalThis.__voosEngine.GetActorVector3ForPuerts(actorId, fieldId, outX, outY, outZ);
+  pos.x = puer.$unref(outX);
+  pos.y = puer.$unref(outY);
+  pos.z = puer.$unref(outZ);
+};
+
+function setActorVector3 (actorId, fieldId, x, y, z) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+
+  // Pass x, y, z as separate parameters
+  globalThis.__voosEngine.SetActorVector3ForPuerts(
+    actorId,
+    fieldId,
+    x,
+    y,
+    z
+  );
+};
+
+// Quaternion accessors
+function getActorQuaternion (actorId, fieldId, quaternion) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+  // C# out parameters need to be wrapped with $ref and unwrapped with $unref
+  const outX = puer.$ref();
+  const outY = puer.$ref();
+  const outZ = puer.$ref();
+  const outW = puer.$ref();
+  globalThis.__voosEngine.GetActorQuaternionForPuerts(actorId, fieldId, outX, outY, outZ, outW);
+  
+  quaternion.x = puer.$unref(outX);
+  quaternion.y = puer.$unref(outY);
+  quaternion.z = puer.$unref(outZ);
+  quaternion.w = puer.$unref(outW);
+
+};
+
+function setActorQuaternion (actorId, fieldId, x, y, z, w) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+
+  // Pass x, y, z, w as separate parameters
+  globalThis.__voosEngine.SetActorQuaternionForPuerts(
+    actorId,
+    fieldId,
+    x,
+    y,
+    z,
+    w
+  );
+};
+
+// String accessors
+function getActorString (actorId, fieldId) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+  return globalThis.__voosEngine.GetActorStringForPuerts(actorId, fieldId);
+};
+
+function setActorString (actorId, fieldId, value) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+  globalThis.__voosEngine.SetActorStringForPuerts(actorId, fieldId, String(value));
+};
+
+// ==================== Service Call API ====================
+
+// callVoosService - Main service call API (compatible with V8 engine)
+// Note: This is a synchronous-looking API but internally uses async callback
+// It's kept for backward compatibility with existing code
+function callVoosService (serviceName, arg) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+
+  // For synchronous-looking API, we use a workaround:
+  // Store result in a closure and return it synchronously
+  // This works because Unity's main thread will process the callback immediately
+  let result = undefined;
+  let error = null;
+  let completed = false;
+
+  try {
+    const argsJson = JSON.stringify(arg);
+
+    globalThis.__voosEngine.CallServiceForPuerts(serviceName, argsJson, function (resultJson) {
+      completed = true;
+      if (resultJson && resultJson !== '') {
+        try {
+          result = JSON.parse(resultJson);
+        } catch (e) {
+          result = resultJson;
+        }
+      }
+    });
+
+    // In Unity's single-threaded environment, the callback should execute immediately
+    if (!completed) {
+      console.error('callVoosService: callback not executed immediately');
+    }
+
+    return result;
+  } catch (err) {
+    console.error('callVoosService error:', err.message);
+    throw err;
+  }
+};
+
+// log - Logging API
+function log (...args) {
+  const message = args.map(arg => {
+    if (typeof arg === 'object') {
+      try {
+        return JSON.stringify(arg);
+      } catch (e) {
+        return String(arg);
+      }
+    }
+    return String(arg);
+  }).join(' ');
+
+  if (globalThis.__voosEngine) {
+    globalThis.__voosEngine.HandleLogForPuerts('log', message);
+  }
+};
+
+// sysLog - System logging API (alias for log)
+function sysLog (...args) {
+  const message = args.map(arg => {
+    if (typeof arg === 'object') {
+      try {
+        return JSON.stringify(arg);
+      } catch (e) {
+        return String(arg);
+      }
+    }
+    return String(arg);
+  }).join(' ');
+
+  if (globalThis.__voosEngine) {
+    globalThis.__voosEngine.HandleLogForPuerts('log', message);
+  }
+};
+
+// ==================== Global Error Handler ====================
+
+globalThis.addEventListener = globalThis.addEventListener || function () { };
+globalThis.removeEventListener = globalThis.removeEventListener || function () { };
+
+// Capture unhandled errors
+const originalErrorHandler = globalThis.onerror;
+globalThis.onerror = function (message, source, lineno, colno, error) {
+  if (globalThis.__voosEngine) {
+    const errorMessage = error ? error.message : String(message);
+    const stackTrace = error ? error.stack : `at ${source}:${lineno}:${colno}`;
+    globalThis.__voosEngine.HandleErrorForPuerts(errorMessage, stackTrace);
+  }
+
+  if (originalErrorHandler) {
+    return originalErrorHandler.apply(this, arguments);
+  }
+  return false;
+};
+
 let moduleBehaviors_ = new ModuleBehaviorSystem();
 
 // State within a single update call
@@ -320,6 +540,20 @@ runUnitTests('Behavior', {
 });
 
 // ESM exports
+export { getVoosModule = getVoosModule };
+export { getActorBoolean = getActorBoolean };
+export { setActorBoolean = setActorBoolean };
+export { getActorFloat = getActorFloat };
+export { setActorFloat = setActorFloat };
+export { getActorVector3 = getActorVector3 };
+export { setActorVector3 = setActorVector3 };
+export { getActorQuaternion = getActorQuaternion };
+export { setActorQuaternion = setActorQuaternion };
+export { getActorString = getActorString };
+export { setActorString = setActorString };
+export { callVoosService = callVoosService };
+export { log = log };
+export { sysLog = sysLog };
 export { TIMERS_MEMORY_KEY };
 export { cachedPlayerActors };
 export { cleanProperties };
