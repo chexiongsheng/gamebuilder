@@ -14,11 +14,20 @@
  * limitations under the License.
  */
 
+const THREE = require("three.cjs");
+const { assert, assertString, assertVector3, assertQuaternion, flattenArray, mapGetOrCreate, serializeQuaternion, parseJsonOrEmpty, runUnitTests, assertNumber, assertBoolean, assertStringOrNull } = require("./util.cjs");
+const { ModuleBehaviorSystem, getBehaviorProperties } = require("./ModuleBehaviorSystem.cjs");
+const { VoosBinaryReaderWriter } = require("./serialization.cjs");
+const { Queue } = require("./Queue.src.cjs");
+const { ApiV2Context } = require("./apiv2/apiv2.cjs");
+const { packObj } = require("./pack-unpack.cjs");
+const { Actor } = require("./ModuleBehaviorsActor.cjs");
+
 // TODO clean up all this as a single class instead of globals and crap.
 
 globalThis.__voosModules = {};
 
-function getVoosModule (moduleName) {
+function getVoosModule(moduleName) {
   if (!globalThis.__voosModules[moduleName]) {
     throw new Error('Module not found: ' + moduleName);
   }
@@ -28,14 +37,14 @@ function getVoosModule (moduleName) {
 // ==================== Actor Property Accessors ====================
 
 // Boolean accessors
-function getActorBoolean (actorId, fieldId) {
+function getActorBoolean(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
   return globalThis.__voosEngine.GetActorBooleanForPuerts(actorId, fieldId);
 };
 
-function setActorBoolean (actorId, fieldId, value) {
+function setActorBoolean(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -43,14 +52,14 @@ function setActorBoolean (actorId, fieldId, value) {
 };
 
 // Float accessors
-function getActorFloat (actorId, fieldId) {
+function getActorFloat(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
   return globalThis.__voosEngine.GetActorFloatForPuerts(actorId, fieldId);
 };
 
-function setActorFloat (actorId, fieldId, value) {
+function setActorFloat(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -58,7 +67,7 @@ function setActorFloat (actorId, fieldId, value) {
 };
 
 // Vector3 accessors
-function getActorVector3 (actorId, fieldId, pos) {
+function getActorVector3(actorId, fieldId, pos) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -72,7 +81,7 @@ function getActorVector3 (actorId, fieldId, pos) {
   pos.z = puer.$unref(outZ);
 };
 
-function setActorVector3 (actorId, fieldId, x, y, z) {
+function setActorVector3(actorId, fieldId, x, y, z) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -88,7 +97,7 @@ function setActorVector3 (actorId, fieldId, x, y, z) {
 };
 
 // Quaternion accessors
-function getActorQuaternion (actorId, fieldId, quaternion) {
+function getActorQuaternion(actorId, fieldId, quaternion) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -98,7 +107,7 @@ function getActorQuaternion (actorId, fieldId, quaternion) {
   const outZ = puer.$ref();
   const outW = puer.$ref();
   globalThis.__voosEngine.GetActorQuaternionForPuerts(actorId, fieldId, outX, outY, outZ, outW);
-  
+
   quaternion.x = puer.$unref(outX);
   quaternion.y = puer.$unref(outY);
   quaternion.z = puer.$unref(outZ);
@@ -106,7 +115,7 @@ function getActorQuaternion (actorId, fieldId, quaternion) {
 
 };
 
-function setActorQuaternion (actorId, fieldId, x, y, z, w) {
+function setActorQuaternion(actorId, fieldId, x, y, z, w) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -123,14 +132,14 @@ function setActorQuaternion (actorId, fieldId, x, y, z, w) {
 };
 
 // String accessors
-function getActorString (actorId, fieldId) {
+function getActorString(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
   return globalThis.__voosEngine.GetActorStringForPuerts(actorId, fieldId);
 };
 
-function setActorString (actorId, fieldId, value) {
+function setActorString(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -142,7 +151,7 @@ function setActorString (actorId, fieldId, value) {
 // callVoosService - Main service call API (compatible with V8 engine)
 // Note: This is a synchronous-looking API but internally uses async callback
 // It's kept for backward compatibility with existing code
-function callVoosService (serviceName, arg) {
+function callVoosService(serviceName, arg) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -181,7 +190,7 @@ function callVoosService (serviceName, arg) {
 };
 
 // log - Logging API
-function log (...args) {
+function log(...args) {
   const message = args.map(arg => {
     if (typeof arg === 'object') {
       try {
@@ -199,7 +208,7 @@ function log (...args) {
 };
 
 // sysLog - System logging API (alias for log)
-function sysLog (...args) {
+function sysLog(...args) {
   const message = args.map(arg => {
     if (typeof arg === 'object') {
       try {
