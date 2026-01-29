@@ -59,6 +59,14 @@
 //处理消息时都会包在apiv2.js.txt的startHandlingMessage/endHandlingMessage间，这两个函数通过setUpGlobals_去设置全局变量（mem、card、props、temp）
 var mem = {};
 
+function getMem() {
+  return mem;
+}
+
+function setMem(m) {
+  mem = m;
+}
+
 /**
  * Memory object for the current behavior instance (card).
  *
@@ -90,6 +98,14 @@ var mem = {};
  */
 var card = {};
 
+function getCard() {
+  return card;
+}
+
+function setCard(c) {
+  card = c;
+}
+
 /**
  * Temporary memory for the current card/panel instance.
  *
@@ -119,6 +135,14 @@ var card = {};
  */
 var temp = {};
 
+function getTemp() {
+  return temp;
+}
+
+function setTemp(t) {
+  temp = t;
+}
+
 // HIDDEN (advanced). This declares that the current handler did not change memory.
 var declareMemoryUnchanged = function () {
   ApiV2Context.instance.api.declareMemoryUnchanged();
@@ -147,11 +171,11 @@ var loadVec = function (saved) {
 }
 
 // ESM exports
-export { card };
+export { getCard, setCard };
 export { declareMemoryUnchanged };
 export { loadRot };
 export { loadVec };
-export { mem };
+export { getMem, setMem };
 export { saveRot };
 export { saveVec };
-export { temp };
+export { getTemp, setTemp };

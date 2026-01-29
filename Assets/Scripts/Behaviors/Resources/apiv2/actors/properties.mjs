@@ -49,6 +49,14 @@
 //处理消息时都会包在apiv2.js.txt的startHandlingMessage/endHandlingMessage间，这两个函数通过setUpGlobals_去设置全局变量（mem、card、props、temp）
 var props = {};
 
+function getProps() {
+  return props;
+}
+
+function setProps(p) {
+  props = p;
+}
+
 /**
  * Declares a number property. Use this in the PROPS object
  * of your script file (see {@link props} for more info).
@@ -795,7 +803,7 @@ export { propParticleEffect };
 export { propSound };
 export { propString };
 export { propStringArray };
-export { props };
+export { getProps, setProps };
 export { requireEqual };
 export { requireFalse };
 export { requireNotEqual };
