@@ -14,6 +14,23 @@
  * limitations under the License.
  */
 
+import { assert, encodeUndefineds } from "../../util.mjs";
+import { exists, myself, destroySelf } from "../actors/actors.mjs";
+import { send } from "../actors/messages.mjs";
+import { setPos } from "../transform/position-set.mjs";
+import { setYaw, setPitch, setRoll, setYawPitchRoll, turn, applyQuaternion, applyQuaternionSelf, setRot, resetRot, lookAt, lookDir } from "../transform/rotation-set.mjs";
+import { setScaleUniform, setScale } from "../transform/scale.mjs";
+import { attachToParent, detachFromParent } from "../hierarchy/parenting.mjs";
+import { setVar, deleteVar } from "../actors/attributes.mjs";
+import { setDisplayName, setCommentText } from "../actors/attributes.mjs";
+import { setSolid, setKinematic, enableGravity, enableKeepUpright, setBounciness, setMass, setDrag, setAngularDrag } from "../physics/attributes.mjs";
+import { setPhysicsPreset } from "../physics/presets.mjs";
+import { addVelocity } from "../physics/velocity.mjs";
+import { setCameraActor, setIsPlayerControllable, setControllingPlayer } from "../player_controls/controls.mjs";
+import { setBodyPos, setBodyRot } from "../rendering/body.mjs";
+import { setTintColor, setTintHex } from "../rendering/color.mjs";
+import { show, hide } from "../rendering/visibility.mjs";
+
 // VISIBLE_TO_MONACO
 
 // BEGIN_GAME_BUILDER_CODE_GEN REMOTE_API_FUNCTIONS_JAVASCRIPT

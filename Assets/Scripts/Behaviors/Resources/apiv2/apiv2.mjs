@@ -15,6 +15,61 @@
  */
 
 import * as THREE from "three.mjs";
+import { assert, assertNumber, assertString, assertVector3, assertObjectNotNull, assertQuaternion } from "../util.mjs";
+import { callVoosService } from "../voosMain.mjs";
+import { max, vec3add, vec3zero, vec3scale } from "./misc/math.mjs";
+import { raycast, raycastTerrain } from "./physics/casting.mjs";
+import { getMouseRayOrigin, getMouseRayDir } from "./keyboard_mouse/mouse.mjs";
+import { getTime } from "./misc/time.mjs";
+import { myself, exists, isOnstage } from "./actors/actors.mjs";
+import { detachFromParent } from "./hierarchy/parenting.mjs";
+import { getProps, setProps } from "./actors/properties.mjs";
+import { getCard, setCard, getMem, setMem, setTemp } from "./actors/memory.mjs";
+import { Actor } from "../ModuleBehaviorsActor.mjs";
+import { ModuleBehaviorDatabase } from "../ModuleBehaviorSystem.mjs";
+
+// Re-export everything from submodules
+export * from "./actors/actors.mjs";
+export * from "./actors/attributes.mjs";
+export * from "./actors/camera_light.mjs";
+export * from "./actors/cloning.mjs";
+export * from "./actors/memory.mjs";
+export * from "./actors/messages.mjs";
+export * from "./actors/properties.mjs";
+export * from "./hierarchy/conversions.mjs";
+export * from "./hierarchy/parenting.mjs";
+export * from "./keyboard_mouse/keyboard.mjs";
+export * from "./keyboard_mouse/mouse.mjs";
+export * from "./misc/colors.mjs";
+export * from "./misc/game.mjs";
+export * from "./misc/math.mjs";
+export * from "./misc/time.mjs";
+export * from "./misc/utility.mjs";
+export * from "./multiplayer/players.mjs";
+export * from "./particles/particleeffects.mjs";
+export * from "./physics/attributes.mjs";
+export * from "./physics/casting.mjs";
+export * from "./physics/presets.mjs";
+export * from "./physics/velocity.mjs";
+export * from "./player_controls/aiming.mjs";
+export * from "./player_controls/controls.mjs";
+export * from "./remote/remote.mjs";
+export * from "./rendering/animation.mjs";
+export * from "./rendering/body.mjs";
+export * from "./rendering/color.mjs";
+export * from "./rendering/scene.mjs";
+export * from "./rendering/visibility.mjs";
+export * from "./sfx/sfx.mjs";
+export * from "./terrain/blocks.mjs";
+export * from "./transform/position-get.mjs";
+export * from "./transform/position-set.mjs";
+export * from "./transform/rotation-get.mjs";
+export * from "./transform/rotation-set.mjs";
+export * from "./transform/scale.mjs";
+
+// Re-export necessary APIs from voosMain.mjs and util.mjs
+export { callVoosService, log, sysLog } from "../voosMain.mjs";
+export { assert, assertNumber, assertString, assertBoolean, assertVector3, assertQuaternion, assertColor, assertArrayOf, assertObjectNotNull } from "../util.mjs";
 
 /**
  * Internal global context needed for APIv2 operations.

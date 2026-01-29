@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { ApiV2Context } from "../../apiv2.mjs";
+import { assert } from "../../util.mjs";
+import { myself, exists } from "../actors/actors.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**

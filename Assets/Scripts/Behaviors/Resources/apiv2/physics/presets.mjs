@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+import { assert } from "../../util.mjs";
+import { setSolid, setKinematic, enableGravity, enableKeepUpright, isSolid, isGravityEnabled, isKeepUprightEnabled, isKinematic } from "./attributes.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**

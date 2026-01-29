@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { sendToAll } from "../actors/messages.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**

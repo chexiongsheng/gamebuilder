@@ -14,6 +14,16 @@
  * limitations under the License.
  */
 
+import { ApiV2Context } from "../../apiv2.mjs";
+import { assertString, assert } from "../../util.mjs";
+import { getPlayerActorsCached } from "../../voosMain.mjs";
+import { getProps } from "./properties.mjs";
+import { getAttrib, getDisplayName } from "./attributes.mjs";
+import { isPlayerControllable } from "../player_controls/controls.mjs";
+import { getAimTarget } from "../player_controls/aiming.mjs";
+import { getDistanceTo, getPos } from "../transform/position-get.mjs";
+import { overlapSphere } from "../physics/casting.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**

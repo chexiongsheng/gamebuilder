@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { assertObjectNotNull, assertNumber, assertBoolean, assertString, assertArrayOf, assert } from "../../util.mjs";
+import { Particles } from "../particles/particleeffects.mjs";
+import { Sounds } from "../sfx/sfx.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**

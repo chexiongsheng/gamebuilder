@@ -15,6 +15,7 @@
  */
 
 import * as THREE from "three.mjs";
+import { assertNumber, assertVector3Duck, assertVector3, assertQuaternion } from "../../util.mjs";
 
 // VISIBLE_TO_MONACO
 
@@ -102,6 +103,14 @@ function interp(x1, y1, x2, y2, x) {
   if (x > x2) return y2;
   return y1 + ((x - x1) / (x2 - x1)) * (y2 - y1);
 }
+
+/**
+ * Returns the larger of two numbers.
+ * @param {number} a The first number.
+ * @param {number} b The second number.
+ * @return {number} The larger number.
+ */
+function max(a, b) { return Math.max(a, b); }
 
 /**
  * Returns the Vector3 (0, 0, 0).
@@ -401,6 +410,7 @@ function quatApply(quat, v) {
 // ESM exports
 export { degToRad };
 export { interp };
+export { max };
 export { quatApply };
 export { quatAxisAngle };
 export { quatIdent };

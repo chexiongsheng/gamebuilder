@@ -14,6 +14,16 @@
  * limitations under the License.
  */
 
+const { ApiV2Context } = require("../../apiv2.cjs");
+const { assertString, assert } = require("../../util.cjs");
+const { getPlayerActorsCached } = require("../../voosMain.cjs");
+const { getProps } = require("./properties.cjs");
+const { getAttrib, getDisplayName } = require("./attributes.cjs");
+const { isPlayerControllable } = require("../player_controls/controls.cjs");
+const { getAimTarget } = require("../player_controls/aiming.cjs");
+const { getDistanceTo, getPos } = require("../transform/position-get.cjs");
+const { overlapSphere } = require("../physics/casting.cjs");
+
 // VISIBLE_TO_MONACO
 
 /**

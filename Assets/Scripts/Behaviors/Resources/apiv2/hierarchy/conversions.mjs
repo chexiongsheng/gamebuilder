@@ -14,5 +14,12 @@
  * limitations under the License.
  */
 
+import { ApiV2Context } from "../../apiv2.mjs";
+import { assert } from "../../util.mjs";
+import { myself, exists } from "../actors/actors.mjs";
+import { getPos } from "../transform/position-get.mjs";
+import { getRot } from "../transform/rotation-get.mjs";
+import { vec3, quat } from "../misc/math.mjs";
+
 // VISIBLE_TO_MONACO
 

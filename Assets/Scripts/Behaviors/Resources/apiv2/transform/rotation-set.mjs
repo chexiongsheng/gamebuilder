@@ -15,6 +15,11 @@
  */
 
 import * as THREE from "three.mjs";
+import { ApiV2Context } from "../../apiv2.mjs";
+import { assertNumber, assertVector3, assertQuaternion } from "../../util.mjs";
+import { vec3y, deltaTime, vec3add, vec3scale } from "../misc/math.mjs";
+import { getRot } from "./rotation-get.mjs";
+import { getPos } from "./position-get.mjs";
 
 // VISIBLE_TO_MONACO
 
