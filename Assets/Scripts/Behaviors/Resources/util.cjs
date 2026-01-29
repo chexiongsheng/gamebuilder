@@ -15,6 +15,7 @@
  */
 
 const THREE = require("three.cjs");
+const { assert, runUnitTests } = require("./testing.cjs");
 
 let ENABLE_PROFILING_SERVICE = true;
 

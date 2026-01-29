@@ -15,6 +15,7 @@
  */
 
 import * as THREE from "three.mjs";
+import { assert, runUnitTests } from "./testing.mjs";
 
 let ENABLE_PROFILING_SERVICE = true;
 
@@ -279,6 +280,9 @@ runUnitTests('util.js.txt', {
 
 // ESM exports
 export { ENABLE_PROFILING_SERVICE };
+export { assert };
+export { assertThrows } from "./testing.mjs";
+export { runUnitTests };
 export { assertApproxEq };
 export { assertArrayOf };
 export { assertBoolean };
