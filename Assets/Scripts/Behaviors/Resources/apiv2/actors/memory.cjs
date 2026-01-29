@@ -38,12 +38,12 @@
  *
  * @example
  * export function onTick() {
- *   if (!mem.asleep) {
- *     mem.sheepCount++;
- *     log("I counted " + mem.sheepCount + " sheep.");
- *     if (mem.sheepCount > 99) {
+ *   if (!getMem().asleep) {
+ *     getMem().sheepCount++;
+ *     log("I counted " + getMem().sheepCount + " sheep.");
+ *     if (getMem().sheepCount > 99) {
  *       // So sleepy...
- *       mem.asleep = true;
+ *       getMem().asleep = true;
  *     }
  *   } else {
  *     log("Zzzzz....");
@@ -51,8 +51,8 @@
  * }
  *
  * export function onResetGame() {
- *   mem.asleep = false;
- *   mem.sheepCount = 0;
+ *   getMem().asleep = false;
+ *   getMem().sheepCount = 0;
  * }
  */
  
