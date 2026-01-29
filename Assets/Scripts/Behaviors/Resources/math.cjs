@@ -1,3 +1,4 @@
+const THREE = require("three.cjs");
 /*
  * Copyright 2019 Google LLC
  *
