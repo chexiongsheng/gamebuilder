@@ -387,12 +387,12 @@ function getClosestActor(actors) {
  */
 function getCardTargetActor(propName, actionMessage = null) {
   assertString(propName, "propName");
-  if (props[propName] === undefined) {
+  if (getProps()[propName] === undefined) {
     throw new Error("getCardTargetActor: property " + propName + " does not exist. You need to add it to your card.");
   }
   const owner = getAttrib("owner");
   let rv;
-  switch (props[propName]) {
+  switch (getProps()[propName]) {
     case "SELF":
       rv = myself();
       break;
@@ -413,10 +413,10 @@ function getCardTargetActor(propName, actionMessage = null) {
       rv = owner;
       break;
     case "OTHER":
-      rv = props[propName + "Other"];
+      rv = getProps()[propName + "Other"];
       break;
     default:
-      throw new Error("Invalid value for target actor property: " + props[propName]);
+      throw new Error("Invalid value for target actor property: " + getProps()[propName]);
   }
   return exists(rv) ? rv : null;
 }
@@ -430,7 +430,7 @@ function getCardTargetActor(propName, actionMessage = null) {
  *     or card description text, like 'myself', 'the event causer', 'the aim target', etc.
  */
 function getCardTargetActorDescription(propName) {
-  switch (props[propName]) {
+  switch (getProps()[propName]) {
     case "SELF":
       return 'myself';
       break;
@@ -444,7 +444,7 @@ function getCardTargetActorDescription(propName) {
       return 'my owner';
       break;
     case "OTHER":
-      const otherActor = props[propName + "Other"];
+      const otherActor = getProps()[propName + "Other"];
       return `actor '${getDisplayName(otherActor)}'`;
     default:
       return '???';

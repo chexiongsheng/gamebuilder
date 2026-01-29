@@ -377,12 +377,12 @@ function callDeck(deckOrCard, messageName, arg) {
 function callActionDeck(deckName, actionMessage, duration = 0.5, pulseInterval = 0.6) {
   actionMessage = actionMessage || { event: {} };
   assertString(deckName);
-  if (props[deckName] === undefined) {
+  if (getProps()[deckName] === undefined) {
     // Props are not initialized yet - this can happen on startup, so don't sweat it.
     return;
   }
-  assert(props[deckName], "deckName must be an existing property of the card.");
-  assert(Array.isArray(props[deckName]), "props[deckName] must be a card deck.");
+  assert(getProps()[deckName], "deckName must be an existing property of the card.");
+  assert(Array.isArray(getProps()[deckName]), "getProps()[deckName] must be a card deck.");
   assert(actionMessage && actionMessage.event, "actionMessage must be a GActionMessage with an event");
   assertNumber(duration);
   assertNumber(pulseInterval);
@@ -403,7 +403,7 @@ function callActionDeck(deckName, actionMessage, duration = 0.5, pulseInterval =
  * @return {GEvent} The event that fired, or null if none.
  */
 function callEventDeck(deckName, onlyEdge = false) {
-  const eventDeck = props[deckName];
+  const eventDeck = getProps()[deckName];
   assert(eventDeck && Array.isArray(eventDeck), "callEventDeck: not a card deck: " + deckName);
   let eventToDeliver = null;
   let evalFinished = false;
@@ -451,8 +451,8 @@ function callEventDeck(deckName, onlyEdge = false) {
  */
 function deactivateActionDeck(deckName) {
   assertString(deckName);
-  assert(props[deckName], "deckName must be an existing property of the card.");
-  assert(Array.isArray(props[deckName]), "props[deckName] must be a card deck.");
+  assert(getProps()[deckName], "deckName must be an existing property of the card.");
+  assert(Array.isArray(getProps()[deckName]), "getProps()[deckName] must be a card deck.");
   ApiV2Contrext.instance.getActionDeckHelper().deactivateDeck(deckName);
 }
 

@@ -489,7 +489,7 @@ class ApiV2ActionDeckHelper {
       thisDeckInfo.endTime = getTime() + (duration || 0);
       // Send the Activated message indicating the card is now active
       // (for the benefit of continuous-action cards).
-      ApiV2Context.instance.callDeck(props[deckName], "Activate", actionMessage);
+      ApiV2Context.instance.callDeck(getProps()[deckName], "Activate", actionMessage);
     }
     // Send the Action message
     // (for the benefit of discrete-action cards).
@@ -510,7 +510,7 @@ class ApiV2ActionDeckHelper {
     }
 
     if (getTime() > (thisDeckInfo.lastActionMessageTime || 0) + pulseInterval) {
-      ApiV2Context.instance.callDeck(props[deckName], "Action", actionMessage);
+      ApiV2Context.instance.callDeck(getProps()[deckName], "Action", actionMessage);
       thisDeckInfo.lastActionMessageTime = getTime();
     }
   }
@@ -524,7 +524,7 @@ class ApiV2ActionDeckHelper {
     }
     thisDeckInfo.active = false;
     // Let the deck know that it's no longer active.
-    ApiV2Context.instance.callDeck(props[deckName], "Deactivate");
+    ApiV2Context.instance.callDeck(getProps()[deckName], "Deactivate");
   }
 
   handleTick() {
@@ -538,7 +538,7 @@ class ApiV2ActionDeckHelper {
         this.deactivateDeck(deckName);
       } else {
         // Didn't expire, so send ActiveTick.
-        ApiV2Context.instance.callDeck(props[deckName], "ActiveTick");
+        ApiV2Context.instance.callDeck(getProps()[deckName], "ActiveTick");
       }
     }
   }

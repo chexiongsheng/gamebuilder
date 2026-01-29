@@ -57,8 +57,8 @@ export function onDrawScreen() {
   const left = screenSphere.center.x - width / 2;
   const top = screenSphere.center.y - height;
 
-  const cur = getVar("isDead") ? 0 : (getVar(getProps().AttribCur) || mem[getProps().AttribCur] || 0);
-  const max = Math.max(1, getVar(getProps().AttribMax) || mem[getProps().AttribMax] || 0);
+  const cur = getVar("isDead") ? 0 : (getVar(getProps().AttribCur) || getMem()[getProps().AttribCur] || 0);
+  const max = Math.max(1, getVar(getProps().AttribMax) || getMem()[getProps().AttribMax] || 0);
   const fraction = clamp(cur / max, 0, 1);
 
   const fgColor = getColorPropForHealthFraction(fraction, 'FgLow', 'FgMedium', 'FgHigh');
@@ -73,6 +73,6 @@ export function onDrawScreen() {
 }
 
 function getColorPropForHealthFraction(fraction, propLow, propMedium, propHigh) {
-  return fraction > 0.75 ? props[propHigh] :
-    fraction > 0.25 ? props[propMedium] : props[propLow];
+  return fraction > 0.75 ? getProps()[propHigh] :
+    fraction > 0.25 ? getProps()[propMedium] : getProps()[propLow];
 }

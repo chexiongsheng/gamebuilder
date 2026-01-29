@@ -42,7 +42,7 @@ export function onDrawScreen() {
   const HEIGHT = 60;
   const MARGIN = 5;
 
-  const cur = getVar("isDead") ? 0 : (getVar(getProps().AttribCur) || mem[getProps().AttribCur] || 0);
+  const cur = getVar("isDead") ? 0 : (getVar(getProps().AttribCur) || getMem()[getProps().AttribCur] || 0);
   if (getCard().lastHealth !== null && getCard().lastHealth > cur) {
     getCard().lastDecreaseTime = getTime();
   }
@@ -54,7 +54,7 @@ export function onDrawScreen() {
   });
   uiText(getProps().X + MARGIN, getProps().Y + MARGIN, getProps().Text, UiColor.WHITE);
 
-  const max = Math.max(1, getVar(getProps().AttribMax) || mem[getProps().AttribMax] || 0);
+  const max = Math.max(1, getVar(getProps().AttribMax) || getMem()[getProps().AttribMax] || 0);
   const fraction = Math.min(Math.max(cur / max, 0), 1);
   const barWidth = getProps().Width - 2 * MARGIN;
   const filledBarWidth = fraction * barWidth;
