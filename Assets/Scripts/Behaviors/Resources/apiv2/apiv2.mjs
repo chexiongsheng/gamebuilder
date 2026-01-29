@@ -126,10 +126,10 @@ class ApiV2Context {
     const top = this.apiStack_.length > 0 ? this.apiStack_[this.apiStack_.length - 1] : null;
     // Globals expected by APIv2 users. These globals point to the context of
     // the TOPMOST (on the stack) message being delivered.
-    mem = top ? top.memory : null;
-    props = top ? top.props : null;
-    card = top ? top.getBehaviorUseLocalMemory() : null;
-    temp = top ? top.getTempMemoryForUse() : null;
+    setMem(top ? top.memory : null);
+    setProps(top ? top.props : null);
+    setCard(top ? top.getBehaviorUseLocalMemory() : null);
+    setTemp(top ? top.getTempMemoryForUse() : null);
   }
 
   /**
