@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { getProps, propNumber } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propNumber('Probability', 50, {
     label: 'Probability %'

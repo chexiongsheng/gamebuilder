@@ -14,7 +14,16 @@
  * limitations under the License.
  */
 
+import { getVar } from "../../apiv2/actors/attributes.mjs";
+import { getCard, getMem } from "../../apiv2/actors/memory.mjs";
+import { propDecimal, propNumber, propString } from "../../apiv2/actors/properties.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { getLocalPlayer } from "../../apiv2/multiplayer/players.mjs";
+import { getControllingPlayer } from "../../apiv2/player_controls/controls.mjs";
+import { UiColor, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
 import * as THREE from "three.mjs";
+import { show } from "../../apiv2/rendering/visibility.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propNumber('X', 1350),

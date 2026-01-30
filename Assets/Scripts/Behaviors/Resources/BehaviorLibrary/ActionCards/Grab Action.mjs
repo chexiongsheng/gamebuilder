@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { sendToSelf } from "../../apiv2/actors/messages.mjs";
+
 export const PROPS = [
 ]
 

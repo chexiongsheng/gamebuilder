@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { callActionDeck } from "../../apiv2/actors/messages.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { propDeck } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propDeck('actionDeck', 'Action', {
     label: 'When the game starts/reset, what do I do?'

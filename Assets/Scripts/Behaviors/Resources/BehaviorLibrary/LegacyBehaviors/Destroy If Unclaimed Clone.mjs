@@ -24,6 +24,14 @@
  * 
  *****************************************************************************/
 
+import { destroySelf } from "../../apiv2/actors/actors.mjs";
+import { isClone } from "../../apiv2/actors/cloning.mjs";;
+import { getMem } from "../../apiv2/actors/memory.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { isClaimed } from "../../apiv2/multiplayer/players.mjs";
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { clone } from "../../apiv2/actors/cloning.mjs";
+
 /**
  * @param {HandlerApi} api
  */

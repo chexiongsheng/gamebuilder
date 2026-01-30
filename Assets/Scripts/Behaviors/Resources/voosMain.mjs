@@ -14,28 +14,43 @@
  * limitations under the License.
  */
 
+import * as THREE from "three.mjs";
+import { assert, runUnitTests } from "./testing.mjs";
+import { assertBoolean, assertNumber, assertQuaternion, assertString, assertStringOrNull, assertVector3, flattenArray, mapGetOrCreate, parseJsonOrEmpty, serializeQuaternion } from "./util.mjs";;
+import { ModuleBehaviorSystem, getBehaviorProperties } from "./ModuleBehaviorSystem.mjs";
+import { VoosBinaryReaderWriter } from "./serialization.mjs";
+import { Queue } from "./Queue.src.mjs";
+import { ApiV2Context } from "./apiv2/apiv2.mjs";
+import { packObj } from "./pack-unpack.mjs";
+import { Actor } from "./ModuleBehaviorsActor.mjs";
+import { voosModules} from "./BehaviorLibrary/BehaviorLibraryIndex.mjs";
+import { setProfileEnable, beginProfileSample, endProfileSample } from "./util.mjs";
+import { send } from "./apiv2/actors/messages.mjs";
+import { Quaternion, Vector3 } from "./threejs-overrides.mjs";
+import { push } from "./apiv2/physics/velocity.mjs";
+import { log } from "./apiv2/misc/utility.mjs";
+import { setMemCheckMode } from "./ModuleBehaviorsActor.mjs";
+
 // TODO clean up all this as a single class instead of globals and crap.
 
-globalThis.__voosModules = {};
-
-function getVoosModule (moduleName) {
-  if (!globalThis.__voosModules[moduleName]) {
+function getVoosModule(moduleName) {
+  if (!voosModules[moduleName]) {
     throw new Error('Module not found: ' + moduleName);
   }
-  return globalThis.__voosModules[moduleName];
+  return voosModules[moduleName];
 };
 
 // ==================== Actor Property Accessors ====================
 
 // Boolean accessors
-function getActorBoolean (actorId, fieldId) {
+function getActorBoolean(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
   return globalThis.__voosEngine.GetActorBooleanForPuerts(actorId, fieldId);
 };
 
-function setActorBoolean (actorId, fieldId, value) {
+function setActorBoolean(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -43,14 +58,14 @@ function setActorBoolean (actorId, fieldId, value) {
 };
 
 // Float accessors
-function getActorFloat (actorId, fieldId) {
+function getActorFloat(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
   return globalThis.__voosEngine.GetActorFloatForPuerts(actorId, fieldId);
 };
 
-function setActorFloat (actorId, fieldId, value) {
+function setActorFloat(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -58,7 +73,7 @@ function setActorFloat (actorId, fieldId, value) {
 };
 
 // Vector3 accessors
-function getActorVector3 (actorId, fieldId, pos) {
+function getActorVector3(actorId, fieldId, pos) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -72,7 +87,7 @@ function getActorVector3 (actorId, fieldId, pos) {
   pos.z = puer.$unref(outZ);
 };
 
-function setActorVector3 (actorId, fieldId, x, y, z) {
+function setActorVector3(actorId, fieldId, x, y, z) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -88,7 +103,7 @@ function setActorVector3 (actorId, fieldId, x, y, z) {
 };
 
 // Quaternion accessors
-function getActorQuaternion (actorId, fieldId, quaternion) {
+function getActorQuaternion(actorId, fieldId, quaternion) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -98,7 +113,7 @@ function getActorQuaternion (actorId, fieldId, quaternion) {
   const outZ = puer.$ref();
   const outW = puer.$ref();
   globalThis.__voosEngine.GetActorQuaternionForPuerts(actorId, fieldId, outX, outY, outZ, outW);
-  
+
   quaternion.x = puer.$unref(outX);
   quaternion.y = puer.$unref(outY);
   quaternion.z = puer.$unref(outZ);
@@ -106,7 +121,7 @@ function getActorQuaternion (actorId, fieldId, quaternion) {
 
 };
 
-function setActorQuaternion (actorId, fieldId, x, y, z, w) {
+function setActorQuaternion(actorId, fieldId, x, y, z, w) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -123,14 +138,14 @@ function setActorQuaternion (actorId, fieldId, x, y, z, w) {
 };
 
 // String accessors
-function getActorString (actorId, fieldId) {
+function getActorString(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
   return globalThis.__voosEngine.GetActorStringForPuerts(actorId, fieldId);
 };
 
-function setActorString (actorId, fieldId, value) {
+function setActorString(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -142,7 +157,7 @@ function setActorString (actorId, fieldId, value) {
 // callVoosService - Main service call API (compatible with V8 engine)
 // Note: This is a synchronous-looking API but internally uses async callback
 // It's kept for backward compatibility with existing code
-function callVoosService (serviceName, arg) {
+function callVoosService(serviceName, arg) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
@@ -180,26 +195,8 @@ function callVoosService (serviceName, arg) {
   }
 };
 
-// log - Logging API
-function log (...args) {
-  const message = args.map(arg => {
-    if (typeof arg === 'object') {
-      try {
-        return JSON.stringify(arg);
-      } catch (e) {
-        return String(arg);
-      }
-    }
-    return String(arg);
-  }).join(' ');
-
-  if (globalThis.__voosEngine) {
-    globalThis.__voosEngine.HandleLogForPuerts('log', message);
-  }
-};
-
 // sysLog - System logging API (alias for log)
-function sysLog (...args) {
+function sysLog(...args) {
   const message = args.map(arg => {
     if (typeof arg === 'object') {
       try {
@@ -287,8 +284,8 @@ function getPlayerActorsCached() {
 function tickWorld(request, binaryBytes) {
   try {
     cachedPlayerActors = null;
-    ENABLE_PROFILING_SERVICE = request.enableProfilingService;
-    MEM_CHECK_MODE = request.memCheckMode;
+    setProfileEnable(request.enableProfilingService);
+    setMemCheckMode(request.memCheckMode);
     ApiV2Context.setup(request.deltaSeconds);
     updateCount++;
     const reader = new VoosBinaryReaderWriter(binaryBytes);
@@ -458,7 +455,7 @@ function updateAgent(request, arrayBuffer) {
   }
 
   // bit of a hack..always restore this.
-  ENABLE_PROFILING_SERVICE = true;
+  setProfileEnable(true);
   endProfileSample();
 }
 
@@ -540,20 +537,19 @@ runUnitTests('Behavior', {
 });
 
 // ESM exports
-export { getVoosModule = getVoosModule };
-export { getActorBoolean = getActorBoolean };
-export { setActorBoolean = setActorBoolean };
-export { getActorFloat = getActorFloat };
-export { setActorFloat = setActorFloat };
-export { getActorVector3 = getActorVector3 };
-export { setActorVector3 = setActorVector3 };
-export { getActorQuaternion = getActorQuaternion };
-export { setActorQuaternion = setActorQuaternion };
-export { getActorString = getActorString };
-export { setActorString = setActorString };
-export { callVoosService = callVoosService };
-export { log = log };
-export { sysLog = sysLog };
+export { getVoosModule };
+export { getActorBoolean };
+export { setActorBoolean };
+export { getActorFloat };
+export { setActorFloat };
+export { getActorVector3 };
+export { setActorVector3 };
+export { getActorQuaternion };
+export { setActorQuaternion };
+export { getActorString };
+export { setActorString };
+export { callVoosService };
+export { sysLog };
 export { TIMERS_MEMORY_KEY };
 export { cachedPlayerActors };
 export { cleanProperties };

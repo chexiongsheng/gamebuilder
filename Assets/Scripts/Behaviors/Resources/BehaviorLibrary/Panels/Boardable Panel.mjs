@@ -14,6 +14,19 @@
  * limitations under the License.
  */
 
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";;
+import { getVar, setVar } from "../../apiv2/actors/attributes.mjs";
+import { callActionDeck } from "../../apiv2/actors/messages.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { propDeck } from "../../apiv2/actors/properties.mjs";
+import { playerExists } from "../../apiv2/multiplayer/players.mjs";
+import { getControllingPlayer, setIsPlayerControllable, setControllingPlayer } from "../../apiv2/player_controls/controls.mjs";
+import { moveForward } from "../../apiv2/transform/position-set.mjs";
+import { logError } from "../../apiv2/misc/utility.mjs";
+import { assert } from "../../testing.mjs";;
+
 export const PROPS = [
   propDeck('OnBoardedDeck', 'Action', {
     label: 'When player boards, do:'

@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+import { getCardTargetActor, getCardTargetActorDescription } from "../../apiv2/actors/actors.mjs";
+import { getProps, propCardTargetActor, propDecimal, propEnum } from "../../apiv2/actors/properties.mjs";
+import { vec3, vec3toString } from "../../apiv2/misc/math.mjs";
+import { push } from "../../apiv2/physics/velocity.mjs";
+import { selfToWorldDir } from "../../apiv2/transform/position-get.mjs";
+
 export const PROPS = [
   propCardTargetActor("CardTargetActor", {
     label: "Push who?"

@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { clearLight } from "../../apiv2/actors/camera_light.mjs";
+
 /**
  * @param {GActionMessage} actionMessage 
  */

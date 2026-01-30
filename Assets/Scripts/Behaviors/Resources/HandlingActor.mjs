@@ -15,6 +15,24 @@
  */
 
 import * as THREE from "three.mjs";
+import { getAimDirection } from "./apiv2/player_controls/aiming.mjs";;
+import { getBoundsCenter, getBoundsSize } from "./apiv2/rendering/body.mjs";
+import { setAngularDrag, setBounciness, setDrag, setMass } from "./apiv2/physics/attributes.mjs";
+import { getCameraActor, getLookAxes, isPlayerControllable, setCameraActor, setIsPlayerControllable } from "./apiv2/player_controls/controls.mjs";
+import { getAimOrigin, getLastAimHitPoint } from "./apiv2/player_controls/aiming.mjs";
+import { FORWARD_DIR, RIGHT_DIR, UP_DIR } from "./apiv2/misc/math.mjs";
+import { assertBoolean, assertColor, assertNumber, assertQuaternion, assertStringOrNull, assertVector3 } from "./util.mjs";
+import { hasTag } from "./apiv2/actors/actors.mjs";
+import { move } from "./apiv2/transform/position-set.mjs";
+import { getActorBoolean, getActorColor, getActorFloat, getActorQuaternion, getActorString, getActorVector3, setActorBoolean, setActorColor, setActorFloat, setActorQuaternion, setActorString, setActorVector3 } from "./voosMain.mjs";
+import { lookAt, rotate, turn } from "./apiv2/transform/rotation-set.mjs";
+import { Vector3 } from "./threejs-overrides.mjs";
+import { getLoopingAnimation, setLoopingAnimation } from "./apiv2/rendering/animation.mjs";
+import { getCommentText, getDisplayName, setCommentText, setDisplayName } from "./apiv2/actors/attributes.mjs";
+import { getVelocity } from "./apiv2/physics/velocity.mjs";
+import { getCloneParent } from "./apiv2/actors/cloning.mjs";
+import { getTint, setTint } from "./apiv2/rendering/color.mjs";
+import { getForward } from "./apiv2/transform/rotation-get.mjs";
 
 // Convenience class for some common math things.
 // TODO this should just be part of the MutableActorApi

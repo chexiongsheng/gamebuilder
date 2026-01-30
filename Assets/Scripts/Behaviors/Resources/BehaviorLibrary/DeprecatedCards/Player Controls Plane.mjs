@@ -14,6 +14,19 @@
  * limitations under the License.
  */
 
+import { getAttrib } from "../../apiv2/actors/attributes.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { propDecimal } from "../../apiv2/actors/properties.mjs";
+import { degToRad } from "../../apiv2/misc/math.mjs";
+import { deltaTime } from "../../apiv2/misc/time.mjs";
+import { getThrottle } from "../../apiv2/player_controls/controls.mjs";
+import { moveForward } from "../../apiv2/transform/position-set.mjs";
+import { lookTowardDir } from "../../apiv2/transform/rotation-set.mjs";;
+import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
+import { enableGravity, enableKeepUpright } from "../../apiv2/physics/attributes.mjs";
+import { getRight } from "../../apiv2/transform/rotation-get.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 // Player Controls: Hovercraft.
 
 export const PROPS = [

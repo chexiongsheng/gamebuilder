@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { getCardTargetActor } from "../../apiv2/actors/actors.mjs";
+import { getVar } from "../../apiv2/actors/attributes.mjs";
+import { getProps, propCardTargetActor, propEnum, propString } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propCardTargetActor("Target", {
     label: "Whose variable?"
@@ -29,8 +33,8 @@ export const PROPS = [
     { value: ">=", label: "Greater than or equal" },
     { value: "<=", label: "Less than or equal" },
   ], {
-      label: "Comparison"
-    }
+    label: "Comparison"
+  }
   ),
   propString("Value", "0", {
     label: "Comparison value"

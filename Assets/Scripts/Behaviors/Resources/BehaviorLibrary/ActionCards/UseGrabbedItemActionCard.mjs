@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { getVar } from "../../apiv2/actors/attributes.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+
 export function onAction(actionMessage) {
   const item = getVar("grabbedItem");
   if (exists(item)) {

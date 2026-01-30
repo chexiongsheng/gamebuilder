@@ -13,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { BlockStyle } from "../terrain/blocks.mjs";
+import { getDisplayName } from "../actors/attributes.mjs";
+import { log } from "../misc/utility.mjs";
 
 // VISIBLE_TO_MONACO
 

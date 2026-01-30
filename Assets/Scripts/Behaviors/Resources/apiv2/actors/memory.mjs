@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+import { ApiV2Context } from "../apiv2.mjs";
+import { assertQuaternion, serializeQuaternion, deserializeQuaternion, assertVector3 } from "../../util.mjs";
+import { vec3 } from "../misc/math.mjs";
+import { log } from "../misc/utility.mjs";
+import { setVar } from "./attributes.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**
@@ -55,7 +61,7 @@
  *   getMem().sheepCount = 0;
  * }
  */
- 
+
 //处理消息时都会包在apiv2.js.txt的startHandlingMessage/endHandlingMessage间，这两个函数通过setUpGlobals_去设置全局变量（mem、card、props、temp）
 var mem = {};
 

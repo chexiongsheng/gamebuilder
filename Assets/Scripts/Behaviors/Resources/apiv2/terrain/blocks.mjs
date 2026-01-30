@@ -15,6 +15,11 @@
  */
 
 import * as THREE from "three.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
+import { assertNumber, assertVector3 } from "../../util.mjs";
+import { vec3 } from "../misc/math.mjs";
+import { log } from "../misc/utility.mjs";
+import { Vector3 } from "../../threejs-overrides.mjs";
 
 // VISIBLE_TO_MONACO
 

@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+import { exists, getCardTargetActor, getCardTargetActorDescription } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { send, sendToSelfDelayed } from "../../apiv2/actors/messages.mjs";
+import { getProps, propActor, propBoolean, propCardTargetActor, propDecimal, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { logError } from "../../apiv2/misc/utility.mjs";
+import { getCameraActor, isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
+
 export const PROPS = [
   propCardTargetActor("Target", {
     label: "What player?"

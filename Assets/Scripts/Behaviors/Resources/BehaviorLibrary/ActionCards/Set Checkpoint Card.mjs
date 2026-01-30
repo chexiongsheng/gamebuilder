@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { getCardTargetActor } from "../../apiv2/actors/actors.mjs";
+import { cooldown, send } from "../../apiv2/actors/messages.mjs";
+import { propCardTargetActor } from "../../apiv2/actors/properties.mjs";
+import { getPos } from "../../apiv2/transform/position-get.mjs";
+
 export const PROPS = [
   propCardTargetActor("Target", {
     label: "Whose checkpoint?"

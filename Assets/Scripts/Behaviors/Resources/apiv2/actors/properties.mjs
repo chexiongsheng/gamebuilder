@@ -14,6 +14,22 @@
  * limitations under the License.
  */
 
+import { assert } from "../../testing.mjs";
+import { assertArrayOf, assertBoolean, assertNumber, assertObjectNotNull, assertString } from "../../util.mjs";;
+import { Particles } from "../particles/particleeffects.mjs";
+import { Sounds } from "../sfx/sfx.mjs";
+import { playSound } from "../sfx/sfx.mjs";
+import { exists, getCardTargetActor, myself } from "./actors.mjs";
+import { callActionDeck } from "./messages.mjs";
+import { getTime } from "../misc/time.mjs";
+import { spawnParticleEffect } from "../particles/particleeffects.mjs";
+import { setTintColor } from "../rendering/color.mjs";
+import { show } from "../rendering/visibility.mjs";
+import { log } from "../misc/utility.mjs";
+import { Color } from "../../threejs-overrides.mjs";
+import { getDisplayName } from "./attributes.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**

@@ -15,6 +15,20 @@
  */
 
 import * as THREE from "three.mjs";
+import { myself } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";
+import { clone } from "../../apiv2/actors/cloning.mjs";
+import { getProps, propActor, propBoolean, propDecimal, propEnum, propSound, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { degToRad, vec3, vec3normalized, vec3scale, vec3zero, vec3z } from "../../apiv2/misc/math.mjs";
+import { push } from "../../apiv2/physics/velocity.mjs";
+import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
+import { isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
+import { setVarPlease } from "../../apiv2/remote/remote.mjs";
+import { playSound, Sounds } from "../../apiv2/sfx/sfx.mjs";
+import { selfToWorldPos } from "../../apiv2/transform/position-get.mjs";
+import { getForward } from "../../apiv2/transform/rotation-get.mjs";
+
+const Quaternion = THREE.Quaternion;
 
 export const PROPS = [
   propActor("Projectile", "builtin:LaserBolt", {

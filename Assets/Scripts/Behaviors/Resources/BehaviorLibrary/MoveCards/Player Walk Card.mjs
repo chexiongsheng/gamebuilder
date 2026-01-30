@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+import { getAttrib } from "../../apiv2/actors/attributes.mjs";
+import { propDecimal } from "../../apiv2/actors/properties.mjs";
+import { vec3zero } from "../../apiv2/misc/math.mjs";
+import { getWorldThrottle, isSprinting } from "../../apiv2/player_controls/controls.mjs";
+import { moveGlobal } from "../../apiv2/transform/position-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propDecimal("Speed", 8),
   propDecimal("SprintSpeed", 12),

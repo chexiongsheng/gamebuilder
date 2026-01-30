@@ -15,6 +15,11 @@
  */
 
 
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { propNumber } from "../../apiv2/actors/properties.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";;
+
 // THIS CARD IS DEPRECATED.
 
 

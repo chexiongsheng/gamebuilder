@@ -14,6 +14,32 @@
  * limitations under the License.
  */
 
+import * as THREE from "three.mjs";
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { setVar } from "../../apiv2/actors/attributes.mjs";
+import { callActionDeck } from "../../apiv2/actors/messages.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { propBoolean, propDecimal, propDeck, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { attachToParent, detachFromParent } from "../../apiv2/hierarchy/parenting.mjs";
+import { degToRad, vec3x, vec3y, vec3z } from "../../apiv2/misc/math.mjs";
+import { isKinematic, isSolid, setKinematic, setSolid } from "../../apiv2/physics/attributes.mjs";
+import { getAimTarget } from "../../apiv2/player_controls/aiming.mjs";
+import { isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
+import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
+import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
+import { getBoundsCenter } from "../../apiv2/rendering/body.mjs";
+import { getPos, selfToWorldPos } from "../../apiv2/transform/position-get.mjs";
+import { setPos } from "../../apiv2/transform/position-set.mjs";
+import { getForward } from "../../apiv2/transform/rotation-get.mjs";
+import { turn } from "../../apiv2/transform/rotation-set.mjs";
+import { assert } from "../../testing.mjs";
+import { assertVector3 } from "../../util.mjs";;
+import { rotate } from "../../apiv2/transform/rotation-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
+const Quaternion = THREE.Quaternion;
+
 export const PROPS = [
   propBoolean("CustomRotation", false),
   propDecimal("RotationX", 0, { requires: [requireTrue("CustomRotation")] }),
@@ -152,4 +178,3 @@ function maybeRestore(isResetGame) {
     delete getCard().grabbedState;
   }
 }
-

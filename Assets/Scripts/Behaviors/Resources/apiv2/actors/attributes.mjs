@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+import { ApiV2Context } from "../apiv2.mjs";
+import { assertString } from "../../util.mjs";
+import { exists, myself } from "./actors.mjs";
+import { getMem } from "./memory.mjs";
+import { cooldown, send } from "./messages.mjs";
+import { log } from "../misc/utility.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
+import { propActor } from "./properties.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**

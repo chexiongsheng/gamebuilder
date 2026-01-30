@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { sendToSelfDelayed } from "../../apiv2/actors/messages.mjs";
+import { getProps, propBoolean, propColor, propDecimal, propString } from "../../apiv2/actors/properties.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { uiGetTextHeight, uiGetTextWidth, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
+
 export const PROPS = [
   propString("Text", "Hello"),
   propColor("TextColor", "#ffffff"),

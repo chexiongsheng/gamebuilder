@@ -15,6 +15,28 @@
  */
 
 import * as THREE from "three.mjs";
+import { assert } from "../testing.mjs";
+import { assertNumber, assertObjectNotNull, assertQuaternion, assertString, assertVector3 } from "../util.mjs";;
+import { callVoosService } from "../voosMain.mjs";
+import { max, vec3add, vec3zero, vec3scale } from "./misc/math.mjs";
+import { raycast, raycastTerrain } from "./physics/casting.mjs";
+import { getMouseRayOrigin, getMouseRayDir } from "./keyboard_mouse/mouse.mjs";
+import { getTime } from "./misc/time.mjs";
+import { myself, exists, isOnstage } from "./actors/actors.mjs";
+import { detachFromParent } from "./hierarchy/parenting.mjs";
+import { getProps, setProps } from "./actors/properties.mjs";
+import { getCard, setCard, getMem, setMem, setTemp } from "./actors/memory.mjs";
+import { Actor } from "../ModuleBehaviorsActor.mjs";
+import { ModuleBehaviorDatabase } from "../ModuleBehaviorDatabase.mjs";
+import { getActorsUnderMouse } from "./keyboard_mouse/mouse.mjs";
+import { HandlerApi } from "../HandlerApi.mjs";
+import { getPlayerControlledActor } from "./multiplayer/players.mjs";
+import { push } from "./physics/velocity.mjs";
+import { getRot } from "./transform/rotation-get.mjs";
+import { trySpawnParticleEffect } from "./particles/particleeffects.mjs";
+import { tryPlaySound } from "./sfx/sfx.mjs";
+import { getPos } from "./transform/position-get.mjs";
+import { callDeck, send } from "./actors/messages.mjs";
 
 /**
  * Internal global context needed for APIv2 operations.
@@ -456,7 +478,7 @@ class ApiV2Context {
 class ApiV2ActionDeckHelper {
   constructor() {
     // The card global must exist (can only be used within a card's message handling context).
-    assert(card, "ApiV2ActionDeckHelper can only be used within a card context.");
+    assert(getCard(), "ApiV2ActionDeckHelper can only be used within a card context.");
     getCard().actionDeckState = getCard().actionDeckState || {};
     this.state_ = getCard().actionDeckState;
 

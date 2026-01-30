@@ -15,6 +15,8 @@
  */
 
 import * as THREE from "three.mjs";
+import { assert, runUnitTests } from "./testing.mjs";
+import { assertApproxEq, assertBoolean, assertInstanceOf, assertNumber, assertString } from "./util.mjs";;
 
 class VoosBinaryReaderWriter {
   constructor(arrayBuffer) {

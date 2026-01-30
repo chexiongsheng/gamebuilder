@@ -14,6 +14,19 @@
  * limitations under the License.
  */
 
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { propDecimal } from "../../apiv2/actors/properties.mjs";
+import { vec3zero } from "../../apiv2/misc/math.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { getTerrainPointUnderMouse } from "../../apiv2/keyboard_mouse/mouse.mjs";
+import { move, moveToward } from "../../apiv2/transform/position-set.mjs";;
+import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
+import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
+import { getDistanceTo } from "../../apiv2/transform/position-get.mjs";
+import { getScreenPoint } from "../../apiv2/ui/screen.mjs";
+import { UiColor, uiRect } from "../../apiv2/ui/widgets.mjs";;
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 // Player Controls: Basic WASD.
 
 export const PROPS = [

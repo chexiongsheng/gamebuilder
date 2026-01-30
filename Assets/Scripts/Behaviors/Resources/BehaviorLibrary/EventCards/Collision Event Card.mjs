@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+import { getActorGroupDescription, isActorInGroup } from "../../apiv2/actors/actors.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getProps, propActorGroup, propBoolean } from "../../apiv2/actors/properties.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { isVisible } from "../../apiv2/rendering/visibility.mjs";
+
 export const PROPS = [
   propActorGroup("withWhat", "@ANY", {
     label: "Collide with what:",

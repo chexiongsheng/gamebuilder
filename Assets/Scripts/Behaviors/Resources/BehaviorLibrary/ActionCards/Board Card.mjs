@@ -14,6 +14,23 @@
  * limitations under the License.
  */
 
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { getVar } from "../../apiv2/actors/attributes.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { getProps, propBoolean, propDecimal } from "../../apiv2/actors/properties.mjs";
+import { attachToParent, detachFromParent } from "../../apiv2/hierarchy/parenting.mjs";
+import { overlapSphere } from "../../apiv2/physics/casting.mjs";
+import { getAimTarget } from "../../apiv2/player_controls/aiming.mjs";
+import { setControllingPlayer } from "../../apiv2/player_controls/controls.mjs";
+import { getBoundsRadiusOuter } from "../../apiv2/rendering/body.mjs";
+import { hide, show } from "../../apiv2/rendering/visibility.mjs";
+import { getDistanceTo, getPos } from "../../apiv2/transform/position-get.mjs";
+import { setPos } from "../../apiv2/transform/position-set.mjs";
+import { getPointToLeftOf } from "../../apiv2/transform/rotation-get.mjs";
+import { assert } from "../../testing.mjs";;
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
+
 export const PROPS = [
   propDecimal("MaxDist", 5, {
     label: "Max dist to boardable"

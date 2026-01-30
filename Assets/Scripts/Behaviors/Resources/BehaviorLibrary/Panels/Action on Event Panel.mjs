@@ -15,6 +15,10 @@
  */
 
 
+import { callActionDeck, callEventDeck } from "../../apiv2/actors/messages.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getProps, propBoolean, propDecimal, propDeck, propEnum, requireTrue } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   // OLD:
   // propBoolean('onlyOnce', false, {
@@ -39,10 +43,10 @@ export const PROPS = [
   propEnum(
     'triggerWhen',
     'CONTINUOUS', [
-      { value: 'CONTINUOUS', label: 'Continuous' },
-      { value: 'ONCE_EVENT', label: 'Once (event)' },
-      { value: 'ONCE_PER_GAME', label: 'Once (per game)' }
-    ],
+    { value: 'CONTINUOUS', label: 'Continuous' },
+    { value: 'ONCE_EVENT', label: 'Once (event)' },
+    { value: 'ONCE_PER_GAME', label: 'Once (per game)' }
+  ],
     {
       label: "Trigger mode:",
     }

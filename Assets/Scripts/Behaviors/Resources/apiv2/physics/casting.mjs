@@ -15,6 +15,21 @@
  */
 
 import * as THREE from "three.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
+import { assert } from "../../testing.mjs";
+import { assertBoolean, assertNumber, assertVector3, assertVector3Duck } from "../../util.mjs";;
+import { callVoosService } from "../../voosMain.mjs";
+import { vec3normalized } from "../misc/math.mjs";
+import { myself } from "../actors/actors.mjs";
+import { cooldown, sendToMany } from "../actors/messages.mjs";
+import { hasTag } from "../actors/actors.mjs";
+import { Quaternion, Vector3 } from "../../threejs-overrides.mjs";
+import { clone } from "../actors/cloning.mjs";
+import { push } from "./velocity.mjs";
+import { getPos } from "../transform/position-get.mjs";
+import { vec3 } from "../misc/math.mjs";
+import { getForward } from "../transform/rotation-get.mjs";
+import { propActor } from "../actors/properties.mjs";
 
 // VISIBLE_TO_MONACO
 

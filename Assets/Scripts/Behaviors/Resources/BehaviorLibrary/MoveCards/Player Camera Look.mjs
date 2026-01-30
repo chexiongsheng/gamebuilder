@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+import { propBoolean, propDecimal, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
+import { lookTowardDir } from "../../apiv2/transform/rotation-set.mjs";;
+import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
+import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
+import { getRight } from "../../apiv2/transform/rotation-get.mjs";
+import { degToRad } from "../../apiv2/misc/math.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 // Player Controls: Basic WASD.
 
 export const PROPS = [

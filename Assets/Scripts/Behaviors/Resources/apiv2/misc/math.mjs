@@ -15,6 +15,12 @@
  */
 
 import * as THREE from "three.mjs";
+import { assertNumber, assertVector3Duck, assertVector3, assertQuaternion } from "../../util.mjs";
+import { getTime } from "./time.mjs";
+import { sysLog } from "../../voosMain.mjs";
+import { rotate } from "../transform/rotation-set.mjs";
+import { setPosX } from "../transform/position-set.mjs";
+import { Vector3 } from "../../threejs-overrides.mjs";
 
 // VISIBLE_TO_MONACO
 
@@ -102,6 +108,14 @@ function interp(x1, y1, x2, y2, x) {
   if (x > x2) return y2;
   return y1 + ((x - x1) / (x2 - x1)) * (y2 - y1);
 }
+
+/**
+ * Returns the larger of two numbers.
+ * @param {number} a The first number.
+ * @param {number} b The second number.
+ * @return {number} The larger number.
+ */
+function max(a, b) { return Math.max(a, b); }
 
 /**
  * Returns the Vector3 (0, 0, 0).
@@ -398,9 +412,98 @@ function quatApply(quat, v) {
   return v;
 }
 
+function clamp(x, min, max) {
+  if (min > max) {
+    throw new Error('min must be less than or equal to max');
+  }
+  return Math.min(max, Math.max(min, x));
+}
+
+
+// VISIBLE_TO_MONACO
+
+function copyQuat(src, dst) {
+  dst.x = src.x;
+  dst.y = src.y;
+  dst.z = src.z;
+  dst.w = src.w;
+}
+
+// Three.js specific stuff. We'll probably just deprecate all the stuff above.
+
+const ZERO3 = new THREE.Vector3(0, 0, 0);
+const RIGHT_DIR = new THREE.Vector3(1, 0, 0);
+const UP_DIR = new THREE.Vector3(0, 1, 0);
+const FORWARD_DIR = new THREE.Vector3(0, 0, 1);
+const ID_QUAT = new THREE.Quaternion(0, 0, 0, 1);
+
+function lerp(a, b, t) {
+  return a + t * (b - a);
+}
+
+/** Returns the minimum of the two given numbers. */
+function min(a, b) { return Math.min(a, b); }
+
+function damp(a, b, rate, dt) {
+  return lerp(a, b, 1 - Math.exp(-rate * dt));
+}
+
+// Quat to angle-axis functions.
+function radiansOf(threeQuat) {
+  return 2 * Math.acos(threeQuat.w);
+}
+
+function axisOf(threeQuat, axisOut) {
+  const qw = threeQuat.w;
+  axisOut.set(
+    threeQuat.x / Math.sqrt(1 - qw * qw),
+    threeQuat.y / Math.sqrt(1 - qw * qw),
+    threeQuat.z / Math.sqrt(1 - qw * qw));
+  return axisOut;
+}
+
+function v2s(vec) {
+  return `(${vec.x.toFixed(4)}, ${vec.y.toFixed(4)}, ${vec.z.toFixed(4)})`;
+}
+
+function randBetween(a, b) {
+  return a + Math.random() * (b - a);
+}
+
+function for3d(mins, maxs, step, func) {
+  const cursor = mins.clone();
+  for (; cursor.x < maxs.x; cursor.x += step.x) {
+    for (; cursor.y < maxs.y; cursor.y += step.y) {
+      for (; cursor.z < maxs.z; cursor.z += step.z) {
+        func(cursor);
+      }
+      cursor.z = mins.z;
+    }
+    cursor.y = mins.y;
+  }
+}
+
+/* Here just for reference.
+function generateTerrain() {
+  const perlin = new ImprovedNoise();
+  const L = 50;
+  const H = 2;
+  for3d(new THREE.Vector3(0, 0, 0), new THREE.Vector3(L, H, L), new THREE.Vector3(1, 1, 1),
+    p => {
+      const s = 5/L;
+      const noise = perlin.noise(p.x*s, p.y*s, p.z*s);
+      sysLog(JSON.stringify(p));
+      createStaticSceneThing('Brick',
+          p, ID_QUAT.clone(),
+          {r:noise, g:0, b:0, a:1});
+    });
+}
+*/
+
 // ESM exports
 export { degToRad };
 export { interp };
+export { max };
 export { quatApply };
 export { quatAxisAngle };
 export { quatIdent };
@@ -430,3 +533,18 @@ export { vec3x };
 export { vec3y };
 export { vec3z };
 export { vec3zero };
+export { clamp };
+export { FORWARD_DIR };
+export { ID_QUAT };
+export { RIGHT_DIR };
+export { UP_DIR };
+export { ZERO3 };
+export { axisOf };
+export { copyQuat };
+export { damp };
+export { for3d };
+export { lerp };
+export { min };
+export { radiansOf };
+export { randBetween };
+export { v2s };

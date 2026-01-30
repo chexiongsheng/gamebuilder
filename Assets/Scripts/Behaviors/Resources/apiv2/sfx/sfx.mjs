@@ -15,6 +15,9 @@
  */
 
 import * as THREE from "three.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
+import { cooldown } from "../actors/messages.mjs";
+import { propSound } from "../actors/properties.mjs";
 
 // VISIBLE_TO_MONACO
 

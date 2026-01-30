@@ -14,6 +14,18 @@
  * limitations under the License.
  */
 
+import { getActorGroupDescription, getActorsInGroup, getClosestActor, myself } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";
+import { clone } from "../../apiv2/actors/cloning.mjs";
+import { getProps, propActor, propActorGroup, propDecimal, propSound } from "../../apiv2/actors/properties.mjs";
+import { vec3 } from "../../apiv2/misc/math.mjs";
+import { push } from "../../apiv2/physics/velocity.mjs";
+import { setVarPlease } from "../../apiv2/remote/remote.mjs";
+import { playSound, Sounds } from "../../apiv2/sfx/sfx.mjs";
+import { selfToWorldPos } from "../../apiv2/transform/position-get.mjs";
+import { getForward, getRot } from "../../apiv2/transform/rotation-get.mjs";
+import { lookAt } from "../../apiv2/transform/rotation-set.mjs";
+
 export const PROPS = [
   propActor("Projectile", "builtin:LaserBolt", {
     pickerPrompt: "What should I shoot?",

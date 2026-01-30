@@ -14,6 +14,16 @@
  * limitations under the License.
  */
 
+import { getAttrib } from "../../apiv2/actors/attributes.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { propDecimal } from "../../apiv2/actors/properties.mjs";
+import { vec3zero } from "../../apiv2/misc/math.mjs";
+import { deltaTime } from "../../apiv2/misc/time.mjs";
+import { getThrottle } from "../../apiv2/player_controls/controls.mjs";
+import { moveGlobal } from "../../apiv2/transform/position-set.mjs";
+import { getForward } from "../../apiv2/transform/rotation-get.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propDecimal("Accel", 14, { label: "Accelerate speed" }),
   propDecimal("MaxSpeed", 16, { label: "Top speed" }),

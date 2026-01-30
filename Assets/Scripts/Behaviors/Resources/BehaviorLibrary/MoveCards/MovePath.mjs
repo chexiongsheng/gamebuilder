@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+import { exists } from "../../apiv2/actors/actors.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { propActorArray, propBoolean, propDecimal } from "../../apiv2/actors/properties.mjs";
+import { getDistanceTo } from "../../apiv2/transform/position-get.mjs";
+import { moveToward } from "../../apiv2/transform/position-set.mjs";
+import { lookToward } from "../../apiv2/transform/rotation-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propDecimal("Speed", 2),
   propBoolean("Loop", true),

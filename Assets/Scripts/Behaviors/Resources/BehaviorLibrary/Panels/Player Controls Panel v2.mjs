@@ -15,6 +15,21 @@
  */
 
 
+import { exists, getActors, myself } from "../../apiv2/actors/actors.mjs";
+import { deleteVar, getVar, setVar } from "../../apiv2/actors/attributes.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { send, sendToSelf } from "../../apiv2/actors/messages.mjs";
+import { propBoolean, propEnum, requireFalse } from "../../apiv2/actors/properties.mjs";
+import { deltaTime, getTime } from "../../apiv2/misc/time.mjs";
+import { getAllPlayers, getPlayerByNumber, getPlayerNumber, playerExists } from "../../apiv2/multiplayer/players.mjs";
+import { getControllingPlayer, setCameraActor, setControllingPlayer, setIsPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
+import { setTintHex } from "../../apiv2/rendering/color.mjs";
+import { UiColor, uiGetScreenHeight, uiGetScreenWidth, uiGetTextWidth, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
+import { assert } from "../../testing.mjs";;
+import { propDeck } from "../../apiv2/actors/properties.mjs";
+import { show } from "../../apiv2/rendering/visibility.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   // Note: this is an enum just for UX purposes; the underlying value is always
   // parsed as an integer. If you create values that are not integers here,
@@ -38,9 +53,9 @@ export const PROPS = [
     { value: '15', label: 'Player 15' },
     { value: '16', label: 'Player 16' },
   ], {
-      label: "Controlled by",
-      requires: [requireFalse('AutoAssign')]
-    }),
+    label: "Controlled by",
+    requires: [requireFalse('AutoAssign')]
+  }),
   propBoolean('AutoAssign', false, {
     label: 'Auto assign'
   }),

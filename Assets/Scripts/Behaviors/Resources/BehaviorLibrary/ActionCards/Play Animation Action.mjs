@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+import { getProps, propString } from "../../apiv2/actors/properties.mjs";
+import { playAnimation } from "../../apiv2/rendering/animation.mjs";
+
 export const PROPS = [
   propString("AnimationName", ""),
 ]

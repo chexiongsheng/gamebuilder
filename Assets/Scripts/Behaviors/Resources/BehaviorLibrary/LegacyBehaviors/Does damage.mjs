@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Does damage<size=70%>\nDamages actors that can take damage on contact. If team is not 0, it will not affect others with the same team.
 

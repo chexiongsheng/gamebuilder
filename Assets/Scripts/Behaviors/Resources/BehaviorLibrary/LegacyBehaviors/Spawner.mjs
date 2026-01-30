@@ -24,6 +24,11 @@
  * 
  *****************************************************************************/
 
+import { logError } from "../../apiv2/misc/utility.mjs";;
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 // tag utility
 
 // property Actor source

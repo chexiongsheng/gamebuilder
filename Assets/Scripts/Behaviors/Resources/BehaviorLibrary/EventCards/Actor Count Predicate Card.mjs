@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+import { getActorGroupDescription, getActorsInGroup } from "../../apiv2/actors/actors.mjs";
+import { getProps, propActorGroup, propBoolean, propDecimal, propEnum, propString, requireTrue } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propActorGroup("WithWhat", "@ANY", {
     label: "Count what actors?:",
@@ -33,8 +36,8 @@ export const PROPS = [
     { value: ">=", label: "Greater than or equal" },
     { value: "<=", label: "Less than or equal" },
   ], {
-      label: "Comparison"
-    }
+    label: "Comparison"
+  }
   ),
   propString("Value", "0", {
     label: "Comparison value"

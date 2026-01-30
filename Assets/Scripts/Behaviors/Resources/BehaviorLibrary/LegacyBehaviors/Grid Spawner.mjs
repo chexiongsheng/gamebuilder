@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
+import { ID_QUAT } from "../../apiv2/misc/math.mjs";;
 import * as THREE from "three.mjs";
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Grid Spawner<size=70%>\nOn reset, spawn clones of an actor in a grid.
 

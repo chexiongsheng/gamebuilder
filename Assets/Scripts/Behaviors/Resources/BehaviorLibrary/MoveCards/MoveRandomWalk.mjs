@@ -14,7 +14,17 @@
  * limitations under the License.
  */
 
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { propBoolean, propDecimal, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { degToRad, radToDeg, vec3dot, vec3sub } from "../../apiv2/misc/math.mjs";
+import { deltaTime } from "../../apiv2/misc/time.mjs";
+import { getDistanceTo, getPos, getSpawnPos } from "../../apiv2/transform/position-get.mjs";
+import { moveForward } from "../../apiv2/transform/position-set.mjs";
+import { getForward } from "../../apiv2/transform/rotation-get.mjs";
+import { lookToward, turn } from "../../apiv2/transform/rotation-set.mjs";
 import * as THREE from "three.mjs";
+import { move } from "../../apiv2/transform/position-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Random walk
 

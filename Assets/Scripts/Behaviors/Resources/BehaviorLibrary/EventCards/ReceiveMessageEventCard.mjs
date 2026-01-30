@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { exists } from "../../apiv2/actors/actors.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getMessageSender } from "../../apiv2/actors/messages.mjs";
+import { getProps, propString } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propString("Message", "Ping")
 ]

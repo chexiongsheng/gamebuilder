@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { sysLog } from "./voosMain.mjs";
 
 function runUnitTests(suiteName, testsByLabel) {
   let numTests = 0;

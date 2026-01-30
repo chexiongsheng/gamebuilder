@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { sendToSelf } from "../../apiv2/actors/messages.mjs";
+import { getSpawnPos } from "../../apiv2/transform/position-get.mjs";
+import { setPos } from "../../apiv2/transform/position-set.mjs";
+import { log } from "../../apiv2/misc/utility.mjs";;
+
 /** @param {GActionMessage} actionMessage */
 export function onAction(actionMessage) {
   const pos = getCard().lastCheckPos || getSpawnPos();

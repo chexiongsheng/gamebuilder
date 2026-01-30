@@ -14,7 +14,13 @@
  * limitations under the License.
  */
 
+import { valueOr } from "../../util.mjs";
+import { kick } from "../../voosMain.mjs";
 import * as THREE from "three.mjs";
+import { cooldown } from "../../apiv2/actors/messages.mjs";
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Shoot another object<size=70%>\nShoot clones of another object, like a baseball.
 

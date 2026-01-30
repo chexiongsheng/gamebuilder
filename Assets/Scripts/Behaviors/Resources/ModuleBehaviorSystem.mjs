@@ -15,6 +15,25 @@
  */
 
 import * as THREE from "three.mjs";
+import { ApiV2Context } from "./apiv2/apiv2.mjs";
+import { HandlerApi } from "./HandlerApi.mjs";
+import { send } from "./apiv2/actors/messages.mjs";
+import { ModuleBehaviorDatabase, ModuleBehaviorUse } from "./ModuleBehaviorDatabase.mjs";
+import { SleepManager } from "./sleep.mjs";
+import { Actor } from "./ModuleBehaviorsActor.mjs";
+import { unpackObj, packObj } from "./pack-unpack.mjs";
+import { Queue } from "./Queue.src.mjs";
+import { assert } from "./testing.mjs";
+import { assertQuaternion, assertString, assertVector3, beginProfileSample, endProfileSample, flattenArray, mapGetOrCreate, parseJsonOrEmpty, serializeQuaternion } from "./util.mjs";;
+import { VoosBinaryReaderWriter } from "./serialization.mjs";
+import { getVoosModule, callVoosService, sysLog, queueMessageToUnity, enqueueRemoteMessage } from "./voosMain.mjs";
+import { clone } from "./apiv2/actors/cloning.mjs";
+import { broadcast } from "./apiv2/actors/messages.mjs";
+import { max } from "./apiv2/misc/math.mjs";
+
+function sysError(...args) {
+  console.error(...args);
+}
 
 // NOTE this is actually limited by Photon's max view ID right now..
 const MAX_ACTORS = 1100;

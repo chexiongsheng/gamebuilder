@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { getCardTargetActor, getCardTargetActorDescription } from "../../apiv2/actors/actors.mjs";
+import { send, sendDelayed } from "../../apiv2/actors/messages.mjs";
+import { getProps, propCardTargetActor, propDecimal, propNumberArray, propStringArray } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propCardTargetActor("Target", {
     label: "Send to:"

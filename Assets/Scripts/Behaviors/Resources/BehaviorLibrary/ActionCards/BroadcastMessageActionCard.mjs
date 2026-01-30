@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { sendToAll, sendToAllDelayed, sendToMany, sendToManyDelayed } from "../../apiv2/actors/messages.mjs";
+import { getProps, propBoolean, propDecimal, propString, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { overlapSphere } from "../../apiv2/physics/casting.mjs";
+import { getPos } from "../../apiv2/transform/position-get.mjs";
+
 export const PROPS = [
   propString("Message", "Ping"),
   propBoolean("LimitRange", false, {

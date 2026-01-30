@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { ApiV2Context } from "../apiv2.mjs";
+import { assertString } from "../../util.mjs";
+import { callVoosService } from "../../voosMain.mjs";
+import { cooldown } from "../actors/messages.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**

@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { sendToSelf } from "../../apiv2/actors/messages.mjs";
+
 /** @param {GActionMessage} actionMessage */
 export function onAction(actionMessage) {
   // Send a Revive message, normally handled by the Health/Damage panel.

@@ -14,6 +14,21 @@
  * limitations under the License.
  */
 
+import { ApiV2Context } from "../apiv2.mjs";
+import { assert } from "../../testing.mjs";
+import { assertNumber, assertString } from "../../util.mjs";;
+import { myself, exists } from "./actors.mjs";
+import { getDisplayName } from "./attributes.mjs";
+import { getPos } from "../transform/position-get.mjs";
+import { overlapSphere } from "../physics/casting.mjs";
+import { getProps } from "./properties.mjs";
+import { getTime } from "../misc/time.mjs";
+import { getTemp } from "./memory.mjs";
+import { propActor, propDeck, propString } from "./properties.mjs";
+import { getPointBehind } from "../transform/rotation-get.mjs";
+import { log } from "../misc/utility.mjs";
+import { clone } from "./cloning.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**

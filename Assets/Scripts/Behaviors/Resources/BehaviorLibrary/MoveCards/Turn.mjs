@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { propBoolean, propDecimal, propEnum } from "../../apiv2/actors/properties.mjs";
+import { degToRad, min, vec3x, vec3y, vec3z } from "../../apiv2/misc/math.mjs";
+import { deltaTime } from "../../apiv2/misc/time.mjs";
+import { turn } from "../../apiv2/transform/rotation-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propDecimal("Degrees", 90),
   propBoolean("Counterclockwise", false),

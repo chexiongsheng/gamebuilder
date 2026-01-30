@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+import { exists } from "../../apiv2/actors/actors.mjs";
+import { callActionDeck, callDeck } from "../../apiv2/actors/messages.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getPlayerByNumber } from "../../apiv2/multiplayer/players.mjs";
+import { setCameraActor, setControllingPlayer } from "../../apiv2/player_controls/controls.mjs";
+import { propDeck, propNumber } from "../../apiv2/actors/properties.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 // DO NOT RENAME this file.
 
 export const PROPS = [

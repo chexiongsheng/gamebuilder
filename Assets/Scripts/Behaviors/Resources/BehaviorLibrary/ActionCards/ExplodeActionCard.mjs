@@ -15,6 +15,19 @@
  */
 
 
+import { myself } from "../../apiv2/actors/actors.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { propDecimal, propNumber, propParticleEffect, propSound } from "../../apiv2/actors/properties.mjs";
+import { interp, vec3, vec3add, vec3length, vec3normalized, vec3scale, vec3sub, vec3y } from "../../apiv2/misc/math.mjs";
+import { spawnParticleEffect } from "../../apiv2/particles/particleeffects.mjs";
+import { overlapSphere } from "../../apiv2/physics/casting.mjs";
+import { push } from "../../apiv2/physics/velocity.mjs";
+import { getBoundsCenter } from "../../apiv2/rendering/body.mjs";
+import { playSound } from "../../apiv2/sfx/sfx.mjs";
+import { getPos, selfToWorldDir } from "../../apiv2/transform/position-get.mjs";
+import { Particles } from "../../apiv2/particles/particleeffects.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";;
+
 export const PROPS = [
   propDecimal('BlastRadius', 10),
   propDecimal('BlastSpeed', 30),

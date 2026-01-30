@@ -199,16 +199,6 @@ public class CodeEditorController : MonoBehaviour, IPointerEnterHandler, IPointe
             browser.AddSystemSource(contents, System.IO.Path.GetFileName(path));
           }
         }
-
-        int count = 0;
-        foreach (TextAsset jsSource in behaviorSystem.ForSystemSources())
-        {
-          // Only include the ones marked as visible to Monaco.
-          if (jsSource.text.Contains("// VISIBLE_TO_MONACO"))
-          {
-            browser.AddSystemSource(jsSource.text, $"voos_{count++}-{jsSource.name}.js");
-          }
-        }
       }
       else
       {

@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+import { getProps, propSound } from "../../apiv2/actors/properties.mjs";
+import { playSound, Sounds } from "../../apiv2/sfx/sfx.mjs";
+
 export const PROPS = [
   propSound("Sound", Sounds.EXPLOSION)
 ]

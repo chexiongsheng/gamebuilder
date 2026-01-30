@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { assert } from "./testing.mjs";
 
 // Implementation of async sleep. This relies on the user to periodically call the "Update" function to
 // actually resolve sleeps.

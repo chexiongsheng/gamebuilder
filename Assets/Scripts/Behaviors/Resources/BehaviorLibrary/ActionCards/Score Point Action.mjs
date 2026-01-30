@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { getAttrib, getDisplayName } from "../../apiv2/actors/attributes.mjs";
+import { sendToAll } from "../../apiv2/actors/messages.mjs";
+import { getProps, propActor, propBoolean, propNumber, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { getControllingPlayer } from "../../apiv2/player_controls/controls.mjs";
+import { show } from "../../apiv2/rendering/visibility.mjs";
+import { logError } from "../../apiv2/misc/utility.mjs";
+
 export const PROPS = [
   propNumber("Points", 1),
   propBoolean("OverrideWhoScores", false, {

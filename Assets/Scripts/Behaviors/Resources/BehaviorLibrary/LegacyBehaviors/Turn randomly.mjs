@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Turn Randomly<size=70%>\nTurns left/right randomly every so often.
 
@@ -47,4 +49,3 @@ export function OnTick(api) {
   }
   api.move.turnRight(api.dt * api.memory.turnDir * api.getProps().TurnSpeed);
 }
-

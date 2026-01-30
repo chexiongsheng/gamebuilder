@@ -15,6 +15,13 @@
  */
 
 import * as THREE from "three.mjs";
+import { getVoosModule, sysLog } from "./voosMain.mjs";
+import { colorFromHex } from "./apiv2/misc/colors.mjs";
+import { assertString, mapGetOrCreate } from "./util.mjs";
+import { Color } from "./threejs-overrides.mjs";
+import { getBehaviorProperties } from "./ModuleBehaviorSystem.mjs";
+import { assert } from "./testing.mjs";
+import { Actor } from "./ModuleBehaviorsActor.mjs";
 
 // Handler prefix for legacy messages (APIv1)
 const MESSAGE_HANDLER_FUNCTION_NAME_PREFIX_LEGACY = "On"; // upper-case "O"!

@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { goOffstage, goOnstage, isOffstage } from "../../apiv2/actors/actors.mjs";
+import { isClone } from "../../apiv2/actors/cloning.mjs";
+import { getMem } from "../../apiv2/actors/memory.mjs";
+
 export function onResetGame() {
   if (!isClone() && getMem().origIsOnstage !== undefined) {
     // Restore.

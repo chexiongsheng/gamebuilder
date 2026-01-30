@@ -67,7 +67,7 @@ namespace Voos
     /// <summary>
     /// 重置Brain（编译主脚本）
     /// </summary>
-    public bool ResetBrain(string brainUid, string javascript)
+    public bool ResetBrain(string brainUid)
     {
       try
       {
@@ -85,13 +85,6 @@ namespace Voos
         }
 
         var context = brainContexts[brainUid];
-        context.javascript = javascript;
-
-        //System.IO.File.WriteAllText("brain.js", javascript);
-        //scriptEngine.RegisterModule($"brain_{brainUid}", javascript);
-        //scriptEngine.ExecuteModule($"brain_{brainUid}");
-        // 没大重构js前还只能通过Eval，主要是它的mem,card这种是通过全局变量的切换来实现私有的
-        scriptEngine.Eval(javascript, $"brain_{brainUid}");
 
         // 获取updateAgent函数引用
         try
@@ -119,11 +112,6 @@ namespace Voos
       }
     }
 
-    public void LoadAllBuiltinBehaviors()
-    {
-      scriptEngine.ExecuteModule("BehaviorLibrary/BehaviorLibraryIndex.mjs");
-    }
-
     /// <summary>
     /// 每帧更新
     /// </summary>
@@ -141,55 +129,6 @@ namespace Voos
       cachedJsonStringifyFunc = null;
       cachedJsonParseFunc = null;
       // 注意：不要在这里Dispose scriptEngine，因为它是单例
-    }
-
-    /// <summary>
-    /// 获取性能统计
-    /// </summary>
-    public string GetPerformanceStats()
-    {
-      if (updateAgentCallCount == 0)
-      {
-        return "No UpdateAgent calls yet";
-      }
-
-      float avgTime = totalUpdateAgentTime / updateAgentCallCount;
-      return $"UpdateAgent calls: {updateAgentCallCount}, Avg time: {avgTime:F2}ms, Total time: {totalUpdateAgentTime:F2}ms";
-    }
-
-    /// <summary>
-    /// 更新Agent（带字节数组）
-    /// </summary>
-    public bool UpdateAgentWithBytes(string brainUid, string agentUid, string json, byte[] bytes)
-    {
-      if (!brainContexts.TryGetValue(brainUid, out BrainContext context))
-      {
-        Debug.LogError($"[PuertsAdapter] Brain not found: {brainUid}");
-        return false;
-      }
-
-      if (context.updateAgentFunc == null)
-      {
-        Debug.LogError($"[PuertsAdapter] updateAgent function not found for brain: {brainUid}");
-        return false;
-      }
-
-      try
-      {
-        // 将byte[]转换为Puerts.ArrayBuffer
-        var arrayBuffer = new Puerts.ArrayBuffer(bytes);
-
-        // 调用updateAgent(json, arrayBuffer)
-        // 注意：updateAgent函数签名应该是 function updateAgent(state, buffer)
-        context.updateAgentFunc(json, arrayBuffer);
-
-        return true;
-      }
-      catch (Exception e)
-      {
-        Debug.LogError($"[PuertsAdapter] UpdateAgentWithBytes failed: {e.Message}\n{e.StackTrace}");
-        return false;
-      }
     }
 
     /// <summary>

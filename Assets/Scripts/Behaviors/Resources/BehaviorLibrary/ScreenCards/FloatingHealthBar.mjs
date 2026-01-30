@@ -14,6 +14,19 @@
  * limitations under the License.
  */
 
+import { getVar } from "../../apiv2/actors/attributes.mjs";
+import { getLocalCameraPos } from "../../apiv2/actors/camera_light.mjs";
+import { getMem } from "../../apiv2/actors/memory.mjs";
+import { propBoolean, propColor, propDecimal, propString } from "../../apiv2/actors/properties.mjs";
+import { clamp, vec3normalized, vec3sub } from "../../apiv2/misc/math.mjs";
+import { castAdvanced, CastMode } from "../../apiv2/physics/casting.mjs";
+import { getBoundsCenter } from "../../apiv2/rendering/body.mjs";
+import { getDistanceBetween } from "../../apiv2/transform/position-get.mjs";
+import { getScreenSphere } from "../../apiv2/ui/screen.mjs";
+import { uiRect } from "../../apiv2/ui/widgets.mjs";;
+import { raycast } from "../../apiv2/physics/casting.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propDecimal('OffsetY', 1),
   propDecimal('Size', 1),

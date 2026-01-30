@@ -14,6 +14,21 @@
  * limitations under the License.
  */
 
+import { myself } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName, setVar } from "../../apiv2/actors/attributes.mjs";
+import { callActionDeck } from "../../apiv2/actors/messages.mjs";
+import { getCard, getMem, getTemp } from "../../apiv2/actors/memory.mjs";
+import { cooldown, sendToAll } from "../../apiv2/actors/messages.mjs";
+import { propBoolean, propDecimal, propDeck, propNumber, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { legacyApi } from "../../apiv2/apiv2.mjs";
+import { clamp } from "../../apiv2/misc/math.mjs";
+import { getTime } from "../../apiv2/misc/time.mjs";
+import { isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
+import { hide, show } from "../../apiv2/rendering/visibility.mjs";
+import { assertNumber } from "../../util.mjs";
+import { spin } from "../../apiv2/transform/rotation-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propNumber("StartingHealth", 3),
   // TEMP propNumber("DamageCooldown", 1),

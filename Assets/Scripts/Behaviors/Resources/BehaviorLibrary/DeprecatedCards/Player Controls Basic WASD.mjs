@@ -14,6 +14,20 @@
  * limitations under the License.
  */
 
+import { getAttrib } from "../../apiv2/actors/attributes.mjs";
+import { getMem } from "../../apiv2/actors/memory.mjs";
+import { propDecimal } from "../../apiv2/actors/properties.mjs";
+import { legacyApi } from "../../apiv2/apiv2.mjs";
+import { vec3 } from "../../apiv2/misc/math.mjs";
+import { deltaTime } from "../../apiv2/misc/time.mjs";
+import { addVelocity } from "../../apiv2/physics/velocity.mjs";
+import { getWorldThrottle, isGrounded, isSprinting } from "../../apiv2/player_controls/controls.mjs";
+import { moveGlobal } from "../../apiv2/transform/position-set.mjs";;
+import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
+import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
+import { enableGravity } from "../../apiv2/physics/attributes.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";;
+
 // Player Controls: Basic WASD.
 
 export const PROPS = [

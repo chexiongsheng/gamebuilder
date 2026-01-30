@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+import { getActorGroupDescription, getActorsInGroup, getClosestActor } from "../../apiv2/actors/actors.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { getProps, propActorGroup, propDecimal } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propActorGroup("Who", "@ANY", {
     label: "Who needs to be in range?"

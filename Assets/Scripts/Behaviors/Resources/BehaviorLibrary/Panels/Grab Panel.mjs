@@ -14,6 +14,20 @@
  * limitations under the License.
  */
 
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";;
+import { getAttrib, setVar } from "../../apiv2/actors/attributes.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { propBoolean, propDecimal } from "../../apiv2/actors/properties.mjs";
+import { degToRad, vec3 } from "../../apiv2/misc/math.mjs";
+import { overlapSphere } from "../../apiv2/physics/casting.mjs";
+import { push } from "../../apiv2/physics/velocity.mjs";
+import { getAimTarget } from "../../apiv2/player_controls/aiming.mjs";
+import { getPos } from "../../apiv2/transform/position-get.mjs";
+import { getForward } from "../../apiv2/transform/rotation-get.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propDecimal("HoldDistance", 2),
   propDecimal("HoldHeight", 1),

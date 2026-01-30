@@ -14,6 +14,21 @@
  * limitations under the License.
  */
 
+import * as THREE from "three.mjs";
+import { getCardTargetActor, getCardTargetActorDescription, myself } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";
+import { clone } from "../../apiv2/actors/cloning.mjs";
+import { getProps, propActor, propBoolean, propCardTargetActor, propDecimal, propEnum, propSound } from "../../apiv2/actors/properties.mjs";
+import { vec3, vec3length, vec3normalized, vec3scale, vec3sub, vec3z } from "../../apiv2/misc/math.mjs";
+import { push } from "../../apiv2/physics/velocity.mjs";
+import { setVarPlease } from "../../apiv2/remote/remote.mjs";
+import { getBoundsCenter } from "../../apiv2/rendering/body.mjs";
+import { playSound, Sounds } from "../../apiv2/sfx/sfx.mjs";
+import { getPos, selfToWorldPos } from "../../apiv2/transform/position-get.mjs";
+import { lookAt } from "../../apiv2/transform/rotation-set.mjs";
+
+const Quaternion = THREE.Quaternion;
+
 export const PROPS = [
   propCardTargetActor("Target", {
     label: "Shoot at who?"

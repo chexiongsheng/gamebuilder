@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 // Team<size=70%>\nAssign a team, so team mates don't damage each other.
 
@@ -23,6 +24,8 @@
  * write new scripts using API v2.
  * 
  *****************************************************************************/
+
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // property Number Team 1
 // tag gamerules

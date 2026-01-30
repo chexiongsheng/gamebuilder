@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import { ApiV2Context } from "../apiv2.mjs";
+import { assertVector3, assertQuaternion } from "../../util.mjs";
+import { Quaternion, Vector3 } from "../../threejs-overrides.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
+
 // VISIBLE_TO_MONACO
 
 /**

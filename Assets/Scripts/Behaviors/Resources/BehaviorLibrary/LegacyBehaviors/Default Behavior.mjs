@@ -14,6 +14,29 @@
  * limitations under the License.
  */
 
+import { destroySelf } from "../../apiv2/actors/actors.mjs";
+import { deleteVar, getVar, setCommentText, setDisplayName, setVar } from "../../apiv2/actors/attributes.mjs";
+import { setCameraActor } from "../../apiv2/player_controls/controls.mjs";;
+import { ApiV2Context } from "../../apiv2/apiv2.mjs";
+import { attachToParent, detachFromParent } from "../../apiv2/hierarchy/parenting.mjs";
+import { clamp, vec3add } from "../../apiv2/misc/math.mjs";
+import { addVelocity } from "../../apiv2/physics/velocity.mjs";
+import { enableGravity, enableKeepUpright, isKinematic, setAngularDrag, setBounciness, setDrag, setKinematic, setMass, setSolid } from "../../apiv2/physics/attributes.mjs";
+import { setPhysicsPreset } from "../../apiv2/physics/presets.mjs";
+import { setControllingPlayer, setIsPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
+import { setBodyPos, setBodyRot } from "../../apiv2/rendering/body.mjs";
+import { setTintColor, setTintHex } from "../../apiv2/rendering/color.mjs";
+import { hide, show } from "../../apiv2/rendering/visibility.mjs";
+import { setPos } from "../../apiv2/transform/position-set.mjs";
+import { applyQuaternion, applyQuaternionSelf, lookAt, resetRot, setPitch, setRoll, setRot, setYaw, setYawPitchRoll, turn } from "../../apiv2/transform/rotation-set.mjs";
+import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
+import { setScale, setScaleUniform } from "../../apiv2/transform/scale.mjs";
+import { logError } from "../../apiv2/misc/utility.mjs";
+import { assert } from "../../testing.mjs";
+import { assertString, decodeUndefineds } from "../../util.mjs";;
+import { kick } from "../../voosMain.mjs";
+import { push } from "../../apiv2/physics/velocity.mjs";
+
 // Kickable<size=70%>\nAllows this actor to be affected by velocity requests from other actors, when they use the 'kick' function.
 
 // WARNING: This built-in script is necessary for things to work as expected.

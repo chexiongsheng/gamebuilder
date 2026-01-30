@@ -14,7 +14,12 @@
  * limitations under the License.
  */
 
+import { isClone } from "../../apiv2/actors/cloning.mjs";
+import { log } from "../../apiv2/misc/utility.mjs";
+import { assert } from "../../testing.mjs";;
+import { kick } from "../../voosMain.mjs";
 import * as THREE from "three.mjs";
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 // Takes damage<size=70%>\nMake it have health and be able to take damage.
 
@@ -25,6 +30,7 @@ import * as THREE from "three.mjs";
  * write new scripts using API v2.
  * 
  *****************************************************************************/
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // tag damage
 // property Boolean BroadcastDeath true

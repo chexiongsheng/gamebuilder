@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 // Key
 
@@ -23,6 +24,7 @@
  * write new scripts using API v2.
  * 
  *****************************************************************************/
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // property Number LockNumber 0
 

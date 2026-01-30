@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+import { exists, getCardTargetActor } from "../../apiv2/actors/actors.mjs";
+import { getVar } from "../../apiv2/actors/attributes.mjs";
+import { propBoolean, propCardTargetActor, propColor, propDecimal, propEnum, propNumber, propString, requireFalse, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { uiGetTextHeight, uiGetTextWidth, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propCardTargetActor('Target', {
     label: 'Whose variable?'

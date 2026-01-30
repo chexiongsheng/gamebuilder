@@ -15,6 +15,19 @@
  */
 
 
+import { exists } from "../../apiv2/actors/actors.mjs";
+import { getCard } from "../../apiv2/actors/memory.mjs";
+import { propActor, propNumber } from "../../apiv2/actors/properties.mjs";
+import { clamp, vec3, vec3equal, vec3normalized, vec3scale } from "../../apiv2/misc/math.mjs";
+import { deltaTime } from "../../apiv2/misc/time.mjs";
+import { setKinematic } from "../../apiv2/physics/attributes.mjs";
+import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
+import { getDistanceBetween, getPos } from "../../apiv2/transform/position-get.mjs";
+import { setPos } from "../../apiv2/transform/position-set.mjs";
+import { getForward } from "../../apiv2/transform/rotation-get.mjs";
+import { assertNumber, assertVector3 } from "../../util.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 export const PROPS = [
   propNumber('SmoothFactor', 10),
   propActor('InitialDestination', '', {

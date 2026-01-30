@@ -14,6 +14,19 @@
  * limitations under the License.
  */
 
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { clone } from "../../apiv2/actors/cloning.mjs";
+import { getProps, propActor, propNumber } from "../../apiv2/actors/properties.mjs";
+import { vec3 } from "../../apiv2/misc/math.mjs";
+import { getPos } from "../../apiv2/transform/position-get.mjs";
+import { getForward, getRight, getRot, getUp } from "../../apiv2/transform/rotation-get.mjs";
+import { logError } from "../../apiv2/misc/utility.mjs";;
+import { kick } from "../../voosMain.mjs";
+import { log } from "../../apiv2/misc/utility.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
+import { move } from "../../apiv2/transform/position-set.mjs";
+
 // Fire Projectile<size=70%>\nShoot clones of another object, like a baseball.
 
 export const PROPS = [
