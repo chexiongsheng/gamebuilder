@@ -234,6 +234,10 @@ function endProfileSample() {
   callVoosService("EndProfileSample");
 }
 
+function setProfileEnable(f) {
+  ENABLE_PROFILING_SERVICE = f;
+}
+
 function flattenArray(arr, outputArray = []) {
   assert(Array.isArray(arr), "arr must be an array");
   for (const element of arr) {
@@ -282,7 +286,7 @@ runUnitTests('util.js.txt', {
 export * from "./apiv2/misc/utility.mjs";
 
 // ESM exports
-export { ENABLE_PROFILING_SERVICE };
+export { setProfileEnable };
 export { assertApproxEq };
 export { assertArrayOf };
 export { assertBoolean };

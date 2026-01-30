@@ -34,6 +34,10 @@ import { ApiV2Context } from "./apiv2/apiv2.mjs";
 
 let MEM_CHECK_MODE = 'useOnly';
 
+function setMemCheckMode(m) {
+  MEM_CHECK_MODE = m;
+}
+
 const FORCE_MEMORY_DIRTY = false;
 
 // State needed when running a handler for a particular actor...for a particular
@@ -1124,5 +1128,5 @@ class Actor {
 // ESM exports
 export { Actor };
 export { FORCE_MEMORY_DIRTY };
-export { MEM_CHECK_MODE };
+export { setMemCheckMode };
 export { MessageHandlingContext };
