@@ -28,7 +28,8 @@ import { setBodyPos, setBodyRot } from "../../apiv2/rendering/body.mjs";
 import { setTintColor, setTintHex } from "../../apiv2/rendering/color.mjs";
 import { hide, show } from "../../apiv2/rendering/visibility.mjs";
 import { setPos } from "../../apiv2/transform/position-set.mjs";
-import { applyQuaternion, applyQuaternionSelf, lookAt, lookDir, resetRot, setPitch, setRoll, setRot, setYaw, setYawPitchRoll, turn } from "../../apiv2/transform/rotation-set.mjs";
+import { applyQuaternion, applyQuaternionSelf, lookAt, resetRot, setPitch, setRoll, setRot, setYaw, setYawPitchRoll, turn } from "../../apiv2/transform/rotation-set.mjs";
+import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
 import { setScale, setScaleUniform } from "../../apiv2/transform/scale.mjs";
 import { assert, assertString, decodeUndefineds, logError } from "../../util.mjs";
 

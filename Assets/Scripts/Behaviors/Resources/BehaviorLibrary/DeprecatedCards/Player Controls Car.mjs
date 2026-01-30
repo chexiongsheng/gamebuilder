@@ -18,7 +18,8 @@ import { getAttrib } from "../../apiv2/actors/attributes.mjs";
 import { getCard } from "../../apiv2/actors/memory.mjs";
 import { propDecimal } from "../../apiv2/actors/properties.mjs";
 import { deltaTime } from "../../apiv2/misc/time.mjs";
-import { enableGravity, enableKeepUpright, getThrottle, moveGlobal, turn } from "../../apiv2/player_controls/controls.mjs";
+import { getThrottle, moveGlobal, turn } from "../../apiv2/player_controls/controls.mjs";
+import { enableGravity, enableKeepUpright } from "../../apiv2/physics/attributes.mjs";
 import { getForward } from "../../apiv2/transform/rotation-get.mjs";
 import { UiColor, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
 

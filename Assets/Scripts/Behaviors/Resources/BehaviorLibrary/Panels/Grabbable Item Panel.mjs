@@ -25,7 +25,9 @@ import { attachToParent, detachFromParent } from "../../apiv2/hierarchy/parentin
 import { degToRad, vec3x, vec3y, vec3z } from "../../apiv2/misc/math.mjs";
 import { isKinematic, isSolid, setKinematic, setSolid } from "../../apiv2/physics/attributes.mjs";
 import { getAimTarget } from "../../apiv2/player_controls/aiming.mjs";
-import { getAimDirection, isPlayerControllable, lookDir } from "../../apiv2/player_controls/controls.mjs";
+import { isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
+import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
+import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
 import { getBoundsCenter } from "../../apiv2/rendering/body.mjs";
 import { getPos, selfToWorldPos } from "../../apiv2/transform/position-get.mjs";
 import { setPos } from "../../apiv2/transform/position-set.mjs";

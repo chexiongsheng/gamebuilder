@@ -18,7 +18,8 @@ import { propDecimal, propEnum, requireEqual } from "../../apiv2/actors/properti
 import { degToRad, vec3length } from "../../apiv2/misc/math.mjs";
 import { deltaTime } from "../../apiv2/misc/time.mjs";
 import { getVelocity } from "../../apiv2/physics/velocity.mjs";
-import { getAimDirection, getThrottle, lookTowardDir, turn } from "../../apiv2/player_controls/controls.mjs";
+import { getThrottle, lookTowardDir, turn } from "../../apiv2/player_controls/controls.mjs";
+import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
 
 export const PROPS = [
   propEnum("Control", "KEYS", [

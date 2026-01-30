@@ -19,7 +19,9 @@ import { getCard } from "../../apiv2/actors/memory.mjs";
 import { propDecimal } from "../../apiv2/actors/properties.mjs";
 import { degToRad } from "../../apiv2/misc/math.mjs";
 import { deltaTime } from "../../apiv2/misc/time.mjs";
-import { enableGravity, enableKeepUpright, getAimDirection, getThrottle, lookTowardDir, moveForward } from "../../apiv2/player_controls/controls.mjs";
+import { getThrottle, lookTowardDir, moveForward } from "../../apiv2/player_controls/controls.mjs";
+import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
+import { enableGravity, enableKeepUpright } from "../../apiv2/physics/attributes.mjs";
 import { getRight } from "../../apiv2/transform/rotation-get.mjs";
 
 // Player Controls: Hovercraft.
