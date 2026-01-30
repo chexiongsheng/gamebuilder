@@ -23,7 +23,7 @@ import { send } from "../../apiv2/actors/messages.mjs";
 import { propBoolean, propDecimal, propDeck, requireTrue } from "../../apiv2/actors/properties.mjs";
 import { attachToParent, detachFromParent } from "../../apiv2/hierarchy/parenting.mjs";
 import { degToRad, vec3x, vec3y, vec3z } from "../../apiv2/misc/math.mjs";
-import { isKinematic, isSolid, setKinematic, setSolid } from "../../apiv2/physics/physics.mjs";
+import { isKinematic, isSolid, setKinematic, setSolid } from "../../apiv2/physics/attributes.mjs";
 import { getAimTarget } from "../../apiv2/player_controls/aiming.mjs";
 import { getAimDirection, isPlayerControllable, lookDir } from "../../apiv2/player_controls/controls.mjs";
 import { getBoundsCenter } from "../../apiv2/rendering/body.mjs";

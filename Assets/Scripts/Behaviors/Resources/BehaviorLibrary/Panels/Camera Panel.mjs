@@ -20,7 +20,7 @@ import { callDeck } from "../../apiv2/actors/messages.mjs";
 import { getCard, getMem } from "../../apiv2/actors/memory.mjs";
 import { getProps, propActor, propDeck } from "../../apiv2/actors/properties.mjs";
 import { detachFromParent } from "../../apiv2/hierarchy/parenting.mjs";
-import { setKinematic, setSolid } from "../../apiv2/physics/physics.mjs";
+import { setKinematic, setSolid } from "../../apiv2/physics/attributes.mjs";
 import { getCameraActor, isPlayerControllable, setCameraActorPlease } from "../../apiv2/player_controls/controls.mjs";
 import { getTintColor, setTintColor } from "../../apiv2/rendering/color.mjs";
 import { assert, logError } from "../../util.mjs";
