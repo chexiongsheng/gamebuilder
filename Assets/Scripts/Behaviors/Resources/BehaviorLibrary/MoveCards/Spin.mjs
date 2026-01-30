@@ -17,6 +17,7 @@
 import { propBoolean, propDecimal } from "../../apiv2/actors/properties.mjs";
 import { degToRad } from "../../apiv2/misc/math.mjs";
 import { spin } from "../../apiv2/transform/rotation-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propDecimal("Speed", 60),

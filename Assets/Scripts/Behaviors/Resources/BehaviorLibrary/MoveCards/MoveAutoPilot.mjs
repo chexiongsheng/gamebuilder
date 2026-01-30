@@ -26,6 +26,7 @@ import { getDistanceBetween, getPos } from "../../apiv2/transform/position-get.m
 import { setPos } from "../../apiv2/transform/position-set.mjs";
 import { getForward } from "../../apiv2/transform/rotation-get.mjs";
 import { assertNumber, assertVector3 } from "../../util.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propNumber('SmoothFactor', 10),

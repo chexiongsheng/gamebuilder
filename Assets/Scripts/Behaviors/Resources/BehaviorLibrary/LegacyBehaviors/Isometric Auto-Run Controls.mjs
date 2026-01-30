@@ -15,6 +15,7 @@
  */
 import { HandlerApi } from "../../HandlerApi.mjs";
 import { move } from "../../apiv2/transform/position-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Isometric Auto-Run Controls<size=70%>\nBasic WASD movement
 

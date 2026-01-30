@@ -15,6 +15,7 @@
  */
 import { HandlerApi } from "../../HandlerApi.mjs";
 import { valueOr } from "../../util.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Pick-up Item\n<size=70%>Something players can pick up (by touching) once for some benefit.
 

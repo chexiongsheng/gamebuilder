@@ -28,6 +28,7 @@ import { UiColor, uiGetScreenHeight, uiGetScreenWidth, uiGetTextWidth, uiRect, u
 import { assert } from "../../testing.mjs";;
 import { propDeck } from "../../apiv2/actors/properties.mjs";
 import { show } from "../../apiv2/rendering/visibility.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   // Note: this is an enum just for UX purposes; the underlying value is always

@@ -21,6 +21,7 @@ import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
 import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
 import { getRight } from "../../apiv2/transform/rotation-get.mjs";
 import { degToRad } from "../../apiv2/misc/math.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Player Controls: Basic WASD.
 

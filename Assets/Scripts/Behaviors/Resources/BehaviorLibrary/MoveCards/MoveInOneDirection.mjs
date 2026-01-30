@@ -17,6 +17,7 @@
 import { propBoolean, propDecimal } from "../../apiv2/actors/properties.mjs";
 import { vec3, vec3scale } from "../../apiv2/misc/math.mjs";
 import { move, moveGlobal } from "../../apiv2/transform/position-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Move: Move in direction
 // Moves in direction relative to the actor

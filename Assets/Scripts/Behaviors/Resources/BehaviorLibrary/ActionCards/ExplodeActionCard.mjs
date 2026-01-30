@@ -26,6 +26,7 @@ import { getBoundsCenter } from "../../apiv2/rendering/body.mjs";
 import { playSound } from "../../apiv2/sfx/sfx.mjs";
 import { getPos, selfToWorldDir } from "../../apiv2/transform/position-get.mjs";
 import { Particles } from "../../apiv2/particles/particleeffects.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";;
 
 export const PROPS = [
   propDecimal('BlastRadius', 10),

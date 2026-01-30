@@ -27,6 +27,7 @@
 import { valueOr } from "../../util.mjs";
 import { HandlerApi } from "../../HandlerApi.mjs";
 import { Actor } from "../../ModuleBehaviorsActor.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // property Actor ObjectToLookAt
 // property Boolean YawOnly true

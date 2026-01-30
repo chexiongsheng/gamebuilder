@@ -18,6 +18,7 @@ import { callActionDeck } from "../../apiv2/actors/messages.mjs";
 import { getCard } from "../../apiv2/actors/memory.mjs";
 import { propBoolean, propDecimal, propDeck } from "../../apiv2/actors/properties.mjs";
 import { getTime } from "../../apiv2/misc/time.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propDecimal("Interval", 3, {

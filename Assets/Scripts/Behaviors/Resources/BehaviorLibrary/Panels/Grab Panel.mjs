@@ -26,6 +26,7 @@ import { push } from "../../apiv2/physics/velocity.mjs";
 import { getAimTarget } from "../../apiv2/player_controls/aiming.mjs";
 import { getPos } from "../../apiv2/transform/position-get.mjs";
 import { getForward } from "../../apiv2/transform/rotation-get.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propDecimal("HoldDistance", 2),

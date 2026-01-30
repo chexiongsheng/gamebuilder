@@ -26,6 +26,7 @@ import { moveGlobal } from "../../apiv2/transform/position-set.mjs";;
 import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
 import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
 import { enableGravity } from "../../apiv2/physics/attributes.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";;
 
 // Player Controls: Basic WASD.
 

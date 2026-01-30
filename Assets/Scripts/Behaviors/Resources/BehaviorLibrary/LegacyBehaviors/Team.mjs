@@ -25,6 +25,8 @@ import { HandlerApi } from "../../HandlerApi.mjs";
  * 
  *****************************************************************************/
 
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 // property Number Team 1
 // tag gamerules
 

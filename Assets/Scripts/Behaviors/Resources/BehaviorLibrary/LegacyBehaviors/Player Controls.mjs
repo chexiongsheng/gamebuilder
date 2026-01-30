@@ -20,6 +20,7 @@ import { getControllingPlayer, setControllingPlayer } from "../../apiv2/player_c
 import { valueOr } from "../../util.mjs";
 import { kick } from "../../voosMain.mjs";
 import { HandlerApi } from "../../HandlerApi.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Player Controls<size=70%>\nBasic WASD movement
 

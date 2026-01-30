@@ -22,6 +22,7 @@ import { getTime } from "../../apiv2/misc/time.mjs";
 import { deepCopy } from "../../apiv2/misc/utility.mjs";
 import { playSound } from "../../apiv2/sfx/sfx.mjs";
 import { UiColor, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propSound('Sound', 'builtin:Lose')

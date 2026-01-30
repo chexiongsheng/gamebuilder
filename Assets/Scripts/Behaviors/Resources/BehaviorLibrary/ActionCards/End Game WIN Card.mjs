@@ -27,6 +27,7 @@ import { getControllingPlayer } from "../../apiv2/player_controls/controls.mjs";
 import { playSound } from "../../apiv2/sfx/sfx.mjs";
 import { UiColor, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
 import { getCardTargetActor } from "../../apiv2/actors/actors.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";;
 
 export const PROPS = [
   propBoolean("Everyone", true, {

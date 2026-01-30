@@ -18,6 +18,7 @@
 import { callActionDeck, callEventDeck } from "../../apiv2/actors/messages.mjs";
 import { getCard } from "../../apiv2/actors/memory.mjs";
 import { propBoolean, propDeck } from "../../apiv2/actors/properties.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propBoolean("SwitchBack", true, {

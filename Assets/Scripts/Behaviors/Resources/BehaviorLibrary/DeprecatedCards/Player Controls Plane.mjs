@@ -25,6 +25,7 @@ import { lookTowardDir } from "../../apiv2/transform/rotation-set.mjs";;
 import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
 import { enableGravity, enableKeepUpright } from "../../apiv2/physics/attributes.mjs";
 import { getRight } from "../../apiv2/transform/rotation-get.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Player Controls: Hovercraft.
 

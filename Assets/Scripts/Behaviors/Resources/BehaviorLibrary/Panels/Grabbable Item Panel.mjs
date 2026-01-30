@@ -36,6 +36,7 @@ import { turn } from "../../apiv2/transform/rotation-set.mjs";
 import { assert } from "../../testing.mjs";
 import { assertVector3 } from "../../util.mjs";;
 import { rotate } from "../../apiv2/transform/rotation-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 const Quaternion = THREE.Quaternion;
 

@@ -25,6 +25,7 @@ import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
 import { getDistanceTo } from "../../apiv2/transform/position-get.mjs";
 import { getScreenPoint } from "../../apiv2/ui/screen.mjs";
 import { UiColor, uiRect } from "../../apiv2/ui/widgets.mjs";;
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Player Controls: Basic WASD.
 

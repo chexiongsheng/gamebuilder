@@ -17,6 +17,7 @@
 import { propNumber, propString } from "../../apiv2/actors/properties.mjs";
 import { colorFromHex } from "../../apiv2/misc/colors.mjs";
 import { UiColor, uiText } from "../../apiv2/ui/widgets.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propNumber('X', 100),

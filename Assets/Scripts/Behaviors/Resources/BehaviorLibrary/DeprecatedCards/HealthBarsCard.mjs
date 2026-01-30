@@ -19,6 +19,7 @@ import { getAttrib } from "../../apiv2/actors/attributes.mjs";
 import { propActorGroup, propDecimal } from "../../apiv2/actors/properties.mjs";
 import { uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
 import { getScreenRect } from "../../apiv2/ui/screen.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";;
 
 export const PROPS = [
   propActorGroup("Who", "@TAG:enemy", {

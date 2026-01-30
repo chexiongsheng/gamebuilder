@@ -30,6 +30,7 @@ import { HandlerApi } from "../../HandlerApi.mjs";
  * write new scripts using API v2.
  * 
  *****************************************************************************/
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // tag damage
 // property Boolean BroadcastDeath true

@@ -15,6 +15,7 @@
  */
 import { HandlerApi } from "../../HandlerApi.mjs";
 import { Actor } from "../../ModuleBehaviorsActor.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Respawning<size=70%>\nRespawn (on death, reset, etc.)
 

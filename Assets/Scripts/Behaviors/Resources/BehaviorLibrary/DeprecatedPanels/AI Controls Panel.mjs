@@ -20,6 +20,7 @@ import { propDeck, propDecimal } from "../../apiv2/actors/properties.mjs";
 import { radToDeg } from "../../apiv2/misc/math.mjs";
 import { getPos } from "../../apiv2/transform/position-get.mjs";
 import { getForward } from "../../apiv2/transform/rotation-get.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propDeck('idleDeck', 'Action', {

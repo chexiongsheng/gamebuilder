@@ -20,6 +20,7 @@ import { interp, vec3, vec3add, vec3equal } from "../../apiv2/misc/math.mjs";
 import { getTime } from "../../apiv2/misc/time.mjs";
 import { getDistanceTo, getSpawnPos, selfToWorldDir } from "../../apiv2/transform/position-get.mjs";
 import { moveToward } from "../../apiv2/transform/position-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propDecimal("DistForward", 5),

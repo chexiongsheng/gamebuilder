@@ -22,6 +22,7 @@ import { getPos, getSpawnPos } from "../../apiv2/transform/position-get.mjs";
 import { setPos } from "../../apiv2/transform/position-set.mjs";
 import { getForward, getRight, getUp } from "../../apiv2/transform/rotation-get.mjs";
 import { move } from "../../apiv2/transform/position-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";;
 
 // Move: Oscillate
 // Oscillates along a direction

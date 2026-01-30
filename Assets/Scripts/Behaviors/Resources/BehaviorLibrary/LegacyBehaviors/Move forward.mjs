@@ -25,6 +25,8 @@ import { HandlerApi } from "../../HandlerApi.mjs";
  * 
  *****************************************************************************/
 
+import { getProps } from "../../apiv2/actors/properties.mjs";
+
 // tag movement
 
 // property Number Speed 1

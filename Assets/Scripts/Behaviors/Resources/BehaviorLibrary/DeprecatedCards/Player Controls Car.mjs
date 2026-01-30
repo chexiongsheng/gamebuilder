@@ -24,6 +24,7 @@ import { turn } from "../../apiv2/transform/rotation-set.mjs";;
 import { enableGravity, enableKeepUpright } from "../../apiv2/physics/attributes.mjs";
 import { getForward } from "../../apiv2/transform/rotation-get.mjs";
 import { UiColor, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Player Controls: Car.
 

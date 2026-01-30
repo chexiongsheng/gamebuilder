@@ -15,6 +15,7 @@
  */
 import { HandlerApi } from "../../HandlerApi.mjs";
 import { Actor } from "../../ModuleBehaviorsActor.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Follow another actor
 

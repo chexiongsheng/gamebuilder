@@ -18,6 +18,7 @@ import { getActorGroupDescription, getActorsInGroup, getClosestActor } from "../
 import { propActorGroup, propBoolean, propDecimal } from "../../apiv2/actors/properties.mjs";
 import { lookAt } from "../../apiv2/transform/rotation-set.mjs";
 import { Actor } from "../../ModuleBehaviorsActor.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Look at Actor
 

@@ -19,6 +19,7 @@ import { getCard } from "../../apiv2/actors/memory.mjs";
 import { getTime } from "../../apiv2/misc/time.mjs";
 import { getTintHex, setTintColor, setTintHex } from "../../apiv2/rendering/color.mjs";
 import { propNumber } from "../../apiv2/actors/properties.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   //TEMP propNumber("Duration", 1),

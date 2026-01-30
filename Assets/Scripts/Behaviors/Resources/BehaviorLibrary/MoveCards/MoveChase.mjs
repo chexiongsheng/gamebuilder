@@ -18,6 +18,7 @@ import { exists, getActorGroupDescription, getActorsInGroup, getClosestActor } f
 import { propActorGroup, propDecimal } from "../../apiv2/actors/properties.mjs";
 import { moveToward } from "../../apiv2/transform/position-set.mjs";
 import { lookAt } from "../../apiv2/transform/rotation-set.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
   propActorGroup("Targets", "@TAG:player", {

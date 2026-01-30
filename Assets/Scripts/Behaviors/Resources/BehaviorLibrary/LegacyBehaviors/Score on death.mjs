@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import { HandlerApi } from "../../HandlerApi.mjs";
+import { getProps } from "../../apiv2/actors/properties.mjs";
 
 // Score points when dead
 
