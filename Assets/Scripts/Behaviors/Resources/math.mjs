@@ -128,7 +128,7 @@ export { clamp };
 export { copyQuat };
 export { damp };
 export { for3d };
-export { generateTerrain };
+//export { generateTerrain };
 export { lerp };
 export { max };
 export { min };
