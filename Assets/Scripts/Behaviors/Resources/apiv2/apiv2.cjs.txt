@@ -26,7 +26,7 @@ const { detachFromParent } = require("./hierarchy/parenting.cjs");
 const { getProps, setProps } = require("./actors/properties.cjs");
 const { getCard, setCard, getMem, setMem, setTemp } = require("./actors/memory.cjs");
 const { Actor } = require("../ModuleBehaviorsActor.cjs");
-const { ModuleBehaviorDatabase } = require("../ModuleBehaviorSystem.cjs");
+const { ModuleBehaviorDatabase } = require("../ModuleBehaviorDatabase.cjs");
 
 /**
  * Internal global context needed for APIv2 operations.
@@ -589,58 +589,3 @@ exports.ApiV2ActionDeckHelper = ApiV2ActionDeckHelper;
 exports.ApiV2Context = ApiV2Context;
 exports.legacyApi = legacyApi;
 
-// Re-export everything from submodules
-Object.assign(exports, require("./actors/actors.cjs"));
-Object.assign(exports, require("./actors/attributes.cjs"));
-Object.assign(exports, require("./actors/camera_light.cjs"));
-Object.assign(exports, require("./actors/cloning.cjs"));
-Object.assign(exports, require("./actors/memory.cjs"));
-Object.assign(exports, require("./actors/messages.cjs"));
-Object.assign(exports, require("./actors/properties.cjs"));
-Object.assign(exports, require("./hierarchy/conversions.cjs"));
-Object.assign(exports, require("./hierarchy/parenting.cjs"));
-Object.assign(exports, require("./keyboard_mouse/keyboard.cjs"));
-Object.assign(exports, require("./keyboard_mouse/mouse.cjs"));
-Object.assign(exports, require("./misc/colors.cjs"));
-Object.assign(exports, require("./misc/game.cjs"));
-Object.assign(exports, require("./misc/math.cjs"));
-Object.assign(exports, require("./misc/time.cjs"));
-Object.assign(exports, require("./misc/utility.cjs"));
-Object.assign(exports, require("./multiplayer/players.cjs"));
-Object.assign(exports, require("./particles/particleeffects.cjs"));
-Object.assign(exports, require("./physics/attributes.cjs"));
-Object.assign(exports, require("./physics/casting.cjs"));
-Object.assign(exports, require("./physics/presets.cjs"));
-Object.assign(exports, require("./physics/velocity.cjs"));
-Object.assign(exports, require("./player_controls/aiming.cjs"));
-Object.assign(exports, require("./player_controls/controls.cjs"));
-Object.assign(exports, require("./remote/remote.cjs"));
-Object.assign(exports, require("./rendering/animation.cjs"));
-Object.assign(exports, require("./rendering/body.cjs"));
-Object.assign(exports, require("./rendering/color.cjs"));
-Object.assign(exports, require("./rendering/scene.cjs"));
-Object.assign(exports, require("./rendering/visibility.cjs"));
-Object.assign(exports, require("./sfx/sfx.cjs"));
-Object.assign(exports, require("./terrain/blocks.cjs"));
-Object.assign(exports, require("./transform/position-get.cjs"));
-Object.assign(exports, require("./transform/position-set.cjs"));
-Object.assign(exports, require("./transform/rotation-get.cjs"));
-Object.assign(exports, require("./transform/rotation-set.cjs"));
-Object.assign(exports, require("./transform/scale.cjs"));
-
-// Re-export necessary APIs from voosMain.cjs and util.cjs
-const voosMain = require("../voosMain.cjs");
-exports.callVoosService = voosMain.callVoosService;
-exports.log = voosMain.log;
-exports.sysLog = voosMain.sysLog;
-
-const util = require("../util.cjs");
-exports.assert = util.assert;
-exports.assertNumber = util.assertNumber;
-exports.assertString = util.assertString;
-exports.assertBoolean = util.assertBoolean;
-exports.assertVector3 = util.assertVector3;
-exports.assertQuaternion = util.assertQuaternion;
-exports.assertColor = util.assertColor;
-exports.assertArrayOf = util.assertArrayOf;
-exports.assertObjectNotNull = util.assertObjectNotNull;
