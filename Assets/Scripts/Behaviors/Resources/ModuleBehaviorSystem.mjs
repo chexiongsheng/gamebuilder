@@ -26,7 +26,7 @@ import { Queue } from "./Queue.src.mjs";
 import { assert } from "./testing.mjs";
 import { assertQuaternion, assertString, assertVector3, beginProfileSample, endProfileSample, flattenArray, mapGetOrCreate, parseJsonOrEmpty, serializeQuaternion } from "./util.mjs";;
 import { VoosBinaryReaderWriter } from "./serialization.mjs";
-import { callVoosService, sysLog, queueMessageToUnity, enqueueRemoteMessage } from "./voosMain.mjs";
+import { getVoosModule, callVoosService, sysLog, queueMessageToUnity, enqueueRemoteMessage } from "./voosMain.mjs";
 import { clone } from "./apiv2/actors/cloning.mjs";
 import { broadcast } from "./apiv2/actors/messages.mjs";
 import { max } from "./apiv2/misc/math.mjs";
@@ -34,13 +34,6 @@ import { max } from "./apiv2/misc/math.mjs";
 function sysError(...args) {
   console.error(...args);
 }
-
-function getVoosModule(moduleName) {
-  if (!globalThis.__voosModules[moduleName]) {
-    throw new Error('Module not found: ' + moduleName);
-  }
-  return globalThis.__voosModules[moduleName];
-};
 
 // NOTE this is actually limited by Photon's max view ID right now..
 const MAX_ACTORS = 1100;
