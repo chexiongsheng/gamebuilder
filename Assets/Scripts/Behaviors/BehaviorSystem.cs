@@ -33,7 +33,6 @@ public class BehaviorSystem : MonoBehaviour
   static string BuiltinBehaviorExtension = ".js.txt";
   public static string UserBehaviorExtension = ".js";
 
-  public TextAsset[] sources;
   public Util.AbstractPath[] typings;
 
   // For the built-in behaviors. Should be relative to StreamingAssets. TODO
@@ -393,32 +392,6 @@ public class BehaviorSystem : MonoBehaviour
     DeleteBehaviorLocal(id, false);
   }
 
-  // Hmm don't really like having this stuff in BehaviorSystem...should separate
-  // this out into behaviors source or something.
-
-  public IEnumerable<TextAsset> ForSystemSources()
-  {
-    foreach (TextAsset source in sources)
-    {
-      if (source != null)
-      {
-        yield return source;
-      }
-    }
-  }
-
-  private string BuildSystemSource()
-  {
-    Debug.Log("WHOAAH full system source rebuild triggered");
-    System.Text.StringBuilder sourceBuilder = new System.Text.StringBuilder(1024 * 1024);
-    foreach (TextAsset source in ForSystemSources())
-    {
-      sourceBuilder.Append(source.text.Replace("\r", ""));
-      sourceBuilder.Append("\n");
-    }
-    return sourceBuilder.ToString();
-  }
-
   string GetBuiltinBehaviorsRoot()
   {
     return Path.Combine(Application.streamingAssetsPath, behaviorLibraryDirectory);
@@ -564,7 +537,7 @@ public class BehaviorSystem : MonoBehaviour
     // Load the builtins, since we need everyone to stay in sync, for RPCs.
     LoadBehaviorLibrary();
 
-    bool ok = voosEngine.Recompile(BuildSystemSource());
+    bool ok = voosEngine.ResetBrain();
     if (!ok)
     {
       throw new System.Exception("Failed to compile behavior system source - this is fatal!");

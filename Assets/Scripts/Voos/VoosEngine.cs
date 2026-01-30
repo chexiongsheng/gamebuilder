@@ -1017,10 +1017,10 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     throw new NotImplementedException($"Try load module ${moduleKey} dynamic.");
   }
 
-  public bool Recompile(string js)
+  public bool ResetBrain()
   {
     EnsurePuertsAdapter();
-    return puertsAdapter.ResetBrain(brainUid, js);
+    return puertsAdapter.ResetBrain(brainUid);
   }
 
   void ApplyVelocityChanges(VelocityChange[] changes, TorqueRequest[] torques)

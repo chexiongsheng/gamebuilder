@@ -67,7 +67,7 @@ namespace Voos
     /// <summary>
     /// 重置Brain（编译主脚本）
     /// </summary>
-    public bool ResetBrain(string brainUid, string javascript)
+    public bool ResetBrain(string brainUid)
     {
       try
       {
@@ -85,7 +85,6 @@ namespace Voos
         }
 
         var context = brainContexts[brainUid];
-        context.javascript = javascript;
 
         // 获取updateAgent函数引用
         try
