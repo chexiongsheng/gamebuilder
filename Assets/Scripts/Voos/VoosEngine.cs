@@ -1005,7 +1005,6 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   public void LoadAllBuiltinBehaviors()
   {
     EnsurePuertsAdapter();
-    puertsAdapter.LoadAllBuiltinBehaviors();
     foreach (var moduleKey in BehaviorLibraryKeys)
     {
       compiledModules.Add(moduleKey);

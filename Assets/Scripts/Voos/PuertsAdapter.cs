@@ -87,12 +87,6 @@ namespace Voos
         var context = brainContexts[brainUid];
         context.javascript = javascript;
 
-        //System.IO.File.WriteAllText("brain.js", javascript);
-        //scriptEngine.RegisterModule($"brain_{brainUid}", javascript);
-        //scriptEngine.ExecuteModule($"brain_{brainUid}");
-        // 没大重构js前还只能通过Eval，主要是它的mem,card这种是通过全局变量的切换来实现私有的
-        scriptEngine.Eval(javascript, $"brain_{brainUid}");
-
         // 获取updateAgent函数引用
         try
         {
@@ -117,11 +111,6 @@ namespace Voos
         Debug.LogError($"[PuertsAdapter] Failed to reset brain {brainUid}: {ex.Message}\n{ex.StackTrace}");
         return false;
       }
-    }
-
-    public void LoadAllBuiltinBehaviors()
-    {
-      scriptEngine.ExecuteModule("BehaviorLibrary/BehaviorLibraryIndex.mjs");
     }
 
     /// <summary>

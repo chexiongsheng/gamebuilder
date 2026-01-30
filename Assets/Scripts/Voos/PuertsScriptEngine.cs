@@ -102,53 +102,6 @@ namespace Voos
       }
     }
 
-    /// <summary>
-    /// 执行字符串脚本
-    /// </summary>
-    public void Eval(string code, string chunkName = "chunk")
-    {
-      if (!isInitialized)
-      {
-        throw new InvalidOperationException("PuertsScriptEngine not initialized");
-      }
-
-      if (EnablePerformanceMonitoring)
-      {
-        performanceTimer.Restart();
-      }
-
-      try
-      {
-        if (DebugMode)
-        {
-          Debug.Log($"[PuertsScriptEngine] Evaluating {chunkName} ({code.Length} chars)");
-        }
-
-        jsEnv.Eval(code, chunkName);
-        evalCount++;
-
-        if (EnablePerformanceMonitoring)
-        {
-          performanceTimer.Stop();
-          float elapsed = (float)performanceTimer.Elapsed.TotalMilliseconds;
-          totalEvalTime += elapsed;
-          Debug.Log($"[PuertsScriptEngine] Eval {chunkName} took {elapsed:F2}ms (avg: {totalEvalTime / evalCount:F2}ms)");
-        }
-      }
-      catch (Exception ex)
-      {
-        errorCount++;
-        string errorMsg = ExtractErrorMessage(ex, chunkName);
-        Debug.LogError($"[PuertsScriptEngine] Eval error in {chunkName}: {errorMsg}");
-
-        if (DebugMode)
-        {
-          Debug.LogError($"[PuertsScriptEngine] Stack trace: {ex.StackTrace}");
-        }
-        throw;
-      }
-    }
-
     public void Tick()
     {
       if (isInitialized && jsEnv != null)
