@@ -407,6 +407,13 @@ function quatApply(quat, v) {
   return v;
 }
 
+function clamp(x, min, max) {
+  if (min > max) {
+    throw new Error('min must be less than or equal to max');
+  }
+  return Math.min(max, Math.max(min, x));
+}
+
 // ESM exports
 export { degToRad };
 export { interp };
@@ -440,3 +447,4 @@ export { vec3x };
 export { vec3y };
 export { vec3z };
 export { vec3zero };
+export { clamp };
