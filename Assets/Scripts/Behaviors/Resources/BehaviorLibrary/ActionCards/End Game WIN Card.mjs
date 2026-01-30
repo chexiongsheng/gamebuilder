@@ -22,7 +22,8 @@ import { propBoolean, propCardTargetActor, propSound, requireFalse } from "../..
 import { resetGame } from "../../apiv2/misc/game.mjs";
 import { getTime } from "../../apiv2/misc/time.mjs";
 import { deepCopy } from "../../apiv2/misc/utility.mjs";
-import { getControllingPlayer, getLocalPlayer } from "../../apiv2/player_controls/controls.mjs";
+import { getLocalPlayer } from "../../apiv2/multiplayer/players.mjs";
+import { getControllingPlayer } from "../../apiv2/player_controls/controls.mjs";
 import { playSound } from "../../apiv2/sfx/sfx.mjs";
 import { UiColor, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
 

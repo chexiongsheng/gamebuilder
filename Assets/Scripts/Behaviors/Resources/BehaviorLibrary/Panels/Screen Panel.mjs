@@ -17,7 +17,8 @@
 
 import { callDeck } from "../../apiv2/actors/messages.mjs";
 import { propDeck, propEnum } from "../../apiv2/actors/properties.mjs";
-import { getControllingPlayer, getLocalPlayer } from "../../apiv2/player_controls/controls.mjs";
+import { getLocalPlayer } from "../../apiv2/multiplayer/players.mjs";
+import { getControllingPlayer } from "../../apiv2/player_controls/controls.mjs";
 
 export const PROPS = [
   propDeck('screenDeck', 'Screen', {
