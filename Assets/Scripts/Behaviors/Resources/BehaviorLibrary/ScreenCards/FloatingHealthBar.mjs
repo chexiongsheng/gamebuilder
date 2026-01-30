@@ -22,7 +22,8 @@ import { clamp, vec3normalized, vec3sub } from "../../apiv2/misc/math.mjs";
 import { castAdvanced, CastMode } from "../../apiv2/physics/casting.mjs";
 import { getBoundsCenter } from "../../apiv2/rendering/body.mjs";
 import { getDistanceBetween } from "../../apiv2/transform/position-get.mjs";
-import { getScreenSphere, uiRect } from "../../apiv2/ui/widgets.mjs";
+import { getScreenSphere } from "../../apiv2/ui/screen.mjs";
+import { uiRect } from "../../apiv2/ui/widgets.mjs";;
 
 export const PROPS = [
   propDecimal('OffsetY', 1),

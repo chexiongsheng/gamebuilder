@@ -24,7 +24,8 @@
  * 
  *****************************************************************************/
 
-import { log, stringOr, valueOr } from "../../util.mjs";
+import { log } from "../../apiv2/misc/utility.mjs";
+import { stringOr, valueOr } from "../../util.mjs";;
 
 // tag gamerules
 // property Actor TouchesWhat

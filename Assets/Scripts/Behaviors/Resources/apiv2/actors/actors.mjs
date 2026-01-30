@@ -15,7 +15,8 @@
  */
 
 import { ApiV2Context } from "../apiv2.mjs";
-import { assertString, assert } from "../../util.mjs";
+import { assert } from "../../testing.mjs";
+import { assertString } from "../../util.mjs";;
 import { getPlayerActorsCached } from "../../voosMain.mjs";
 import { getProps } from "./properties.mjs";
 import { getAttrib, getDisplayName } from "./attributes.mjs";

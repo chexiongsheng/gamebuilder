@@ -16,7 +16,7 @@
 
 import { destroySelf } from "../../apiv2/actors/actors.mjs";
 import { deleteVar, getVar, setCommentText, setDisplayName, setVar } from "../../apiv2/actors/attributes.mjs";
-import { setCameraActor } from "../../apiv2/actors/camera_light.mjs";
+import { setCameraActor } from "../../apiv2/player_controls/controls.mjs";;
 import { ApiV2Context } from "../../apiv2/apiv2.mjs";
 import { attachToParent, detachFromParent } from "../../apiv2/hierarchy/parenting.mjs";
 import { clamp, vec3add } from "../../apiv2/misc/math.mjs";
@@ -31,7 +31,9 @@ import { setPos } from "../../apiv2/transform/position-set.mjs";
 import { applyQuaternion, applyQuaternionSelf, lookAt, resetRot, setPitch, setRoll, setRot, setYaw, setYawPitchRoll, turn } from "../../apiv2/transform/rotation-set.mjs";
 import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
 import { setScale, setScaleUniform } from "../../apiv2/transform/scale.mjs";
-import { assert, assertString, decodeUndefineds, logError } from "../../util.mjs";
+import { logError } from "../../apiv2/misc/utility.mjs";
+import { assert } from "../../testing.mjs";
+import { assertString, decodeUndefineds } from "../../util.mjs";;
 
 // Kickable<size=70%>\nAllows this actor to be affected by velocity requests from other actors, when they use the 'kick' function.
 

@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { assert, encodeUndefineds } from "../../util.mjs";
+import { assert } from "../../testing.mjs";
+import { encodeUndefineds } from "../../util.mjs";;
 import { exists, myself, destroySelf } from "../actors/actors.mjs";
 import { send } from "../actors/messages.mjs";
 import { setPos } from "../transform/position-set.mjs";

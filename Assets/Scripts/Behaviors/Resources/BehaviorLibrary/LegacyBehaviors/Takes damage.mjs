@@ -15,7 +15,8 @@
  */
 
 import { isClone } from "../../apiv2/actors/cloning.mjs";
-import { assert, log } from "../../util.mjs";
+import { log } from "../../apiv2/misc/utility.mjs";
+import { assert } from "../../testing.mjs";;
 import { kick } from "../../voosMain.mjs";
 import * as THREE from "three.mjs";
 

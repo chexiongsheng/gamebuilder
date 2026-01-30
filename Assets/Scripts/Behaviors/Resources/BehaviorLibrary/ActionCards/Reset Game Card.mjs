@@ -18,7 +18,7 @@ import { getCard } from "../../apiv2/actors/memory.mjs";
 import { getProps, propNumber } from "../../apiv2/actors/properties.mjs";
 import { ApiV2Context } from "../../apiv2/apiv2.mjs";
 import { getTime } from "../../apiv2/misc/time.mjs";
-import { log } from "../../util.mjs";
+import { log } from "../../apiv2/misc/utility.mjs";;
 
 export const PROPS = [
   propNumber("Delay", 3)

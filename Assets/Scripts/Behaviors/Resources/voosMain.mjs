@@ -15,7 +15,8 @@
  */
 
 import * as THREE from "three.mjs";
-import { assert, assertString, assertVector3, assertQuaternion, flattenArray, mapGetOrCreate, serializeQuaternion, parseJsonOrEmpty, runUnitTests, assertNumber, assertBoolean, assertStringOrNull } from "./util.mjs";
+import { assert, runUnitTests } from "./testing.mjs";
+import { assertBoolean, assertNumber, assertQuaternion, assertString, assertStringOrNull, assertVector3, flattenArray, mapGetOrCreate, parseJsonOrEmpty, serializeQuaternion } from "./util.mjs";;
 import { ModuleBehaviorSystem, getBehaviorProperties } from "./ModuleBehaviorSystem.mjs";
 import { VoosBinaryReaderWriter } from "./serialization.mjs";
 import { Queue } from "./Queue.src.mjs";
@@ -185,24 +186,6 @@ function callVoosService(serviceName, arg) {
   } catch (err) {
     console.error('callVoosService error:', err.message);
     throw err;
-  }
-};
-
-// log - Logging API
-function log(...args) {
-  const message = args.map(arg => {
-    if (typeof arg === 'object') {
-      try {
-        return JSON.stringify(arg);
-      } catch (e) {
-        return String(arg);
-      }
-    }
-    return String(arg);
-  }).join(' ');
-
-  if (globalThis.__voosEngine) {
-    globalThis.__voosEngine.HandleLogForPuerts('log', message);
   }
 };
 
@@ -560,7 +543,6 @@ export { setActorQuaternion };
 export { getActorString };
 export { setActorString };
 export { callVoosService };
-export { log };
 export { sysLog };
 export { TIMERS_MEMORY_KEY };
 export { cachedPlayerActors };

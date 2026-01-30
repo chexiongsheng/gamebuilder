@@ -15,7 +15,7 @@
  */
 
 import * as THREE from "three.mjs";
-import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
+import { getAimDirection } from "./apiv2/player_controls/aiming.mjs";;
 
 // Convenience class for some common math things.
 // TODO this should just be part of the MutableActorApi

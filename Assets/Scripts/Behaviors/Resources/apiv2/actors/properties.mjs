@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { assertObjectNotNull, assertNumber, assertBoolean, assertString, assertArrayOf, assert } from "../../util.mjs";
+import { assert } from "../../testing.mjs";
+import { assertArrayOf, assertBoolean, assertNumber, assertObjectNotNull, assertString } from "../../util.mjs";;
 import { Particles } from "../particles/particleeffects.mjs";
 import { Sounds } from "../sfx/sfx.mjs";
 

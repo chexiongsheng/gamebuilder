@@ -15,7 +15,8 @@
  */
 
 import { ApiV2Context } from "../apiv2.mjs";
-import { assertNumber, assert } from "../../util.mjs";
+import { assert } from "../../testing.mjs";
+import { assertNumber } from "../../util.mjs";;
 
 // VISIBLE_TO_MONACO
 

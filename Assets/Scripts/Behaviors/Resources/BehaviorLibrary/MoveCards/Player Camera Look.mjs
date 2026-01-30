@@ -15,7 +15,8 @@
  */
 
 import { propBoolean, propDecimal, requireTrue } from "../../apiv2/actors/properties.mjs";
-import { isPlayerControllable, lookTowardDir } from "../../apiv2/player_controls/controls.mjs";
+import { isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
+import { lookTowardDir } from "../../apiv2/transform/rotation-set.mjs";;
 import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
 import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
 

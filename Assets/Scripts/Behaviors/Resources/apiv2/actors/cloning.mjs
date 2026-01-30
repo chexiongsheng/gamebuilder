@@ -15,7 +15,7 @@
  */
 
 import { ApiV2Context } from "../apiv2.mjs";
-import { assert } from "../../util.mjs";
+import { assert } from "../../testing.mjs";;
 import { exists } from "./actors.mjs";
 import { getPos } from "../transform/position-get.mjs";
 import { getRot } from "../transform/rotation-get.mjs";

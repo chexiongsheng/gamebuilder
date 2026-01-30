@@ -16,7 +16,8 @@
 
 import * as THREE from "three.mjs";
 import { ApiV2Context } from "../apiv2.mjs";
-import { assertNumber, assertString, assert } from "../../util.mjs";
+import { assert } from "../../testing.mjs";
+import { assertNumber, assertString } from "../../util.mjs";;
 import { colorFromHex, colorToHex } from "../misc/colors.mjs";
 
 // VISIBLE_TO_MONACO

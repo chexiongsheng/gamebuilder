@@ -20,7 +20,7 @@ import { getProps, propActor, propNumber } from "../../apiv2/actors/properties.m
 import { vec3 } from "../../apiv2/misc/math.mjs";
 import { getPos } from "../../apiv2/transform/position-get.mjs";
 import { getForward, getRight, getRot, getUp } from "../../apiv2/transform/rotation-get.mjs";
-import { logError } from "../../util.mjs";
+import { logError } from "../../apiv2/misc/utility.mjs";;
 import { kick } from "../../voosMain.mjs";
 
 // Fire Projectile<size=70%>\nShoot clones of another object, like a baseball.

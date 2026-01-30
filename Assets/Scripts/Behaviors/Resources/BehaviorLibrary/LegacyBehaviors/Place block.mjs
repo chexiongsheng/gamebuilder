@@ -24,7 +24,7 @@
  * 
  *****************************************************************************/
 
-import { Vector3 } from "three.mjs";
+import { Vector3 } from "../../threejs-overrides.mjs";;
 
 // tag ability
 

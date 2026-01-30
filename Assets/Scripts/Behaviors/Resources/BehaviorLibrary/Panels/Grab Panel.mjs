@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { exists, getDisplayName, myself } from "../../apiv2/actors/actors.mjs";
+import { exists, myself } from "../../apiv2/actors/actors.mjs";
+import { getDisplayName } from "../../apiv2/actors/attributes.mjs";;
 import { getAttrib, setVar } from "../../apiv2/actors/attributes.mjs";
 import { getCard } from "../../apiv2/actors/memory.mjs";
 import { send } from "../../apiv2/actors/messages.mjs";

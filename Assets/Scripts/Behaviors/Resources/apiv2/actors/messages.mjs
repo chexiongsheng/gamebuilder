@@ -15,7 +15,8 @@
  */
 
 import { ApiV2Context } from "../apiv2.mjs";
-import { assertNumber, assertString, assert } from "../../util.mjs";
+import { assert } from "../../testing.mjs";
+import { assertNumber, assertString } from "../../util.mjs";;
 import { myself, exists } from "./actors.mjs";
 import { getDisplayName } from "./attributes.mjs";
 import { getPos } from "../transform/position-get.mjs";

@@ -25,7 +25,7 @@ import { getAllPlayers, getPlayerByNumber, getPlayerNumber, playerExists } from 
 import { getControllingPlayer, setCameraActor, setControllingPlayer, setIsPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
 import { setTintHex } from "../../apiv2/rendering/color.mjs";
 import { UiColor, uiGetScreenHeight, uiGetScreenWidth, uiGetTextWidth, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
-import { assert } from "../../util.mjs";
+import { assert } from "../../testing.mjs";;
 
 export const PROPS = [
   // Note: this is an enum just for UX purposes; the underlying value is always

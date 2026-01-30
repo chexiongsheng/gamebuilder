@@ -282,9 +282,6 @@ export * from "./apiv2/misc/utility.mjs";
 
 // ESM exports
 export { ENABLE_PROFILING_SERVICE };
-export { assert };
-export { assertThrows } from "./testing.mjs";
-export { runUnitTests };
 export { assertApproxEq };
 export { assertArrayOf };
 export { assertBoolean };

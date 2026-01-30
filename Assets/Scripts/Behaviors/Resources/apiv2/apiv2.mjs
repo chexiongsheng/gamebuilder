@@ -15,7 +15,8 @@
  */
 
 import * as THREE from "three.mjs";
-import { assert, assertNumber, assertString, assertVector3, assertObjectNotNull, assertQuaternion } from "../util.mjs";
+import { assert } from "../testing.mjs";
+import { assertNumber, assertObjectNotNull, assertQuaternion, assertString, assertVector3 } from "../util.mjs";;
 import { callVoosService } from "../voosMain.mjs";
 import { max, vec3add, vec3zero, vec3scale } from "./misc/math.mjs";
 import { raycast, raycastTerrain } from "./physics/casting.mjs";

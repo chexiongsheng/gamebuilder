@@ -16,7 +16,8 @@
 
 import * as THREE from "three.mjs";
 import { ApiV2Context } from "../apiv2.mjs";
-import { assertNumber, assertVector3, assert } from "../../util.mjs";
+import { assert } from "../../testing.mjs";
+import { assertNumber, assertVector3 } from "../../util.mjs";;
 import { vec3, vec3withLength, vec3sub, vec3neg, interp } from "../misc/math.mjs";
 import { getForward, getBackward, getLeft, getRight, getUp, getDown } from "./rotation-get.mjs";
 import { selfToWorldDir, getPos, getDistanceTo } from "./position-get.mjs";

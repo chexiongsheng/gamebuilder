@@ -23,7 +23,8 @@ import { SleepManager } from "./sleep.mjs";
 import { Actor } from "./ModuleBehaviorsActor.mjs";
 import { unpackObj, packObj } from "./pack-unpack.mjs";
 import { Queue } from "./Queue.src.mjs";
-import { assert, assertString, assertVector3, assertQuaternion, flattenArray, mapGetOrCreate, serializeQuaternion, parseJsonOrEmpty, beginProfileSample, endProfileSample } from "./util.mjs";
+import { assert } from "./testing.mjs";
+import { assertQuaternion, assertString, assertVector3, beginProfileSample, endProfileSample, flattenArray, mapGetOrCreate, parseJsonOrEmpty, serializeQuaternion } from "./util.mjs";;
 import { VoosBinaryReaderWriter } from "./serialization.mjs";
 import { callVoosService, sysLog, queueMessageToUnity, enqueueRemoteMessage } from "./voosMain.mjs";
 

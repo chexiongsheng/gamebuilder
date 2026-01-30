@@ -24,7 +24,7 @@
  * 
  *****************************************************************************/
 
-import { logError } from "../../util.mjs";
+import { logError } from "../../apiv2/misc/utility.mjs";;
 
 // tag utility
 
