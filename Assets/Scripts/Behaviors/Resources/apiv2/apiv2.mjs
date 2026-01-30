@@ -478,7 +478,7 @@ class ApiV2Context {
 class ApiV2ActionDeckHelper {
   constructor() {
     // The card global must exist (can only be used within a card's message handling context).
-    assert(card, "ApiV2ActionDeckHelper can only be used within a card context.");
+    assert(getCard(), "ApiV2ActionDeckHelper can only be used within a card context.");
     getCard().actionDeckState = getCard().actionDeckState || {};
     this.state_ = getCard().actionDeckState;
 
