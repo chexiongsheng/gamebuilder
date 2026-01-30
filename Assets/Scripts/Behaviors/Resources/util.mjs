@@ -278,6 +278,8 @@ runUnitTests('util.js.txt', {
   }
 });
 
+export * from "./apiv2/misc/utility.mjs";
+
 // ESM exports
 export { ENABLE_PROFILING_SERVICE };
 export { assert };
