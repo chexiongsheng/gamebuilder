@@ -1,4 +1,5 @@
 import * as three from "three.mjs";
+import { updateAgent, postMessageFlush} from "./voosMain.mjs"; 
 
 globalThis.THREE = three;
 //const require = puer.module.createRequire('');
@@ -70,12 +71,6 @@ const coreScripts = [
   "apiv2/rendering/scene.js.txt"
 ];
 
-// ==================== Utility Functions ====================
-
-globalThis.assert = function (condition, message) {
-  console.assert(condition, message);
-};
-
 // ==================== Initialization ====================
 
 export function updateAgentPostMessageFlush (request, arrayBuffer) {
@@ -83,15 +78,6 @@ export function updateAgentPostMessageFlush (request, arrayBuffer) {
 	  postMessageFlush(request, arrayBuffer);
 	  return arrayBuffer;
 }
-
-globalThis.__voosModules = {};
-
-globalThis.getVoosModule = function (moduleName) {
-  if (!globalThis.__voosModules[moduleName]) {
-    throw new Error('Module not found: ' + moduleName);
-  }
-  return globalThis.__voosModules[moduleName];
-};
 
 export function setGlobal(k, v) {
   globalThis[k] = v;

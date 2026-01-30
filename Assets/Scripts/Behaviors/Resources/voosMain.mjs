@@ -22,16 +22,15 @@ import { Queue } from "./Queue.src.mjs";
 import { ApiV2Context } from "./apiv2/apiv2.mjs";
 import { packObj } from "./pack-unpack.mjs";
 import { Actor } from "./ModuleBehaviorsActor.mjs";
+import { voosModules} from "./BehaviorLibrary/BehaviorLibraryIndex.mjs";
 
 // TODO clean up all this as a single class instead of globals and crap.
 
-globalThis.__voosModules = {};
-
 function getVoosModule(moduleName) {
-  if (!globalThis.__voosModules[moduleName]) {
+  if (!globalThis.voosModules[moduleName]) {
     throw new Error('Module not found: ' + moduleName);
   }
-  return globalThis.__voosModules[moduleName];
+  return globalThis.voosModules[moduleName];
 };
 
 // ==================== Actor Property Accessors ====================
