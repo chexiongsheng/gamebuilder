@@ -16,7 +16,7 @@
 
 
 import { myself } from "../../apiv2/actors/actors.mjs";
-import { callActionDeck } from "../../apiv2/actors/deck.mjs";
+import { callActionDeck } from "../../apiv2/actors/messages.mjs";
 import { getProps, propBoolean, propDecimal, propDeck, requireTrue } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [

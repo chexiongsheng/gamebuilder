@@ -15,7 +15,7 @@
  */
 
 
-import { callActionDeck, callEventDeck } from "../../apiv2/actors/deck.mjs";
+import { callActionDeck, callEventDeck } from "../../apiv2/actors/messages.mjs";
 import { getCard } from "../../apiv2/actors/memory.mjs";
 import { getProps, propBoolean, propDecimal, propDeck, propEnum, requireTrue } from "../../apiv2/actors/properties.mjs";
 

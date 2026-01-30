@@ -16,7 +16,7 @@
 
 import { exists, getDisplayName, myself } from "../../apiv2/actors/actors.mjs";
 import { getVar, setVar } from "../../apiv2/actors/attributes.mjs";
-import { callActionDeck } from "../../apiv2/actors/deck.mjs";
+import { callActionDeck } from "../../apiv2/actors/messages.mjs";
 import { getCard } from "../../apiv2/actors/memory.mjs";
 import { send } from "../../apiv2/actors/messages.mjs";
 import { propDeck } from "../../apiv2/actors/properties.mjs";

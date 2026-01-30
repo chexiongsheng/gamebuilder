@@ -16,7 +16,7 @@
 
 import { exists, myself } from "../../apiv2/actors/actors.mjs";
 import { setCameraSettings } from "../../apiv2/actors/camera_light.mjs";
-import { callDeck } from "../../apiv2/actors/deck.mjs";
+import { callDeck } from "../../apiv2/actors/messages.mjs";
 import { getCard, getMem } from "../../apiv2/actors/memory.mjs";
 import { getProps, propActor, propDeck } from "../../apiv2/actors/properties.mjs";
 import { detachFromParent } from "../../apiv2/hierarchy/parenting.mjs";

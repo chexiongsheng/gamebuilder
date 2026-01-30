@@ -16,7 +16,7 @@
 
 import { myself } from "../../apiv2/actors/actors.mjs";
 import { getDisplayName, setVar } from "../../apiv2/actors/attributes.mjs";
-import { callActionDeck } from "../../apiv2/actors/deck.mjs";
+import { callActionDeck } from "../../apiv2/actors/messages.mjs";
 import { getCard, getMem, getTemp } from "../../apiv2/actors/memory.mjs";
 import { cooldown, sendToAll } from "../../apiv2/actors/messages.mjs";
 import { propBoolean, propDecimal, propDeck, propNumber, requireTrue } from "../../apiv2/actors/properties.mjs";

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { callActionDeck, callDeck } from "../../apiv2/actors/deck.mjs";
+import { callActionDeck, callDeck } from "../../apiv2/actors/messages.mjs";
 import { getCard } from "../../apiv2/actors/memory.mjs";
 import { propDeck } from "../../apiv2/actors/properties.mjs";
 

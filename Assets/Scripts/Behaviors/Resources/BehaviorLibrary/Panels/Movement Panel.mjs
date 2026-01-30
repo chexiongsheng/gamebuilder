@@ -15,7 +15,7 @@
  */
 
 
-import { callActionDeck } from "../../apiv2/actors/deck.mjs";
+import { callActionDeck } from "../../apiv2/actors/messages.mjs";
 import { propDeck } from "../../apiv2/actors/properties.mjs";
 
 export const PROPS = [
