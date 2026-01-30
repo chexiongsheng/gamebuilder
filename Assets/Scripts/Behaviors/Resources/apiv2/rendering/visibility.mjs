@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { ApiV2Context } from "../../apiv2.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
 
 // VISIBLE_TO_MONACO
 

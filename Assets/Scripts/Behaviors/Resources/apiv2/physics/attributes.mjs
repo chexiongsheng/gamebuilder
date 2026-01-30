@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { ApiV2Context } from "../../apiv2.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
 import { assertBoolean, assertNumber, assert } from "../../util.mjs";
 
 // VISIBLE_TO_MONACO

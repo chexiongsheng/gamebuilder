@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { ApiV2Context } from "../../apiv2.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
 import { assertNumber, assertString, assert } from "../../util.mjs";
 import { myself, exists } from "./actors.mjs";
 import { getDisplayName } from "./attributes.mjs";

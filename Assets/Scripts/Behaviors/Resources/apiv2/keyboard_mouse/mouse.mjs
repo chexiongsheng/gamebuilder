@@ -15,7 +15,7 @@
  */
 
 import * as THREE from "three.mjs";
-import { ApiV2Context } from "../../apiv2.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
 import { vec3 } from "../misc/math.mjs";
 
 // VISIBLE_TO_MONACO

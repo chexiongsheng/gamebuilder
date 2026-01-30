@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { ApiV2Context } from "../../apiv2.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
 import { assert } from "../../util.mjs";
 import { exists } from "./actors.mjs";
 import { getPos } from "../transform/position-get.mjs";

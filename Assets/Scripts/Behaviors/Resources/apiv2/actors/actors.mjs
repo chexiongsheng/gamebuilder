@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { ApiV2Context } from "../../apiv2.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
 import { assertString, assert } from "../../util.mjs";
 import { getPlayerActorsCached } from "../../voosMain.mjs";
 import { getProps } from "./properties.mjs";

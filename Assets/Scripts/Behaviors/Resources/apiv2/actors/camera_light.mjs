@@ -15,7 +15,7 @@
  */
 
 import * as THREE from "three.mjs";
-import { ApiV2Context } from "../../apiv2.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
 import { assertNumber, assertBoolean, assertVector3, assertArrayOf, assertColor } from "../../util.mjs";
 import { vec3zero, vec3, vec3z, quatApply } from "../misc/math.mjs";
 import { myself, exists } from "./actors.mjs";

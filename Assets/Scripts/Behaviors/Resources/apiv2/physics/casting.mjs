@@ -15,7 +15,7 @@
  */
 
 import * as THREE from "three.mjs";
-import { ApiV2Context } from "../../apiv2.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
 import { assertVector3Duck, assertVector3, assertNumber, assertBoolean, assert } from "../../util.mjs";
 import { callVoosService } from "../../voosMain.mjs";
 import { vec3normalized } from "../misc/math.mjs";
