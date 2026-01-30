@@ -26,6 +26,7 @@ import { getTime } from "../../apiv2/misc/time.mjs";
 import { isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
 import { hide, show } from "../../apiv2/rendering/visibility.mjs";
 import { assertNumber } from "../../util.mjs";
+import { spin } from "../../apiv2/transform/rotation-set.mjs";
 
 export const PROPS = [
   propNumber("StartingHealth", 3),

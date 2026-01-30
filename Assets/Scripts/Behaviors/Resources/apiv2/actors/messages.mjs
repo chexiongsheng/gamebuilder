@@ -24,6 +24,10 @@ import { overlapSphere } from "../physics/casting.mjs";
 import { getProps } from "./properties.mjs";
 import { getTime } from "../misc/time.mjs";
 import { getTemp } from "./memory.mjs";
+import { propActor, propDeck, propString } from "./properties.mjs";
+import { getPointBehind } from "../transform/rotation-get.mjs";
+import { log } from "../misc/utility.mjs";
+import { clone } from "./cloning.mjs";
 
 // VISIBLE_TO_MONACO
 

@@ -15,6 +15,8 @@
  */
 
 import { ApiV2Context } from "../apiv2.mjs";
+import { UiColor, uiText } from "../ui/widgets.mjs";
+import { moveForward, moveRight } from "../transform/position-set.mjs";
 
 // VISIBLE_TO_MONACO
 

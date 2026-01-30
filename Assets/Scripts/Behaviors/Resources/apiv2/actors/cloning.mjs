@@ -19,6 +19,10 @@ import { assert } from "../../testing.mjs";;
 import { exists } from "./actors.mjs";
 import { getPos } from "../transform/position-get.mjs";
 import { getRot } from "../transform/rotation-get.mjs";
+import { propActor, propNumber } from "./properties.mjs";
+import { cooldown } from "./messages.mjs";
+import { Quaternion, Vector3 } from "../../threejs-overrides.mjs";
+import { vec3 } from "../misc/math.mjs";
 
 // VISIBLE_TO_MONACO
 

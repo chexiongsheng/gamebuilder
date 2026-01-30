@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 // Controlling<size=70%>\nGives player ability to use 'Controllable' actors, such as cars and horses.
 

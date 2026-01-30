@@ -22,6 +22,7 @@ import { getProps, propActor, propDecimal, propNumber } from "../../apiv2/actors
 import { getTime } from "../../apiv2/misc/time.mjs";
 import { getPos } from "../../apiv2/transform/position-get.mjs";
 import { getRot } from "../../apiv2/transform/rotation-get.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
 
 export const PROPS = [
   propActor("ActorToClone", "", {

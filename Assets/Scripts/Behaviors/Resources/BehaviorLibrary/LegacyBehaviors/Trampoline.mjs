@@ -16,6 +16,7 @@
 
 import { kick } from "../../voosMain.mjs";
 import * as THREE from "three.mjs";
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 // Trampoline<size=70%>\nAnything that touches it will get launched in the sky!
 

@@ -15,6 +15,10 @@
  */
 
 import { sendToAll } from "../actors/messages.mjs";
+import { spin, turn } from "../transform/rotation-set.mjs";
+import { deltaTime } from "./time.mjs";
+import { log } from "./utility.mjs";
+import { clone } from "../actors/cloning.mjs";
 
 // VISIBLE_TO_MONACO
 

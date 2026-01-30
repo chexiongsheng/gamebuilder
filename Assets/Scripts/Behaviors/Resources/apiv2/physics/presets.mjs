@@ -16,6 +16,8 @@
 
 import { assert } from "../../testing.mjs";;
 import { setSolid, setKinematic, enableGravity, enableKeepUpright, isSolid, isGravityEnabled, isKeepUprightEnabled, isKinematic } from "./attributes.mjs";
+import { move } from "../transform/position-set.mjs";
+import { response } from "../../voosMain.mjs";
 
 // VISIBLE_TO_MONACO
 

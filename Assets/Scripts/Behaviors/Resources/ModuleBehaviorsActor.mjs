@@ -15,6 +15,22 @@
  */
 
 import * as THREE from "three.mjs";
+import { enableGravity, isSolid, setAngularDrag, setBounciness, setDrag, setMass } from "./apiv2/physics/attributes.mjs";
+import { isGrounded, isPlayerControllable, setCameraActor, setIsPlayerControllable } from "./apiv2/player_controls/controls.mjs";
+import { assertBoolean, assertNumber, assertQuaternion, assertString, assertStringOrNull, assertVector3, mapGetOrCreate, parseJsonOrEmpty } from "./util.mjs";
+import { callVoosService, getActorBoolean, getActorFloat, getActorQuaternion, getActorString, getActorVector3, setActorBoolean, setActorFloat, setActorQuaternion, setActorString, setActorVector3, sysLog } from "./voosMain.mjs";
+import { Vector3 } from "./threejs-overrides.mjs";
+import { assert } from "./testing.mjs";
+import { exists } from "./apiv2/actors/actors.mjs";
+import { setCommentText, setDisplayName } from "./apiv2/actors/attributes.mjs";
+import { packObj, unpackObj } from "./pack-unpack.mjs";
+import { setLoopingAnimation } from "./apiv2/rendering/animation.mjs";
+import { HandlerApi } from "./HandlerApi.mjs";
+import { Queue } from "./Queue.src.mjs";
+import { ModuleBehaviorUse } from "./ModuleBehaviorDatabase.mjs";
+import { ModuleBehaviorSystem } from "./ModuleBehaviorSystem.mjs";
+import { send } from "./apiv2/actors/messages.mjs";
+import { ApiV2Context } from "./apiv2/apiv2.mjs";
 
 let MEM_CHECK_MODE = 'useOnly';
 

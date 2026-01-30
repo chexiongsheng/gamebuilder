@@ -18,6 +18,8 @@ import { ApiV2Context } from "../apiv2.mjs";
 import { assert } from "../../testing.mjs";
 import { assertNumber, assertString } from "../../util.mjs";;
 import { callVoosService } from "../../voosMain.mjs";
+import { exists } from "../actors/actors.mjs";
+import { log } from "../misc/utility.mjs";
 
 // VISIBLE_TO_MONACO
 

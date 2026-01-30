@@ -16,6 +16,11 @@
 
 import * as THREE from "three.mjs";
 import { assertNumber, assertVector3Duck, assertVector3, assertQuaternion } from "../../util.mjs";
+import { getTime } from "./time.mjs";
+import { sysLog } from "../../voosMain.mjs";
+import { rotate } from "../transform/rotation-set.mjs";
+import { setPosX } from "../transform/position-set.mjs";
+import { Vector3 } from "../../threejs-overrides.mjs";
 
 // VISIBLE_TO_MONACO
 

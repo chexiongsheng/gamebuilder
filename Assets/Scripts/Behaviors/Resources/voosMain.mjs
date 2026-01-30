@@ -24,14 +24,20 @@ import { ApiV2Context } from "./apiv2/apiv2.mjs";
 import { packObj } from "./pack-unpack.mjs";
 import { Actor } from "./ModuleBehaviorsActor.mjs";
 import { voosModules} from "./BehaviorLibrary/BehaviorLibraryIndex.mjs";
+import { ENABLE_PROFILING_SERVICE, beginProfileSample, endProfileSample } from "./util.mjs";
+import { send } from "./apiv2/actors/messages.mjs";
+import { Quaternion, Vector3 } from "./threejs-overrides.mjs";
+import { push } from "./apiv2/physics/velocity.mjs";
+import { log } from "./apiv2/misc/utility.mjs";
+import { MEM_CHECK_MODE } from "./ModuleBehaviorsActor.mjs";
 
 // TODO clean up all this as a single class instead of globals and crap.
 
 function getVoosModule(moduleName) {
-  if (!globalThis.voosModules[moduleName]) {
+  if (!voosModules[moduleName]) {
     throw new Error('Module not found: ' + moduleName);
   }
-  return globalThis.voosModules[moduleName];
+  return voosModules[moduleName];
 };
 
 // ==================== Actor Property Accessors ====================

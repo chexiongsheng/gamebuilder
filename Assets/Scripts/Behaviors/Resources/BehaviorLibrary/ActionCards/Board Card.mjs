@@ -29,6 +29,7 @@ import { getDistanceTo, getPos } from "../../apiv2/transform/position-get.mjs";
 import { setPos } from "../../apiv2/transform/position-set.mjs";
 import { getPointToLeftOf } from "../../apiv2/transform/rotation-get.mjs";
 import { assert } from "../../testing.mjs";;
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
 
 export const PROPS = [
   propDecimal("MaxDist", 5, {

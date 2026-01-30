@@ -17,6 +17,7 @@
 
 import { callActionDeck } from "../../apiv2/actors/messages.mjs";
 import { propDeck } from "../../apiv2/actors/properties.mjs";
+import { move } from "../../apiv2/transform/position-set.mjs";
 
 export const PROPS = [
   propDeck('moveDeck', 'Move', {

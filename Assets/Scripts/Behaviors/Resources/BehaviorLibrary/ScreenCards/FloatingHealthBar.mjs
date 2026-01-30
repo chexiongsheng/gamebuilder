@@ -24,6 +24,7 @@ import { getBoundsCenter } from "../../apiv2/rendering/body.mjs";
 import { getDistanceBetween } from "../../apiv2/transform/position-get.mjs";
 import { getScreenSphere } from "../../apiv2/ui/screen.mjs";
 import { uiRect } from "../../apiv2/ui/widgets.mjs";;
+import { raycast } from "../../apiv2/physics/casting.mjs";
 
 export const PROPS = [
   propDecimal('OffsetY', 1),

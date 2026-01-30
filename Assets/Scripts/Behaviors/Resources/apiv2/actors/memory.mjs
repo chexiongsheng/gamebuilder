@@ -17,6 +17,8 @@
 import { ApiV2Context } from "../apiv2.mjs";
 import { assertQuaternion, serializeQuaternion, deserializeQuaternion, assertVector3 } from "../../util.mjs";
 import { vec3 } from "../misc/math.mjs";
+import { log } from "../misc/utility.mjs";
+import { setVar } from "./attributes.mjs";
 
 // VISIBLE_TO_MONACO
 

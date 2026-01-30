@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 // Self-destruct clones<size=70%>\nClones will self-destruct after some time
 

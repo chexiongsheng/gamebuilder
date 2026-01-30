@@ -17,6 +17,8 @@
 import { ApiV2Context } from "../apiv2.mjs";
 import { assert } from "../../testing.mjs";;
 import { myself, exists } from "../actors/actors.mjs";
+import { rotate } from "../transform/rotation-set.mjs";
+import { move } from "../transform/position-set.mjs";
 
 // VISIBLE_TO_MONACO
 

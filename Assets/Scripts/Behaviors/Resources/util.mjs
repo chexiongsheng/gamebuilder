@@ -16,6 +16,7 @@
 
 import * as THREE from "three.mjs";
 import { assert, runUnitTests } from "./testing.mjs";
+import { callVoosService } from "./voosMain.mjs";
 
 let ENABLE_PROFILING_SERVICE = true;
 

@@ -18,6 +18,8 @@ import * as THREE from "three.mjs";
 import { ApiV2Context } from "../apiv2.mjs";
 import { vec3 } from "../misc/math.mjs";
 import { getPos } from "./position-get.mjs";
+import { Quaternion } from "../../threejs-overrides.mjs";
+import { log } from "../misc/utility.mjs";
 
 // VISIBLE_TO_MONACO
 

@@ -17,6 +17,7 @@
 import { getActorGroupDescription, getActorsInGroup } from "../../apiv2/actors/actors.mjs";
 import { sendToMany, sendToManyDelayed } from "../../apiv2/actors/messages.mjs";
 import { getProps, propActorGroup, propDecimal, propString } from "../../apiv2/actors/properties.mjs";
+import { send } from "../../apiv2/actors/messages.mjs";
 
 export const PROPS = [
   propActorGroup("Recipient", "", {

@@ -26,6 +26,7 @@ import { logError } from "../../apiv2/misc/utility.mjs";
 import { getPos } from "../../apiv2/transform/position-get.mjs";
 import { getRot } from "../../apiv2/transform/rotation-get.mjs";
 import { randBetween } from "../../apiv2/misc/math.mjs";;
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
 
 export const PROPS = [
   propActor('ActorToClone', '', {

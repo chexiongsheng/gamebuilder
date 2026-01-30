@@ -26,6 +26,8 @@ import { getControllingPlayer, setCameraActor, setControllingPlayer, setIsPlayer
 import { setTintHex } from "../../apiv2/rendering/color.mjs";
 import { UiColor, uiGetScreenHeight, uiGetScreenWidth, uiGetTextWidth, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
 import { assert } from "../../testing.mjs";;
+import { propDeck } from "../../apiv2/actors/properties.mjs";
+import { show } from "../../apiv2/rendering/visibility.mjs";
 
 export const PROPS = [
   // Note: this is an enum just for UX purposes; the underlying value is always

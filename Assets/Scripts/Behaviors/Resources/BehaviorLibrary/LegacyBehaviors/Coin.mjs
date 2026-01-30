@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { valueOr } from "../../util.mjs";
 
 // Pick-up Item\n<size=70%>Something players can pick up (by touching) once for some benefit.
 

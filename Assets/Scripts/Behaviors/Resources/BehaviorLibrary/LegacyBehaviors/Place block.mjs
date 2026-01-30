@@ -25,6 +25,7 @@
  *****************************************************************************/
 
 import { Vector3 } from "../../threejs-overrides.mjs";;
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 // tag ability
 

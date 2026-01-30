@@ -15,6 +15,8 @@
  */
 
 import * as THREE from "three.mjs";
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { OtherActor } from "../../HandlingActor.mjs";
 
 // Grabbable<size=70%>\nPlayers can grab and throw this object.
 

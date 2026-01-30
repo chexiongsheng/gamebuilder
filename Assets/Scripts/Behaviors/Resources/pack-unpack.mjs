@@ -15,6 +15,9 @@
  */
 
 import * as THREE from "three.mjs";
+import { Color, Quaternion, Vector3 } from "./threejs-overrides.mjs";
+import { push } from "./apiv2/physics/velocity.mjs";
+import { assert } from "./testing.mjs";
 
 function packObj(obj, label = '', errorList = null) {
   return packNode_(obj, label, new Set(), errorList || __dummyList);

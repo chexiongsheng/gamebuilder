@@ -16,6 +16,8 @@
 
 import { ID_QUAT } from "../../apiv2/misc/math.mjs";;
 import * as THREE from "three.mjs";
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
 
 // Grid Spawner<size=70%>\nOn reset, spawn clones of an actor in a grid.
 

@@ -1,3 +1,6 @@
+import { propDecimal } from "../actors/properties.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
+import { show } from "../rendering/visibility.mjs";
 ﻿/*
  * Copyright 2019 Google LLC
  *

@@ -34,6 +34,8 @@ import { setScale, setScaleUniform } from "../../apiv2/transform/scale.mjs";
 import { logError } from "../../apiv2/misc/utility.mjs";
 import { assert } from "../../testing.mjs";
 import { assertString, decodeUndefineds } from "../../util.mjs";;
+import { kick } from "../../voosMain.mjs";
+import { push } from "../../apiv2/physics/velocity.mjs";
 
 // Kickable<size=70%>\nAllows this actor to be affected by velocity requests from other actors, when they use the 'kick' function.
 

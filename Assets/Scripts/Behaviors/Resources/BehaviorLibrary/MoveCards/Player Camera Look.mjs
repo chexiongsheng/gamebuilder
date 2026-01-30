@@ -19,6 +19,8 @@ import { isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
 import { lookTowardDir } from "../../apiv2/transform/rotation-set.mjs";;
 import { lookDir } from "../../apiv2/transform/rotation-set.mjs";
 import { getAimDirection } from "../../apiv2/player_controls/aiming.mjs";
+import { getRight } from "../../apiv2/transform/rotation-get.mjs";
+import { degToRad } from "../../apiv2/misc/math.mjs";
 
 // Player Controls: Basic WASD.
 

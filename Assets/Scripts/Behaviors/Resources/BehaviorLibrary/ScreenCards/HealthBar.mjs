@@ -22,6 +22,7 @@ import { getLocalPlayer } from "../../apiv2/multiplayer/players.mjs";
 import { getControllingPlayer } from "../../apiv2/player_controls/controls.mjs";
 import { UiColor, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
 import * as THREE from "three.mjs";
+import { show } from "../../apiv2/rendering/visibility.mjs";
 
 export const PROPS = [
   propNumber('X', 1350),

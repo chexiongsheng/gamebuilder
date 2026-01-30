@@ -26,6 +26,8 @@
 
 import { log } from "../../apiv2/misc/utility.mjs";
 import { stringOr, valueOr } from "../../util.mjs";;
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
 
 // tag gamerules
 // property Actor TouchesWhat

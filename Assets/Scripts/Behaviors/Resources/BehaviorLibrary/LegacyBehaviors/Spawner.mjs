@@ -25,6 +25,8 @@
  *****************************************************************************/
 
 import { logError } from "../../apiv2/misc/utility.mjs";;
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
 
 // tag utility
 

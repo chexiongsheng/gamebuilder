@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { move } from "../../apiv2/transform/position-set.mjs";
 
 // Follow nearest with tag
 

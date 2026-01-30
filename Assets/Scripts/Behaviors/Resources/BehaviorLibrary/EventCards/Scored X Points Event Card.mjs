@@ -19,6 +19,7 @@ import { getDisplayName } from "../../apiv2/actors/attributes.mjs";
 import { getCard } from "../../apiv2/actors/memory.mjs";
 import { getControllingPlayer, isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
 import { getProps, propActor, propEnum, propNumber, requireEqual } from "../../apiv2/actors/properties.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
 
 export const PROPS = [
   propNumber("NeededScore", 3, {

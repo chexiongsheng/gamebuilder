@@ -15,6 +15,15 @@
  */
 
 import * as THREE from "three.mjs";
+import { assertNumber, assertObjectNotNull, assertString, assertTypeOf, assertValidMessageName } from "../../util.mjs";
+import { push } from "../physics/velocity.mjs";
+import { log } from "../misc/utility.mjs";
+import { show } from "../rendering/visibility.mjs";
+import { myself } from "../actors/actors.mjs";
+import { propImage } from "../actors/properties.mjs";
+import { vec3 } from "../misc/math.mjs";
+import { send } from "../actors/messages.mjs";
+import { ApiV2Context } from "../apiv2.mjs";
 
 // VISIBLE_TO_MONACO
 

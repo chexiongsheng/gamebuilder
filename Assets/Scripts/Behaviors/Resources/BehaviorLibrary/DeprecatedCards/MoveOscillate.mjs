@@ -21,6 +21,7 @@ import { deltaTime } from "../../apiv2/misc/time.mjs";
 import { getPos, getSpawnPos } from "../../apiv2/transform/position-get.mjs";
 import { setPos } from "../../apiv2/transform/position-set.mjs";
 import { getForward, getRight, getUp } from "../../apiv2/transform/rotation-get.mjs";
+import { move } from "../../apiv2/transform/position-set.mjs";
 
 // Move: Oscillate
 // Oscillates along a direction

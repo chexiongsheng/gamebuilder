@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 // Controllable<size=70%>\nPlayers can control this object, like a car or a horse.
 

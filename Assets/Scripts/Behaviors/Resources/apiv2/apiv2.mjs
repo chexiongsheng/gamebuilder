@@ -28,6 +28,15 @@ import { getProps, setProps } from "./actors/properties.mjs";
 import { getCard, setCard, getMem, setMem, setTemp } from "./actors/memory.mjs";
 import { Actor } from "../ModuleBehaviorsActor.mjs";
 import { ModuleBehaviorDatabase } from "../ModuleBehaviorDatabase.mjs";
+import { getActorsUnderMouse } from "./keyboard_mouse/mouse.mjs";
+import { HandlerApi } from "../HandlerApi.mjs";
+import { getPlayerControlledActor } from "./multiplayer/players.mjs";
+import { push } from "./physics/velocity.mjs";
+import { getRot } from "./transform/rotation-get.mjs";
+import { trySpawnParticleEffect } from "./particles/particleeffects.mjs";
+import { tryPlaySound } from "./sfx/sfx.mjs";
+import { getPos } from "./transform/position-get.mjs";
+import { callDeck, send } from "./actors/messages.mjs";
 
 /**
  * Internal global context needed for APIv2 operations.

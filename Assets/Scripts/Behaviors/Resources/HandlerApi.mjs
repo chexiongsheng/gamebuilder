@@ -15,6 +15,23 @@
  */
 
 import * as THREE from "three.mjs";
+import { CastMode, castAdvanced, checkBox, overlapSphere, raycast } from "./apiv2/physics/casting.mjs";
+import { isAttached } from "./apiv2/hierarchy/parenting.mjs";
+import { addTorque } from "./apiv2/physics/velocity.mjs";
+import { clone } from "./apiv2/actors/cloning.mjs";
+import { assert } from "./testing.mjs";
+import { ActorMovementApi, HandlingActor, OtherActor } from "./HandlingActor.mjs";
+import { assertNumber, assertString, assertVector3, serializeQuaternion } from "./util.mjs";
+import { clamp } from "./apiv2/misc/math.mjs";
+import { callVoosService, queueMessageToUnity, response } from "./voosMain.mjs";
+import { getTimeSinceReset } from "./apiv2/misc/time.mjs";
+import { BlockStyle } from "./apiv2/terrain/blocks.mjs";
+import { isInMultiplayerMode } from "./apiv2/multiplayer/players.mjs";
+import { ModuleBehaviorUse } from "./ModuleBehaviorDatabase.mjs";
+import { declareMemoryUnchanged } from "./apiv2/actors/memory.mjs";
+import { destroySelf } from "./apiv2/actors/actors.mjs";
+import { Actor } from "./ModuleBehaviorsActor.mjs";
+import { getCallStack } from "./debug.mjs";
 
 // KEEP SYNC'D WITH Services.cs
 const MAX_PHYSICS_QUERY_RESULTS = 500;

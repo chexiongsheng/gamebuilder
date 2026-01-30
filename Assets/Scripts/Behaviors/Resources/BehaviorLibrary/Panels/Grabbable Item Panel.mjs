@@ -35,6 +35,7 @@ import { getForward } from "../../apiv2/transform/rotation-get.mjs";
 import { turn } from "../../apiv2/transform/rotation-set.mjs";
 import { assert } from "../../testing.mjs";
 import { assertVector3 } from "../../util.mjs";;
+import { rotate } from "../../apiv2/transform/rotation-set.mjs";
 
 const Quaternion = THREE.Quaternion;
 
@@ -176,4 +177,3 @@ function maybeRestore(isResetGame) {
     delete getCard().grabbedState;
   }
 }
-

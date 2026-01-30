@@ -17,6 +17,8 @@
 import * as THREE from "three.mjs";
 import { ApiV2Context } from "../apiv2.mjs";
 import { assertString } from "../../util.mjs";
+import { turn } from "../transform/rotation-set.mjs";
+import { move } from "../transform/position-set.mjs";
 
 // VISIBLE_TO_MONACO
 

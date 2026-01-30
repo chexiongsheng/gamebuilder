@@ -28,6 +28,7 @@
 
 import { log } from "../../apiv2/misc/utility.mjs";
 import { assert } from "../../testing.mjs";;
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 /**
  * @param {HandlerApi} api

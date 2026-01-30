@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
 
 // Respawning<size=70%>\nRespawn (on death, reset, etc.)
 

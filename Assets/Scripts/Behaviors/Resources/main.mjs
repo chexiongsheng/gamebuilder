@@ -1,5 +1,10 @@
 import * as three from "three.mjs";
 import { updateAgent, postMessageFlush} from "./voosMain.mjs"; 
+import { HandlerApi } from "./HandlerApi.mjs";
+import { Queue } from "./Queue.src.mjs";
+import { HandlingActor } from "./HandlingActor.mjs";
+import { ModuleBehaviorDatabase } from "./ModuleBehaviorDatabase.mjs";
+import { ModuleBehaviorSystem } from "./ModuleBehaviorSystem.mjs";
 
 globalThis.THREE = three;
 //const require = puer.module.createRequire('');

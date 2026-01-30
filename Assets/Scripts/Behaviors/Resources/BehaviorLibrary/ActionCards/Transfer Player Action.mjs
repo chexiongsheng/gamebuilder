@@ -20,6 +20,7 @@ import { send } from "../../apiv2/actors/messages.mjs";
 import { log, logError } from "../../apiv2/misc/utility.mjs";
 import { getControllingPlayer, isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
 import { getProps, propActor, propBoolean, propCardTargetActor } from "../../apiv2/actors/properties.mjs";
+import { Actor } from "../../ModuleBehaviorsActor.mjs";
 
 export const PROPS = [
   propCardTargetActor("FromActor"),

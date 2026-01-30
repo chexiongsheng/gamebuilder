@@ -21,6 +21,7 @@ import { castAdvanced, CastMode } from "../../apiv2/physics/casting.mjs";
 import { getProps, propActorGroup, propDecimal } from "../../apiv2/actors/properties.mjs";
 import { getPos } from "../../apiv2/transform/position-get.mjs";
 import { getForward, getPointAbove } from "../../apiv2/transform/rotation-get.mjs";
+import { raycast } from "../../apiv2/physics/casting.mjs";
 
 export const PROPS = [
   propActorGroup("Targets", "@ANY", {

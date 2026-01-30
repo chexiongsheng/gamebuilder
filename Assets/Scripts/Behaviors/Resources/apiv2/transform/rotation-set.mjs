@@ -21,6 +21,10 @@ import { vec3y, vec3add, vec3scale } from "../misc/math.mjs";
 import { deltaTime } from "../misc/time.mjs";
 import { getRot } from "./rotation-get.mjs";
 import { getPos } from "./position-get.mjs";
+import { vec3, vec3x } from "../misc/math.mjs";
+import { Quaternion } from "../../threejs-overrides.mjs";
+import { getPitch, getRoll, getYaw } from "./rotation-get.mjs";
+import { propActor } from "../actors/properties.mjs";
 
 // VISIBLE_TO_MONACO
 

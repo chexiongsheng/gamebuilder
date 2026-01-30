@@ -23,6 +23,7 @@ import { moveForward } from "../../apiv2/transform/position-set.mjs";
 import { getForward } from "../../apiv2/transform/rotation-get.mjs";
 import { lookToward, turn } from "../../apiv2/transform/rotation-set.mjs";
 import * as THREE from "three.mjs";
+import { move } from "../../apiv2/transform/position-set.mjs";
 
 // Random walk
 

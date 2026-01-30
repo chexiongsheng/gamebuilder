@@ -19,6 +19,7 @@ import { log } from "../../apiv2/misc/utility.mjs";
 import { assert } from "../../testing.mjs";;
 import { kick } from "../../voosMain.mjs";
 import * as THREE from "three.mjs";
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 // Takes damage<size=70%>\nMake it have health and be able to take damage.
 

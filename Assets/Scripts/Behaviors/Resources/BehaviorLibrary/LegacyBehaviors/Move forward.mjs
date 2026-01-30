@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { HandlerApi } from "../../HandlerApi.mjs";
 
 // Move forward<size=70%>\nMove forward at a given speed.
 
@@ -37,4 +38,3 @@ export function OnTick(api) {
   }
   api.move.forward(api.getProps().Speed);
 }
-

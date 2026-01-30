@@ -17,6 +17,7 @@
 import { getCardTargetActor } from "../../apiv2/actors/actors.mjs";
 import { send } from "../../apiv2/actors/messages.mjs";
 import { getProps, propBoolean, propCardTargetActor, propDecimal, propEnum, propString, requireTrue } from "../../apiv2/actors/properties.mjs";
+import { clamp, max, min } from "../../apiv2/misc/math.mjs";
 
 export const PROPS = [
   propCardTargetActor("CardTargetActor", {

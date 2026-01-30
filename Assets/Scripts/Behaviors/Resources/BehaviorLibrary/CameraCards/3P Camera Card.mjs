@@ -26,6 +26,8 @@ import { getDistanceBetween, getPos, selfToWorldPos } from "../../apiv2/transfor
 import { setPos } from "../../apiv2/transform/position-set.mjs";
 import { getBackward, getForward, getRight, getYaw } from "../../apiv2/transform/rotation-get.mjs";
 import { setYawPitchRoll } from "../../apiv2/transform/rotation-set.mjs";
+import { raycast } from "../../apiv2/physics/casting.mjs";
+import { response } from "../../voosMain.mjs";
 
 export const PROPS = [
   propDecimal("HeadOffsetX", 0),
