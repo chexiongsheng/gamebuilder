@@ -28,7 +28,7 @@ import { hide, show } from "../../apiv2/rendering/visibility.mjs";
 import { getDistanceTo, getPos } from "../../apiv2/transform/position-get.mjs";
 import { setPos } from "../../apiv2/transform/position-set.mjs";
 import { getPointToLeftOf } from "../../apiv2/transform/rotation-get.mjs";
-import { assert } from "../../apiv2/util.mjs";
+import { assert } from "../../util.mjs";
 
 export const PROPS = [
   propDecimal("MaxDist", 5, {

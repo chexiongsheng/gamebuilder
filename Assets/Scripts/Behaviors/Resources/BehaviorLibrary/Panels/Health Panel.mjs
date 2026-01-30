@@ -25,7 +25,7 @@ import { clamp } from "../../apiv2/misc/math.mjs";
 import { getTime } from "../../apiv2/misc/time.mjs";
 import { isPlayerControllable } from "../../apiv2/player_controls/controls.mjs";
 import { hide, show } from "../../apiv2/rendering/visibility.mjs";
-import { assertNumber } from "../../apiv2/util.mjs";
+import { assertNumber } from "../../util.mjs";
 
 export const PROPS = [
   propNumber("StartingHealth", 3),

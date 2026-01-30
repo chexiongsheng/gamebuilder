@@ -25,7 +25,7 @@ import { lookDir } from "../../apiv2/player_controls/controls.mjs";
 import { getDistanceBetween, getPos } from "../../apiv2/transform/position-get.mjs";
 import { setPos } from "../../apiv2/transform/position-set.mjs";
 import { getForward } from "../../apiv2/transform/rotation-get.mjs";
-import { assertNumber, assertVector3 } from "../../apiv2/util.mjs";
+import { assertNumber, assertVector3 } from "../../util.mjs";
 
 export const PROPS = [
   propNumber('SmoothFactor', 10),

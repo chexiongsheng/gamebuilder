@@ -20,7 +20,7 @@ import { colorFromHex } from "../../apiv2/misc/colors.mjs";
 import { toFixedLength } from "../../apiv2/misc/utility.mjs";
 import { getAllPlayers, getLocalPlayer, getPlayerByNumber, getPlayerNumber } from "../../apiv2/multiplayer/players.mjs";
 import { RectStyle, UI_TEXT_CHAR_WIDTH, uiRect, uiText } from "../../apiv2/ui/widgets.mjs";
-import { assertString, logError } from "../../apiv2/util.mjs";
+import { assertString, logError } from "../../util.mjs";
 
 export const PROPS = [
 

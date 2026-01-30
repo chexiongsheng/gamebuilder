@@ -23,7 +23,7 @@ import { detachFromParent } from "../../apiv2/hierarchy/parenting.mjs";
 import { setKinematic, setSolid } from "../../apiv2/physics/physics.mjs";
 import { getCameraActor, isPlayerControllable, setCameraActorPlease } from "../../apiv2/player_controls/controls.mjs";
 import { getTintColor, setTintColor } from "../../apiv2/rendering/color.mjs";
-import { assert, logError } from "../../apiv2/util.mjs";
+import { assert, logError } from "../../util.mjs";
 
 export const PROPS = [
   propActor('target', '', {

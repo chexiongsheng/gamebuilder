@@ -31,7 +31,7 @@ import { getPos, selfToWorldPos } from "../../apiv2/transform/position-get.mjs";
 import { setPos } from "../../apiv2/transform/position-set.mjs";
 import { getForward } from "../../apiv2/transform/rotation-get.mjs";
 import { turn } from "../../apiv2/transform/rotation-set.mjs";
-import { assert, assertVector3 } from "../../apiv2/util.mjs";
+import { assert, assertVector3 } from "../../util.mjs";
 
 const Quaternion = THREE.Quaternion;
 
