@@ -30,7 +30,8 @@ using System.IO;
 // interface.
 public class BehaviorSystem : MonoBehaviour
 {
-  static string BuiltinBehaviorExtension = ".js.txt";
+  static string BuiltinBehaviorExtension = ".mjs";
+  static string BuiltinBehaviorMetadataExtension = ".metaJson.txt";
   public static string UserBehaviorExtension = ".js";
 
   public Util.AbstractPath[] typings;
@@ -44,7 +45,7 @@ public class BehaviorSystem : MonoBehaviour
   Behaviors.Database db = new Behaviors.Database();
 
   Dictionary<string, Behaviors.Behavior> loadedBehaviorsByAbsPath = new Dictionary<string, Behaviors.Behavior>();
-  Dictionary<string, string> builtinAbsPathByFilename = new Dictionary<string, string>();
+  // No longer need builtinResourcePathByFilename dictionary - we can derive the resource path directly
   System.Collections.ObjectModel.ReadOnlyCollection<string> builtinUris;
 
   public VoosEngine voosEngine;
@@ -66,31 +67,77 @@ public class BehaviorSystem : MonoBehaviour
   HashSet<string> brainIdsHandlingCollisions = new HashSet<string>();
   Dictionary<ulong, SavedCardPack> cardPacks = new Dictionary<ulong, SavedCardPack>();
 
-  // Maybe cached.
-  Behaviors.Behavior CachedLoadBehavior(string absPath, string label)
+  // Maybe cached. For builtin behaviors, resourcePath is the Resources path; for others, it's still absPath
+  Behaviors.Behavior CachedLoadBehavior(string resourcePathOrAbsPath, string label, bool isBuiltin = false)
   {
-    if (loadedBehaviorsByAbsPath.ContainsKey(absPath))
+    if (loadedBehaviorsByAbsPath.ContainsKey(resourcePathOrAbsPath))
     {
-      return loadedBehaviorsByAbsPath[absPath];
+      return loadedBehaviorsByAbsPath[resourcePathOrAbsPath];
     }
     else
     {
-      string js = File.ReadAllText(absPath);
+      string js;
       string metaJson = null;
 
-      string metaPath = absPath + ".metaJson";
-      if (File.Exists(metaPath))
+      if (isBuiltin)
       {
-        metaJson = File.ReadAllText(metaPath);
+        // Load from Resources - try different possible paths
+        TextAsset jsAsset = null;
+        string[] possiblePaths = {
+          "BehaviorLibrary/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/ActionCards/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/CameraCards/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/LegacyBehaviors/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/DeprecatedCards/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/DeprecatedPanels/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/EventCards/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/MoveCards/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/Panels/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/ScreenCards/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/Specs/" + resourcePathOrAbsPath
+        };
+
+        foreach (string path in possiblePaths)
+        {
+          jsAsset = Resources.Load<TextAsset>(path);
+          if (jsAsset != null)
+          {
+            // Try to load metadata from the same directory
+            // Since Resources paths don't include extensions, we need to add the metadata extension
+            string metaResourcePath = path + ".metaJson";
+            TextAsset metaAsset = Resources.Load<TextAsset>(metaResourcePath);
+            if (metaAsset != null)
+            {
+              metaJson = metaAsset.text;
+            }
+            break;
+          }
+        }
+
+        if (jsAsset == null)
+        {
+          throw new System.Exception($"Could not load builtin behavior from Resources: {resourcePathOrAbsPath}");
+        }
+        js = jsAsset.text;
+      }
+      else
+      {
+        // Load from file system (legacy path)
+        js = File.ReadAllText(resourcePathOrAbsPath);
+        string metaPath = resourcePathOrAbsPath + ".metaJson";
+        if (File.Exists(metaPath))
+        {
+          metaJson = File.ReadAllText(metaPath);
+        }
       }
 
       Behaviors.Behavior beh = new Behaviors.Behavior
       {
         label = label,
         javascript = js,
-        metadataJson = metaJson
+        metadataJson = metaJson ?? ""  // Ensure metadataJson is never null
       };
-      loadedBehaviorsByAbsPath.Add(absPath, beh);
+      loadedBehaviorsByAbsPath.Add(resourcePathOrAbsPath, beh);
       return beh;
     }
   }
@@ -105,13 +152,24 @@ public class BehaviorSystem : MonoBehaviour
           {
             Debug.Assert(!uri.LocalPath.ContainsDirectorySeparators());
             string filename = uri.LocalPath + BuiltinBehaviorExtension;
-            if (!builtinAbsPathByFilename.ContainsKey(filename)
-              && returnEmptyForMissingBuiltinBehaviors)
+
+            // Check if this builtin behavior exists by trying to load it
+            // We'll let CachedLoadBehavior handle the actual loading and error handling
+            if (returnEmptyForMissingBuiltinBehaviors)
             {
-              return new Behavior { draftJavascript = "", javascript = "", label = "<Missing>", metadataJson = "{}" };
+              try
+              {
+                return CachedLoadBehavior(uri.LocalPath, filename, true);
+              }
+              catch
+              {
+                return new Behavior { draftJavascript = "", javascript = "", label = "<Missing>", metadataJson = "{}" };
+              }
             }
-            string absPath = builtinAbsPathByFilename[filename];
-            return CachedLoadBehavior(absPath, filename);
+            else
+            {
+              return CachedLoadBehavior(uri.LocalPath, filename, true);
+            }
           }
 
         case EmbeddedBehaviorUriScheme:
@@ -122,7 +180,7 @@ public class BehaviorSystem : MonoBehaviour
             throw new System.Exception("Unsupported as of 20190514");
             string file = uri.LocalPath;
             string absPath = Path.Combine(GetUserBehaviorsRoot(), file);
-            var data = CachedLoadBehavior(absPath, file);
+            var data = CachedLoadBehavior(absPath, file, false);
             data.userLibraryFile = file;
             return data;
           }
@@ -430,28 +488,37 @@ public class BehaviorSystem : MonoBehaviour
       List<string> uris = new List<string>();
       HashSet<string> urisSeen = new HashSet<string>();
 
-      foreach (string behaviorAbsPath in Directory.EnumerateFiles(GetBuiltinBehaviorsRoot(), $"*{BuiltinBehaviorExtension}", SearchOption.AllDirectories))
-      {
-        // Build URI.
-        string uriPath =
-        // Only use the file name, so we're free to move them around for internal organization
-        Path.GetFileName(behaviorAbsPath)
-        // Lastly, to give us flexibility on the extension...
-        .Replace(BuiltinBehaviorExtension, "");
+      // Load all TextAssets from Resources/BehaviorLibrary recursively
+      TextAsset[] behaviorAssets = Resources.LoadAll<TextAsset>("BehaviorLibrary");
 
-        // Ignore it if it's a spec file (that's only used for docs).
-        if (uriPath.StartsWith("spec_"))
+      foreach (TextAsset asset in behaviorAssets)
+      {
+        string assetName = asset.name;
+
+        // Skip metadata files - we only want .mjs files
+        if (assetName.EndsWith(".metaJson"))
         {
           continue;
         }
+
+        // Ignore it if it's a spec file (that's only used for docs).
+        if (assetName.StartsWith("spec_"))
+        {
+          continue;
+        }
+
+        // Build URI path from asset name
+        string uriPath = assetName;
 
         Debug.Assert(!uriPath.ContainsDirectorySeparators());
 
         string uriString = $"{BuiltinBehaviorUriScheme}:{uriPath}";
         uris.Add(uriString);
-        builtinAbsPathByFilename[Path.GetFileName(behaviorAbsPath)] = behaviorAbsPath;
 
-        Debug.Assert(!urisSeen.Contains(uriString), $"Duplicate file name found in builtin behaviors library. One of the files: {behaviorAbsPath}");
+        // No longer need to store in dictionary - we can derive the resource path directly
+
+        Debug.Assert(!urisSeen.Contains(uriString), $"Duplicate file name found in builtin behaviors library. Asset: {assetName}");
+        urisSeen.Add(uriString);
       }
 
       builtinUris = uris.AsReadOnly();
