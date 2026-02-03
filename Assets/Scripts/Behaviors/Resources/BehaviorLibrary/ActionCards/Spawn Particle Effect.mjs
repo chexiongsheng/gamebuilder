@@ -38,9 +38,9 @@ export const PROPS = [
 export function onAction() {
   if (getProps().ParticleEffect) {
     const euler = new THREE.Euler(
-      THREE.Math.degToRad(getProps().RotationX),
-      THREE.Math.degToRad(getProps().RotationY),
-      THREE.Math.degToRad(getProps().RotationZ));
+      THREE.MathUtils.degToRad(getProps().RotationX),
+      THREE.MathUtils.degToRad(getProps().RotationY),
+      THREE.MathUtils.degToRad(getProps().RotationZ));
     const addRot = new Quaternion();
     addRot.setFromEuler(euler);
     const finalRot = getRot().multiply(addRot);
@@ -50,7 +50,7 @@ export function onAction() {
     spawnParticleEffect(
       getProps().ParticleEffect,
       spawnPos,
-      finalEuler.toVector3(),
+      new THREE.Vector3(finalEuler.x, finalEuler.y, finalEuler.z),
       getProps().Scale);
   }
 }
