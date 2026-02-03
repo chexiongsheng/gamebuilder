@@ -1014,7 +1014,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   // Returns error messages if any. Will never return null.
   public bool SetModule(string moduleKey, string javascript)
   {
-    throw new NotImplementedException($"Try load module ${moduleKey} dynamic.");
+    throw new NotImplementedException($"Try load module {moduleKey} dynamic.");
   }
 
   public bool ResetBrain()
