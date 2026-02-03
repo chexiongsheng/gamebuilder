@@ -15,6 +15,8 @@ namespace Voos
   {
     private ScriptEnv jsEnv;
     private bool isInitialized = false;
+    private MemoryFallbackLoader loader;
+
 
     // 调试和性能监控
     public static bool DebugMode = false;
@@ -40,6 +42,19 @@ namespace Voos
     }
 
     /// <summary>
+    /// 添加内存文件
+    /// </summary>
+    public void AddMemoryFile(string filepath, string content)
+    {
+        if (loader == null)
+        {
+            loader = new MemoryFallbackLoader();
+        }
+        loader.AddFile(filepath, content);
+    }
+
+
+    /// <summary>
     /// 初始化Puerts环境
     /// </summary>
     public bool Initialize()
@@ -54,9 +69,11 @@ namespace Voos
       {
         Debug.Log("[PuertsScriptEngine] Initializing Puerts environment...");
 
-        jsEnv = new ScriptEnv(new BackendV8());
+        if (loader == null) loader = new MemoryFallbackLoader();
+        jsEnv = new ScriptEnv(new BackendV8(loader));
 
         jsEnv.ExecuteModule("puerts/module.mjs");
+
         ExportsFunctions = jsEnv.ExecuteModule("main.mjs");
         Debug.Log("[PuertsScriptEngine] main.mjs loaded successfully");
 
@@ -231,4 +248,48 @@ namespace Voos
       }
     }
   }
+
+  /// <summary>
+  /// 支持内存文件的Loader
+  /// </summary>
+  public class MemoryFallbackLoader : Puerts.ILoader, Puerts.IModuleChecker
+  {
+      private Puerts.DefaultLoader defaultLoader;
+      private Dictionary<string, string> memoryFiles = new Dictionary<string, string>();
+
+      public MemoryFallbackLoader()
+      {
+          defaultLoader = new Puerts.DefaultLoader();
+      }
+
+      public void AddFile(string filepath, string content)
+      {
+          memoryFiles[filepath] = content;
+      }
+
+      public bool FileExists(string filepath)
+      {
+          if (memoryFiles.ContainsKey(filepath))
+          {
+              return true;
+          }
+          return defaultLoader.FileExists(filepath);
+      }
+
+      public string ReadFile(string filepath, out string debugpath)
+      {
+          if (memoryFiles.TryGetValue(filepath, out string content))
+          {
+              debugpath = filepath;
+              return content;
+          }
+          return defaultLoader.ReadFile(filepath, out debugpath);
+      }
+
+      public bool IsESM(string filepath)
+      {
+          return defaultLoader.IsESM(filepath);
+      }
+  }
 }
+

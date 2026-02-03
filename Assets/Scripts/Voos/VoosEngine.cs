@@ -1014,7 +1014,23 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   // Returns error messages if any. Will never return null.
   public bool SetModule(string moduleKey, string javascript)
   {
-    throw new NotImplementedException($"Try load module {moduleKey} dynamic.");
+    if (!moduleKey.StartsWith("embedded:"))
+    {
+      throw new NotImplementedException($"Try load module {moduleKey} dynamic.");
+    }
+    // TDOO: 暂时这么干，加载用户动态编辑的模块
+    string modulePath = $"BehaviorLibrary/dynamic/{moduleKey}.mjs";
+    puertsAdapter.AddMemoryFile(modulePath, javascript);
+    string wrapperCode = $@"
+import * as module from '{modulePath}';
+import {{ setVoosModule }} from ""./voosMain.mjs"";
+// 注册模块
+setVoosModule('{moduleKey}', module);
+";
+    string wrapperPath = $"voos_wrapper_{moduleKey}.mjs";
+    puertsAdapter.AddMemoryFile(wrapperPath, wrapperCode);
+    puertsAdapter.ExecuteModule(wrapperPath);
+    return true;
   }
 
   public bool ResetBrain()

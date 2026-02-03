@@ -31,6 +31,8 @@ import { push } from "./apiv2/physics/velocity.mjs";
 import { log } from "./apiv2/misc/utility.mjs";
 import { setMemCheckMode } from "./ModuleBehaviorsActor.mjs";
 
+const require = puer.module.createRequire('');
+
 // TODO clean up all this as a single class instead of globals and crap.
 
 function getVoosModule(moduleName) {
@@ -39,6 +41,10 @@ function getVoosModule(moduleName) {
   }
   return voosModules[moduleName];
 };
+
+function setVoosModule(moduleName, module) {
+  voosModules[moduleName] = module;
+}
 
 // ==================== Actor Property Accessors ====================
 
@@ -569,3 +575,4 @@ export { tickWorld };
 export { updateAgent };
 export { updateBehaviorDatabase };
 export { updateCount };
+export { setVoosModule };

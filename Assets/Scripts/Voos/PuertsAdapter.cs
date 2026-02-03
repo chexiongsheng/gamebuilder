@@ -64,6 +64,16 @@ namespace Voos
       }
     }
 
+    public void AddMemoryFile(string filepath, string content)
+    {
+      scriptEngine.AddMemoryFile(filepath, content);
+    }
+
+    public void ExecuteModule(string path)
+    {
+      scriptEngine.ExecuteModule(path);
+    }
+
     /// <summary>
     /// 重置Brain（编译主脚本）
     /// </summary>

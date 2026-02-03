@@ -20,6 +20,8 @@ public static class CodeTemplates
 @"// Example Action card.
 // The onAction function will be called when this card
 // is activated.
+import { getProps, propNumber } from ""../../apiv2/actors/properties.mjs"";
+import { moveUp } from ""../../apiv2/transform/position-set.mjs"";
 
 export const PROPS = [
   propNumber('distance', 1)
@@ -27,7 +29,7 @@ export const PROPS = [
 
 export function onAction() {
   // Example action: move the actor up a bit.
-  moveUp(props.distance);
+  moveUp(getProps().distance);
 
   // To print a log message, uncomment this: (press ~ to show console)
   //log('Action triggered!')
@@ -42,8 +44,10 @@ export function onAction() {
 // Here is an example that triggers on a collision:
 
 // When we collide, store the event in card.triggeredEvent.
+import { getCard } from ""../../apiv2/actors/memory.mjs"";
+
 export function onCollision(msg) {
-  card.triggeredEvent = {
+  getCard().triggeredEvent = {
     actor: msg.other
   };
 }
@@ -51,10 +55,10 @@ export function onCollision(msg) {
 // This is the checking function that gets called every frame
 // to check if the event happened.
 export function onCheck() {
-  if (card.triggeredEvent) {
+  if (getCard().triggeredEvent) {
     // We have an event to deliver, so deliver it now.
-    const rv = card.triggeredEvent;
-    delete card.triggeredEvent;
+    const rv = getCard().triggeredEvent;
+    delete getCard().triggeredEvent;
 
     // To print a log message, uncomment this: (press ~ to show console)
     //log('Event triggered!')
@@ -69,6 +73,10 @@ export function onCheck() {
 @"// Example card.
 
 // User-editable properties for this card:
+import { getProps, propNumber } from ""../../apiv2/actors/properties.mjs"";
+import { cooldown, send } from ""../../apiv2/actors/messages.mjs"";
+import { moveForward, moveRight } from ""../../apiv2/transform/position-set.mjs"";
+
 export const PROPS = [
   propNumber('speed', 2)
 ];
@@ -77,7 +85,7 @@ export const PROPS = [
 export function onTick() { 
   // Uncomment the line below to make the actor move forward, at the
   // speed that was set in the properties.
-  // moveForward(props.speed);
+  // moveForward(getProps().speed);
 }
 
 // onCollision is called when the actor collides with another actor:
