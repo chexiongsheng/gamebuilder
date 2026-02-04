@@ -101,16 +101,10 @@ class MessageHandlingContext {
       }
     }
     catch (exception) {
-      //const behUri = use.getBehaviorUri();
-      // Mark this as BAD
-      this.hasThrownException_ = true;
-      this.isRunning_ = false;
-      throw exception;
+      this.onException_(exception, deliveredMessage, use);
     }
-    finally {
-      // Tear down APIv2 message-specific stuff.
-      ApiV2Context.instance.endHandlingMessage();
-    }
+    // Tear down APIv2 message-specific stuff.
+    ApiV2Context.instance.endHandlingMessage();
 
     return returnValue;
   }
