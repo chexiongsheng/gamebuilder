@@ -780,6 +780,16 @@ public class BehaviorSystem : MonoBehaviour
   void SyncAllUsedBehaviors()
   {
     voosEngine.LoadAllBuiltinBehaviors();
+    foreach (var entry in db.brains.GetAll())
+    {
+      foreach (var use in entry.value.behaviorUses)
+      {
+        if (use.behaviorUri.StartsWith("embedded:"))
+        {
+          SyncBehavior(use.behaviorUri);
+        }
+      }
+    }
   }
 
   public void LoadDatabaseForNetworkInit(Behaviors.Database.Jsonable saved)
