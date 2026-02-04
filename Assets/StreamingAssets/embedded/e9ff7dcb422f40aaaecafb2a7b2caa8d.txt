@@ -1,0 +1,28 @@
+import { uiGetTextHeight, uiGetTextWidth, uiRect, uiText } from '../../apiv2/ui/widgets.mjs';
+import { getCard } from '../../apiv2/actors/memory.mjs';
+
+export function onResetTutorial() {
+  getCard().doShow = false;
+  resetGame();
+}
+
+export function onShowTest() {
+  getCard().doShow = true;
+}
+
+export function onGameEnd() {
+  getCard().doShow = true;
+}
+
+export function onTick() {
+  if (!getCard().doShow) return;
+
+  const msg = `Tutorial complete - congrats!\n\n`
+    + `To learn more, check out the sample games in the Game Library.\n\n`
+    + `Use BUILD MODE to see how they work! Modify them to make your own!`;
+  const m = 50;
+  const h = uiGetTextHeight(msg) + m;
+  const w = uiGetTextWidth(msg) + m;
+  uiRect(800-w/2, 200-h/2, w, h, 0x1a4d0d, {opacity: 0.98});
+  uiText(800, 200, msg, UiColor.WHITE, { center: true });
+}

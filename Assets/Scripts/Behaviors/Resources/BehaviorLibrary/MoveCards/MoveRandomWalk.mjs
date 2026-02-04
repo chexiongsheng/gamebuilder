@@ -94,11 +94,11 @@ function turnUpdate() {
 // grabs a new distance to walk and turn
 function newTargets() {
   getCard().walkDist = 0;
-  getCard().walkDistTarget = THREE.Math.randFloat(
+  getCard().walkDistTarget = THREE.MathUtils.randFloat(
     getProps().MinDistBetweenTurns, getProps().MaxDistBetweenTurns)
 
   getCard().turnAmount = 0;
-  let randomDegrees = THREE.Math.randFloat(
+  let randomDegrees = THREE.MathUtils.randFloat(
     getProps().MinTurn, getProps().MaxTurn);
 
   //make it randomly be clockwise versus counterclockwise

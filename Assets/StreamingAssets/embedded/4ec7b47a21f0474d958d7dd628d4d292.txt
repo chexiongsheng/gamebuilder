@@ -1,0 +1,54 @@
+import { getProps, propActor, propNumber } from '../../apiv2/actors/properties.mjs';
+import { exists, getActors } from '../../apiv2/actors/actors.mjs';
+import { vec3 } from '../../apiv2/misc/math.mjs';
+import { getPos } from '../../apiv2/transform/position-get.mjs';
+import { getCard } from '../../apiv2/actors/memory.mjs';
+import { getRot } from '../../apiv2/transform/rotation-get.mjs';
+import { getCloneParent, clone } from '../../apiv2/actors/cloning.mjs';
+import * as THREE from "three.mjs";
+
+export const PROPS = [
+  propActor('ActorToClone', '', {
+    label: 'Actor to Clone',
+    pickerPrompt: 'Clone what actor?',
+    allowOffstageActors: true
+  }),
+  propNumber('XOffset', 0),
+  propNumber('YOffset', 1),
+  propNumber('ZOffset', 0),
+  propNumber('MaxClones', 5),
+];
+
+/**
+ * @param {GActionMessage} actionMessage
+ */
+export function onAction(actionMessage) {
+  if (!exists(getProps().ActorToClone)) {
+    return;
+  }
+  let count = 0;
+  getActors().forEach(actor => count += getCloneParent(actor) === getProps().ActorToClone ? 1 : 0);
+  if (count >= getProps().MaxClones) {
+    return;
+  }
+  const offset = vec3(getProps().XOffset, getProps().YOffset, getProps().ZOffset);
+  const p = getPos();
+  p.add(offset);
+  getCard().myClone = clone(getProps().ActorToClone, p, getRot());
+}
+
+export function getCardErrorMessage() {
+  if (!exists(getProps().ActorToClone)) {
+    return 'NEED ACTOR TO CLONE. Click card to fix.';
+  }
+}
+
+export function onTick() {
+  if(!exists(getCard().myClone)) {
+    const offset = vec3(getProps().XOffset, getProps().YOffset, getProps().ZOffset);
+    const p = getPos();
+    p.add(offset);
+    getCard().myClone = clone(getProps().ActorToClone, p, getRot());
+  }
+}
+
