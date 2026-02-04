@@ -156,7 +156,7 @@ class MessageHandlingContext {
 
     const behUri = use.getBehaviorUri();
 
-    const msg = `${exception}\nStack trace:{exception.stack}\n`;
+    const msg = `${exception}\nStack trace:${exception.stack}\n`;
     const matches = exception.stack.match(new RegExp(`${behUri}:(\\\d+)`));
     const lineNum = matches != null ? parseInt(matches[1]) : -1;
     callVoosService("ReportBehaviorException", {
