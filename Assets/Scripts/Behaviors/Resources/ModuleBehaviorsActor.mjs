@@ -154,24 +154,9 @@ class MessageHandlingContext {
 
     // Report to engine.
 
-    // Strip lines down to last behavior line.
-    const stackLines = exception.stack.split('\n');
     const behUri = use.getBehaviorUri();
-    let lastUserLine = -1;
-    for (let i = 0; i < stackLines.length; i++) {
-      if (stackLines[i].includes(behUri)) {
-        lastUserLine = i;
-      }
-    }
 
-    let msg = `${exception}\nStack trace:\n`;
-    for (let i = 0; i <= lastUserLine; i++) {
-      let line = stackLines[i];
-      // Replace URI with more readable..
-      line = line.replace(behUri + ':', 'line ');
-      msg += line + '\n';
-    }
-
+    const msg = `${exception}\nStack trace:{exception.stack}\n`;
     const matches = exception.stack.match(new RegExp(`${behUri}:(\\\d+)`));
     const lineNum = matches != null ? parseInt(matches[1]) : -1;
     callVoosService("ReportBehaviorException", {
