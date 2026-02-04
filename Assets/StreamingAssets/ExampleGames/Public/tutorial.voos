@@ -17380,46 +17380,8 @@
         ],
         "brains": [
             {
-                "metadataJson": "{\"panelViewState\":{\"version\":1,\"scale\":0.3257344961166382,\"viewPosition\":{\"x\":-356.34814453125,\"y\":-175.42266845703126},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2649.010009765625,\"y\":-70.0},\"customLabel\":\"\"}}",
+                "metadataJson": "{\"panelViewState\":{\"version\":1,\"scale\":0.18955190479755402,\"viewPosition\":{\"x\":313.1972351074219,\"y\":-998.7303466796875},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2878.889892578125,\"y\":-70.0},\"customLabel\":\"\"}}",
                 "behaviorUses": [
-                    {
-                        "id": "156d3bc2c37f419f90bf0622edf1afd2",
-                        "behaviorUri": "builtin:Player Controls Basic WASD",
-                        "metadataJson": "",
-                        "propertyAssignments": [
-                            {
-                                "propertyName": "Speed",
-                                "valueJson": "{\"value\":8}"
-                            },
-                            {
-                                "propertyName": "SprintSpeed",
-                                "valueJson": "{\"value\":12}"
-                            },
-                            {
-                                "propertyName": "JumpSpeed",
-                                "valueJson": "{\"value\":15}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "2d90f95441dd41d08f99bc7cc31733a9",
-                        "behaviorUri": "builtin:Player Controls Panel",
-                        "metadataJson": "{\"version\":1,\"position\":{\"x\":70.0,\"y\":-70.0},\"customLabel\":\"\"}",
-                        "propertyAssignments": [
-                            {
-                                "propertyName": "controlsDeck",
-                                "valueJson": "{\"value\":[\"156d3bc2c37f419f90bf0622edf1afd2\"]}"
-                            },
-                            {
-                                "propertyName": "primaryActionDeck",
-                                "valueJson": "{\"value\":[\"7ea44f1ad37c4439ac516c18ea710645\"]}"
-                            },
-                            {
-                                "propertyName": "secondaryActionDeck",
-                                "valueJson": "{\"value\":[]}"
-                            }
-                        ]
-                    },
                     {
                         "id": "297615c9b4a94d619cd94f00e3e1b407",
                         "behaviorUri": "builtin:Default Behavior",
@@ -17433,7 +17395,7 @@
                         "propertyAssignments": [
                             {
                                 "propertyName": "moveDeck",
-                                "valueJson": "{\"value\":[]}"
+                                "valueJson": "{\"value\":[\"8ad15aab1623404db0d5996cc7a40a05\"]}"
                             }
                         ]
                     },
@@ -17489,12 +17451,6 @@
                         "propertyAssignments": []
                     },
                     {
-                        "id": "7ea44f1ad37c4439ac516c18ea710645",
-                        "behaviorUri": "builtin:Grab Action",
-                        "metadataJson": "",
-                        "propertyAssignments": []
-                    },
-                    {
                         "id": "f3f60e6d47f94dcb9a2aeee899ab432c",
                         "behaviorUri": "builtin:Scored X Points Event Card",
                         "metadataJson": "",
@@ -17514,6 +17470,60 @@
                     {
                         "id": "6745816991d147879f95e30ad0d7e873",
                         "behaviorUri": "embedded:e9ff7dcb422f40aaaecafb2a7b2caa8d",
+                        "metadataJson": "",
+                        "propertyAssignments": []
+                    },
+                    {
+                        "id": "77869d217fa0461eb4aac6341d0502a5",
+                        "behaviorUri": "builtin:Player Controls Panel v2",
+                        "metadataJson": "{\"version\":1,\"position\":{\"x\":0.0,\"y\":0.0},\"customLabel\":\"\"}",
+                        "propertyAssignments": []
+                    },
+                    {
+                        "id": "8ad15aab1623404db0d5996cc7a40a05",
+                        "behaviorUri": "builtin:Player Walk Card",
+                        "metadataJson": "",
+                        "propertyAssignments": []
+                    },
+                    {
+                        "id": "6c370a74918246a29733a9ff046609ae",
+                        "behaviorUri": "builtin:Grab Panel",
+                        "metadataJson": "{\"version\":1,\"position\":{\"x\":2392.72998046875,\"y\":-70.0},\"customLabel\":\"\"}",
+                        "propertyAssignments": []
+                    },
+                    {
+                        "id": "e1576672f18e4dd4889b008c9717feee",
+                        "behaviorUri": "builtin:Action on Event Panel",
+                        "metadataJson": "{\"version\":1,\"position\":{\"x\":0.0,\"y\":0.0},\"customLabel\":\"\"}",
+                        "propertyAssignments": [
+                            {
+                                "propertyName": "eventDeck",
+                                "valueJson": "{\"value\":[\"883eaa2f6c4e4b0d9483f0d5930495d7\"]}"
+                            },
+                            {
+                                "propertyName": "actionDeck",
+                                "valueJson": "{\"value\":[\"1858bd1927124565931f20091ef12d69\"]}"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "883eaa2f6c4e4b0d9483f0d5930495d7",
+                        "behaviorUri": "builtin:Player Button Event Card",
+                        "metadataJson": "",
+                        "propertyAssignments": [
+                            {
+                                "propertyName": "WhichButton",
+                                "valueJson": "{\"value\":\"JUMP\"}"
+                            },
+                            {
+                                "propertyName": "DetectWhen",
+                                "valueJson": "{\"value\":\"DOWN\"}"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1858bd1927124565931f20091ef12d69",
+                        "behaviorUri": "builtin:Jump Card",
                         "metadataJson": "",
                         "propertyAssignments": []
                     }
