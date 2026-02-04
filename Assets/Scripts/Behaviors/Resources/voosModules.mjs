@@ -350,4 +350,16 @@ voosModules["builtin:spec_GActionMessage"] = specGActionMessage;
 voosModules["builtin:spec_GEvent"] = specGEvent;
 voosModules["builtin:spec_GEventCard"] = specGEventCard;
 
-export { voosModules };
+function getVoosModule(moduleName) {
+  if (!voosModules[moduleName]) {
+    throw new Error('Module not found: ' + moduleName);
+  }
+  return voosModules[moduleName];
+};
+
+function setVoosModule(moduleName, module) {
+  voosModules[moduleName] = module;
+}
+
+export { getVoosModule };
+export { setVoosModule };

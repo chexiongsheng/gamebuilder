@@ -23,28 +23,12 @@ import { Queue } from "./Queue.src.mjs";
 import { ApiV2Context } from "./apiv2/apiv2.mjs";
 import { packObj } from "./pack-unpack.mjs";
 import { Actor } from "./ModuleBehaviorsActor.mjs";
-import { voosModules} from "./BehaviorLibrary/BehaviorLibraryIndex.mjs";
 import { setProfileEnable, beginProfileSample, endProfileSample } from "./util.mjs";
 import { send } from "./apiv2/actors/messages.mjs";
 import { Quaternion, Vector3 } from "./threejs-overrides.mjs";
 import { push } from "./apiv2/physics/velocity.mjs";
 import { log } from "./apiv2/misc/utility.mjs";
 import { setMemCheckMode } from "./ModuleBehaviorsActor.mjs";
-
-const require = puer.module.createRequire('');
-
-// TODO clean up all this as a single class instead of globals and crap.
-
-function getVoosModule(moduleName) {
-  if (!voosModules[moduleName]) {
-    throw new Error('Module not found: ' + moduleName);
-  }
-  return voosModules[moduleName];
-};
-
-function setVoosModule(moduleName, module) {
-  voosModules[moduleName] = module;
-}
 
 // ==================== Actor Property Accessors ====================
 
@@ -543,7 +527,6 @@ runUnitTests('Behavior', {
 });
 
 // ESM exports
-export { getVoosModule };
 export { getActorBoolean };
 export { setActorBoolean };
 export { getActorFloat };
@@ -575,4 +558,3 @@ export { tickWorld };
 export { updateAgent };
 export { updateBehaviorDatabase };
 export { updateCount };
-export { setVoosModule };

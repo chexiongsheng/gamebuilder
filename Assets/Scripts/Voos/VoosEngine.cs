@@ -1023,7 +1023,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     puertsAdapter.AddMemoryFile(modulePath, javascript);
     string wrapperCode = $@"
 import * as module from '{modulePath}';
-import {{ setVoosModule }} from ""./voosMain.mjs"";
+import {{ setVoosModule }} from ""./voosModules.mjs"";
 // 注册模块
 setVoosModule('{moduleKey}', module);
 ";

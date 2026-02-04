@@ -15,7 +15,8 @@
  */
 
 import * as THREE from "three.mjs";
-import { getVoosModule, sysLog } from "./voosMain.mjs";
+import { getVoosModule } from "./voosModules.mjs";
+import { sysLog } from "./voosMain.mjs";
 import { colorFromHex } from "./apiv2/misc/colors.mjs";
 import { assertString, mapGetOrCreate } from "./util.mjs";
 import { Color } from "./threejs-overrides.mjs";
