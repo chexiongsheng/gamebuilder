@@ -5914,7 +5914,7 @@
                     },
                     {
                         "id": "994b9ef916c0468e81b3aeff6f871a18",
-                        "behaviorUri": "builtin:SendMessageActionCard",
+                        "behaviorUri": "builtin:SendMessageActionCard2",
                         "metadataJson": "",
                         "propertyAssignments": [
                             {
@@ -6697,7 +6697,7 @@
                     },
                     {
                         "id": "2bba205cbc084cb5aad305c28f64ddb1",
-                        "behaviorUri": "builtin:SendMessageActionCard",
+                        "behaviorUri": "builtin:SendMessageActionCard2",
                         "metadataJson": "",
                         "propertyAssignments": [
                             {

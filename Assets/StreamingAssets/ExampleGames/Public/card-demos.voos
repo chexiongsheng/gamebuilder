@@ -13459,7 +13459,7 @@
                     },
                     {
                         "id": "ab28ba0f13d84a488390bfd9b67383f2",
-                        "behaviorUri": "builtin:SendMessageActionCard2",
+                        "behaviorUri": "builtin:SendMessageActionCard22",
                         "metadataJson": "",
                         "propertyAssignments": [
                             {
@@ -13807,7 +13807,7 @@
                     },
                     {
                         "id": "2a0ced3e516d45f8b6b902acac79b4aa",
-                        "behaviorUri": "builtin:SendMessageActionCard2",
+                        "behaviorUri": "builtin:SendMessageActionCard22",
                         "metadataJson": "",
                         "propertyAssignments": [
                             {
@@ -13872,7 +13872,7 @@
                     },
                     {
                         "id": "df59bec4f667433a835f9febb7f374e4",
-                        "behaviorUri": "builtin:SendMessageActionCard2",
+                        "behaviorUri": "builtin:SendMessageActionCard22",
                         "metadataJson": "",
                         "propertyAssignments": [
                             {
@@ -13941,7 +13941,7 @@
                     },
                     {
                         "id": "c01f8f10026e4228a11c412f3e28acd4",
-                        "behaviorUri": "builtin:SendMessageActionCard2",
+                        "behaviorUri": "builtin:SendMessageActionCard22",
                         "metadataJson": "",
                         "propertyAssignments": [
                             {
@@ -14010,7 +14010,7 @@
                     },
                     {
                         "id": "96cf8506a0a54bd7a7c6e9806e82e9c1",
-                        "behaviorUri": "builtin:SendMessageActionCard2",
+                        "behaviorUri": "builtin:SendMessageActionCard22",
                         "metadataJson": "",
                         "propertyAssignments": [
                             {
@@ -14079,7 +14079,7 @@
                     },
                     {
                         "id": "1586b18541524578a69f110618502974",
-                        "behaviorUri": "builtin:SendMessageActionCard2",
+                        "behaviorUri": "builtin:SendMessageActionCard22",
                         "metadataJson": "",
                         "propertyAssignments": [
                             {
@@ -14148,7 +14148,7 @@
                     },
                     {
                         "id": "96f7dc677efd4189a323d370cf46b768",
-                        "behaviorUri": "builtin:SendMessageActionCard2",
+                        "behaviorUri": "builtin:SendMessageActionCard22",
                         "metadataJson": "",
                         "propertyAssignments": [
                             {
