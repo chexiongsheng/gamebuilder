@@ -283,14 +283,19 @@ function tickWorld(request, binaryBytes) {
     moduleBehaviors_.prepareForTick();
 
     beginProfileSample("deserializeOrderedActors");
+    // 同步Actor，比如新建的new，删除的delete，new的时候只记录个名字
     moduleBehaviors_.deserializeOrderedActors(reader);
     endProfileSample();
 
     beginProfileSample("deserializeActorStateSync");
+    // 逐个调用Actor.deserialize反序列化状态，其中比较大的是转成json的memory（可选）
+    // 数据来自C#的VoosActor.SerializeForScriptSync
+    // 看代码本地actor是不会有从C#传过来的memory，但网络下会来自RPC
     moduleBehaviors_.deserializeActorStateSync(reader);
     endProfileSample();
 
     beginProfileSample("merge player actors");
+    // 来自PushPlayerActorStateToSerialized，只有GetIsPlayerControllable为true的actor才会被记录
     moduleBehaviors_.mergeActorJsonObjects(request.runtimeState.actors);
     endProfileSample();
 
@@ -331,6 +336,17 @@ function tickWorld(request, binaryBytes) {
       const receiver = namesById[receiverId];
       const other = namesById[otherId];
       if (!receiver || !other) continue;
+      // 通过序列化传过来的碰撞消息通过id来标识接收的actor
+      // 信息来自C#的VoosEngine.PumpQueuedCollisions
+      // sendMessage只是入队列，在update才调用pumpMessageQueue_统一分发消息
+      // pumpMessageQueue_会调用到Actor的handleMessage
+      // handleMessage调用handleMessageImmediate_
+      // handleMessageImmediate_会根据brainName获取brain
+      // 然后根据每个use去调用handleMessageForUse
+      // handleMessageForUse会从contextMapsByUse_[use][message] 获取MessageHandlingContext，MessageHandlingContext会持有回调函数
+      // 然后调用MessageHandlingContext的handleMessage
+      // 然后MessageHandlingContext的handleMessage会切换上下文（setUpGlobals_）然后调用invokeHandler_
+      // invokeHandler_中拆出消息的data作为参数1，消息名包成另外一个消息作为参数2调用
       moduleBehaviors_.sendMessage(receiver, "Collision", { other: other });
       if (isEnter) {
         // Legacy
@@ -435,6 +451,7 @@ function updateAgent(request, arrayBuffer) {
     request.propsJson = JSON.stringify({ props: props });
   }
   else if (request.operation == 'tickWorld') {
+    //console.error(`updateBehaviorDatabase ${JSON.stringify(request, null, 4)}`);
     tickWorld(request, arrayBuffer);
   }
   else if (request.operation == 'callBehaviorUseMethod') {
