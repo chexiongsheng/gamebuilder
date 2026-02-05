@@ -45,7 +45,7 @@ public static class ActorUndoUtil
     return null;
   }
 
-  public static void PushUndoForActor(this UndoStack stack, VoosActor theActor, string label, System.Action<VoosActor> doIt, System.Action<VoosActor> undo)
+  public static void PushUndoForActor(this UndoStack stack, VoosActor theActor, string label, System.Action<VoosActor> doIt, System.Action<VoosActor> undo, bool immediatelyCallDo = true)
   {
     // IMPORTANT: Do *NOT* use a reference to the actor! It may be deleted,
     // un-deleted, etc. So use its name, which is stable.
@@ -61,7 +61,7 @@ public static class ActorUndoUtil
       getUnableToUndoReason = () => GetUnableToEditActorReason(engineRef, actorName),
       doIt = () => GetValidActorThen(engineRef, actorName, doIt),
       undo = () => GetValidActorThen(engineRef, actorName, undo)
-    });
+    }, immediatelyCallDo);
   }
 
   public static void PushUndoForCreatingActor(this UndoStack stack, VoosActor theActor, string label)

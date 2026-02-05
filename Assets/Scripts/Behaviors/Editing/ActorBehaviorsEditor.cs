@@ -275,28 +275,15 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
       var undoEditor = this.editor;
       Brain undoBrain = this.beforeBrain;
       Brain currBrain = editor.GetBrain();
-      bool isRedo = false;
 
       System.Action<VoosActor> doFunc = redoActor =>
       {
         Debug.Assert(redoActor.GetName() == undoEditor.actor.GetName());
         undoEditor.SetBrain(currBrain);
-        if (isRedo)
-        {
-          redoActor.NotifyBrainUndoRedo();
-        }
-        else
-        {
-          // No need to notify now - but future calls wil be redos.
-          isRedo = true;
-        }
+        redoActor.NotifyBrainUndoRedo();
       };
 
-      if (editor.undoStack == null)
-      {
-        doFunc.Invoke(editor.actor);
-      }
-      else
+      if (editor.undoStack != null)
       {
         editor.undoStack.PushUndoForActor(editor.actor, label,
         doFunc,
@@ -305,7 +292,8 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
           Debug.Assert(undoActor.GetName() == undoEditor.actor.GetName());
           undoEditor.SetBrain(undoBrain);
           undoActor.NotifyBrainUndoRedo();
-        });
+        },
+        immediatelyCallDo: false);
       }
     }
   }
