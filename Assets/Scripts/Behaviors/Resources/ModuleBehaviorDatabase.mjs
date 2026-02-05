@@ -33,6 +33,8 @@ const MESSAGE_HANDLER_FUNCTION_NAME_PREFIX = "on";  // lowercase "o"!
 const GET_DYNAMIC_MESSAGES_HANDLED_FUNCTION_NAME = 'getOtherMessagesHandled';
 const HANDLE_DYNAMIC_MESSAGES_FUNCTION_NAME = 'handleOtherMessage';
 
+// 对应BehaviorLibrary下的一个脚本
+// 其次这个对于一个moduleKey只有一个ModuleBehavior实例，因为这个本质上只是moduleKey的Helper函数
 class ModuleBehavior {
   constructor(moduleKey) {
     assert(typeof moduleKey == 'string');
@@ -111,6 +113,7 @@ class ModuleBehavior {
   }
 }
 
+// 脚本及其属性配置
 class ModuleBehaviorUse {
   constructor(id, jsonUse, behavior) {
     assert(behavior);
@@ -194,6 +197,7 @@ class ModuleBehaviorUse {
   }
 }
 
+// 一个Actor的脑子，由多个ModuleBehaviorUse
 class ModuleBehaviorBrain {
   constructor(name, behaviorUses) {
     this.name_ = name;
@@ -252,6 +256,8 @@ class ModuleBehaviorDatabase {
 
     const brainsHandlingCollisions = [];
 
+    // jsonDb实际上是游戏文件里的behaviorDatabase数据
+    // 可以随便打开一个例子看：../../../StreamingAssets/ExampleGames/Public/template-empty.voos
     for (let i = 0; i < jsonDb.brains.length; i++) {
       const brainJson = jsonDb.brains[i];
       const uses = [];
@@ -267,6 +273,7 @@ class ModuleBehaviorDatabase {
         const use = new ModuleBehaviorUse(jsonUse.id, jsonUse, behavior);
         uses.push(use);
       }
+      // brainIds和brains是一一对应的
       const brainId = jsonDb.brainIds[i];
       const brain = new ModuleBehaviorBrain(brainId, uses);
       this.brainsByName_.set(brainId, brain);
@@ -279,7 +286,7 @@ class ModuleBehaviorDatabase {
 
     return brainsHandlingCollisions;
   }
-} 
+}
 
 // ESM exports
 export { GET_DYNAMIC_MESSAGES_HANDLED_FUNCTION_NAME };

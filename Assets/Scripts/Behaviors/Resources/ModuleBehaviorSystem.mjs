@@ -57,6 +57,7 @@ function getBehaviorProperties(behaviorUri) {
   return flattenArray(theModule['PROPS'] || []);
 }
 
+// actor + 大脑
 class ModuleBehaviorSystem {
   constructor() {
     this.actors_ = new Map();
