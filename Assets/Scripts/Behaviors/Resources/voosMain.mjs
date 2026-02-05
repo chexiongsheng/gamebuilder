@@ -423,6 +423,11 @@ function updateBehaviorDatabase(request) {
 function updateAgent(request, arrayBuffer) {
   beginProfileSample("updateAgent");
   if (request.operation == 'updateBehaviorDatabase') {
+    //console.error(`updateBehaviorDatabase ${JSON.stringify(request, null, 4)}`);
+    // 游戏启动一次
+    // TODO: 我选中一个actor点击Logic就有N次（还没改），对于每个panel一次，这应该可以优化
+    // TODO: 修改又有2次，一次是直接修改，另外一个是调用ActorUndoUtil.cs的PushUndoForActor时，由于Push到stack时的immediatelyCallDo参数用了默认的true，导致又调用了一次SetBrain，应该可以优化
+    // 每次都修改都会同步全量，可能是为了实现undo/redo简单些，修改前新建一个UndoScope，构造函数会克隆当前整个数据库作为undo的依据，然后执行修改，然后又克隆一次作为redo的依据
     updateBehaviorDatabase(request);
   }
   else if (request.operation == 'getBehaviorProperties') {

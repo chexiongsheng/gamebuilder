@@ -230,6 +230,7 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
 
   int undoScopeCount = 0;
 
+  // 修改前新建一个UndoScope，构造函数会克隆当前整个数据库作为undo的依据，然后执行修改，然后又克隆一次作为redo的依据
   struct UndoScope : System.IDisposable
   {
     readonly ActorBehaviorsEditor editor;
