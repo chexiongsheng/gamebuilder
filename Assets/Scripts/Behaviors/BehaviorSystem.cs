@@ -358,7 +358,7 @@ public class BehaviorSystem : MonoBehaviour
   public void NotifyCardRemoved(string brainId, string useId)
   {
     NotifyCardRemovedLocal(brainId, useId);
-    photonView.RPC("NotifyCardRemovedRPC", PhotonTargets.AllViaServer, brainId, useId);
+    photonView.RPC("NotifyCardRemovedRPC", PhotonTargets.Others, brainId, useId);
   }
 
   public void PutBrain(string brainId, Behaviors.Brain brain)
@@ -369,14 +369,14 @@ public class BehaviorSystem : MonoBehaviour
     unackedPutBrains.Enqueue(req);
     Util.Log($"public PutBrain, numUses: {req.value.behaviorUses.Length}");
     PutBrainLocal(req);
-    photonView.RPC("PutBrainRPC", PhotonTargets.AllViaServer, JsonUtility.ToJson(req));
+    photonView.RPC("PutBrainRPC", PhotonTargets.Others, JsonUtility.ToJson(req));
   }
 
   public void DeleteBrain(string id)
   {
     // Follow predicted-last-writer-wins pattern.
     DeleteBrainLocal(id);
-    photonView.RPC("DeleteBrainRPC", PhotonTargets.AllViaServer, id);
+    photonView.RPC("DeleteBrainRPC", PhotonTargets.Others, id);
   }
 
   public bool EmbeddedBehaviorExists(string behaviorId)
@@ -395,7 +395,7 @@ public class BehaviorSystem : MonoBehaviour
     // (to avoid whitespace differences && make Behavior.Equals() comparisons consistent)
     req = JsonUtility.FromJson<PutRequest<Behavior>>(json);
     PutBehaviorLocal(req, true);
-    photonView.RPC("PutBehaviorRPC", PhotonTargets.AllViaServer, json);
+    photonView.RPC("PutBehaviorRPC", PhotonTargets.Others, json);
   }
 
   public void DeleteBehavior(string id)
@@ -404,7 +404,7 @@ public class BehaviorSystem : MonoBehaviour
 
     // Follow predicted-last-writer-wins pattern.
     DeleteBehaviorLocal(id, true);
-    photonView.RPC("DeleteBehaviorRPC", PhotonTargets.AllViaServer, id);
+    photonView.RPC("DeleteBehaviorRPC", PhotonTargets.Others, id);
   }
 
   [PunRPC]
