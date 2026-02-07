@@ -60,6 +60,7 @@ export function onAddVelocityChange(msg) {
   }
 }
 
+// BehaviorLibrary/ActionCards/Change Variable.mjs会发这个消息
 export function onChangeVar(msg) {
   if (msg.op === undefined || msg.value === undefined || msg.name === undefined) {
     logError("ChangeVar message needs an 'op' and 'value' and 'name' fields.");
@@ -92,6 +93,8 @@ export function onResetGame() {
   ApiV2Context.instance.getActor().setUseStickyDesiredVelocity(false);
 }
 
+// Actor间通过消息通讯，比如remote.mjs里的setRotPlease，第一个参数是actor，如果发现是当前actor，直接调用函数
+// 否则发送消息给目标actor，就会触发到这个函数
 export function onPoliteRequest(msg) {
   const verb = msg.verb;
   const args = msg.args;
