@@ -30,60 +30,51 @@ import { push } from "./apiv2/physics/velocity.mjs";
 import { log } from "./apiv2/misc/utility.mjs";
 import { setMemCheckMode } from "./ModuleBehaviorsActor.mjs";
 
+function getVoosEngine(throwIfMissing = true) {
+  if (!globalThis.__voosEngine) {
+    if (throwIfMissing) {
+      throw new Error('VoosEngine not registered');
+    }
+    return null;
+  }
+  return globalThis.__voosEngine;
+}
+
 // ==================== Actor Property Accessors ====================
 
 // Boolean accessors
 function getActorBoolean(actorId, fieldId) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
-  return globalThis.__voosEngine.GetActorBoolean(actorId, fieldId);
+  return getVoosEngine().GetActorBoolean(actorId, fieldId);
 };
 
 function setActorBoolean(actorId, fieldId, value) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
-  globalThis.__voosEngine.SetActorBoolean(actorId, fieldId, Boolean(value));
+  getVoosEngine().SetActorBoolean(actorId, fieldId, Boolean(value));
 };
 
 // Float accessors
 function getActorFloat(actorId, fieldId) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
-  return globalThis.__voosEngine.GetActorFloat(actorId, fieldId);
+  return getVoosEngine().GetActorFloat(actorId, fieldId);
 };
 
 function setActorFloat(actorId, fieldId, value) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
-  globalThis.__voosEngine.SetActorFloat(actorId, fieldId, Number(value));
+  getVoosEngine().SetActorFloat(actorId, fieldId, Number(value));
 };
 
 // Vector3 accessors
 function getActorVector3(actorId, fieldId, pos) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
   // C# out parameters need to be wrapped with $ref and unwrapped with $unref
   const outX = puer.$ref();
   const outY = puer.$ref();
   const outZ = puer.$ref();
-  globalThis.__voosEngine.GetActorVector3(actorId, fieldId, outX, outY, outZ);
+  getVoosEngine().GetActorVector3(actorId, fieldId, outX, outY, outZ);
   pos.x = puer.$unref(outX);
   pos.y = puer.$unref(outY);
   pos.z = puer.$unref(outZ);
 };
 
 function setActorVector3(actorId, fieldId, x, y, z) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
-
   // Pass x, y, z as separate parameters
-  globalThis.__voosEngine.SetActorVector3(
+  getVoosEngine().SetActorVector3(
     actorId,
     fieldId,
     x,
@@ -94,15 +85,12 @@ function setActorVector3(actorId, fieldId, x, y, z) {
 
 // Quaternion accessors
 function getActorQuaternion(actorId, fieldId, quaternion) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
   // C# out parameters need to be wrapped with $ref and unwrapped with $unref
   const outX = puer.$ref();
   const outY = puer.$ref();
   const outZ = puer.$ref();
   const outW = puer.$ref();
-  globalThis.__voosEngine.GetActorQuaternion(actorId, fieldId, outX, outY, outZ, outW);
+  getVoosEngine().GetActorQuaternion(actorId, fieldId, outX, outY, outZ, outW);
 
   quaternion.x = puer.$unref(outX);
   quaternion.y = puer.$unref(outY);
@@ -112,12 +100,8 @@ function getActorQuaternion(actorId, fieldId, quaternion) {
 };
 
 function setActorQuaternion(actorId, fieldId, x, y, z, w) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
-
   // Pass x, y, z, w as separate parameters
-  globalThis.__voosEngine.SetActorQuaternion(
+  getVoosEngine().SetActorQuaternion(
     actorId,
     fieldId,
     x,
@@ -129,17 +113,11 @@ function setActorQuaternion(actorId, fieldId, x, y, z, w) {
 
 // String accessors
 function getActorString(actorId, fieldId) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
-  return globalThis.__voosEngine.GetActorString(actorId, fieldId);
+  return getVoosEngine().GetActorString(actorId, fieldId);
 };
 
 function setActorString(actorId, fieldId, value) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
-  globalThis.__voosEngine.SetActorString(actorId, fieldId, String(value));
+  getVoosEngine().SetActorString(actorId, fieldId, String(value));
 };
 
 // ==================== Service Call API ====================
@@ -148,10 +126,6 @@ function setActorString(actorId, fieldId, value) {
 // Note: This is a synchronous-looking API but internally uses async callback
 // It's kept for backward compatibility with existing code
 function callVoosService(serviceName, arg) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
-
   // For synchronous-looking API, we use a workaround:
   // Store result in a closure and return it synchronously
   // This works because Unity's main thread will process the callback immediately
@@ -162,7 +136,7 @@ function callVoosService(serviceName, arg) {
   try {
     const argsJson = JSON.stringify(arg);
 
-    globalThis.__voosEngine.CallServiceForPuerts(serviceName, argsJson, function (resultJson) {
+    getVoosEngine().CallServiceForPuerts(serviceName, argsJson, function (resultJson) {
       completed = true;
       if (resultJson && resultJson !== '') {
         try {
@@ -198,8 +172,9 @@ function sysLog(...args) {
     return String(arg);
   }).join(' ');
 
-  if (globalThis.__voosEngine) {
-    globalThis.__voosEngine.HandleLogForPuerts('log', message);
+  const engine = getVoosEngine(false);
+  if (engine) {
+    engine.HandleLogForPuerts('log', message);
   }
 };
 
@@ -211,10 +186,11 @@ globalThis.removeEventListener = globalThis.removeEventListener || function () {
 // Capture unhandled errors
 const originalErrorHandler = globalThis.onerror;
 globalThis.onerror = function (message, source, lineno, colno, error) {
-  if (globalThis.__voosEngine) {
+  const engine = getVoosEngine(false);
+  if (engine) {
     const errorMessage = error ? error.message : String(message);
     const stackTrace = error ? error.stack : `at ${source}:${lineno}:${colno}`;
-    globalThis.__voosEngine.HandleErrorForPuerts(errorMessage, stackTrace);
+    engine.HandleErrorForPuerts(errorMessage, stackTrace);
   }
 
   if (originalErrorHandler) {
@@ -234,14 +210,11 @@ assert(typeof getActorString == 'function');
 assert(typeof setActorString == 'function');
 
 function getActorColor(actorId, fieldId, colorOut) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
   const outR = puer.$ref();
   const outG = puer.$ref();
   const outB = puer.$ref();
   const outA = puer.$ref();
-  globalThis.__voosEngine.GetActorColor(actorId, fieldId, outR, outG, outB, outA);
+  getVoosEngine().GetActorColor(actorId, fieldId, outR, outG, outB, outA);
   colorOut.r = puer.$unref(outR);
   colorOut.g = puer.$unref(outG);
   colorOut.b = puer.$unref(outB);
@@ -249,10 +222,7 @@ function getActorColor(actorId, fieldId, colorOut) {
 }
 
 function setActorColor(actorId, fieldId, newValue) {
-  if (!globalThis.__voosEngine) {
-    throw new Error('VoosEngine not registered');
-  }
-  globalThis.__voosEngine.SetActorColor(actorId, fieldId, Number(newValue.r), Number(newValue.g), Number(newValue.b), Number(newValue.a));
+  getVoosEngine().SetActorColor(actorId, fieldId, Number(newValue.r), Number(newValue.g), Number(newValue.b), Number(newValue.a));
 }
 
 // TODO take a sender actor here as well.
@@ -573,6 +543,7 @@ export { getActorQuaternion };
 export { setActorQuaternion };
 export { getActorString };
 export { setActorString };
+export { getVoosEngine };
 export { callVoosService };
 export { sysLog };
 export { TIMERS_MEMORY_KEY };
