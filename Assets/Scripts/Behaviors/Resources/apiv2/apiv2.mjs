@@ -189,7 +189,7 @@ class ApiV2Context {
 
   getPlayerControlledActor() {
     if (!this.playerControlledActor_) {
-      this.playerControlledActor_ = callVoosService("GetPlayerControlledActor");
+      this.playerControlledActor_ = getVoosEngine().services.GetPlayerControlledActorForScript();
     }
     return this.playerControlledActor_;
   }

@@ -294,6 +294,12 @@ namespace V8InUnity
       return result.ToArray();
     }
 
+    public string GetPlayerControlledActorForScript()
+    {
+      VoosActor actor = GetUserMain().GetPlayerActor();
+      return actor?.GetName();
+    }
+
     public string GetPlayersInfo()
     {
       Dictionary<int, string> nicknames = new Dictionary<int, string>();
@@ -512,13 +518,6 @@ namespace V8InUnity
             // available (maybe it was a clone that was just created, for instance).
             GetEngine().RequestTransferPlayerControl(request);
             reportResult("true");
-            break;
-          }
-
-        case "GetPlayerControlledActor":
-          {
-            VoosActor actor = GetUserMain().GetPlayerActor();
-            reportResult(actor == null ? "null" : "\"" + actor.GetName() + "\"");
             break;
           }
 
