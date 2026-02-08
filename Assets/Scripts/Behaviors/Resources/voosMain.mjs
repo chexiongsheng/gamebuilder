@@ -37,14 +37,14 @@ function getActorBoolean(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  return globalThis.__voosEngine.GetActorBooleanForPuerts(actorId, fieldId);
+  return globalThis.__voosEngine.GetActorBoolean(Number(actorId), Number(fieldId));
 };
 
 function setActorBoolean(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  globalThis.__voosEngine.SetActorBooleanForPuerts(actorId, fieldId, Boolean(value));
+  globalThis.__voosEngine.SetActorBoolean(Number(actorId), Number(fieldId), Boolean(value));
 };
 
 // Float accessors
@@ -52,14 +52,14 @@ function getActorFloat(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  return globalThis.__voosEngine.GetActorFloatForPuerts(actorId, fieldId);
+  return globalThis.__voosEngine.GetActorFloat(Number(actorId), Number(fieldId));
 };
 
 function setActorFloat(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  globalThis.__voosEngine.SetActorFloatForPuerts(actorId, fieldId, Number(value));
+  globalThis.__voosEngine.SetActorFloat(Number(actorId), Number(fieldId), Number(value));
 };
 
 // Vector3 accessors
@@ -71,7 +71,7 @@ function getActorVector3(actorId, fieldId, pos) {
   const outX = puer.$ref();
   const outY = puer.$ref();
   const outZ = puer.$ref();
-  globalThis.__voosEngine.GetActorVector3ForPuerts(actorId, fieldId, outX, outY, outZ);
+  globalThis.__voosEngine.GetActorVector3(Number(actorId), Number(fieldId), outX, outY, outZ);
   pos.x = puer.$unref(outX);
   pos.y = puer.$unref(outY);
   pos.z = puer.$unref(outZ);
@@ -83,9 +83,9 @@ function setActorVector3(actorId, fieldId, x, y, z) {
   }
 
   // Pass x, y, z as separate parameters
-  globalThis.__voosEngine.SetActorVector3ForPuerts(
-    actorId,
-    fieldId,
+  globalThis.__voosEngine.SetActorVector3(
+    Number(actorId),
+    Number(fieldId),
     x,
     y,
     z
@@ -102,7 +102,7 @@ function getActorQuaternion(actorId, fieldId, quaternion) {
   const outY = puer.$ref();
   const outZ = puer.$ref();
   const outW = puer.$ref();
-  globalThis.__voosEngine.GetActorQuaternionForPuerts(actorId, fieldId, outX, outY, outZ, outW);
+  globalThis.__voosEngine.GetActorQuaternion(Number(actorId), Number(fieldId), outX, outY, outZ, outW);
 
   quaternion.x = puer.$unref(outX);
   quaternion.y = puer.$unref(outY);
@@ -117,9 +117,9 @@ function setActorQuaternion(actorId, fieldId, x, y, z, w) {
   }
 
   // Pass x, y, z, w as separate parameters
-  globalThis.__voosEngine.SetActorQuaternionForPuerts(
-    actorId,
-    fieldId,
+  globalThis.__voosEngine.SetActorQuaternion(
+    Number(actorId),
+    Number(fieldId),
     x,
     y,
     z,
@@ -132,14 +132,14 @@ function getActorString(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  return globalThis.__voosEngine.GetActorStringForPuerts(actorId, fieldId);
+  return globalThis.__voosEngine.GetActorString(Number(actorId), Number(fieldId));
 };
 
 function setActorString(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  globalThis.__voosEngine.SetActorStringForPuerts(actorId, fieldId, String(value));
+  globalThis.__voosEngine.SetActorString(Number(actorId), Number(fieldId), String(value));
 };
 
 // ==================== Service Call API ====================

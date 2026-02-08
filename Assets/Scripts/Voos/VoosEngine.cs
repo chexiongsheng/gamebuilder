@@ -1213,115 +1213,7 @@ setVoosModule('{moduleKey}', module);
   // ==================== Puerts适配器方法 ====================
   // 这些方法将VoosEngine的内部API适配为Puerts所需的签名
 
-  public bool GetActorBooleanForPuerts(string actorId, string fieldId)
-  {
-    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
-    {
-      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      return false;
-    }
-    GetActorBoolean(actorIdNum, fieldIdNum, out bool value);
-    return value;
-  }
 
-  public void SetActorBooleanForPuerts(string actorId, string fieldId, bool value)
-  {
-    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
-    {
-      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      return;
-    }
-    SetActorBoolean(actorIdNum, fieldIdNum, value);
-  }
-
-  public float GetActorFloatForPuerts(string actorId, string fieldId)
-  {
-    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
-    {
-      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      return 0f;
-    }
-    GetActorFloat(actorIdNum, fieldIdNum, out float value);
-    return value;
-  }
-
-  public void SetActorFloatForPuerts(string actorId, string fieldId, float value)
-  {
-    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
-    {
-      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      return;
-    }
-    SetActorFloat(actorIdNum, fieldIdNum, value);
-  }
-
-  public void GetActorVector3ForPuerts(string actorId, string fieldId, out float x, out float y, out float z)
-  {
-    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
-    {
-      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      x = 0;
-      y = 0;
-      z = 0;
-      return;
-    }
-    GetActorVector3(actorIdNum, fieldIdNum, out x, out y, out z);
-  }
-
-  public void SetActorVector3ForPuerts(string actorId, string fieldId, float x, float y, float z)
-  {
-    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
-    {
-      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      return;
-    }
-    SetActorVector3(actorIdNum, fieldIdNum, x, y, z);
-  }
-
-  public void GetActorQuaternionForPuerts(string actorId, string fieldId, out float x, out float y, out float z, out float w)
-  {
-    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
-    {
-      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      x = 0;
-      y = 0;
-      z = 0;
-      w = 1;
-      return;
-    }
-    GetActorQuaternion(actorIdNum, fieldIdNum, out x, out y, out z, out w);
-  }
-
-  public void SetActorQuaternionForPuerts(string actorId, string fieldId, float x, float y, float z, float w)
-  {
-    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
-    {
-      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      return;
-    }
-    SetActorQuaternion(actorIdNum, fieldIdNum, x, y, z, w);
-  }
-
-  public string GetActorStringForPuerts(string actorId, string fieldId)
-  {
-    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
-    {
-      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      return "";
-    }
-    string value = GetActorString(actorIdNum, fieldIdNum);
-    return value ?? "";
-  }
-
-  public void SetActorStringForPuerts(string actorId, string fieldId, string value)
-  {
-    if (!ushort.TryParse(actorId, out ushort actorIdNum) || !ushort.TryParse(fieldId, out ushort fieldIdNum))
-    {
-      Util.LogError($"Invalid actorId or fieldId: {actorId}, {fieldId}");
-      return;
-    }
-    SetActorString(actorIdNum, fieldIdNum, value);
-  }
 
   public void CallServiceForPuerts(string serviceName, string argsJson, System.Action<string> callback)
   {
@@ -1375,19 +1267,18 @@ setVoosModule('{moduleKey}', module);
     }
   }
 
-  void GetActorBoolean(ushort actorId, ushort fieldId, out bool valueOut)
+  public bool GetActorBoolean(ushort actorId, ushort fieldId)
   {
-    valueOut = false;
     if (actorId >= latestActorsInSerializedOrder.Count)
     {
       Util.LogError($"Bad actorId given: {actorId}. # actors = {latestActorsInSerializedOrder.Count}");
-      return;
+      return false;
     }
 
-    valueOut = latestActorsInSerializedOrder[actorId].GetBooleanField(fieldId);
+    return latestActorsInSerializedOrder[actorId].GetBooleanField(fieldId);
   }
 
-  void SetActorBoolean(ushort actorId, ushort fieldId, bool newValue)
+  public void SetActorBoolean(ushort actorId, ushort fieldId, bool newValue)
   {
     if (actorId >= latestActorsInSerializedOrder.Count)
     {
@@ -1398,19 +1289,18 @@ setVoosModule('{moduleKey}', module);
     latestActorsInSerializedOrder[actorId].SetBooleanField(fieldId, newValue);
   }
 
-  void GetActorFloat(ushort actorId, ushort fieldId, out float valueOut)
+  public float GetActorFloat(ushort actorId, ushort fieldId)
   {
-    valueOut = 0f;
     if (actorId >= latestActorsInSerializedOrder.Count)
     {
       Util.LogError($"Bad actorId given: {actorId}. # actors = {latestActorsInSerializedOrder.Count}");
-      return;
+      return 0f;
     }
 
-    valueOut = latestActorsInSerializedOrder[actorId].GetFloatField(fieldId);
+    return latestActorsInSerializedOrder[actorId].GetFloatField(fieldId);
   }
 
-  void SetActorFloat(ushort actorId, ushort fieldId, float newValue)
+  public void SetActorFloat(ushort actorId, ushort fieldId, float newValue)
   {
     if (actorId >= latestActorsInSerializedOrder.Count)
     {
@@ -1421,19 +1311,19 @@ setVoosModule('{moduleKey}', module);
     latestActorsInSerializedOrder[actorId].SetFloatField(fieldId, newValue);
   }
 
-  string GetActorString(ushort actorId, ushort fieldId)
+  public string GetActorString(ushort actorId, ushort fieldId)
   {
     if (actorId >= latestActorsInSerializedOrder.Count)
     {
       Util.LogError($"Bad actorId given: {actorId}. # actors = {latestActorsInSerializedOrder.Count}");
-      return null;
+      return "";
     }
 
     // Never return null - we consider null and empty to be the same.
     return latestActorsInSerializedOrder[actorId].GetStringField(fieldId) ?? "";
   }
 
-  void SetActorString(ushort actorId, ushort fieldId, string newValue)
+  public void SetActorString(ushort actorId, ushort fieldId, string newValue)
   {
     if (actorId >= latestActorsInSerializedOrder.Count)
     {
@@ -1470,7 +1360,7 @@ setVoosModule('{moduleKey}', module);
   public delegate void ActorVector3Setter(ushort tempActorId, ushort fieldId, float newX, float newY, float newZ);
 
 
-  void GetActorVector3(ushort actorId, ushort fieldId, out float xOut, out float yOut, out float zOut)
+  public void GetActorVector3(ushort actorId, ushort fieldId, out float xOut, out float yOut, out float zOut)
   {
     xOut = 0f;
     yOut = 0f;
@@ -1488,7 +1378,7 @@ setVoosModule('{moduleKey}', module);
     zOut = rv.z;
   }
 
-  void SetActorVector3(ushort actorId, ushort fieldId, float newX, float newY, float newZ)
+  public void SetActorVector3(ushort actorId, ushort fieldId, float newX, float newY, float newZ)
   {
     if (actorId >= latestActorsInSerializedOrder.Count)
     {
@@ -1499,7 +1389,7 @@ setVoosModule('{moduleKey}', module);
     latestActorsInSerializedOrder[actorId].SetVector3Field(fieldId, new Vector3(newX, newY, newZ));
   }
 
-  void GetActorQuaternion(ushort actorId, ushort fieldId, out float xOut, out float yOut, out float zOut, out float wOut)
+  public void GetActorQuaternion(ushort actorId, ushort fieldId, out float xOut, out float yOut, out float zOut, out float wOut)
   {
     xOut = 0f;
     yOut = 0f;
@@ -1532,7 +1422,7 @@ setVoosModule('{moduleKey}', module);
     OnActorsByNameChanged();
   }
 
-  void SetActorQuaternion(ushort actorId, ushort fieldId, float newX, float newY, float newZ, float newW)
+  public void SetActorQuaternion(ushort actorId, ushort fieldId, float newX, float newY, float newZ, float newW)
   {
     if (actorId >= latestActorsInSerializedOrder.Count)
     {
