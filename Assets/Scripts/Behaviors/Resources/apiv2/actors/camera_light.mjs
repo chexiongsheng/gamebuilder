@@ -21,7 +21,7 @@ import { vec3zero, vec3, vec3z, quatApply } from "../misc/math.mjs";
 import { myself, exists } from "./actors.mjs";
 import { isPlayerControllable } from "../player_controls/controls.mjs";
 import { getDisplayName } from "./attributes.mjs";
-import { callVoosService } from "../../voosMain.mjs";
+import { getVoosEngine } from "../../voosMain.mjs";
 
 // VISIBLE_TO_MONACO
 
@@ -134,7 +134,7 @@ function requestCameraOffset(offset, actor) {
   if (!isPlayerControllable(actor)) {
     throw new Error("Can't request camera offset on a non player-controllable actor: " + getDisplayName(actor));
   }
-  callVoosService("RequestTempCameraOffset", { actor: actor, offset: offset });
+  getVoosEngine().services.RequestTempCameraOffset(actor, offset);
 }
 
 /**

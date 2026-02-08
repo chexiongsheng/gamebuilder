@@ -138,12 +138,6 @@ namespace V8InUnity
     }
 
     [System.Serializable]
-    struct TempCameraOffsetRequest
-    {
-      public string actor;
-      public Vector3 offset;
-    }
-    [System.Serializable]
     struct GetTerrainCellResult
     {
       public int shape;
@@ -500,6 +494,14 @@ namespace V8InUnity
       return gbStage.GetSkyColor();
     }
 
+    public void RequestTempCameraOffset(string actor, Vector3 offset)
+    {
+      if (actor == GetUserMain().GetPlayerActor()?.GetName())
+      {
+        GetUserMain().GetNavigationControls().RequestTemporaryCameraOffset(offset);
+      }
+    }
+
     public void SetSceneLighting(string lightingMode)
     {
       GameBuilderStage.SceneLightingMode sceneLightingMode;
@@ -703,17 +705,6 @@ namespace V8InUnity
             Util.Log($"LogBehaviorMessage {argsJson}");
             VoosEngine.BehaviorLogItem msg = JsonUtility.FromJson<VoosEngine.BehaviorLogItem>(argsJson);
             engine.HandleBehaviorLogMessage(msg);
-            reportResult("true");
-            break;
-          }
-
-        case "RequestTempCameraOffset":
-          {
-            TempCameraOffsetRequest request = JsonUtility.FromJson<TempCameraOffsetRequest>(argsJson);
-            if (request.actor == GetUserMain().GetPlayerActor()?.GetName())
-            {
-              GetUserMain().GetNavigationControls().RequestTemporaryCameraOffset(request.offset);
-            }
             reportResult("true");
             break;
           }
