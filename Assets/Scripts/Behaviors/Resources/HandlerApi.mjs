@@ -145,7 +145,10 @@ class HandlerApi {
    * @returns {boolean} True if the given box collides with *anything* solid. This includes other actors, the handling actor, terrain, blocks, etc.
    */
   checkBox(center, dimensions, rotation) {
-    return callVoosService('CheckBox', { box: { center: center, dimensions: dimensions, rotation: serializeQuaternion(rotation) } });
+    const cs_center = new CS.UnityEngine.Vector3(center.x, center.y, center.z);
+    const cs_dimensions = new CS.UnityEngine.Vector3(dimensions.x, dimensions.y, dimensions.z);
+    const cs_rotation = new CS.UnityEngine.Quaternion(rotation.x, rotation.y, rotation.z, rotation.w);
+    return getVoosEngine().services.CheckBox(cs_center, cs_dimensions, cs_rotation);
   }
 
   /**

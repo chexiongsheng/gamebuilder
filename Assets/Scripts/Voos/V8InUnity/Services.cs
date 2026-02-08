@@ -64,20 +64,6 @@ namespace V8InUnity
     }
 
     [System.Serializable]
-    struct PhysicsBox
-    {
-      public Vector3 center;
-      public Vector3 dimensions;
-      public Quaternion rotation;
-    }
-
-    [System.Serializable]
-    struct CheckBoxArgs
-    {
-      public PhysicsBox box;
-    }
-
-    [System.Serializable]
     struct PhysicsRaycast
     {
       public Vector3 origin;
@@ -568,6 +554,18 @@ namespace V8InUnity
       }
     }
 
+    public bool CheckBox(Vector3 center, Vector3 dimensions, Quaternion rotation)
+    {
+      using (Util.Profile("CheckBox"))
+      {
+        bool hitAnything = Physics.CheckBox(center, dimensions * 0.5f, rotation,
+        -1, // We're probably looking for clearance, so return true if the box hits actors OR just static terrain.
+        QueryTriggerInteraction.Ignore // Ignore triggers for checks. We are probably looking for clearance, in which case triggers don't matter.
+        );
+        return hitAnything;
+      }
+    }
+
     /// <summary>
     /// Core service execution logic, shared by both CallService overloads
     /// </summary>
@@ -576,18 +574,6 @@ namespace V8InUnity
       // Debug.LogError($"CallService({serviceName}, {argsJson})");
       switch (serviceName)
       {
-        case "CheckBox":
-          using (Util.Profile(serviceName))
-          {
-            var args = JsonUtility.FromJson<CheckBoxArgs>(argsJson);
-            bool hitAnything = Physics.CheckBox(args.box.center, args.box.dimensions * 0.5f, args.box.rotation,
-            -1, // We're probably looking for clearance, so return true if the box hits actors OR just static terrain.
-            QueryTriggerInteraction.Ignore // Ignore triggers for checks. We are probably looking for clearance, in which case triggers don't matter.
-            );
-            reportResult(hitAnything ? "true" : "false");
-            break;
-          }
-
         case "SetTerrainCell":
           {
             var args = JsonUtility.FromJson<TerrainManager.SetCellRpcJsonable>(argsJson);
