@@ -18,7 +18,7 @@ import * as THREE from "three.mjs";
 import { enableGravity, isSolid, setAngularDrag, setBounciness, setDrag, setMass } from "./apiv2/physics/attributes.mjs";
 import { isGrounded, isPlayerControllable, setCameraActor, setIsPlayerControllable } from "./apiv2/player_controls/controls.mjs";
 import { assertBoolean, assertNumber, assertQuaternion, assertString, assertStringOrNull, assertVector3, mapGetOrCreate, parseJsonOrEmpty } from "./util.mjs";
-import { callVoosService, getActorBoolean, getActorFloat, getActorQuaternion, getActorString, getActorVector3, setActorBoolean, setActorFloat, setActorQuaternion, setActorString, setActorVector3, sysLog, getVoosEngine } from "./voosMain.mjs";
+import { getActorBoolean, getActorFloat, getActorQuaternion, getActorString, getActorVector3, setActorBoolean, setActorFloat, setActorQuaternion, setActorString, setActorVector3, sysLog, getVoosEngine } from "./voosMain.mjs";
 import { Vector3 } from "./threejs-overrides.mjs";
 import { assert } from "./testing.mjs";
 import { exists } from "./apiv2/actors/actors.mjs";

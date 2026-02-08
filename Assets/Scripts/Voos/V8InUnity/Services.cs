@@ -205,25 +205,6 @@ namespace V8InUnity
     }
 
     public static bool CacheReportResult = true;
-    System.IntPtr firstReportResultPtr = System.IntPtr.Zero;
-
-    /// <summary>
-    /// CallService with delegate callback (for Puerts)
-    /// This version accepts a C# delegate directly, avoiding Marshal overhead
-    /// </summary>
-    internal void CallService(string serviceName, string argsJson, System.Action<string> reportResult)
-    {
-      try
-      {
-        ExecuteService(serviceName, argsJson, reportResult);
-      }
-      catch (System.Exception e)
-      {
-        // We cannot let exceptions escape. It will tend to crash the process.
-        Util.LogError($"Exception during CallService({serviceName}):\n{e}");
-        reportResult("false");
-      }
-    }
 
     public string[] OverlapSphere(Vector3 center, float radius, string tag)
     {
@@ -641,20 +622,6 @@ namespace V8InUnity
       Util.Log($"LogBehaviorMessage {argsJson}");
       VoosEngine.BehaviorLogItem msg = JsonUtility.FromJson<VoosEngine.BehaviorLogItem>(argsJson);
       engine.HandleBehaviorLogMessage(msg);
-    }
-
-    /// <summary>
-    /// Core service execution logic, shared by both CallService overloads
-    /// </summary>
-    private void ExecuteService(string serviceName, string argsJson, System.Action<string> reportResult)
-    {
-      // Debug.LogError($"CallService({serviceName}, {argsJson})");
-      switch (serviceName)
-      {
-        default:
-          Util.LogError($"VOOS script tried to call unknown service {serviceName}.");
-          break;
-      }
     }
 
     private UserMain GetUserMain()

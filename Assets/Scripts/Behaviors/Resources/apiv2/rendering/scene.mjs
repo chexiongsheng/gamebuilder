@@ -17,7 +17,7 @@
 import * as THREE from "three.mjs";
 import { ApiV2Context } from "../apiv2.mjs";
 import { assert } from "../../testing.mjs";;
-import { callVoosService, getVoosEngine } from "../../voosMain.mjs";
+import { getVoosEngine } from "../../voosMain.mjs";
 import { clamp } from "../misc/math.mjs";
 
 // VISIBLE_TO_MONACO

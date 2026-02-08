@@ -23,7 +23,7 @@ import { assert } from "./testing.mjs";
 import { ActorMovementApi, HandlingActor, OtherActor } from "./HandlingActor.mjs";
 import { assertNumber, assertString, assertVector3, serializeQuaternion } from "./util.mjs";
 import { clamp } from "./apiv2/misc/math.mjs";
-import { callVoosService, queueMessageToUnity, response, getVoosEngine } from "./voosMain.mjs";
+import { queueMessageToUnity, response, getVoosEngine } from "./voosMain.mjs";
 import { getTimeSinceReset } from "./apiv2/misc/time.mjs";
 import { BlockStyle } from "./apiv2/terrain/blocks.mjs";
 import { isInMultiplayerMode } from "./apiv2/multiplayer/players.mjs";

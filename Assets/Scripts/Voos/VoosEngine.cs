@@ -1213,15 +1213,6 @@ setVoosModule('{moduleKey}', module);
   // ==================== Puerts适配器方法 ====================
   // 这些方法将VoosEngine的内部API适配为Puerts所需的签名
 
-
-
-  public void CallServiceForPuerts(string serviceName, string argsJson, System.Action<string> callback)
-  {
-    // 直接调用Services的异步版本CallService，传递委托
-    // Puerts会自动将JS函数转换为C#委托
-    services.CallService(serviceName, argsJson, callback);
-  }
-
   public void HandleErrorForPuerts(string errorMessage, string stackTrace)
   {
     // HandleV8RuntimeError的签名是: void HandleV8RuntimeError(string message)

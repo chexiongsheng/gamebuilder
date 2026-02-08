@@ -120,45 +120,6 @@ function setActorString(actorId, fieldId, value) {
   getVoosEngine().SetActorString(actorId, fieldId, String(value));
 };
 
-// ==================== Service Call API ====================
-
-// callVoosService - Main service call API (compatible with V8 engine)
-// Note: This is a synchronous-looking API but internally uses async callback
-// It's kept for backward compatibility with existing code
-function callVoosService(serviceName, arg) {
-  // For synchronous-looking API, we use a workaround:
-  // Store result in a closure and return it synchronously
-  // This works because Unity's main thread will process the callback immediately
-  let result = undefined;
-  let error = null;
-  let completed = false;
-
-  try {
-    const argsJson = JSON.stringify(arg);
-
-    getVoosEngine().CallServiceForPuerts(serviceName, argsJson, function (resultJson) {
-      completed = true;
-      if (resultJson && resultJson !== '') {
-        try {
-          result = JSON.parse(resultJson);
-        } catch (e) {
-          result = resultJson;
-        }
-      }
-    });
-
-    // In Unity's single-threaded environment, the callback should execute immediately
-    if (!completed) {
-      console.error('callVoosService: callback not executed immediately');
-    }
-
-    return result;
-  } catch (err) {
-    console.error('callVoosService error:', err.message);
-    throw err;
-  }
-};
-
 // sysLog - System logging API (alias for log)
 function sysLog(...args) {
   const message = args.map(arg => {
@@ -548,7 +509,6 @@ export { setActorQuaternion };
 export { getActorString };
 export { setActorString };
 export { getVoosEngine };
-export { callVoosService };
 export { sysLog };
 export { TIMERS_MEMORY_KEY };
 export { cachedPlayerActors };

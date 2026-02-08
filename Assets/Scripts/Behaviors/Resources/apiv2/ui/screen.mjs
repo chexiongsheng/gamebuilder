@@ -19,7 +19,7 @@ import { getBoundsCenter, getBoundsRadiusAverage } from "../rendering/body.mjs";
 import { exists, myself } from "../actors/actors.mjs";
 import { assertNumber, assertVector3 } from "../../util.mjs";
 import { log } from "../misc/utility.mjs";
-import { callVoosService, getVoosEngine } from "../../voosMain.mjs";
+import { getVoosEngine } from "../../voosMain.mjs";
 import { assert } from "../../testing.mjs";
 import { Actor } from "../../ModuleBehaviorsActor.mjs";
 import { ApiV2Context } from "../apiv2.mjs";
