@@ -292,6 +292,19 @@ namespace V8InUnity
       return result.ToArray();
     }
 
+    public string[] GetPlayerActors()
+    {
+      List<string> result = new List<string>();
+      foreach (VoosActor actor in engine.EnumerateActors())
+      {
+        if (actor.GetIsPlayerControllable())
+        {
+          result.Add(actor.GetName());
+        }
+      }
+      return result.ToArray();
+    }
+
     public bool SpawnParticleEffect(string pfxId, Vector3 position, Vector3 rotation, float scale)
     {
       ParticleEffect pfx = particleEffectSystem.GetParticleEffect(pfxId);
@@ -402,30 +415,6 @@ namespace V8InUnity
             QueryTriggerInteraction.Ignore // Ignore triggers for checks. We are probably looking for clearance, in which case triggers don't matter.
             );
             reportResult(hitAnything ? "true" : "false");
-            break;
-          }
-
-        case "GetPlayerActors":
-          using (Util.Profile(serviceName))
-          {
-            var jsoner = SharedStringBuilder;
-            jsoner.Clear();
-            jsoner.Append("[");
-            bool gotOneActor = false;
-
-            foreach (VoosActor actor in engine.EnumerateActors())
-            {
-              if (actor.GetIsPlayerControllable())
-              {
-                if (gotOneActor) jsoner.Append(",");
-                jsoner.Append("\"");
-                jsoner.Append(actor.GetName());
-                jsoner.Append("\"");
-                gotOneActor = true;
-              }
-            }
-            jsoner.Append("]");
-            reportResult(jsoner.ToString());
             break;
           }
 

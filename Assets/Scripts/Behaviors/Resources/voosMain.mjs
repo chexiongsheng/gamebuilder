@@ -250,7 +250,11 @@ let cachedPlayerActors = null;
 
 function getPlayerActorsCached() {
   if (cachedPlayerActors === null) {
-    cachedPlayerActors = callVoosService("GetPlayerActors");
+    const csActors = getVoosEngine().services.GetPlayerActors();
+    cachedPlayerActors = [];
+    for (let i = 0; i < csActors.Length; i++) {
+      cachedPlayerActors.push(csActors.get_Item(i));
+    }
   }
   return cachedPlayerActors;
 }
