@@ -105,13 +105,6 @@ namespace V8InUnity
     }
 
     [System.Serializable]
-    struct OneShotAnimationRequest
-    {
-      public ushort actorTempId;
-      public string animationName;
-    }
-
-    [System.Serializable]
     struct GetActorScreenRectResponse
     {
       public float x, y, w, h;
@@ -566,6 +559,19 @@ namespace V8InUnity
       }
     }
 
+    public void PlayOneShotAnimation(ushort actorTempId, string animationName)
+    {
+      VoosActor actor = engine.GetActorByTempId(actorTempId);
+      if (actor != null)
+      {
+        actor.PlayOneShotAnimation(animationName);
+      }
+      else
+      {
+        Util.LogError($"PlayOneShotAnimation: Could not find actor for temp ID {actorTempId}. Ignoring.");
+      }
+    }
+
     /// <summary>
     /// Core service execution logic, shared by both CallService overloads
     /// </summary>
@@ -608,22 +614,6 @@ namespace V8InUnity
                     break;
                   }
         */
-        case "PlayOneShotAnimation":
-          {
-            OneShotAnimationRequest req = JsonUtility.FromJson<OneShotAnimationRequest>(argsJson);
-            VoosActor actor = engine.GetActorByTempId(req.actorTempId);
-            if (actor != null)
-            {
-              actor.PlayOneShotAnimation(req.animationName);
-            }
-            else
-            {
-              Util.LogError($"PlayOneShotAnimation: Could not find actor for temp ID {req.actorTempId}. Ignoring.");
-            }
-            reportResult("true");
-            break;
-          }
-
         case "ProjectPoint":
           {
             Camera cam = GetUserMain().GetCamera();

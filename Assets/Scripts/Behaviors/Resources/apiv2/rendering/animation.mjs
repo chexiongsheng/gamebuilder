@@ -16,7 +16,7 @@
 
 import { ApiV2Context } from "../apiv2.mjs";
 import { assertString } from "../../util.mjs";
-import { callVoosService } from "../../voosMain.mjs";
+import { getVoosEngine } from "../../voosMain.mjs";
 import { cooldown } from "../actors/messages.mjs";
 
 // VISIBLE_TO_MONACO
@@ -37,10 +37,10 @@ import { cooldown } from "../actors/messages.mjs";
  */
 function playAnimation(animationName) {
   assertString(animationName, "animationName");
-  callVoosService("PlayOneShotAnimation", {
-    actorTempId: ApiV2Context.instance.getActor().getInternalActor().tempId_,
-    animationName: animationName
-  });
+  getVoosEngine().services.PlayOneShotAnimation(
+    ApiV2Context.instance.getActor().getInternalActor().tempId_,
+    animationName
+  );
 }
 
 /**
