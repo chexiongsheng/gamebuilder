@@ -23,7 +23,7 @@ import { assert } from "./testing.mjs";
 import { ActorMovementApi, HandlingActor, OtherActor } from "./HandlingActor.mjs";
 import { assertNumber, assertString, assertVector3, serializeQuaternion } from "./util.mjs";
 import { clamp } from "./apiv2/misc/math.mjs";
-import { callVoosService, queueMessageToUnity, response } from "./voosMain.mjs";
+import { callVoosService, queueMessageToUnity, response, getVoosEngine } from "./voosMain.mjs";
 import { getTimeSinceReset } from "./apiv2/misc/time.mjs";
 import { BlockStyle } from "./apiv2/terrain/blocks.mjs";
 import { isInMultiplayerMode } from "./apiv2/multiplayer/players.mjs";
@@ -124,12 +124,17 @@ class HandlerApi {
    * @returns {!Array.<string>} Array of actor names that touch the given sphere.
    */
   overlapSphere(center, radius, tag) {
-    var actors = callVoosService('OverlapSphere', { center: center, radius: radius, tag: tag });
-    if (actors.length == MAX_PHYSICS_QUERY_RESULTS) {
+    const cs_center = new CS.UnityEngine.Vector3(center.x, center.y, center.z);
+    const cs_actors = getVoosEngine().services.OverlapSphere(cs_center, radius, tag);
+    if (cs_actors.Length == MAX_PHYSICS_QUERY_RESULTS) {
       throw new Error(`Too many results for overlapSphere. Please reduce your radius. Maximum allowed is ${MAX_PHYSICS_QUERY_RESULTS}`);
     }
+    const actors = new Set();
+    for (let i = 0; i < cs_actors.Length; i++) {
+      actors.add(cs_actors.get_Item(i));
+    }
     // Dedupe here, since a single actor could have several colliders.
-    return [...new Set(actors)];
+    return [...actors];
   }
 
   /**

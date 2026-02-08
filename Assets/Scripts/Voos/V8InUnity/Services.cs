@@ -297,49 +297,37 @@ namespace V8InUnity
       }
     }
 
+    public string[] OverlapSphere(Vector3 center, float radius, string tag)
+    {
+      int numHits = Physics.OverlapSphereNonAlloc(center, radius, SharedColliderBuffer, VoosActor.LayerMaskValue, QueryTriggerInteraction.Collide);
+      if (numHits == SharedColliderBuffer.Length)
+      {
+        Util.LogError($"The OverlapSphere call exceeded the maximum number of allowed results ({SharedColliderBuffer.Length}). You are probably not getting what you want. Please try to adjust the parameters so you get less hits, like reducing the radius.");
+      }
+
+      List<string> result = new List<string>();
+      for (int i = 0; i < numHits; i++)
+      {
+        Collider obj = SharedColliderBuffer[i];
+        VoosActor actor = obj.GetComponentInParent<VoosActor>();
+        if (actor == null) continue;
+        if (!string.IsNullOrEmpty(tag))
+        {
+          if (!actor.HasTag(tag)) continue;
+        }
+        result.Add(actor.GetName());
+      }
+      return result.ToArray();
+    }
+
     /// <summary>
     /// Core service execution logic, shared by both CallService overloads
     /// </summary>
     private void ExecuteService(string serviceName, string argsJson, System.Action<string> reportResult)
     {
+      // Debug.LogError($"CallService({serviceName}, {argsJson})");
       switch (serviceName)
       {
-        case "OverlapSphere":
-          using (Util.Profile(serviceName))
-          {
-            var args = JsonUtility.FromJson<OverlapSphereArgs>(argsJson);
-            int numHits = Physics.OverlapSphereNonAlloc(args.center, args.radius, SharedColliderBuffer, VoosActor.LayerMaskValue, QueryTriggerInteraction.Collide);
-            if (numHits == SharedColliderBuffer.Length)
-            {
-              Util.LogError($"The OverlapSphere call exceeded the maximum number of allowed results ({SharedColliderBuffer.Length}). You are probably not getting what you want. Please try to adjust the parameters so you get less hits, like reducing the radius.");
-            }
-            using (Util.Profile("report actors"))
-            {
-              var jsoner = SharedStringBuilder;
-              jsoner.Clear();
-              jsoner.Append("[");
-              bool gotOneActor = false;
-              for (int i = 0; i < numHits; i++)
-              {
-                Collider obj = SharedColliderBuffer[i];
-                VoosActor actor = obj.GetComponentInParent<VoosActor>();
-                if (actor == null) continue;
-                if (!args.tag.IsNullOrEmpty())
-                {
-                  if (!actor.HasTag(args.tag)) continue;
-                }
-
-                if (gotOneActor) jsoner.Append(",");
-                jsoner.Append("\"");
-                jsoner.Append(actor.GetName());
-                jsoner.Append("\"");
-                gotOneActor = true;
-              }
-              jsoner.Append("]");
-              reportResult(jsoner.ToString());
-            }
-            break;
-          }
         case "CheckBox":
           using (Util.Profile(serviceName))
           {

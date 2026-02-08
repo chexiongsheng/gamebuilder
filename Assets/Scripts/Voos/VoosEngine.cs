@@ -202,7 +202,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   public static bool UsePuerts = true; // 配置开关：true使用Puerts，false使用V8
   private Voos.PuertsAdapter puertsAdapter = null;
 
-  V8InUnity.Services services = null;
+  public V8InUnity.Services services = null;
 
   PhotonView photonView;
 
