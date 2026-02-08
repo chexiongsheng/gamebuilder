@@ -2546,15 +2546,9 @@ setVoosModule('{moduleKey}', module);
     return dict;
   }
 
-  [System.Serializable]
-  public struct DestroyActorsRequest
+  public void DestroyActorsForScript(string[] actorNames)
   {
-    public string[] actorNames;
-  }
-
-  public void DestroyActorsForScript(DestroyActorsRequest request)
-  {
-    foreach (string actorName in request.actorNames)
+    foreach (string actorName in actorNames)
     {
       VoosActor actor = GetActor(actorName);
       if (actor != null && actor.IsLocallyOwned())

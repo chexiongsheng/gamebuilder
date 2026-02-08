@@ -536,7 +536,13 @@ class ModuleBehaviorSystem {
     if (actors.length < 1) return;
     // Non-local actors cannot be destroyed.
     const actorNames = actors.filter(actor => actor.isLocalActor).map(actor => actor.name);
-    callVoosService("DestroyActors", { actorNames: actorNames });
+
+    const csActorNames = CS.System.Array.CreateInstance(puer.$typeof(CS.System.String), actorNames.length);
+    for (let i = 0; i < actorNames.length; i++) {
+      csActorNames.set_Item(i, actorNames[i]);
+    }
+
+    getVoosEngine().DestroyActorsForScript(csActorNames);
   }
 
   /**

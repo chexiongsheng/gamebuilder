@@ -531,15 +531,6 @@ namespace V8InUnity
             break;
           }
 
-        case "DestroyActors":
-          using (Util.Profile(serviceName))
-          {
-            VoosEngine.DestroyActorsRequest args = JsonUtility.FromJson<VoosEngine.DestroyActorsRequest>(argsJson);
-            GetEngine().DestroyActorsForScript(args);
-            reportResult("true");
-            break;
-          }
-
         case "PlayOneShotAnimation":
           {
             OneShotAnimationRequest req = JsonUtility.FromJson<OneShotAnimationRequest>(argsJson);
