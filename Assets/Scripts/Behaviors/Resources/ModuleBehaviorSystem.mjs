@@ -26,7 +26,7 @@ import { Queue } from "./Queue.src.mjs";
 import { assert } from "./testing.mjs";
 import { assertQuaternion, assertString, assertVector3, beginProfileSample, endProfileSample, flattenArray, mapGetOrCreate, parseJsonOrEmpty, serializeQuaternion } from "./util.mjs";;
 import { VoosBinaryReaderWriter } from "./serialization.mjs";
-import { callVoosService, sysLog, queueMessageToUnity, enqueueRemoteMessage } from "./voosMain.mjs";
+import { callVoosService, sysLog, queueMessageToUnity, enqueueRemoteMessage, getVoosEngine } from "./voosMain.mjs";
 import { getVoosModule } from "./voosModules.mjs";
 import { clone } from "./apiv2/actors/cloning.mjs";
 import { broadcast } from "./apiv2/actors/messages.mjs";
@@ -574,7 +574,7 @@ class ModuleBehaviorSystem {
   }
 
   prepareForTick() {
-    this.cameraActorName_ = callVoosService("GetCameraActor");
+    this.cameraActorName_ = getVoosEngine().services.GetCameraActor();
   }
 }
 

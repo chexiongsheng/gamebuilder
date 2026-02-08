@@ -181,7 +181,8 @@ class ApiV2Context {
 
   getPlayersInfo() {
     if (!this.cachedPlayersInfo_) {
-      this.cachedPlayersInfo_ = callVoosService("GetPlayersInfo");
+      const json = getVoosEngine().services.GetPlayersInfo();
+      this.cachedPlayersInfo_ = JSON.parse(json);
     }
     return this.cachedPlayersInfo_;
   }

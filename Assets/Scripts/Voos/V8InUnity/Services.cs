@@ -305,6 +305,40 @@ namespace V8InUnity
       return result.ToArray();
     }
 
+    public string GetPlayersInfo()
+    {
+      Dictionary<int, string> nicknames = new Dictionary<int, string>();
+      int i;
+      for (i = 0; i < PhotonNetwork.playerList.Length; i++)
+      {
+        int id = PhotonNetwork.playerList[i].ID;
+        string nick = PhotonNetwork.playerList[i].NickName;
+        nicknames[id] = nick;
+      }
+
+      VirtualPlayersResult result = new VirtualPlayersResult();
+      result.allPlayers = new VirtualPlayerResultEntry[virtualPlayerManager.GetVirtualPlayerCount()];
+
+      i = 0;
+      foreach (VirtualPlayerManager.VirtualPlayerInfo virtualPlayer in virtualPlayerManager.EnumerateVirtualPlayers())
+      {
+        Debug.Assert(i < result.allPlayers.Length);
+        result.allPlayers[i].id = virtualPlayer.virtualId;
+        result.allPlayers[i].slotNumber = virtualPlayer.slotNumber;
+        result.allPlayers[i].nickName = virtualPlayer.nickName;
+        ++i;
+      }
+      Debug.Assert(i == result.allPlayers.Length);
+
+      result.localPlayerId = playerControlsManager.GetVirtualPlayerId();
+      return JsonUtility.ToJson(result);
+    }
+
+    public string GetCameraActor()
+    {
+      return GetUserMain().GetCameraActor()?.GetName();
+    }
+
     public bool SpawnParticleEffect(string pfxId, Vector3 position, Vector3 rotation, float scale)
     {
       ParticleEffect pfx = particleEffectSystem.GetParticleEffect(pfxId);
@@ -465,36 +499,6 @@ namespace V8InUnity
           {
             VoosActor actor = GetUserMain().GetPlayerActor();
             reportResult(actor == null ? "null" : "\"" + actor.GetName() + "\"");
-            break;
-          }
-
-        case "GetPlayersInfo":
-          {
-            Dictionary<int, string> nicknames = new Dictionary<int, string>();
-            int i;
-            for (i = 0; i < PhotonNetwork.playerList.Length; i++)
-            {
-              int id = PhotonNetwork.playerList[i].ID;
-              string nick = PhotonNetwork.playerList[i].NickName;
-              nicknames[id] = nick;
-            }
-
-            VirtualPlayersResult result = new VirtualPlayersResult();
-            result.allPlayers = new VirtualPlayerResultEntry[virtualPlayerManager.GetVirtualPlayerCount()];
-
-            i = 0;
-            foreach (VirtualPlayerManager.VirtualPlayerInfo virtualPlayer in virtualPlayerManager.EnumerateVirtualPlayers())
-            {
-              Debug.Assert(i < result.allPlayers.Length);
-              result.allPlayers[i].id = virtualPlayer.virtualId;
-              result.allPlayers[i].slotNumber = virtualPlayer.slotNumber;
-              result.allPlayers[i].nickName = virtualPlayer.nickName;
-              ++i;
-            }
-            Debug.Assert(i == result.allPlayers.Length);
-
-            result.localPlayerId = playerControlsManager.GetVirtualPlayerId();
-            reportResult(JsonUtility.ToJson(result));
             break;
           }
 
@@ -683,13 +687,6 @@ namespace V8InUnity
             VoosEngine.BehaviorLogItem msg = JsonUtility.FromJson<VoosEngine.BehaviorLogItem>(argsJson);
             engine.HandleBehaviorLogMessage(msg);
             reportResult("true");
-            break;
-          }
-
-        case "GetCameraActor":
-          {
-            string cameraActorName = GetUserMain().GetCameraActor()?.GetName();
-            reportResult(cameraActorName == null ? "null" : ("\"" + cameraActorName + "\""));
             break;
           }
 
