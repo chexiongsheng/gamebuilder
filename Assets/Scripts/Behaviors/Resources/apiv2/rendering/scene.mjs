@@ -71,7 +71,7 @@ var SceneLightingMode = {
  */
 function setSkyType(skyType) {
   assert(Object.keys(SkyType).includes(skyType), "Invalid sky type: " + skyType);
-  return callVoosService("SetSkyType", { value: "" + skyType });
+  getVoosEngine().services.SetSkyType("" + skyType);
 }
 
 /**
@@ -79,7 +79,7 @@ function setSkyType(skyType) {
  * @return {SkyType} The current sky type.
  */
 function getSkyType() {
-  return (callVoosService("GetSkyType").value || "").toUpperCase();
+  return (getVoosEngine().services.GetSkyType() || "").toUpperCase();
 }
 
 /**

@@ -472,6 +472,24 @@ namespace V8InUnity
       return gbStage.GetSceneLightingMode().ToString().ToUpperInvariant();
     }
 
+    public string GetSkyType()
+    {
+      return gbStage.GetSkyType().ToString();
+    }
+
+    public void SetSkyType(string skyTypeStr)
+    {
+      GameBuilderStage.SkyType skyType;
+      if (Util.TryParseEnum(skyTypeStr ?? "", out skyType, true))
+      {
+        gbStage.SetSkyType(skyType);
+      }
+      else
+      {
+        Debug.LogError("Invalid sky type requested: " + skyTypeStr);
+      }
+    }
+
     public void SetSceneLighting(string lightingMode)
     {
       GameBuilderStage.SceneLightingMode sceneLightingMode;
@@ -693,29 +711,6 @@ namespace V8InUnity
         case "GetScreenInfo":
           {
             reportResult(JsonUtility.ToJson(gameUiMain.GetScreenInfoForScript()));
-            break;
-          }
-
-        case "SetSkyType":
-          {
-            JsonWrapper<string> request = JsonUtility.FromJson<JsonWrapper<string>>(argsJson);
-            GameBuilderStage.SkyType skyType;
-            if (Util.TryParseEnum(request.value ?? "", out skyType, true))
-            {
-              gbStage.SetSkyType(skyType);
-              reportResult("true");
-            }
-            else
-            {
-              Debug.LogError("Invalid sky type requested: " + request.value);
-              reportResult("false");
-            }
-            break;
-          }
-
-        case "GetSkyType":
-          {
-            reportResult(JsonUtility.ToJson(JsonWrapper<string>.Wrap(gbStage.GetSkyType().ToString())));
             break;
           }
 
