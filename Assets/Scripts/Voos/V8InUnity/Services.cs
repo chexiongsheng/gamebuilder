@@ -490,6 +490,16 @@ namespace V8InUnity
       }
     }
 
+    public void SetSkyColor(float r, float g, float b)
+    {
+      gbStage.SetSkyColor(new Color(r, g, b));
+    }
+
+    public Color GetSkyColor()
+    {
+      return gbStage.GetSkyColor();
+    }
+
     public void SetSceneLighting(string lightingMode)
     {
       GameBuilderStage.SceneLightingMode sceneLightingMode;
@@ -711,20 +721,6 @@ namespace V8InUnity
         case "GetScreenInfo":
           {
             reportResult(JsonUtility.ToJson(gameUiMain.GetScreenInfoForScript()));
-            break;
-          }
-
-        case "SetSkyColor":
-          {
-            JsonWrapper<Color> request = JsonUtility.FromJson<JsonWrapper<Color>>(argsJson);
-            gbStage.SetSkyColor(request.value);
-            reportResult("true");
-            break;
-          }
-
-        case "GetSkyColor":
-          {
-            reportResult(JsonUtility.ToJson(JsonWrapper<Color>.Wrap(gbStage.GetSkyColor())));
             break;
           }
 

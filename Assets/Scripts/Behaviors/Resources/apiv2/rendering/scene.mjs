@@ -88,7 +88,7 @@ function getSkyType() {
  */
 function setSkyColor(color) {
   color = ApiV2Context.instance.normalizeColor(color, new THREE.Color(1, 1, 1));
-  callVoosService("SetSkyColor", { value: { r: color.r, g: color.g, b: color.b, a: 1 } });
+  getVoosEngine().services.SetSkyColor(color.r, color.g, color.b);
 }
 
 /**
@@ -96,7 +96,7 @@ function setSkyColor(color) {
  * @return {THREE.Color} The current sky color.
  */
 function getSkyColor() {
-  const color = callVoosService("GetSkyColor").value;
+  const color = getVoosEngine().services.GetSkyColor();
   return new THREE.Color(
     clamp(color.r || 0, 0, 1),
     clamp(color.g || 0, 0, 1),
