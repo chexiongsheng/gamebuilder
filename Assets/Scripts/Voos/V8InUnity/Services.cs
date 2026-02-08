@@ -493,12 +493,6 @@ namespace V8InUnity
             break;
           }
 
-        case "IsMultiplayer":
-          {
-            reportResult(GameBuilderApplication.CurrentGameOptions.playOptions.isMultiplayer ? "true" : "false");
-            break;
-          }
-
         case "TransferPlayerControl":
           {
             VoosEngine.TransferPlayerControlRequest request =

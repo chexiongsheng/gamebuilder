@@ -595,7 +595,7 @@ class HandlerApi {
    * @return {boolean} Whether or not the game is in multiplayer mode.
    */
   isInMultiplayerMode() {
-    return callVoosService('IsMultiplayer', {});
+    return CS.GameBuilderApplication.CurrentGameOptions.playOptions.isMultiplayer;
   }
 
   /** Gets a list of all the actor names. */
