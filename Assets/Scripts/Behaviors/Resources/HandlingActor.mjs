@@ -749,11 +749,7 @@ class OtherActor {
       existing = new THREE.Color();    // GENERATED
     }
     assertColor(existing, 'getTint argument');    // GENERATED
-    const o = getActorColor(this.actor_.tempId_, 0);    // GENERATED
-    existing.r = o.r;    // GENERATED
-    existing.g = o.g;    // GENERATED
-    existing.b = o.b;    // GENERATED
-    existing.a = o.a;    // GENERATED
+    getActorColor(this.actor_.tempId_, 0, existing);    // GENERATED
     return existing;    // GENERATED
   }
   // END_GAME_BUILDER_CODE_GEN

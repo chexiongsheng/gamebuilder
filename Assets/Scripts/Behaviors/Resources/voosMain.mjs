@@ -233,12 +233,26 @@ let updateCount = 0;
 assert(typeof getActorString == 'function');
 assert(typeof setActorString == 'function');
 
-function getActorColor(tempActorId, fieldId) {
-  return callVoosService("GetActorColorField", { actorId: tempActorId, fieldId: fieldId });
+function getActorColor(actorId, fieldId, colorOut) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+  const outR = puer.$ref();
+  const outG = puer.$ref();
+  const outB = puer.$ref();
+  const outA = puer.$ref();
+  globalThis.__voosEngine.GetActorColor(Number(actorId), Number(fieldId), outR, outG, outB, outA);
+  colorOut.r = puer.$unref(outR);
+  colorOut.g = puer.$unref(outG);
+  colorOut.b = puer.$unref(outB);
+  colorOut.a = puer.$unref(outA);
 }
 
-function setActorColor(tempActorId, fieldId, newValue) {
-  return callVoosService("SetActorColorField", { actorId: tempActorId, fieldId: fieldId, newValue: { r: newValue.r, g: newValue.g, b: newValue.b, a: newValue.a } });
+function setActorColor(actorId, fieldId, newValue) {
+  if (!globalThis.__voosEngine) {
+    throw new Error('VoosEngine not registered');
+  }
+  globalThis.__voosEngine.SetActorColor(Number(actorId), Number(fieldId), Number(newValue.r), Number(newValue.g), Number(newValue.b), Number(newValue.a));
 }
 
 // TODO take a sender actor here as well.

@@ -1334,18 +1334,27 @@ setVoosModule('{moduleKey}', module);
     latestActorsInSerializedOrder[actorId].SetStringField(fieldId, newValue);
   }
 
-  public Color GetActorColor(ushort actorId, ushort fieldId)
+  public void GetActorColor(ushort actorId, ushort fieldId, out float r, out float g, out float b, out float a)
   {
+    r = 0f;
+    g = 0f;
+    b = 0f;
+    a = 0f;
+
     if (actorId >= latestActorsInSerializedOrder.Count)
     {
       Util.LogError($"Bad actorId given: {actorId}. # actors = {latestActorsInSerializedOrder.Count}");
-      return Color.white;
+      return;
     }
 
-    return latestActorsInSerializedOrder[actorId].GetColorField(fieldId);
+    Color c = latestActorsInSerializedOrder[actorId].GetColorField(fieldId);
+    r = c.r;
+    g = c.g;
+    b = c.b;
+    a = c.a;
   }
 
-  public void SetActorColor(ushort actorId, ushort fieldId, Color newValue)
+  public void SetActorColor(ushort actorId, ushort fieldId, float r, float g, float b, float a)
   {
     if (actorId >= latestActorsInSerializedOrder.Count)
     {
@@ -1353,7 +1362,7 @@ setVoosModule('{moduleKey}', module);
       return;
     }
 
-    latestActorsInSerializedOrder[actorId].SetColorField(fieldId, newValue);
+    latestActorsInSerializedOrder[actorId].SetColorField(fieldId, new Color(r, g, b, a));
   }
 
   public delegate void ActorVector3Getter(ushort tempActorId, ushort fieldId, out float xOut, out float yOut, out float zOut);

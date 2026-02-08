@@ -137,20 +137,7 @@ namespace V8InUnity
       public string nickName;
     }
 
-    [System.Serializable]
-    struct GetActorFieldArgs
-    {
-      public ushort actorId;
-      public ushort fieldId;
-    }
 
-    [System.Serializable]
-    struct SetActorColorFieldArgs
-    {
-      public ushort actorId;
-      public ushort fieldId;
-      public Color newValue;
-    }
 
     [System.Serializable]
     struct PlaySoundRequest
@@ -589,20 +576,7 @@ namespace V8InUnity
             break;
           }
 
-        case "GetActorColorField":
-          {
-            GetActorFieldArgs args = JsonUtility.FromJson<GetActorFieldArgs>(argsJson);
-            reportResult(JsonUtility.ToJson(engine.GetActorColor(args.actorId, args.fieldId)));
-            break;
-          }
 
-        case "SetActorColorField":
-          {
-            SetActorColorFieldArgs args = JsonUtility.FromJson<SetActorColorFieldArgs>(argsJson);
-            engine.SetActorColor(args.actorId, args.fieldId, args.newValue);
-            reportResult("true");
-            break;
-          }
 
         case "CloneActor":
           using (Util.Profile(serviceName))
