@@ -130,15 +130,6 @@ namespace V8InUnity
     }
 
     [System.Serializable]
-    struct ParticleEffectRequest
-    {
-      public string pfxId;
-      public Vector3 position;
-      public Vector3 rotation;
-      public float scale;
-    }
-
-    [System.Serializable]
     struct OneShotAnimationRequest
     {
       public ushort actorTempId;
@@ -299,6 +290,22 @@ namespace V8InUnity
         result.Add(actor.GetName());
       }
       return result.ToArray();
+    }
+
+    public bool SpawnParticleEffect(string pfxId, Vector3 position, Vector3 rotation, float scale)
+    {
+      ParticleEffect pfx = particleEffectSystem.GetParticleEffect(pfxId);
+      if (pfx != null)
+      {
+        particleEffectSystem.SpawnParticleEffect(
+          pfx, position, rotation * Mathf.Rad2Deg, scale);
+        return true;
+      }
+      else
+      {
+        Debug.LogWarning("No particle effect with ID: " + pfxId);
+        return false;
+      }
     }
 
     public object Cast(Vector3 origin, Vector3 dir, float radius, float maxDist, int modeInt, bool includeActors, bool includeTerrain, string excludeActor)
@@ -559,24 +566,6 @@ namespace V8InUnity
             else
             {
               Debug.LogWarning("No SFX with ID: " + args.soundId);
-              reportResult("false");
-            }
-            break;
-          }
-        case "SpawnParticleEffect":
-          using (Util.Profile(serviceName))
-          {
-            ParticleEffectRequest args = JsonUtility.FromJson<ParticleEffectRequest>(argsJson);
-            ParticleEffect pfx = particleEffectSystem.GetParticleEffect(args.pfxId);
-            if (pfx != null)
-            {
-              particleEffectSystem.SpawnParticleEffect(
-                pfx, args.position, args.rotation * Mathf.Rad2Deg, args.scale);
-              reportResult("true");
-            }
-            else
-            {
-              Debug.LogWarning("No particle effect with ID: " + args.pfxId);
               reportResult("false");
             }
             break;

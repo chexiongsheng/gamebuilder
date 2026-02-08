@@ -17,7 +17,7 @@
 import * as THREE from "three.mjs";
 import { assert } from "../testing.mjs";
 import { assertNumber, assertObjectNotNull, assertQuaternion, assertString, assertVector3 } from "../util.mjs";;
-import { callVoosService } from "../voosMain.mjs";
+import { callVoosService, getVoosEngine } from "../voosMain.mjs";
 import { max, vec3add, vec3zero, vec3scale } from "./misc/math.mjs";
 import { raycast, raycastTerrain } from "./physics/casting.mjs";
 import { getMouseRayOrigin, getMouseRayDir } from "./keyboard_mouse/mouse.mjs";
@@ -451,8 +451,12 @@ class ApiV2Context {
       rotation.setFromQuaternion(getRot());
     }
     if (scale == null) scale = 1;
-    return callVoosService("SpawnParticleEffect",
-      { pfxId: pfxId, position: position || getPos(), rotation: rotation, scale: scale });
+
+    const pos = position || getPos();
+    const cs_pos = new CS.UnityEngine.Vector3(pos.x, pos.y, pos.z);
+    const cs_rot = new CS.UnityEngine.Vector3(rotation.x, rotation.y, rotation.z);
+
+    return getVoosEngine().services.SpawnParticleEffect(pfxId, cs_pos, cs_rot, scale);
   }
 
   getScreenInfo() {
