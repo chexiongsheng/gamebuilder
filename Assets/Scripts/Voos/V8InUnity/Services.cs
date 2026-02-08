@@ -572,6 +572,17 @@ namespace V8InUnity
       }
     }
 
+    public object ProjectPoint(Vector3 point)
+    {
+      Camera cam = GetUserMain().GetCamera();
+      Vector3 screenPoint = cam.WorldToScreenPoint(point);
+      if (screenPoint.z > 0)
+      {
+        return gameUiMain.UnityScreenPointToGameUiPoint(screenPoint);
+      }
+      return null;
+    }
+
     /// <summary>
     /// Core service execution logic, shared by both CallService overloads
     /// </summary>
@@ -614,22 +625,6 @@ namespace V8InUnity
                     break;
                   }
         */
-        case "ProjectPoint":
-          {
-            Camera cam = GetUserMain().GetCamera();
-            Vector3 point = JsonUtility.FromJson<Vector3>(argsJson);
-            Vector3 screenPoint = cam.WorldToScreenPoint(point);
-            if (screenPoint.z > 0)
-            {
-              Vector2 gameUiPoint = gameUiMain.UnityScreenPointToGameUiPoint(screenPoint);
-              reportResult(JsonUtility.ToJson(gameUiPoint));
-            }
-            else
-            {
-              reportResult("null");
-            }
-            break;
-          }
 
         case "ProjectSphere":
           {

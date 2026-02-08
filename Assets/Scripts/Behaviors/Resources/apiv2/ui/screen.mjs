@@ -42,11 +42,12 @@ import { ApiV2Context } from "../apiv2.mjs";
 function getScreenPoint(actorOrPoint) {
   const point = ApiV2Context.instance.getActorPosOrPoint(actorOrPoint || myself());
   assertVector3(point);
-  const result = callVoosService("ProjectPoint", point);
+  const result = getVoosEngine().services.ProjectPoint(new CS.UnityEngine.Vector3(point.x, point.y, point.z));
   if (result === null) return null;
-  assertNumber(result.x, "API bug: result.x is not number");
-  assertNumber(result.y, "API bug: result.y is not number");
-  return result;
+  const jsResult = { x: result.x, y: result.y };
+  assertNumber(jsResult.x, "API bug: result.x is not number");
+  assertNumber(jsResult.y, "API bug: result.y is not number");
+  return jsResult;
 }
 
 /**
