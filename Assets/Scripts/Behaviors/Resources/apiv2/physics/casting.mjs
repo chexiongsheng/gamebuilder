@@ -18,7 +18,7 @@ import * as THREE from "three.mjs";
 import { ApiV2Context } from "../apiv2.mjs";
 import { assert } from "../../testing.mjs";
 import { assertBoolean, assertNumber, assertVector3, assertVector3Duck } from "../../util.mjs";;
-import { callVoosService } from "../../voosMain.mjs";
+import { getVoosEngine } from "../../voosMain.mjs";
 import { vec3normalized } from "../misc/math.mjs";
 import { myself } from "../actors/actors.mjs";
 import { cooldown, sendToMany } from "../actors/messages.mjs";
@@ -120,18 +120,41 @@ function castAdvanced(origin, dir, maxDist, radius = 0, mode = CastMode.CLOSEST,
     "Invalid cast mode: " + mode);
   assertBoolean(includeActors, "includeActors");
   assertBoolean(includeTerrain, "includeTerrain");
-  let ret = callVoosService("Cast", {
-    origin: origin,
-    dir: vec3normalized(dir),
-    maxDist: maxDist,
-    radius: radius,
-    mode: mode,
-    includeActors: includeActors,
-    includeTerrain: includeTerrain,
-    excludeActor: includeSelf ? "" : myself(),
-  });
-  // Because Unity doesn't serialize arrays with JsonUtility, unpack it if necessary:
-  ret = (ret && ret.hits) ? ret.hits : ret;
+
+  const cs_origin = new CS.UnityEngine.Vector3(origin.x, origin.y, origin.z);
+  const normDir = vec3normalized(dir);
+  const cs_dir = new CS.UnityEngine.Vector3(normDir.x, normDir.y, normDir.z);
+  const excludeActor = includeSelf ? "" : myself();
+
+  const result = getVoosEngine().services.Cast(
+    cs_origin, cs_dir, radius, maxDist, mode, includeActors, includeTerrain, excludeActor
+  );
+
+  if (mode == CastMode.BOOLEAN) {
+    return result;
+  }
+
+  const convertHit = (hit) => {
+    return {
+      actor: hit.actor,
+      distance: hit.distance,
+      point: { x: hit.point.x, y: hit.point.y, z: hit.point.z }
+    };
+  };
+
+  let ret = null;
+  if (mode == CastMode.CLOSEST) {
+    if (result != null) {
+      ret = convertHit(result);
+    }
+  } else {
+    // ALL_SORTED or ALL_UNSORTED
+    ret = [];
+    for (let i = 0; i < result.Length; i++) {
+      ret.push(convertHit(result.get_Item(i)));
+    }
+  }
+
   // Convert all {x, y, z} into actual Vector3s, etc.
   return ApiV2Context.instance.convertUnityDucks(ret);
 }

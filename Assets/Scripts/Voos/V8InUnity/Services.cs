@@ -86,20 +86,7 @@ namespace V8InUnity
       public bool sortByDistance;
     }
 
-    [System.Serializable]
-    struct PhysicsCastRequest
-    {
-      public Vector3 origin;
-      public Vector3 dir;
-      public float radius;  // 0 means raycast, > 0 is sphere cast.
-      public float maxDist;
-      public CastMode mode;
-      public bool includeActors;
-      public bool includeTerrain;
-      public string excludeActor;
-    }
-
-    enum CastMode
+    public enum CastMode
     {
       // Keep these in sync with the enums in APIv2's casting.js
       BOOLEAN = 0,
@@ -109,17 +96,11 @@ namespace V8InUnity
     }
 
     [System.Serializable]
-    struct PhysicsCastHit
+    public struct PhysicsCastHit
     {
       public string actor; // if empty, it's a terrain hit
       public Vector3 point;
       public float distance;
-    }
-
-    [System.Serializable]
-    struct PhysicsCastResult
-    {
-      public PhysicsCastHit[] hits;
     }
 
     [System.Serializable]
@@ -320,6 +301,83 @@ namespace V8InUnity
       return result.ToArray();
     }
 
+    public object Cast(Vector3 origin, Vector3 dir, float radius, float maxDist, int modeInt, bool includeActors, bool includeTerrain, string excludeActor)
+    {
+      CastMode mode = (CastMode)modeInt;
+      int layerMask = (includeActors ? VoosActor.LayerMaskValue : 0) |
+        (includeTerrain ? LayerMask.GetMask("Default") : 0);
+      int numHits = radius < 0.01 ?
+        Physics.RaycastNonAlloc(origin, dir, SharedRaycastHitBuffer, maxDist, layerMask, QueryTriggerInteraction.Collide) :
+        Physics.SphereCastNonAlloc(origin, radius, dir, SharedRaycastHitBuffer, maxDist, layerMask, QueryTriggerInteraction.Collide);
+
+      List<PhysicsCastHit> results = null;
+      bool anyHit = false;
+      PhysicsCastHit closestHit = new PhysicsCastHit();
+
+      if (mode == CastMode.ALL_SORTED || mode == CastMode.ALL_UNSORTED)
+      {
+        results = new List<PhysicsCastHit>();
+      }
+
+      for (int i = 0; i < numHits; i++)
+      {
+        RaycastHit hit = SharedRaycastHitBuffer[i];
+        PhysicsCastHit thisHit;
+        if (hit.collider != null && hit.collider.gameObject != null &&
+            hit.collider.gameObject.GetComponent<IgnoreRaycastFromScript>() != null)
+        {
+          continue;
+        }
+        if (includeActors && IsScriptReadyActor(hit.collider) && GetActorName(hit.collider) != excludeActor)
+        {
+          thisHit = new PhysicsCastHit
+          {
+            actor = GetActorName(hit.collider),
+            distance = hit.distance,
+            point = hit.point
+          };
+        }
+        else if (includeTerrain && hit.collider.tag == "Ground")
+        {
+          thisHit = new PhysicsCastHit
+          {
+            actor = null,
+            distance = hit.distance,
+            point = hit.point
+          };
+        }
+        else
+        {
+          continue;
+        }
+        closestHit = (!anyHit || thisHit.distance < closestHit.distance) ? thisHit : closestHit;
+        anyHit = true;
+        results?.Add(thisHit);
+        if (mode == CastMode.BOOLEAN)
+        {
+          break;
+        }
+      }
+
+      if (mode == CastMode.ALL_SORTED)
+      {
+        results.Sort((a, b) => a.distance.CompareTo(b.distance));
+      }
+
+      if (mode == CastMode.ALL_SORTED || mode == CastMode.ALL_UNSORTED)
+      {
+        return results.ToArray();
+      }
+      else if (mode == CastMode.CLOSEST)
+      {
+        return anyHit ? (object)closestHit : null;
+      }
+      else
+      {
+        return anyHit;
+      }
+    }
+
     /// <summary>
     /// Core service execution logic, shared by both CallService overloads
     /// </summary>
@@ -337,100 +395,6 @@ namespace V8InUnity
             QueryTriggerInteraction.Ignore // Ignore triggers for checks. We are probably looking for clearance, in which case triggers don't matter.
             );
             reportResult(hitAnything ? "true" : "false");
-            break;
-          }
-
-        case "Cast":
-          using (Util.Profile(serviceName))
-          {
-            PhysicsCastRequest req = JsonUtility.FromJson<PhysicsCastRequest>(argsJson);
-
-            int layerMask = (req.includeActors ? VoosActor.LayerMaskValue : 0) |
-              (req.includeTerrain ? LayerMask.GetMask("Default") : 0);
-            int numHits = req.radius < 0.01 ?
-              Physics.RaycastNonAlloc(req.origin, req.dir, SharedRaycastHitBuffer, req.maxDist, layerMask, QueryTriggerInteraction.Collide) :
-              Physics.SphereCastNonAlloc(req.origin, req.radius, req.dir, SharedRaycastHitBuffer, req.maxDist, layerMask, QueryTriggerInteraction.Collide);
-
-            // These variables things are somewhat redundant, but for performance we keep all three and
-            // only use the appropriate ones per req.castMode, to avoid unnecessary allocations.
-            // List of results. Only allocate if we have to.
-            List<PhysicsCastHit> results = null;
-            // Did we have any hit?
-            bool anyHit = false;
-            // The closest hit we got. Only valid if anyHit == true.
-            PhysicsCastHit closestHit = new PhysicsCastHit();
-
-            if (req.mode == CastMode.ALL_SORTED || req.mode == CastMode.ALL_UNSORTED)
-            {
-              // We will need to return a list, so allocate it.
-              results = new List<PhysicsCastHit>();
-            }
-
-            for (int i = 0; i < numHits; i++)
-            {
-              RaycastHit hit = SharedRaycastHitBuffer[i];
-              PhysicsCastHit thisHit;
-              if (hit.collider != null && hit.collider.gameObject != null &&
-                  hit.collider.gameObject.GetComponent<IgnoreRaycastFromScript>() != null)
-              {
-                continue;
-              }
-              if (req.includeActors && IsScriptReadyActor(hit.collider) && GetActorName(hit.collider) != req.excludeActor)
-              {
-                // Hit an actor.
-                // (PhysicsCastHit is a struct, not allocating on heap)
-                thisHit = new PhysicsCastHit
-                {
-                  actor = GetActorName(hit.collider),
-                  distance = hit.distance,
-                  point = hit.point
-                };
-              }
-              else if (req.includeTerrain && hit.collider.tag == "Ground")
-              {
-                // Hit terrain.
-                // (PhysicsCastHit is a struct, not allocating on heap)
-                thisHit = new PhysicsCastHit
-                {
-                  actor = null,
-                  distance = hit.distance,
-                  point = hit.point
-                };
-              }
-              else
-              {
-                continue;
-              }
-              closestHit = (!anyHit || thisHit.distance < closestHit.distance) ? thisHit : closestHit;
-              anyHit = true;
-              results?.Add(thisHit);
-              if (req.mode == CastMode.BOOLEAN)
-              {
-                // If we're just returning true/false, that's all we need.
-                break;
-              }
-            }
-
-            // Sort results by distance, if requested.
-            if (req.mode == CastMode.ALL_SORTED)
-            {
-              results.Sort((a, b) => a.distance.CompareTo(b.distance));
-            }
-
-            // Report results as requested.
-            if (req.mode == CastMode.ALL_SORTED || req.mode == CastMode.ALL_UNSORTED)
-            {
-              PhysicsCastResult result = new PhysicsCastResult { hits = results.ToArray() };
-              reportResult(JsonUtility.ToJson(result));
-            }
-            else if (req.mode == CastMode.CLOSEST)
-            {
-              reportResult(anyHit ? JsonUtility.ToJson(closestHit) : "null");
-            }
-            else
-            {
-              reportResult(anyHit ? "true" : "false");
-            }
             break;
           }
 
