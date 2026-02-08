@@ -118,17 +118,6 @@ namespace V8InUnity
       public string nickName;
     }
 
-
-
-    [System.Serializable]
-    struct PlaySoundRequest
-    {
-      public string soundId;
-      // Must provide an actor name OR a position.
-      public string actorName;
-      public Vector3 position;
-    }
-
     [System.Serializable]
     struct OneShotAnimationRequest
     {
@@ -355,6 +344,37 @@ namespace V8InUnity
       }
     }
 
+    public bool PlaySound(string soundId, string actorName, Vector3 position)
+    {
+      using (Util.Profile("PlaySound"))
+      {
+        SoundEffect sfx = soundEffectSystem.GetSoundEffect(soundId);
+        if (sfx != null)
+        {
+          if (string.IsNullOrEmpty(actorName))
+          {
+            soundEffectSystem.PlaySoundEffect(sfx, null, position);
+          }
+          else
+          {
+            VoosActor actor = engine.GetActor(actorName);
+            if (actor == null)
+            {
+              Debug.LogError("Could not play sound on actor. Actor not found: " + actorName);
+              return false;
+            }
+            soundEffectSystem.PlaySoundEffect(sfx, actor, Vector3.zero);
+          }
+          return true;
+        }
+        else
+        {
+          Debug.LogWarning("No SFX with ID: " + soundId);
+          return false;
+        }
+      }
+    }
+
     public void RequestUi(string json)
     {
       using (Util.Profile("RequestUi"))
@@ -529,36 +549,6 @@ namespace V8InUnity
             break;
           }
 
-        case "PlaySound":
-          using (Util.Profile(serviceName))
-          {
-            PlaySoundRequest args = JsonUtility.FromJson<PlaySoundRequest>(argsJson);
-            SoundEffect sfx = soundEffectSystem.GetSoundEffect(args.soundId);
-            if (sfx != null)
-            {
-              if (string.IsNullOrEmpty(args.actorName))
-              {
-                soundEffectSystem.PlaySoundEffect(sfx, null, args.position);
-              }
-              else
-              {
-                VoosActor actor = engine.GetActor(args.actorName);
-                if (actor == null)
-                {
-                  Debug.LogError("Could not play sound on actor. Actor not found: " + args.actorName);
-                  reportResult("false");
-                }
-                soundEffectSystem.PlaySoundEffect(sfx, actor, Vector3.zero);
-              }
-              reportResult("true");
-            }
-            else
-            {
-              Debug.LogWarning("No SFX with ID: " + args.soundId);
-              reportResult("false");
-            }
-            break;
-          }
         case "PlayOneShotAnimation":
           {
             OneShotAnimationRequest req = JsonUtility.FromJson<OneShotAnimationRequest>(argsJson);

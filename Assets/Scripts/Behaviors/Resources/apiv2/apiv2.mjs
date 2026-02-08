@@ -440,14 +440,16 @@ class ApiV2Context {
 
   tryPlaySound(soundId, position) {
     assertString(soundId, "soundId");
-    const args = { soundId: soundId };
+    let actorName = null;
+    let cs_pos = new CS.UnityEngine.Vector3(0, 0, 0);
+
     if (position !== undefined) {
       assertVector3(position, "position");
-      args.position = position;
+      cs_pos = new CS.UnityEngine.Vector3(position.x, position.y, position.z);
     } else {
-      args.actorName = myself();
+      actorName = myself();
     }
-    return callVoosService("PlaySound", args);
+    return getVoosEngine().services.PlaySound(soundId, actorName, cs_pos);
   }
 
   trySpawnParticleEffect(pfxId, position, rotation, scale) {
