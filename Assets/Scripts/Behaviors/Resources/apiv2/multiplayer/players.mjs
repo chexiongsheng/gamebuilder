@@ -134,7 +134,7 @@ function playerExists(playerId) {
  * @return {boolean} <tt>true</tt> if you are the master client, <tt>false</tt> if not.
  */
 function isMasterPlayer() {
-  return callVoosService("IsMasterClient");
+  return CS.PhotonNetwork.isMasterClient;
 }
 
 /** DEPRECATED */

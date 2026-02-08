@@ -463,12 +463,6 @@ namespace V8InUnity
             break;
           }
 
-        case "IsMasterClient":
-          {
-            reportResult(PhotonNetwork.isMasterClient ? "true" : "false");
-            break;
-          }
-
         case "GetPlayersInfo":
           {
             Dictionary<int, string> nicknames = new Dictionary<int, string>();
