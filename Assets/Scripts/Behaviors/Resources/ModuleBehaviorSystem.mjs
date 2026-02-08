@@ -449,12 +449,9 @@ class ModuleBehaviorSystem {
     }
 
     // Creator and register
-    const response = callVoosService("InstantiatePrefab", {
-      prefabUri: prefabUri,
-      creatorName: creatorName,
-      position: initialPosition,
-      rotation: serializeQuaternion(initialRotation)
-    });
+    const cs_pos = new CS.UnityEngine.Vector3(initialPosition.x, initialPosition.y, initialPosition.z);
+    const cs_rot = new CS.UnityEngine.Quaternion(initialRotation.x, initialRotation.y, initialRotation.z, initialRotation.w);
+    const response = getVoosEngine().InstantiatePrefabForScript(prefabUri, creatorName, cs_pos, cs_rot);
     const instName = response.name;
     const instActor = new Actor(instName, this);
 

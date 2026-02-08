@@ -625,23 +625,23 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     }
   }
 
-  internal InstantiatePrefab.Response InstantiatePrefabForScript(InstantiatePrefab.Request args)
+  public InstantiatePrefab.Response InstantiatePrefabForScript(string prefabUri, string creatorName, Vector3 position, Quaternion rotation)
   {
     try
     {
-      Debug.Assert(!args.prefabUri.IsNullOrEmpty(), $"InstantiatePrefabForScript: Script wants to instantiate a prefab, but it did not provide a prefab URI to use. Creator name: {args.creatorName}");
-      Debug.Assert(actorsByName.ContainsKey(args.creatorName), "InstantiatePrefabForScript: Invalid creatorName given: " + args.creatorName);
+      Debug.Assert(!prefabUri.IsNullOrEmpty(), $"InstantiatePrefabForScript: Script wants to instantiate a prefab, but it did not provide a prefab URI to use. Creator name: {creatorName}");
+      Debug.Assert(actorsByName.ContainsKey(creatorName), "InstantiatePrefabForScript: Invalid creatorName given: " + creatorName);
 
       // TEMP TEMP TODO we should actually treat this like a URI, cuz we may have scene-embedded prefabs too.
       // NOTE: this may be weird in multiplayer, since it will probably get replicated in the wrong position first.
-      var uri = new System.Uri(args.prefabUri);
+      var uri = new System.Uri(prefabUri);
       VoosActor actor = null;
       if (uri.Scheme == "builtin")
       {
-        actor = builtinPrefabLibrary.Get(uri.LocalPath).Instantiate(this, behaviorSystem, args.position, args.rotation, setupActor =>
+        actor = builtinPrefabLibrary.Get(uri.LocalPath).Instantiate(this, behaviorSystem, position, rotation, setupActor =>
         {
-          setupActor.SetSpawnPosition(args.position);
-          setupActor.SetSpawnRotation(args.rotation);
+          setupActor.SetSpawnPosition(position);
+          setupActor.SetSpawnRotation(rotation);
           setupActor.SetDisplayName($"{actor.GetDisplayName()}-Script-Instance");
           setupActor.SetPreferOffstage(false);
           setupActor.SetWasClonedByScript(true);
@@ -649,7 +649,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
       }
       else
       {
-        throw new System.Exception($"Could not find actor prefab for URI {args.prefabUri}");
+        throw new System.Exception($"Could not find actor prefab for URI {prefabUri}");
       }
 
       latestActorsInSerializedOrder.Add(actor);

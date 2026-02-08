@@ -622,15 +622,6 @@ namespace V8InUnity
             break;
           }
 
-        case "InstantiatePrefab":
-          using (Util.Profile(serviceName))
-          {
-            VoosEngine.InstantiatePrefab.Request args = JsonUtility.FromJson<VoosEngine.InstantiatePrefab.Request>(argsJson);
-            VoosEngine.InstantiatePrefab.Response response = GetEngine().InstantiatePrefabForScript(args);
-            reportResult(JsonUtility.ToJson(response));
-            break;
-          }
-
         case "PlayOneShotAnimation":
           {
             OneShotAnimationRequest req = JsonUtility.FromJson<OneShotAnimationRequest>(argsJson);
