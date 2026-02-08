@@ -577,19 +577,14 @@ class HandlerApi {
    * @param {number=} blockStyle 0-15 for solid colors, 16 for stone, 17 for scifi, 18 for grass, 19 for snowy rock.
    */
   setCell(x, y, z, blockShape, blockDirection, blockStyle = 16) {
-    callVoosService('SetTerrainCell', {
-      cell: {
-        x: Math.floor(x),
-        y: Math.floor(y),
-        z: Math.floor(z)
-      },
-      value: {
-        blockType: clamp(Math.floor(blockShape), 0, 4),
-        direction: clamp(Math.floor(blockDirection), 0, 3),
-        // Keep this updated with enum BlockStyle.
-        style: clamp(Math.floor(blockStyle), 0, 40)
-      }
-    });
+    getVoosEngine().services.SetTerrainCell(
+      Math.floor(x),
+      Math.floor(y),
+      Math.floor(z),
+      clamp(Math.floor(blockShape), 0, 4),
+      clamp(Math.floor(blockDirection), 0, 3),
+      clamp(Math.floor(blockStyle), 0, 40)
+    );
   }
 
   getCell(x, y, z) {

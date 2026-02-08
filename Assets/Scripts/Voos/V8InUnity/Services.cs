@@ -583,6 +583,17 @@ namespace V8InUnity
       return null;
     }
 
+    public void SetTerrainCell(int x, int y, int z, int blockType, int direction, int style)
+    {
+      terrainSystem.SetCellValue(
+        new TerrainManager.Cell(x, y, z),
+        new TerrainManager.CellValue(
+          (TerrainManager.BlockShape)blockType,
+          (TerrainManager.BlockDirection)direction,
+          (TerrainManager.BlockStyle)style
+        ));
+    }
+
     /// <summary>
     /// Core service execution logic, shared by both CallService overloads
     /// </summary>
@@ -591,14 +602,6 @@ namespace V8InUnity
       // Debug.LogError($"CallService({serviceName}, {argsJson})");
       switch (serviceName)
       {
-        case "SetTerrainCell":
-          {
-            var args = JsonUtility.FromJson<TerrainManager.SetCellRpcJsonable>(argsJson);
-            terrainSystem.SetCellValue(args.cell, args.value);
-            reportResult("true");
-            break;
-          }
-
         case "GetTerrainCell":
           {
             Vector3 coords = JsonUtility.FromJson<Vector3>(argsJson);
@@ -613,18 +616,6 @@ namespace V8InUnity
             reportResult(JsonUtility.ToJson(result));
             break;
           }
-        /*
-                case "TransferPlayerControl":
-                  {
-                    VoosEngine.TransferPlayerControlRequest request =
-                        JsonUtility.FromJson<VoosEngine.TransferPlayerControlRequest>(argsJson);
-                    // Engine will handle this asynchronously because the actor might not be immediately
-                    // available (maybe it was a clone that was just created, for instance).
-                    GetEngine().RequestTransferPlayerControl(request);
-                    reportResult("true");
-                    break;
-                  }
-        */
 
         case "ProjectSphere":
           {
