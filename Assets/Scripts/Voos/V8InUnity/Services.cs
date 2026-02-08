@@ -522,15 +522,6 @@ namespace V8InUnity
             break;
           }
 
-        case "CloneActor":
-          using (Util.Profile(serviceName))
-          {
-            VoosEngine.CloneActorRequest args = JsonUtility.FromJson<VoosEngine.CloneActorRequest>(argsJson);
-            VoosEngine.CloneActorResponse response = GetEngine().CloneActorForScript(args);
-            reportResult(JsonUtility.ToJson(response));
-            break;
-          }
-
         case "InstantiatePrefab":
           using (Util.Profile(serviceName))
           {

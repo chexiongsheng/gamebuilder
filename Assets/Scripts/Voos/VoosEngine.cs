@@ -2419,15 +2419,6 @@ setVoosModule('{moduleKey}', module);
   }
 
   [System.Serializable]
-  public struct CloneActorRequest
-  {
-    public string baseActorName;
-    public string creatorName;
-    public Vector3 position;
-    public Quaternion rotation;
-  }
-
-  [System.Serializable]
   public struct CloneActorResponse
   {
     public string error;
@@ -2456,13 +2447,13 @@ setVoosModule('{moduleKey}', module);
     }
   }
 
-  public CloneActorResponse CloneActorForScript(CloneActorRequest args)
+  public CloneActorResponse CloneActorForScript(string baseActorName, string creatorName, Vector3 position, Quaternion rotation)
   {
-    Debug.Assert(!args.baseActorName.IsNullOrEmpty(), $"CloneActorForScript: Script wanted to clone something, but did not tell us the actor to clone from.");
-    Debug.Assert(actorsByName.ContainsKey(args.baseActorName), "CloneActorForScript: Clone-parent does not exist.");
+    Debug.Assert(!baseActorName.IsNullOrEmpty(), $"CloneActorForScript: Script wanted to clone something, but did not tell us the actor to clone from.");
+    Debug.Assert(actorsByName.ContainsKey(baseActorName), "CloneActorForScript: Clone-parent does not exist.");
 
-    VoosActor rootActor = actorsByName[args.baseActorName];
-    VoosActor rootClone = CloneActorAndDescendantsForScript(rootActor, rootActor.GetParentActor(), args.position, args.rotation);
+    VoosActor rootActor = actorsByName[baseActorName];
+    VoosActor rootClone = CloneActorAndDescendantsForScript(rootActor, rootActor.GetParentActor(), position, rotation);
 
     string[] actorNames = (from actor in rootClone.DepthFirstSearch() select actor.GetName()).ToArray();
 

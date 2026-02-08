@@ -487,22 +487,21 @@ class ModuleBehaviorSystem {
     assert(baseActor, `Tried to clone ${baseActorName} for creator ${creatorName}, but ${baseActorName} does not exist.`);
 
     // Creator and register
-    const result = callVoosService("CloneActor", {
-      baseActorName: baseActorName,
-      creatorName: creatorName,
-      position: initialPosition,
-      rotation: serializeQuaternion(initialRotation)
-    });
+    const cs_pos = new CS.UnityEngine.Vector3(initialPosition.x, initialPosition.y, initialPosition.z);
+    const cs_rot = new CS.UnityEngine.Quaternion(initialRotation.x, initialRotation.y, initialRotation.z, initialRotation.w);
+    const result = getVoosEngine().CloneActorForScript(baseActorName, creatorName, cs_pos, cs_rot);
+
     if (result.error) {
       throw new Error("Failed to clone actor: " + result.error);
     }
     let rootCloneName = null;
     const toSend = [];
-    for (let i = 0; i < result.names.length; i++) {
-      const cloneName = result.names[i];
+    for (let i = 0; i < result.names.Length; i++) {
+      const cloneName = result.names.get_Item(i);
       const cloneActor = new Actor(cloneName, this);
-      const tempId = result.tempIds[i];
-      const childBaseActor = this.getActor(result.baseActorNames[i]);
+      const tempId = result.tempIds.get_Item(i);
+      const originalName = result.baseActorNames.get_Item(i);
+      const childBaseActor = this.getActor(originalName);
       cloneActor.setupClone(childBaseActor.brainName, tempId, childBaseActor.getMemoryJson());
 
       // This is debatable..but generally makes sense I think. Why even bother
@@ -515,11 +514,11 @@ class ModuleBehaviorSystem {
 
       this.actors_.set(cloneName, cloneActor);
 
-      if (result.baseActorNames[i] == baseActorName) {
+      if (originalName == baseActorName) {
         rootCloneName = cloneName;
       }
 
-      toSend.push({ to: cloneName, arg: { creator: creatorName, original: result.baseActorNames[i] } });
+      toSend.push({ to: cloneName, arg: { creator: creatorName, original: originalName } });
     }
 
     for (const item of toSend) {
