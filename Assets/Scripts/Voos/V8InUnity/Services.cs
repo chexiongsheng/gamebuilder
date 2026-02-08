@@ -596,18 +596,18 @@ namespace V8InUnity
             reportResult(JsonUtility.ToJson(result));
             break;
           }
-
-        case "TransferPlayerControl":
-          {
-            VoosEngine.TransferPlayerControlRequest request =
-                JsonUtility.FromJson<VoosEngine.TransferPlayerControlRequest>(argsJson);
-            // Engine will handle this asynchronously because the actor might not be immediately
-            // available (maybe it was a clone that was just created, for instance).
-            GetEngine().RequestTransferPlayerControl(request);
-            reportResult("true");
-            break;
-          }
-
+        /*
+                case "TransferPlayerControl":
+                  {
+                    VoosEngine.TransferPlayerControlRequest request =
+                        JsonUtility.FromJson<VoosEngine.TransferPlayerControlRequest>(argsJson);
+                    // Engine will handle this asynchronously because the actor might not be immediately
+                    // available (maybe it was a clone that was just created, for instance).
+                    GetEngine().RequestTransferPlayerControl(request);
+                    reportResult("true");
+                    break;
+                  }
+        */
         case "PlayOneShotAnimation":
           {
             OneShotAnimationRequest req = JsonUtility.FromJson<OneShotAnimationRequest>(argsJson);
