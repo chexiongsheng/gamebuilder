@@ -494,6 +494,22 @@ namespace V8InUnity
       return gbStage.GetSkyColor();
     }
 
+    public string GetCameraInfo()
+    {
+      Transform cameraTransform = GetUserMain().GetCamera().transform;
+      CameraInfo info = new CameraInfo
+      {
+        pos = cameraTransform.position,
+        rot = cameraTransform.rotation
+      };
+      return JsonUtility.ToJson(info);
+    }
+
+    public string GetScreenInfo()
+    {
+      return JsonUtility.ToJson(gameUiMain.GetScreenInfoForScript());
+    }
+
     public void RequestTempCameraOffset(string actor, Vector3 offset)
     {
       if (actor == GetUserMain().GetPlayerActor()?.GetName())
@@ -679,18 +695,6 @@ namespace V8InUnity
             break;
           }
 
-        case "GetCameraInfo":
-          {
-            Transform cameraTransform = GetUserMain().GetCamera().transform;
-            CameraInfo info = new CameraInfo
-            {
-              pos = cameraTransform.position,
-              rot = cameraTransform.rotation
-            };
-            reportResult(JsonUtility.ToJson(info));
-            break;
-          }
-
         case "ReportBehaviorException":
           {
             Util.LogError($"ReportBehaviorException {argsJson}");
@@ -706,12 +710,6 @@ namespace V8InUnity
             VoosEngine.BehaviorLogItem msg = JsonUtility.FromJson<VoosEngine.BehaviorLogItem>(argsJson);
             engine.HandleBehaviorLogMessage(msg);
             reportResult("true");
-            break;
-          }
-
-        case "GetScreenInfo":
-          {
-            reportResult(JsonUtility.ToJson(gameUiMain.GetScreenInfoForScript()));
             break;
           }
 

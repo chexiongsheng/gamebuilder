@@ -17,7 +17,7 @@
 import * as THREE from "three.mjs";
 import { assert } from "../testing.mjs";
 import { assertNumber, assertObjectNotNull, assertQuaternion, assertString, assertVector3 } from "../util.mjs";;
-import { callVoosService, getVoosEngine } from "../voosMain.mjs";
+import { getVoosEngine } from "../voosMain.mjs";
 import { max, vec3add, vec3zero, vec3scale } from "./misc/math.mjs";
 import { raycast, raycastTerrain } from "./physics/casting.mjs";
 import { getMouseRayOrigin, getMouseRayDir } from "./keyboard_mouse/mouse.mjs";
@@ -469,14 +469,16 @@ class ApiV2Context {
 
   getScreenInfo() {
     if (!this.screenInfo_) {
-      this.screenInfo_ = callVoosService("GetScreenInfo");
+      const json = getVoosEngine().services.GetScreenInfo();
+      this.screenInfo_ = JSON.parse(json);
     }
     return this.screenInfo_;
   }
 
   getCameraInfo() {
     if (!this.cameraInfo_) {
-      this.cameraInfo_ = callVoosService("GetCameraInfo");
+      const json = getVoosEngine().services.GetCameraInfo();
+      this.cameraInfo_ = JSON.parse(json);
     }
     return this.cameraInfo_;
   }
