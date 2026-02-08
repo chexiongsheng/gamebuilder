@@ -228,8 +228,13 @@ class ApiV2Context {
   // Performs frame-end tasks such as sending stuff over to services, etc.
   endFrame() {
     assert(this.apiStack_.length === 0, "endFrame(): API stack not empty. Something is wrong.");
+
     // Dispatch UI requests.
-    callVoosService("RequestUi", { commands: this.uiCommands_ });
+    // We pass a JSON string because constructing complex C# objects (like arrays of structs)
+    // from JS via Puerts is slow and cumbersome.
+    const json = JSON.stringify({ commands: this.uiCommands_ });
+    getVoosEngine().services.RequestUi(json);
+
     this.uiCommands_ = [];
   }
 

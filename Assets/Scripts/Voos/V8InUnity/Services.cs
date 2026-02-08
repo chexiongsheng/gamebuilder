@@ -321,6 +321,15 @@ namespace V8InUnity
       }
     }
 
+    public void RequestUi(string json)
+    {
+      using (Util.Profile("RequestUi"))
+      {
+        GameUiMain.UiCommandList list = JsonUtility.FromJson<GameUiMain.UiCommandList>(json);
+        gameUiMain.SetUiCommands(list);
+      }
+    }
+
     public object Cast(Vector3 origin, Vector3 dir, float radius, float maxDist, int modeInt, bool includeActors, bool includeTerrain, string excludeActor)
     {
       CastMode mode = (CastMode)modeInt;
@@ -488,19 +497,6 @@ namespace V8InUnity
             reportResult(JsonUtility.ToJson(result));
             break;
           }
-
-        case "RequestUi":
-          {
-            using (Util.Profile("RequestUi"))
-            {
-              GameUiMain.UiCommandList list = JsonUtility.FromJson<GameUiMain.UiCommandList>(argsJson);
-              gameUiMain.SetUiCommands(list);
-              reportResult("true");
-            }
-            break;
-          }
-
-
 
         case "CloneActor":
           using (Util.Profile(serviceName))
