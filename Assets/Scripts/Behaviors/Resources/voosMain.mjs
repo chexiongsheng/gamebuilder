@@ -37,14 +37,14 @@ function getActorBoolean(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  return globalThis.__voosEngine.GetActorBoolean(Number(actorId), Number(fieldId));
+  return globalThis.__voosEngine.GetActorBoolean(actorId, fieldId);
 };
 
 function setActorBoolean(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  globalThis.__voosEngine.SetActorBoolean(Number(actorId), Number(fieldId), Boolean(value));
+  globalThis.__voosEngine.SetActorBoolean(actorId, fieldId, Boolean(value));
 };
 
 // Float accessors
@@ -52,14 +52,14 @@ function getActorFloat(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  return globalThis.__voosEngine.GetActorFloat(Number(actorId), Number(fieldId));
+  return globalThis.__voosEngine.GetActorFloat(actorId, fieldId);
 };
 
 function setActorFloat(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  globalThis.__voosEngine.SetActorFloat(Number(actorId), Number(fieldId), Number(value));
+  globalThis.__voosEngine.SetActorFloat(actorId, fieldId, Number(value));
 };
 
 // Vector3 accessors
@@ -71,7 +71,7 @@ function getActorVector3(actorId, fieldId, pos) {
   const outX = puer.$ref();
   const outY = puer.$ref();
   const outZ = puer.$ref();
-  globalThis.__voosEngine.GetActorVector3(Number(actorId), Number(fieldId), outX, outY, outZ);
+  globalThis.__voosEngine.GetActorVector3(actorId, fieldId, outX, outY, outZ);
   pos.x = puer.$unref(outX);
   pos.y = puer.$unref(outY);
   pos.z = puer.$unref(outZ);
@@ -84,8 +84,8 @@ function setActorVector3(actorId, fieldId, x, y, z) {
 
   // Pass x, y, z as separate parameters
   globalThis.__voosEngine.SetActorVector3(
-    Number(actorId),
-    Number(fieldId),
+    actorId,
+    fieldId,
     x,
     y,
     z
@@ -102,7 +102,7 @@ function getActorQuaternion(actorId, fieldId, quaternion) {
   const outY = puer.$ref();
   const outZ = puer.$ref();
   const outW = puer.$ref();
-  globalThis.__voosEngine.GetActorQuaternion(Number(actorId), Number(fieldId), outX, outY, outZ, outW);
+  globalThis.__voosEngine.GetActorQuaternion(actorId, fieldId, outX, outY, outZ, outW);
 
   quaternion.x = puer.$unref(outX);
   quaternion.y = puer.$unref(outY);
@@ -118,8 +118,8 @@ function setActorQuaternion(actorId, fieldId, x, y, z, w) {
 
   // Pass x, y, z, w as separate parameters
   globalThis.__voosEngine.SetActorQuaternion(
-    Number(actorId),
-    Number(fieldId),
+    actorId,
+    fieldId,
     x,
     y,
     z,
@@ -132,14 +132,14 @@ function getActorString(actorId, fieldId) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  return globalThis.__voosEngine.GetActorString(Number(actorId), Number(fieldId));
+  return globalThis.__voosEngine.GetActorString(actorId, fieldId);
 };
 
 function setActorString(actorId, fieldId, value) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  globalThis.__voosEngine.SetActorString(Number(actorId), Number(fieldId), String(value));
+  globalThis.__voosEngine.SetActorString(actorId, fieldId, String(value));
 };
 
 // ==================== Service Call API ====================
@@ -241,7 +241,7 @@ function getActorColor(actorId, fieldId, colorOut) {
   const outG = puer.$ref();
   const outB = puer.$ref();
   const outA = puer.$ref();
-  globalThis.__voosEngine.GetActorColor(Number(actorId), Number(fieldId), outR, outG, outB, outA);
+  globalThis.__voosEngine.GetActorColor(actorId, fieldId, outR, outG, outB, outA);
   colorOut.r = puer.$unref(outR);
   colorOut.g = puer.$unref(outG);
   colorOut.b = puer.$unref(outB);
@@ -252,7 +252,7 @@ function setActorColor(actorId, fieldId, newValue) {
   if (!globalThis.__voosEngine) {
     throw new Error('VoosEngine not registered');
   }
-  globalThis.__voosEngine.SetActorColor(Number(actorId), Number(fieldId), Number(newValue.r), Number(newValue.g), Number(newValue.b), Number(newValue.a));
+  globalThis.__voosEngine.SetActorColor(actorId, fieldId, Number(newValue.r), Number(newValue.g), Number(newValue.b), Number(newValue.a));
 }
 
 // TODO take a sender actor here as well.
