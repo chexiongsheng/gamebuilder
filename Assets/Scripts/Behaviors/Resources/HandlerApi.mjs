@@ -588,7 +588,12 @@ class HandlerApi {
   }
 
   getCell(x, y, z) {
-    return callVoosService('GetTerrainCell', { x: Math.floor(x), y: Math.floor(y), z: Math.floor(z) });
+    const json = getVoosEngine().services.GetTerrainCell(
+      Math.floor(x),
+      Math.floor(y),
+      Math.floor(z)
+    );
+    return JSON.parse(json);
   }
 
   /**

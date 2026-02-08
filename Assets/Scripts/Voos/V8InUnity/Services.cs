@@ -594,6 +594,41 @@ namespace V8InUnity
         ));
     }
 
+    public string GetTerrainCell(int x, int y, int z)
+    {
+      TerrainManager.CellValue cellValue = terrainSystem.GetCellValue(
+        new TerrainManager.Cell(x, y, z));
+      GetTerrainCellResult result = new GetTerrainCellResult
+      {
+        shape = (int)cellValue.blockType,
+        dir = (int)cellValue.direction,
+        style = (int)cellValue.style
+      };
+      return JsonUtility.ToJson(result);
+    }
+
+    public string ProjectSphere(Vector3 center, float radius)
+    {
+      Camera cam = GetUserMain().GetCamera();
+      Vector3 screenCenter = cam.WorldToScreenPoint(center);
+      if (screenCenter.z > 0)
+      {
+        Vector3 centerGameUi = gameUiMain.UnityScreenPointToGameUiPoint(screenCenter);
+        Vector3 rightPoint = cam.WorldToScreenPoint(center + cam.transform.right * radius);
+        Vector3 rightPointGameUi = gameUiMain.UnityScreenPointToGameUiPoint(rightPoint);
+        SphereArg outSphere = new SphereArg
+        {
+          center = centerGameUi,
+          radius = Mathf.Abs(rightPointGameUi.x - centerGameUi.x)
+        };
+        return JsonUtility.ToJson(outSphere);
+      }
+      else
+      {
+        return "null";
+      }
+    }
+
     /// <summary>
     /// Core service execution logic, shared by both CallService overloads
     /// </summary>
@@ -602,45 +637,6 @@ namespace V8InUnity
       // Debug.LogError($"CallService({serviceName}, {argsJson})");
       switch (serviceName)
       {
-        case "GetTerrainCell":
-          {
-            Vector3 coords = JsonUtility.FromJson<Vector3>(argsJson);
-            TerrainManager.CellValue cellValue = terrainSystem.GetCellValue(
-              new TerrainManager.Cell((int)coords.x, (int)coords.y, (int)coords.z));
-            GetTerrainCellResult result = new GetTerrainCellResult
-            {
-              shape = (int)cellValue.blockType,
-              dir = (int)cellValue.direction,
-              style = (int)cellValue.style
-            };
-            reportResult(JsonUtility.ToJson(result));
-            break;
-          }
-
-        case "ProjectSphere":
-          {
-            Camera cam = GetUserMain().GetCamera();
-            SphereArg inSphere = JsonUtility.FromJson<SphereArg>(argsJson);
-            Vector3 screenCenter = cam.WorldToScreenPoint(inSphere.center);
-            if (screenCenter.z > 0)
-            {
-              Vector3 centerGameUi = gameUiMain.UnityScreenPointToGameUiPoint(screenCenter);
-              Vector3 rightPoint = cam.WorldToScreenPoint(inSphere.center + cam.transform.right * inSphere.radius);
-              Vector3 rightPointGameUi = gameUiMain.UnityScreenPointToGameUiPoint(rightPoint);
-              SphereArg outSphere = new SphereArg
-              {
-                center = centerGameUi,
-                radius = Mathf.Abs(rightPointGameUi.x - centerGameUi.x)
-              };
-              reportResult(JsonUtility.ToJson(outSphere));
-            }
-            else
-            {
-              reportResult("null");
-            }
-            break;
-          }
-
         case "ReportBehaviorException":
           {
             Util.LogError($"ReportBehaviorException {argsJson}");

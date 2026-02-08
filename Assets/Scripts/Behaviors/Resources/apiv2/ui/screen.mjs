@@ -71,9 +71,11 @@ function getScreenSphere(worldCenter, worldRadius) {
   worldRadius = worldRadius === undefined ? getBoundsRadiusAverage() : worldRadius;
   assertVector3(worldCenter, 'worldCenter');
   assertNumber(worldRadius, 'worldRadius');
-  return callVoosService("ProjectSphere", {
-    center: worldCenter, radius: worldRadius
-  });
+  const json = getVoosEngine().services.ProjectSphere(
+    new CS.UnityEngine.Vector3(worldCenter.x, worldCenter.y, worldCenter.z),
+    worldRadius
+  );
+  return JSON.parse(json);
 }
 
 /**
