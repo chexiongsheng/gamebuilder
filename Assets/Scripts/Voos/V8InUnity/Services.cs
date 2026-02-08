@@ -126,12 +126,6 @@ namespace V8InUnity
     }
 
     [System.Serializable]
-    struct GetActorScreenRectRequest
-    {
-      public string actor;
-    }
-
-    [System.Serializable]
     struct GetActorScreenRectResponse
     {
       public float x, y, w, h;
@@ -518,6 +512,49 @@ namespace V8InUnity
       }
     }
 
+    public string GetActorScreenRect(string actorName)
+    {
+      VoosActor actor = engine.GetActor(actorName);
+      Bounds worldBounds = new Bounds(actor.GetWorldRenderBoundsCenter(), actor.GetWorldRenderBoundsSize());
+
+      // Depending on the orientation, any of the 8 corners of the world-space bounding box
+      // can contribute to the screen-space bounding box, so we have to go through them all.
+      Bounds screenBounds = new Bounds();
+      bool success = true;
+      for (int i = 0; i < 8; i++)
+      {
+        Vector3 worldPoint = new Vector3(
+          (i & 1) > 0 ? worldBounds.min.x : worldBounds.max.x,
+          (i & 2) > 0 ? worldBounds.min.y : worldBounds.max.y,
+          (i & 4) > 0 ? worldBounds.min.z : worldBounds.max.z);
+        Vector3 screenPoint = GetUserMain().GetCamera().WorldToScreenPoint(worldPoint);
+        if (screenPoint.z < 0)
+        {
+          // Off-screen (behind camera).
+          success = false;
+          break;
+        }
+        Vector2 gameUiPoint = gameUiMain.UnityScreenPointToGameUiPoint(screenPoint);
+        if (i == 0)
+        {
+          // Note: due to the Bounds() constructor assuming Vector3.zero as the center
+          // (known Unity bug), we have to reinitialize it here:
+          screenBounds = new Bounds(gameUiPoint, Vector3.zero);
+        }
+        else
+        {
+          screenBounds.Encapsulate(gameUiPoint);
+        }
+      }
+      return success ? JsonUtility.ToJson(new GetActorScreenRectResponse
+      {
+        x = screenBounds.min.x,
+        y = screenBounds.min.y,
+        w = screenBounds.size.x,
+        h = screenBounds.size.y
+      }) : "null";
+    }
+
     public void SetSceneLighting(string lightingMode)
     {
       GameBuilderStage.SceneLightingMode sceneLightingMode;
@@ -648,50 +685,6 @@ namespace V8InUnity
             {
               reportResult("null");
             }
-            break;
-          }
-        case "GetActorScreenRect":
-          {
-            string actorName = JsonUtility.FromJson<GetActorScreenRectRequest>(argsJson).actor;
-            VoosActor actor = engine.GetActor(actorName);
-            Bounds worldBounds = new Bounds(actor.GetWorldRenderBoundsCenter(), actor.GetWorldRenderBoundsSize());
-
-            // Depending on the orientation, any of the 8 corners of the world-space bounding box
-            // can contribute to the screen-space bounding box, so we have to go through them all.
-            Bounds screenBounds = new Bounds();
-            bool success = true;
-            for (int i = 0; i < 8; i++)
-            {
-              Vector3 worldPoint = new Vector3(
-                (i & 1) > 0 ? worldBounds.min.x : worldBounds.max.x,
-                (i & 2) > 0 ? worldBounds.min.y : worldBounds.max.y,
-                (i & 4) > 0 ? worldBounds.min.z : worldBounds.max.z);
-              Vector3 screenPoint = GetUserMain().GetCamera().WorldToScreenPoint(worldPoint);
-              if (screenPoint.z < 0)
-              {
-                // Off-screen (behind camera).
-                success = false;
-                break;
-              }
-              Vector2 gameUiPoint = gameUiMain.UnityScreenPointToGameUiPoint(screenPoint);
-              if (i == 0)
-              {
-                // Note: due to the Bounds() constructor assuming Vector3.zero as the center
-                // (known Unity bug), we have to reinitialize it here:
-                screenBounds = new Bounds(gameUiPoint, Vector3.zero);
-              }
-              else
-              {
-                screenBounds.Encapsulate(gameUiPoint);
-              }
-            }
-            reportResult(success ? JsonUtility.ToJson(new GetActorScreenRectResponse
-            {
-              x = screenBounds.min.x,
-              y = screenBounds.min.y,
-              w = screenBounds.size.x,
-              h = screenBounds.size.y
-            }) : "null");
             break;
           }
 

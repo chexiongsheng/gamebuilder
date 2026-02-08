@@ -19,7 +19,7 @@ import { getBoundsCenter, getBoundsRadiusAverage } from "../rendering/body.mjs";
 import { exists, myself } from "../actors/actors.mjs";
 import { assertNumber, assertVector3 } from "../../util.mjs";
 import { log } from "../misc/utility.mjs";
-import { callVoosService } from "../../voosMain.mjs";
+import { callVoosService, getVoosEngine } from "../../voosMain.mjs";
 import { assert } from "../../testing.mjs";
 import { Actor } from "../../ModuleBehaviorsActor.mjs";
 import { ApiV2Context } from "../apiv2.mjs";
@@ -85,7 +85,8 @@ function getScreenSphere(worldCenter, worldRadius) {
 function getScreenRect(actor) {
   actor = actor || myself();
   assert(exists(actor), "Actor passed to getActorScreenRect does not exist: " + actor);
-  const rect = callVoosService("GetActorScreenRect", { actor: actor });
+  const json = getVoosEngine().services.GetActorScreenRect(actor);
+  const rect = JSON.parse(json);
   if (rect === null) return null;
   assertNumber(rect.x, "API bug: screen rect x is not number");
   assertNumber(rect.y, "API bug: screen rect y is not number");
