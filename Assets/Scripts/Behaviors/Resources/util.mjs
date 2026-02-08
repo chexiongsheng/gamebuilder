@@ -226,12 +226,12 @@ function deserializeQuaternion(q) {
 
 function beginProfileSample(label) {
   if (!ENABLE_PROFILING_SERVICE) return;
-  callVoosService("BeginProfileSample", label);
+  CS.InGameProfiler.BeginSection(label);
 }
 
 function endProfileSample() {
   if (!ENABLE_PROFILING_SERVICE) return;
-  callVoosService("EndProfileSample");
+  CS.InGameProfiler.EndSection();
 }
 
 function setProfileEnable(f) {

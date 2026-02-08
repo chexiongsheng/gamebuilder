@@ -304,18 +304,6 @@ namespace V8InUnity
     {
       switch (serviceName)
       {
-        case "BeginProfileSample":
-          {
-            InGameProfiler.BeginSection(argsJson);
-            reportResult("0");
-            break;
-          }
-        case "EndProfileSample":
-          {
-            InGameProfiler.EndSection();
-            reportResult("0");
-            break;
-          }
         case "OverlapSphere":
           using (Util.Profile(serviceName))
           {

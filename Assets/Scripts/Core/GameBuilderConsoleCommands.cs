@@ -300,6 +300,7 @@ public class GameBuilderConsoleCommands : MonoBehaviour
     terrain.DoStylesTest();
   }
 
+  // 通过命`（见third_party/CommandTerminal/Terminal.cs的ToggleHotkey）可以打开命令窗口，然后通过prof能够打开性能分析器
   [RegisterCommand(Help = "toggle profiler")]
   static void CommandProf(CommandArg[] args)
   {
