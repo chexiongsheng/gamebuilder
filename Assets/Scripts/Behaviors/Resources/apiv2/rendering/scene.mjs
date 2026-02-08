@@ -17,7 +17,7 @@
 import * as THREE from "three.mjs";
 import { ApiV2Context } from "../apiv2.mjs";
 import { assert } from "../../testing.mjs";;
-import { callVoosService } from "../../voosMain.mjs";
+import { callVoosService, getVoosEngine } from "../../voosMain.mjs";
 import { clamp } from "../misc/math.mjs";
 
 // VISIBLE_TO_MONACO
@@ -109,7 +109,7 @@ function getSkyColor() {
  */
 function setSceneLighting(lightingMode) {
   assert(Object.keys(SceneLightingMode).includes(lightingMode), "Invalid scene lighting mode: " + lightingMode);
-  return callVoosService("SetSceneLighting", { value: "" + lightingMode });
+  getVoosEngine().services.SetSceneLighting("" + lightingMode);
 }
 
 /**
@@ -117,7 +117,7 @@ function setSceneLighting(lightingMode) {
  * @return {SceneLightingMode} The current lighting mode.
  */
 function getSceneLighting() {
-  return (callVoosService("GetSceneLighting").value || "").toUpperCase();
+  return (getVoosEngine().services.GetSceneLighting() || "").toUpperCase();
 }
 
 // ESM exports

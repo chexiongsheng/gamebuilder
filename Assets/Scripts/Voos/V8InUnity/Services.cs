@@ -467,6 +467,24 @@ namespace V8InUnity
       }
     }
 
+    public string GetSceneLighting()
+    {
+      return gbStage.GetSceneLightingMode().ToString().ToUpperInvariant();
+    }
+
+    public void SetSceneLighting(string lightingMode)
+    {
+      GameBuilderStage.SceneLightingMode sceneLightingMode;
+      if (Util.TryParseEnum<GameBuilderStage.SceneLightingMode>(lightingMode, out sceneLightingMode, ignoreCase: true))
+      {
+        gbStage.SetSceneLightingMode(sceneLightingMode);
+      }
+      else
+      {
+        Debug.LogError("Invalid scene lighting mode: " + lightingMode);
+      }
+    }
+
     /// <summary>
     /// Core service execution logic, shared by both CallService overloads
     /// </summary>
@@ -712,29 +730,6 @@ namespace V8InUnity
         case "GetSkyColor":
           {
             reportResult(JsonUtility.ToJson(JsonWrapper<Color>.Wrap(gbStage.GetSkyColor())));
-            break;
-          }
-
-        case "SetSceneLighting":
-          {
-            JsonWrapper<string> request = JsonUtility.FromJson<JsonWrapper<string>>(argsJson);
-            GameBuilderStage.SceneLightingMode sceneLightingMode;
-            if (Util.TryParseEnum<GameBuilderStage.SceneLightingMode>(request.value, out sceneLightingMode, ignoreCase: true))
-            {
-              gbStage.SetSceneLightingMode(sceneLightingMode);
-              reportResult("true");
-            }
-            else
-            {
-              Debug.LogError("Invalid scene lighting mode: " + request.value);
-              reportResult("false");
-            }
-            break;
-          }
-
-        case "GetSceneLighting":
-          {
-            reportResult(JsonUtility.ToJson(JsonWrapper<string>.Wrap(gbStage.GetSceneLightingMode().ToString().ToUpperInvariant())));
             break;
           }
 
