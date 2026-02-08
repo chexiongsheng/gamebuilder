@@ -640,14 +640,14 @@ class HandlerApi {
     const cs = getCallStack();
     const behUri = this.use_.getBehaviorUri();
     const lineNum = parseInt(cs.match(new RegExp(`${behUri}:(\\\d+)`))[1]);
-    callVoosService("LogBehaviorMessage", {
+    getVoosEngine().services.LogBehaviorMessage(JSON.stringify({
       actorId: this.actor_.name,
       message: message === undefined ? "" : message,
       senderId: this.deliveredMessage_.senderActorName,
       useId: this.use_.id,
       messageName: this.deliveredMessage_.name,
       lineNum: lineNum
-    });
+    }));
   }
 
   // Declares that this handler did not change memory.

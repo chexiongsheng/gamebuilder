@@ -629,6 +629,20 @@ namespace V8InUnity
       }
     }
 
+    public void ReportBehaviorException(string argsJson)
+    {
+      Util.LogError($"ReportBehaviorException {argsJson}");
+      VoosEngine.BehaviorLogItem e = JsonUtility.FromJson<VoosEngine.BehaviorLogItem>(argsJson);
+      engine.HandleBehaviorException(e);
+    }
+
+    public void LogBehaviorMessage(string argsJson)
+    {
+      Util.Log($"LogBehaviorMessage {argsJson}");
+      VoosEngine.BehaviorLogItem msg = JsonUtility.FromJson<VoosEngine.BehaviorLogItem>(argsJson);
+      engine.HandleBehaviorLogMessage(msg);
+    }
+
     /// <summary>
     /// Core service execution logic, shared by both CallService overloads
     /// </summary>
@@ -637,24 +651,6 @@ namespace V8InUnity
       // Debug.LogError($"CallService({serviceName}, {argsJson})");
       switch (serviceName)
       {
-        case "ReportBehaviorException":
-          {
-            Util.LogError($"ReportBehaviorException {argsJson}");
-            VoosEngine.BehaviorLogItem e = JsonUtility.FromJson<VoosEngine.BehaviorLogItem>(argsJson);
-            engine.HandleBehaviorException(e);
-            reportResult("true");
-            break;
-          }
-
-        case "LogBehaviorMessage":
-          {
-            Util.Log($"LogBehaviorMessage {argsJson}");
-            VoosEngine.BehaviorLogItem msg = JsonUtility.FromJson<VoosEngine.BehaviorLogItem>(argsJson);
-            engine.HandleBehaviorLogMessage(msg);
-            reportResult("true");
-            break;
-          }
-
         default:
           Util.LogError($"VOOS script tried to call unknown service {serviceName}.");
           break;

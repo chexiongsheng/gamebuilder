@@ -18,7 +18,7 @@ import * as THREE from "three.mjs";
 import { enableGravity, isSolid, setAngularDrag, setBounciness, setDrag, setMass } from "./apiv2/physics/attributes.mjs";
 import { isGrounded, isPlayerControllable, setCameraActor, setIsPlayerControllable } from "./apiv2/player_controls/controls.mjs";
 import { assertBoolean, assertNumber, assertQuaternion, assertString, assertStringOrNull, assertVector3, mapGetOrCreate, parseJsonOrEmpty } from "./util.mjs";
-import { callVoosService, getActorBoolean, getActorFloat, getActorQuaternion, getActorString, getActorVector3, setActorBoolean, setActorFloat, setActorQuaternion, setActorString, setActorVector3, sysLog } from "./voosMain.mjs";
+import { callVoosService, getActorBoolean, getActorFloat, getActorQuaternion, getActorString, getActorVector3, setActorBoolean, setActorFloat, setActorQuaternion, setActorString, setActorVector3, sysLog, getVoosEngine } from "./voosMain.mjs";
 import { Vector3 } from "./threejs-overrides.mjs";
 import { assert } from "./testing.mjs";
 import { exists } from "./apiv2/actors/actors.mjs";
@@ -159,14 +159,14 @@ class MessageHandlingContext {
     const msg = `${exception}\nStack trace:${exception.stack}\n`;
     const matches = exception.stack.match(new RegExp(`${behUri}:(\\\d+)`));
     const lineNum = matches != null ? parseInt(matches[1]) : -1;
-    callVoosService("ReportBehaviorException", {
+    getVoosEngine().services.ReportBehaviorException(JSON.stringify({
       actorId: this.actor_.name,
       message: msg,
       senderId: deliveredMessage.senderActorName,
       useId: use.id,
       messageName: deliveredMessage.name,
       lineNum: lineNum
-    });
+    }));
   }
 }
 
