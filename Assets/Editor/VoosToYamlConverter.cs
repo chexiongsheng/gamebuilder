@@ -11,7 +11,7 @@ using System.Collections.Generic;
 public class VoosToYamlConverter
 {
     [MenuItem("Tools/Convert Voos Game to Yaml")]
-    public static void ConvertAll()
+    public static void ConvertAllGame()
     {
         string[] files = Directory.GetFiles(Path.Combine(Application.streamingAssetsPath, "ExampleGames"), "*.voos", SearchOption.AllDirectories);
         int count = 0;
@@ -82,4 +82,69 @@ public class VoosToYamlConverter
         AssetDatabase.Refresh();
         Debug.Log($"Converted {count} .voos files to .yaml");
     }
+
+    [MenuItem("Tools/Convert Prefabs to Yaml")]
+    public static void ConvertAllPrefabs()
+    {
+        string prefabLibPath = Path.Combine(Application.streamingAssetsPath, "PrefabLibrary");
+        if (!Directory.Exists(prefabLibPath))
+        {
+            Debug.LogError($"PrefabLibrary directory not found at {prefabLibPath}");
+            return;
+        }
+
+        string[] files = Directory.GetFiles(prefabLibPath, "*.actor-prefab.voos", SearchOption.AllDirectories);
+        int count = 0;
+
+        var options = YamlSerializerOptions.Standard;
+        options.Resolver = CompositeResolver.Create(
+            new IYamlFormatterResolver[] {
+                StandardResolver.Instance,
+                ReflectionResolver.Instance
+            }
+        );
+
+        foreach (string file in files)
+        {
+            try
+            {
+                string jsonContents = File.ReadAllText(file);
+                SavedActorPrefab prefab = JsonUtility.FromJson<SavedActorPrefab>(jsonContents);
+
+                // Perform upgrades using reflection since the method is internal
+                System.Reflection.MethodInfo upgradeMethod = typeof(SavedActorPrefab).GetMethod("PerformUpgrades", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+                if (upgradeMethod != null)
+                {
+                    upgradeMethod.Invoke(prefab, null);
+                }
+
+                var yamlBytes = YamlSerializer.Serialize(prefab, options);
+                // Replace .voos with .yaml
+                string yamlPath = file.Substring(0, file.Length - 5) + ".yaml";
+                
+                File.WriteAllBytes(yamlPath, yamlBytes.ToArray());
+                
+                // Verify
+                SavedActorPrefab yamlPrefab = YamlSerializer.Deserialize<SavedActorPrefab>(File.ReadAllBytes(yamlPath), options);
+
+                string json1 = JsonUtility.ToJson(prefab, true);
+                string json2 = JsonUtility.ToJson(yamlPrefab, true);
+
+                if (json1 != json2)
+                {
+                    Debug.LogWarning($"File {Path.GetFileName(file)}: JSON and YAML mismatch!");
+                }
+
+                count++;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to convert {file}: {e.Message}");
+            }
+        }
+
+        AssetDatabase.Refresh();
+        Debug.Log($"Converted {count} prefab files to .yaml");
+    }
 }
+
