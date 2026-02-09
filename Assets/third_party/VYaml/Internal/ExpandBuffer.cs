@@ -33,7 +33,12 @@ namespace VYaml.Internal
         {
             if (length > buffer.Length)
             {
-                SetCapacity(buffer.Length * 2);
+                var nextCapacity = buffer.Length * 2;
+                if (length > nextCapacity)
+                {
+                    nextCapacity = length;
+                }
+                SetCapacity(nextCapacity);
             }
             return buffer.AsSpan(0, length);
         }
