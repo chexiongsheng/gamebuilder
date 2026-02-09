@@ -1,0 +1,239 @@
+version: 2
+label: Score Board
+actors:
+- version: 4
+  name: 0dc485b57e204bbdb7432762424ce027
+  brainName: 4e59614ff938464cbd5b76fba9e90647
+  tags: []
+  renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
+  memoryJson: "{\"__bulm\":{\"2cee40a445c5497183757f196afbe3d3\":{},\"f2d8cb1c5dd248cf910bad6ac5cef116\":{},\"ec0c1a048fed4c5799fde828ae3dd49c\":{\"scores\":{}}},\"health\":3,\"__attribs\":{\"isDead\":false},\"isDead\":false}"
+  displayName: Score Board
+  description: ""
+  tint:
+    r: 0
+    g: 0
+    b: 0
+    a: 0.75
+  transformParent: ""
+  position:
+    x: 8.0618782
+    y: 1
+    z: 21.0546169
+  rotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  localScale:
+    x: 6
+    y: 6
+    z: 6
+  renderableOffset:
+    x: 0
+    y: 0
+    z: 0
+  renderableRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  commentText: ""
+  spawnPosition:
+    x: 8.0618782
+    y: 1
+    z: 21.0546169
+  spawnRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  preferOffstage: false
+  isSolid: false
+  enablePhysics: false
+  enableGravity: false
+  bounciness: 0
+  drag: 0
+  angularDrag: 0
+  mass: 0
+  freezeRotations: false
+  freezeX: false
+  freezeY: false
+  freezeZ: false
+  enableAiming: false
+  hideInPlayMode: false
+  keepUpright: false
+  isPlayerControllable: false
+  debugString: ""
+  cloneParent: ""
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  cameraActor: ""
+  spawnTransformParent: ""
+  wasClonedByScript: false
+  loopingAnimation: ""
+  cameraSettingsJson: null
+  lightSettingsJson: null
+  pfxId: null
+  sfxId: null
+  useConcaveCollider: false
+  speculativeColDet: false
+  useStickyDesiredVelocity: false
+  stickyDesiredVelocity:
+    x: 0
+    y: 0
+    z: 0
+  stickyForce:
+    x: 0
+    y: 0
+    z: 0
+brainDatabase:
+  version: 4
+  behaviorIds: []
+  behaviors: []
+  brainIds:
+  - 4e59614ff938464cbd5b76fba9e90647
+  brains:
+  - metadataJson: "{\"viewMetadata\":{\"version\":1,\"scale\":0.36088141798973086,\"viewPosition\":{\"x\":678.8582153320313,\"y\":143.6150665283203},\"addPanelPosition\":{\"x\":1036.1500244140625,\"y\":0.0},\"panelNotes\":[]},\"miscPanelUseMetadata\":{\"version\":0,\"position\":{\"x\":0.0,\"y\":0.0}}}"
+    behaviorUses:
+    - id: 2cee40a445c5497183757f196afbe3d3
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: ""
+      propertyAssignments: []
+    - id: f2d8cb1c5dd248cf910bad6ac5cef116
+      behaviorUri: "builtin:Screen Panel"
+      metadataJson: "{\"version\":1,\"position\":{\"x\":302.845947265625,\"y\":-41.088287353515628}}"
+      propertyAssignments:
+      - propertyName: screenDeck
+        valueJson: "{\"value\":[\"ec0c1a048fed4c5799fde828ae3dd49c\"]}"
+    - id: ec0c1a048fed4c5799fde828ae3dd49c
+      behaviorUri: "builtin:ScoreBoard"
+      metadataJson: ""
+      propertyAssignments: []
+  behaviorUseIds: []
+  behaviorUses: []
+sojos: null
+thumbnailJZB64: null
+category: gameplay
+workshopId: null
+actorData:
+  version: 4
+  name: 0dc485b57e204bbdb7432762424ce027
+  brainName: 4e59614ff938464cbd5b76fba9e90647
+  tags: []
+  renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
+  memoryJson: "{\"__bulm\":{\"2cee40a445c5497183757f196afbe3d3\":{},\"f2d8cb1c5dd248cf910bad6ac5cef116\":{},\"ec0c1a048fed4c5799fde828ae3dd49c\":{\"scores\":{}}},\"health\":3,\"__attribs\":{\"isDead\":false},\"isDead\":false}"
+  displayName: Score Board
+  description: ""
+  tint:
+    r: 0
+    g: 0
+    b: 0
+    a: 0.75
+  transformParent: ""
+  position:
+    x: 8.0618782
+    y: 1
+    z: 21.0546169
+  rotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  localScale:
+    x: 6
+    y: 6
+    z: 6
+  renderableOffset:
+    x: 0
+    y: 0
+    z: 0
+  renderableRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  commentText: ""
+  spawnPosition:
+    x: 8.0618782
+    y: 1
+    z: 21.0546169
+  spawnRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  preferOffstage: false
+  isSolid: false
+  enablePhysics: false
+  enableGravity: false
+  bounciness: 0
+  drag: 0
+  angularDrag: 0
+  mass: 0
+  freezeRotations: false
+  freezeX: false
+  freezeY: false
+  freezeZ: false
+  enableAiming: false
+  hideInPlayMode: false
+  keepUpright: false
+  isPlayerControllable: false
+  debugString: ""
+  cloneParent: ""
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  cameraActor: ""
+  spawnTransformParent: ""
+  wasClonedByScript: false
+  loopingAnimation: ""
+  cameraSettingsJson: null
+  lightSettingsJson: null
+  pfxId: null
+  sfxId: null
+  useConcaveCollider: false
+  speculativeColDet: false
+  useStickyDesiredVelocity: false
+  stickyDesiredVelocity:
+    x: 0
+    y: 0
+    z: 0
+  stickyForce:
+    x: 0
+    y: 0
+    z: 0

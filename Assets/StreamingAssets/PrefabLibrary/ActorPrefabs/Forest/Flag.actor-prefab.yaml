@@ -1,0 +1,243 @@
+version: 2
+label: Flag
+actors:
+- version: 3
+  name: 1960ff72e4d64bde8f67e77c3b760663
+  brainName: 8d2cc0b8129e4393a38db9390557ac0c
+  tags: []
+  renderableUri: "builtin:BuiltinAssets/Forest/Flag"
+  memoryJson: "{\"__bulm\":{\"cf7c4b8ced7349d995b592392fe4de62\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"3665b2e8ffb44f0d93723c4119077042\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"c3be153d23f54d9ab5052dd2a90910bb\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"7b06c220654a446dbfcd02f65103d429\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"1def51e74a214e80af34cf16fe0c8d29\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"7a87ac17a384443fa04f177a8cd3935d\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"50d6a342b07f4028bb7b7989aee57b83\":{\"actionDeckState\":{\"activeDecksInfo\":{\"moveDeck\":{\"endTime\":1325.5594482421875,\"lastActionMessageTime\":1325.0594482421875}}}},\"015a8c52b22a404dbefaa218a182a95a\":{\"actionDeckState\":{\"activeDecksInfo\":{}}}},\"health\":3,\"__attribs\":{}}"
+  displayName: Flag
+  description: ""
+  tint:
+    r: 1
+    g: 1
+    b: 1
+    a: 0
+  transformParent: ""
+  position:
+    x: 5.46685791
+    y: 0
+    z: 2.5759201
+  rotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  localScale:
+    x: 1
+    y: 1
+    z: 1
+  renderableOffset:
+    x: 0
+    y: 0
+    z: 0
+  renderableRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  commentText: ""
+  spawnPosition:
+    x: 5.46685791
+    y: 0
+    z: 2.5759201
+  spawnRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  preferOffstage: false
+  isSolid: true
+  enablePhysics: false
+  enableGravity: false
+  bounciness: 0
+  drag: 0
+  angularDrag: 0
+  mass: 0
+  freezeRotations: false
+  freezeX: false
+  freezeY: false
+  freezeZ: false
+  enableAiming: false
+  hideInPlayMode: false
+  keepUpright: false
+  isPlayerControllable: false
+  debugString: ""
+  cloneParent: ""
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  cameraActor: ""
+  spawnTransformParent: ""
+  wasClonedByScript: false
+  loopingAnimation: null
+  cameraSettingsJson: null
+  lightSettingsJson: null
+  pfxId: null
+  sfxId: null
+  useConcaveCollider: false
+  speculativeColDet: false
+  useStickyDesiredVelocity: false
+  stickyDesiredVelocity:
+    x: 0
+    y: 0
+    z: 0
+  stickyForce:
+    x: 0
+    y: 0
+    z: 0
+brainDatabase:
+  version: 4
+  behaviorIds: []
+  behaviors: []
+  brainIds:
+  - 8d2cc0b8129e4393a38db9390557ac0c
+  brains:
+  - metadataJson: null
+    behaviorUses:
+    - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: null
+      propertyAssignments: []
+    - id: f55adcc4c3e949ca994f647d973fda90
+      behaviorUri: "builtin:Action on Event Panel"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: eventDeck
+        valueJson: "{\"value\":[]}"
+      - propertyName: actionDeck
+        valueJson: "{\"value\":[]}"
+    - id: 226ee4a47ffe4fc09f6478e207db5a2a
+      behaviorUri: "builtin:Movement Panel"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: moveDeck
+        valueJson: "{\"value\":[]}"
+  behaviorUseIds: []
+  behaviorUses: []
+sojos: null
+thumbnailJZB64: null
+category: gameplay
+workshopId: null
+actorData:
+  version: 3
+  name: 1960ff72e4d64bde8f67e77c3b760663
+  brainName: 8d2cc0b8129e4393a38db9390557ac0c
+  tags: []
+  renderableUri: "builtin:BuiltinAssets/Forest/Flag"
+  memoryJson: "{\"__bulm\":{\"cf7c4b8ced7349d995b592392fe4de62\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"3665b2e8ffb44f0d93723c4119077042\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"c3be153d23f54d9ab5052dd2a90910bb\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"7b06c220654a446dbfcd02f65103d429\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"1def51e74a214e80af34cf16fe0c8d29\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"7a87ac17a384443fa04f177a8cd3935d\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"50d6a342b07f4028bb7b7989aee57b83\":{\"actionDeckState\":{\"activeDecksInfo\":{\"moveDeck\":{\"endTime\":1325.5594482421875,\"lastActionMessageTime\":1325.0594482421875}}}},\"015a8c52b22a404dbefaa218a182a95a\":{\"actionDeckState\":{\"activeDecksInfo\":{}}}},\"health\":3,\"__attribs\":{}}"
+  displayName: Flag
+  description: ""
+  tint:
+    r: 1
+    g: 1
+    b: 1
+    a: 0
+  transformParent: ""
+  position:
+    x: 5.46685791
+    y: 0
+    z: 2.5759201
+  rotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  localScale:
+    x: 1
+    y: 1
+    z: 1
+  renderableOffset:
+    x: 0
+    y: 0
+    z: 0
+  renderableRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  commentText: ""
+  spawnPosition:
+    x: 5.46685791
+    y: 0
+    z: 2.5759201
+  spawnRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  preferOffstage: false
+  isSolid: true
+  enablePhysics: false
+  enableGravity: false
+  bounciness: 0
+  drag: 0
+  angularDrag: 0
+  mass: 0
+  freezeRotations: false
+  freezeX: false
+  freezeY: false
+  freezeZ: false
+  enableAiming: false
+  hideInPlayMode: false
+  keepUpright: false
+  isPlayerControllable: false
+  debugString: ""
+  cloneParent: ""
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  cameraActor: ""
+  spawnTransformParent: ""
+  wasClonedByScript: false
+  loopingAnimation: null
+  cameraSettingsJson: null
+  lightSettingsJson: null
+  pfxId: null
+  sfxId: null
+  useConcaveCollider: false
+  speculativeColDet: false
+  useStickyDesiredVelocity: false
+  stickyDesiredVelocity:
+    x: 0
+    y: 0
+    z: 0
+  stickyForce:
+    x: 0
+    y: 0
+    z: 0

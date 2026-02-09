@@ -1,0 +1,247 @@
+version: 2
+label: CloudMedium
+actors:
+- version: 8
+  name: 7ee1094cae3741949d63be0d6ede6919
+  brainName: 8498c6fcea1f4783b29cf2472e63f74f
+  tags: []
+  renderableUri: "builtin:BuiltinAssets/BubblegumDreams/CloudMedium"
+  memoryJson: "{\"__bulm\":{\"ed0ab3baf8e94e6a95ce46b9ec1d79ae\":{\"actionDeckState\":{}}}}"
+  displayName: CloudMedium
+  description: ""
+  tint:
+    r: 1
+    g: 1
+    b: 1
+    a: 0
+  transformParent: ""
+  position:
+    x: -20.4805603
+    y: 0
+    z: 14.2531128
+  rotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  localScale:
+    x: 1
+    y: 1
+    z: 1
+  renderableOffset:
+    x: 0
+    y: 0
+    z: 0
+  renderableRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  commentText: ""
+  spawnPosition:
+    x: -20.4805603
+    y: 0
+    z: 14.2531128
+  spawnRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  preferOffstage: false
+  isSolid: true
+  enablePhysics: false
+  enableGravity: false
+  bounciness: 0
+  drag: 0
+  angularDrag: 0.0500000007
+  mass: 1
+  freezeRotations: false
+  freezeX: false
+  freezeY: false
+  freezeZ: false
+  enableAiming: false
+  hideInPlayMode: false
+  keepUpright: false
+  isPlayerControllable: false
+  debugString: ""
+  cloneParent: ""
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  cameraActor: ""
+  spawnTransformParent: ""
+  wasClonedByScript: false
+  loopingAnimation: ""
+  cameraSettingsJson: ""
+  lightSettingsJson: ""
+  pfxId: ""
+  sfxId: ""
+  useConcaveCollider: true
+  speculativeColDet: false
+  useStickyDesiredVelocity: false
+  stickyDesiredVelocity:
+    x: 0
+    y: 0
+    z: 0
+  stickyForce:
+    x: 0
+    y: 0
+    z: 0
+brainDatabase:
+  version: 4
+  behaviorIds: []
+  behaviors: []
+  brainIds:
+  - 8498c6fcea1f4783b29cf2472e63f74f
+  brains:
+  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":1.0,\"viewPosition\":{\"x\":67.91912841796875,\"y\":66.0103759765625},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":70.0,\"y\":-70.0}}}"
+    behaviorUses:
+    - id: ed0ab3baf8e94e6a95ce46b9ec1d79ae
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: ""
+      propertyAssignments: []
+    - id: bb6741ee02a140c2aa095945d0f891d2
+      behaviorUri: "builtin:Always Panel"
+      metadataJson: "{\"version\":1,\"position\":{\"x\":0.0,\"y\":0.0}}"
+      propertyAssignments:
+      - propertyName: actionDeck
+        valueJson: "{\"value\":[\"9cfc7e91d1224fbd90e6f5742916d217\"]}"
+    - id: 9cfc7e91d1224fbd90e6f5742916d217
+      behaviorUri: "builtin:Back And Forth"
+      metadataJson: ""
+      propertyAssignments:
+      - propertyName: DistForward
+        valueJson: "{\"value\":0.0}"
+      - propertyName: DistUp
+        valueJson: "{\"value\":0.5}"
+      - propertyName: Speed
+        valueJson: "{\"value\":0.30000001192092898}"
+      - propertyName: RestTime
+        valueJson: "{\"value\":0.0}"
+  behaviorUseIds: []
+  behaviorUses: []
+sojos: []
+thumbnailJZB64: null
+category: gameplay
+workshopId: ""
+actorData:
+  version: 0
+  name: ""
+  brainName: ""
+  tags: []
+  renderableUri: ""
+  memoryJson: ""
+  displayName: ""
+  description: ""
+  tint:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  transformParent: ""
+  position:
+    x: 0
+    y: 0
+    z: 0
+  rotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 0
+  localScale:
+    x: 0
+    y: 0
+    z: 0
+  renderableOffset:
+    x: 0
+    y: 0
+    z: 0
+  renderableRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 0
+  commentText: ""
+  spawnPosition:
+    x: 0
+    y: 0
+    z: 0
+  spawnRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 0
+  preferOffstage: false
+  isSolid: false
+  enablePhysics: false
+  enableGravity: false
+  bounciness: 0
+  drag: 0
+  angularDrag: 0
+  mass: 0
+  freezeRotations: false
+  freezeX: false
+  freezeY: false
+  freezeZ: false
+  enableAiming: false
+  hideInPlayMode: false
+  keepUpright: false
+  isPlayerControllable: false
+  debugString: ""
+  cloneParent: ""
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  cameraActor: ""
+  spawnTransformParent: ""
+  wasClonedByScript: false
+  loopingAnimation: ""
+  cameraSettingsJson: ""
+  lightSettingsJson: ""
+  pfxId: ""
+  sfxId: ""
+  useConcaveCollider: false
+  speculativeColDet: false
+  useStickyDesiredVelocity: false
+  stickyDesiredVelocity:
+    x: 0
+    y: 0
+    z: 0
+  stickyForce:
+    x: 0
+    y: 0
+    z: 0

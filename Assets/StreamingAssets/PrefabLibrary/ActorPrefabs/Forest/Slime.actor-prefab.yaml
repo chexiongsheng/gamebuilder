@@ -1,0 +1,279 @@
+version: 2
+label: Slime
+actors:
+- version: 6
+  name: 35a1e97adfe14221940ed812d1e01927
+  brainName: 62d944d3d3844ff8b2fb0408d6602787
+  tags:
+  - enemy
+  renderableUri: "builtin:BuiltinAssets/Forest/Slime"
+  memoryJson: "{\"__bulm\":{\"a52132e03baf46769dc648d47a3b3e1e\":{},\"9c87ec6d4737468ea6253f48a9eb45aa\":{},\"9168e59f032948ba90c1b9aa38640fe6\":{},\"815236b9f0a4467da800b054cba4ac0d\":{},\"abcdef1234567890deadbeefabcabcab\":{},\"2bcdef1234567890deadbeefabcabcab\":{},\"3c028d3b7407402cae017435f277f83e\":{\"actionDeckState\":{\"activeDecksInfo\":{\"moveDeck\":{\"endTime\":8928.7529296875,\"lastActionMessageTime\":8928.2529296875}}}},\"2b23e49fbe1d4eea8f174e44ca40012c\":{}},\"health\":3,\"__attribs\":{},\"walkDist\":2.0394293796271086,\"walkDistTarget\":3.6232338584861683,\"turnAmount\":0,\"turnAmountTarget\":-2.8066700714372645,\"__variables\":{\"health\":3,\"startingHealth\":3}}"
+  displayName: Slime
+  description: ""
+  tint:
+    r: 0.591624796
+    g: 1
+    b: 0.28875953
+    a: 1
+  transformParent: ""
+  position:
+    x: -48.3811836
+    y: 0.0349108577
+    z: 20.7526093
+  rotation:
+    eulerAngles:
+      x: -0.000251939928
+      y: 299.578094
+      z: 359.920837
+    x: 0.000345741282
+    y: -0.503185034
+    z: -0.000598151237
+    w: 0.864178479
+  localScale:
+    x: 1
+    y: 1
+    z: 1
+  renderableOffset:
+    x: 0
+    y: 0
+    z: 0
+  renderableRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  commentText: ""
+  spawnPosition:
+    x: -14.0871582
+    y: 1.90734863E-06
+    z: 16.5024414
+  spawnRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  preferOffstage: false
+  isSolid: true
+  enablePhysics: true
+  enableGravity: true
+  bounciness: 0
+  drag: 0
+  angularDrag: 0.0500000007
+  mass: 1
+  freezeRotations: false
+  freezeX: false
+  freezeY: false
+  freezeZ: false
+  enableAiming: false
+  hideInPlayMode: false
+  keepUpright: true
+  isPlayerControllable: false
+  debugString: ""
+  cloneParent: ""
+  velocity:
+    x: -0.826773226
+    y: -4.91738319E-07
+    z: 0.469592571
+  angularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  cameraActor: ""
+  spawnTransformParent: ""
+  wasClonedByScript: false
+  loopingAnimation: ""
+  cameraSettingsJson: ""
+  lightSettingsJson: ""
+  pfxId: ""
+  sfxId: ""
+  useConcaveCollider: false
+  speculativeColDet: false
+  useStickyDesiredVelocity: false
+  stickyDesiredVelocity:
+    x: 0
+    y: 0
+    z: 0
+  stickyForce:
+    x: 0
+    y: 0
+    z: 0
+brainDatabase:
+  version: 4
+  behaviorIds: []
+  behaviors: []
+  brainIds:
+  - 62d944d3d3844ff8b2fb0408d6602787
+  brains:
+  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.5829458236694336,\"viewPosition\":{\"x\":-486.2705383300781,\"y\":170.47720336914063},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1810.570068359375,\"y\":-70.0}}}"
+    behaviorUses:
+    - id: 9168e59f032948ba90c1b9aa38640fe6
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: ""
+      propertyAssignments: []
+    - id: a52132e03baf46769dc648d47a3b3e1e
+      behaviorUri: "builtin:Health Panel"
+      metadataJson: "{\"version\":1,\"position\":{\"x\":495.0,\"y\":-70.0}}"
+      propertyAssignments:
+      - propertyName: StartingHealth
+        valueJson: "{\"value\":3}"
+      - propertyName: damageDeck
+        valueJson: "{\"value\":[\"9c87ec6d4737468ea6253f48a9eb45aa\",\"abcdef1234567890deadbeefabcabcab\"]}"
+      - propertyName: deathDeck
+        valueJson: "{\"value\":[\"2bcdef1234567890deadbeefabcabcab\",\"815236b9f0a4467da800b054cba4ac0d\"]}"
+    - id: 9c87ec6d4737468ea6253f48a9eb45aa
+      behaviorUri: "builtin:Change Tint"
+      metadataJson: ""
+      propertyAssignments:
+      - propertyName: ColorR
+        valueJson: "{\"value\":255}"
+      - propertyName: ColorG
+        valueJson: "{\"value\":0}"
+      - propertyName: ColorB
+        valueJson: "{\"value\":0}"
+      - propertyName: Duration
+        valueJson: "{\"value\":1}"
+    - id: 815236b9f0a4467da800b054cba4ac0d
+      behaviorUri: "builtin:Destroy Self Action Card"
+      metadataJson: ""
+      propertyAssignments: []
+    - id: abcdef1234567890deadbeefabcabcab
+      behaviorUri: "builtin:Play Sound"
+      metadataJson: ""
+      propertyAssignments:
+      - propertyName: Sound
+        valueJson: "{\"value\":\"builtin:Hit\"}"
+    - id: 2bcdef1234567890deadbeefabcabcab
+      behaviorUri: "builtin:Play Sound"
+      metadataJson: ""
+      propertyAssignments:
+      - propertyName: Sound
+        valueJson: "{\"value\":\"builtin:Explosion\"}"
+    - id: 3c028d3b7407402cae017435f277f83e
+      behaviorUri: "builtin:Movement Panel"
+      metadataJson: "{\"version\":1,\"position\":{\"x\":1277.5,\"y\":-70.0}}"
+      propertyAssignments:
+      - propertyName: moveDeck
+        valueJson: "{\"value\":[\"2b23e49fbe1d4eea8f174e44ca40012c\"]}"
+    - id: 2b23e49fbe1d4eea8f174e44ca40012c
+      behaviorUri: "builtin:MoveRandomWalk"
+      metadataJson: ""
+      propertyAssignments: []
+  behaviorUseIds: []
+  behaviorUses: []
+sojos: null
+thumbnailJZB64: null
+category: character
+workshopId: null
+actorData:
+  version: 6
+  name: 35a1e97adfe14221940ed812d1e01927
+  brainName: 62d944d3d3844ff8b2fb0408d6602787
+  tags:
+  - enemy
+  renderableUri: "builtin:BuiltinAssets/Forest/Slime"
+  memoryJson: "{\"__bulm\":{\"a52132e03baf46769dc648d47a3b3e1e\":{},\"9c87ec6d4737468ea6253f48a9eb45aa\":{},\"9168e59f032948ba90c1b9aa38640fe6\":{},\"815236b9f0a4467da800b054cba4ac0d\":{},\"abcdef1234567890deadbeefabcabcab\":{},\"2bcdef1234567890deadbeefabcabcab\":{},\"3c028d3b7407402cae017435f277f83e\":{\"actionDeckState\":{\"activeDecksInfo\":{\"moveDeck\":{\"endTime\":8928.7529296875,\"lastActionMessageTime\":8928.2529296875}}}},\"2b23e49fbe1d4eea8f174e44ca40012c\":{}},\"health\":3,\"__attribs\":{},\"walkDist\":2.0394293796271086,\"walkDistTarget\":3.6232338584861683,\"turnAmount\":0,\"turnAmountTarget\":-2.8066700714372645,\"__variables\":{\"health\":3,\"startingHealth\":3}}"
+  displayName: Slime
+  description: ""
+  tint:
+    r: 0.591624796
+    g: 1
+    b: 0.28875953
+    a: 1
+  transformParent: ""
+  position:
+    x: -48.3811836
+    y: 0.0349108577
+    z: 20.7526093
+  rotation:
+    eulerAngles:
+      x: -0.000251939928
+      y: 299.578094
+      z: 359.920837
+    x: 0.000345741282
+    y: -0.503185034
+    z: -0.000598151237
+    w: 0.864178479
+  localScale:
+    x: 1
+    y: 1
+    z: 1
+  renderableOffset:
+    x: 0
+    y: 0
+    z: 0
+  renderableRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  commentText: ""
+  spawnPosition:
+    x: -14.0871582
+    y: 1.90734863E-06
+    z: 16.5024414
+  spawnRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  preferOffstage: false
+  isSolid: true
+  enablePhysics: true
+  enableGravity: true
+  bounciness: 0
+  drag: 0
+  angularDrag: 0.0500000007
+  mass: 1
+  freezeRotations: false
+  freezeX: false
+  freezeY: false
+  freezeZ: false
+  enableAiming: false
+  hideInPlayMode: false
+  keepUpright: true
+  isPlayerControllable: false
+  debugString: ""
+  cloneParent: ""
+  velocity:
+    x: -0.826773226
+    y: -4.91738319E-07
+    z: 0.469592571
+  angularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  cameraActor: ""
+  spawnTransformParent: ""
+  wasClonedByScript: false
+  loopingAnimation: ""
+  cameraSettingsJson: ""
+  lightSettingsJson: ""
+  pfxId: ""
+  sfxId: ""
+  useConcaveCollider: false
+  speculativeColDet: false
+  useStickyDesiredVelocity: false
+  stickyDesiredVelocity:
+    x: 0
+    y: 0
+    z: 0
+  stickyForce:
+    x: 0
+    y: 0
+    z: 0

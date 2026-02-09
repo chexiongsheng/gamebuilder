@@ -1,0 +1,243 @@
+version: 2
+label: Lantern
+actors:
+- version: 2
+  name: fb0c1c69b90343078b47f8d17e9b774e
+  brainName: 8d2cc0b8129e4393a38db9390557ac0c
+  tags: []
+  renderableUri: "builtin:BuiltinAssets/Forest/Lantern"
+  memoryJson: "{\"__bulm\":{\"cf7c4b8ced7349d995b592392fe4de62\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"3665b2e8ffb44f0d93723c4119077042\":{\"actionDeckState\":{\"activeDecksInfo\":{}}}},\"health\":3,\"__attribs\":{}}"
+  displayName: Lantern
+  description: ""
+  tint:
+    r: 1
+    g: 0.546064734
+    b: 0.215566158
+    a: 1
+  transformParent: ""
+  position:
+    x: 12.1560459
+    y: -2.98023224E-07
+    z: -30.0277538
+  rotation:
+    eulerAngles:
+      x: 1.2329113E-07
+      y: -9.20549246E-06
+      z: 3.8695448E-06
+    x: 1.07591536E-09
+    y: -8.03330735E-08
+    z: 3.37681492E-08
+    w: 1
+  localScale:
+    x: 1
+    y: 1
+    z: 1
+  renderableOffset:
+    x: 0
+    y: 0
+    z: 0
+  renderableRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  commentText: ""
+  spawnPosition:
+    x: 12.1560459
+    y: 0
+    z: -30.0277538
+  spawnRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  preferOffstage: false
+  isSolid: true
+  enablePhysics: true
+  enableGravity: true
+  bounciness: 0
+  drag: 0
+  angularDrag: 0
+  mass: 0
+  freezeRotations: false
+  freezeX: false
+  freezeY: false
+  freezeZ: false
+  enableAiming: false
+  hideInPlayMode: false
+  keepUpright: false
+  isPlayerControllable: false
+  debugString: ""
+  cloneParent: ""
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  cameraActor: ""
+  spawnTransformParent: ""
+  wasClonedByScript: false
+  loopingAnimation: null
+  cameraSettingsJson: null
+  lightSettingsJson: null
+  pfxId: null
+  sfxId: null
+  useConcaveCollider: false
+  speculativeColDet: false
+  useStickyDesiredVelocity: false
+  stickyDesiredVelocity:
+    x: 0
+    y: 0
+    z: 0
+  stickyForce:
+    x: 0
+    y: 0
+    z: 0
+brainDatabase:
+  version: 4
+  behaviorIds: []
+  behaviors: []
+  brainIds:
+  - 8d2cc0b8129e4393a38db9390557ac0c
+  brains:
+  - metadataJson: null
+    behaviorUses:
+    - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: null
+      propertyAssignments: []
+    - id: f55adcc4c3e949ca994f647d973fda90
+      behaviorUri: "builtin:Action on Event Panel"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: eventDeck
+        valueJson: "{\"value\":[]}"
+      - propertyName: actionDeck
+        valueJson: "{\"value\":[]}"
+    - id: 226ee4a47ffe4fc09f6478e207db5a2a
+      behaviorUri: "builtin:Movement Panel"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: moveDeck
+        valueJson: "{\"value\":[]}"
+  behaviorUseIds: []
+  behaviorUses: []
+sojos: null
+thumbnailJZB64: null
+category: null
+workshopId: null
+actorData:
+  version: 2
+  name: fb0c1c69b90343078b47f8d17e9b774e
+  brainName: 8d2cc0b8129e4393a38db9390557ac0c
+  tags: []
+  renderableUri: "builtin:BuiltinAssets/Forest/Lantern"
+  memoryJson: "{\"__bulm\":{\"cf7c4b8ced7349d995b592392fe4de62\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"3665b2e8ffb44f0d93723c4119077042\":{\"actionDeckState\":{\"activeDecksInfo\":{}}}},\"health\":3,\"__attribs\":{}}"
+  displayName: Lantern
+  description: ""
+  tint:
+    r: 1
+    g: 0.546064734
+    b: 0.215566158
+    a: 1
+  transformParent: ""
+  position:
+    x: 12.1560459
+    y: -2.98023224E-07
+    z: -30.0277538
+  rotation:
+    eulerAngles:
+      x: 1.2329113E-07
+      y: -9.20549246E-06
+      z: 3.8695448E-06
+    x: 1.07591536E-09
+    y: -8.03330735E-08
+    z: 3.37681492E-08
+    w: 1
+  localScale:
+    x: 1
+    y: 1
+    z: 1
+  renderableOffset:
+    x: 0
+    y: 0
+    z: 0
+  renderableRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  commentText: ""
+  spawnPosition:
+    x: 12.1560459
+    y: 0
+    z: -30.0277538
+  spawnRotation:
+    eulerAngles:
+      x: 0
+      y: 0
+      z: 0
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  preferOffstage: false
+  isSolid: true
+  enablePhysics: true
+  enableGravity: true
+  bounciness: 0
+  drag: 0
+  angularDrag: 0
+  mass: 0
+  freezeRotations: false
+  freezeX: false
+  freezeY: false
+  freezeZ: false
+  enableAiming: false
+  hideInPlayMode: false
+  keepUpright: false
+  isPlayerControllable: false
+  debugString: ""
+  cloneParent: ""
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  cameraActor: ""
+  spawnTransformParent: ""
+  wasClonedByScript: false
+  loopingAnimation: null
+  cameraSettingsJson: null
+  lightSettingsJson: null
+  pfxId: null
+  sfxId: null
+  useConcaveCollider: false
+  speculativeColDet: false
+  useStickyDesiredVelocity: false
+  stickyDesiredVelocity:
+    x: 0
+    y: 0
+    z: 0
+  stickyForce:
+    x: 0
+    y: 0
+    z: 0

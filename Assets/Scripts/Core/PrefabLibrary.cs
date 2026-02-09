@@ -19,6 +19,7 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using VYaml.Serialization;
 
 public interface ActorPrefab
 {
@@ -311,7 +312,7 @@ public class ActorPrefabImpl : ActorPrefab
 // TODO rename to BuiltinPrefabLibrary..
 public class PrefabLibrary : MonoBehaviour
 {
-  static string ActorPrefabExtension = "actor-prefab.voos";
+  static string ActorPrefabExtension = "actor-prefab.yaml";
 
   static int MAX_PREFABS_PER_FRAME = 3;
 
@@ -356,9 +357,16 @@ public class PrefabLibrary : MonoBehaviour
 
   ActorPrefab LoadActorPrefab(string uri)
   {
-    string voosFilePath = GetPathForUri(uri);
-    string json = File.ReadAllText(voosFilePath);
-    SavedActorPrefab actorPrefab = JsonUtility.FromJson<SavedActorPrefab>(json);
+    string filePath = GetPathForUri(uri);
+    byte[] bytes = File.ReadAllBytes(filePath);
+    var options = YamlSerializerOptions.Standard;
+    options.Resolver = CompositeResolver.Create(
+        new IYamlFormatterResolver[] {
+            StandardResolver.Instance,
+            ReflectionResolver.Instance
+        }
+    );
+    SavedActorPrefab actorPrefab = YamlSerializer.Deserialize<SavedActorPrefab>(bytes, options);
     actorPrefab.PerformUpgrades();
 
     // Load thumbnail
@@ -405,9 +413,9 @@ public class PrefabLibrary : MonoBehaviour
       }
     };
 
-    System.Func<string, string> ProcessURI = (string actorVoosFile) =>
+    System.Func<string, string> ProcessURI = (string actorFile) =>
     {
-      string uri = actorVoosFile
+      string uri = actorFile
                .Substring(actorPrefabsRoot.Length + 1) // + 1 is to to strip off / or \
                .Replace('\\', '/');
       // Remove extension. This is safe because of the asserts above.
@@ -417,12 +425,12 @@ public class PrefabLibrary : MonoBehaviour
     System.Func<string, List<string>> GenerateURIsFromFolder = (string folder) =>
      {
        List<string> uriList = new List<string>();
-       foreach (string actorVoosFile in Directory.GetFiles(Path.Combine(actorPrefabsRoot, folder), $"*.{ActorPrefabExtension}", SearchOption.AllDirectories))
+       foreach (string actorFile in Directory.GetFiles(Path.Combine(actorPrefabsRoot, folder), $"*.{ActorPrefabExtension}", SearchOption.AllDirectories))
        {
          // Convert absolute file path into a prefab URI (which is the path relative to actorPrefabsRoot, without the extension).
-         Debug.Assert(actorVoosFile.StartsWith(actorPrefabsRoot), "Full path does not begin with root path?? " + actorVoosFile);
-         Debug.Assert(actorVoosFile.EndsWith("." + ActorPrefabExtension), "Full path does not end with extension?? " + actorVoosFile);
-         uriList.Add(ProcessURI(actorVoosFile));
+         Debug.Assert(actorFile.StartsWith(actorPrefabsRoot), "Full path does not begin with root path?? " + actorFile);
+         Debug.Assert(actorFile.EndsWith("." + ActorPrefabExtension), "Full path does not end with extension?? " + actorFile);
+         uriList.Add(ProcessURI(actorFile));
        }
        return uriList;
      };
@@ -456,12 +464,12 @@ public class PrefabLibrary : MonoBehaviour
     }
 
     // Search for other files that were not in the list of sorted ones.
-    foreach (string actorVoosFile in Directory.GetFiles(actorPrefabsRoot, $"*.{ActorPrefabExtension}", SearchOption.AllDirectories))
+    foreach (string actorFile in Directory.GetFiles(actorPrefabsRoot, $"*.{ActorPrefabExtension}", SearchOption.AllDirectories))
     {
       // Convert absolute file path into a prefab URI (which is the path relative to actorPrefabsRoot, without the extension).
-      Debug.Assert(actorVoosFile.StartsWith(actorPrefabsRoot), "Full path does not begin with root path?? " + actorVoosFile);
-      Debug.Assert(actorVoosFile.EndsWith("." + ActorPrefabExtension), "Full path does not end with extension?? " + actorVoosFile);
-      readInFile(ProcessURI(actorVoosFile));
+      Debug.Assert(actorFile.StartsWith(actorPrefabsRoot), "Full path does not begin with root path?? " + actorFile);
+      Debug.Assert(actorFile.EndsWith("." + ActorPrefabExtension), "Full path does not end with extension?? " + actorFile);
+      readInFile(ProcessURI(actorFile));
       if (!immediate)
       {
         numProcessedThisFrame++;
