@@ -445,7 +445,8 @@ public class GameBuilderConsoleCommands : MonoBehaviour
     else
     {
 #if USE_FILEBROWSER
-      string path = Crosstales.FB.FileBrowser.SaveFile("Save scene", "", "scene.voos", "voos");
+      string path = Crosstales.FB.FileBrowser.SaveFile("Save scene", "", "scene.yaml", "yaml");
+
       if (!path.IsNullOrEmpty())
       {
         Util.Log("Loading " + path);
@@ -462,7 +463,8 @@ public class GameBuilderConsoleCommands : MonoBehaviour
   {
     var saver = FindObjectOfType<SaveLoadController>();
 #if USE_FILEBROWSER
-    var path = Crosstales.FB.FileBrowser.SaveFile("Save scene", "", "scene.voos", "voos");
+        var path = Crosstales.FB.FileBrowser.SaveFile("Save scene", "", "scene.yaml", "yaml");
+
 
     if (!path.IsNullOrEmpty())
     {

@@ -42,7 +42,8 @@ public class LocalSampleGames
     public string GetVoosFilePath()
     {
       return Path.Combine(Application.streamingAssetsPath,
-          "ExampleGames", "Public", baseFileName + ".voos");
+      "ExampleGames", "Public", baseFileName + ".yaml");
+
     }
 
     public string GetThumbnailFilePath()

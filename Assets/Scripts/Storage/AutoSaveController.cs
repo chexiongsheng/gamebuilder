@@ -157,7 +157,8 @@ public class AutoSaveController : MonoBehaviour
 
       using (Util.Profile("SaveBundle"))
       {
-        // Now overwrite just the scene.voos file
+      // Now overwrite just the scene.yaml file
+
         bundleLibrary.SaveMaybeOverwrite(saveLoad, destId, meta, null, () =>
         {
           sw.Stop();

@@ -78,7 +78,8 @@ namespace GameBuilder
 
     public string GetVoosPath()
     {
-      return Path.Combine(directory, "scene.voos");
+      return Path.Combine(directory, "scene.yaml");
+
     }
 
     public string GetMetadataPath()

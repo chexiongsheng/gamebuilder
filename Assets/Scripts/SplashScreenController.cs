@@ -241,7 +241,8 @@ public class SplashScreenController : Photon.PunBehaviour, GameResuming.ResumeOp
           startInBuildMode = true
         }
       };
-      string path = System.IO.Path.Combine(Application.streamingAssetsPath, "ExampleGames", "Internal", "template-small.voos");
+      string path = System.IO.Path.Combine(Application.streamingAssetsPath, "ExampleGames", "Internal", "template-small.yaml");
+
       loadingScreen.ShowAndDo(() => sceneController.RestartAndLoad(path, gameOpts));
     }
 #endif

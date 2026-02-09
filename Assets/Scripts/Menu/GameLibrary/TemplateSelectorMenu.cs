@@ -89,7 +89,8 @@ public class TemplateSelectorMenu : MonoBehaviour
 
   void OnTemplateClicked(BuiltInTemplateInfo template)
   {
-    string fullPath = Path.Combine(Application.streamingAssetsPath, "ExampleGames", "Public", template.baseFileName + ".voos");
+    string fullPath = Path.Combine(Application.streamingAssetsPath, "ExampleGames", "Public", template.baseFileName + ".yaml");
+
     if (template.isTutorial)
     {
       loadingScreen.ShowAndDo(() => sceneController.RestartAndLoadTutorial());

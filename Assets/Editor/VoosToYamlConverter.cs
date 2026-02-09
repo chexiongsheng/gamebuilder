@@ -27,7 +27,10 @@ public class VoosToYamlConverter
 
         foreach (string file in files)
         {
-            SaveLoadController.SaveGame saveGame = SaveLoadController.ReadSaveGame(file);
+            //SaveLoadController.SaveGame saveGame = SaveLoadController.ReadSaveGame(file);
+            string jsonContents = File.ReadAllText(file);
+            SaveLoadController.SaveGame saveGame = JsonUtility.FromJson<SaveLoadController.SaveGame>(jsonContents);
+
 
             // 升级数据，将 Legacy 字段迁移到 Brain 对象中，避免因私有字段无法序列化导致的数据丢失
             if (saveGame.behaviorDatabase != null)

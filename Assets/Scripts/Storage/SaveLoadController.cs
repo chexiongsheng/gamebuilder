@@ -23,6 +23,7 @@ using System.Text;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using System.IO;
+using VYaml.Serialization;
 
 public class SaveLoadController : MonoBehaviour
 {
@@ -41,6 +42,20 @@ public class SaveLoadController : MonoBehaviour
 
   // Change this any time things become non-backwards compatible.
   static int CURRENT_SAVE_GAME_VERSION = 7;
+
+  public static YamlSerializerOptions YamlOptions { get; private set; }
+
+  static SaveLoadController()
+  {
+      var options = YamlSerializerOptions.Standard;
+      options.Resolver = CompositeResolver.Create(
+          new IYamlFormatterResolver[] {
+              StandardResolver.Instance,
+              ReflectionResolver.Instance
+          }
+      );
+      YamlOptions = options;
+  }
 
   public class MoreRecentVersionNumberException : System.Exception
   {
@@ -97,7 +112,7 @@ public class SaveLoadController : MonoBehaviour
     if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.S))
     {
 #if USE_FILEBROWSER
-      var filePath = Crosstales.FB.FileBrowser.SaveFile("Save scene", "", "", "voos");
+      var filePath = Crosstales.FB.FileBrowser.SaveFile("Save scene", "", "", "yaml");
       if (!filePath.IsNullOrEmpty())
       {
         this.RequestSave(filePath, () =>
@@ -158,10 +173,10 @@ public class SaveLoadController : MonoBehaviour
       save.actorPacks = sceneActorLibrary.GetActorPacks();
     }
 
-    string jsonContents = null;
-    using (Util.Profile("JsonUtility.ToJson"))
+    byte[] yamlBytes = null;
+    using (Util.Profile("YamlSerializer.Serialize"))
     {
-      jsonContents = JsonUtility.ToJson(save, true);
+      yamlBytes = YamlSerializer.Serialize(save, YamlOptions).ToArray();
     }
 
     using (Util.Profile("StartWriteJob"))
@@ -170,9 +185,9 @@ public class SaveLoadController : MonoBehaviour
       byte[] filePathBytes = Encoding.UTF8.GetBytes(filePath);
       jobData.filePathBytes = new NativeArray<byte>(filePathBytes.Length, Allocator.TempJob);
       jobData.filePathBytes.CopyFrom(filePathBytes);
-      byte[] jsonContentsBytes = Encoding.UTF8.GetBytes(jsonContents);
-      jobData.jsonContentsBytes = new NativeArray<byte>(jsonContentsBytes.Length, Allocator.TempJob);
-      jobData.jsonContentsBytes.CopyFrom(jsonContentsBytes);
+      
+      jobData.fileContentsBytes = new NativeArray<byte>(yamlBytes.Length, Allocator.TempJob);
+      jobData.fileContentsBytes.CopyFrom(yamlBytes);
       activeWriteJobHandle = jobData.Schedule();
       JobHandle.ScheduleBatchedJobs();
       // Debug.Log($"OK scheduled save game write to {filePath}");
@@ -306,8 +321,8 @@ public class SaveLoadController : MonoBehaviour
   public static SaveGame ReadSaveGame(string filePath)
   {
     Debug.Log($"Loading world from {filePath}..");
-    string jsonContents = File.ReadAllText(filePath);
-    SaveGame save = JsonUtility.FromJson<SaveGame>(jsonContents);
+    byte[] yamlBytes = File.ReadAllBytes(filePath);
+    SaveGame save = YamlSerializer.Deserialize<SaveGame>(yamlBytes, YamlOptions);
 
     if (save.version > CURRENT_SAVE_GAME_VERSION)
     {
@@ -322,14 +337,15 @@ public class SaveLoadController : MonoBehaviour
     [DeallocateOnJobCompletionAttribute]
     public NativeArray<byte> filePathBytes;
     [DeallocateOnJobCompletionAttribute]
-    public NativeArray<byte> jsonContentsBytes;
+    public NativeArray<byte> fileContentsBytes;
 
     public void Execute()
     {
       string filePath = Encoding.UTF8.GetString(filePathBytes.ToArray());
-      string jsonContents = Encoding.UTF8.GetString(jsonContentsBytes.ToArray());
+      //string jsonContents = Encoding.UTF8.GetString(jsonContentsBytes.ToArray());
       Util.SetNormalFileAttributes(filePath);
-      File.WriteAllText(filePath, jsonContents);
+      //File.WriteAllText(filePath, jsonContents);
+      File.WriteAllBytes(filePath, fileContentsBytes.ToArray());
     }
   }
 }

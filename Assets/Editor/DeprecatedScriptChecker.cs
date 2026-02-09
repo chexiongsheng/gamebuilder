@@ -59,7 +59,8 @@ public class DeprecatedScriptChecker : EditorWindow
             return;
         }
 
-        string[] voosFiles = Directory.GetFiles(exampleGamesPath, "*.voos");
+        string[] voosFiles = Directory.GetFiles(exampleGamesPath, "*.yaml");
+
         
         foreach (string voosFile in voosFiles)
         {

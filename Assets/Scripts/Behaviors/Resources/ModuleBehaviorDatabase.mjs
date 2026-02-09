@@ -257,7 +257,8 @@ class ModuleBehaviorDatabase {
     const brainsHandlingCollisions = [];
 
     // jsonDb实际上是游戏文件里的behaviorDatabase数据
-    // 可以随便打开一个例子看：../../../StreamingAssets/ExampleGames/Public/template-empty.voos
+// 可以随便打开一个例子看：../../../StreamingAssets/ExampleGames/Public/template-empty.yaml
+
     for (let i = 0; i < jsonDb.brains.length; i++) {
       const brainJson = jsonDb.brains[i];
       const uses = [];

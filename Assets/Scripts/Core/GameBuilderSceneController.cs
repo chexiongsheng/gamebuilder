@@ -71,12 +71,14 @@ public class GameBuilderSceneController : MonoBehaviour
 
   string GetDebugSaveFilePath()
   {
-    return Path.Combine(Application.streamingAssetsPath, "ExampleGames", "Internal", "demo-everything.voos");
+      return Path.Combine(Application.streamingAssetsPath, "ExampleGames", "Internal", "demo-everything.yaml");
+
   }
 
   public static string GetMinimalScenePath(bool twoPlayer)
   {
-    return Path.Combine(Application.streamingAssetsPath, "ExampleGames", "Public", "template-empty.voos");
+      return Path.Combine(Application.streamingAssetsPath, "ExampleGames", "Public", "template-empty.yaml");
+
   }
 
   public void RestartAndLoadMinimalScene(GameBuilderApplication.GameOptions gameOptions = new GameBuilderApplication.GameOptions())
@@ -88,7 +90,8 @@ public class GameBuilderSceneController : MonoBehaviour
   {
     GameBuilderApplication.GameOptions gameOptions = new GameBuilderApplication.GameOptions();
     gameOptions.tutorialMode = true;
-    RestartAndLoad(Path.Combine(Application.streamingAssetsPath, "ExampleGames", "Public", "tutorial.voos"), gameOptions);
+      RestartAndLoad(Path.Combine(Application.streamingAssetsPath, "ExampleGames", "Public", "tutorial.yaml"), gameOptions);
+
   }
 
   public void LoadMainSceneAsync(GameBuilderApplication.GameOptions gameOptions = new GameBuilderApplication.GameOptions())

@@ -27,10 +27,11 @@ using SD = System.Diagnostics;
 public class PerfBenchmark : MonoBehaviour
 {
   static string[] BenchmarkVoosFiles = new string[] {
-      "old-minimal-scene.voos",
-      "old-tutorial.voos",
-      "pug-bench-4ms.voos",
-      "pug-bench-18ms.voos",
+    "old-minimal-scene.yaml",
+    "old-tutorial.yaml",
+    "pug-bench-4ms.yaml",
+    "pug-bench-18ms.yaml",
+
     };
 
   static BenchmarkState CurrState = null;
