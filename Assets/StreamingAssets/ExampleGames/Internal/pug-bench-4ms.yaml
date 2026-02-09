@@ -1,0 +1,7187 @@
+version: 3
+voosEngineState:
+  gameTime: 501.413818
+  actors:
+  - version: 2
+    name: RedPlayer
+    brainName: Player
+    tags: []
+    renderableUri: "builtin:BuiltinAssets/AvatarExplorer"
+    memoryJson: "{\"health\":3,\"StartingHealth\":3,\"team\":1,\"jumpCooldown\":0}"
+    displayName: PlayerOne
+    description: null
+    tint:
+      r: 1
+      g: 0.200000003
+      b: 0.200000003
+      a: 0.200000003
+    transformParent: ""
+    position:
+      x: -0.129837185
+      y: -0.00213354826
+      z: -5.04048061
+    rotation:
+      eulerAngles:
+        x: 0
+        y: 60.8550682
+        z: 0
+      x: 0
+      y: 0.506448209
+      z: 0
+      w: 0.862270415
+    localScale:
+      x: 1
+      y: 1
+      z: 1
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 6.73619461
+      y: -1.90734863E-06
+      z: -12.0114384
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 352.149994
+        z: 0
+      x: 0
+      y: -0.0684506595
+      z: 0
+      w: 0.997654498
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: true
+    hideInPlayMode: true
+    keepUpright: false
+    isPlayerControllable: true
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: 0
+      y: 0
+      z: 0
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: __GameRules__
+    brainName: __GameRulesBrain__
+    tags: []
+    renderableUri: ""
+    memoryJson: "{\"wizardState\":{\"state\":\"round\",\"secondsLeft\":0,\"ruleDescriptions\":[],\"players\":[{\"name\":\"RedPlayer\",\"points\":0,\"health\":3,\"maxHealth\":3}]},\"time\":501}"
+    displayName: Game Rules
+    description: null
+    tint:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    transformParent: ""
+    position:
+      x: 0
+      y: -10
+      z: 0
+    rotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    localScale:
+      x: 1
+      y: 1
+      z: 1
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 0
+      y: -10
+      z: 0
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: false
+    enableGravity: false
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: 0
+      y: 0
+      z: 0
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 5a43dd883799442e83fdeea11675110b
+    brainName: e4829f54f49f48c9b571073baa8127cd
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"grabbable\":true}"
+    displayName: Pug
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 4.73966408
+      y: -0.0105109513
+      z: -1.34300232
+    rotation:
+      eulerAngles:
+        x: 7.49143362
+        y: 263.231384
+        z: 354.864532
+      x: -0.0767650604
+      y: 0.743326306
+      z: -0.019101873
+      w: -0.664235115
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00593374111
+      y: 0.00124720705
+      z: 0.00405976409
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: C384CD08-246F-44E5-82EB-674C9B371264
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 10.9750566
+      y: -0.0105112493
+      z: -9.01566601
+    rotation:
+      eulerAngles:
+        x: 7.49108028
+        y: 257.77182
+        z: 354.864716
+      x: -0.0757651702
+      y: 0.774117887
+      z: -0.0227347035
+      w: -0.628079832
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633693393
+      y: 0.00124320027
+      z: 0.00352430344
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: B861A1F4-97ED-4E5B-B1E5-09371AA7F3E1
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 10.9752998
+      y: -0.0105110705
+      z: -7.01664829
+    rotation:
+      eulerAngles:
+        x: 7.49110746
+        y: 257.777924
+        z: 354.864746
+      x: -0.0757662579
+      y: 0.774084449
+      z: -0.0227310825
+      w: -0.628121078
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633530226
+      y: 0.0012439416
+      z: 0.00351815228
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: B0140D6D-9825-4E64-8FE6-ED4EE343B8D8
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 10.9754343
+      y: -0.0105112195
+      z: -5.01734686
+    rotation:
+      eulerAngles:
+        x: 7.4911046
+        y: 257.768402
+        z: 354.864746
+      x: -0.0757643133
+      y: 0.774136722
+      z: -0.0227373987
+      w: -0.628056645
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633648783
+      y: 0.00124534348
+      z: 0.00350837503
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 48FDDB32-A896-42BE-8DC5-816A02A73955
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 10.9781103
+      y: -0.0105116665
+      z: -3.01692963
+    rotation:
+      eulerAngles:
+        x: 7.49112892
+        y: 257.745422
+        z: 354.864716
+      x: -0.0757601708
+      y: 0.774262547
+      z: -0.0227525085
+      w: -0.627901554
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633423636
+      y: 0.00124352286
+      z: 0.00351485889
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 183E9433-E760-4F15-AACB-58D36997F372
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 10.9745235
+      y: -0.0105115175
+      z: -1.01821864
+    rotation:
+      eulerAngles:
+        x: 7.49110413
+        y: 257.80603
+        z: 354.864716
+      x: -0.0757719576
+      y: 0.773930371
+      z: -0.0227123629
+      w: -0.6283108
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633564498
+      y: 0.00124429993
+      z: 0.00351984985
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 7DF5781F-9299-4AA4-8F09-46735161887F
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 10.9774561
+      y: -0.0105113983
+      z: 0.982333064
+    rotation:
+      eulerAngles:
+        x: 7.49111414
+        y: 257.766418
+        z: 354.864716
+      x: -0.0757641941
+      y: 0.77414757
+      z: -0.0227385908
+      w: -0.628043234
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633911509
+      y: 0.00124388211
+      z: 0.00352223008
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: D8AE8060-124A-4A16-B736-166DDA807D16
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 10.9777842
+      y: -0.0105113983
+      z: 2.98314881
+    rotation:
+      eulerAngles:
+        x: 7.49108171
+        y: 257.769348
+        z: 354.864716
+      x: -0.0757646039
+      y: 0.774131417
+      z: -0.0227364134
+      w: -0.628063202
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633459911
+      y: 0.00124352647
+      z: 0.00351487915
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: F904AF07-6350-4720-852F-FAC497461AAF
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 10.9775991
+      y: -0.0105118454
+      z: 4.98115301
+    rotation:
+      eulerAngles:
+        x: 7.49109459
+        y: 257.77243
+        z: 354.864716
+      x: -0.0757652372
+      y: 0.77411449
+      z: -0.0227344912
+      w: -0.628084004
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.0063337679
+      y: 0.00124343636
+      z: 0.00351785263
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 045561E9-83BD-4284-BBC1-0BD309E7B5D3
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 12.9726114
+      y: -0.0105119646
+      z: -9.01737118
+    rotation:
+      eulerAngles:
+        x: 7.49110651
+        y: 257.804321
+        z: 354.864746
+      x: -0.075771533
+      y: 0.773939669
+      z: -0.0227135699
+      w: -0.628299356
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.0063366713
+      y: 0.00124495593
+      z: 0.00351547333
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 46F2D923-7DEB-4F4E-9524-B24735AF0992
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 12.9771385
+      y: -0.0105118752
+      z: -7.01637363
+    rotation:
+      eulerAngles:
+        x: 7.4910903
+        y: 257.751709
+        z: 354.864716
+      x: -0.0757611319
+      y: 0.774228156
+      z: -0.0227481704
+      w: -0.627943873
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633645104
+      y: 0.00124358537
+      z: 0.00351850549
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 8F5D5612-1885-430C-A043-188EFFE9F07D
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 12.9756899
+      y: -0.0105118155
+      z: -5.01699829
+    rotation:
+      eulerAngles:
+        x: 7.4910965
+        y: 257.774109
+        z: 354.864716
+      x: -0.0757656917
+      y: 0.77410537
+      z: -0.0227333289
+      w: -0.62809521
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634071464
+      y: 0.00124418212
+      z: 0.00352041144
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 69B9E246-C05D-47DB-88EC-4EF91FE3C6AD
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 12.9789648
+      y: -0.0105116963
+      z: -3.01674199
+    rotation:
+      eulerAngles:
+        x: 7.49109221
+        y: 257.755524
+        z: 354.864716
+      x: -0.0757619441
+      y: 0.774207175
+      z: -0.0227456074
+      w: -0.627969682
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633967668
+      y: 0.00124442088
+      z: 0.00351654971
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 3B122F49-3DC5-437A-8920-911700F529ED
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 12.9789286
+      y: -0.0105113387
+      z: -1.01656163
+    rotation:
+      eulerAngles:
+        x: 7.49110079
+        y: 257.766113
+        z: 354.864746
+      x: -0.0757639185
+      y: 0.774149239
+      z: -0.0227388162
+      w: -0.628041208
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633557513
+      y: 0.00124385196
+      z: 0.0035154568
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 35555060-8593-424F-9B93-70E2A84E6CF9
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 12.9765501
+      y: -0.0105117857
+      z: 0.981655598
+    rotation:
+      eulerAngles:
+        x: 7.49112272
+        y: 257.781738
+        z: 354.864716
+      x: -0.075767383
+      y: 0.774063587
+      z: -0.0227284431
+      w: -0.628146708
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633335859
+      y: 0.00124301517
+      z: 0.00352358725
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 62636FAA-AA1B-4186-919C-DD2454358708
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 12.9783859
+      y: -0.0105113387
+      z: 2.98275423
+    rotation:
+      eulerAngles:
+        x: 7.4911108
+        y: 257.768616
+        z: 354.864716
+      x: -0.0757646263
+      y: 0.774135411
+      z: -0.0227370877
+      w: -0.628058255
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633272156
+      y: 0.00124349399
+      z: 0.00351962983
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 2C52003A-F037-49CA-BDA3-884E36843D9F
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 12.9797745
+      y: -0.0105115473
+      z: 4.98384619
+    rotation:
+      eulerAngles:
+        x: 7.49108171
+        y: 257.752014
+        z: 354.864716
+      x: -0.075761199
+      y: 0.774226487
+      z: -0.0227478445
+      w: -0.627946079
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633988576
+      y: 0.00124456931
+      z: 0.00351636857
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 8B7E5394-9CB8-4445-8FA2-64F9756DF906
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 14.9737234
+      y: -0.0105117261
+      z: -9.01691151
+    rotation:
+      eulerAngles:
+        x: 7.49111271
+        y: 257.779663
+        z: 354.864716
+      x: -0.0757668242
+      y: 0.774075031
+      z: -0.0227298141
+      w: -0.628132701
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633898564
+      y: 0.00124391215
+      z: 0.00352503872
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 8182A2BE-3585-4422-B1B4-27C5FAE4D29A
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 14.9756899
+      y: -0.010512054
+      z: -7.01830244
+    rotation:
+      eulerAngles:
+        x: 7.49111748
+        y: 257.807678
+        z: 354.864716
+      x: -0.0757724792
+      y: 0.77392143
+      z: -0.0227112621
+      w: -0.628321946
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633125426
+      y: 0.0012436721
+      z: 0.00352209434
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 11D11CE4-03BE-45CE-8185-F3EB09748D21
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 14.9751987
+      y: -0.0105112791
+      z: -5.01708364
+    rotation:
+      eulerAngles:
+        x: 7.49110746
+        y: 257.783691
+        z: 354.864716
+      x: -0.0757675916
+      y: 0.774052739
+      z: -0.0227271002
+      w: -0.628160059
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633668341
+      y: 0.00124418119
+      z: 0.00352171855
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: DA374127-3077-449E-9F15-C0565354E5E2
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 14.9781628
+      y: -0.0105116367
+      z: -3.01879549
+    rotation:
+      eulerAngles:
+        x: 7.49111271
+        y: 257.854767
+        z: 354.864716
+      x: -0.0757816359
+      y: 0.773663044
+      z: -0.0226802062
+      w: -0.628639996
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633389177
+      y: 0.00124462764
+      z: 0.00352392346
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 088259B0-BF0F-418D-9259-BED44F66317E
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 14.9788208
+      y: -0.0105115175
+      z: -1.01809752
+    rotation:
+      eulerAngles:
+        x: 7.49109221
+        y: 257.805847
+        z: 354.864716
+      x: -0.0757718608
+      y: 0.773931265
+      z: -0.0227123778
+      w: -0.628309667
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633627269
+      y: 0.00124388398
+      z: 0.00352170109
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 15214720-38C1-41C2-BA1A-7EFF399A4E21
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 14.9762554
+      y: -0.0105115175
+      z: 0.98170203
+    rotation:
+      eulerAngles:
+        x: 7.49109888
+        y: 257.782288
+        z: 354.864716
+      x: -0.075767301
+      y: 0.774060428
+      z: -0.0227279495
+      w: -0.628150642
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634257589
+      y: 0.00124427374
+      z: 0.00352076325
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 662CAEED-3F8C-4FEC-A365-419316420C74
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 14.9783907
+      y: -0.0105111599
+      z: 2.98218441
+    rotation:
+      eulerAngles:
+        x: 7.49110889
+        y: 257.768372
+        z: 354.864716
+      x: -0.0757644922
+      y: 0.774136901
+      z: -0.0227373093
+      w: -0.628056467
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634228531
+      y: 0.001244421
+      z: 0.00351650873
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: E82FC513-80D3-40A7-8316-BA955799E999
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 14.9774475
+      y: -0.0105115175
+      z: 4.98320723
+    rotation:
+      eulerAngles:
+        x: 7.49109125
+        y: 257.786774
+        z: 354.864716
+      x: -0.0757680312
+      y: 0.77403605
+      z: -0.0227250438
+      w: -0.628180802
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633436022
+      y: 0.00124462682
+      z: 0.00351637555
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 4489D8AE-1B77-43BA-943B-819EAF0AAE73
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 16.9738331
+      y: -0.0105119348
+      z: -9.01765919
+    rotation:
+      eulerAngles:
+        x: 7.4911356
+        y: 257.816132
+        z: 354.864716
+      x: -0.0757742375
+      y: 0.773874998
+      z: -0.0227057934
+      w: -0.628379107
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633108709
+      y: 0.00124366872
+      z: 0.00352351251
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: C251300C-BB04-4722-9AC6-FB63768761FA
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 16.9768829
+      y: -0.0105114579
+      z: -7.01695728
+    rotation:
+      eulerAngles:
+        x: 7.49107742
+        y: 257.796844
+        z: 354.864716
+      x: -0.0757701397
+      y: 0.773980737
+      z: -0.0227181297
+      w: -0.628248811
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634585321
+      y: 0.00124439423
+      z: 0.00352821429
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 7E5BC726-35FE-46C7-A462-C7D30E54E013
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 16.9769382
+      y: -0.0105115771
+      z: -5.01546717
+    rotation:
+      eulerAngles:
+        x: 7.49111176
+        y: 257.757813
+        z: 354.864716
+      x: -0.0757623985
+      y: 0.774194658
+      z: -0.022744311
+      w: -0.62798512
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633798819
+      y: 0.00124382332
+      z: 0.0035162617
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 4EF6A1E7-B7D2-44A8-8F3A-4868E1845FB1
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 16.9774628
+      y: -0.0105116665
+      z: -3.01898742
+    rotation:
+      eulerAngles:
+        x: 7.49110889
+        y: 257.857208
+        z: 354.864716
+      x: -0.0757821873
+      y: 0.773649573
+      z: -0.0226784926
+      w: -0.628656507
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00632527051
+      y: 0.0012438799
+      z: 0.00352340378
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 6FD5EB6E-B39C-4386-8341-3209F07EEAF7
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 16.9784126
+      y: -0.0105118454
+      z: -1.01736486
+    rotation:
+      eulerAngles:
+        x: 7.49110842
+        y: 257.792877
+        z: 354.864746
+      x: -0.075769186
+      y: 0.774002433
+      z: -0.022721231
+      w: -0.628222108
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633203797
+      y: 0.00124420947
+      z: 0.00351221301
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 190FF473-7B27-4D39-A6E8-8919886BB9E4
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 16.9784794
+      y: -0.0105117261
+      z: 0.983367205
+    rotation:
+      eulerAngles:
+        x: 7.49110413
+        y: 257.765594
+        z: 354.864746
+      x: -0.0757637694
+      y: 0.77415204
+      z: -0.0227392297
+      w: -0.628037691
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.0063379677
+      y: 0.00124486466
+      z: 0.00351068308
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: A86290A9-0DEF-44CA-BDA7-A99C21623146
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 16.9763165
+      y: -0.0105113089
+      z: 2.98207283
+    rotation:
+      eulerAngles:
+        x: 7.49110079
+        y: 257.790802
+        z: 354.864716
+      x: -0.0757689774
+      y: 0.774013877
+      z: -0.0227223486
+      w: -0.628208101
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633307267
+      y: 0.00124382274
+      z: 0.00351945218
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 617E6DEA-C0A7-464C-AC42-EBD01ABBA511
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 16.9754295
+      y: -0.0105116963
+      z: 4.98195505
+    rotation:
+      eulerAngles:
+        x: 7.49111271
+        y: 257.79364
+        z: 354.864716
+      x: -0.0757696331
+      y: 0.77399826
+      z: -0.0227205306
+      w: -0.628227293
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633406453
+      y: 0.00124322623
+      z: 0.00352513534
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 0523AB43-75BD-4FE9-A306-FA9892FB6CB8
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 18.9751263
+      y: -0.0105115175
+      z: -9.01711273
+    rotation:
+      eulerAngles:
+        x: 7.49110079
+        y: 257.795837
+        z: 354.864716
+      x: -0.0757700279
+      y: 0.77398622
+      z: -0.022718979
+      w: -0.628241956
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00632907823
+      y: 0.00124322611
+      z: 0.00352216279
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 7A63C79D-07D6-4D21-9850-F8F02902A2C5
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 18.9777412
+      y: -0.0105119646
+      z: -7.0162611
+    rotation:
+      eulerAngles:
+        x: 7.49109983
+        y: 257.78244
+        z: 354.864716
+      x: -0.0757672787
+      y: 0.774059653
+      z: -0.0227279067
+      w: -0.628151596
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633722311
+      y: 0.00124278211
+      z: 0.00352388155
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 4ADA6150-D3B0-433F-BBC5-EFB2799A8FB0
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 18.977747
+      y: -0.0105121136
+      z: -5.01698351
+    rotation:
+      eulerAngles:
+        x: 7.49109125
+        y: 257.796753
+        z: 354.864716
+      x: -0.0757701844
+      y: 0.773981154
+      z: -0.0227182806
+      w: -0.628248334
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633757468
+      y: 0.00124328921
+      z: 0.0035262031
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: B26BBADB-ED8C-4B1D-A01A-A6F6007DBF6B
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 18.9806023
+      y: -0.0105116963
+      z: -3.01728988
+    rotation:
+      eulerAngles:
+        x: 7.49110222
+        y: 257.816711
+        z: 354.864685
+      x: -0.0757742375
+      y: 0.773871899
+      z: -0.0227051526
+      w: -0.628382921
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633588433
+      y: 0.00124299072
+      z: 0.00353264203
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: CBBB337B-8690-4653-B76A-0B334D58FF47
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 18.9786472
+      y: -0.0105115771
+      z: -1.01623738
+    rotation:
+      eulerAngles:
+        x: 7.49107933
+        y: 257.788513
+        z: 354.864746
+      x: -0.0757682323
+      y: 0.774026453
+      z: -0.0227238536
+      w: -0.628192663
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633074343
+      y: 0.00124349515
+      z: 0.00351501163
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 04A04576-F08C-4149-A90B-C3EA081F3827
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 18.9807549
+      y: -0.0105112791
+      z: 0.984310687
+    rotation:
+      eulerAngles:
+        x: 7.49109983
+        y: 257.731201
+        z: 354.864716
+      x: -0.075757131
+      y: 0.774340391
+      z: -0.0227617621
+      w: -0.627805471
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633894373
+      y: 0.00124343648
+      z: 0.00351405446
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 71D5D174-0993-45D7-AB99-4B16A8955015
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 18.9810314
+      y: -0.0105117857
+      z: 2.98404884
+    rotation:
+      eulerAngles:
+        x: 7.49106646
+        y: 257.746552
+        z: 354.864746
+      x: -0.0757598355
+      y: 0.774256527
+      z: -0.0227515232
+      w: -0.627909064
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634232163
+      y: 0.00124427397
+      z: 0.0035098854
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: AD7CEE55-A55B-4393-930E-75CCC519C0BC
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 18.9765892
+      y: -0.0105115473
+      z: 4.98226023
+    rotation:
+      eulerAngles:
+        x: 7.49110413
+        y: 257.789001
+        z: 354.864716
+      x: -0.0757686198
+      y: 0.774023652
+      z: -0.0227235705
+      w: -0.628196001
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634109695
+      y: 0.00124462892
+      z: 0.00352124684
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: D0AC8C18-F39F-455E-818D-E9A740880CD9
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 20.9770603
+      y: -0.0105116069
+      z: -9.01618958
+    rotation:
+      eulerAngles:
+        x: 7.49111271
+        y: 257.755768
+        z: 354.864746
+      x: -0.0757619217
+      y: 0.774205863
+      z: -0.0227457434
+      w: -0.627971351
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633364078
+      y: 0.00124387862
+      z: 0.00350940228
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 24E13BEC-9703-4BF9-AC2B-E683041512F8
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 20.9763336
+      y: -0.0105115771
+      z: -7.016541
+    rotation:
+      eulerAngles:
+        x: 7.49111176
+        y: 257.763611
+        z: 354.864716
+      x: -0.07576368
+      y: 0.774162829
+      z: -0.0227403641
+      w: -0.62802434
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633551087
+      y: 0.0012428693
+      z: 0.00352515094
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 88392DBF-8E9D-4E80-9421-F795E1969F64
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 20.978569
+      y: -0.0105109811
+      z: -5.01591253
+    rotation:
+      eulerAngles:
+        x: 7.49111319
+        y: 257.760437
+        z: 354.864746
+      x: -0.0757629126
+      y: 0.774180233
+      z: -0.0227425992
+      w: -0.628003001
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633863965
+      y: 0.00124367408
+      z: 0.00351946149
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 4C411657-23F7-4DA1-B847-F02A1704BE80
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 20.9804554
+      y: -0.0105111003
+      z: -3.0144279
+    rotation:
+      eulerAngles:
+        x: 7.49109697
+        y: 257.721069
+        z: 354.864716
+      x: -0.0757550597
+      y: 0.774396122
+      z: -0.0227684956
+      w: -0.627736866
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634174375
+      y: 0.00124462915
+      z: 0.00350621156
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: BCC7D474-E9E1-4D00-AD77-0EE37255BB5A
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 20.9810524
+      y: -0.0105112493
+      z: -1.01567519
+    rotation:
+      eulerAngles:
+        x: 7.49106646
+        y: 257.718262
+        z: 354.864716
+      x: -0.0757543817
+      y: 0.77441138
+      z: -0.02277009
+      w: -0.627717912
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633657584
+      y: 0.00124346826
+      z: 0.00350768398
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 17695C32-5F26-4747-A25F-5F84ABB1E316
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 20.9777565
+      y: -0.0105111003
+      z: 0.983230352
+    rotation:
+      eulerAngles:
+        x: 7.49110413
+        y: 257.758148
+        z: 354.864746
+      x: -0.0757623836
+      y: 0.77419281
+      z: -0.0227440614
+      w: -0.627987564
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633252598
+      y: 0.00124343205
+      z: 0.0035126023
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 0E567F95-F707-4978-AC88-83DBBF73187C
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 20.9774723
+      y: -0.0105112195
+      z: 2.98214602
+    rotation:
+      eulerAngles:
+        x: 7.49111271
+        y: 257.77356
+        z: 354.864716
+      x: -0.075765565
+      y: 0.77410835
+      z: -0.022733869
+      w: -0.628091514
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.0063415179
+      y: 0.00124441856
+      z: 0.00352063146
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 95A4BAEC-4FBA-46B8-B435-488E59DC351A
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 20.978405
+      y: -0.0105113387
+      z: 4.98205709
+    rotation:
+      eulerAngles:
+        x: 7.49110079
+        y: 257.775024
+        z: 354.864716
+      x: -0.0757658184
+      y: 0.774100363
+      z: -0.0227328092
+      w: -0.628101468
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633718725
+      y: 0.00124406186
+      z: 0.00351978443
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: B4A4B9CE-E04F-4D24-97F8-26E6A1130612
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 22.9769306
+      y: -0.0105111599
+      z: -9.01630592
+    rotation:
+      eulerAngles:
+        x: 7.49110889
+        y: 257.751251
+        z: 354.864716
+      x: -0.0757611617
+      y: 0.774230599
+      z: -0.0227485765
+      w: -0.627940893
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634211209
+      y: 0.00124322879
+      z: 0.00352361379
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: DF1BE21B-3EE2-4116-9070-F845F6D6E828
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 22.9784603
+      y: -0.0105116367
+      z: -7.01458788
+    rotation:
+      eulerAngles:
+        x: 7.49109793
+        y: 257.738098
+        z: 354.864716
+      x: -0.0757584795
+      y: 0.774302661
+      z: -0.0227572024
+      w: -0.627852023
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634197937
+      y: 0.00124424277
+      z: 0.00351650547
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 27724064-D4BF-4497-B596-2FA8D79CDC54
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 22.9784622
+      y: -0.0105116963
+      z: -5.01465797
+    rotation:
+      eulerAngles:
+        x: 7.49112511
+        y: 257.738037
+        z: 354.864716
+      x: -0.0757587254
+      y: 0.7743029
+      z: -0.0227573365
+      w: -0.627851665
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634626113
+      y: 0.00124453974
+      z: 0.00351912342
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 3C2C63E2-585F-491A-A4C1-962AD616425B
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 22.9791107
+      y: -0.0105114579
+      z: -3.01610041
+    rotation:
+      eulerAngles:
+        x: 7.49110222
+        y: 257.744751
+        z: 354.864716
+      x: -0.0757599324
+      y: 0.774266183
+      z: -0.0227527451
+      w: -0.627896965
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.0063286419
+      y: 0.00124232948
+      z: 0.00351204537
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 7010BE49-9450-4958-B4DA-1F4B62C91DA2
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 22.9801121
+      y: -0.0105112791
+      z: -1.01579714
+    rotation:
+      eulerAngles:
+        x: 7.49114752
+        y: 257.731232
+        z: 354.864685
+      x: -0.0757576153
+      y: 0.774340332
+      z: -0.0227618814
+      w: -0.627805591
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634765718
+      y: 0.00124483486
+      z: 0.00352291716
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: A999D43D-0830-429B-B498-609CF8C18BFB
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 22.9810867
+      y: -0.0105111599
+      z: 0.983659506
+    rotation:
+      eulerAngles:
+        x: 7.49109983
+        y: 257.721008
+        z: 354.864716
+      x: -0.0757551268
+      y: 0.7743963
+      z: -0.0227684807
+      w: -0.627736449
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633822801
+      y: 0.00124373415
+      z: 0.00351212127
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 084B0DE3-5006-4530-B205-F20A640D9688
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 22.9790516
+      y: -0.0105113387
+      z: 2.98278236
+    rotation:
+      eulerAngles:
+        x: 7.49109554
+        y: 257.755432
+        z: 354.864685
+      x: -0.0757620856
+      y: 0.774207592
+      z: -0.0227455664
+      w: -0.627969265
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634162733
+      y: 0.00124325894
+      z: 0.00352801057
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 3A0BE41F-C165-4C76-A4B6-0E5B8E559DEA
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 22.9756374
+      y: -0.0105116069
+      z: 4.98120165
+    rotation:
+      eulerAngles:
+        x: 7.49108171
+        y: 257.794342
+        z: 354.864716
+      x: -0.0757695735
+      y: 0.773994505
+      z: -0.0227198899
+      w: -0.628231883
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633433834
+      y: 0.0012437352
+      z: 0.00352301379
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 002BC831-B21C-4C82-8534-CE91E3E41261
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 24.9764061
+      y: -0.0105109811
+      z: -9.01621246
+    rotation:
+      eulerAngles:
+        x: 7.49110317
+        y: 257.770996
+        z: 354.864716
+      x: -0.0757649913
+      y: 0.774122298
+      z: -0.0227355193
+      w: -0.628074348
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633844174
+      y: 0.00124447886
+      z: 0.00351658696
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 401E59D0-E6FF-4F42-B29D-5C0B5F649C66
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 24.97859
+      y: -0.010512203
+      z: -7.01494503
+    rotation:
+      eulerAngles:
+        x: 7.49109983
+        y: 257.734253
+        z: 354.864716
+      x: -0.0757577345
+      y: 0.774323761
+      z: -0.0227597505
+      w: -0.627826035
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633987598
+      y: 0.00124421087
+      z: 0.00351302931
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 82B168AC-E9D9-4B3E-B79C-8989ECB23AC1
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 24.9788208
+      y: -0.0105113387
+      z: -5.01457071
+    rotation:
+      eulerAngles:
+        x: 7.49109554
+        y: 257.73291
+        z: 354.864716
+      x: -0.0757575035
+      y: 0.774331093
+      z: -0.0227605551
+      w: -0.627817035
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634232163
+      y: 0.00124376535
+      z: 0.00352122635
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 8561A68B-1F3C-415A-BE3B-B96E65A8A706
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 24.9812431
+      y: -0.0105116665
+      z: -3.01524234
+    rotation:
+      eulerAngles:
+        x: 7.49111271
+        y: 257.710632
+        z: 354.864716
+      x: -0.07575313
+      y: 0.774453104
+      z: -0.0227754284
+      w: -0.627666473
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633648364
+      y: 0.00124283892
+      z: 0.00351663865
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 47ECD44B-1363-47C7-B623-CE376A9BCE45
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 24.9816513
+      y: -0.0105116665
+      z: -1.01454282
+    rotation:
+      eulerAngles:
+        x: 7.49108362
+        y: 257.71048
+        z: 354.864685
+      x: -0.0757530481
+      y: 0.774454057
+      z: -0.0227752626
+      w: -0.627665281
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634546205
+      y: 0.00124431367
+      z: 0.00351809757
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 3D58CD6C-C775-43CD-92EC-D0C8DB499CEB
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 24.9794807
+      y: -0.0105114877
+      z: 0.983626664
+    rotation:
+      eulerAngles:
+        x: 7.49108505
+        y: 257.742065
+        z: 354.864716
+      x: -0.0757592171
+      y: 0.774280846
+      z: -0.0227544755
+      w: -0.627878904
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00634243153
+      y: 0.00124454068
+      z: 0.00351420068
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: BFDA5043-F8FA-46D4-99C2-C8FB1B9194A1
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 24.9802914
+      y: -0.0105113983
+      z: 2.9834938
+    rotation:
+      eulerAngles:
+        x: 7.49108505
+        y: 257.739349
+        z: 354.864716
+      x: -0.0757587478
+      y: 0.774295807
+      z: -0.0227562021
+      w: -0.627860427
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633999892
+      y: 0.00124336535
+      z: 0.0035147483
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: 8E4BFD9D-4286-4C1D-B28C-D3B9A7FC8DF0
+    brainName: 7be6c902bf4c462b8c6e6ff8902f759a
+    tags: []
+    renderableUri: "poly:assets/f1YBNg2R0nj"
+    memoryJson: "{\"isClone\":true}"
+    displayName: Pug-Clone
+    description: null
+    tint:
+      r: 1
+      g: 1
+      b: 1
+      a: 0
+    transformParent: ""
+    position:
+      x: 24.979723
+      y: -0.0105118454
+      z: 4.98289251
+    rotation:
+      eulerAngles:
+        x: 7.49110222
+        y: 257.746674
+        z: 354.864746
+      x: -0.0757601112
+      y: 0.774255633
+      z: -0.0227516275
+      w: -0.627910018
+    localScale:
+      x: 1.1158489
+      y: 1.1158489
+      z: 1.1158489
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: ""
+    spawnPosition:
+      x: 1.39140987
+      y: 1.67054749
+      z: 1.90594018
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    preferOffstage: false
+    isSolid: true
+    enablePhysics: true
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: -0.00633598771
+      y: 0.00124388491
+      z: 0.00351309963
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+  - version: 2
+    name: e913410091bb49e2b370adb6c09fc3ec
+    brainName: e913410091bb49e2b370adb6c09fc3ec
+    tags: []
+    renderableUri: "builtin:BuiltinAssets/CommentPanel"
+    memoryJson: "{}"
+    displayName: Text
+    description: null
+    tint:
+      r: 0
+      g: 0
+      b: 0
+      a: 0.75
+    transformParent: ""
+    position:
+      x: 13.8723631
+      y: 3.63548017
+      z: 2.66659188
+    rotation:
+      eulerAngles:
+        x: 0
+        y: 270
+        z: 0
+      x: 0
+      y: -0.707106829
+      z: 0
+      w: 0.707106829
+    localScale:
+      x: 4.05606985
+      y: 4.05606937
+      z: 4.05606985
+    renderableOffset:
+      x: 0
+      y: 0
+      z: 0
+    renderableRotation:
+      eulerAngles:
+        x: 0
+        y: 0
+        z: 0
+      x: 0
+      y: 0
+      z: 0
+      w: 1
+    commentText: |
+      the VoosUpdate should take about 4
+      ms on Steve's desktop
+    spawnPosition:
+      x: 13.8723631
+      y: 3.63548017
+      z: 2.66659188
+    spawnRotation:
+      eulerAngles:
+        x: 0
+        y: 270
+        z: 0
+      x: 0
+      y: -0.707106829
+      z: 0
+      w: 0.707106829
+    preferOffstage: false
+    isSolid: false
+    enablePhysics: false
+    enableGravity: true
+    bounciness: 0
+    drag: 0
+    angularDrag: 0
+    mass: 0
+    freezeRotations: false
+    freezeX: false
+    freezeY: false
+    freezeZ: false
+    enableAiming: false
+    hideInPlayMode: false
+    keepUpright: false
+    isPlayerControllable: false
+    debugString: ""
+    cloneParent: ""
+    velocity:
+      x: 0
+      y: 0
+      z: 0
+    angularVelocity:
+      x: 0
+      y: 0
+      z: 0
+    cameraActor: null
+    spawnTransformParent: null
+    wasClonedByScript: false
+    loopingAnimation: null
+    cameraSettingsJson: null
+    lightSettingsJson: null
+    pfxId: null
+    sfxId: null
+    useConcaveCollider: false
+    speculativeColDet: false
+    useStickyDesiredVelocity: false
+    stickyDesiredVelocity:
+      x: 0
+      y: 0
+      z: 0
+    stickyForce:
+      x: 0
+      y: 0
+      z: 0
+gridState:
+  version: 0
+  cellString: AgAAAAAAAAAAAAAAAAAAACoA
+  v2Data: null
+  simpleData: null
+  metadata:
+    customStyleWorkshopIds: null
+behaviorDatabase:
+  version: 4
+  behaviorIds: []
+  behaviors: []
+  brainIds:
+  - __GameRulesBrain__
+  - Player
+  - e04de2718a594fc0afd2cb55bd4fa8dc
+  - 5a43dd883799442e83fdeea11675110b
+  - 8b99da58d2bf40679dd5a0e795b2c406
+  - 7be6c902bf4c462b8c6e6ff8902f759a
+  - e4829f54f49f48c9b571073baa8127cd
+  - __DEFAULT_BRAIN__
+  - e913410091bb49e2b370adb6c09fc3ec
+  brains:
+  - metadataJson: null
+    behaviorUses:
+    - id: d19bb9f2188f4016b00648968a90b5f3
+      behaviorUri: "builtin:Wizard Controller"
+      metadataJson: null
+      propertyAssignments: []
+    - id: 22e7785789da44988fc19f5b7d2faee7
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: null
+      propertyAssignments: []
+  - metadataJson: null
+    behaviorUses:
+    - id: 9859448eebfb495fa4d66f554b29135e
+      behaviorUri: "builtin:Takes damage"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: BroadcastDeath
+        valueJson: "{\"value\":true}"
+      - propertyName: StartingHealth
+        valueJson: "{\"value\":3}"
+      - propertyName: SecondsToRespawn
+        valueJson: "{\"value\":3}"
+    - id: 85a3ffef5e1e463bb250e350b278f8ba
+      behaviorUri: "builtin:Hide in play mode"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: Hide
+        valueJson: "{\"value\":true}"
+    - id: d40c3a8972bd4dd7973d1563b38966be
+      behaviorUri: "builtin:Team"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: Team
+        valueJson: "{\"value\":1}"
+    - id: 7000b1beb20b47cebf64dd9fbb09fd57
+      behaviorUri: "builtin:Grabbing"
+      metadataJson: null
+      propertyAssignments: []
+    - id: b983aaf4009a4c45997d7ce96b119374
+      behaviorUri: "builtin:Player Controls"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: Speed
+        valueJson: "{\"value\":5}"
+    - id: b0c9db0216cb48d1b83647a0194a970d
+      behaviorUri: "builtin:Grid Spawner"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: proto
+        valueJson: "{\"value\":\"5a43dd883799442e83fdeea11675110b\"}"
+      - propertyName: rows
+        valueJson: "{\"value\":8}"
+      - propertyName: cols
+        valueJson: "{\"value\":8}"
+      - propertyName: spacing
+        valueJson: "{\"value\":2}"
+    - id: 5867fdd359e945f59f5e4ec4beec80e7
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: null
+      propertyAssignments: []
+  - metadataJson: null
+    behaviorUses:
+    - id: ba1dd065b0cd4e4b9d73b44c0c149614
+      behaviorUri: "builtin:Player Controls"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: Speed
+        valueJson: "{\"value\":5}"
+    - id: 81ca8ecbee4d498aaf359b355d4abd06
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: null
+      propertyAssignments: []
+  - metadataJson: null
+    behaviorUses:
+    - id: ea76db458691448f92c386187594b097
+      behaviorUri: "builtin:Run in circles"
+      metadataJson: null
+      propertyAssignments: []
+    - id: fc5d0c51ba1f47fabc4a9b55fa63688d
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: null
+      propertyAssignments: []
+  - metadataJson: null
+    behaviorUses:
+    - id: 67a4cd1360694a2f989ea8ee51065371
+      behaviorUri: "builtin:Run in circles"
+      metadataJson: null
+      propertyAssignments: []
+    - id: cf940f7787084dea96ccbe464d7034de
+      behaviorUri: "builtin:Grabbable"
+      metadataJson: null
+      propertyAssignments:
+      - propertyName: EnablePhysics
+        valueJson: "{\"value\":true}"
+    - id: 03774dcd103e4faca25aab80ba081981
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: null
+      propertyAssignments: []
+  - metadataJson: null
+    behaviorUses:
+    - id: 02ccca7e01154306a7aab15bd52c6cdd
+      behaviorUri: "builtin:Run in circles"
+      metadataJson: null
+      propertyAssignments: []
+    - id: e44749d57a9b439f82a039b6cb2d2055
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: null
+      propertyAssignments: []
+  - metadataJson: null
+    behaviorUses:
+    - id: ac265d9484684ed3b0f8f2b401368bfc
+      behaviorUri: "builtin:Run in circles"
+      metadataJson: null
+      propertyAssignments: []
+    - id: 2aa4da2b101a41719c8b5517be142024
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: null
+      propertyAssignments: []
+  - metadataJson: null
+    behaviorUses:
+    - id: e243b309b7ce448faccdea15dfc253f7
+      behaviorUri: "builtin:Default Behavior"
+      metadataJson: null
+      propertyAssignments: []
+  - metadataJson: null
+    behaviorUses: []
+  behaviorUseIds: []
+  behaviorUses: []
+stage:
+  version: 2
+  groundSize: 500
+  nightMode: false
+  groundSizeX: 0
+  groundSizeZ: 0
+  skyType: Day
+  skyColor:
+    r: 0.5
+    g: 0.5
+    b: 0.5
+    a: 1
+  groundType: Grass
+  groundColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 1
+  initialCameraMode: ThirdPerson
+  isoCamRotationIndex: 0
+  sceneLightingMode: null
+sojoDatabase:
+  sojos: null
+cardPacks:
+  cardPacks: []
+actorPacks:
+  actorPacks: []
