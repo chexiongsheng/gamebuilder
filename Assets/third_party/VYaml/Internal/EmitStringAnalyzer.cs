@@ -97,9 +97,10 @@ namespace VYaml.Internal
 
       if (last == '\n')
       {
-        lines--;
+        // lines--;
       }
       return new EmitStringInfo(lines, needsQuotes || numbers == value.Length, isReservedWord);
+
     }
 
     internal static StringBuilder BuildLiteralScalar(ReadOnlySpan<char> originalValue, int indentCharCount)

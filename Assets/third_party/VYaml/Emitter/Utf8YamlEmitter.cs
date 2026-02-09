@@ -584,13 +584,11 @@ namespace VYaml.Emitter
     public void WriteFloat(float value)
     {
       var offset = 0;
-      var output = writer.GetSpan(CalculateMaxScalarBufferLength(12));
+      var output = writer.GetSpan(CalculateMaxScalarBufferLength(20));
 
       BeginScalar(output, ref offset);
-      if (!Utf8Formatter.TryFormat(value, output[offset..], out var bytesWritten))
-      {
-        throw new YamlEmitterException($"Failed to emit : {value}");
-      }
+      var s = value.ToString("G9", System.Globalization.CultureInfo.InvariantCulture);
+      var bytesWritten = StringEncoding.Utf8.GetBytes(s.AsSpan(), output[offset..]);
       offset += bytesWritten;
       EndScalar(output, ref offset);
 
@@ -600,18 +598,18 @@ namespace VYaml.Emitter
     public void WriteDouble(double value)
     {
       var offset = 0;
-      var output = writer.GetSpan(CalculateMaxScalarBufferLength(17));
+      var output = writer.GetSpan(CalculateMaxScalarBufferLength(30));
 
       BeginScalar(output, ref offset);
-      if (!Utf8Formatter.TryFormat(value, output[offset..], out var bytesWritten))
-      {
-        throw new YamlEmitterException($"Failed to emit : {value}");
-      }
+      var s = value.ToString("G17", System.Globalization.CultureInfo.InvariantCulture);
+      var bytesWritten = StringEncoding.Utf8.GetBytes(s.AsSpan(), output[offset..]);
       offset += bytesWritten;
       EndScalar(output, ref offset);
 
       writer.Advance(offset);
     }
+
+
 
     public void WriteString(string value, ScalarStyle style = ScalarStyle.Any)
     {
