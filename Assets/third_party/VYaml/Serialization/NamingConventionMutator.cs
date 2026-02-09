@@ -72,12 +72,15 @@ namespace VYaml.Serialization
         {
             var mutator = Of(namingConvention);
             Span<char> destination = stackalloc char[source.Length * 2];
-            while (!mutator.TryMutate(source.AsSpan(), destination, out var written))
+            int written;
+            while (!mutator.TryMutate(source.AsSpan(), destination, out written))
             {
                 // ReSharper disable once StackAllocInsideLoop
                 destination = stackalloc char[destination.Length * 2];
             }
-            return destination.ToString();
+            return destination[..written].ToString();
+
+
         }
 
         public static INamingConventionMutator Of(NamingConvention namingConvention) => namingConvention switch
