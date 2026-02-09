@@ -51,10 +51,16 @@ namespace VYaml.Serialization
             }
 
             // Fields
-            foreach (var field in type.GetFields(BindingFlags.Instance | BindingFlags.Public))
+            foreach (var field in type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
             {
                 if (field.GetCustomAttribute<YamlIgnoreAttribute>() != null) continue;
                 if (field.IsInitOnly || field.IsLiteral) continue;
+
+                // Check if public or has SerializeField attribute
+                bool isPublic = field.IsPublic;
+                bool hasSerializeField = field.GetCustomAttribute<UnityEngine.SerializeField>() != null;
+
+                if (!isPublic && !hasSerializeField) continue;
 
                 var accessor = CreateAccessor(field);
                 var attr = field.GetCustomAttribute<YamlMemberAttribute>();
@@ -67,6 +73,7 @@ namespace VYaml.Serialization
                     memberList.Add(accessor);
                 }
             }
+
 
             members = memberList.ToArray();
         }
