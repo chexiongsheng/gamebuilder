@@ -106,9 +106,7 @@ actors:
     z: 0
 brainDatabase:
   version: 5
-  behaviorIds: null
   behaviors: []
-  brainIds: null
   brains:
   - id: 6869cbecf4c7442eaf0c22ba904a828d
     metadataJson: null

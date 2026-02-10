@@ -15534,7 +15534,6 @@ gridState:
     customStyleWorkshopIds: null
 behaviorDatabase:
   version: 5
-  behaviorIds: null
   behaviors:
   - id: e9ff7dcb422f40aaaecafb2a7b2caa8d
     label: Custom
@@ -15605,7 +15604,6 @@ behaviorDatabase:
           "imageResourcePath": "BuiltinAssets/CardImages/spawn"
         }
       }
-  brainIds: null
   brains:
   - id: Player
     metadataJson: ""

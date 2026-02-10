@@ -2301,9 +2301,7 @@ gridState:
     customStyleWorkshopIds: null
 behaviorDatabase:
   version: 5
-  behaviorIds: null
   behaviors: []
-  brainIds: null
   brains:
   - id: 3a37797919c8453c835558789155d409
     metadataJson: ""

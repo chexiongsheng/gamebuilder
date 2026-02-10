@@ -5615,7 +5615,6 @@ gridState:
     customStyleWorkshopIds: null
 behaviorDatabase:
   version: 5
-  behaviorIds: null
   behaviors:
   - id: f2e6a6197cce4e43a84b40862a2e28f3
     label: Collision Event Card.js.txt
@@ -5659,7 +5658,6 @@ behaviorDatabase:
     draftJavascript: ""
     userLibraryFile: ""
     metadataJson: "{\"cardSystemCardData\":{\"isCard\":true,\"title\":\"Copy of Collision Event\",\"description\":\"Detect collision events with this card\",\"categories\":[\"Event\"],\"imageResourcePath\":\"BuiltinAssets/CardImages/collision\",\"listPriority\":0,\"hidden\":false}}"
-  brainIds: null
   brains:
   - id: 6cea514759cd443ea7956aa90c091445
     metadataJson: ""

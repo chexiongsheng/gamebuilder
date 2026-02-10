@@ -3005,9 +3005,7 @@ gridState:
     customStyleWorkshopIds: null
 behaviorDatabase:
   version: 5
-  behaviorIds: null
   behaviors: []
-  brainIds: null
   brains:
   - id: __GameRulesBrain__
     metadataJson: ""

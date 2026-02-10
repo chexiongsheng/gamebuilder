@@ -17793,7 +17793,6 @@ gridState:
     customStyleWorkshopIds: []
 behaviorDatabase:
   version: 5
-  behaviorIds: null
   behaviors:
   - id: e9ff7dcb422f40aaaecafb2a7b2caa8d
     label: Custom
@@ -17901,7 +17900,6 @@ behaviorDatabase:
           "imageResourcePath": "BuiltinAssets/CardImages/spawn"
         }
       }
-  brainIds: null
   brains:
   - id: Player
     metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.18955190479755402,\"viewPosition\":{\"x\":313.1972351074219,\"y\":-998.7303466796875},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2878.889892578125,\"y\":-70.0},\"customLabel\":\"\"}}"

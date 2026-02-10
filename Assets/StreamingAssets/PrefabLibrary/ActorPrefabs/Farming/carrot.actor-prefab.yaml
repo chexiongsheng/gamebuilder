@@ -106,9 +106,7 @@ actors:
     z: 0
 brainDatabase:
   version: 5
-  behaviorIds: null
   behaviors: []
-  brainIds: null
   brains:
   - id: f6ed407177914fe9a11a2ad160eb1424
     metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.8881792426109314,\"viewPosition\":{\"x\":17.919937133789064,\"y\":-35.899940490722659},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":645.0700073242188,\"y\":-70.0}}}"

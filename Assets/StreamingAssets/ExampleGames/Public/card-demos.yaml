@@ -9163,7 +9163,6 @@ gridState:
     customStyleWorkshopIds: []
 behaviorDatabase:
   version: 5
-  behaviorIds: null
   behaviors:
   - id: e685b07808d54f56855662ccc8948bc1
     label: Custom
@@ -9193,7 +9192,6 @@ behaviorDatabase:
     draftJavascript: ""
     userLibraryFile: ""
     metadataJson: "{\"cardSystemCardData\":{\"isCard\":true,\"title\":\"New card\",\"description\":\"An empty card.\\nClick on it and select 'Edit JavaScript' to customize.\",\"categories\":[\"Custom\"],\"imageResourcePath\":\"\",\"listPriority\":0,\"hidden\":false}}"
-  brainIds: null
   brains:
   - id: Player
     metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.6000000238418579,\"viewPosition\":{\"x\":-4557.10791015625,\"y\":157.98037719726563},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":5282.0498046875,\"y\":-70.0}}}"

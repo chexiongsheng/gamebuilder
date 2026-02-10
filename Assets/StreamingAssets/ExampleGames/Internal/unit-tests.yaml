@@ -837,7 +837,6 @@ gridState:
     customStyleWorkshopIds: []
 behaviorDatabase:
   version: 5
-  behaviorIds: null
   behaviors:
   - id: 1d3e40c7f447404fb8e65f687e17bc19
     label: Custom
@@ -1043,7 +1042,6 @@ behaviorDatabase:
     draftJavascript: ""
     userLibraryFile: ""
     metadataJson: "{\"cardSystemCardData\":{\"isCard\":true,\"title\":\"Report Test Passed\",\"description\":\"An empty card.\\nClick on it and select 'Edit JavaScript' to customize.\",\"categories\":[\"Action\"],\"imageResourcePath\":\"\",\"listPriority\":0,\"hidden\":false}}"
-  brainIds: null
   brains:
   - id: 6cea514759cd443ea7956aa90c091445
     metadataJson: ""

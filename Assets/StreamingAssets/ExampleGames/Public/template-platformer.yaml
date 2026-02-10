@@ -6556,9 +6556,7 @@ gridState:
     customStyleWorkshopIds: null
 behaviorDatabase:
   version: 5
-  behaviorIds: null
   behaviors: []
-  brainIds: null
   brains:
   - id: 4c5c35e071f340158c165bdf6fbbdeff
     metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
