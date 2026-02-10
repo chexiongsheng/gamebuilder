@@ -105,13 +105,13 @@ actors:
     y: 0
     z: 0
 brainDatabase:
-  version: 4
-  behaviorIds: []
+  version: 5
+  behaviorIds: null
   behaviors: []
-  brainIds:
-  - 12752392fb8241fa988d7ee1a6cdbc47
+  brainIds: null
   brains:
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.6024153828620911,\"viewPosition\":{\"x\":77.03292846679688,\"y\":10.391788482666016},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":978.1799926757813,\"y\":-70.0},\"customLabel\":\"\"}}"
+  - id: 12752392fb8241fa988d7ee1a6cdbc47
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.6024153828620911,\"viewPosition\":{\"x\":77.03292846679688,\"y\":10.391788482666016},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":978.1799926757813,\"y\":-70.0},\"customLabel\":\"\"}}"
     behaviorUses:
     - id: 126ec3cd41114616bab8c25ed28b2884
       behaviorUri: "builtin:Default Behavior"

@@ -105,13 +105,13 @@ actors:
     y: 0
     z: 0
 brainDatabase:
-  version: 4
-  behaviorIds: []
+  version: 5
+  behaviorIds: null
   behaviors: []
-  brainIds:
-  - d7ae001db69b448bbd196133d1244bd9
+  brainIds: null
   brains:
-  - metadataJson: null
+  - id: d7ae001db69b448bbd196133d1244bd9
+    metadataJson: null
     behaviorUses:
     - id: d3fd92db4fda49c0b06ae8ffda0421ba
       behaviorUri: "builtin:Collision Event Card"

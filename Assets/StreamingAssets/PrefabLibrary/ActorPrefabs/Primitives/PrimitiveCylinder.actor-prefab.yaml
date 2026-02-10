@@ -105,13 +105,13 @@ actors:
     y: 0
     z: 0
 brainDatabase:
-  version: 4
-  behaviorIds: []
+  version: 5
+  behaviorIds: null
   behaviors: []
-  brainIds:
-  - c9930100599f432c995268f55633df2e
+  brainIds: null
   brains:
-  - metadataJson: ""
+  - id: c9930100599f432c995268f55633df2e
+    metadataJson: ""
     behaviorUses:
     - id: 126ec3cd41114616bab8c25ed28b2884
       behaviorUri: "builtin:Default Behavior"

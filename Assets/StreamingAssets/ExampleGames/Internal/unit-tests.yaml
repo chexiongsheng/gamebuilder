@@ -836,7 +836,7 @@ gridState:
   metadata:
     customStyleWorkshopIds: []
 behaviorDatabase:
-  version: 4
+  version: 5
   behaviorIds: null
   behaviors:
   - id: 1d3e40c7f447404fb8e65f687e17bc19

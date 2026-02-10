@@ -105,13 +105,13 @@ actors:
     y: 0
     z: 0
 brainDatabase:
-  version: 4
-  behaviorIds: []
+  version: 5
+  behaviorIds: null
   behaviors: []
-  brainIds:
-  - a05b8e1229044fb4bf5e30bc025a90dd
+  brainIds: null
   brains:
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.8881792426109314,\"viewPosition\":{\"x\":17.920013427734376,\"y\":-35.89998245239258},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":0.0,\"y\":0.0}}}"
+  - id: a05b8e1229044fb4bf5e30bc025a90dd
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.8881792426109314,\"viewPosition\":{\"x\":17.920013427734376,\"y\":-35.89998245239258},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":0.0,\"y\":0.0}}}"
     behaviorUses:
     - id: f3225547b9b64fbab67c39123be06dbb
       behaviorUri: "builtin:Grabbable Item Panel"
