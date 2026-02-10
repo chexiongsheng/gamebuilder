@@ -70,13 +70,27 @@ public class DeprecatedScriptChecker : EditorWindow
                 
                 // Map brainId to Brain
                 Dictionary<string, Behaviors.Brain> brainMap = new Dictionary<string, Behaviors.Brain>();
-                if (saveGame.behaviorDatabase.brainIds != null && saveGame.behaviorDatabase.brains != null)
+                
+                if (saveGame.behaviorDatabase.brains != null)
                 {
-                    for (int i = 0; i < saveGame.behaviorDatabase.brainIds.Length; i++)
+                    // Try to use embedded IDs first
+                    foreach (var brain in saveGame.behaviorDatabase.brains)
                     {
-                        if (i < saveGame.behaviorDatabase.brains.Length)
+                        if (brain != null && !string.IsNullOrEmpty(brain.id))
                         {
-                            brainMap[saveGame.behaviorDatabase.brainIds[i]] = saveGame.behaviorDatabase.brains[i];
+                            brainMap[brain.id] = brain;
+                        }
+                    }
+
+                    // If no IDs found in brains, try to use the separate ID array (legacy support)
+                    if (brainMap.Count == 0 && saveGame.behaviorDatabase.brainIds != null)
+                    {
+                        for (int i = 0; i < saveGame.behaviorDatabase.brainIds.Length; i++)
+                        {
+                            if (i < saveGame.behaviorDatabase.brains.Length)
+                            {
+                                brainMap[saveGame.behaviorDatabase.brainIds[i]] = saveGame.behaviorDatabase.brains[i];
+                            }
                         }
                     }
                 }

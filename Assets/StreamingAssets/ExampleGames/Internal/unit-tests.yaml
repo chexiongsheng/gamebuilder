@@ -837,14 +837,10 @@ gridState:
     customStyleWorkshopIds: []
 behaviorDatabase:
   version: 4
-  behaviorIds:
-  - 1d3e40c7f447404fb8e65f687e17bc19
-  - d7eff55452f44990ab6dcb310e3db33a
-  - 9091490251cc49a4b57e3b52c093447a
-  - f65b4eecd00743b9a663bc5b7f18f278
-  - 0f5ca8f015bf4d8eb98f2516eb33410e
+  behaviorIds: null
   behaviors:
-  - label: Custom
+  - id: 1d3e40c7f447404fb8e65f687e17bc19
+    label: Custom
     javascript: |
       // Example card.
       
@@ -946,7 +942,8 @@ behaviorDatabase:
     draftJavascript: ""
     userLibraryFile: ""
     metadataJson: "{\"cardSystemCardData\":{\"isCard\":true,\"title\":\"Unit Test Manager\",\"description\":\"An empty card.\\nClick on it and select 'Edit JavaScript' to customize.\",\"categories\":[\"Custom\"],\"imageResourcePath\":\"\",\"listPriority\":0,\"hidden\":false}}"
-  - label: HealthBar.js.txt
+  - id: d7eff55452f44990ab6dcb310e3db33a
+    label: HealthBar.js.txt
     javascript: |-
       export const PROPS = [
         propNumber('X', 1350),
@@ -1002,7 +999,8 @@ behaviorDatabase:
       
     userLibraryFile: ""
     metadataJson: "{\"cardSystemCardData\":{\"isCard\":true,\"title\":\"Unit test UI\",\"description\":\"Shows a health bar on the screen.\",\"categories\":[\"Screen\"],\"imageResourcePath\":\"BuiltinAssets/CardImages/bar\",\"listPriority\":0,\"hidden\":false}}"
-  - label: Custom
+  - id: 9091490251cc49a4b57e3b52c093447a
+    label: Custom
     javascript: |+
       // Example card.
       
@@ -1019,7 +1017,8 @@ behaviorDatabase:
     draftJavascript: ""
     userLibraryFile: ""
     metadataJson: "{\"cardSystemCardData\":{\"isCard\":true,\"title\":\"Declare Test\",\"description\":\"Place this on one of the actors involved in the test. Note the test name and timeout.\",\"categories\":[\"Custom\"],\"imageResourcePath\":\"\",\"listPriority\":0,\"hidden\":false}}"
-  - label: Custom
+  - id: f65b4eecd00743b9a663bc5b7f18f278
+    label: Custom
     javascript: |
       export function onCollision(msg) {
         assert(getDisplayName(msg.other) == 'OtherCube', `expected to collide with OtherCube..`);
@@ -1028,7 +1027,8 @@ behaviorDatabase:
     draftJavascript: ""
     userLibraryFile: ""
     metadataJson: "{\"cardSystemCardData\":{\"isCard\":true,\"title\":\"Kinematic Collision Test\",\"description\":\"An empty card.\\nClick on it and select 'Edit JavaScript' to customize.\",\"categories\":[\"Custom\"],\"imageResourcePath\":\"\",\"listPriority\":0,\"hidden\":false}}"
-  - label: Custom
+  - id: 0f5ca8f015bf4d8eb98f2516eb33410e
+    label: Custom
     javascript: |-
       // Example card.
       
@@ -1043,21 +1043,10 @@ behaviorDatabase:
     draftJavascript: ""
     userLibraryFile: ""
     metadataJson: "{\"cardSystemCardData\":{\"isCard\":true,\"title\":\"Report Test Passed\",\"description\":\"An empty card.\\nClick on it and select 'Edit JavaScript' to customize.\",\"categories\":[\"Action\"],\"imageResourcePath\":\"\",\"listPriority\":0,\"hidden\":false}}"
-  brainIds:
-  - 6cea514759cd443ea7956aa90c091445
-  - __DEFAULT_BRAIN__
-  - f1c78779b3a940c1a6d683cc60ede25d
-  - 021c401af4e84628a4bfc8898e6c159b
-  - e9066c2c405641ac86a961c47112d05a
-  - 58e1c7d3ff8640238ebac948900d4630
-  - 05a8c3220e9a42aab3fb4fa035365ba4
-  - 0f13f164f9584e94a874091304f3de2a
-  - 7aadf58945104aaf8093a92effb610bc
-  - 9da72550728c431d936545cd8a4f3ef7
-  - 9b8e4adc7c7f454c86bb5415fb70795c
-  - 73d3948bd70e4fd084341bd36ea44133
+  brainIds: null
   brains:
-  - metadataJson: ""
+  - id: 6cea514759cd443ea7956aa90c091445
+    metadataJson: ""
     behaviorUses:
     - id: c76f643bfac74ff48abbca1a200fd75f
       behaviorUri: "builtin:Default Behavior"
@@ -1083,13 +1072,15 @@ behaviorDatabase:
       behaviorUri: "builtin:Text box"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: __DEFAULT_BRAIN__
+    metadataJson: ""
     behaviorUses:
     - id: ed0ab3baf8e94e6a95ce46b9ec1d79ae
       behaviorUri: "builtin:Default Behavior"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2735078036785126,\"viewPosition\":{\"x\":-94.76403045654297,\"y\":-469.64276123046877},\"addPanelPosition\":{\"x\":3203.550048828125,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":3013.550048828125,\"y\":0.0}}}"
+  - id: f1c78779b3a940c1a6d683cc60ede25d
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2735078036785126,\"viewPosition\":{\"x\":-94.76403045654297,\"y\":-469.64276123046877},\"addPanelPosition\":{\"x\":3203.550048828125,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":3013.550048828125,\"y\":0.0}}}"
     behaviorUses:
     - id: e393bfdf1e044518a4b098c0e2737e66
       behaviorUri: "builtin:Default Behavior"
@@ -1151,7 +1142,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Destroy Self Action Card"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.7392786741256714,\"viewPosition\":{\"x\":181.49905395507813,\"y\":274.9604797363281},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":70.0,\"y\":-70.0},\"customLabel\":\"\"}}"
+  - id: 021c401af4e84628a4bfc8898e6c159b
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.7392786741256714,\"viewPosition\":{\"x\":181.49905395507813,\"y\":274.9604797363281},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":70.0,\"y\":-70.0},\"customLabel\":\"\"}}"
     behaviorUses:
     - id: ed0ab3baf8e94e6a95ce46b9ec1d79ae
       behaviorUri: "builtin:Default Behavior"
@@ -1161,7 +1153,8 @@ behaviorDatabase:
       behaviorUri: "embedded:1d3e40c7f447404fb8e65f687e17bc19"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.41642168164253237,\"viewPosition\":{\"x\":149.72964477539063,\"y\":691.1002197265625},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2161.89990234375,\"y\":-70.0},\"customLabel\":\"\"}}"
+  - id: e9066c2c405641ac86a961c47112d05a
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.41642168164253237,\"viewPosition\":{\"x\":149.72964477539063,\"y\":691.1002197265625},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2161.89990234375,\"y\":-70.0},\"customLabel\":\"\"}}"
     behaviorUses:
     - id: 297615c9b4a94d619cd94f00e3e1b407
       behaviorUri: "builtin:Default Behavior"
@@ -1229,7 +1222,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: testName
         valueJson: "{\"value\":\"TerrainDamagesPlayer\"}"
-  - metadataJson: ""
+  - id: 58e1c7d3ff8640238ebac948900d4630
+    metadataJson: ""
     behaviorUses:
     - id: 126ec3cd41114616bab8c25ed28b2884
       behaviorUri: "builtin:Default Behavior"
@@ -1249,7 +1243,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: 05a8c3220e9a42aab3fb4fa035365ba4
+    metadataJson: ""
     behaviorUses:
     - id: 126ec3cd41114616bab8c25ed28b2884
       behaviorUri: "builtin:Default Behavior"
@@ -1269,9 +1264,11 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":1.0,\"viewPosition\":{\"x\":237.43017578125,\"y\":112.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":70.0,\"y\":-70.0},\"customLabel\":\"\"}}"
+  - id: 0f13f164f9584e94a874091304f3de2a
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":1.0,\"viewPosition\":{\"x\":237.43017578125,\"y\":112.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":70.0,\"y\":-70.0},\"customLabel\":\"\"}}"
     behaviorUses: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.5764343738555908,\"viewPosition\":{\"x\":199.55059814453126,\"y\":294.172119140625},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":715.0,\"y\":-70.0},\"customLabel\":\"\"}}"
+  - id: 7aadf58945104aaf8093a92effb610bc
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.5764343738555908,\"viewPosition\":{\"x\":199.55059814453126,\"y\":294.172119140625},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":715.0,\"y\":-70.0},\"customLabel\":\"\"}}"
     behaviorUses:
     - id: ed0ab3baf8e94e6a95ce46b9ec1d79ae
       behaviorUri: "builtin:Default Behavior"
@@ -1299,7 +1296,8 @@ behaviorDatabase:
       behaviorUri: "embedded:f65b4eecd00743b9a663bc5b7f18f278"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 9da72550728c431d936545cd8a4f3ef7
+    metadataJson: ""
     behaviorUses:
     - id: 126ec3cd41114616bab8c25ed28b2884
       behaviorUri: "builtin:Default Behavior"
@@ -1319,7 +1317,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.6063482165336609,\"viewPosition\":{\"x\":319.2773132324219,\"y\":172.77481079101563},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":70.0,\"y\":-70.0},\"customLabel\":\"\"}}"
+  - id: 9b8e4adc7c7f454c86bb5415fb70795c
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.6063482165336609,\"viewPosition\":{\"x\":319.2773132324219,\"y\":172.77481079101563},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":70.0,\"y\":-70.0},\"customLabel\":\"\"}}"
     behaviorUses:
     - id: efc316c33237444886b57b7470be2126
       behaviorUri: "builtin:Action on Event Panel"
@@ -1351,7 +1350,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: testName
         valueJson: "{\"value\":\"SendMessageCardTest\"}"
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.5776286721229553,\"viewPosition\":{\"x\":79.05178833007813,\"y\":-295.91595458984377},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":0.0,\"y\":0.0},\"customLabel\":\"\"}}"
+  - id: 73d3948bd70e4fd084341bd36ea44133
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.5776286721229553,\"viewPosition\":{\"x\":79.05178833007813,\"y\":-295.91595458984377},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":0.0,\"y\":0.0},\"customLabel\":\"\"}}"
     behaviorUses:
     - id: ed0ab3baf8e94e6a95ce46b9ec1d79ae
       behaviorUri: "builtin:Default Behavior"

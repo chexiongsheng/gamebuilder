@@ -2689,25 +2689,29 @@ setVoosModule('{moduleKey}', module);
 
     HashSet<string> usedBehaviorIds = new HashSet<string>();
 
-    for (int i = 0; i < db.brainIds.Length; i++)
+    if (db.brains != null)
     {
-      if (usedBrainIds.Contains(db.brainIds[i]))
+      foreach (var brain in db.brains)
       {
-        var brain = db.brains[i];
-
-        foreach (var use in brain.behaviorUses)
+        if (brain != null && usedBrainIds.Contains(brain.id))
         {
-          if (BehaviorSystem.IsEmbeddedBehaviorUri(use.behaviorUri))
+          foreach (var use in brain.behaviorUses)
           {
-            usedBehaviorIds.Add(BehaviorSystem.GetIdOfBehaviorUri(use.behaviorUri));
+            if (BehaviorSystem.IsEmbeddedBehaviorUri(use.behaviorUri))
+            {
+              usedBehaviorIds.Add(BehaviorSystem.GetIdOfBehaviorUri(use.behaviorUri));
+            }
           }
         }
       }
-
+      Util.Log($"{db.brains.Where(b => b != null && b.id != VoosEngine.DefaultBrainUid && !usedBrainIds.Contains(b.id)).Count()} unused brains of {db.brains.Length}");
     }
 
-    Util.Log($"{db.brainIds.Where(id => id != VoosEngine.DefaultBrainUid && !usedBrainIds.Contains(id)).Count()} unused brains of {db.brainIds.Length}");
-    Util.Log($"{db.behaviorIds.Where(id => !usedBehaviorIds.Contains(id)).Count()} unused behaviors of {db.behaviorIds.Length}");
+    if (db.behaviors != null)
+    {
+      Util.Log($"{db.behaviors.Where(b => !usedBehaviorIds.Contains(b.id)).Count()} unused behaviors of {db.behaviors.Length}");
+    }
+
 
 #endif
   }

@@ -488,17 +488,16 @@ public static partial class Util
     Dictionary<string, Entry> entries = new Dictionary<string, Entry>();
 
     // NOTE: This is gross, and it's mainly because I couldn't figure out how to make JsonUtility play nice with generics :(
-    public void GetJsonables(ref string[] ids, ref T[] values)
+    public T[] GetJsonables()
     {
-      ids = new string[entries.Count];
-      values = new T[entries.Count];
+      T[] values = new T[entries.Count];
       int i = 0;
       foreach (var entry in entries.Values)
       {
-        ids[i] = entry.id;
         values[i] = entry.value;
         i++;
       }
+      return values;
     }
 
     public void LoadJsonables(string[] ids, T[] values)

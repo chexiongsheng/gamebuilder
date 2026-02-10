@@ -34,6 +34,8 @@ namespace Behaviors
   [System.Serializable]
   public struct Behavior
   {
+    public string id;
+
     // The human readable label. Not the GUID.
     public string label;
 
@@ -57,7 +59,8 @@ namespace Behaviors
       }
 
       var behavior = (Behavior)obj;
-      return label == behavior.label &&
+      return id == behavior.id &&
+             label == behavior.label &&
              javascript == behavior.javascript &&
              draftJavascript == behavior.draftJavascript &&
              userLibraryFile == behavior.userLibraryFile &&
@@ -67,6 +70,7 @@ namespace Behaviors
     public override int GetHashCode()
     {
       var hashCode = -284969125;
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(id);
       hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(label);
       hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(javascript);
       hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(draftJavascript);
@@ -313,6 +317,7 @@ namespace Behaviors
   [System.Serializable]
   public class Brain : Util.IDeepCloneable<Brain>
   {
+    public string id;
 
     // Completely opaque, controlled by the user.
     public string metadataJson;
@@ -328,6 +333,7 @@ namespace Behaviors
     {
       return new Brain
       {
+        id = this.id,
         metadataJson = this.metadataJson,
         behaviorUses = this.behaviorUses.DeepClone()
       };
@@ -421,7 +427,8 @@ namespace Behaviors
       // the brain itself. If two brains have the same use IDs, it's ok, since
       // they're only meant to be locally unique. 
       public static int FirstVersionWithoutUseTable = 4;
-      public static int CurrentVersionNumber = 4;
+      public static int FirstVersionWithoutIdArrays = 5;
+      public static int CurrentVersionNumber = 5;
 
       public int version;
       public string[] behaviorIds;
@@ -558,14 +565,44 @@ namespace Behaviors
           version = FirstVersionWithoutUseTable;
         }
 
+        if (version < FirstVersionWithoutIdArrays)
+        {
+          // Upgrade Behaviors
+          if (behaviorIds != null && behaviors != null && behaviorIds.Length == behaviors.Length)
+          {
+            for (int i = 0; i < behaviors.Length; i++)
+            {
+              if (behaviors[i].id.IsNullOrEmpty())
+              {
+                behaviors[i].id = behaviorIds[i];
+              }
+            }
+            behaviorIds = null;
+          }
+
+          // Upgrade Brains
+          if (brainIds != null && brains != null && brainIds.Length == brains.Length)
+          {
+            for (int i = 0; i < brains.Length; i++)
+            {
+              if (brains[i] != null && brains[i].id.IsNullOrEmpty())
+              {
+                brains[i].id = brainIds[i];
+              }
+            }
+            brainIds = null;
+          }
+          version = FirstVersionWithoutIdArrays;
+        }
+
         AssertValid();
       }
 
       internal void AssertValid()
       {
         Debug.Assert(version == CurrentVersionNumber, "BDB version wrong");
-        Debug.Assert(behaviorIds.Length == behaviors.Length, "BDB behaviorIDs length wrong");
-        Debug.Assert(brainIds.Length == brains.Length, "BDB brainIDs length wrong");
+        //Debug.Assert(behaviorIds.Length == behaviors.Length, "BDB behaviorIDs length wrong");
+        //Debug.Assert(brainIds.Length == brains.Length, "BDB brainIDs length wrong");
 
         // Legacy arrays empty?
         Debug.Assert(behaviorUseIds.Length == 0, "BDB use IDs not empty");
@@ -577,8 +614,8 @@ namespace Behaviors
     {
       Jsonable rv = new Jsonable();
       rv.version = Jsonable.CurrentVersionNumber;
-      behaviors.GetJsonables(ref rv.behaviorIds, ref rv.behaviors);
-      brains.GetJsonables(ref rv.brainIds, ref rv.brains);
+      rv.behaviors = behaviors.GetJsonables();
+      rv.brains = brains.GetJsonables();
 
       return rv;
     }
@@ -587,8 +624,8 @@ namespace Behaviors
     {
       Debug.Assert(saved.version == Jsonable.CurrentVersionNumber, "LoadForNetworkInit: Received wrong version number!");
       saved.AssertValid();
-      behaviors.LoadJsonables(saved.behaviorIds, saved.behaviors);
-      brains.LoadJsonables(saved.brainIds, saved.brains);
+      behaviors.LoadJsonables(saved.behaviors.Select(b => b.id).ToArray(), saved.behaviors);
+      brains.LoadJsonables(saved.brains.Select(b => b.id).ToArray(), saved.brains);
       // Assume the host already GC'd, so no need to call it here.
     }
 
@@ -596,8 +633,8 @@ namespace Behaviors
     {
       saved.PerformUpgrades(usedBrainIds);
       saved.AssertValid();
-      behaviors.LoadJsonables(saved.behaviorIds, saved.behaviors);
-      brains.LoadJsonables(saved.brainIds, saved.brains);
+      behaviors.LoadJsonables(saved.behaviors.Select(b => b.id).ToArray(), saved.behaviors);
+      brains.LoadJsonables(saved.brains.Select(b => b.id).ToArray(), saved.brains);
       GarbageCollect(removeUnusedBehaviors, usedBrainIds);
     }
 

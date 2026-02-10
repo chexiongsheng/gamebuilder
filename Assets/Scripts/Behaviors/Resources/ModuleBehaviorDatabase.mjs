@@ -275,7 +275,8 @@ class ModuleBehaviorDatabase {
         uses.push(use);
       }
       // brainIds和brains是一一对应的
-      const brainId = jsonDb.brainIds[i];
+      const brainId = brainJson.id;
+
       const brain = new ModuleBehaviorBrain(brainId, uses);
       this.brainsByName_.set(brainId, brain);
 

@@ -189,12 +189,15 @@ public class ActorPrefabImpl : ActorPrefab
 
     // Import behaviors. For now, create entirely new brain IDs.
     var brainIdMap = new Dictionary<string, string>();
-    for (int i = 0; i < this.saved.brainDatabase.brainIds.Length; i++)
+    if (this.saved.brainDatabase.brains != null)
     {
-      string brainId = this.saved.brainDatabase.brainIds[i];
-      string newId = behaviorSystem.GenerateUniqueId();
-      brainIdMap[brainId] = newId;
-      this.saved.brainDatabase.brainIds[i] = newId;
+      foreach (var brain in this.saved.brainDatabase.brains)
+      {
+        string brainId = brain.id;
+        string newId = behaviorSystem.GenerateUniqueId();
+        brainIdMap[brainId] = newId;
+        brain.id = newId;
+      }
     }
 
     // Use the new brain IDs..

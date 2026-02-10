@@ -855,21 +855,25 @@ public class BehaviorSystem : MonoBehaviour
       exported.PerformUpgrades(expectedBrainIds);
       exported.AssertValid();
 
-      for (int i = 0; i < exported.behaviorIds.Length; i++)
+      if (exported.behaviors != null)
       {
-        string id = exported.behaviorIds[i];
-        if (!db.behaviors.Exists(id))
+        foreach (var behavior in exported.behaviors)
         {
-          PutBehavior(id, exported.behaviors[i]);
+          if (!db.behaviors.Exists(behavior.id))
+          {
+            PutBehavior(behavior.id, behavior);
+          }
         }
       }
 
-      for (int i = 0; i < exported.brainIds.Length; i++)
+      if (exported.brains != null)
       {
-        string id = exported.brainIds[i];
-        if (!db.brains.Exists(id))
+        foreach (var brain in exported.brains)
         {
-          PutBrain(id, exported.brains[i]);
+          if (!db.brains.Exists(brain.id))
+          {
+            PutBrain(brain.id, brain);
+          }
         }
       }
     }
@@ -893,19 +897,20 @@ public class BehaviorSystem : MonoBehaviour
       exported.PerformUpgrades(new HashSet<string> { expectedBrainId });
       exported.AssertValid();
 
-      Debug.Assert(exported.brainIds.Length == 1);
       Debug.Assert(exported.brains.Length == 1);
-      Debug.Assert(exported.brainIds[0] == expectedBrainId);
+      Debug.Assert(exported.brains[0].id == expectedBrainId);
 
       // Import all embedded behaviors, but give them new IDs
       Dictionary<string, string> exported2importedBehaviorId = new Dictionary<string, string>();
-      for (int i = 0; i < exported.behaviorIds.Length; i++)
+      if (exported.behaviors != null)
       {
-        string expId = exported.behaviorIds[i];
-        Behavior behavior = exported.behaviors[i];
-        string impId = GenerateUniqueId();
-        exported2importedBehaviorId[expId] = impId;
-        PutBehavior(impId, behavior);
+        foreach (var behavior in exported.behaviors)
+        {
+          string expId = behavior.id;
+          string impId = GenerateUniqueId();
+          exported2importedBehaviorId[expId] = impId;
+          PutBehavior(impId, behavior);
+        }
       }
 
       Brain brain = exported.brains[0];

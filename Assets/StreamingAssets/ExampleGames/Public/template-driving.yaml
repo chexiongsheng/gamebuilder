@@ -1254,23 +1254,12 @@ gridState:
     customStyleWorkshopIds: null
 behaviorDatabase:
   version: 4
-  behaviorIds: []
+  behaviorIds: null
   behaviors: []
-  brainIds:
-  - 6cea514759cd443ea7956aa90c091445
-  - 13a8c96693e04030a6491993651525d7
-  - __DEFAULT_BRAIN__
-  - f1c78779b3a940c1a6d683cc60ede25d
-  - fd48275b4c3947f4a8bc4cc682253d74
-  - 5890d05c33754cd2a9af42ffe3c0991f
-  - c87c951c809644e5a847e4dff73abecc
-  - 7e101ebf8e7d43c3b3931741d3dc0d77
-  - 8a5430b7ca9045618149742301b8fc64
-  - 72faa1d279e94af78c267fbe4e245126
-  - a48f3c9e25084baaa601db2bdf380521
-  - 7532274875d844cc9a58f30f8387833e
+  brainIds: null
   brains:
-  - metadataJson: ""
+  - id: 6cea514759cd443ea7956aa90c091445
+    metadataJson: ""
     behaviorUses:
     - id: c76f643bfac74ff48abbca1a200fd75f
       behaviorUri: "builtin:Default Behavior"
@@ -1296,7 +1285,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Text box"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 13a8c96693e04030a6491993651525d7
+    metadataJson: ""
     behaviorUses:
     - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
       behaviorUri: "builtin:Default Behavior"
@@ -1316,13 +1306,15 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: __DEFAULT_BRAIN__
+    metadataJson: ""
     behaviorUses:
     - id: ed0ab3baf8e94e6a95ce46b9ec1d79ae
       behaviorUri: "builtin:Default Behavior"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2735078036785126,\"viewPosition\":{\"x\":-94.76403045654297,\"y\":-469.64276123046877},\"addPanelPosition\":{\"x\":3203.550048828125,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":3013.550048828125,\"y\":0.0}}}"
+  - id: f1c78779b3a940c1a6d683cc60ede25d
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2735078036785126,\"viewPosition\":{\"x\":-94.76403045654297,\"y\":-469.64276123046877},\"addPanelPosition\":{\"x\":3203.550048828125,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":3013.550048828125,\"y\":0.0}}}"
     behaviorUses:
     - id: e393bfdf1e044518a4b098c0e2737e66
       behaviorUri: "builtin:Default Behavior"
@@ -1384,7 +1376,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Destroy Self Action Card"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: fd48275b4c3947f4a8bc4cc682253d74
+    metadataJson: ""
     behaviorUses:
     - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
       behaviorUri: "builtin:Default Behavior"
@@ -1404,7 +1397,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: 5890d05c33754cd2a9af42ffe3c0991f
+    metadataJson: ""
     behaviorUses:
     - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
       behaviorUri: "builtin:Default Behavior"
@@ -1424,7 +1418,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: c87c951c809644e5a847e4dff73abecc
+    metadataJson: ""
     behaviorUses:
     - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
       behaviorUri: "builtin:Default Behavior"
@@ -1444,7 +1439,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: 7e101ebf8e7d43c3b3931741d3dc0d77
+    metadataJson: ""
     behaviorUses:
     - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
       behaviorUri: "builtin:Default Behavior"
@@ -1464,7 +1460,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.44570228457450869,\"viewPosition\":{\"x\":281.6553649902344,\"y\":-222.50814819335938},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1157.510009765625,\"y\":-70.0}}}"
+  - id: 8a5430b7ca9045618149742301b8fc64
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.44570228457450869,\"viewPosition\":{\"x\":281.6553649902344,\"y\":-222.50814819335938},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1157.510009765625,\"y\":-70.0}}}"
     behaviorUses:
     - id: 126ec3cd41114616bab8c25ed28b2884
       behaviorUri: "builtin:Default Behavior"
@@ -1490,7 +1487,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: PlayerNumber
         valueJson: "{\"value\":1}"
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.44570228457450869,\"viewPosition\":{\"x\":281.6553649902344,\"y\":-222.50814819335938},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1157.510009765625,\"y\":-70.0}}}"
+  - id: 72faa1d279e94af78c267fbe4e245126
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.44570228457450869,\"viewPosition\":{\"x\":281.6553649902344,\"y\":-222.50814819335938},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1157.510009765625,\"y\":-70.0}}}"
     behaviorUses:
     - id: 126ec3cd41114616bab8c25ed28b2884
       behaviorUri: "builtin:Default Behavior"
@@ -1516,7 +1514,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: PlayerNumber
         valueJson: "{\"value\":2}"
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.44570228457450869,\"viewPosition\":{\"x\":281.6553649902344,\"y\":-222.50814819335938},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1157.510009765625,\"y\":-70.0}}}"
+  - id: a48f3c9e25084baaa601db2bdf380521
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.44570228457450869,\"viewPosition\":{\"x\":281.6553649902344,\"y\":-222.50814819335938},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1157.510009765625,\"y\":-70.0}}}"
     behaviorUses:
     - id: 126ec3cd41114616bab8c25ed28b2884
       behaviorUri: "builtin:Default Behavior"
@@ -1542,7 +1541,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: PlayerNumber
         valueJson: "{\"value\":0}"
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.44570228457450869,\"viewPosition\":{\"x\":160.49826049804688,\"y\":-270.2644348144531},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1382.969970703125,\"y\":-70.0}}}"
+  - id: 7532274875d844cc9a58f30f8387833e
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.44570228457450869,\"viewPosition\":{\"x\":160.49826049804688,\"y\":-270.2644348144531},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1382.969970703125,\"y\":-70.0}}}"
     behaviorUses:
     - id: 126ec3cd41114616bab8c25ed28b2884
       behaviorUri: "builtin:Default Behavior"

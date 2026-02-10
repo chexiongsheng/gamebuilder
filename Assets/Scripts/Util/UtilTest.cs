@@ -87,7 +87,7 @@ public class UtilTest
     public Jsonable Save()
     {
       Jsonable rv = new Jsonable();
-      vectors.GetJsonables(ref rv.vectorIds, ref rv.vectorValues);
+      rv.vectorValues = vectors.GetJsonables();
       return rv;
     }
 

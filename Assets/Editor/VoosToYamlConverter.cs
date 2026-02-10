@@ -146,5 +146,74 @@ public class VoosToYamlConverter
         AssetDatabase.Refresh();
         Debug.Log($"Converted {count} prefab files to .yaml");
     }
+
+    [MenuItem("Tools/Upgrade Yaml Save Format")]
+    public static void UpgradeYamlSaveFormat()
+    {
+        string[] files = Directory.GetFiles(Path.Combine(Application.streamingAssetsPath, "ExampleGames"), "*.yaml", SearchOption.AllDirectories);
+        int count = 0;
+
+        var options = YamlSerializerOptions.Standard;
+        options.Resolver = CompositeResolver.Create(
+            new IYamlFormatterResolver[] {
+                StandardResolver.Instance,
+                ReflectionResolver.Instance
+            }
+        );
+
+        foreach (string file in files)
+        {
+            try
+            {
+                byte[] yamlBytes = File.ReadAllBytes(file);
+                SaveLoadController.SaveGame saveGame = YamlSerializer.Deserialize<SaveLoadController.SaveGame>(yamlBytes, options);
+
+                if (saveGame.behaviorDatabase != null)
+                {
+                    var db = saveGame.behaviorDatabase;
+                    bool changed = false;
+
+                    // Upgrade Behaviors
+                    if (db.behaviorIds != null && db.behaviors != null && db.behaviorIds.Length == db.behaviors.Length)
+                    {
+                        for (int i = 0; i < db.behaviors.Length; i++)
+                        {
+                            db.behaviors[i].id = db.behaviorIds[i];
+                        }
+                        db.behaviorIds = null;
+                        changed = true;
+                    }
+
+                    // Upgrade Brains
+                    if (db.brainIds != null && db.brains != null && db.brainIds.Length == db.brains.Length)
+                    {
+                        for (int i = 0; i < db.brains.Length; i++)
+                        {
+                            if (db.brains[i] != null)
+                            {
+                                db.brains[i].id = db.brainIds[i];
+                            }
+                        }
+                        db.brainIds = null;
+                        changed = true;
+                    }
+
+                    if (changed)
+                    {
+                        var newYamlBytes = YamlSerializer.Serialize(saveGame, options);
+                        File.WriteAllBytes(file, newYamlBytes.ToArray());
+                        count++;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to upgrade {file}: {e.Message}");
+            }
+        }
+
+        AssetDatabase.Refresh();
+        Debug.Log($"Upgraded {count} .yaml files");
+    }
 }
 

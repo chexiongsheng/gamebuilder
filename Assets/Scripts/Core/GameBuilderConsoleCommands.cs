@@ -104,8 +104,8 @@ public class GameBuilderConsoleCommands : MonoBehaviour
   static void CommandVoosInfo(CommandArg[] args)
   {
     var bdb = main.behaviorSystem.SaveDatabase();
-    Log($"{bdb.behaviorIds.Length} behaviors");
-    Log($"{bdb.brainIds.Length} brains");
+    Log($"{(bdb.behaviors != null ? bdb.behaviors.Length : 0)} behaviors");
+    Log($"{(bdb.brains != null ? bdb.brains.Length : 0)} brains");
     Log($"{main.voosEngine.EnumerateActors().Count()} actors");
 
   }

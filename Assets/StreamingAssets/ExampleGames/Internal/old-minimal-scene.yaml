@@ -2301,33 +2301,12 @@ gridState:
     customStyleWorkshopIds: null
 behaviorDatabase:
   version: 4
-  behaviorIds: []
+  behaviorIds: null
   behaviors: []
-  brainIds:
-  - 3a37797919c8453c835558789155d409
-  - Player
-  - 6cea514759cd443ea7956aa90c091445
-  - 9c7a25e197e94ac6bce3b4ac10c113e2
-  - 4e59614ff938464cbd5b76fba9e90647
-  - __DEFAULT_BRAIN__
-  - f1c78779b3a940c1a6d683cc60ede25d
-  - 5a9c831f8bd345ed8f96483370dac278
-  - e3b116e6f8bf43c89526ccb8978ca905
-  - d633b08d256e4ba7b9bbbf634f8c7ec3
-  - d15fd92583ab4e4a8e36e2fd404714d3
-  - e7c1c9fd9abe4248a208d5cf05b88007
-  - 5ab0b22de9754baf9a96db10280af14a
-  - 19062d4d214c4c9ca8e971f9f1973f5c
-  - 47fbb2e04e234361b75247f790d8ca38
-  - 75905e1794914ffbbe64e4cb07058005
-  - bd4f16d2e6d54a34bdc086f810bd674c
-  - 7c69280360f9412fa922e711d10c0688
-  - 0a7ed88da1b74a78bc99b64f6de694ca
-  - 7ba388eb203246b6a95d9196774e6387
-  - 0cb4391c7e1a4c24997b7d5dee43663e
-  - 773e51e6eb0d4944b70c7fb08d25d21e
+  brainIds: null
   brains:
-  - metadataJson: ""
+  - id: 3a37797919c8453c835558789155d409
+    metadataJson: ""
     behaviorUses:
     - id: 2cee40a445c5497183757f196afbe3d3
       behaviorUri: "builtin:Default Behavior"
@@ -2343,7 +2322,8 @@ behaviorDatabase:
       behaviorUri: "builtin:ScoreBoard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.4462990462779999,\"viewPosition\":{\"x\":-2264.47119140625,\"y\":76.88514709472656},\"addPanelPosition\":{\"x\":0.0,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":3390.159912109375,\"y\":0.0}}}"
+  - id: Player
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.4462990462779999,\"viewPosition\":{\"x\":-2264.47119140625,\"y\":76.88514709472656},\"addPanelPosition\":{\"x\":0.0,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":3390.159912109375,\"y\":0.0}}}"
     behaviorUses:
     - id: 297615c9b4a94d619cd94f00e3e1b407
       behaviorUri: "builtin:Default Behavior"
@@ -2421,7 +2401,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Jump Card"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 6cea514759cd443ea7956aa90c091445
+    metadataJson: ""
     behaviorUses:
     - id: c76f643bfac74ff48abbca1a200fd75f
       behaviorUri: "builtin:Default Behavior"
@@ -2447,7 +2428,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Text box"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 9c7a25e197e94ac6bce3b4ac10c113e2
+    metadataJson: ""
     behaviorUses:
     - id: 115573ace7154e31944a607829cfcc04
       behaviorUri: "builtin:Default Behavior"
@@ -2469,7 +2451,8 @@ behaviorDatabase:
         valueJson: "{\"value\":[]}"
       - propertyName: actionDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: 4e59614ff938464cbd5b76fba9e90647
+    metadataJson: ""
     behaviorUses:
     - id: 2cee40a445c5497183757f196afbe3d3
       behaviorUri: "builtin:Default Behavior"
@@ -2491,13 +2474,15 @@ behaviorDatabase:
         valueJson: "{\"value\":[]}"
       - propertyName: actionDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: __DEFAULT_BRAIN__
+    metadataJson: ""
     behaviorUses:
     - id: ed0ab3baf8e94e6a95ce46b9ec1d79ae
       behaviorUri: "builtin:Default Behavior"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2735078036785126,\"viewPosition\":{\"x\":-94.76403045654297,\"y\":-469.64276123046877},\"addPanelPosition\":{\"x\":3203.550048828125,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":3013.550048828125,\"y\":0.0}}}"
+  - id: f1c78779b3a940c1a6d683cc60ede25d
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2735078036785126,\"viewPosition\":{\"x\":-94.76403045654297,\"y\":-469.64276123046877},\"addPanelPosition\":{\"x\":3203.550048828125,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":3013.550048828125,\"y\":0.0}}}"
     behaviorUses:
     - id: e393bfdf1e044518a4b098c0e2737e66
       behaviorUri: "builtin:Default Behavior"
@@ -2559,7 +2544,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Destroy Self Action Card"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.26694294810295107,\"viewPosition\":{\"x\":273.8465576171875,\"y\":-30.279550552368165},\"addPanelPosition\":{\"x\":0.0,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2536.14990234375,\"y\":0.0}}}"
+  - id: 5a9c831f8bd345ed8f96483370dac278
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.26694294810295107,\"viewPosition\":{\"x\":273.8465576171875,\"y\":-30.279550552368165},\"addPanelPosition\":{\"x\":0.0,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2536.14990234375,\"y\":0.0}}}"
     behaviorUses:
     - id: 929cada41b6c4d278f1f539ba817c0bf
       behaviorUri: "builtin:End Game LOSE Card"
@@ -2629,7 +2615,8 @@ behaviorDatabase:
       behaviorUri: "builtin:CameraShakeActionCard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2919429540634155,\"viewPosition\":{\"x\":72.30140686035156,\"y\":-20.182964324951173},\"addPanelPosition\":{\"x\":0.0,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2536.14990234375,\"y\":0.0}}}"
+  - id: e3b116e6f8bf43c89526ccb8978ca905
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2919429540634155,\"viewPosition\":{\"x\":72.30140686035156,\"y\":-20.182964324951173},\"addPanelPosition\":{\"x\":0.0,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2536.14990234375,\"y\":0.0}}}"
     behaviorUses:
     - id: f79ffdca42114a59a9c3e28e8f54244e
       behaviorUri: "builtin:End Game LOSE Card"
@@ -2699,7 +2686,8 @@ behaviorDatabase:
       behaviorUri: "builtin:CameraShakeActionCard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2919429540634155,\"viewPosition\":{\"x\":76.35350036621094,\"y\":-20.993579864501954},\"addPanelPosition\":{\"x\":0.0,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2536.14990234375,\"y\":0.0}}}"
+  - id: d633b08d256e4ba7b9bbbf634f8c7ec3
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2919429540634155,\"viewPosition\":{\"x\":76.35350036621094,\"y\":-20.993579864501954},\"addPanelPosition\":{\"x\":0.0,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":2536.14990234375,\"y\":0.0}}}"
     behaviorUses:
     - id: f0a60205c030470792906303cf0f309c
       behaviorUri: "builtin:End Game LOSE Card"
@@ -2769,7 +2757,8 @@ behaviorDatabase:
       behaviorUri: "builtin:CameraShakeActionCard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.5617298483848572,\"viewPosition\":{\"x\":-35.87898635864258,\"y\":15.050738334655762},\"addPanelPosition\":{\"x\":1416.1500244140625,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1226.1500244140625,\"y\":0.0}}}"
+  - id: d15fd92583ab4e4a8e36e2fd404714d3
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.5617298483848572,\"viewPosition\":{\"x\":-35.87898635864258,\"y\":15.050738334655762},\"addPanelPosition\":{\"x\":1416.1500244140625,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1226.1500244140625,\"y\":0.0}}}"
     behaviorUses:
     - id: 126ec3cd41114616bab8c25ed28b2884
       behaviorUri: "builtin:Default Behavior"
@@ -2803,13 +2792,15 @@ behaviorDatabase:
         valueJson: "{\"value\":2.0}"
       - propertyName: Distance
         valueJson: "{\"value\":6.0}"
-  - metadataJson: ""
+  - id: e7c1c9fd9abe4248a208d5cf05b88007
+    metadataJson: ""
     behaviorUses:
     - id: ed0ab3baf8e94e6a95ce46b9ec1d79ae
       behaviorUri: "builtin:Default Behavior"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 5ab0b22de9754baf9a96db10280af14a
+    metadataJson: ""
     behaviorUses:
     - id: d3fd92db4fda49c0b06ae8ffda0421ba
       behaviorUri: "builtin:Collision Event Card"
@@ -2845,7 +2836,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Destroy Self Action Card"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 19062d4d214c4c9ca8e971f9f1973f5c
+    metadataJson: ""
     behaviorUses:
     - id: d3fd92db4fda49c0b06ae8ffda0421ba
       behaviorUri: "builtin:Collision Event Card"
@@ -2881,7 +2873,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Destroy Self Action Card"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 47fbb2e04e234361b75247f790d8ca38
+    metadataJson: ""
     behaviorUses:
     - id: d3fd92db4fda49c0b06ae8ffda0421ba
       behaviorUri: "builtin:Collision Event Card"
@@ -2917,7 +2910,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Destroy Self Action Card"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 75905e1794914ffbbe64e4cb07058005
+    metadataJson: ""
     behaviorUses:
     - id: d3fd92db4fda49c0b06ae8ffda0421ba
       behaviorUri: "builtin:Collision Event Card"
@@ -2953,7 +2947,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Destroy Self Action Card"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: bd4f16d2e6d54a34bdc086f810bd674c
+    metadataJson: ""
     behaviorUses:
     - id: d3fd92db4fda49c0b06ae8ffda0421ba
       behaviorUri: "builtin:Collision Event Card"
@@ -2989,7 +2984,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Destroy Self Action Card"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 7c69280360f9412fa922e711d10c0688
+    metadataJson: ""
     behaviorUses:
     - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
       behaviorUri: "builtin:Default Behavior"
@@ -3009,7 +3005,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: 0a7ed88da1b74a78bc99b64f6de694ca
+    metadataJson: ""
     behaviorUses:
     - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
       behaviorUri: "builtin:Default Behavior"
@@ -3029,7 +3026,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: 7ba388eb203246b6a95d9196774e6387
+    metadataJson: ""
     behaviorUses:
     - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
       behaviorUri: "builtin:Default Behavior"
@@ -3049,7 +3047,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: 0cb4391c7e1a4c24997b7d5dee43663e
+    metadataJson: ""
     behaviorUses:
     - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
       behaviorUri: "builtin:Default Behavior"
@@ -3069,7 +3068,8 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.5617298483848572,\"viewPosition\":{\"x\":-35.87898635864258,\"y\":15.050738334655762},\"addPanelPosition\":{\"x\":1416.1500244140625,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1226.1500244140625,\"y\":0.0}}}"
+  - id: 773e51e6eb0d4944b70c7fb08d25d21e
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.5617298483848572,\"viewPosition\":{\"x\":-35.87898635864258,\"y\":15.050738334655762},\"addPanelPosition\":{\"x\":1416.1500244140625,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":1226.1500244140625,\"y\":0.0}}}"
     behaviorUses:
     - id: 44b8d3b09cf9430ea061c9fcc8d3e1a8
       behaviorUri: "builtin:Default Behavior"

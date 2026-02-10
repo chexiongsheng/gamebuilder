@@ -844,24 +844,12 @@ gridState:
     customStyleWorkshopIds: null
 behaviorDatabase:
   version: 4
-  behaviorIds: []
+  behaviorIds: null
   behaviors: []
-  brainIds:
-  - bb131989e0aa4363b1d919c50faa59a0
-  - 6cea514759cd443ea7956aa90c091445
-  - 9c7a25e197e94ac6bce3b4ac10c113e2
-  - 4e59614ff938464cbd5b76fba9e90647
-  - __DEFAULT_BRAIN__
-  - f1c78779b3a940c1a6d683cc60ede25d
-  - 8ccddbc57abf41e0bac5327a4f4ef6ef
-  - 408f877bb32347a7a699804ff0f93f74
-  - 62c6fe221c634900bc3a099ed5cd4391
-  - f7fec13eab2b408eaa634b62cc3fd09f
-  - b30dcab90c91481284bf82fd86ac68fb
-  - 494f5e33a90a42f2b3d31e47cb57b28b
-  - e9066c2c405641ac86a961c47112d05a
+  brainIds: null
   brains:
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
+  - id: bb131989e0aa4363b1d919c50faa59a0
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
     behaviorUses:
     - id: 297615c9b4a94d619cd94f00e3e1b407
       behaviorUri: "builtin:Default Behavior"
@@ -1011,7 +999,8 @@ behaviorDatabase:
       behaviorUri: "builtin:UseGrabbedItemActionCard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 6cea514759cd443ea7956aa90c091445
+    metadataJson: ""
     behaviorUses:
     - id: c76f643bfac74ff48abbca1a200fd75f
       behaviorUri: "builtin:Default Behavior"
@@ -1037,7 +1026,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Text box"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 9c7a25e197e94ac6bce3b4ac10c113e2
+    metadataJson: ""
     behaviorUses:
     - id: 115573ace7154e31944a607829cfcc04
       behaviorUri: "builtin:Default Behavior"
@@ -1059,7 +1049,8 @@ behaviorDatabase:
         valueJson: "{\"value\":[]}"
       - propertyName: actionDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: 4e59614ff938464cbd5b76fba9e90647
+    metadataJson: ""
     behaviorUses:
     - id: 2cee40a445c5497183757f196afbe3d3
       behaviorUri: "builtin:Default Behavior"
@@ -1081,13 +1072,15 @@ behaviorDatabase:
         valueJson: "{\"value\":[]}"
       - propertyName: actionDeck
         valueJson: "{\"value\":[]}"
-  - metadataJson: ""
+  - id: __DEFAULT_BRAIN__
+    metadataJson: ""
     behaviorUses:
     - id: ed0ab3baf8e94e6a95ce46b9ec1d79ae
       behaviorUri: "builtin:Default Behavior"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2735078036785126,\"viewPosition\":{\"x\":-94.76403045654297,\"y\":-469.64276123046877},\"addPanelPosition\":{\"x\":3203.550048828125,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":3013.550048828125,\"y\":0.0}}}"
+  - id: f1c78779b3a940c1a6d683cc60ede25d
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.2735078036785126,\"viewPosition\":{\"x\":-94.76403045654297,\"y\":-469.64276123046877},\"addPanelPosition\":{\"x\":3203.550048828125,\"y\":0.0}},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":3013.550048828125,\"y\":0.0}}}"
     behaviorUses:
     - id: e393bfdf1e044518a4b098c0e2737e66
       behaviorUri: "builtin:Default Behavior"
@@ -1149,7 +1142,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Destroy Self Action Card"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
+  - id: 8ccddbc57abf41e0bac5327a4f4ef6ef
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
     behaviorUses:
     - id: 297615c9b4a94d619cd94f00e3e1b407
       behaviorUri: "builtin:Default Behavior"
@@ -1299,7 +1293,8 @@ behaviorDatabase:
       behaviorUri: "builtin:UseGrabbedItemActionCard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
+  - id: 408f877bb32347a7a699804ff0f93f74
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
     behaviorUses:
     - id: 297615c9b4a94d619cd94f00e3e1b407
       behaviorUri: "builtin:Default Behavior"
@@ -1449,7 +1444,8 @@ behaviorDatabase:
       behaviorUri: "builtin:UseGrabbedItemActionCard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
+  - id: 62c6fe221c634900bc3a099ed5cd4391
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
     behaviorUses:
     - id: 297615c9b4a94d619cd94f00e3e1b407
       behaviorUri: "builtin:Default Behavior"
@@ -1599,7 +1595,8 @@ behaviorDatabase:
       behaviorUri: "builtin:UseGrabbedItemActionCard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
+  - id: f7fec13eab2b408eaa634b62cc3fd09f
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
     behaviorUses:
     - id: 297615c9b4a94d619cd94f00e3e1b407
       behaviorUri: "builtin:Default Behavior"
@@ -1749,7 +1746,8 @@ behaviorDatabase:
       behaviorUri: "builtin:UseGrabbedItemActionCard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
+  - id: b30dcab90c91481284bf82fd86ac68fb
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
     behaviorUses:
     - id: 297615c9b4a94d619cd94f00e3e1b407
       behaviorUri: "builtin:Default Behavior"
@@ -1899,7 +1897,8 @@ behaviorDatabase:
       behaviorUri: "builtin:UseGrabbedItemActionCard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
+  - id: 494f5e33a90a42f2b3d31e47cb57b28b
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
     behaviorUses:
     - id: 297615c9b4a94d619cd94f00e3e1b407
       behaviorUri: "builtin:Default Behavior"
@@ -2049,7 +2048,8 @@ behaviorDatabase:
       behaviorUri: "builtin:UseGrabbedItemActionCard"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
+  - id: e9066c2c405641ac86a961c47112d05a
+    metadataJson: "{\"panelViewState\":{\"version\":1,\"scale\":0.25,\"viewPosition\":{\"x\":-3416.7783203125,\"y\":-371.9571533203125},\"customLayout\":false},\"panelNotes\":[],\"miscPanelUseMetadata\":{\"version\":1,\"position\":{\"x\":4755.02392578125,\"y\":-44.265625}}}"
     behaviorUses:
     - id: 297615c9b4a94d619cd94f00e3e1b407
       behaviorUri: "builtin:Default Behavior"

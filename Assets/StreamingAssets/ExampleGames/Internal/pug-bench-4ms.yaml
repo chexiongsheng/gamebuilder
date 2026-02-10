@@ -7017,20 +7017,12 @@ gridState:
     customStyleWorkshopIds: null
 behaviorDatabase:
   version: 4
-  behaviorIds: []
+  behaviorIds: null
   behaviors: []
-  brainIds:
-  - __GameRulesBrain__
-  - Player
-  - e04de2718a594fc0afd2cb55bd4fa8dc
-  - 5a43dd883799442e83fdeea11675110b
-  - 8b99da58d2bf40679dd5a0e795b2c406
-  - 7be6c902bf4c462b8c6e6ff8902f759a
-  - e4829f54f49f48c9b571073baa8127cd
-  - __DEFAULT_BRAIN__
-  - e913410091bb49e2b370adb6c09fc3ec
+  brainIds: null
   brains:
-  - metadataJson: null
+  - id: __GameRulesBrain__
+    metadataJson: null
     behaviorUses:
     - id: d19bb9f2188f4016b00648968a90b5f3
       behaviorUri: "builtin:Wizard Controller"
@@ -7040,7 +7032,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Default Behavior"
       metadataJson: null
       propertyAssignments: []
-  - metadataJson: null
+  - id: Player
+    metadataJson: null
     behaviorUses:
     - id: 9859448eebfb495fa4d66f554b29135e
       behaviorUri: "builtin:Takes damage"
@@ -7090,7 +7083,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Default Behavior"
       metadataJson: null
       propertyAssignments: []
-  - metadataJson: null
+  - id: e04de2718a594fc0afd2cb55bd4fa8dc
+    metadataJson: null
     behaviorUses:
     - id: ba1dd065b0cd4e4b9d73b44c0c149614
       behaviorUri: "builtin:Player Controls"
@@ -7102,7 +7096,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Default Behavior"
       metadataJson: null
       propertyAssignments: []
-  - metadataJson: null
+  - id: 5a43dd883799442e83fdeea11675110b
+    metadataJson: null
     behaviorUses:
     - id: ea76db458691448f92c386187594b097
       behaviorUri: "builtin:Run in circles"
@@ -7112,7 +7107,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Default Behavior"
       metadataJson: null
       propertyAssignments: []
-  - metadataJson: null
+  - id: 8b99da58d2bf40679dd5a0e795b2c406
+    metadataJson: null
     behaviorUses:
     - id: 67a4cd1360694a2f989ea8ee51065371
       behaviorUri: "builtin:Run in circles"
@@ -7128,7 +7124,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Default Behavior"
       metadataJson: null
       propertyAssignments: []
-  - metadataJson: null
+  - id: 7be6c902bf4c462b8c6e6ff8902f759a
+    metadataJson: null
     behaviorUses:
     - id: 02ccca7e01154306a7aab15bd52c6cdd
       behaviorUri: "builtin:Run in circles"
@@ -7138,7 +7135,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Default Behavior"
       metadataJson: null
       propertyAssignments: []
-  - metadataJson: null
+  - id: e4829f54f49f48c9b571073baa8127cd
+    metadataJson: null
     behaviorUses:
     - id: ac265d9484684ed3b0f8f2b401368bfc
       behaviorUri: "builtin:Run in circles"
@@ -7148,13 +7146,15 @@ behaviorDatabase:
       behaviorUri: "builtin:Default Behavior"
       metadataJson: null
       propertyAssignments: []
-  - metadataJson: null
+  - id: __DEFAULT_BRAIN__
+    metadataJson: null
     behaviorUses:
     - id: e243b309b7ce448faccdea15dfc253f7
       behaviorUri: "builtin:Default Behavior"
       metadataJson: null
       propertyAssignments: []
-  - metadataJson: null
+  - id: e913410091bb49e2b370adb6c09fc3ec
+    metadataJson: null
     behaviorUses: []
   behaviorUseIds: []
   behaviorUses: []

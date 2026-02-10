@@ -3005,23 +3005,12 @@ gridState:
     customStyleWorkshopIds: null
 behaviorDatabase:
   version: 4
-  behaviorIds: []
+  behaviorIds: null
   behaviors: []
-  brainIds:
-  - __GameRulesBrain__
-  - Player
-  - __DEFAULT_BRAIN__
-  - 0f7095c906ae41cb8b556090a660ac8b
-  - e0192139687a413cadd94e3d8ad9b8e8
-  - 0939b2ae49274c4fa18f261daa4ae3fd
-  - ad1f00c90f134c918e4e03f1bb7bcc81
-  - af2a9545063d47bb92d0d3bb5b9ccf3c
-  - 165342c9db4f40889e5d6651a5a7d51c
-  - 4cbf02bfee1c4ef3bc21ca7584474bc7
-  - 712400c0e76e4b8abe9902decdaff520
-  - f48729a2eeb047c89173dc712400cc6f
+  brainIds: null
   brains:
-  - metadataJson: ""
+  - id: __GameRulesBrain__
+    metadataJson: ""
     behaviorUses:
     - id: d19bb9f2188f4016b00648968a90b5f3
       behaviorUri: "builtin:Wizard Controller"
@@ -3031,7 +3020,8 @@ behaviorDatabase:
       behaviorUri: "builtin:Default Behavior"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: Player
+    metadataJson: ""
     behaviorUses:
     - id: 9859448eebfb495fa4d66f554b29135e
       behaviorUri: "builtin:Takes damage"
@@ -3069,29 +3059,39 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: Speed
         valueJson: "{\"value\":5}"
-  - metadataJson: ""
+  - id: __DEFAULT_BRAIN__
+    metadataJson: ""
     behaviorUses:
     - id: 81ceae6f46f841f193b5aedb8b786e66
       behaviorUri: "builtin:Default Behavior"
       metadataJson: ""
       propertyAssignments: []
-  - metadataJson: ""
+  - id: 0f7095c906ae41cb8b556090a660ac8b
+    metadataJson: ""
     behaviorUses: []
-  - metadataJson: ""
+  - id: e0192139687a413cadd94e3d8ad9b8e8
+    metadataJson: ""
     behaviorUses: []
-  - metadataJson: ""
+  - id: 0939b2ae49274c4fa18f261daa4ae3fd
+    metadataJson: ""
     behaviorUses: []
-  - metadataJson: ""
+  - id: ad1f00c90f134c918e4e03f1bb7bcc81
+    metadataJson: ""
     behaviorUses: []
-  - metadataJson: ""
+  - id: af2a9545063d47bb92d0d3bb5b9ccf3c
+    metadataJson: ""
     behaviorUses: []
-  - metadataJson: ""
+  - id: 165342c9db4f40889e5d6651a5a7d51c
+    metadataJson: ""
     behaviorUses: []
-  - metadataJson: ""
+  - id: 4cbf02bfee1c4ef3bc21ca7584474bc7
+    metadataJson: ""
     behaviorUses: []
-  - metadataJson: ""
+  - id: 712400c0e76e4b8abe9902decdaff520
+    metadataJson: ""
     behaviorUses: []
-  - metadataJson: ""
+  - id: f48729a2eeb047c89173dc712400cc6f
+    metadataJson: ""
     behaviorUses: []
   behaviorUseIds: []
   behaviorUses: []
