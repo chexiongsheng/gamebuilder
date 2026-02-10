@@ -852,7 +852,6 @@ public class BehaviorSystem : MonoBehaviour
     BeginBatchEdit("Merge");
     try
     {
-      exported.PerformUpgrades(expectedBrainIds);
       exported.AssertValid();
 
       if (exported.behaviors != null)
@@ -894,7 +893,6 @@ public class BehaviorSystem : MonoBehaviour
     BeginBatchEdit("ImportBrain");
     try
     {
-      exported.PerformUpgrades(new HashSet<string> { expectedBrainId });
       exported.AssertValid();
 
       Debug.Assert(exported.brains.Length == 1);

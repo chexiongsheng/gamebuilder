@@ -90,7 +90,7 @@ public class SceneActorLibrary : MonoBehaviour
   ActorPrefabImpl Deserialize(Sojo sojo)
   {
     SavedActorPrefab saved = JsonUtility.FromJson<SavedActorPrefab>(sojo.content);
-    saved.PerformUpgrades();
+    saved.AssertValid();
     Texture2D thumbnail = null;
     if (!saved.thumbnailJZB64.IsNullOrEmpty())
     {
@@ -177,7 +177,7 @@ public class SceneActorLibrary : MonoBehaviour
     {
       Debug.Assert(sojo.id.Contains(SojoIdPrefix));
       SavedActorPrefab saved = JsonUtility.FromJson<SavedActorPrefab>(sojo.content);
-      saved.PerformUpgrades();
+      saved.AssertValid();
       foreach (var brain in saved.brainDatabase.brains)
       {
         foreach (var use in brain.behaviorUses)

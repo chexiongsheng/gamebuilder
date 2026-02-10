@@ -40,8 +40,6 @@ public interface ActorPrefab
 [System.Serializable]
 public class SavedActorPrefab
 {
-  public static int FirstVersion = 1;
-  public static int FirstVersionWithHierarchies = 2;
   public static int CurrentVersion = 2;
 
   public int version;
@@ -60,34 +58,6 @@ public class SavedActorPrefab
 
   public string category;
   public string workshopId;
-
-  // LEGACY ONLY
-  [SerializeField] VoosActor.PersistedState actorData;
-
-  internal void PerformUpgrades()
-  {
-    // Kinda silly, but makes things consistent.
-    if (version < FirstVersion)
-    {
-      version = FirstVersion;
-    }
-
-    if (version < FirstVersionWithHierarchies)
-    {
-      actors = new VoosActor.PersistedState[1] { this.actorData };
-      version = FirstVersionWithHierarchies;
-    }
-
-    HashSet<string> usedBrainIds = new HashSet<string>();
-    foreach (var actor in actors)
-    {
-      usedBrainIds.Add(actor.brainName);
-    }
-
-    brainDatabase.PerformUpgrades(usedBrainIds);
-
-    AssertValid();
-  }
 
   public void AssertValid()
   {
@@ -370,7 +340,7 @@ public class PrefabLibrary : MonoBehaviour
         }
     );
     SavedActorPrefab actorPrefab = YamlSerializer.Deserialize<SavedActorPrefab>(bytes, options);
-    actorPrefab.PerformUpgrades();
+    actorPrefab.AssertValid();
 
     // Load thumbnail
     string thumbnailPng = GetActorThumbnailPath(uri);

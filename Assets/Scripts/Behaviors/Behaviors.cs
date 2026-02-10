@@ -397,15 +397,6 @@ namespace Behaviors
       return Util.Generate32CharGuid();
     }
 
-    [System.Serializable]
-    struct LegacyBehaviorUse
-    {
-      public string brainId;
-      public string behaviorUri;
-      public string metadataJson;
-      public PropertyAssignment[] propertyAssignments;
-    }
-
     // TODO should probably make these private in order to maintain acceleration structures.
     public Util.Table<Behavior> behaviors = new Util.Table<Behavior>();
     public Util.Table<Brain> brains = new Util.Table<Brain>();
@@ -413,200 +404,15 @@ namespace Behaviors
     [System.Serializable]
     public class Jsonable
     {
-      public static int FirstVersionWithBrains = 1;
-      public static int FirstVersionWithDefaultBehavior = 2;
-      // Before, it was OK for a use/actor to refer to a brain that was not
-      // actually in the "brains" table. This was because..we didn't store
-      // anything of value per-brain. But now we have metadata - store it!
-      public static int FirstVersionWithRequiredBrains = 3;
-      // Two brains never refer to the same use, so this was an unnecessary
-      // level of flexibility. It also added extra complexity, since making
-      // copies of a brain meant entirely new use IDs, leading to very
-      // error-prone code (like forgetting to update use IDs inside deck
-      // properties..). So, just forgo all of that and put use info directly in
-      // the brain itself. If two brains have the same use IDs, it's ok, since
-      // they're only meant to be locally unique. 
-      public static int FirstVersionWithoutUseTable = 4;
-      public static int FirstVersionWithoutIdArrays = 5;
       public static int CurrentVersionNumber = 5;
 
       public int version;
-      public string[] behaviorIds;
       public Behavior[] behaviors;
-      public string[] brainIds;
       public Brain[] brains;
-
-      // Legacy
-      [SerializeField] string[] behaviorUseIds;
-      [SerializeField] LegacyBehaviorUse[] behaviorUses;
-
-      public void PerformUpgrades(HashSet<string> brainIdsUsedByActors)
-      {
-        if (version < FirstVersionWithBrains)
-        {
-          Debug.Assert(version == FirstVersionWithBrains - 1);
-          version = FirstVersionWithBrains;
-
-          Debug.Assert(brainIds.Length == 0);
-          Debug.Assert(brains.Length == 0);
-
-          HashSet<string> brainIdsToAdd = new HashSet<string>();
-          foreach (LegacyBehaviorUse use in behaviorUses)
-          {
-            brainIdsToAdd.Add(use.brainId);
-          }
-
-          brainIds = new string[brainIdsToAdd.Count];
-          brains = new Brain[brainIdsToAdd.Count];
-          for (int i = 0; i < brains.Length; i++)
-          {
-            brains[i] = new Brain();
-          }
-          brainIdsToAdd.CopyTo(brainIds);
-        }
-
-        if (version < FirstVersionWithDefaultBehavior)
-        {
-          Debug.Assert(version == FirstVersionWithDefaultBehavior - 1);
-          version = FirstVersionWithDefaultBehavior;
-
-          // Add Default Behavior to every brain.
-
-          HashSet<string> brainIds = new HashSet<string>();
-          foreach (var use in behaviorUses)
-          {
-            brainIds.Add(use.brainId);
-          }
-
-          List<string> useIds = new List<string>();
-          useIds.AddRange(behaviorUseIds);
-          List<LegacyBehaviorUse> uses = new List<LegacyBehaviorUse>();
-          uses.AddRange(behaviorUses);
-
-          foreach (string brainId in brainIds)
-          {
-            useIds.Add(Behaviors.Database.NewUID());
-            uses.Add(new LegacyBehaviorUse { brainId = brainId, behaviorUri = "builtin:Default Behavior", propertyAssignments = new Behaviors.PropertyAssignment[0] });
-          }
-
-          behaviorUseIds = useIds.ToArray();
-          behaviorUses = uses.ToArray();
-        }
-
-        if (version < FirstVersionWithRequiredBrains)
-        {
-          HashSet<string> existingBrains = new HashSet<string>(brainIds);
-          HashSet<string> referencedBrainIds = new HashSet<string>(behaviorUses.Select(use => use.brainId));
-          List<string> brainIdsList = new List<string>(brainIds);
-          List<Brain> brainsList = new List<Brain>(brains);
-          // Add empty brain for every non-existant brain.
-          foreach (string brainId in referencedBrainIds.Except(existingBrains))
-          {
-            brainIdsList.Add(brainId);
-            brainsList.Add(new Brain());
-          }
-          brainIds = brainIdsList.ToArray();
-          brains = brainsList.ToArray();
-
-          // Upgrade done
-          version = FirstVersionWithRequiredBrains;
-        }
-
-        if (version < FirstVersionWithoutUseTable)
-        {
-          Debug.Assert(behaviorUses != null, "Before FirstVersionWithoutUseTable, should have non-null behavior uses");
-
-          // We now also require brains to exists, even if they're not
-          // referenced by a use (ie. only referenced by an actor).
-          if (brainIdsUsedByActors.Count > 0)
-          {
-            HashSet<string> brainIdsSet = new HashSet<string>(brainIds);
-            List<string> brainIdsList = new List<string>(brainIds);
-            List<Brain> brainsList = new List<Brain>(brains);
-            foreach (string brainId in brainIdsUsedByActors.Except(brainIdsSet))
-            {
-              brainIdsList.Add(brainId);
-              brainsList.Add(new Brain());
-            }
-            brainIds = brainIdsList.ToArray();
-            brains = brainsList.ToArray();
-          }
-
-          // Now convert everything to "uses-in-brains" form.
-          Dictionary<string, int> brainIdToIndex = new Dictionary<string, int>();
-          for (int i = 0; i < brainIds.Length; i++)
-          {
-            string brainId = brainIds[i];
-            Brain brain = brains[i];
-
-            Debug.Assert(behaviorUses != null);
-
-            List<int> useIndexes = new List<int>(
-              from useIndex in Enumerable.Range(0, behaviorUses.Length)
-              where behaviorUses[useIndex].brainId == brainId
-              select useIndex);
-
-            brain.behaviorUses = useIndexes.Select(index =>
-            {
-              LegacyBehaviorUse use = behaviorUses[index];
-              var newUse = new BehaviorUse
-              {
-                id = behaviorUseIds[index],
-                behaviorUri = use.behaviorUri,
-                metadataJson = use.metadataJson,
-                propertyAssignments = use.propertyAssignments.DeepClone()
-              };
-              return newUse;
-            }).ToArray();
-          }
-          this.behaviorUseIds = new string[0];
-          this.behaviorUses = new LegacyBehaviorUse[0];
-          // Upgrade done
-          version = FirstVersionWithoutUseTable;
-        }
-
-        if (version < FirstVersionWithoutIdArrays)
-        {
-          // Upgrade Behaviors
-          if (behaviorIds != null && behaviors != null && behaviorIds.Length == behaviors.Length)
-          {
-            for (int i = 0; i < behaviors.Length; i++)
-            {
-              if (behaviors[i].id.IsNullOrEmpty())
-              {
-                behaviors[i].id = behaviorIds[i];
-              }
-            }
-            behaviorIds = null;
-          }
-
-          // Upgrade Brains
-          if (brainIds != null && brains != null && brainIds.Length == brains.Length)
-          {
-            for (int i = 0; i < brains.Length; i++)
-            {
-              if (brains[i] != null && brains[i].id.IsNullOrEmpty())
-              {
-                brains[i].id = brainIds[i];
-              }
-            }
-            brainIds = null;
-          }
-          version = FirstVersionWithoutIdArrays;
-        }
-
-        AssertValid();
-      }
 
       internal void AssertValid()
       {
         Debug.Assert(version == CurrentVersionNumber, "BDB version wrong");
-        //Debug.Assert(behaviorIds.Length == behaviors.Length, "BDB behaviorIDs length wrong");
-        //Debug.Assert(brainIds.Length == brains.Length, "BDB brainIDs length wrong");
-
-        // Legacy arrays empty?
-        Debug.Assert(behaviorUseIds.Length == 0, "BDB use IDs not empty");
-        Debug.Assert(behaviorUses.Length == 0, "BDB uses not empty");
       }
     }
 
@@ -631,7 +437,6 @@ namespace Behaviors
 
     public void Load(Jsonable saved, bool removeUnusedBehaviors, HashSet<string> usedBrainIds)
     {
-      saved.PerformUpgrades(usedBrainIds);
       saved.AssertValid();
       behaviors.LoadJsonables(saved.behaviors.Select(b => b.id).ToArray(), saved.behaviors);
       brains.LoadJsonables(saved.brains.Select(b => b.id).ToArray(), saved.brains);

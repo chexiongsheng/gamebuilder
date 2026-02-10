@@ -81,18 +81,6 @@ public class DeprecatedScriptChecker : EditorWindow
                             brainMap[brain.id] = brain;
                         }
                     }
-
-                    // If no IDs found in brains, try to use the separate ID array (legacy support)
-                    if (brainMap.Count == 0 && saveGame.behaviorDatabase.brainIds != null)
-                    {
-                        for (int i = 0; i < saveGame.behaviorDatabase.brainIds.Length; i++)
-                        {
-                            if (i < saveGame.behaviorDatabase.brains.Length)
-                            {
-                                brainMap[saveGame.behaviorDatabase.brainIds[i]] = saveGame.behaviorDatabase.brains[i];
-                            }
-                        }
-                    }
                 }
 
                 if (saveGame.voosEngineState.actors != null)
