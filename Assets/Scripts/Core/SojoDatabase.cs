@@ -157,10 +157,10 @@ public class SojoDatabase
 public enum SojoType
 {
   // DO NOT CHANGE the names of these enum values. They are used in serialized data.
-  SoundEffect,
-  ParticleEffect,
-  Image,
-  ActorPrefab
+  SoundEffect, // content存放的是SoundEffectContent序列化后的JSON
+  ParticleEffect, // ParticleEffectContent序列化后的JSON
+  Image, //{}
+  ActorPrefab // SavedActorPrefab序列化后的JSON
 }
 
 public class Sojo
