@@ -1371,8 +1371,6 @@ behaviorDatabase:
         valueJson: "{\"value\":\"OTHER\"}"
       - propertyName: TargetOther
         valueJson: "{\"value\":\"4984649ab6ae4fd2926a7fe43b80b843\"}"
-  behaviorUseIds: []
-  behaviorUses: []
 stage:
   version: 4
   groundSize: 0

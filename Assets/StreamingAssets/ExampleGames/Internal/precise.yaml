@@ -3091,8 +3091,6 @@ behaviorDatabase:
   - id: f48729a2eeb047c89173dc712400cc6f
     metadataJson: ""
     behaviorUses: []
-  behaviorUseIds: []
-  behaviorUses: []
 stage:
   version: 3
   groundSize: 0

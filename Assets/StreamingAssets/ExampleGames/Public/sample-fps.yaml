@@ -17509,8 +17509,6 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: cameraDeck
         valueJson: "{\"value\":[]}"
-  behaviorUseIds: []
-  behaviorUses: []
 stage:
   version: 4
   groundSize: 0

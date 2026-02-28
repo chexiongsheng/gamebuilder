@@ -7521,8 +7521,6 @@ behaviorDatabase:
       behaviorUri: "builtin:Destroy Self Action Card"
       metadataJson: ""
       propertyAssignments: []
-  behaviorUseIds: []
-  behaviorUses: []
 stage:
   version: 3
   groundSize: 0

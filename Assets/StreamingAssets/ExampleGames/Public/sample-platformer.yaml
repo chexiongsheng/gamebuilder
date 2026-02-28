@@ -13617,8 +13617,6 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: moveDeck
         valueJson: "{\"value\":[]}"
-  behaviorUseIds: []
-  behaviorUses: []
 stage:
   version: 3
   groundSize: 0

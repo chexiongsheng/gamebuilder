@@ -12189,8 +12189,6 @@ behaviorDatabase:
       behaviorUri: "builtin:Action on Event Panel"
       metadataJson: "{\"version\":1,\"position\":{\"x\":1212.68994140625,\"y\":-70.0},\"customLabel\":\"\"}"
       propertyAssignments: []
-  behaviorUseIds: []
-  behaviorUses: []
 stage:
   version: 4
   groundSize: 0

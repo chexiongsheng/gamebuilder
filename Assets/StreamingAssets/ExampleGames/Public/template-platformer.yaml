@@ -9026,8 +9026,6 @@ behaviorDatabase:
       behaviorUri: "builtin:UseGrabbedItemActionCard"
       metadataJson: ""
       propertyAssignments: []
-  behaviorUseIds: []
-  behaviorUses: []
 stage:
   version: 3
   groundSize: 0

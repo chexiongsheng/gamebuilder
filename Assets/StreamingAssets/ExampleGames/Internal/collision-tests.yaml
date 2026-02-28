@@ -2096,8 +2096,6 @@ behaviorDatabase:
       propertyAssignments:
       - propertyName: Sound
         valueJson: "{\"value\":\"builtin:Explosion\"}"
-  behaviorUseIds: []
-  behaviorUses: []
 stage:
   version: 3
   groundSize: 0
