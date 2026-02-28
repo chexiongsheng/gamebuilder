@@ -7,9 +7,38 @@ using VYaml.Emitter;
 using VYaml.Parser;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System.Reflection;
+using System.Linq;
+
+/// <summary>
+/// 只序列化公有字段，不序列化属性（模拟 Unity JsonUtility 的行为），
+/// 避免 UnityEngine.Color.linear 等属性导致的自引用循环。
+/// </summary>
+public class FieldsOnlyContractResolver : DefaultContractResolver
+{
+    protected override List<MemberInfo> GetSerializableMembers(Type objectType)
+    {
+        // 只返回公有实例字段（与 JsonUtility 行为一致）
+        return objectType.GetFields(BindingFlags.Public | BindingFlags.Instance)
+            .Cast<MemberInfo>()
+            .ToList();
+    }
+}
 
 public class GameAssetConverter
 {
+    // 配置 Newtonsoft.Json 只序列化字段（与 Unity JsonUtility 行为一致），
+    // 避免 UnityEngine.Color.linear 等属性导致的自引用循环
+    private static readonly JsonSerializerSettings JsonSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new FieldsOnlyContractResolver(),
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+        Formatting = Formatting.Indented
+    };
+
+
     [MenuItem("Tools/Convert Json Game to Yaml")]
     public static void ConvertAllJsonGameToYaml()
     {
@@ -29,7 +58,7 @@ public class GameAssetConverter
         {
             //SaveLoadController.SaveGame saveGame = SaveLoadController.ReadSaveGame(file);
             string jsonContents = File.ReadAllText(file);
-            SaveLoadController.SaveGame saveGame = JsonUtility.FromJson<SaveLoadController.SaveGame>(jsonContents);
+            SaveLoadController.SaveGame saveGame = JsonConvert.DeserializeObject<SaveLoadController.SaveGame>(jsonContents, JsonSettings);
 
 
             //byte[] jsonBytes = Encoding.UTF8.GetBytes(File.ReadAllText(file));
@@ -42,8 +71,8 @@ public class GameAssetConverter
             SaveLoadController.SaveGame yamlGame = YamlSerializer.Deserialize<SaveLoadController.SaveGame>(File.ReadAllBytes(yamlPath), options);
 
             // 通过 JsonUtility 对比 saveGame 和 yamlGame 是否相等
-            string saveGameJson = JsonUtility.ToJson(saveGame, true);
-            string yamlGameJson = JsonUtility.ToJson(yamlGame, true);
+            string saveGameJson = JsonConvert.SerializeObject(saveGame, JsonSettings);
+            string yamlGameJson = JsonConvert.SerializeObject(yamlGame, JsonSettings);
             bool isEqual = saveGameJson == yamlGameJson;
             
             if (!isEqual)
@@ -93,7 +122,7 @@ public class GameAssetConverter
             try
             {
                 string jsonContents = File.ReadAllText(file);
-                SavedActorPrefab prefab = JsonUtility.FromJson<SavedActorPrefab>(jsonContents);
+                SavedActorPrefab prefab = JsonConvert.DeserializeObject<SavedActorPrefab>(jsonContents, JsonSettings);
 
                 // Perform upgrades using reflection since the method is internal
                 System.Reflection.MethodInfo upgradeMethod = typeof(SavedActorPrefab).GetMethod("PerformUpgrades", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
@@ -111,8 +140,8 @@ public class GameAssetConverter
                 // Verify
                 SavedActorPrefab yamlPrefab = YamlSerializer.Deserialize<SavedActorPrefab>(File.ReadAllBytes(yamlPath), options);
 
-                string json1 = JsonUtility.ToJson(prefab, true);
-                string json2 = JsonUtility.ToJson(yamlPrefab, true);
+                string json1 = JsonConvert.SerializeObject(prefab, JsonSettings);
+                string json2 = JsonConvert.SerializeObject(yamlPrefab, JsonSettings);
 
                 if (json1 != json2)
                 {
@@ -153,13 +182,13 @@ public class GameAssetConverter
                 SaveLoadController.SaveGame saveGame = YamlSerializer.Deserialize<SaveLoadController.SaveGame>(yamlBytes, options);
 
                 string jsonPath = Path.ChangeExtension(file, ".json");
-                string jsonContents = JsonUtility.ToJson(saveGame, true);
+                string jsonContents = JsonConvert.SerializeObject(saveGame, JsonSettings);
                 File.WriteAllText(jsonPath, jsonContents);
 
                 // 验证：从写入的 json 重新读取并对比
-                SaveLoadController.SaveGame jsonGame = JsonUtility.FromJson<SaveLoadController.SaveGame>(File.ReadAllText(jsonPath));
-                string json1 = JsonUtility.ToJson(saveGame, true);
-                string json2 = JsonUtility.ToJson(jsonGame, true);
+                SaveLoadController.SaveGame jsonGame = JsonConvert.DeserializeObject<SaveLoadController.SaveGame>(File.ReadAllText(jsonPath), JsonSettings);
+                string json1 = JsonConvert.SerializeObject(saveGame, JsonSettings);
+                string json2 = JsonConvert.SerializeObject(jsonGame, JsonSettings);
 
                 if (json1 != json2)
                 {
@@ -212,13 +241,13 @@ public class GameAssetConverter
 
                 // 将 .yaml 替换为 .json
                 string jsonPath = file.Substring(0, file.Length - 5) + ".json";
-                string jsonContents = JsonUtility.ToJson(prefab, true);
+                string jsonContents = JsonConvert.SerializeObject(prefab, JsonSettings);
                 File.WriteAllText(jsonPath, jsonContents);
 
                 // 验证：从写入的 json 重新读取并对比
-                SavedActorPrefab jsonPrefab = JsonUtility.FromJson<SavedActorPrefab>(File.ReadAllText(jsonPath));
-                string json1 = JsonUtility.ToJson(prefab, true);
-                string json2 = JsonUtility.ToJson(jsonPrefab, true);
+                SavedActorPrefab jsonPrefab = JsonConvert.DeserializeObject<SavedActorPrefab>(File.ReadAllText(jsonPath), JsonSettings);
+                string json1 = JsonConvert.SerializeObject(prefab, JsonSettings);
+                string json2 = JsonConvert.SerializeObject(jsonPrefab, JsonSettings);
 
                 if (json1 != json2)
                 {
