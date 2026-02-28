@@ -64,7 +64,8 @@ public class ImageSystem : MonoBehaviour
     }
     // We have to build a new SOJO.
     string id = SOJO_ID_PREFIX + url;
-    sojoSystem.PutSojo(new Sojo(id, id, SojoType.Image, "{}"));
+    sojoSystem.PutSojo(new Sojo(id, id, SojoType.Image, new object()));
+
     return id;
   }
 

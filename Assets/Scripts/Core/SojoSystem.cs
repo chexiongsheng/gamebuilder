@@ -17,6 +17,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 // Manages the database of SOJOs (small JSON Objects). Responsible for maintaining the
 // local database and for networking it, ensuring it's always synchronized among clients.
@@ -55,7 +56,7 @@ public class SojoSystem : MonoBehaviour
   public void PutSojo(Sojo sojo)
   {
     PutSojoLocal(sojo);
-    string json = JsonUtility.ToJson(sojo.Save());
+    string json = JsonConvert.SerializeObject(sojo.Save(), Sojo.JsonSettings);
     byte[] zippedJson = Util.GZipString(json);
     photonView.RPC("PutSojoRPC", PhotonTargets.AllViaServer, zippedJson);
   }
@@ -70,7 +71,7 @@ public class SojoSystem : MonoBehaviour
   void PutSojoRPC(byte[] zippedJson)
   {
     string sojoJson = Util.UnGZipString(zippedJson);
-    Sojo sojo = Sojo.Load(JsonUtility.FromJson<Sojo.Saved>(sojoJson));
+    Sojo sojo = Sojo.Load(JsonConvert.DeserializeObject<Sojo.Saved>(sojoJson, Sojo.JsonSettings));
     PutSojoLocal(sojo);
   }
 
