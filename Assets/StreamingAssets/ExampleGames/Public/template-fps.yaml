@@ -1,6 +1,6 @@
 version: 7
 voosEngineState:
-  gameTime: 28764.037100000001
+  gameTime: 28764.0371
   actors:
   - version: 6
     name: "builtin:LaserBolt"
@@ -11,15 +11,15 @@ voosEngineState:
     displayName: PlayerLaserBolt
     description: ""
     tint:
-      r: 0.97542351500000002
-      g: 0.95173490000000005
+      r: 0.975423515
+      g: 0.9517349
       b: 1
       a: 0
     transformParent: ""
     position:
-      x: 12.663973800000001
+      x: 12.6639738
       y: 0
-      z: 0.85455417600000005
+      z: 0.854554176
     rotation:
       eulerAngles:
         x: 0
@@ -48,9 +48,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: 12.663973800000001
+      x: 12.6639738
       y: 0
-      z: 0.85455417600000005
+      z: 0.854554176
     spawnRotation:
       eulerAngles:
         x: 0
@@ -66,7 +66,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -120,9 +120,9 @@ voosEngineState:
       a: 0.75
     transformParent: ""
     position:
-      x: 7.5045432999999999
+      x: 7.5045433
       y: 1
-      z: 1.2730712900000001
+      z: 1.27307129
     rotation:
       eulerAngles:
         x: 0
@@ -131,7 +131,7 @@ voosEngineState:
       x: 0
       y: 1
       z: 0
-      w: -4.3711388300000003E-08
+      w: -4.37113883E-08
     localScale:
       x: 1
       y: 1
@@ -152,9 +152,9 @@ voosEngineState:
     commentText: |
       Popup Text Goes Here
     spawnPosition:
-      x: 7.5045432999999999
+      x: 7.5045433
       y: 1
-      z: 1.2730712900000001
+      z: 1.27307129
     spawnRotation:
       eulerAngles:
         x: 0
@@ -163,14 +163,14 @@ voosEngineState:
       x: 0
       y: 1
       z: 0
-      w: -4.3711388300000003E-08
+      w: -4.37113883E-08
     preferOffstage: true
     isSolid: false
     enablePhysics: false
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -218,24 +218,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
-      x: -119.04199199999999
-      y: 2.6610450700000001
-      z: -171.18528699999999
+      x: -119.041992
+      y: 2.66104507
+      z: -171.185287
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -257,18 +257,18 @@ voosEngineState:
       Grab this blaster with <color=yellow>[E]</color>.
       Shoot with <color=green>Left Click</color>.
     spawnPosition:
-      x: -119.04199199999999
-      y: 2.6610450700000001
-      z: -171.18528699999999
+      x: -119.041992
+      y: 2.66104507
+      z: -171.185287
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -323,15 +323,15 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
-      x: -142.51568599999999
-      y: 2.5814666700000002
-      z: -152.36082500000001
+      x: -142.515686
+      y: 2.58146667
+      z: -152.360825
     rotation:
       eulerAngles:
         x: 0
@@ -340,7 +340,7 @@ voosEngineState:
       x: 0
       y: 1
       z: 0
-      w: -4.3711388300000003E-08
+      w: -4.37113883E-08
     localScale:
       x: 6
       y: 6
@@ -365,9 +365,9 @@ voosEngineState:
       interesting objects to
       build your FPS game -->
     spawnPosition:
-      x: -142.51568599999999
-      y: 2.5814666700000002
-      z: -152.36082500000001
+      x: -142.515686
+      y: 2.58146667
+      z: -152.360825
     spawnRotation:
       eulerAngles:
         x: 0
@@ -376,7 +376,7 @@ voosEngineState:
       x: 0
       y: 1
       z: 0
-      w: -4.3711388300000003E-08
+      w: -4.37113883E-08
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -432,27 +432,27 @@ voosEngineState:
     description: ""
     tint:
       r: 1
-      g: 0.65757971999999998
-      b: 0.042176783099999997
+      g: 0.65757972
+      b: 0.0421767831
       a: 0
     transformParent: ""
     position:
       x: -122.283287
-      y: 0.20001363799999999
-      z: -166.56559799999999
+      y: 0.200013638
+      z: -166.565598
     rotation:
       eulerAngles:
-        x: -0.00029770933900000001
+        x: -0.000297709339
         y: 357.344086
-        z: -0.00023146622700000001
-      x: -2.5504941699999998E-06
-      y: -0.023175140800000001
+        z: -0.000231466227
+      x: -2.55049417E-06
+      y: -0.0231751408
       z: -2.07959056E-06
-      w: 0.99973148099999998
+      w: 0.999731481
     localScale:
-      x: 1.0000154999999999
-      y: 0.99999982099999996
-      z: 1.0000165700000001
+      x: 1.0000155
+      y: 0.999999821
+      z: 1.00001657
     renderableOffset:
       x: 0
       y: 0
@@ -470,23 +470,23 @@ voosEngineState:
     spawnPosition:
       x: -122.283287
       y: 0.200018317
-      z: -166.56559799999999
+      z: -166.565598
     spawnRotation:
       eulerAngles:
-        x: 2.5615845500000001E-05
-        y: 357.34402499999999
-        z: -0.00017891898499999999
-      x: 2.5966593899999998E-07
-      y: -0.023175638200000001
+        x: 2.56158455E-05
+        y: 357.344025
+        z: -0.000178918985
+      x: 2.59665939E-07
+      y: -0.0231756382
       z: -1.55576276E-06
-      w: 0.99973148099999998
+      w: 0.999731481
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -536,17 +536,17 @@ voosEngineState:
     tint:
       r: 0.328139603
       g: 1
-      b: 0.040507495400000003
+      b: 0.0405074954
       a: 0
     transformParent: ""
     position:
       x: -122.994736
       y: 0.233063981
-      z: -182.94203200000001
+      z: -182.942032
     rotation:
       eulerAngles:
-        x: 1.8045331700000001E-05
-        y: 0.0011550715399999999
+        x: 1.80453317E-05
+        y: 0.00115507154
         z: -0.00104265625
       x: 1.57383511E-07
       y: 1.00799025E-05
@@ -555,7 +555,7 @@ voosEngineState:
     localScale:
       x: 1.16531765
       y: 1.16531253
-      z: 1.1653182500000001
+      z: 1.16531825
     renderableOffset:
       x: 0
       y: 0
@@ -573,15 +573,15 @@ voosEngineState:
     spawnPosition:
       x: -122.994736
       y: 0.233065143
-      z: -182.94203200000001
+      z: -182.942032
     spawnRotation:
       eulerAngles:
-        x: 9.8322314399999997E-05
-        y: 0.00075921934300000004
+        x: 9.83223144E-05
+        y: 0.000759219343
         z: -0.00103384024
-      x: 8.5796426699999996E-07
-      y: 6.6254465300000001E-06
-      z: -9.0219637099999992E-06
+      x: 8.57964267E-07
+      y: 6.62544653E-06
+      z: -9.02196371E-06
       w: 1
     preferOffstage: false
     isSolid: true
@@ -589,7 +589,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -637,24 +637,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
-      x: -119.22172500000001
+      x: -119.221725
       y: 2.65721512
-      z: -183.75086999999999
+      z: -183.75087
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -677,18 +677,18 @@ voosEngineState:
       This one fires two
       lasers at once! Try it out.
     spawnPosition:
-      x: -119.22172500000001
+      x: -119.221725
       y: 2.65721512
-      z: -183.75086999999999
+      z: -183.75087
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -746,13 +746,13 @@ voosEngineState:
     tint:
       r: 1
       g: 0.231393814
-      b: 0.086550891399999996
+      b: 0.0865508914
       a: 0
     transformParent: ""
     position:
-      x: -104.05817399999999
+      x: -104.058174
       y: 0
-      z: -159.64418000000001
+      z: -159.64418
     rotation:
       eulerAngles:
         x: 0
@@ -781,9 +781,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -104.05817399999999
+      x: -104.058174
       y: 0
-      z: -159.64418000000001
+      z: -159.64418
     spawnRotation:
       eulerAngles:
         x: 0
@@ -799,7 +799,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -849,22 +849,22 @@ voosEngineState:
     tint:
       r: 1
       g: 0.546064734
-      b: 0.21556615800000001
+      b: 0.215566158
       a: 1
     transformParent: ""
     position:
-      x: -105.45193500000001
-      y: 0.29924139399999999
+      x: -105.451935
+      y: 0.299241394
       z: -158.623413
     rotation:
       eulerAngles:
-        x: 85.914283800000007
-        y: 169.52371199999999
-        z: 179.99804700000001
-      x: 0.72880887999999999
-      y: -0.062200922499999999
-      z: 0.066804312199999993
-      w: 0.67860591400000003
+        x: 85.9142838
+        y: 169.523712
+        z: 179.998047
+      x: 0.72880888
+      y: -0.0622009225
+      z: 0.0668043122
+      w: 0.678605914
     localScale:
       x: 1
       y: 1
@@ -884,25 +884,25 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -105.45193500000001
-      y: 0.29958236199999999
+      x: -105.451935
+      y: 0.299582362
       z: -158.623413
     spawnRotation:
       eulerAngles:
-        x: 85.914428700000002
-        y: 169.52529899999999
+        x: 85.9144287
+        y: 169.525299
         z: 179.999619
       x: 0.728807867
-      y: -0.062201783099999998
-      z: 0.066803589499999996
-      w: 0.67860692700000003
+      y: -0.0622017831
+      z: 0.0668035895
+      w: 0.678606927
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -951,22 +951,22 @@ voosEngineState:
     description: ""
     tint:
       r: 1
-      g: 0.64304012099999996
-      b: 0.48348802299999999
+      g: 0.643040121
+      b: 0.483488023
       a: 1
     transformParent: ""
     position:
       x: -102.676292
       y: 0.0400008559
-      z: -161.08691400000001
+      z: -161.086914
     rotation:
       eulerAngles:
-        x: 2.8234275300000001E-05
-        y: 353.70379600000001
-        z: 8.4359315199999995E-05
+        x: 2.82342753E-05
+        y: 353.703796
+        z: 8.43593152E-05
       x: 2.05590226E-07
-      y: -0.054917007699999999
-      z: 7.4859400499999998E-07
+      y: -0.0549170077
+      z: 7.48594005E-07
       w: 0.99849093
     localScale:
       x: 1
@@ -988,16 +988,16 @@ voosEngineState:
     commentText: ""
     spawnPosition:
       x: -102.676292
-      y: 0.040020227399999997
-      z: -161.08691400000001
+      y: 0.0400202274
+      z: -161.086914
     spawnRotation:
       eulerAngles:
-        x: 2.0428578899999999E-06
-        y: 353.70379600000001
-        z: 1.1086926899999999E-05
+        x: 2.04285789E-06
+        y: 353.703796
+        z: 1.10869269E-05
       x: 1.24870834E-08
-      y: -0.054917003999999998
-      z: 9.7584703000000005E-08
+      y: -0.054917004
+      z: 9.7584703E-08
       w: 0.99849093
     preferOffstage: false
     isSolid: true
@@ -1005,7 +1005,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -1060,17 +1060,17 @@ voosEngineState:
     transformParent: ""
     position:
       x: -102.701363
-      y: 0.0010625719999999999
+      y: 0.001062572
       z: -159.297302
     rotation:
       eulerAngles:
-        x: -2.5634592499999999E-06
-        y: 354.11056500000001
-        z: -8.6357183999999997E-05
-      x: 1.6373867599999999E-08
-      y: -0.051372464700000002
-      z: -7.5376271999999996E-07
-      w: 0.99867963800000004
+        x: -2.56345925E-06
+        y: 354.110565
+        z: -8.6357184E-05
+      x: 1.63738676E-08
+      y: -0.0513724647
+      z: -7.5376272E-07
+      w: 0.998679638
     localScale:
       x: 1
       y: 1
@@ -1095,20 +1095,20 @@ voosEngineState:
       z: -159.297302
     spawnRotation:
       eulerAngles:
-        x: 9.8179943999999999E-06
-        y: 354.11056500000001
+        x: 9.8179944E-06
+        y: 354.110565
         z: -1.13675214E-05
-      x: 9.0661188800000001E-08
+      x: 9.06611888E-08
       y: -0.0513724536
-      z: -9.4667861100000005E-08
-      w: 0.99867963800000004
+      z: -9.46678611E-08
+      w: 0.998679638
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -1162,17 +1162,17 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -105.61782100000001
+      x: -105.617821
       y: 0.0010471344
-      z: -156.94975299999999
+      z: -156.949753
     rotation:
       eulerAngles:
-        x: -5.6027383799999996E-06
-        y: -0.00020716617299999999
-        z: -5.7696594000000003E-05
-      x: -4.8892207599999999E-08
+        x: -5.60273838E-06
+        y: -0.000207166173
+        z: -5.7696594E-05
+      x: -4.88922076E-08
       y: -1.80786594E-06
-      z: -5.0349785899999999E-07
+      z: -5.03497859E-07
       w: 1
     localScale:
       x: 1
@@ -1193,17 +1193,17 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -105.61782100000001
-      y: 0.0010477900500000001
-      z: -156.94975299999999
+      x: -105.617821
+      y: 0.00104779005
+      z: -156.949753
     spawnRotation:
       eulerAngles:
-        x: -3.8424054800000002E-06
-        y: -0.00020735982999999999
-        z: -1.8877677600000001E-05
-      x: -3.3531012599999998E-08
-      y: -1.8095558999999999E-06
-      z: -1.6473886400000001E-07
+        x: -3.84240548E-06
+        y: -0.00020735983
+        z: -1.88776776E-05
+      x: -3.35310126E-08
+      y: -1.8095559E-06
+      z: -1.64738864E-07
       w: 1
     preferOffstage: false
     isSolid: true
@@ -1211,7 +1211,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -1266,17 +1266,17 @@ voosEngineState:
     transformParent: ""
     position:
       x: -105.226952
-      y: 0.0075275897999999997
+      y: 0.0075275898
       z: -158.871185
     rotation:
       eulerAngles:
-        x: 0.00061845150800000004
-        y: 335.80212399999999
-        z: -8.8621091000000006E-06
-      x: 5.2933337399999998E-06
-      y: -0.20960044899999999
-      z: 1.0555963899999999E-06
-      w: 0.97778719700000005
+        x: 0.000618451508
+        y: 335.802124
+        z: -8.8621091E-06
+      x: 5.29333374E-06
+      y: -0.209600449
+      z: 1.05559639E-06
+      w: 0.977787197
     localScale:
       x: 1
       y: 1
@@ -1297,16 +1297,16 @@ voosEngineState:
     commentText: ""
     spawnPosition:
       x: -105.226952
-      y: 0.0075085759199999998
+      y: 0.00750857592
       z: -158.871185
     spawnRotation:
       eulerAngles:
-        x: 0.00062070408600000001
-        y: 335.80206299999998
-        z: -4.8213529199999998E-05
-      x: 5.3845324100000003E-06
-      y: -0.20960088099999999
-      z: 7.2394112699999997E-07
+        x: 0.000620704086
+        y: 335.802063
+        z: -4.82135292E-05
+      x: 5.38453241E-06
+      y: -0.209600881
+      z: 7.23941127E-07
       w: 0.977787077
     preferOffstage: false
     isSolid: true
@@ -1314,7 +1314,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -1362,24 +1362,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
       x: -101.773529
-      y: 0.48720577399999998
-      z: -166.60209699999999
+      y: 0.487205774
+      z: -166.602097
     rotation:
       eulerAngles:
-        x: 311.52484099999998
-        y: 269.99975599999999
-        z: 0.00019575333900000001
-      x: 0.29028284500000001
-      y: 0.64477700000000004
-      z: 0.29028198100000002
-      w: -0.64477503300000005
+        x: 311.524841
+        y: 269.999756
+        z: 0.000195753339
+      x: 0.290282845
+      y: 0.644777
+      z: 0.290281981
+      w: -0.644775033
     localScale:
       x: 6
       y: 6
@@ -1400,16 +1400,16 @@ voosEngineState:
     commentText: "Don't shoot the red barrel!"
     spawnPosition:
       x: -102.088142
-      y: 0.58819854299999996
+      y: 0.588198543
       z: -166.602081
     spawnRotation:
       eulerAngles:
-        x: 344.10833700000001
-        y: 270.00006100000002
-        z: -0.00041011761600000002
+        x: 344.108337
+        y: 270.000061
+        z: -0.000410117616
       x: 0.0977457464
-      y: 0.70031797900000003
-      z: 0.097750648900000001
+      y: 0.700317979
+      z: 0.0977506489
       w: -0.700318098
     preferOffstage: false
     isSolid: true
@@ -1418,7 +1418,7 @@ voosEngineState:
     bounciness: 0
     drag: 0
     angularDrag: 0
-    mass: 0.0099999997799999994
+    mass: 0.00999999978
     freezeRotations: false
     freezeX: false
     freezeY: false
@@ -1472,17 +1472,17 @@ voosEngineState:
     transformParent: ""
     position:
       x: -101.128151
-      y: 5.7220458999999997E-06
-      z: -178.70417800000001
+      y: 5.7220459E-06
+      z: -178.704178
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 1
       y: 1
@@ -1503,24 +1503,24 @@ voosEngineState:
     commentText: ""
     spawnPosition:
       x: -101.128151
-      y: 5.7220458999999997E-06
-      z: -178.70417800000001
+      y: 5.7220459E-06
+      z: -178.704178
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: true
     enablePhysics: false
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -1568,24 +1568,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
-      x: -101.52731300000001
-      y: 2.1333293900000001
-      z: -185.31317100000001
+      x: -101.527313
+      y: 2.13332939
+      z: -185.313171
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -1607,18 +1607,18 @@ voosEngineState:
       Here's a simple door.
       <color=red>CAUTION:</color> Enemy inside!
     spawnPosition:
-      x: -101.52731300000001
-      y: 2.1333293900000001
-      z: -185.31317100000001
+      x: -101.527313
+      y: 2.13332939
+      z: -185.313171
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -1673,8 +1673,8 @@ voosEngineState:
     displayName: EnemyLaser
     description: ""
     tint:
-      r: 0.97542351500000002
-      g: 0.95173490000000005
+      r: 0.975423515
+      g: 0.9517349
       b: 1
       a: 0
     transformParent: ""
@@ -1728,7 +1728,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -1783,18 +1783,18 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -91.461013800000003
-      y: 0.0032376050899999998
+      x: -91.4610138
+      y: 0.00323760509
       z: -180.501678
     rotation:
       eulerAngles:
         x: 0
-        y: 285.61517300000003
+        y: 285.615173
         z: 0
       x: 0
-      y: -0.60449373699999998
+      y: -0.604493737
       z: 0
-      w: 0.79660987900000002
+      w: 0.796609879
     localScale:
       x: 1
       y: 1
@@ -1814,25 +1814,25 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -91.461013800000003
+      x: -91.4610138
       y: 0
       z: -180.501678
     spawnRotation:
       eulerAngles:
         x: 0
-        y: 285.61517300000003
+        y: 285.615173
         z: 0
       x: 0
-      y: -0.60449373699999998
+      y: -0.604493737
       z: 0
-      w: 0.79660987900000002
+      w: 0.796609879
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -1887,7 +1887,7 @@ voosEngineState:
     transformParent: ""
     position:
       x: -87.8405609
-      y: 0.13729476900000001
+      y: 0.137294769
       z: -156.250687
     rotation:
       eulerAngles:
@@ -1895,9 +1895,9 @@ voosEngineState:
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 1
       y: 1
@@ -1918,7 +1918,7 @@ voosEngineState:
     commentText: ""
     spawnPosition:
       x: -87.8405609
-      y: 0.13729476900000001
+      y: 0.137294769
       z: -156.250687
     spawnRotation:
       eulerAngles:
@@ -1926,16 +1926,16 @@ voosEngineState:
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: true
     enablePhysics: false
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -1989,18 +1989,18 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -88.960411100000002
-      y: 0.74051761599999999
-      z: -160.49731399999999
+      x: -88.9604111
+      y: 0.740517616
+      z: -160.497314
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 1.50116348
       y: 1.50116348
@@ -2020,25 +2020,25 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -88.960411100000002
-      y: 0.74051761599999999
-      z: -160.49731399999999
+      x: -88.9604111
+      y: 0.740517616
+      z: -160.497314
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: true
     enablePhysics: false
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -2086,24 +2086,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
-      x: -88.880012500000007
+      x: -88.8800125
       y: 1.44779301
-      z: -164.19845599999999
+      z: -164.198456
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -2125,18 +2125,18 @@ voosEngineState:
       Press button
       to open door
     spawnPosition:
-      x: -88.880012500000007
+      x: -88.8800125
       y: 1.44779301
-      z: -164.19845599999999
+      z: -164.198456
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -2191,24 +2191,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
       x: -101.444016
-      y: 1.6534719499999999
-      z: -194.94409200000001
+      y: 1.65347195
+      z: -194.944092
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -2229,17 +2229,17 @@ voosEngineState:
     commentText: Health pickup
     spawnPosition:
       x: -101.444016
-      y: 1.6534719499999999
-      z: -194.94409200000001
+      y: 1.65347195
+      z: -194.944092
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -2294,15 +2294,15 @@ voosEngineState:
     displayName: StackingBlock_1x1x1_Stone
     description: ""
     tint:
-      r: 0.96400839100000002
-      g: 0.23778264199999999
+      r: 0.964008391
+      g: 0.237782642
       b: 0.19484441
       a: 0
     transformParent: ""
     position:
-      x: -102.64672899999999
+      x: -102.646729
       y: 0
-      z: -192.99169900000001
+      z: -192.991699
     rotation:
       eulerAngles:
         x: 0
@@ -2331,9 +2331,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -102.64672899999999
+      x: -102.646729
       y: 0
-      z: -192.99169900000001
+      z: -192.991699
     spawnRotation:
       eulerAngles:
         x: 0
@@ -2349,7 +2349,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -2397,15 +2397,15 @@ voosEngineState:
     displayName: StackingBlock_1x1x1_Stone-1
     description: ""
     tint:
-      r: 0.96400839100000002
-      g: 0.23778264199999999
+      r: 0.964008391
+      g: 0.237782642
       b: 0.19484441
       a: 0
     transformParent: ""
     position:
-      x: -102.57952899999999
+      x: -102.579529
       y: 0
-      z: -195.50067100000001
+      z: -195.500671
     rotation:
       eulerAngles:
         x: 0
@@ -2416,9 +2416,9 @@ voosEngineState:
       z: 0
       w: 1
     localScale:
-      x: 0.78564047800000003
-      y: 0.78564047800000003
-      z: 0.78564047800000003
+      x: 0.785640478
+      y: 0.785640478
+      z: 0.785640478
     renderableOffset:
       x: 0
       y: 0
@@ -2434,9 +2434,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -102.57952899999999
+      x: -102.579529
       y: 0
-      z: -195.50067100000001
+      z: -195.500671
     spawnRotation:
       eulerAngles:
         x: 0
@@ -2452,7 +2452,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -2500,24 +2500,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
-      x: -88.943252599999994
+      x: -88.9432526
       y: 1.31572723
-      z: -194.98846399999999
+      z: -194.988464
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -2539,18 +2539,18 @@ voosEngineState:
       Checkpoint
       (respawn here on death)
     spawnPosition:
-      x: -88.943252599999994
+      x: -88.9432526
       y: 1.31572723
-      z: -194.98846399999999
+      z: -194.988464
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -2612,7 +2612,7 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -89.668365499999993
+      x: -89.6683655
       y: 0
       z: -194.575592
     rotation:
@@ -2643,7 +2643,7 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -89.668365499999993
+      x: -89.6683655
       y: 0
       z: -194.575592
     spawnRotation:
@@ -2661,7 +2661,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -2716,21 +2716,21 @@ voosEngineState:
     transformParent: ""
     position:
       x: -100.757874
-      y: 3.3094940199999998
-      z: -211.33580000000001
+      y: 3.30949402
+      z: -211.3358
     rotation:
       eulerAngles:
         x: 0
-        y: 89.786857600000005
+        y: 89.7868576
         z: 90
-      x: 0.49906909500000002
-      y: 0.49906909500000002
-      z: 0.50092917699999995
-      w: 0.50092917699999995
+      x: 0.499069095
+      y: 0.499069095
+      z: 0.500929177
+      w: 0.500929177
     localScale:
-      x: 1.6988716100000001
-      y: 1.6988716100000001
-      z: 1.6988716100000001
+      x: 1.69887161
+      y: 1.69887161
+      z: 1.69887161
     renderableOffset:
       x: 0
       y: 0
@@ -2747,24 +2747,24 @@ voosEngineState:
     commentText: ""
     spawnPosition:
       x: -100.757874
-      y: 3.3094940199999998
-      z: -211.33580000000001
+      y: 3.30949402
+      z: -211.3358
     spawnRotation:
       eulerAngles:
         x: 0
-        y: 89.786857600000005
+        y: 89.7868576
         z: 90
-      x: 0.49906909500000002
-      y: 0.49906909500000002
-      z: 0.50092917699999995
-      w: 0.50092917699999995
+      x: 0.499069095
+      y: 0.499069095
+      z: 0.500929177
+      w: 0.500929177
     preferOffstage: false
     isSolid: true
     enablePhysics: false
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -2812,14 +2812,14 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
       x: -101.25
-      y: 4.3634071399999996
+      y: 4.36340714
       z: -209.130493
     rotation:
       eulerAngles:
@@ -2827,9 +2827,9 @@ voosEngineState:
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -2850,7 +2850,7 @@ voosEngineState:
     commentText: Another door style
     spawnPosition:
       x: -101.25
-      y: 4.3634071399999996
+      y: 4.36340714
       z: -209.130493
     spawnRotation:
       eulerAngles:
@@ -2858,9 +2858,9 @@ voosEngineState:
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -2915,24 +2915,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
       x: -101.346802
-      y: 1.6563596700000001
-      z: -214.47827100000001
+      y: 1.65635967
+      z: -214.478271
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -2955,17 +2955,17 @@ voosEngineState:
       inside!
     spawnPosition:
       x: -101.346802
-      y: 1.6563596700000001
-      z: -214.47827100000001
+      y: 1.65635967
+      z: -214.478271
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -3021,24 +3021,24 @@ voosEngineState:
     displayName: Slime-1
     description: ""
     tint:
-      r: 0.59215688700000002
+      r: 0.592156887
       g: 1
-      b: 0.29019609099999999
+      b: 0.290196091
       a: 1
     transformParent: ""
     position:
-      x: -93.328300499999997
-      y: 0.066641658500000006
-      z: -206.51301599999999
+      x: -93.3283005
+      y: 0.0666416585
+      z: -206.513016
     rotation:
       eulerAngles:
         x: 0.0145917693
-        y: 254.77383399999999
-        z: 0.047513898499999999
-      x: -0.00025213274099999998
-      y: -0.79455328000000003
-      z: 0.00035294142399999999
-      w: 0.60719430399999996
+        y: 254.773834
+        z: 0.0475138985
+      x: -0.000252132741
+      y: -0.79455328
+      z: 0.000352941424
+      w: 0.607194304
     localScale:
       x: 1
       y: 1
@@ -3058,25 +3058,25 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -93.328247099999999
+      x: -93.3282471
       y: 0.0351748765
-      z: -206.51315299999999
+      z: -206.513153
     spawnRotation:
       eulerAngles:
         x: 0
-        y: 254.55545000000001
+        y: 254.55545
         z: 0
       x: 0
-      y: -0.79570907400000002
+      y: -0.795709074
       z: 0
-      w: 0.60567903499999998
+      w: 0.605679035
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -3089,9 +3089,9 @@ voosEngineState:
     debugString: ""
     cloneParent: 8270403b84cc4030b000005d4368b4d0
     velocity:
-      x: 0.0091512044900000002
-      y: 0.0028018653400000001
-      z: 0.0093593318000000005
+      x: 0.00915120449
+      y: 0.00280186534
+      z: 0.0093593318
     angularVelocity:
       x: 0
       y: 0
@@ -3125,24 +3125,24 @@ voosEngineState:
     displayName: Slime
     description: ""
     tint:
-      r: 0.59215688700000002
+      r: 0.592156887
       g: 1
-      b: 0.29019609099999999
+      b: 0.290196091
       a: 1
     transformParent: ""
     position:
-      x: -89.596298200000007
-      y: 0.066524535400000001
-      z: -210.97769199999999
+      x: -89.5962982
+      y: 0.0665245354
+      z: -210.977692
     rotation:
       eulerAngles:
-        x: 0.013810924299999999
-        y: 269.90924100000001
-        z: 0.067072764000000007
-      x: -0.00032905655100000001
-      y: -0.70766663600000002
-      z: 0.00049884611500000003
-      w: 0.70654630699999998
+        x: 0.0138109243
+        y: 269.909241
+        z: 0.067072764
+      x: -0.000329056551
+      y: -0.707666636
+      z: 0.000498846115
+      w: 0.706546307
     localScale:
       x: 1
       y: 1
@@ -3162,25 +3162,25 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -89.597259500000007
-      y: 0.031159192299999999
-      z: -210.97753900000001
+      x: -89.5972595
+      y: 0.0311591923
+      z: -210.977539
     spawnRotation:
       eulerAngles:
         x: 0
-        y: 269.60974099999999
+        y: 269.609741
         z: 0
       x: 0
-      y: -0.70951098199999996
+      y: -0.709510982
       z: 0
-      w: 0.70469444999999997
+      w: 0.70469445
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -3193,9 +3193,9 @@ voosEngineState:
     debugString: ""
     cloneParent: ""
     velocity:
-      x: 0.0087716104499999999
-      y: 0.0028152018800000002
-      z: 0.0066942004499999999
+      x: 0.00877161045
+      y: 0.00281520188
+      z: 0.00669420045
     angularVelocity:
       x: 0
       y: 0
@@ -3229,24 +3229,24 @@ voosEngineState:
     displayName: Slime-3
     description: ""
     tint:
-      r: 0.59215688700000002
+      r: 0.592156887
       g: 1
-      b: 0.29019609099999999
+      b: 0.290196091
       a: 1
     transformParent: ""
     position:
-      x: -94.624542199999993
-      y: 0.066782176499999998
-      z: -208.47839400000001
+      x: -94.6245422
+      y: 0.0667821765
+      z: -208.478394
     rotation:
       eulerAngles:
         x: 0.0260577463
-        y: 257.15014600000001
-        z: 0.022161362699999999
-      x: -9.4033293899999995E-06
-      y: -0.78179180599999998
-      z: 0.00029836589199999999
-      w: 0.62353944800000005
+        y: 257.150146
+        z: 0.0221613627
+      x: -9.40332939E-06
+      y: -0.781791806
+      z: 0.000298365892
+      w: 0.623539448
     localScale:
       x: 1
       y: 1
@@ -3266,8 +3266,8 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -94.625106799999998
-      y: 0.034913182299999998
+      x: -94.6251068
+      y: 0.0349131823
       z: -208.478622
     spawnRotation:
       eulerAngles:
@@ -3275,7 +3275,7 @@ voosEngineState:
         y: 257.051941
         z: 0
       x: 0
-      y: -0.78232586400000004
+      y: -0.782325864
       z: 0
       w: 0.622869432
     preferOffstage: false
@@ -3284,7 +3284,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -3297,9 +3297,9 @@ voosEngineState:
     debugString: ""
     cloneParent: 8270403b84cc4030b000005d4368b4d0
     velocity:
-      x: 0.0084808105599999996
+      x: 0.00848081056
       y: 0.00294950604
-      z: 0.0091544948500000001
+      z: 0.00915449485
     angularVelocity:
       x: 0
       y: 0
@@ -3333,24 +3333,24 @@ voosEngineState:
     displayName: Slime-2
     description: ""
     tint:
-      r: 0.59215688700000002
+      r: 0.592156887
       g: 1
-      b: 0.29019609099999999
+      b: 0.290196091
       a: 1
     transformParent: ""
     position:
-      x: -94.039283800000007
+      x: -94.0392838
       y: 0.0666184425
-      z: -212.70199600000001
+      z: -212.701996
     rotation:
       eulerAngles:
-        x: 0.029099755000000001
-        y: 302.54614299999997
-        z: 0.050238154799999997
+        x: 0.029099755
+        y: 302.546143
+        z: 0.0502381548
       x: 1.1972239E-05
-      y: -0.48063570300000003
-      z: 0.00050650537000000002
-      w: 0.87692022300000005
+      y: -0.480635703
+      z: 0.00050650537
+      w: 0.876920223
     localScale:
       x: 1
       y: 1
@@ -3370,25 +3370,25 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -94.039619400000007
-      y: 0.053233802300000001
-      z: -212.70176699999999
+      x: -94.0396194
+      y: 0.0532338023
+      z: -212.701767
     spawnRotation:
       eulerAngles:
         x: 5.54553604
-        y: 302.31225599999999
-        z: 2.6349027199999999
-      x: 0.031283468000000002
-      y: -0.48270669599999999
-      z: 0.043446976700000001
-      w: 0.87414413700000004
+        y: 302.312256
+        z: 2.63490272
+      x: 0.031283468
+      y: -0.482706696
+      z: 0.0434469767
+      w: 0.874144137
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -3401,8 +3401,8 @@ voosEngineState:
     debugString: ""
     cloneParent: 8270403b84cc4030b000005d4368b4d0
     velocity:
-      x: 0.0073535339900000002
-      y: 0.0022876709699999999
+      x: 0.00735353399
+      y: 0.00228767097
       z: -0.00306169991
     angularVelocity:
       x: 0
@@ -3437,24 +3437,24 @@ voosEngineState:
     displayName: Slime-4
     description: ""
     tint:
-      r: 0.59215688700000002
+      r: 0.592156887
       g: 1
-      b: 0.29019609099999999
+      b: 0.290196091
       a: 1
     transformParent: ""
     position:
-      x: -95.722030599999997
-      y: 0.066492617099999998
+      x: -95.7220306
+      y: 0.0664926171
       z: -205.80838
     rotation:
       eulerAngles:
-        x: 0.010576227699999999
-        y: 251.32309000000001
-        z: 0.072832472600000003
-      x: -0.00046258786499999999
-      y: -0.81247490600000005
-      z: 0.00044552981899999999
-      w: 0.58299583200000005
+        x: 0.0105762277
+        y: 251.32309
+        z: 0.0728324726
+      x: -0.000462587865
+      y: -0.812474906
+      z: 0.000445529819
+      w: 0.582995832
     localScale:
       x: 1
       y: 1
@@ -3475,24 +3475,24 @@ voosEngineState:
     commentText: ""
     spawnPosition:
       x: -95.7221069
-      y: 0.035247802699999997
-      z: -205.80892900000001
+      y: 0.0352478027
+      z: -205.808929
     spawnRotation:
       eulerAngles:
         x: 0
-        y: 250.99252300000001
+        y: 250.992523
         z: 0
       x: 0
-      y: -0.81415337300000001
+      y: -0.814153373
       z: 0
-      w: 0.58064991200000005
+      w: 0.580649912
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -3506,8 +3506,8 @@ voosEngineState:
     cloneParent: 8270403b84cc4030b000005d4368b4d0
     velocity:
       x: 0.00177971274
-      y: 0.0023908615099999999
-      z: 0.0059611434099999996
+      y: 0.00239086151
+      z: 0.00596114341
     angularVelocity:
       x: 0
       y: 0
@@ -3540,24 +3540,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
       x: -118.898529
-      y: 0.99999809299999998
-      z: -204.85957300000001
+      y: 0.999998093
+      z: -204.859573
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -3578,17 +3578,17 @@ voosEngineState:
     commentText: Shootable barrier
     spawnPosition:
       x: -118.898529
-      y: 0.99999809299999998
-      z: -204.85957300000001
+      y: 0.999998093
+      z: -204.859573
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -3652,16 +3652,16 @@ voosEngineState:
     position:
       x: -117.810486
       y: 0
-      z: -196.07103000000001
+      z: -196.07103
     rotation:
       eulerAngles:
         x: 0
         y: 90
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: 0.70710682899999999
+      w: 0.707106829
     localScale:
       x: 1.99338555
       y: 1.99338555
@@ -3683,23 +3683,23 @@ voosEngineState:
     spawnPosition:
       x: -117.810486
       y: 0
-      z: -196.07103000000001
+      z: -196.07103
     spawnRotation:
       eulerAngles:
         x: 0
         y: 90
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: 0.70710682899999999
+      w: 0.707106829
     preferOffstage: false
     isSolid: true
     enablePhysics: false
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -3747,24 +3747,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
-      x: -91.254302999999993
-      y: 2.7211837800000001
-      z: -237.53976399999999
+      x: -91.254303
+      y: 2.72118378
+      z: -237.539764
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -3784,18 +3784,18 @@ voosEngineState:
       w: 1
     commentText: Extend bridge
     spawnPosition:
-      x: -91.254302999999993
-      y: 2.7211837800000001
-      z: -237.53976399999999
+      x: -91.254303
+      y: 2.72118378
+      z: -237.539764
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -3856,8 +3856,8 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -91.417030299999993
-      y: 0.71971797900000001
+      x: -91.4170303
+      y: 0.719717979
       z: -237.231323
     rotation:
       eulerAngles:
@@ -3865,13 +3865,13 @@ voosEngineState:
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
-      x: 1.3171331900000001
-      y: 1.3171331900000001
-      z: 1.3171331900000001
+      x: 1.31713319
+      y: 1.31713319
+      z: 1.31713319
     renderableOffset:
       x: 0
       y: 0
@@ -3887,8 +3887,8 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -91.417030299999993
-      y: 0.71971797900000001
+      x: -91.4170303
+      y: 0.719717979
       z: -237.231323
     spawnRotation:
       eulerAngles:
@@ -3896,16 +3896,16 @@ voosEngineState:
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: true
     enablePhysics: false
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -3953,24 +3953,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
-      x: -101.75902600000001
-      y: 0.99999809299999998
-      z: -229.41308599999999
+      x: -101.759026
+      y: 0.999998093
+      z: -229.413086
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -3990,18 +3990,18 @@ voosEngineState:
       w: 1
     commentText: "Lava pit, of course."
     spawnPosition:
-      x: -101.75902600000001
-      y: 0.99999809299999998
-      z: -229.41308599999999
+      x: -101.759026
+      y: 0.999998093
+      z: -229.413086
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -4063,9 +4063,9 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -95.319442699999996
+      x: -95.3194427
       y: -1.5
-      z: -227.10264599999999
+      z: -227.102646
     rotation:
       eulerAngles:
         x: 0
@@ -4094,9 +4094,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -95.319442699999996
+      x: -95.3194427
       y: -1.5
-      z: -227.10264599999999
+      z: -227.102646
     spawnRotation:
       eulerAngles:
         x: 0
@@ -4112,7 +4112,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -4167,9 +4167,9 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -90.176376300000001
+      x: -90.1763763
       y: -1.5
-      z: -227.20507799999999
+      z: -227.205078
     rotation:
       eulerAngles:
         x: 0
@@ -4198,9 +4198,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -90.176376300000001
+      x: -90.1763763
       y: -1.5
-      z: -227.20507799999999
+      z: -227.205078
     spawnRotation:
       eulerAngles:
         x: 0
@@ -4216,7 +4216,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -4271,9 +4271,9 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -92.892120399999996
+      x: -92.8921204
       y: -1.5
-      z: -230.55514500000001
+      z: -230.555145
     rotation:
       eulerAngles:
         x: 0
@@ -4302,9 +4302,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -92.892120399999996
+      x: -92.8921204
       y: -1.5
-      z: -230.55514500000001
+      z: -230.555145
     spawnRotation:
       eulerAngles:
         x: 0
@@ -4320,7 +4320,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -4374,9 +4374,9 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -93.796157800000003
-      y: -3.0326499899999999
-      z: -228.81913800000001
+      x: -93.7961578
+      y: -3.03264999
+      z: -228.819138
     rotation:
       eulerAngles:
         x: 0
@@ -4405,9 +4405,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -93.796157800000003
-      y: -3.0326499899999999
-      z: -228.81913800000001
+      x: -93.7961578
+      y: -3.03264999
+      z: -228.819138
     spawnRotation:
       eulerAngles:
         x: 0
@@ -4423,7 +4423,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -4478,7 +4478,7 @@ voosEngineState:
     transformParent: ""
     position:
       x: -119.91494
-      y: 1.9073486299999999E-06
+      y: 1.90734863E-06
       z: -216.797012
     rotation:
       eulerAngles:
@@ -4486,9 +4486,9 @@ voosEngineState:
         y: 268.206909
         z: 0
       x: 0
-      y: -0.71808433500000002
+      y: -0.718084335
       z: 0
-      w: 0.69595611099999999
+      w: 0.695956111
     localScale:
       x: 1.42890513
       y: 1.42890513
@@ -4509,7 +4509,7 @@ voosEngineState:
     commentText: ""
     spawnPosition:
       x: -119.91494
-      y: 1.9073486299999999E-06
+      y: 1.90734863E-06
       z: -216.797012
     spawnRotation:
       eulerAngles:
@@ -4517,16 +4517,16 @@ voosEngineState:
         y: 268.206909
         z: 0
       x: 0
-      y: -0.71808433500000002
+      y: -0.718084335
       z: 0
-      w: 0.69595611099999999
+      w: 0.695956111
     preferOffstage: false
     isSolid: true
     enablePhysics: false
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -4574,13 +4574,13 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
-      x: -118.82448599999999
+      x: -118.824486
       y: 1
       z: -220.591309
     rotation:
@@ -4589,9 +4589,9 @@ voosEngineState:
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -4613,7 +4613,7 @@ voosEngineState:
       End-of-game
       object
     spawnPosition:
-      x: -118.82448599999999
+      x: -118.824486
       y: 1
       z: -220.591309
     spawnRotation:
@@ -4622,9 +4622,9 @@ voosEngineState:
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -4681,7 +4681,7 @@ voosEngineState:
     description: ""
     tint:
       r: 0.112855501
-      g: 0.83137255899999996
+      g: 0.831372559
       b: 0.104437076
       a: 1
     transformParent: ""
@@ -4735,7 +4735,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -4749,7 +4749,7 @@ voosEngineState:
     cloneParent: ""
     velocity:
       x: 0
-      y: -1.7136335399999999E-05
+      y: -1.71363354E-05
       z: 0
     angularVelocity:
       x: 0
@@ -4784,15 +4784,15 @@ voosEngineState:
     displayName: Player4
     description: ""
     tint:
-      r: 0.83137255899999996
-      g: 0.72725731100000002
-      b: 0.096269346800000002
+      r: 0.831372559
+      g: 0.727257311
+      b: 0.0962693468
       a: 1
     transformParent: ""
     position:
       x: -144.289703
       y: 0.010001421
-      z: -170.59960899999999
+      z: -170.599609
     rotation:
       eulerAngles:
         x: 0
@@ -4823,7 +4823,7 @@ voosEngineState:
     spawnPosition:
       x: -144.289703
       y: 0
-      z: -170.59960899999999
+      z: -170.599609
     spawnRotation:
       eulerAngles:
         x: 0
@@ -4839,7 +4839,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -4888,24 +4888,24 @@ voosEngineState:
     displayName: Player1
     description: ""
     tint:
-      r: 0.83137255899999996
-      g: 0.13333333999999999
+      r: 0.831372559
+      g: 0.13333334
       b: 0
       a: 1
     transformParent: ""
     position:
-      x: -145.36720299999999
+      x: -145.367203
       y: 0.0100010633
-      z: -159.09429900000001
+      z: -159.094299
     rotation:
       eulerAngles:
         x: 0
         y: 15.349988
         z: 0
       x: 0
-      y: 0.13355366900000001
+      y: 0.133553669
       z: 0
-      w: 0.99104160100000005
+      w: 0.991041601
     localScale:
       x: 1
       y: 1
@@ -4925,9 +4925,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -146.65531899999999
-      y: -1.9073486299999999E-06
-      z: -158.73992899999999
+      x: -146.655319
+      y: -1.90734863E-06
+      z: -158.739929
     spawnRotation:
       eulerAngles:
         x: 0
@@ -4943,7 +4943,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -4957,7 +4957,7 @@ voosEngineState:
     cloneParent: ""
     velocity:
       x: 0
-      y: -1.7136335399999999E-05
+      y: -1.71363354E-05
       z: 0
     angularVelocity:
       x: 0
@@ -4993,8 +4993,8 @@ voosEngineState:
     description: ""
     tint:
       r: 0.146419734
-      g: 0.22982719500000001
-      b: 0.83137255899999996
+      g: 0.229827195
+      b: 0.831372559
       a: 1
     transformParent: ""
     position:
@@ -5047,7 +5047,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -5095,24 +5095,24 @@ voosEngineState:
     displayName: Text
     description: ""
     tint:
-      r: 0.0039215688600000003
-      g: 0.0039215688600000003
-      b: 0.0039215688600000003
-      a: 0.74509805399999995
+      r: 0.00392156886
+      g: 0.00392156886
+      b: 0.00392156886
+      a: 0.745098054
     transformParent: ""
     position:
-      x: -138.67025799999999
+      x: -138.670258
       y: 1
-      z: -171.99423200000001
+      z: -171.994232
     rotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     localScale:
       x: 6
       y: 6
@@ -5134,18 +5134,18 @@ voosEngineState:
       These are the characters
       for players 2, 3, 4.
     spawnPosition:
-      x: -138.67025799999999
+      x: -138.670258
       y: 1
-      z: -171.99423200000001
+      z: -171.994232
     spawnRotation:
       eulerAngles:
         x: 0
         y: 270
         z: 0
       x: 0
-      y: 0.70710682899999999
+      y: 0.707106829
       z: 0
-      w: -0.70710682899999999
+      w: -0.707106829
     preferOffstage: false
     isSolid: false
     enablePhysics: false
@@ -5207,18 +5207,18 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -108.79692799999999
-      y: -148.97251900000001
-      z: -66.878272999999993
+      x: -108.796928
+      y: -148.972519
+      z: -66.878273
     rotation:
       eulerAngles:
         x: 0
-        y: 272.44903599999998
+        y: 272.449036
         z: 0
       x: 0
-      y: -0.69183433100000002
+      y: -0.691834331
       z: 0
-      w: 0.72205626999999994
+      w: 0.72205627
     localScale:
       x: 1
       y: 1
@@ -5239,24 +5239,24 @@ voosEngineState:
     commentText: ""
     spawnPosition:
       x: -108.812721
-      y: -3.7045831699999998
-      z: -66.245483399999998
+      y: -3.70458317
+      z: -66.2454834
     spawnRotation:
       eulerAngles:
         x: 0
         y: 264.562836
         z: 0
       x: 0
-      y: -0.73984926900000003
+      y: -0.739849269
       z: 0
-      w: 0.67277270600000005
+      w: 0.672772706
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -5270,8 +5270,8 @@ voosEngineState:
     cloneParent: e7ec68e9659d4f5c91dd2873181f0edf
     velocity:
       x: -0.0015219145
-      y: -53.243728599999997
-      z: -0.020037610099999999
+      y: -53.2437286
+      z: -0.0200376101
     angularVelocity:
       x: 0
       y: 0
@@ -5311,18 +5311,18 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: -112.19615899999999
-      y: -146.20919799999999
-      z: -64.828842199999997
+      x: -112.196159
+      y: -146.209198
+      z: -64.8288422
     rotation:
       eulerAngles:
         x: 0
-        y: 89.684478799999994
+        y: 89.6844788
         z: 0
       x: 0
-      y: -0.70515710099999995
+      y: -0.705157101
       z: 0
-      w: -0.70905113200000003
+      w: -0.709051132
     localScale:
       x: 1
       y: 1
@@ -5342,25 +5342,25 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -108.97009300000001
-      y: -2.6352453200000001
-      z: -66.104850799999994
+      x: -108.970093
+      y: -2.63524532
+      z: -66.1048508
     spawnRotation:
       eulerAngles:
         x: 0
         y: 264.562836
         z: 0
       x: 0
-      y: -0.73984926900000003
+      y: -0.739849269
       z: 0
-      w: 0.67277270600000005
+      w: 0.672772706
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -5373,8 +5373,8 @@ voosEngineState:
     debugString: ""
     cloneParent: e7ec68e9659d4f5c91dd2873181f0edf
     velocity:
-      x: -0.98639100800000001
-      y: -52.936325099999998
+      x: -0.986391008
+      y: -52.9363251
       z: 0.414127827
     angularVelocity:
       x: 0
@@ -5416,17 +5416,17 @@ voosEngineState:
     transformParent: ""
     position:
       x: -108.544922
-      y: -148.97251900000001
+      y: -148.972519
       z: -65.4819107
     rotation:
       eulerAngles:
         x: 0
-        y: 288.92712399999999
+        y: 288.927124
         z: 0
       x: 0
-      y: -0.58122044799999995
+      y: -0.581220448
       z: 0
-      w: 0.81374615400000005
+      w: 0.813746154
     localScale:
       x: 1
       y: 1
@@ -5446,25 +5446,25 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -108.52027099999999
-      y: -3.5671205499999998
-      z: -66.060699499999998
+      x: -108.520271
+      y: -3.56712055
+      z: -66.0606995
     spawnRotation:
       eulerAngles:
         x: 0
         y: 264.562836
         z: 0
       x: 0
-      y: -0.73984926900000003
+      y: -0.739849269
       z: 0
-      w: 0.67277270600000005
+      w: 0.672772706
     preferOffstage: false
     isSolid: true
     enablePhysics: true
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -5478,8 +5478,8 @@ voosEngineState:
     cloneParent: e7ec68e9659d4f5c91dd2873181f0edf
     velocity:
       x: 0.00152191403
-      y: -53.243728599999997
-      z: 0.020037611899999998
+      y: -53.2437286
+      z: 0.0200376119
     angularVelocity:
       x: 0
       y: 0
@@ -5512,15 +5512,15 @@ voosEngineState:
     displayName: PlayerLaserGreen
     description: ""
     tint:
-      r: 0.22247478400000001
+      r: 0.222474784
       g: 1
-      b: 0.055397689299999997
+      b: 0.0553976893
       a: 0
     transformParent: ""
     position:
-      x: -115.74052399999999
-      y: 11.225711799999999
-      z: -152.00079299999999
+      x: -115.740524
+      y: 11.2257118
+      z: -152.000793
     rotation:
       eulerAngles:
         x: 0
@@ -5549,9 +5549,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: -115.74052399999999
-      y: 11.225711799999999
-      z: -152.00079299999999
+      x: -115.740524
+      y: 11.2257118
+      z: -152.000793
     spawnRotation:
       eulerAngles:
         x: 0
@@ -5567,7 +5567,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -7548,9 +7548,9 @@ sojoDatabase:
     name: Explosion
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 3
+        waveShape: nOISE
         speed: 8
         volume:
         - 14
@@ -7624,9 +7624,9 @@ sojoDatabase:
     name: Collect
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 1
+        waveShape: tRIANGLE
         speed: 8
         volume:
         - 12
@@ -7700,9 +7700,9 @@ sojoDatabase:
     name: Laser
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 2
+        waveShape: sINE
         speed: 14
         volume:
         - 12
@@ -7776,9 +7776,9 @@ sojoDatabase:
     name: Hit
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 3
+        waveShape: nOISE
         speed: 14
         volume:
         - 15
@@ -7852,9 +7852,9 @@ sojoDatabase:
     name: Lose
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 1
+        waveShape: tRIANGLE
         speed: 8
         volume:
         - 16
@@ -7928,9 +7928,9 @@ sojoDatabase:
     name: Win
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 1
+        waveShape: tRIANGLE
         speed: 1
         volume:
         - 16
@@ -8005,11 +8005,11 @@ sojoDatabase:
     contentType: ParticleEffect
     content:
       isLocal: false
-      duration: 0.69999998807907104
+      duration: 0.699999988
       speed: 3
       startSize: 3
       endSize: 1
-      shapeType: 1
+      shapeType: sphere
       shapeSize: 1
       velocityOverLifetimeDEPRECATED: []
       rotationOverLifetime: []
@@ -8017,8 +8017,8 @@ sojoDatabase:
       colorOverLifetime:
       - value:
           r: 1
-          g: 0.60000002384185791
-          b: 0.20000000298023224
+          g: 0.600000024
+          b: 0.200000003
           a: 1
         position: 0
         id: 551c3f76-32d2-44cf-a333-4c550cac9fbb
@@ -8026,13 +8026,13 @@ sojoDatabase:
           r: 0.5
           g: 0
           b: 0
-          a: 0.69999998807907104
+          a: 0.699999988
         position: 0.5
         id: 7fc684bc-e2c2-490d-b0e6-7a47a0ca3aa9
       - value:
-          r: 0.30000001192092896
+          r: 0.300000012
           g: 0
-          b: 0.10000000149011612
+          b: 0.100000001
           a: 0
         position: 1
         id: f81914b3-8105-4f40-906c-99aeaf8ff781
@@ -8047,14 +8047,14 @@ sojoDatabase:
       speed: 1
       startSize: 0.5
       endSize: 0.5
-      shapeType: 0
+      shapeType: cone
       shapeSize: 1
       velocityOverLifetimeDEPRECATED: []
       rotationOverLifetime: []
       sizeOverLifetimeDEPRECATED: []
       colorOverLifetime:
       - value:
-          r: 0.60000002384185791
+          r: 0.600000024
           g: 1
           b: 1
           a: 1
@@ -8062,7 +8062,7 @@ sojoDatabase:
         id: 82a8b568-9d27-4be1-b071-63802e0bd480
       - value:
           r: 0
-          g: 0.60000002384185791
+          g: 0.600000024
           b: 1
           a: 0
         position: 1
@@ -8075,10 +8075,10 @@ sojoDatabase:
     content:
       isLocal: false
       duration: 2
-      speed: 0.40000000596046448
-      startSize: 0.30000001192092896
+      speed: 0.400000006
+      startSize: 0.300000012
       endSize: 0
-      shapeType: 4
+      shapeType: rectangle
       shapeSize: 1
       velocityOverLifetimeDEPRECATED: []
       rotationOverLifetime: []
@@ -8087,13 +8087,13 @@ sojoDatabase:
       - value:
           r: 1
           g: 1
-          b: 0.30000001192092896
+          b: 0.300000012
           a: 1
         position: 0
         id: ba4518c8-c213-4a65-9a85-646b292203e1
       - value:
           r: 1
-          g: 0.60000002384185791
+          g: 0.600000024
           b: 0
           a: 0
         position: 1
@@ -8103,34 +8103,267 @@ sojoDatabase:
   - id: 70689804-a9fb-4a89-85f4-faf2dbc85c93
     name: "builtin:ExplosionParticles"
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":0.39601919054985049,\"speed\":2.2654848098754885,\"startSize\":3.8185813426971437,\"endSize\":0.0,\"shapeType\":1,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"29f979f8-1fb5-444c-b5c1-a81d19931637\"},{\"value\":2.0,\"position\":1.0,\"id\":\"43c5655c-1c70-4378-85f0-e0e732ad2212\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":1.0,\"g\":0.9438808560371399,\"b\":0.9073746204376221,\"a\":1.0},\"position\":0.0,\"id\":\"06b60db0-1801-4738-ac25-ae4d1eb88d42\"},{\"value\":{\"r\":1.0,\"g\":0.8240653276443481,\"b\":0.06592851877212525,\"a\":1.0},\"position\":0.15997646749019624,\"id\":\"cf31b152-b1da-43d1-ae03-565610451cbf\"},{\"value\":{\"r\":1.0,\"g\":0.019562672823667527,\"b\":-0.01592397689819336,\"a\":1.0},\"position\":0.45358484983444216,\"id\":\"18bbd349-f42c-4cea-a3a9-407b9cab3ac9\"},{\"value\":{\"r\":0.13640695810317994,\"g\":0.01077444851398468,\"b\":0.003267082152888179,\"a\":1.0},\"position\":1.0,\"id\":\"800dafd9-4958-48ef-911e-91d5c690ab11\"}],\"burstCount\":10}"
+    content:
+      isLocal: false
+      duration: 0.396019191
+      speed: 2.26548481
+      startSize: 3.81858134
+      endSize: 0
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: 29f979f8-1fb5-444c-b5c1-a81d19931637
+      - value: 2
+        position: 1
+        id: 43c5655c-1c70-4378-85f0-e0e732ad2212
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 1
+          g: 0.943880856
+          b: 0.90737462
+          a: 1
+        position: 0
+        id: 06b60db0-1801-4738-ac25-ae4d1eb88d42
+      - value:
+          r: 1
+          g: 0.824065328
+          b: 0.0659285188
+          a: 1
+        position: 0.159976467
+        id: cf31b152-b1da-43d1-ae03-565610451cbf
+      - value:
+          r: 1
+          g: 0.0195626728
+          b: -0.0159239769
+          a: 1
+        position: 0.45358485
+        id: 18bbd349-f42c-4cea-a3a9-407b9cab3ac9
+      - value:
+          r: 0.136406958
+          g: 0.0107744485
+          b: 0.00326708215
+          a: 1
+        position: 1
+        id: 800dafd9-4958-48ef-911e-91d5c690ab11
+      burstCount: 10
+      gravityModifier: 0
   - id: cb5fda8d-88e7-45d1-a9dd-60dbaaa83d9a
     name: RobotKill
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":0.6836287975311279,\"speed\":1.4671580791473389,\"startSize\":2.8189258575439455,\"endSize\":0.0,\"shapeType\":1,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"0f5911e0-d62c-4449-b559-6433b77d62f2\"},{\"value\":2.0,\"position\":1.0,\"id\":\"8d413f97-3567-43c8-bdf2-65fa3dca7c03\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":0.977692186832428,\"g\":0.9855873584747315,\"b\":1.0,\"a\":1.0},\"position\":0.0,\"id\":\"cfe1df43-728d-4577-a72f-dd11f5bea115\"},{\"value\":{\"r\":1.0,\"g\":0.8597501516342163,\"b\":0.07009291648864746,\"a\":1.0},\"position\":0.29479655623435976,\"id\":\"1313bae0-4733-406e-9af0-ef437cca0096\"},{\"value\":{\"r\":0.01569077931344509,\"g\":0.016027862206101419,\"b\":0.01642865501344204,\"a\":1.0},\"position\":1.0,\"id\":\"ade89062-0b3c-41d8-a6a6-9975a219fe85\"}],\"burstCount\":7}"
+    content:
+      isLocal: false
+      duration: 0.683628798
+      speed: 1.46715808
+      startSize: 2.81892586
+      endSize: 0
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: 0f5911e0-d62c-4449-b559-6433b77d62f2
+      - value: 2
+        position: 1
+        id: 8d413f97-3567-43c8-bdf2-65fa3dca7c03
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 0.977692187
+          g: 0.985587358
+          b: 1
+          a: 1
+        position: 0
+        id: cfe1df43-728d-4577-a72f-dd11f5bea115
+      - value:
+          r: 1
+          g: 0.859750152
+          b: 0.0700929165
+          a: 1
+        position: 0.294796556
+        id: 1313bae0-4733-406e-9af0-ef437cca0096
+      - value:
+          r: 0.0156907793
+          g: 0.0160278622
+          b: 0.016428655
+          a: 1
+        position: 1
+        id: ade89062-0b3c-41d8-a6a6-9975a219fe85
+      burstCount: 7
+      gravityModifier: 0
   - id: a329b3fd-fa07-4e47-a3a8-3c4342a6804f
     name: RobotHurt
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":0.3097359538078308,\"speed\":3.7898197174072267,\"startSize\":0.9712400436401367,\"endSize\":0.0,\"shapeType\":1,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"fc8005cc-e689-4908-bac4-d9b1d916a1ad\"},{\"value\":2.0,\"position\":1.0,\"id\":\"504d5354-3a9f-4a07-a912-8671a4bf6c46\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":1.0,\"g\":0.9862037897109985,\"b\":0.9898241758346558,\"a\":1.0},\"position\":0.0,\"id\":\"314dba4f-6a0b-4c47-b87d-7f6047ed8db9\"},{\"value\":{\"r\":1.0,\"g\":0.8168477416038513,\"b\":0.037068724632263187,\"a\":1.0},\"position\":0.19293251633644105,\"id\":\"1220a4cb-d282-4bda-bdb6-02abaea59899\"}],\"burstCount\":10}"
+    content:
+      isLocal: false
+      duration: 0.309735954
+      speed: 3.78981972
+      startSize: 0.971240044
+      endSize: 0
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: fc8005cc-e689-4908-bac4-d9b1d916a1ad
+      - value: 2
+        position: 1
+        id: 504d5354-3a9f-4a07-a912-8671a4bf6c46
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 1
+          g: 0.98620379
+          b: 0.989824176
+          a: 1
+        position: 0
+        id: 314dba4f-6a0b-4c47-b87d-7f6047ed8db9
+      - value:
+          r: 1
+          g: 0.816847742
+          b: 0.0370687246
+          a: 1
+        position: 0.192932516
+        id: 1220a4cb-d282-4bda-bdb6-02abaea59899
+      burstCount: 10
+      gravityModifier: 0
   - id: d090716e-9eec-4cde-8121-fd9857a7bb81
     name: SlimeExplode
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":0.5398239493370056,\"speed\":1.373892903327942,\"startSize\":1.9778735637664796,\"endSize\":0.1084078997373581,\"shapeType\":1,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"39d57cd2-2fd6-445a-90a4-6c10fc3caff9\"},{\"value\":2.0,\"position\":1.0,\"id\":\"1e19f97f-2a9f-4593-9b67-29c07f2a3ab6\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":0.36127880215644839,\"g\":1.0,\"b\":0.010740160942077637,\"a\":1.0},\"position\":0.0,\"id\":\"48b0c95f-796a-4be9-a398-f35fb0775a85\"},{\"value\":{\"r\":1.0,\"g\":0.911447286605835,\"b\":0.24866068363189698,\"a\":1.0},\"position\":1.0,\"id\":\"30ac872b-6039-489c-a922-55f343d4f694\"}],\"burstCount\":10}"
+    content:
+      isLocal: false
+      duration: 0.539823949
+      speed: 1.3738929
+      startSize: 1.97787356
+      endSize: 0.1084079
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: 39d57cd2-2fd6-445a-90a4-6c10fc3caff9
+      - value: 2
+        position: 1
+        id: 1e19f97f-2a9f-4593-9b67-29c07f2a3ab6
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 0.361278802
+          g: 1
+          b: 0.0107401609
+          a: 1
+        position: 0
+        id: 48b0c95f-796a-4be9-a398-f35fb0775a85
+      - value:
+          r: 1
+          g: 0.911447287
+          b: 0.248660684
+          a: 1
+        position: 1
+        id: 30ac872b-6039-489c-a922-55f343d4f694
+      burstCount: 10
+      gravityModifier: 0
   - id: fede5170-ee38-4330-9861-fe8645371a6c
     name: WallCollapse
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":1.6902656555175782,\"speed\":0.7986719012260437,\"startSize\":3.933626413345337,\"endSize\":0.42477911710739138,\"shapeType\":1,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"dec8a240-831f-4284-a769-3a4618826dda\"},{\"value\":2.0,\"position\":1.0,\"id\":\"d1661c33-dc40-4ac5-893b-4fad381d006e\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":1.0,\"g\":0.9969837665557861,\"b\":0.9786604642868042,\"a\":1.0},\"position\":0.0,\"id\":\"404d9489-fef9-4324-ad3f-ae75574baa59\"},{\"value\":{\"r\":0.2380138337612152,\"g\":0.24595245718955995,\"b\":0.24182859063148499,\"a\":1.0},\"position\":1.0,\"id\":\"76b024bf-13ba-4a4d-b6f6-3e1015a9e990\"}],\"burstCount\":10}"
+    content:
+      isLocal: false
+      duration: 1.69026566
+      speed: 0.798671901
+      startSize: 3.93362641
+      endSize: 0.424779117
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: dec8a240-831f-4284-a769-3a4618826dda
+      - value: 2
+        position: 1
+        id: d1661c33-dc40-4ac5-893b-4fad381d006e
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 1
+          g: 0.996983767
+          b: 0.978660464
+          a: 1
+        position: 0
+        id: 404d9489-fef9-4324-ad3f-ae75574baa59
+      - value:
+          r: 0.238013834
+          g: 0.245952457
+          b: 0.241828591
+          a: 1
+        position: 1
+        id: 76b024bf-13ba-4a4d-b6f6-3e1015a9e990
+      burstCount: 10
+      gravityModifier: 0
   - id: f67e1439-74fa-4f55-9373-d56c79af0318
     name: Lava
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":1.035741925239563,\"speed\":0.6618490815162659,\"startSize\":0.5132795572280884,\"endSize\":0.0,\"shapeType\":1,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"7529fb61-fd2f-4f43-bbef-0aef064bd8b8\"},{\"value\":2.0,\"position\":1.0,\"id\":\"c318f812-57e8-4b17-a691-5a8e673f56ff\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":1.0,\"g\":0.2245425432920456,\"b\":0.06123948097229004,\"a\":1.0},\"position\":0.0,\"id\":\"22b0fe86-bad6-4f28-a851-a3512a8f778e\"},{\"value\":{\"r\":1.0,\"g\":0.5543257594108582,\"b\":0.04352015256881714,\"a\":1.0},\"position\":0.1989244669675827,\"id\":\"7b4e595e-1f58-4685-a63c-226253b9ee42\"},{\"value\":{\"r\":0.40636345744132998,\"g\":0.4076623320579529,\"b\":0.3861026167869568,\"a\":1.0},\"position\":0.6453292369842529,\"id\":\"b24cc112-897a-459d-9e50-4b06a6aa2895\"},{\"value\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0},\"position\":1.0,\"id\":\"88b1c8c1-9fed-4ddb-b2cf-25fa4cd6ebfd\"}],\"burstCount\":6}"
+    content:
+      isLocal: false
+      duration: 1.03574193
+      speed: 0.661849082
+      startSize: 0.513279557
+      endSize: 0
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: 7529fb61-fd2f-4f43-bbef-0aef064bd8b8
+      - value: 2
+        position: 1
+        id: c318f812-57e8-4b17-a691-5a8e673f56ff
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 1
+          g: 0.224542543
+          b: 0.061239481
+          a: 1
+        position: 0
+        id: 22b0fe86-bad6-4f28-a851-a3512a8f778e
+      - value:
+          r: 1
+          g: 0.554325759
+          b: 0.0435201526
+          a: 1
+        position: 0.198924467
+        id: 7b4e595e-1f58-4685-a63c-226253b9ee42
+      - value:
+          r: 0.406363457
+          g: 0.407662332
+          b: 0.386102617
+          a: 1
+        position: 0.645329237
+        id: b24cc112-897a-459d-9e50-4b06a6aa2895
+      - value:
+          r: 0
+          g: 0
+          b: 0
+          a: 1
+        position: 1
+        id: 88b1c8c1-9fed-4ddb-b2cf-25fa4cd6ebfd
+      burstCount: 6
+      gravityModifier: 0
   - id: d7d9129b-ba70-4da2-9824-e83f91dc5351
     name: Door
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 3
+        waveShape: nOISE
         speed: 8
         volume:
         - 47
@@ -8203,7 +8436,40 @@ sojoDatabase:
   - id: 5107149b-14dc-4ffb-99fa-b3a82057b2d2
     name: Health
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":1.0,\"speed\":0.48230069875717165,\"startSize\":1.4026545286178589,\"endSize\":0.0,\"shapeType\":1,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"2fec1f96-fc1c-4afc-b331-1146240ca93e\"},{\"value\":2.0,\"position\":1.0,\"id\":\"9c79738a-b5da-4321-8e5a-f5cb3e0099c4\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":1.0,\"g\":0.013900339603424073,\"b\":0.06631829589605332,\"a\":1.0},\"position\":0.0,\"id\":\"5d9dabc4-2de7-4e6f-b720-0f0b33efe7f2\"},{\"value\":{\"r\":1.0,\"g\":0.6321577429771423,\"b\":-0.28727638721466067,\"a\":1.0},\"position\":1.0,\"id\":\"33ecb5f8-27d3-4d5c-9ee2-032148a859ef\"}],\"burstCount\":10}"
+    content:
+      isLocal: false
+      duration: 1
+      speed: 0.482300699
+      startSize: 1.40265453
+      endSize: 0
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: 2fec1f96-fc1c-4afc-b331-1146240ca93e
+      - value: 2
+        position: 1
+        id: 9c79738a-b5da-4321-8e5a-f5cb3e0099c4
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 1
+          g: 0.0139003396
+          b: 0.0663182959
+          a: 1
+        position: 0
+        id: 5d9dabc4-2de7-4e6f-b720-0f0b33efe7f2
+      - value:
+          r: 1
+          g: 0.632157743
+          b: -0.287276387
+          a: 1
+        position: 1
+        id: 33ecb5f8-27d3-4d5c-9ee2-032148a859ef
+      burstCount: 10
+      gravityModifier: 0
 cardPacks:
   cardPacks: []
 actorPacks:

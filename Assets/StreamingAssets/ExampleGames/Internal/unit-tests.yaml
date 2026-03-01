@@ -1,6 +1,6 @@
 version: 7
 voosEngineState:
-  gameTime: 14072.268599999999
+  gameTime: 14072.2686
   actors:
   - version: 8
     name: a0cd0762bd5e4585a0e0499371cc7ecb
@@ -12,24 +12,24 @@ voosEngineState:
     displayName: Player1
     description: ""
     tint:
-      r: 0.83137255899999996
-      g: 0.13333333999999999
+      r: 0.831372559
+      g: 0.13333334
       b: 0
       a: 1
     transformParent: ""
     position:
-      x: 248.89999399999999
+      x: 248.899994
       y: -0.0287591219
       z: 248.900024
     rotation:
       eulerAngles:
         x: 0
-        y: 48.435226399999998
+        y: 48.4352264
         z: 0
       x: 0
-      y: -0.41020336699999999
+      y: -0.410203367
       z: 0
-      w: -0.91199403999999995
+      w: -0.91199404
     localScale:
       x: 1
       y: 1
@@ -50,15 +50,15 @@ voosEngineState:
     commentText: ""
     spawnPosition:
       x: -12.5
-      y: 0.0099998712500000003
+      y: 0.00999987125
       z: 16.25
     spawnRotation:
       eulerAngles:
         x: 0
-        y: 359.98089599999997
+        y: 359.980896
         z: 0
       x: 0
-      y: -0.00016669556500000001
+      y: -0.000166695565
       z: 0
       w: 1
     preferOffstage: false
@@ -67,7 +67,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -80,12 +80,12 @@ voosEngineState:
     debugString: ""
     cloneParent: ""
     velocity:
-      x: 0.00025749206500000002
-      y: -0.00012685358500000001
-      z: 0.00024557113599999998
+      x: 0.000257492065
+      y: -0.000126853585
+      z: 0.000245571136
     angularVelocity:
       x: 0
-      y: 0.0029060465700000001
+      y: 0.00290604657
       z: 0
     cameraActor: ""
     spawnTransformParent: ""
@@ -121,9 +121,9 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: 12.663973800000001
+      x: 12.6639738
       y: 0
-      z: 0.85455417600000005
+      z: 0.854554176
     rotation:
       eulerAngles:
         x: 0
@@ -152,9 +152,9 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: 12.663973800000001
+      x: 12.6639738
       y: 0
-      z: 0.85455417600000005
+      z: 0.854554176
     spawnRotation:
       eulerAngles:
         x: 0
@@ -170,7 +170,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -224,9 +224,9 @@ voosEngineState:
       a: 0.75
     transformParent: ""
     position:
-      x: 7.5045432999999999
+      x: 7.5045433
       y: 1
-      z: 1.2730712900000001
+      z: 1.27307129
     rotation:
       eulerAngles:
         x: 0
@@ -235,7 +235,7 @@ voosEngineState:
       x: 0
       y: 1
       z: 0
-      w: -4.3711388300000003E-08
+      w: -4.37113883E-08
     localScale:
       x: 1
       y: 1
@@ -256,9 +256,9 @@ voosEngineState:
     commentText: |
       Popup Text Goes Here
     spawnPosition:
-      x: 7.5045432999999999
+      x: 7.5045433
       y: 1
-      z: 1.2730712900000001
+      z: 1.27307129
     spawnRotation:
       eulerAngles:
         x: 0
@@ -267,14 +267,14 @@ voosEngineState:
       x: 0
       y: 1
       z: 0
-      w: -4.3711388300000003E-08
+      w: -4.37113883E-08
     preferOffstage: true
     isSolid: false
     enablePhysics: false
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -329,8 +329,8 @@ voosEngineState:
     transformParent: ""
     position:
       x: -10.9017792
-      y: -1.9073486299999999E-06
-      z: 47.213836700000002
+      y: -1.90734863E-06
+      z: 47.2138367
     rotation:
       eulerAngles:
         x: 0
@@ -341,9 +341,9 @@ voosEngineState:
       z: 0
       w: 1
     localScale:
-      x: 2.6539146900000001
-      y: 2.6539146900000001
-      z: 2.6539146900000001
+      x: 2.65391469
+      y: 2.65391469
+      z: 2.65391469
     renderableOffset:
       x: 0
       y: 0
@@ -360,8 +360,8 @@ voosEngineState:
     commentText: ""
     spawnPosition:
       x: -10.9017792
-      y: -1.9073486299999999E-06
-      z: 47.213836700000002
+      y: -1.90734863E-06
+      z: 47.2138367
     spawnRotation:
       eulerAngles:
         x: 0
@@ -377,7 +377,7 @@ voosEngineState:
     enableGravity: true
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -433,7 +433,7 @@ voosEngineState:
     position:
       x: 10
       y: 0
-      z: 1623.9938999999999
+      z: 1623.9939
     rotation:
       eulerAngles:
         x: 0
@@ -480,7 +480,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -495,7 +495,7 @@ voosEngineState:
     velocity:
       x: 0
       y: 0
-      z: 6.0011815999999998
+      z: 6.0011816
     angularVelocity:
       x: 0
       y: 0
@@ -583,7 +583,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -637,7 +637,7 @@ voosEngineState:
       a: 0
     transformParent: ""
     position:
-      x: 17.611816399999999
+      x: 17.6118164
       y: 0
       z: 7.14181519
     rotation:
@@ -668,7 +668,7 @@ voosEngineState:
       w: 1
     commentText: ""
     spawnPosition:
-      x: 17.611816399999999
+      x: 17.6118164
       y: 0
       z: 7.14181519
     spawnRotation:
@@ -686,7 +686,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -789,7 +789,7 @@ voosEngineState:
     enableGravity: false
     bounciness: 0
     drag: 0
-    angularDrag: 0.050000000699999998
+    angularDrag: 0.0500000007
     mass: 1
     freezeRotations: false
     freezeX: false
@@ -1398,9 +1398,9 @@ sojoDatabase:
     name: Explosion
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 3
+        waveShape: nOISE
         speed: 8
         volume:
         - 14
@@ -1474,9 +1474,9 @@ sojoDatabase:
     name: Collect
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 1
+        waveShape: tRIANGLE
         speed: 8
         volume:
         - 12
@@ -1550,9 +1550,9 @@ sojoDatabase:
     name: Laser
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 2
+        waveShape: sINE
         speed: 14
         volume:
         - 12
@@ -1626,9 +1626,9 @@ sojoDatabase:
     name: Hit
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 3
+        waveShape: nOISE
         speed: 14
         volume:
         - 15
@@ -1702,9 +1702,9 @@ sojoDatabase:
     name: Lose
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 1
+        waveShape: tRIANGLE
         speed: 8
         volume:
         - 16
@@ -1778,9 +1778,9 @@ sojoDatabase:
     name: Win
     contentType: SoundEffect
     content:
-      effectType: 0
+      effectType: synthesized
       synthParams:
-        waveShape: 1
+        waveShape: tRIANGLE
         speed: 1
         volume:
         - 16
@@ -1855,11 +1855,11 @@ sojoDatabase:
     contentType: ParticleEffect
     content:
       isLocal: false
-      duration: 0.69999998807907104
+      duration: 0.699999988
       speed: 3
       startSize: 3
       endSize: 1
-      shapeType: 1
+      shapeType: sphere
       shapeSize: 1
       velocityOverLifetimeDEPRECATED: []
       rotationOverLifetime: []
@@ -1867,8 +1867,8 @@ sojoDatabase:
       colorOverLifetime:
       - value:
           r: 1
-          g: 0.60000002384185791
-          b: 0.20000000298023224
+          g: 0.600000024
+          b: 0.200000003
           a: 1
         position: 0
         id: 4b4e477b-5fd4-4121-972e-61d9b1523fce
@@ -1876,13 +1876,13 @@ sojoDatabase:
           r: 0.5
           g: 0
           b: 0
-          a: 0.69999998807907104
+          a: 0.699999988
         position: 0.5
         id: da4e9d58-6497-4606-8fb2-8347713d0686
       - value:
-          r: 0.30000001192092896
+          r: 0.300000012
           g: 0
-          b: 0.10000000149011612
+          b: 0.100000001
           a: 0
         position: 1
         id: e5ae406e-ece0-4794-9c3a-b54acf8aff8c
@@ -1897,14 +1897,14 @@ sojoDatabase:
       speed: 1
       startSize: 0.5
       endSize: 0.5
-      shapeType: 0
+      shapeType: cone
       shapeSize: 1
       velocityOverLifetimeDEPRECATED: []
       rotationOverLifetime: []
       sizeOverLifetimeDEPRECATED: []
       colorOverLifetime:
       - value:
-          r: 0.60000002384185791
+          r: 0.600000024
           g: 1
           b: 1
           a: 1
@@ -1912,7 +1912,7 @@ sojoDatabase:
         id: 4d792bf3-23ab-41af-b663-635996710a74
       - value:
           r: 0
-          g: 0.60000002384185791
+          g: 0.600000024
           b: 1
           a: 0
         position: 1
@@ -1925,10 +1925,10 @@ sojoDatabase:
     content:
       isLocal: false
       duration: 2
-      speed: 0.40000000596046448
-      startSize: 0.30000001192092896
+      speed: 0.400000006
+      startSize: 0.300000012
       endSize: 0
-      shapeType: 4
+      shapeType: rectangle
       shapeSize: 1
       velocityOverLifetimeDEPRECATED: []
       rotationOverLifetime: []
@@ -1937,13 +1937,13 @@ sojoDatabase:
       - value:
           r: 1
           g: 1
-          b: 0.30000001192092896
+          b: 0.300000012
           a: 1
         position: 0
         id: 98342768-83c6-4521-bdd9-54ffe7136e39
       - value:
           r: 1
-          g: 0.60000002384185791
+          g: 0.600000024
           b: 0
           a: 0
         position: 1
