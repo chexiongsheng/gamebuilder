@@ -21,7 +21,8 @@ public class GameAssetConverter
     {
         ContractResolver = new FieldsOnlyContractResolver(),
         ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-        Formatting = Formatting.Indented
+        Formatting = Formatting.Indented,
+        Converters = { new SojoSavedConverter() }
     };
 
 
@@ -34,6 +35,7 @@ public class GameAssetConverter
         var options = YamlSerializerOptions.Standard;
         options.Resolver = CompositeResolver.Create(
             new IYamlFormatterResolver[] {
+                SojoSavedYamlFormatterResolver.Instance, // 处理 Sojo.Saved 的 content 动态类型
                 StandardResolver.Instance,   // 优先使用内置和生成的格式化器
                 ReflectionResolver.Instance  // 对于没有生成的类型，回退到反射
             }
@@ -98,6 +100,7 @@ public class GameAssetConverter
         var options = YamlSerializerOptions.Standard;
         options.Resolver = CompositeResolver.Create(
             new IYamlFormatterResolver[] {
+                SojoSavedYamlFormatterResolver.Instance,
                 StandardResolver.Instance,
                 ReflectionResolver.Instance
             }
@@ -155,6 +158,7 @@ public class GameAssetConverter
         var options = YamlSerializerOptions.Standard;
         options.Resolver = CompositeResolver.Create(
             new IYamlFormatterResolver[] {
+                SojoSavedYamlFormatterResolver.Instance,
                 StandardResolver.Instance,
                 ReflectionResolver.Instance
             }
@@ -213,6 +217,7 @@ public class GameAssetConverter
         var options = YamlSerializerOptions.Standard;
         options.Resolver = CompositeResolver.Create(
             new IYamlFormatterResolver[] {
+                SojoSavedYamlFormatterResolver.Instance,
                 StandardResolver.Instance,
                 ReflectionResolver.Instance
             }
