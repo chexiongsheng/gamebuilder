@@ -11619,7 +11619,7 @@ voosEngineState:
     spawnRotation:
       eulerAngles:
         x: 0
-        y: 58.0234909
+        y: 58.0234833
         z: 0
       x: 0
       y: -0.484988868
@@ -12211,7 +12211,7 @@ voosEngineState:
     rotation:
       eulerAngles:
         x: 6.29244852
-        y: 16.5241528
+        y: 16.5241547
         z: 4.44287062
       x: 0.0598356239
       y: 0.141271442

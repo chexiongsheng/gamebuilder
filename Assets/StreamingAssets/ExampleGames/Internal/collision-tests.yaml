@@ -439,7 +439,7 @@ voosEngineState:
     rotation:
       eulerAngles:
         x: 45.0000038
-        y: 45.0000038
+        y: 45.0000076
         z: 3.62225478E-06
       x: 0.353553385
       y: 0.353553444
