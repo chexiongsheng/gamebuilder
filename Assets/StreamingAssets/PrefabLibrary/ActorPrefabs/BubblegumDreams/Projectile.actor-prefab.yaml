@@ -149,7 +149,34 @@ sojos:
 - id: "builtin:GlowPfx"
   name: Glow
   contentType: ParticleEffect
-  content: "{\"isLocal\":false,\"duration\":2.0,\"speed\":0.4000000059604645,\"startSize\":0.30000001192092898,\"endSize\":0.0,\"shapeType\":4,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":1.0,\"g\":1.0,\"b\":0.30000001192092898,\"a\":1.0},\"position\":0.0,\"id\":\"98342768-83c6-4521-bdd9-54ffe7136e39\"},{\"value\":{\"r\":1.0,\"g\":0.6000000238418579,\"b\":0.0,\"a\":0.0},\"position\":1.0,\"id\":\"7461085f-100b-43fd-ac5d-11d37c6a6db8\"}],\"burstCount\":6}"
+  content:
+    isLocal: false
+    duration: 2
+    speed: 0.400000006
+    startSize: 0.300000012
+    endSize: 0
+    shapeType: rectangle
+    shapeSize: 1
+    velocityOverLifetimeDEPRECATED: []
+    rotationOverLifetime: []
+    sizeOverLifetimeDEPRECATED: []
+    colorOverLifetime:
+    - value:
+        r: 1
+        g: 1
+        b: 0.300000012
+        a: 1
+      position: 0
+      id: 98342768-83c6-4521-bdd9-54ffe7136e39
+    - value:
+        r: 1
+        g: 0.600000024
+        b: 0
+        a: 0
+      position: 1
+      id: 7461085f-100b-43fd-ac5d-11d37c6a6db8
+    burstCount: 6
+    gravityModifier: 0
 thumbnailJZB64: null
 category: gameplay
 workshopId: ""
