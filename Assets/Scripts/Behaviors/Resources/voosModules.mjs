@@ -85,11 +85,13 @@ import * as spawnedAsCloneEventCard from "BehaviorLibrary/EventCards/Spawned As 
 import * as terrainCollisionEventCard from "BehaviorLibrary/EventCards/Terrain Collision Event Card.mjs"
 import * as variablePredicateCard from "BehaviorLibrary/EventCards/Variable Predicate Card.mjs"
 
+// BaseBehaviors
+import * as defaultBehavior from "BehaviorLibrary/BaseBehaviors/Default Behavior.mjs"
+
 // LegacyBehaviors
 import * as blink from "BehaviorLibrary/LegacyBehaviors/Blink.mjs"
 import * as button from "BehaviorLibrary/LegacyBehaviors/Button.mjs"
 import * as coin from "BehaviorLibrary/LegacyBehaviors/Coin.mjs"
-import * as defaultBehavior from "BehaviorLibrary/LegacyBehaviors/Default Behavior.mjs"
 import * as destroyClonesOnReset from "BehaviorLibrary/LegacyBehaviors/Destroy clones on reset.mjs"
 import * as destroyIfUnclaimedClone from "BehaviorLibrary/LegacyBehaviors/Destroy If Unclaimed Clone.mjs"
 import * as dialogBox from "BehaviorLibrary/LegacyBehaviors/Dialog box.mjs"
@@ -263,11 +265,13 @@ voosModules["builtin:Spawned As Clone Event Card"] = spawnedAsCloneEventCard;
 voosModules["builtin:Terrain Collision Event Card"] = terrainCollisionEventCard;
 voosModules["builtin:Variable Predicate Card"] = variablePredicateCard;
 
+// BaseBehaviors
+voosModules["builtin:Default Behavior"] = defaultBehavior;
+
 // LegacyBehaviors
 voosModules["builtin:Blink"] = blink;
 voosModules["builtin:Button"] = button;
 voosModules["builtin:Coin"] = coin;
-voosModules["builtin:Default Behavior"] = defaultBehavior;
 voosModules["builtin:Destroy clones on reset"] = destroyClonesOnReset;
 voosModules["builtin:Destroy If Unclaimed Clone"] = destroyIfUnclaimedClone;
 voosModules["builtin:Dialog box"] = dialogBox;
