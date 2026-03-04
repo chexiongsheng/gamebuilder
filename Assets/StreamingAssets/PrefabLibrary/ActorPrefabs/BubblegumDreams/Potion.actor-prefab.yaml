@@ -147,7 +147,79 @@ sojos:
 - id: "builtin:Collect"
   name: Collect
   contentType: SoundEffect
-  content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":1,\"speed\":8,\"volume\":[12,15,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[28,40,48,55,55,55,57,59,60,60,61,61,63,63,63,63,63,63,63,63,63,63,63,63,62,63,63,62,61,60,60,61]}}"
+  content:
+    effectType: synthesized
+    synthParams:
+      waveShape: tRIANGLE
+      speed: 8
+      volume:
+      - 12
+      - 15
+      - 2
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      pitch:
+      - 28
+      - 40
+      - 48
+      - 55
+      - 55
+      - 55
+      - 57
+      - 59
+      - 60
+      - 60
+      - 61
+      - 61
+      - 63
+      - 63
+      - 63
+      - 63
+      - 63
+      - 63
+      - 63
+      - 63
+      - 63
+      - 63
+      - 63
+      - 63
+      - 62
+      - 63
+      - 63
+      - 62
+      - 61
+      - 60
+      - 60
+      - 61
+    steamWorkshopId: 0
+    spatialized: false
 thumbnailJZB64: null
 category: gameplay
 workshopId: ""

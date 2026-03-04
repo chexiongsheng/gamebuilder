@@ -102,7 +102,7 @@ public class SoundEffectSystem : MonoBehaviour
     {
       throw new System.Exception("SOJO is not a sound effect: " + sojo);
     }
-    return new SoundEffect(id, sojo.name, JsonUtility.FromJson<SoundEffectContent>(sojo.content));
+    return new SoundEffect(id, sojo.name, (SoundEffectContent)sojo.content);
   }
 
   // Gets a sound effect by name (not unique).
@@ -117,7 +117,7 @@ public class SoundEffectSystem : MonoBehaviour
     {
       throw new System.Exception("SOJO is not a sound effect: " + sojo);
     }
-    return new SoundEffect(sojo.id, sojo.name, JsonUtility.FromJson<SoundEffectContent>(sojo.content));
+    return new SoundEffect(sojo.id, sojo.name, (SoundEffectContent)sojo.content);
   }
 
   // Saves a sound effect. If the ID corresponds to an existing sound effect, that effect will
@@ -140,14 +140,14 @@ public class SoundEffectSystem : MonoBehaviour
     undoItem.doIt = () =>
     {
       sojoSystem.PutSojo(new Sojo(soundEffect.id, soundEffect.name,
-      SojoType.SoundEffect, JsonUtility.ToJson(soundEffect.content)));
+      SojoType.SoundEffect, soundEffect.content));
     };
     undoItem.undo = () =>
     {
       if (prevEffect != null)
       {
         sojoSystem.PutSojo(new Sojo(prevEffect.id, prevEffect.name,
-        SojoType.SoundEffect, JsonUtility.ToJson(prevEffect.content)));
+        SojoType.SoundEffect, prevEffect.content));
       }
       else
       {
@@ -421,6 +421,7 @@ public class SoundEffectContent
     return content;
   }
 
-  private SoundEffectContent() { }
+  public SoundEffectContent() { }
+
 }
 

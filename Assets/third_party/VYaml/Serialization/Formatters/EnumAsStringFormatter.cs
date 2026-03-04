@@ -157,6 +157,15 @@ namespace VYaml.Serialization
                 return value;
             }
 
+            // 兼容整数格式的枚举值（如 "0", "1" 等）
+            if (int.TryParse(scalar, out var intValue))
+            {
+                var enumValue = (T)Enum.ToObject(typeof(T), intValue);
+                if (Enum.IsDefined(typeof(T), enumValue))
+                {
+                    return enumValue;
+                }
+            }
 
             var mutator = NamingConventionMutator.Of(NamingConventionByType ?? YamlSerializerOptions.DefaultNamingConvention);
             Span<char> buffer = stackalloc char[scalar.Length];
@@ -176,5 +185,6 @@ namespace VYaml.Serialization
             YamlSerializerException.ThrowInvalidType<T>(mutatedScalar);
             return default!;
         }
+
     }
 }

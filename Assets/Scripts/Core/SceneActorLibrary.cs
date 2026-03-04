@@ -89,7 +89,8 @@ public class SceneActorLibrary : MonoBehaviour
 
   ActorPrefabImpl Deserialize(Sojo sojo)
   {
-    SavedActorPrefab saved = JsonUtility.FromJson<SavedActorPrefab>(sojo.content);
+    SavedActorPrefab saved = (SavedActorPrefab)sojo.content;
+
     saved.AssertValid();
     Texture2D thumbnail = null;
     if (!saved.thumbnailJZB64.IsNullOrEmpty())
@@ -110,8 +111,8 @@ public class SceneActorLibrary : MonoBehaviour
 
   public void Put(string id, VoosActor actor, Texture2D thumbnail)
   {
-    string json = ExportToJson(actor, thumbnail);
-    Sojo sojo = new Sojo(ToSojoId(id), actor.GetDisplayName(), SojoType.ActorPrefab, json);
+    SavedActorPrefab prefab = ToPrefab(actor, thumbnail);
+    Sojo sojo = new Sojo(ToSojoId(id), actor.GetDisplayName(), SojoType.ActorPrefab, prefab);
     sojoSystem.PutSojo(sojo);
   }
 
@@ -176,7 +177,7 @@ public class SceneActorLibrary : MonoBehaviour
     foreach (var sojo in sojoSystem.GetAllSojosOfType(SojoType.ActorPrefab))
     {
       Debug.Assert(sojo.id.Contains(SojoIdPrefix));
-      SavedActorPrefab saved = JsonUtility.FromJson<SavedActorPrefab>(sojo.content);
+      SavedActorPrefab saved = (SavedActorPrefab)sojo.content;
       saved.AssertValid();
       foreach (var brain in saved.brainDatabase.brains)
       {
@@ -195,8 +196,7 @@ public class SceneActorLibrary : MonoBehaviour
 
   public void Import(string id, SavedActorPrefab prefab)
   {
-    string json = JsonUtility.ToJson(prefab, true);
-    Sojo sojo = new Sojo(ToSojoId(id), prefab.label, SojoType.ActorPrefab, json);
+    Sojo sojo = new Sojo(ToSojoId(id), prefab.label, SojoType.ActorPrefab, prefab);
     sojoSystem.PutSojo(sojo);
   }
 
@@ -204,7 +204,7 @@ public class SceneActorLibrary : MonoBehaviour
   {
     var sojo = sojoSystem.GetSojoById(ToSojoId(id));
     Debug.Assert(sojo != null, "Could not find scene actor prefab for given id");
-    return JsonUtility.FromJson<SavedActorPrefab>(sojo.content);
+    return (SavedActorPrefab)sojo.content;
   }
 
   public void WritePrefabToDir(string id, string path)

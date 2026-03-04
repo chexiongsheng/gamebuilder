@@ -50,6 +50,7 @@ public class SaveLoadController : MonoBehaviour
       var options = YamlSerializerOptions.Standard;
       options.Resolver = CompositeResolver.Create(
           new IYamlFormatterResolver[] {
+              SojoSavedYamlFormatterResolver.Instance,
               StandardResolver.Instance,
               ReflectionResolver.Instance
           }

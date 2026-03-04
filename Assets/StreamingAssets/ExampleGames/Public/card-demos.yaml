@@ -12215,71 +12215,954 @@ sojoDatabase:
   - id: "builtin:Explosion"
     name: Explosion
     contentType: SoundEffect
-    content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":3,\"speed\":8,\"volume\":[14,14,12,10,9,8,6,5,4,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[54,50,47,44,43,41,39,37,36,35,34,32,31,30,28,27,26,24,23,22,22,21,21,21,20,20,20,20,20,20,20,20]}}"
+    content:
+      effectType: synthesized
+      synthParams:
+        waveShape: nOISE
+        speed: 8
+        volume:
+        - 14
+        - 14
+        - 12
+        - 10
+        - 9
+        - 8
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        pitch:
+        - 54
+        - 50
+        - 47
+        - 44
+        - 43
+        - 41
+        - 39
+        - 37
+        - 36
+        - 35
+        - 34
+        - 32
+        - 31
+        - 30
+        - 28
+        - 27
+        - 26
+        - 24
+        - 23
+        - 22
+        - 22
+        - 21
+        - 21
+        - 21
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+      steamWorkshopId: 0
+      spatialized: false
   - id: "builtin:Collect"
     name: Collect
     contentType: SoundEffect
-    content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":1,\"speed\":8,\"volume\":[12,15,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[28,40,48,55,55,55,57,59,60,60,61,61,63,63,63,63,63,63,63,63,63,63,63,63,62,63,63,62,61,60,60,61]}}"
+    content:
+      effectType: synthesized
+      synthParams:
+        waveShape: tRIANGLE
+        speed: 8
+        volume:
+        - 12
+        - 15
+        - 2
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        pitch:
+        - 28
+        - 40
+        - 48
+        - 55
+        - 55
+        - 55
+        - 57
+        - 59
+        - 60
+        - 60
+        - 61
+        - 61
+        - 63
+        - 63
+        - 63
+        - 63
+        - 63
+        - 63
+        - 63
+        - 63
+        - 63
+        - 63
+        - 63
+        - 63
+        - 62
+        - 63
+        - 63
+        - 62
+        - 61
+        - 60
+        - 60
+        - 61
+      steamWorkshopId: 0
+      spatialized: false
   - id: "builtin:Laser"
     name: Laser
     contentType: SoundEffect
-    content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":2,\"speed\":14,\"volume\":[12,12,12,11,9,8,7,6,5,4,3,3,2,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[45,41,37,34,33,32,30,30,28,27,26,25,24,23,22,21,20,20,20,20,20,20,20,19,19,18,18,18,18,18,18,19]}}"
+    content:
+      effectType: synthesized
+      synthParams:
+        waveShape: sINE
+        speed: 14
+        volume:
+        - 12
+        - 12
+        - 12
+        - 11
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 3
+        - 2
+        - 1
+        - 1
+        - 0
+        - 0
+        - 0
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        pitch:
+        - 45
+        - 41
+        - 37
+        - 34
+        - 33
+        - 32
+        - 30
+        - 30
+        - 28
+        - 27
+        - 26
+        - 25
+        - 24
+        - 23
+        - 22
+        - 21
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 19
+        - 19
+        - 18
+        - 18
+        - 18
+        - 18
+        - 18
+        - 18
+        - 19
+      steamWorkshopId: 0
+      spatialized: false
   - id: "builtin:Hit"
     name: Hit
     contentType: SoundEffect
-    content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":3,\"speed\":14,\"volume\":[15,13,11,7,4,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[42,35,32,29,27,27,25,24,23,22,22,22,22,21,21,21,21,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20]}}"
+    content:
+      effectType: synthesized
+      synthParams:
+        waveShape: nOISE
+        speed: 14
+        volume:
+        - 15
+        - 13
+        - 11
+        - 7
+        - 4
+        - 2
+        - 1
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        pitch:
+        - 42
+        - 35
+        - 32
+        - 29
+        - 27
+        - 27
+        - 25
+        - 24
+        - 23
+        - 22
+        - 22
+        - 22
+        - 22
+        - 21
+        - 21
+        - 21
+        - 21
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+        - 20
+      steamWorkshopId: 0
+      spatialized: false
   - id: "builtin:Lose"
     name: Lose
     contentType: SoundEffect
-    content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":1,\"speed\":1,\"volume\":[16,16,16,16,13,8,6,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[43,43,35,35,29,29,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22]}}"
+    content:
+      effectType: synthesized
+      synthParams:
+        waveShape: tRIANGLE
+        speed: 1
+        volume:
+        - 16
+        - 16
+        - 16
+        - 16
+        - 13
+        - 8
+        - 6
+        - 4
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        pitch:
+        - 43
+        - 43
+        - 35
+        - 35
+        - 29
+        - 29
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+        - 22
+      steamWorkshopId: 0
+      spatialized: false
   - id: "builtin:Win"
     name: Win
     contentType: SoundEffect
-    content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":1,\"speed\":1,\"volume\":[16,16,16,16,13,8,6,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[20,20,30,30,38,38,47,47,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53]},\"steamWorkshopId\":0}"
+    content:
+      effectType: synthesized
+      synthParams:
+        waveShape: tRIANGLE
+        speed: 1
+        volume:
+        - 16
+        - 16
+        - 16
+        - 16
+        - 13
+        - 8
+        - 6
+        - 4
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        pitch:
+        - 20
+        - 20
+        - 30
+        - 30
+        - 38
+        - 38
+        - 47
+        - 47
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+        - 53
+      steamWorkshopId: 0
+      spatialized: false
   - id: "builtin:ExplosionPfx"
     name: Explosion
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":0.699999988079071,\"speed\":3.0,\"startSize\":3.0,\"endSize\":1.0,\"shapeType\":1,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":1.0,\"g\":0.6000000238418579,\"b\":0.20000000298023225,\"a\":1.0},\"position\":0.0,\"id\":\"dcff3261-efca-494b-9c30-e908344d0d63\"},{\"value\":{\"r\":0.5,\"g\":0.0,\"b\":0.0,\"a\":0.699999988079071},\"position\":0.5,\"id\":\"64f32250-ef92-4553-bfe7-61cd92d756d3\"},{\"value\":{\"r\":0.30000001192092898,\"g\":0.0,\"b\":0.10000000149011612,\"a\":0.0},\"position\":1.0,\"id\":\"d19c0fb6-e032-4848-9403-00e647833e80\"}],\"burstCount\":15}"
+    content:
+      isLocal: false
+      duration: 0.699999988
+      speed: 3
+      startSize: 3
+      endSize: 1
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime: []
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 1
+          g: 0.600000024
+          b: 0.200000003
+          a: 1
+        position: 0
+        id: dcff3261-efca-494b-9c30-e908344d0d63
+      - value:
+          r: 0.5
+          g: 0
+          b: 0
+          a: 0.699999988
+        position: 0.5
+        id: 64f32250-ef92-4553-bfe7-61cd92d756d3
+      - value:
+          r: 0.300000012
+          g: 0
+          b: 0.100000001
+          a: 0
+        position: 1
+        id: d19c0fb6-e032-4848-9403-00e647833e80
+      burstCount: 15
+      gravityModifier: 0
   - id: "builtin:FountainPfx"
     name: Fountain
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":1.0,\"speed\":1.0,\"startSize\":0.5,\"endSize\":0.5,\"shapeType\":0,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":0.6000000238418579,\"g\":1.0,\"b\":1.0,\"a\":1.0},\"position\":0.0,\"id\":\"3f0e6123-e932-41e6-be0c-cf38e3aad18e\"},{\"value\":{\"r\":0.0,\"g\":0.6000000238418579,\"b\":1.0,\"a\":0.0},\"position\":1.0,\"id\":\"3ccd5b5a-8c65-4105-b830-8cc28a9f9d43\"}],\"burstCount\":30}"
+    content:
+      isLocal: false
+      duration: 1
+      speed: 1
+      startSize: 0.5
+      endSize: 0.5
+      shapeType: cone
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime: []
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 0.600000024
+          g: 1
+          b: 1
+          a: 1
+        position: 0
+        id: 3f0e6123-e932-41e6-be0c-cf38e3aad18e
+      - value:
+          r: 0
+          g: 0.600000024
+          b: 1
+          a: 0
+        position: 1
+        id: 3ccd5b5a-8c65-4105-b830-8cc28a9f9d43
+      burstCount: 30
+      gravityModifier: 0
   - id: "builtin:GlowPfx"
     name: Glow
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":2.0,\"speed\":0.4000000059604645,\"startSize\":0.30000001192092898,\"endSize\":0.0,\"shapeType\":4,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":1.0,\"g\":1.0,\"b\":0.30000001192092898,\"a\":1.0},\"position\":0.0,\"id\":\"98f78594-ff04-4dc2-a959-7a0f3c25d45a\"},{\"value\":{\"r\":1.0,\"g\":0.6000000238418579,\"b\":0.0,\"a\":0.0},\"position\":1.0,\"id\":\"012383ff-97a9-48c5-8961-c93356f2dcfa\"}],\"burstCount\":6}"
+    content:
+      isLocal: false
+      duration: 2
+      speed: 0.400000006
+      startSize: 0.300000012
+      endSize: 0
+      shapeType: rectangle
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime: []
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 1
+          g: 1
+          b: 0.300000012
+          a: 1
+        position: 0
+        id: 98f78594-ff04-4dc2-a959-7a0f3c25d45a
+      - value:
+          r: 1
+          g: 0.600000024
+          b: 0
+          a: 0
+        position: 1
+        id: 012383ff-97a9-48c5-8961-c93356f2dcfa
+      burstCount: 6
+      gravityModifier: 0
   - id: 746ec522-11da-4584-bdcd-72614736bd8a
     name: TreeChop
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":1.1438148021697999,\"speed\":1.2301030158996583,\"startSize\":2.581953525543213,\"endSize\":0.19464083015918733,\"shapeType\":1,\"shapeSize\":1.0,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"b55b7f99-58e1-475b-a872-764cf140cd38\"},{\"value\":2.0,\"position\":1.0,\"id\":\"278ce478-e4e1-4e26-9292-6049b81b51fc\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":0.09005549550056458,\"g\":1.0,\"b\":-0.06949591636657715,\"a\":1.0},\"position\":0.0,\"id\":\"50a29ed2-7486-461c-8cb7-c86db183ce23\"},{\"value\":{\"r\":0.3607664704322815,\"g\":0.3607664704322815,\"b\":0.3607664704322815,\"a\":1.0},\"position\":1.0,\"id\":\"b23753b7-193a-4697-a0af-303153f2031b\"}],\"burstCount\":10}"
+    content:
+      isLocal: false
+      duration: 1.1438148
+      speed: 1.23010302
+      startSize: 2.58195353
+      endSize: 0.19464083
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: b55b7f99-58e1-475b-a872-764cf140cd38
+      - value: 2
+        position: 1
+        id: 278ce478-e4e1-4e26-9292-6049b81b51fc
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 0.0900554955
+          g: 1
+          b: -0.0694959164
+          a: 1
+        position: 0
+        id: 50a29ed2-7486-461c-8cb7-c86db183ce23
+      - value:
+          r: 0.36076647
+          g: 0.36076647
+          b: 0.36076647
+          a: 1
+        position: 1
+        id: b23753b7-193a-4697-a0af-303153f2031b
+      burstCount: 10
+      gravityModifier: 0
   - id: 374d2cda-4871-4196-a22b-702d5c2f3fe3
     name: ShipLaunch
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":2.208035469055176,\"speed\":0.3672173321247101,\"startSize\":2.697003126144409,\"endSize\":0.5397971868515015,\"shapeType\":1,\"shapeSize\":1.0,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"2d5b18f1-4630-4d58-8fd1-8191aec23284\"},{\"value\":2.0,\"position\":1.0,\"id\":\"c31f1fc3-df72-47e0-b160-601ed825c270\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":0.9919449687004089,\"g\":0.996118426322937,\"b\":1.0,\"a\":1.0},\"position\":0.0,\"id\":\"15387b7f-3624-4a2a-93aa-b438f5eca858\"},{\"value\":{\"r\":1.0,\"g\":0.8859883546829224,\"b\":-0.07447516918182373,\"a\":1.0},\"position\":0.11489316076040268,\"id\":\"e35fe8b8-bb0b-42cd-9205-cb2e563fbc62\"},{\"value\":{\"r\":1.0,\"g\":0.36265450716018679,\"b\":0.03741961717605591,\"a\":1.0},\"position\":0.2227558046579361,\"id\":\"814ed370-86ce-492c-be38-a93479202e0e\"},{\"value\":{\"r\":0.34447720646858218,\"g\":0.327639102935791,\"b\":0.34511619806289675,\"a\":1.0},\"position\":0.7710579037666321,\"id\":\"71a4414d-9c00-4e21-91ce-4f55e145f6a8\"},{\"value\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0},\"position\":1.0,\"id\":\"f0e51b06-a32e-465b-b9f2-77610d5cf6f7\"}],\"burstCount\":14}"
+    content:
+      isLocal: false
+      duration: 2.20803547
+      speed: 0.367217332
+      startSize: 2.69700313
+      endSize: 0.539797187
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: 2d5b18f1-4630-4d58-8fd1-8191aec23284
+      - value: 2
+        position: 1
+        id: c31f1fc3-df72-47e0-b160-601ed825c270
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 0.991944969
+          g: 0.996118426
+          b: 1
+          a: 1
+        position: 0
+        id: 15387b7f-3624-4a2a-93aa-b438f5eca858
+      - value:
+          r: 1
+          g: 0.885988355
+          b: -0.0744751692
+          a: 1
+        position: 0.114893161
+        id: e35fe8b8-bb0b-42cd-9205-cb2e563fbc62
+      - value:
+          r: 1
+          g: 0.362654507
+          b: 0.0374196172
+          a: 1
+        position: 0.222755805
+        id: 814ed370-86ce-492c-be38-a93479202e0e
+      - value:
+          r: 0.344477206
+          g: 0.327639103
+          b: 0.345116198
+          a: 1
+        position: 0.771057904
+        id: 71a4414d-9c00-4e21-91ce-4f55e145f6a8
+      - value:
+          r: 0
+          g: 0
+          b: 0
+          a: 1
+        position: 1
+        id: f0e51b06-a32e-465b-b9f2-77610d5cf6f7
+      burstCount: 14
+      gravityModifier: 0
   - id: 751f1ce4-93f9-43e8-8a55-5d20fae53b1f
     name: PaintOrange
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":0.5685588121414185,\"speed\":0.5973204374313355,\"startSize\":2.8408145904541017,\"endSize\":0.0,\"shapeType\":1,\"shapeSize\":1.0,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"6b209340-6223-4239-8bad-a0a9175b9f16\"},{\"value\":2.0,\"position\":1.0,\"id\":\"f295d8df-a02e-49b4-8ad4-fc128c45ed87\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":0.8354921936988831,\"g\":0.4872993528842926,\"b\":0.18493208289146424,\"a\":1.0},\"position\":0.0,\"id\":\"fbc9a094-361c-4e4f-8a98-9b366aed9101\"},{\"value\":{\"r\":1.0,\"g\":0.7444191575050354,\"b\":0.024383366107940675,\"a\":1.0},\"position\":1.0,\"id\":\"4e634a10-26a4-4244-8872-a67eb86757f6\"}],\"burstCount\":10}"
+    content:
+      isLocal: false
+      duration: 0.568558812
+      speed: 0.597320437
+      startSize: 2.84081459
+      endSize: 0
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: 6b209340-6223-4239-8bad-a0a9175b9f16
+      - value: 2
+        position: 1
+        id: f295d8df-a02e-49b4-8ad4-fc128c45ed87
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 0.835492194
+          g: 0.487299353
+          b: 0.184932083
+          a: 1
+        position: 0
+        id: fbc9a094-361c-4e4f-8a98-9b366aed9101
+      - value:
+          r: 1
+          g: 0.744419158
+          b: 0.0243833661
+          a: 1
+        position: 1
+        id: 4e634a10-26a4-4244-8872-a67eb86757f6
+      burstCount: 10
+      gravityModifier: 0
   - id: e1365617-c33d-4dd1-a32c-3c7b2fb8baff
     name: PaintBlue
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":1.0,\"speed\":1.0,\"startSize\":2.587815761566162,\"endSize\":0.3096940517425537,\"shapeType\":1,\"shapeSize\":1.0,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"a2bd1791-871f-47cf-8f6e-2dd06890b853\"},{\"value\":2.0,\"position\":1.0,\"id\":\"576d3c08-db8a-4d23-934a-03f121a0b051\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":0.07691709697246552,\"g\":0.8615760207176209,\"b\":0.4685683846473694,\"a\":1.0},\"position\":0.0,\"id\":\"8be82daf-3ec5-4bd6-9a2a-eaf2d8db8983\"},{\"value\":{\"r\":0.479329377412796,\"g\":0.42534515261650088,\"b\":0.49118566513061526,\"a\":1.0},\"position\":1.0,\"id\":\"656b814a-523a-4bf3-ac86-14c1cc9d7b9b\"}],\"burstCount\":10,\"gravityModifier\":0.0}"
+    content:
+      isLocal: false
+      duration: 1
+      speed: 1
+      startSize: 2.58781576
+      endSize: 0.309694052
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: a2bd1791-871f-47cf-8f6e-2dd06890b853
+      - value: 2
+        position: 1
+        id: 576d3c08-db8a-4d23-934a-03f121a0b051
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 0.076917097
+          g: 0.861576021
+          b: 0.468568385
+          a: 1
+        position: 0
+        id: 8be82daf-3ec5-4bd6-9a2a-eaf2d8db8983
+      - value:
+          r: 0.479329377
+          g: 0.425345153
+          b: 0.491185665
+          a: 1
+        position: 1
+        id: 656b814a-523a-4bf3-ac86-14c1cc9d7b9b
+      burstCount: 10
+      gravityModifier: 0
   - id: dd236ec3-8ef3-4e71-adbe-986e62be985c
     name: TeleportPoof
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":1.0,\"speed\":1.0,\"startSize\":4.020092010498047,\"endSize\":0.2234024703502655,\"shapeType\":1,\"shapeSize\":1.0,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"e84af61b-0ae6-473c-82de-e8f8b1c6a786\"},{\"value\":2.0,\"position\":1.0,\"id\":\"3d2e1c42-6559-47b0-99f5-594b80855d03\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":0.0,\"g\":1.0,\"b\":1.0,\"a\":1.0},\"position\":0.0,\"id\":\"b1e9bbc8-afdf-4be3-b07a-372a2cc4575c\"},{\"value\":{\"r\":0.0,\"g\":1.0,\"b\":1.0,\"a\":0.0},\"position\":1.0,\"id\":\"f5d35035-66bb-46eb-9c4b-c1659c3bb92d\"}],\"burstCount\":10}"
+    content:
+      isLocal: false
+      duration: 1
+      speed: 1
+      startSize: 4.02009201
+      endSize: 0.22340247
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: e84af61b-0ae6-473c-82de-e8f8b1c6a786
+      - value: 2
+        position: 1
+        id: 3d2e1c42-6559-47b0-99f5-594b80855d03
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 0
+          g: 1
+          b: 1
+          a: 1
+        position: 0
+        id: b1e9bbc8-afdf-4be3-b07a-372a2cc4575c
+      - value:
+          r: 0
+          g: 1
+          b: 1
+          a: 0
+        position: 1
+        id: f5d35035-66bb-46eb-9c4b-c1659c3bb92d
+      burstCount: 10
+      gravityModifier: 0
   - id: dd2fe9ba-80f6-4e04-b063-c94709f18e79
     name: StartDriving
     contentType: SoundEffect
-    content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":3,\"speed\":2,\"volume\":[34,45,44,41,32,22,22,22,20,19,17,11,6,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[28,35,36,36,34,29,29,24,20,17,17,17,17,14,14,14,13,13,13,14,16,17,17,17,17,17,17,18,18,17,13,11]},\"steamWorkshopId\":0}"
+    content:
+      effectType: synthesized
+      synthParams:
+        waveShape: nOISE
+        speed: 2
+        volume:
+        - 34
+        - 45
+        - 44
+        - 41
+        - 32
+        - 22
+        - 22
+        - 22
+        - 20
+        - 19
+        - 17
+        - 11
+        - 6
+        - 2
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        pitch:
+        - 28
+        - 35
+        - 36
+        - 36
+        - 34
+        - 29
+        - 29
+        - 24
+        - 20
+        - 17
+        - 17
+        - 17
+        - 17
+        - 14
+        - 14
+        - 14
+        - 13
+        - 13
+        - 13
+        - 14
+        - 16
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
+        - 18
+        - 18
+        - 17
+        - 13
+        - 11
+      steamWorkshopId: 0
+      spatialized: false
   - id: e5b6c617-3969-4bd3-b393-01f9cfd18877
     name: StopDriving
     contentType: SoundEffect
-    content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":3,\"speed\":8,\"volume\":[29,33,38,40,38,34,27,21,16,14,12,7,4,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[7,10,15,24,28,31,32,33,33,33,31,29,27,25,22,19,13,7,3,0,0,0,0,0,0,0,0,0,0,0,0,0]},\"steamWorkshopId\":0}"
+    content:
+      effectType: synthesized
+      synthParams:
+        waveShape: nOISE
+        speed: 8
+        volume:
+        - 29
+        - 33
+        - 38
+        - 40
+        - 38
+        - 34
+        - 27
+        - 21
+        - 16
+        - 14
+        - 12
+        - 7
+        - 4
+        - 1
+        - 1
+        - 1
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        pitch:
+        - 7
+        - 10
+        - 15
+        - 24
+        - 28
+        - 31
+        - 32
+        - 33
+        - 33
+        - 33
+        - 31
+        - 29
+        - 27
+        - 25
+        - 22
+        - 19
+        - 13
+        - 7
+        - 3
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+      steamWorkshopId: 0
+      spatialized: false
   - id: ef2fabf6-bcdf-4aa6-8df4-0b52a3ea258a
     name: StartDriving
     contentType: ParticleEffect
-    content: "{\"isLocal\":false,\"duration\":3.9913272857666017,\"speed\":0.1371176838874817,\"startSize\":2.702869176864624,\"endSize\":0.3959822952747345,\"shapeType\":1,\"shapeSize\":1.0,\"velocityOverLifetimeDEPRECATED\":[],\"rotationOverLifetime\":[{\"value\":2.0,\"position\":0.0,\"id\":\"5d183ae0-e596-4b2c-8648-8b8869fbeb58\"},{\"value\":2.0,\"position\":1.0,\"id\":\"744ebcfd-8b8b-4a7b-bf32-9410b7bf7b07\"}],\"sizeOverLifetimeDEPRECATED\":[],\"colorOverLifetime\":[{\"value\":{\"r\":0.6215811967849731,\"g\":0.6086359620094299,\"b\":0.6685556769371033,\"a\":1.0},\"position\":0.0,\"id\":\"c8bff812-16f9-470c-bd19-86582c1bd55a\"},{\"value\":{\"r\":0.23034730553627015,\"g\":0.20233646035194398,\"b\":0.22664578258991242,\"a\":1.0},\"position\":1.0,\"id\":\"c4b5b704-bab6-488d-b9cc-6b26bbbc4994\"}],\"burstCount\":10}"
+    content:
+      isLocal: false
+      duration: 3.99132729
+      speed: 0.137117684
+      startSize: 2.70286918
+      endSize: 0.395982295
+      shapeType: sphere
+      shapeSize: 1
+      velocityOverLifetimeDEPRECATED: []
+      rotationOverLifetime:
+      - value: 2
+        position: 0
+        id: 5d183ae0-e596-4b2c-8648-8b8869fbeb58
+      - value: 2
+        position: 1
+        id: 744ebcfd-8b8b-4a7b-bf32-9410b7bf7b07
+      sizeOverLifetimeDEPRECATED: []
+      colorOverLifetime:
+      - value:
+          r: 0.621581197
+          g: 0.608635962
+          b: 0.668555677
+          a: 1
+        position: 0
+        id: c8bff812-16f9-470c-bd19-86582c1bd55a
+      - value:
+          r: 0.230347306
+          g: 0.20233646
+          b: 0.226645783
+          a: 1
+        position: 1
+        id: c4b5b704-bab6-488d-b9cc-6b26bbbc4994
+      burstCount: 10
+      gravityModifier: 0
 cardPacks:
   cardPacks: []
 actorPacks:

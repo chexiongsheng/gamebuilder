@@ -93,7 +93,7 @@ public class ParticleEffectSystem : MonoBehaviour
     {
       throw new System.Exception("SOJO is not a particle effect: " + sojo);
     }
-    return new ParticleEffect(id, sojo.name, JsonUtility.FromJson<ParticleEffectContent>(sojo.content));
+    return new ParticleEffect(id, sojo.name, (ParticleEffectContent)sojo.content);
   }
 
   // Gets a particle effect by name (not unique).
@@ -108,7 +108,7 @@ public class ParticleEffectSystem : MonoBehaviour
     {
       throw new System.Exception("SOJO is not a particle effect: " + sojo);
     }
-    return new ParticleEffect(sojo.id, sojo.name, JsonUtility.FromJson<ParticleEffectContent>(sojo.content));
+    return new ParticleEffect(sojo.id, sojo.name, (ParticleEffectContent)sojo.content);
   }
 
   // Saves a particle effect. If the ID corresponds to an existing particle effect, that effect will
@@ -131,14 +131,14 @@ public class ParticleEffectSystem : MonoBehaviour
     undoItem.doIt = () =>
     {
       sojoSystem.PutSojo(new Sojo(particleEffect.id, particleEffect.name,
-      SojoType.ParticleEffect, JsonUtility.ToJson(particleEffect.content)));
+      SojoType.ParticleEffect, particleEffect.content));
     };
     undoItem.undo = () =>
     {
       if (prevEffect != null)
       {
         sojoSystem.PutSojo(new Sojo(prevEffect.id, prevEffect.name,
-        SojoType.ParticleEffect, JsonUtility.ToJson(prevEffect.content)));
+        SojoType.ParticleEffect, prevEffect.content));
       }
       else
       {
@@ -406,6 +406,9 @@ public class ParticleEffectContent
     public float position;
     public string id;
 
+    // VYaml 反序列化需要无参构造函数
+    public Vector3Stop() { }
+
     public Vector3Stop(Vector3 value, float position) : this(System.Guid.NewGuid().ToString(), value, position) { }
 
     public Vector3Stop(string id, Vector3 value, float position)
@@ -434,6 +437,9 @@ public class ParticleEffectContent
     public float position;
     public string id;
 
+    // VYaml 反序列化需要无参构造函数
+    public FloatStop() { }
+
     public FloatStop(float value, float position) : this(System.Guid.NewGuid().ToString(), value, position) { }
 
     public FloatStop(string id, float value, float position)
@@ -461,6 +467,9 @@ public class ParticleEffectContent
     public Color value;
     public float position;
     public string id;
+
+    // Newtonsoft.Json 反序列化需要无参构造函数
+    public ColorStop() { }
 
     public ColorStop(Color value, float position) : this(System.Guid.NewGuid().ToString(), value, position) { }
 

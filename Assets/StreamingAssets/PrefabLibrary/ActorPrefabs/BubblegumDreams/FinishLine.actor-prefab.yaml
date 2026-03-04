@@ -137,11 +137,155 @@ sojos:
 - id: "builtin:Win"
   name: Win
   contentType: SoundEffect
-  content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":1,\"speed\":1,\"volume\":[16,16,16,16,13,8,6,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[20,20,30,30,38,38,47,47,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53]},\"steamWorkshopId\":0}"
+  content:
+    effectType: synthesized
+    synthParams:
+      waveShape: tRIANGLE
+      speed: 1
+      volume:
+      - 16
+      - 16
+      - 16
+      - 16
+      - 13
+      - 8
+      - 6
+      - 4
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      pitch:
+      - 20
+      - 20
+      - 30
+      - 30
+      - 38
+      - 38
+      - 47
+      - 47
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+      - 53
+    steamWorkshopId: 0
+    spatialized: false
 - id: "builtin:Lose"
   name: Lose
   contentType: SoundEffect
-  content: "{\"effectType\":0,\"synthParams\":{\"waveShape\":1,\"speed\":8,\"volume\":[16,16,16,16,13,8,6,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"pitch\":[43,43,35,35,29,29,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22]},\"steamWorkshopId\":0}"
+  content:
+    effectType: synthesized
+    synthParams:
+      waveShape: tRIANGLE
+      speed: 8
+      volume:
+      - 16
+      - 16
+      - 16
+      - 16
+      - 13
+      - 8
+      - 6
+      - 4
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      pitch:
+      - 43
+      - 43
+      - 35
+      - 35
+      - 29
+      - 29
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+      - 22
+    steamWorkshopId: 0
+    spatialized: false
 thumbnailJZB64: null
 category: gameplay
 workshopId: ""
