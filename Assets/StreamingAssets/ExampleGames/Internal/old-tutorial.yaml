@@ -17736,23 +17736,19 @@ behaviorDatabase:
       - propertyName: moveDeck
         valueJson: "{\"value\":[\"6286648ca6db4b31acdd26807c31c2ad\"]}"
     - id: 6286648ca6db4b31acdd26807c31c2ad
-      behaviorUri: "builtin:MoveOscillate"
+      behaviorUri: "builtin:Back And Forth"
       metadataJson: ""
       propertyAssignments:
-      - propertyName: Amplitude
-        valueJson: "{\"value\":2}"
-      - propertyName: Frequency
-        valueJson: "{\"value\":4}"
-      - propertyName: DirectionX
-        valueJson: "{\"value\":0}"
-      - propertyName: DirectionY
-        valueJson: "{\"value\":0}"
-      - propertyName: DirectionZ
+      - propertyName: DistForward
         valueJson: "{\"value\":1}"
-      - propertyName: UseGlobalCoordinates
-        valueJson: "{\"value\":false}"
-      - propertyName: AbsolutePosition
-        valueJson: "{\"value\":false}"
+      - propertyName: DistUp
+        valueJson: "{\"value\":0}"
+      - propertyName: DistRight
+        valueJson: "{\"value\":0}"
+      - propertyName: Speed
+        valueJson: "{\"value\":4}"
+      - propertyName: RestTime
+        valueJson: "{\"value\":0}"
   - id: 1bf3ef5f562b4a059dbfbf70f7affcd7
     metadataJson: ""
     behaviorUses:
@@ -17976,23 +17972,19 @@ behaviorDatabase:
       metadataJson: ""
       propertyAssignments: []
     - id: 7209ae38fcab445aba8053e10a6be8eb
-      behaviorUri: "builtin:MoveOscillate"
+      behaviorUri: "builtin:Back And Forth"
       metadataJson: ""
       propertyAssignments:
-      - propertyName: Amplitude
-        valueJson: "{\"value\":8}"
-      - propertyName: Frequency
+      - propertyName: DistForward
+        valueJson: "{\"value\":0}"
+      - propertyName: DistUp
+        valueJson: "{\"value\":0}"
+      - propertyName: DistRight
+        valueJson: "{\"value\":4}"
+      - propertyName: Speed
         valueJson: "{\"value\":7}"
-      - propertyName: DirectionX
-        valueJson: "{\"value\":1}"
-      - propertyName: DirectionY
+      - propertyName: RestTime
         valueJson: "{\"value\":0}"
-      - propertyName: DirectionZ
-        valueJson: "{\"value\":0}"
-      - propertyName: UseGlobalCoordinates
-        valueJson: "{\"value\":true}"
-      - propertyName: AbsolutePosition
-        valueJson: "{\"value\":false}"
     - id: cfc2c80cd66443dbb5863ab4039fc256
       behaviorUri: "builtin:Movement Panel"
       metadataJson: ""

@@ -9950,23 +9950,19 @@ behaviorDatabase:
       - propertyName: moveDeck
         valueJson: "{\"value\":[\"7f5b57acecb84e9bb166d0abaadd4a35\"]}"
     - id: 7f5b57acecb84e9bb166d0abaadd4a35
-      behaviorUri: "builtin:MoveOscillate"
+      behaviorUri: "builtin:Back And Forth"
       metadataJson: ""
       propertyAssignments:
-      - propertyName: Amplitude
-        valueJson: "{\"value\":1}"
-      - propertyName: Frequency
-        valueJson: "{\"value\":1}"
-      - propertyName: DirectionX
+      - propertyName: DistForward
+        valueJson: "{\"value\":2.5}"
+      - propertyName: DistUp
         valueJson: "{\"value\":0}"
-      - propertyName: DirectionY
+      - propertyName: DistRight
         valueJson: "{\"value\":0}"
-      - propertyName: DirectionZ
-        valueJson: "{\"value\":1}"
-      - propertyName: UseGlobalCoordinates
-        valueJson: "{\"value\":false}"
-      - propertyName: AbsolutePosition
-        valueJson: "{\"value\":true}"
+      - propertyName: Speed
+        valueJson: "{\"value\":2}"
+      - propertyName: RestTime
+        valueJson: "{\"value\":0}"
   - id: b0671aaf188e4ff4bcb7278d97363b14
     metadataJson: ""
     behaviorUses:

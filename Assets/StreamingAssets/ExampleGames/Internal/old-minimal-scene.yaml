@@ -2777,19 +2777,19 @@ behaviorDatabase:
       - propertyName: moveDeck
         valueJson: "{\"value\":[\"a0576088ecbe43308f63012da0fb0b34\"]}"
     - id: a0576088ecbe43308f63012da0fb0b34
-      behaviorUri: "builtin:MoveOscillate"
+      behaviorUri: "builtin:Back And Forth"
       metadataJson: ""
       propertyAssignments:
-      - propertyName: DirectionY
-        valueJson: "{\"value\":1.0}"
-      - propertyName: DirectionZ
-        valueJson: "{\"value\":0.0}"
-      - propertyName: AbsolutePosition
-        valueJson: "{\"value\":false}"
+      - propertyName: DistForward
+        valueJson: "{\"value\":0}"
+      - propertyName: DistUp
+        valueJson: "{\"value\":3.0}"
+      - propertyName: DistRight
+        valueJson: "{\"value\":0}"
       - propertyName: Speed
         valueJson: "{\"value\":2.0}"
-      - propertyName: Distance
-        valueJson: "{\"value\":6.0}"
+      - propertyName: RestTime
+        valueJson: "{\"value\":0}"
   - id: e7c1c9fd9abe4248a208d5cf05b88007
     metadataJson: ""
     behaviorUses:
