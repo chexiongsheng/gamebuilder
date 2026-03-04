@@ -63,6 +63,7 @@ import * as playerControlsPlane from "BehaviorLibrary/DeprecatedCards/Player Con
 import * as playerControlsPointAndClick from "BehaviorLibrary/DeprecatedCards/Player Controls Point and Click.mjs"
 import * as sendMessageActionCard from "BehaviorLibrary/DeprecatedCards/SendMessageActionCard.mjs"
 import * as someoneScoresXPoints from "BehaviorLibrary/DeprecatedCards/Someone Scores X Points.mjs"
+import * as moveOscillate from "BehaviorLibrary/DeprecatedCards/MoveOscillate.mjs"
 
 // DeprecatedPanels
 import * as aiControlsPanel from "BehaviorLibrary/DeprecatedPanels/AI Controls Panel.mjs"
@@ -140,7 +141,6 @@ import * as moveInOneDirection from "BehaviorLibrary/MoveCards/MoveInOneDirectio
 import * as moveLookAt from "BehaviorLibrary/MoveCards/MoveLookAt.mjs"
 import * as movePath from "BehaviorLibrary/MoveCards/MovePath.mjs"
 import * as moveRandomWalk from "BehaviorLibrary/MoveCards/MoveRandomWalk.mjs"
-import * as moveOscillate from "BehaviorLibrary/MoveCards/MoveOscillate.mjs"
 import * as playerCameraLook from "BehaviorLibrary/MoveCards/Player Camera Look.mjs"
 import * as playerSpeedBasedTurn from "BehaviorLibrary/MoveCards/Player Speed Based Turn.mjs"
 import * as playerSpeedThrottle from "BehaviorLibrary/MoveCards/Player Speed Throttle.mjs"
