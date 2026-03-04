@@ -87,6 +87,7 @@ import * as variablePredicateCard from "BehaviorLibrary/EventCards/Variable Pred
 
 // InternalBehaviors
 import * as defaultBehavior from "BehaviorLibrary/InternalBehaviors/Default Behavior.mjs"
+import * as textBox from "BehaviorLibrary/InternalBehaviors/Text box.mjs"
 
 // LegacyBehaviors
 import * as blink from "BehaviorLibrary/LegacyBehaviors/Blink.mjs"
@@ -124,7 +125,7 @@ import * as snakeForward from "BehaviorLibrary/LegacyBehaviors/Snake forward.mjs
 import * as spawner from "BehaviorLibrary/LegacyBehaviors/Spawner.mjs"
 import * as takesDamage from "BehaviorLibrary/LegacyBehaviors/Takes damage.mjs"
 import * as team from "BehaviorLibrary/LegacyBehaviors/Team.mjs"
-import * as textBox from "BehaviorLibrary/LegacyBehaviors/Text box.mjs"
+
 import * as throwSomething from "BehaviorLibrary/LegacyBehaviors/Throw something.mjs"
 import * as trampoline from "BehaviorLibrary/LegacyBehaviors/Trampoline.mjs"
 import * as turnRandomly from "BehaviorLibrary/LegacyBehaviors/Turn randomly.mjs"
@@ -265,8 +266,9 @@ voosModules["builtin:Spawned As Clone Event Card"] = spawnedAsCloneEventCard;
 voosModules["builtin:Terrain Collision Event Card"] = terrainCollisionEventCard;
 voosModules["builtin:Variable Predicate Card"] = variablePredicateCard;
 
-// BaseBehaviors
+// InternalBehaviors
 voosModules["builtin:Default Behavior"] = defaultBehavior;
+voosModules["builtin:Text box"] = textBox;
 
 // LegacyBehaviors
 voosModules["builtin:Blink"] = blink;
@@ -304,7 +306,6 @@ voosModules["builtin:Snake forward"] = snakeForward;
 voosModules["builtin:Spawner"] = spawner;
 voosModules["builtin:Takes damage"] = takesDamage;
 voosModules["builtin:Team"] = team;
-voosModules["builtin:Text box"] = textBox;
 voosModules["builtin:Throw something"] = throwSomething;
 voosModules["builtin:Trampoline"] = trampoline;
 voosModules["builtin:Turn randomly"] = turnRandomly;
