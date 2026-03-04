@@ -11467,7 +11467,7 @@ behaviorDatabase:
       - propertyName: Message3
         valueJson: "{\"value\":\"RepliedNothing\"}"
     - id: ab28ba0f13d84a488390bfd9b67383f2
-      behaviorUri: "builtin:SendMessageActionCard22"
+      behaviorUri: "builtin:SendMessageActionCard2"
       metadataJson: ""
       propertyAssignments:
       - propertyName: Message
@@ -11647,7 +11647,7 @@ behaviorDatabase:
       - propertyName: Message
         valueJson: "{\"value\":\"WantCake\"}"
     - id: 2a0ced3e516d45f8b6b902acac79b4aa
-      behaviorUri: "builtin:SendMessageActionCard22"
+      behaviorUri: "builtin:SendMessageActionCard2"
       metadataJson: ""
       propertyAssignments:
       - propertyName: Target
@@ -11681,7 +11681,7 @@ behaviorDatabase:
       - propertyName: Message
         valueJson: "{\"value\":\"WantFlour\"}"
     - id: df59bec4f667433a835f9febb7f374e4
-      behaviorUri: "builtin:SendMessageActionCard22"
+      behaviorUri: "builtin:SendMessageActionCard2"
       metadataJson: ""
       propertyAssignments:
       - propertyName: Target
@@ -11717,7 +11717,7 @@ behaviorDatabase:
       - propertyName: Message
         valueJson: "{\"value\":\"WantApple\"}"
     - id: c01f8f10026e4228a11c412f3e28acd4
-      behaviorUri: "builtin:SendMessageActionCard22"
+      behaviorUri: "builtin:SendMessageActionCard2"
       metadataJson: ""
       propertyAssignments:
       - propertyName: Target
@@ -11753,7 +11753,7 @@ behaviorDatabase:
       - propertyName: Message
         valueJson: "{\"value\":\"WantBanana\"}"
     - id: 96cf8506a0a54bd7a7c6e9806e82e9c1
-      behaviorUri: "builtin:SendMessageActionCard22"
+      behaviorUri: "builtin:SendMessageActionCard2"
       metadataJson: ""
       propertyAssignments:
       - propertyName: Target
@@ -11789,7 +11789,7 @@ behaviorDatabase:
       - propertyName: Message
         valueJson: "{\"value\":\"WantLettuce\"}"
     - id: 1586b18541524578a69f110618502974
-      behaviorUri: "builtin:SendMessageActionCard22"
+      behaviorUri: "builtin:SendMessageActionCard2"
       metadataJson: ""
       propertyAssignments:
       - propertyName: Target
@@ -11825,7 +11825,7 @@ behaviorDatabase:
       - propertyName: Message
         valueJson: "{\"value\":\"WantPumpkin\"}"
     - id: 96f7dc677efd4189a323d370cf46b768
-      behaviorUri: "builtin:SendMessageActionCard22"
+      behaviorUri: "builtin:SendMessageActionCard2"
       metadataJson: ""
       propertyAssignments:
       - propertyName: Target

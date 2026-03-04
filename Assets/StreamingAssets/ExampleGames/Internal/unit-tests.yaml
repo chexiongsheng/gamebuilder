@@ -1362,7 +1362,7 @@ behaviorDatabase:
       - propertyName: actionDeck
         valueJson: "{\"value\":[\"8b38a449b0834ff481c0420923bcedd1\"]}"
     - id: 8b38a449b0834ff481c0420923bcedd1
-      behaviorUri: "builtin:SendMessageActionCard22"
+      behaviorUri: "builtin:SendMessageActionCard2"
       metadataJson: ""
       propertyAssignments:
       - propertyName: Message
