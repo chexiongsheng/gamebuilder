@@ -86,7 +86,7 @@ public class BehaviorSystem : MonoBehaviour
         string[] possiblePaths = {
           "BehaviorLibrary/" + resourcePathOrAbsPath,
           "BehaviorLibrary/ActionCards/" + resourcePathOrAbsPath,
-          "BehaviorLibrary/BaseBehaviors/" + resourcePathOrAbsPath,
+          "BehaviorLibrary/InternalBehaviors/" + resourcePathOrAbsPath,
           "BehaviorLibrary/CameraCards/" + resourcePathOrAbsPath,
           "BehaviorLibrary/LegacyBehaviors/" + resourcePathOrAbsPath,
           "BehaviorLibrary/DeprecatedCards/" + resourcePathOrAbsPath,

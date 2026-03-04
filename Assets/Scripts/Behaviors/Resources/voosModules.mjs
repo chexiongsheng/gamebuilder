@@ -85,8 +85,8 @@ import * as spawnedAsCloneEventCard from "BehaviorLibrary/EventCards/Spawned As 
 import * as terrainCollisionEventCard from "BehaviorLibrary/EventCards/Terrain Collision Event Card.mjs"
 import * as variablePredicateCard from "BehaviorLibrary/EventCards/Variable Predicate Card.mjs"
 
-// BaseBehaviors
-import * as defaultBehavior from "BehaviorLibrary/BaseBehaviors/Default Behavior.mjs"
+// InternalBehaviors
+import * as defaultBehavior from "BehaviorLibrary/InternalBehaviors/Default Behavior.mjs"
 
 // LegacyBehaviors
 import * as blink from "BehaviorLibrary/LegacyBehaviors/Blink.mjs"
