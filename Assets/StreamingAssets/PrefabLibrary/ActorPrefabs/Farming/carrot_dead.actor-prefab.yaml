@@ -3,7 +3,7 @@ label: carrot_dead
 actors:
 - version: 8
   name: 63c54160f9e34b30a7221e29ad903eab
-  brainName: __DEFAULT_BRAIN__
+  brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/carrot_dead"
   memoryJson: "{\"__bulm\":{}}"

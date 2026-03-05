@@ -3,7 +3,7 @@ label: fertilizer
 actors:
 - version: 8
   name: 16dccabd2d714df19deab13b100a8670
-  brainName: fc67e5baf32743fabdd414b5620df308
+  brainId: fc67e5baf32743fabdd414b5620df308
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/fertilizer"
   memoryJson: "{\"__bulm\":{}}"

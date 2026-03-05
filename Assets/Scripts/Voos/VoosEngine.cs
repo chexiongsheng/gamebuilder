@@ -658,7 +658,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
       return new InstantiatePrefab.Response
       {
         name = actor.GetName(),
-        brainName = actor.GetBrainName(),
+        brainId = actor.GetBrainName(),
         actorId = actor.lastTempId
       };
     }
@@ -2433,7 +2433,7 @@ setVoosModule('{moduleKey}', module);
     public struct Response
     {
       public string name;
-      public string brainName;
+      public string brainId;
       public ushort actorId;
     }
   }
@@ -2761,7 +2761,7 @@ setVoosModule('{moduleKey}', module);
 
   public static HashSet<string> GetUsedBrainIds(VoosActor.PersistedState[] actors)
   {
-    var rv = new HashSet<string>(actors.Select(actor => actor.brainName));
+    var rv = new HashSet<string>(actors.Select(actor => actor.brainId));
     rv.Add(DefaultBrainUid);
     return rv;
   }

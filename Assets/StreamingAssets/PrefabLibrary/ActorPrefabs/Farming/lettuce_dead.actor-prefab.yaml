@@ -3,7 +3,7 @@ label: lettuce_dead
 actors:
 - version: 8
   name: 5e6258643aec47c783d655470c83440b
-  brainName: __DEFAULT_BRAIN__
+  brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/lettuce_dead"
   memoryJson: "{\"__bulm\":{}}"

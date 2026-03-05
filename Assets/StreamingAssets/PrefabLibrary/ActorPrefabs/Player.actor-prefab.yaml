@@ -3,7 +3,7 @@ label: Robot
 actors:
 - version: 6
   name: 44aaa6cd9ba24442bfc48e507992959e
-  brainName: ce7945b23e444ad8b9bd8418a0fcc36d
+  brainId: ce7945b23e444ad8b9bd8418a0fcc36d
   tags:
   - player
   renderableUri: "builtin:BuiltinAssets/AvatarExplorer"

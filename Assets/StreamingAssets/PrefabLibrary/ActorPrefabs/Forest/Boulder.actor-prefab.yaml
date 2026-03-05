@@ -3,7 +3,7 @@ label: Boulder
 actors:
 - version: 3
   name: 4fcd836ebe7e4538af78a6903fc37581
-  brainName: a96e4868a7ad46a6b64a2ed62092ac74
+  brainId: a96e4868a7ad46a6b64a2ed62092ac74
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Boulder"
   memoryJson: "{\"__bulm\":{\"e792383a5949474b9ee396275189b20a\":{\"actionDeckState\":{\"activeDecksInfo\":{\"moveDeck\":{\"endTime\":3637.503662109375,\"lastActionMessageTime\":3637.003662109375}}}}},\"health\":3,\"__attribs\":{}}"

@@ -3,7 +3,7 @@ label: Sound
 actors:
 - version: 6
   name: d1f1ab7531c8405bb16c99647229e655
-  brainName: 9b8a176be87b4ef5ad531bc55916e4db
+  brainId: 9b8a176be87b4ef5ad531bc55916e4db
   tags:
   - sound
   renderableUri: "builtin:BuiltinAssets/World/Gizmo_Audio"

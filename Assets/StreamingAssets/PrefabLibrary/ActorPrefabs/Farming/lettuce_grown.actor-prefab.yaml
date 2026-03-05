@@ -3,7 +3,7 @@ label: lettuce_grown
 actors:
 - version: 8
   name: e97b5c04406b417288cfb1a7bc87d626
-  brainName: __DEFAULT_BRAIN__
+  brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/lettuce_grown"
   memoryJson: "{\"__bulm\":{}}"

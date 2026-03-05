@@ -3,7 +3,7 @@ label: corn
 actors:
 - version: 8
   name: 9c459e50eb6145a180c760544800660c
-  brainName: a9dc7e2ea6cc45c0bcf006b02bd84f26
+  brainId: a9dc7e2ea6cc45c0bcf006b02bd84f26
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/corn"
   memoryJson: "{\"__bulm\":{\"0df48d364427409ba749b2a4c52b24c4\":{\"actionDeckState\":{\"decksInfo\":{}}}},\"__variables\":{\"grabbable\":true}}"

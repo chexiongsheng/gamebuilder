@@ -3,7 +3,7 @@ label: Light
 actors:
 - version: 6
   name: 0b5ef76029594269b343de14821d7359
-  brainName: 9b8a176be87b4ef5ad531bc55916e4db
+  brainId: 9b8a176be87b4ef5ad531bc55916e4db
   tags:
   - light
   renderableUri: "builtin:BuiltinAssets/World/Gizmo_Light"

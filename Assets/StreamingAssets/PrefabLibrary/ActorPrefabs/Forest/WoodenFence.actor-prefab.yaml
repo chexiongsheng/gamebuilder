@@ -3,7 +3,7 @@ label: WoodenFence
 actors:
 - version: 3
   name: c6e567c7467444c99bf9de8df60ad600
-  brainName: 1814cbbeb99a43b4a13c2eca4438912b
+  brainId: 1814cbbeb99a43b4a13c2eca4438912b
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/WoodenFence"
   memoryJson: "{\"__bulm\":{\"c08a83cca22844ae886358e84304a8e3\":{}},\"health\":3,\"__attribs\":{\"isDead\":false},\"isDead\":false}"

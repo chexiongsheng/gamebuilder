@@ -3,7 +3,7 @@ label: BouncyPlatform_1x1_Metal
 actors:
 - version: 6
   name: 0192602f98ba4f60b533d5a7a8df2512
-  brainName: 960dbf8e997f4b918725846b0f181dc0
+  brainId: 960dbf8e997f4b918725846b0f181dc0
   tags: []
   renderableUri: "builtin:BuiltinAssets/Space/BouncyPlatform_1x1_Metal"
   memoryJson: "{\"__bulm\":{\"126ec3cd41114616bab8c25ed28b2884\":{},\"42f5da8a5550479e8b7c5bff1ad42474\":{},\"fc99440774d848da825b6a1a9b56cfbf\":{\"actionDeckState\":{\"activeDecksInfo\":{\"moveDeck\":{\"endTime\":9628.9248046875,\"lastActionMessageTime\":9628.4248046875}}}},\"cc559826e4c54490a6d3c0da15db9a33\":{},\"a76fb787ec6047e8a2c659f9b0388499\":{}}}"

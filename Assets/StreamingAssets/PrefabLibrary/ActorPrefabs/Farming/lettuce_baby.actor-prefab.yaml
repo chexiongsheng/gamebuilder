@@ -3,7 +3,7 @@ label: lettuce_baby
 actors:
 - version: 8
   name: 4b79e4ab78b2456ab9e97894d8e00d6c
-  brainName: __DEFAULT_BRAIN__
+  brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/lettuce_baby"
   memoryJson: "{\"__bulm\":{}}"
