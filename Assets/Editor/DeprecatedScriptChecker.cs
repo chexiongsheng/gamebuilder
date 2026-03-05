@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using Behaviors;
+using VYaml.Serialization;
 
 public class DeprecatedScriptChecker : EditorWindow
 {
@@ -128,6 +129,63 @@ public class DeprecatedScriptChecker : EditorWindow
             catch (System.Exception e)
             {
                 Debug.LogError($"Failed to process {voosFile}: {e.Message}");
+            }
+        }
+
+        // 检查 PrefabLibrary/ActorPrefabs 下的 yaml prefab 文件
+        string prefabLibraryPath = Path.Combine(Application.streamingAssetsPath, "PrefabLibrary/ActorPrefabs");
+        if (Directory.Exists(prefabLibraryPath))
+        {
+            string[] prefabFiles = Directory.GetFiles(prefabLibraryPath, "*.yaml", SearchOption.AllDirectories);
+            foreach (string prefabFile in prefabFiles)
+            {
+                try
+                {
+                    byte[] yamlBytes = File.ReadAllBytes(prefabFile);
+                    SavedActorPrefab prefab = YamlSerializer.Deserialize<SavedActorPrefab>(yamlBytes, SaveLoadController.YamlOptions);
+
+                    
+                    if (prefab.brainDatabase.brains != null)
+                    {
+                        foreach (var brain in prefab.brainDatabase.brains)
+                        {
+                            if (brain != null && brain.behaviorUses != null)
+                            {
+                                foreach (var use in brain.behaviorUses)
+                                {
+                                    if (string.IsNullOrEmpty(use.behaviorUri)) continue;
+
+                                    if (use.behaviorUri.StartsWith("builtin:"))
+                                    {
+                                        string scriptName = use.behaviorUri.Substring("builtin:".Length);
+                                        
+                                        // Try to parse URI to get LocalPath, which handles encoding and other URI specifics
+                                        try 
+                                        {
+                                            System.Uri uri = new System.Uri(use.behaviorUri);
+                                            scriptName = uri.LocalPath;
+                                        }
+                                        catch 
+                                        {
+                                            // Fallback to simple substring if Uri parsing fails
+                                        }
+
+                                        if (deprecatedScripts.ContainsKey(scriptName))
+                                        {
+                                            // Use forward slashes for path display to be consistent with Unity/URI style
+                                            string deprecatedPath = deprecatedScripts[scriptName].Replace("\\", "/");
+                                            Debug.LogWarning($"{logTag} Prefab: {Path.GetFileName(prefabFile)}, Script: {deprecatedPath}");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError($"Failed to process {prefabFile}: {e.Message}");
+                }
             }
         }
         
