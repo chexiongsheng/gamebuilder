@@ -128,7 +128,7 @@ brainDatabase:
       metadataJson: null
       propertyAssignments: []
     - id: 2e3ee024fa264b9abf1fe4cb188fb1ee
-      behaviorUri: "builtin:Cause Damage To Target Card"
+      behaviorUri: "builtin:Cause Damage Card"
       metadataJson: null
       propertyAssignments:
       - propertyName: Amount
