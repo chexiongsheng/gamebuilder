@@ -27,8 +27,9 @@ using UNET = UnityEngine.Networking;
 public class NetworkingController : Photon.PunBehaviour
 {
   // From experiments, it seems like 490kb for that one RPC was a guaranteed
-  // disconnect. So, let's stay under 400kb to be safe.
-  static int MaximumPlayerInitKbs = 400;
+  // disconnect. So, let's stay under 480kb to be safe.
+  // 从400提升到480是因为PerfBenchmark加载pug-bench-18ms.yaml场景产生的644个Actor的序列化超出了400kb的限制
+  static int MaximumPlayerInitKbs = 480;
 
   public static string SteamIdPlayerProperty = "SteamID";
   public static string SteamProfileNamePlayerProperty = "SteamProfileName";
