@@ -663,6 +663,7 @@ public class TerrainManager : MonoBehaviour
   public System.Collections.IEnumerator GetPersistedStateAsync(System.Action<PersistedState> process)
   {
     PersistedState state = new PersistedState();
+    state.version = PersistedState.CurrentVersion;
     Debug.Assert(terrainV2 != null, "terrainV2 was null?");
     yield return terrainV2.SerializeAsync(bytes => state.v2Data = ToBase64(bytes));
 
@@ -673,6 +674,7 @@ public class TerrainManager : MonoBehaviour
   public PersistedState GetPersistedState()
   {
     PersistedState state = new PersistedState();
+    state.version = PersistedState.CurrentVersion;
     using (new Util.ProfileBlock("v2TerrainSerialize"))
     {
       if (terrainV2 != null)
@@ -706,6 +708,10 @@ public class TerrainManager : MonoBehaviour
   [System.Serializable]
   public struct PersistedState
   {
+    public static int CurrentVersion = 1;
+
+    public int version;
+
     public string v2Data;
 
     // Only read, not written. This is intended as a simple way to enable
