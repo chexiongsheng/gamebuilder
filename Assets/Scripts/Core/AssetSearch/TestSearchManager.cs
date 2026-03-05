@@ -32,7 +32,7 @@ public class TestSearchManager : MonoBehaviour
 
   public void Search(string searchstring, OnActorableSearchResult resultCallback)
   {
-    Debug.Log("poly search " + searchstring);
+    Debug.Log("test search " + searchstring);
     testResultsRoutine = StartCoroutine(TestResultsRoutine(resultCallback));
   }
 
@@ -67,7 +67,7 @@ public class TestSearchManager : MonoBehaviour
   {
     ActorableSearchResult testresult = new ActorableSearchResult();
     testresult.preferredRotation = Quaternion.identity;
-    testresult.renderableReference.assetType = AssetType.Poly;
+    testresult.renderableReference.assetType = AssetType.Actor;
     testresult.name = "test name";
     testresult.renderableReference.uri = "test uri";
     // TODO

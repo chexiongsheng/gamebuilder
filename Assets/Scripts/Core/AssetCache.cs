@@ -27,6 +27,11 @@ using System;
 // Maybe generalize to a model library..for non-poly objects.
 public class AssetCache : MonoBehaviour
 {
+  // Hashtag constants for imported model processing (migrated from removed PolySearchManager)
+  public static readonly string TerrainBlockHashtag = "#GBTerrainBlock";
+  public static readonly string NoAutoFitHashtag = "#GBNoAutoFit";
+  public static readonly string PointFilterHashtag = "#GBPointFilter";
+
   public delegate void ProcessAsset(Value entry);
 
   public GameObject imageRenderablePrefab;
@@ -127,15 +132,6 @@ public class AssetCache : MonoBehaviour
     }
 #endif
 
-    public void Visit(PolyVoosAsset asset)
-    {
-      string assetName = asset.assetId;
-      string uri = asset.GetUri();
-      Debug.LogError($"Poly asset download is no longer supported: {assetName}");
-      cache.CreateCacheEntry(uri, GameObject.CreatePrimitive(PrimitiveType.Cube), null);
-    }
-
-
     private static void PrepareImportedModel(GameObject assetObject, string hashtags)
     {
       FitImportedModel(assetObject, hashtags);
@@ -172,7 +168,7 @@ public class AssetCache : MonoBehaviour
         BakeBaseColorIntoTexture(meshRenderer.material);
       }
 
-      if (hashtags.Contains(PolySearchManager.PointFilterHashtag))
+      if (hashtags.Contains(AssetCache.PointFilterHashtag))
       {
         Util.SetFilterModeOnAllTextures(assetObject, FilterMode.Point);
       }
@@ -228,7 +224,7 @@ public class AssetCache : MonoBehaviour
 
     public static void FitImportedModel(GameObject importedObject, string hashtags)
     {
-      if (hashtags.Contains(PolySearchManager.NoAutoFitHashtag))
+      if (hashtags.Contains(AssetCache.NoAutoFitHashtag))
       {
         return;
       }
@@ -236,7 +232,7 @@ public class AssetCache : MonoBehaviour
       Bounds origBounds = Util.ComputeWorldRenderBounds(importedObject);
 
       float desiredMaxAbs =
-        hashtags.Contains(PolySearchManager.TerrainBlockHashtag) ?
+        hashtags.Contains(AssetCache.TerrainBlockHashtag) ?
         TerrainManager.BLOCK_SIZE.MaxAbsComponent()
         : 1f;
 

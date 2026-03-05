@@ -21,7 +21,6 @@ using UnityEngine;
 
 public class AssetSearch : MonoBehaviour
 {
-  [SerializeField] PolySearchManager polySearchManager;
   [SerializeField] GisSearchManager gisSearchManager;
   [SerializeField] PrefabSearchManager prefabSearchManager;
 
@@ -42,7 +41,6 @@ public class AssetSearch : MonoBehaviour
 
   public void DefaultSearch(OnActorableSearchResult resultCallback)
   {
-    polySearchManager.DefaultSearch(resultCallback);
     gisSearchManager.Search("dog", resultCallback, null);
   }
 
@@ -56,7 +54,6 @@ public class AssetSearch : MonoBehaviour
     OnActorableSearchResult resultCallback)
   {
     //TODO: Cancel current search if still going?
-    polySearchManager.Search(_searchString, resultCallback, (found) => { });
     gisSearchManager.Search(_searchString, resultCallback, (found) => { });
   }
 
@@ -73,18 +70,9 @@ public class AssetSearch : MonoBehaviour
     return prefabSearchManager.TurnPrefabIntoSearchResult(prefab, AssetType.Actor);
   }
 
-  public void RequestPolySearchResult(string polyID, OnActorableSearchResult resultCallback)
-  {
-    polySearchManager.RequestResultByID(polyID, resultCallback);
-  }
-
   public void RequestRenderable(RenderableReference reference, RenderableRequestEventHandler requestCallback)
   {
-    if (reference.assetType == AssetType.Poly)
-    {
-      polySearchManager.RequestRenderable(reference.uri, requestCallback);
-    }
-    else if (reference.assetType == AssetType.Image)
+    if (reference.assetType == AssetType.Image)
     {
       gisSearchManager.RequestRenderable(reference.uri, requestCallback);
     }
@@ -198,7 +186,6 @@ public enum AssetType
 {
   Actor,
   Image,
-  Poly,
   AssetPack,
   None
 }

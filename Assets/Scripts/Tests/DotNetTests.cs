@@ -90,14 +90,6 @@ public class DotNetTests
   }
 
   [Test]
-  public void Uris()
-  {
-    System.Uri uri = new System.Uri("poly:abc123");
-    Assert.AreEqual("poly", uri.Scheme);
-    Assert.AreEqual("abc123", uri.PathAndQuery);
-  }
-
-  [Test]
   public void ImageUris()
   {
     System.Uri uri = new System.Uri("http://www.foo.com/bar.png");

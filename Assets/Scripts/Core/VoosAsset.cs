@@ -24,26 +24,6 @@ public interface VoosAsset
   string GetUri();
 }
 
-public class PolyVoosAsset : VoosAsset
-{
-  public readonly string assetId;
-
-  public PolyVoosAsset(string assetId)
-  {
-    this.assetId = assetId;
-  }
-
-  public void Accept(VoosAssetVisitor visitor)
-  {
-    visitor.Visit(this);
-  }
-
-  public string GetUri()
-  {
-    return $"poly:{assetId}";
-  }
-}
-
 public class ImageVoosAsset : VoosAsset
 {
   public readonly string url;
@@ -126,7 +106,6 @@ public class SteamWorkshopAsset : VoosAsset
 
 public interface VoosAssetVisitor
 {
-  void Visit(PolyVoosAsset asset);
   void Visit(ImageVoosAsset asset);
   void Visit(BuiltinVoosAsset asset);
   void Visit(LocalFbxAsset asset);
@@ -142,11 +121,7 @@ public static class VoosAssetUtil
 
   public static VoosAsset AssetFromUri(System.Uri uri)
   {
-    if (uri.Scheme == "poly")
-    {
-      return new PolyVoosAsset(uri.PathAndQuery);
-    }
-    else if (uri.Scheme == "builtin")
+    if (uri.Scheme == "builtin")
     {
       return new BuiltinVoosAsset(uri.PathAndQuery);
     }
