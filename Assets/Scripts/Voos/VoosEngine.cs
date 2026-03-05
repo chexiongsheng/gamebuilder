@@ -408,7 +408,6 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   {
     Util.FindIfNotSet(this, ref sceneController);
     Application.wantsToQuit += OnWantsToQuit;
-    Application.quitting += () => Util.Log($"VoosEngine Application.quitting handler CALLLLEEEEDDDD");
     sceneController.OnBeforeReloadMainScene += Teardown;
     sceneController.onBeforeQuitToSplash += Teardown;
   }
