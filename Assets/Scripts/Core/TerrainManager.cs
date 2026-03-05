@@ -51,7 +51,6 @@ public class TerrainManager : MonoBehaviour
   public event System.Action onCustomStyleTextureChange;
 
   PhotonView photonView;
-  TerrainDatabase database = new TerrainDatabase();
   TerrainRendering rendering;
   VoosEngine engine;
   GameBuilderStage stage;
@@ -365,11 +364,9 @@ public class TerrainManager : MonoBehaviour
 
   void SetSideLocally(Side side, SideValue value)
   {
-    // TEMP DISABLED!! For 2019-05-29 contractor session..
-    return;
-    database.SetSide(side, value.on, value.style);
-    rendering.OnSetSide(side, value.on, value.style);
+    // Side功能已禁用
   }
+
 
   [PunRPC]
   void SetSideValueRPC(string jsonString)
@@ -385,9 +382,8 @@ public class TerrainManager : MonoBehaviour
 
   public SideValue GetSideValue(Side side)
   {
-    bool on = database.IsSideSet(side);
-    BlockStyle style = on ? database.GetSideStyle(side) : BlockStyle.SolidColor0;
-    return new SideValue { on = on, style = style };
+    // Side功能已禁用，始终返回未设置状态
+    return new SideValue { on = false, style = BlockStyle.SolidColor0 };
   }
 
   public void SetSideValue(Side side, SideValue value)
@@ -549,21 +545,8 @@ public class TerrainManager : MonoBehaviour
 
   public bool SnapToEmptyEdge(Vector3 rawPosition, out Side side, out Vector3 snapPosition)
   {
-    Vector3 deltaVec = SnapToEdge(rawPosition, out side, out snapPosition);
-
-    // Debug.Log($"{cell.x},{cell.y},{cell.z}");
-
-    if (database.IsSideSet(side))
-    {
-      //just look one up
-      side.y++;
-      snapPosition = EdgeToVector(side);
-      if (database.IsSideSet(side))
-      {
-        return false;
-      }
-    }
-
+    SnapToEdge(rawPosition, out side, out snapPosition);
+    // Side功能已禁用，始终返回true
     return true;
   }
 
@@ -680,10 +663,9 @@ public class TerrainManager : MonoBehaviour
   public System.Collections.IEnumerator GetPersistedStateAsync(System.Action<PersistedState> process)
   {
     PersistedState state = new PersistedState();
-    state.version = PersistedState.CurrentVersion;
-    state.cellString = null;
     Debug.Assert(terrainV2 != null, "terrainV2 was null?");
     yield return terrainV2.SerializeAsync(bytes => state.v2Data = ToBase64(bytes));
+
     state.metadata = GetMetadata();
     process(state);
   }
@@ -691,8 +673,6 @@ public class TerrainManager : MonoBehaviour
   public PersistedState GetPersistedState()
   {
     PersistedState state = new PersistedState();
-    state.version = PersistedState.CurrentVersion;
-    state.cellString = null;
     using (new Util.ProfileBlock("v2TerrainSerialize"))
     {
       if (terrainV2 != null)
@@ -704,35 +684,15 @@ public class TerrainManager : MonoBehaviour
     return state;
   }
 
-  void LoadLegacyTerrainData(byte[] terrainDatabaseBytes)
-  {
-    database.Deserialize(terrainDatabaseBytes);
-    rendering.Clear();
-
-    // For legacy, we will only show walls. This is so maps like de_dust2
-    // continue to work well. Of course..they won't be able to edit the walls..
-    foreach (var args in database.EnumerateSides())
-    {
-      rendering.OnSetSide(args.side, args.value.on, args.value.style);
-    }
-  }
-
   public void SetPersistedState(Vector2 worldSize, PersistedState state)
   {
-    byte[] legacyData = null;
-    if (state.cellString != null && state.cellString.Length > 0)
-    {
-      legacyData = Unzip(state.cellString);
-    }
-
     byte[] v2Data = null;
     if (!state.v2Data.IsNullOrEmpty())
     {
       v2Data = Unzip(state.v2Data);
     }
 
-    bool loadingDataFromBeforeDigging = state.version < PersistedState.FirstVersionWithDigging;
-    Reset(worldSize, v2Data, loadingDataFromBeforeDigging, legacyData, state.metadata.customStyleWorkshopIds, state.simpleData);
+    Reset(worldSize, v2Data, state.metadata.customStyleWorkshopIds, state.simpleData);
   }
 
   // Saved to disk and included in the player init payload.
@@ -746,11 +706,6 @@ public class TerrainManager : MonoBehaviour
   [System.Serializable]
   public struct PersistedState
   {
-    public static int FirstVersionWithDigging = 1;
-    public static int CurrentVersion = 1;
-
-    public int version;
-    public string cellString;
     public string v2Data;
 
     // Only read, not written. This is intended as a simple way to enable
@@ -774,8 +729,6 @@ public class TerrainManager : MonoBehaviour
 
   public void Reset(
     Vector2 worldSize, byte[] terrainV2Data,
-    bool loadingDataFromBeforeDigging,
-    byte[] legacyData,
     ulong[] customStyleWorkshopIds = null,
     string simpleData = null)
   {
@@ -922,63 +875,13 @@ public class TerrainManager : MonoBehaviour
       terrainV2.Deserialize(restoreData, (newDims / 2 - restoreDims / 2));
     }
 
-    if (legacyData != null)
-    {
-      LoadLegacyTerrainData(legacyData);
-
-      // But move all the blocks to our new system.
-      using (Util.Profile("legacySync"))
-      {
-        foreach (var args in database.EnumerateBlocks())
-        {
-          terrainV2.SetCell(args.cell.ToInt3() + GetV2Offset(), (int)args.value.style, (int)args.value.blockType - 1, (int)args.value.direction);
-        }
-      }
-    }
-
     if (terrainV2Data != null)
     {
       Util.Log($"loading v2 data of {terrainV2Data.Length} bytes");
       using (Util.Profile("terrainV2 Deserialize"))
         terrainV2.Deserialize(terrainV2Data);
-
-      // Legacy upgrade
-      if (loadingDataFromBeforeDigging)
-      {
-        // The serialized data was before digging. We need to move it up, effectively.
-        Debug.Assert(BlocksYStart < 0);
-        // Copy...
-        byte[] temp = terrainV2.Serialize(
-            Int3.zero(),
-            newDims.WithY(newDims.y + BlocksYStart));
-        // Move up..
-        terrainV2.Deserialize(
-          temp,
-          Int3.zero().WithY(-BlocksYStart));
-
-        // At this point, we actually have 2 copies of the terrain, offset by
-        // some Y! heh. But the SetSlices call below will deal with that.
-      }
     }
 
-    if (loadingDataFromBeforeDigging)
-    {
-      // Fill in the ground.
-      BlockStyle style = BlockStyle.Grass;
-      switch (stage.GetGroundType())
-      {
-        case GameBuilderStage.GroundType.Snow:
-          style = BlockStyle.SnowRock;
-          break;
-        case GameBuilderStage.GroundType.SolidColor:
-        case GameBuilderStage.GroundType.Space:
-        case GameBuilderStage.GroundType.Grass:
-        default:
-          style = BlockStyle.Grass;
-          break;
-      }
-      terrainV2.SetSlices(0, (0 - BlocksYStart), (int)style, 0, 0);
-    }
 
     if (!simpleData.IsNullOrEmpty())
     {

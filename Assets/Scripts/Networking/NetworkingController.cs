@@ -1142,14 +1142,14 @@ public class NetworkingController : Photon.PunBehaviour
   {
     Util.Log($"InitNewPlayerTerrainRPC, {bytes.Length} bytes");
     Debug.Assert(receivedPlayerInitPayload, "Got InitNewPlayerTerrainRPC before InitNewPlayerRPC");
-    terrain.Reset(stage.GetGroundSize(), bytes, false, null, lastReceivedTerrainMeta.customStyleWorkshopIds);
+    terrain.Reset(stage.GetGroundSize(), bytes, lastReceivedTerrainMeta.customStyleWorkshopIds);
   }
 
   [PunRPC]
   void TriggerTerrainResetRPC()
   {
     // Passing null for data (and for custom styles) will cause it to copy from what's currently there.
-    terrain.Reset(stage.GetGroundSize(), null, false, null);
+    terrain.Reset(stage.GetGroundSize(), null);
   }
 
   public void TriggerTerrainReset()
