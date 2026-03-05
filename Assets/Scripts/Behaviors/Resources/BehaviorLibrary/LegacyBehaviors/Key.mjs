@@ -35,5 +35,5 @@ export function OnTouchEnter(api) {
   if (!api.doesActorExist(api.message.other)) {
     return;
   }
-  api.sendMessage(api.message.other, 'TryUnlock', { lockNumber: api.getProps().LockNumber });
+  api.sendMessage(api.message.other, 'TryUnlock', { lockNumber: api.props.LockNumber });
 }

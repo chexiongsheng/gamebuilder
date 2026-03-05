@@ -34,5 +34,5 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  * @param {HandlerApi} api
  */
 export async function OnTick(api) {
-  api.memory.team = api.getProps().Team;
+  api.memory.team = api.props.Team;
 }

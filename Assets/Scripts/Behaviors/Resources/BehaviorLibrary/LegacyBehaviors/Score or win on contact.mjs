@@ -41,14 +41,14 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  */
 export function OnTouchEnter(api) {
   const me = api.getActor();
-  const goalName = api.getProps().TouchesWhat;
-  const points = valueOr(api.getProps().Points, 1);
+  const goalName = api.props.TouchesWhat;
+  const points = valueOr(api.props.Points, 1);
 
   if (api.message.other == goalName || goalName == '') {
     log(`scoring.`);
     // If no specific winner is set, we assume it's whoever touched.
-    const winner = stringOr(api.getProps().WhoWinsOrScores, api.message.other);
-    if (api.getProps().Wins) {
+    const winner = stringOr(api.props.WhoWinsOrScores, api.message.other);
+    if (api.props.Wins) {
       api.sendMessageToAll('PlayerWon', { player: winner, reason: `${api.message.other} touched ${me.getName()} FTW` });
     }
     else {

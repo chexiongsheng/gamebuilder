@@ -44,7 +44,7 @@ export function OnTick(api) {
   // W/S will set throttle.z to 1/-1.
   const throttle = api.inputThrottle;
 
-  const speed = api.getProps().Speed;
+  const speed = api.props.Speed;
 
   if (Math.abs(throttle.x) > 0) {
     api.actor.desiredVelocity.set(Math.sign(throttle.x) * speed, 0, 0);

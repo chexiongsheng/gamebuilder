@@ -39,17 +39,17 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  */
 export async function OnTouchEnter(api) {
   const p = api.position;
-  p.y += api.getProps().yOffset;
+  p.y += api.props.yOffset;
 
-  if (!api.isValidActor(api.getProps().TextPrefab)) {
+  if (!api.isValidActor(api.props.TextPrefab)) {
     return;
   }
-  const inst = api.clone(api.getProps().TextPrefab, p, api.rotation);
+  const inst = api.clone(api.props.TextPrefab, p, api.rotation);
 
   // TODO make the message a property
-  api.sendMessage(inst, 'SetText', { text: api.getProps().Message });
+  api.sendMessage(inst, 'SetText', { text: api.props.Message });
 
   // Instead of sleeping async, send Destroy on a timer.
-  await api.sleep(api.getProps().Duration);
+  await api.sleep(api.props.Duration);
   api.sendMessage(inst, "Destroy");
 }

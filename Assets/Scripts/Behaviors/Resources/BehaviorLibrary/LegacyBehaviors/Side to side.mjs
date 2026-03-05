@@ -37,8 +37,8 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  */
 export function OnTick(api) {
   const p = api.actor.spawnPosition.clone();
-  const d = api.getProps().amplitude * Math.sin(2 * Math.PI / api.getProps().period * api.time);
-  if (api.getProps().NorthSouth) {
+  const d = api.props.amplitude * Math.sin(2 * Math.PI / api.props.period * api.time);
+  if (api.props.NorthSouth) {
     p.z += d;
   }
   else {

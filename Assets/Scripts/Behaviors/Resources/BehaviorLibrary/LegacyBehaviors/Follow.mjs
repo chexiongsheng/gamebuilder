@@ -41,9 +41,9 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  * @param {HandlerApi} api
  */
 export function OnTick(api) {
-  const moveSpeed = api.getProps().Speed || 1;
+  const moveSpeed = api.props.Speed || 1;
 
-  const target = api.getProps().ObjectToFollow;
+  const target = api.props.ObjectToFollow;
   if (api.isDead() || !api.doesActorExist(target)) {
     api.actor.useDesiredVelocity = false;
     return;
@@ -56,7 +56,7 @@ export function OnTick(api) {
 
   const dist = toTarget.length();
 
-  if (dist < (api.getProps().AwarenessDistance || 999) && dist > (api.getProps().FollowDistance || 0)) {
+  if (dist < (api.props.AwarenessDistance || 999) && dist > (api.props.FollowDistance || 0)) {
     toTarget.normalize();
     toTarget.multiplyScalar(moveSpeed);
     const velocity = toTarget;
@@ -66,7 +66,7 @@ export function OnTick(api) {
     else {
       api.actor.useDesiredVelocity = true;
       api.actor.desiredVelocity.copy(velocity);
-      if (!api.getProps().CanFly) {
+      if (!api.props.CanFly) {
         api.actor.ignoreVerticalDesiredVelocity = true;
       }
     }

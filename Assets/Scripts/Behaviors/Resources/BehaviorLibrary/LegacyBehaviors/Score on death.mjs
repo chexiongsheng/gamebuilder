@@ -33,5 +33,5 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  * @param {HandlerApi} api
  */
 export function OnDied(api) {
-  api.sendMessageToAll('PointScored', { player: api.message.causer, amount: api.getProps().points });
+  api.sendMessageToAll('PointScored', { player: api.message.causer, amount: api.props.points });
 }

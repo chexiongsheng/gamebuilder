@@ -34,7 +34,7 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  */
 export async function OnTick(api) {
   if (api.getActor().getWasClonedByScript()) {
-    await api.sleep(api.getProps().Seconds);
+    await api.sleep(api.props.Seconds);
     api.destroySelf();
   }
 }

@@ -38,10 +38,10 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  * @param {HandlerApi} api
  */
 function respawn(api) {
-  const dest = api.getProps().SpawnPoint;
+  const dest = api.props.SpawnPoint;
   if (dest && api.doesActorExist(dest)) {
     const pos = api.getOtherPosition(dest);
-    pos.y += api.getProps().YOffset;
+    pos.y += api.props.YOffset;
     api.position = pos;
     api.rotation = api.getOtherRotation(dest);
   }

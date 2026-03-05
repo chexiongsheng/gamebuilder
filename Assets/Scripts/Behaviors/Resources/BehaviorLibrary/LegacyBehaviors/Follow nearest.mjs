@@ -38,7 +38,7 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  * @param {HandlerApi} api
  */
 export function OnTick(api) {
-  const moveSpeed = api.getProps().Speed || 1;
+  const moveSpeed = api.props.Speed || 1;
   const me = api.getActor();
 
   // Default to not trying to move.
@@ -50,12 +50,12 @@ export function OnTick(api) {
 
   let bestDist = -1;
   let bestTarget = null;
-  api.overlapSphere(me.getPosition(), api.getProps().SearchRadius || 50).forEach(targetName => {
+  api.overlapSphere(me.getPosition(), api.props.SearchRadius || 50).forEach(targetName => {
     if (!api.isValidActor(targetName)) {
       return;
     }
     const target = api.getOtherActor(targetName);
-    if (target.hasTag(api.getProps().Tag)) {
+    if (target.hasTag(api.props.Tag)) {
       const currDist = api.distanceBetween(me.getName(), targetName);
       if (bestTarget == null || currDist < bestDist) {
         bestDist = currDist;
@@ -71,7 +71,7 @@ export function OnTick(api) {
   const target = bestTarget;
   const myPos = me.getPosition();
 
-  if (bestDist < api.getProps().MinDistance) {
+  if (bestDist < api.props.MinDistance) {
     // Close enough.
     return;
   }
@@ -87,7 +87,7 @@ export function OnTick(api) {
   else {
     api.actor.useDesiredVelocity = true;
     api.actor.desiredVelocity.copy(velocity);
-    if (!api.getProps().CanFly) {
+    if (!api.props.CanFly) {
       api.actor.ignoreVerticalDesiredVelocity = true;
     }
   }

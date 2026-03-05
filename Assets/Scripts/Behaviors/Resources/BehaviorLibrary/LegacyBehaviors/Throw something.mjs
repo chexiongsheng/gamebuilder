@@ -45,11 +45,11 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
 // suggest-builtin-on-actor-property ObjectToThrow Self-destruct
 
 function getCooldownSecs(api) {
-  if (api.getProps().CooldownTicks === undefined) {
+  if (api.props.CooldownTicks === undefined) {
     return 0.5;
   }
   else {
-    return api.getProps().CooldownTicks * 0.1;
+    return api.props.CooldownTicks * 0.1;
   }
 }
 
@@ -77,7 +77,7 @@ function getShotDirection(api, outVec) {
  * @param {HandlerApi} api
  */
 function doThrow(api) {
-  if (!api.isValidActor(api.getProps().ObjectToThrow)) {
+  if (!api.isValidActor(api.props.ObjectToThrow)) {
     return;
   }
   const spawnPos = api.actor.position.clone();
@@ -87,7 +87,7 @@ function doThrow(api) {
   spawnPos.addScaledVector(spawnDir, 1.5);
   spawnPos.y += 0.5;
 
-  const thrownName = api.clone(api.getProps().ObjectToThrow, spawnPos, api.rotation);
+  const thrownName = api.clone(api.props.ObjectToThrow, spawnPos, api.rotation);
 
   const velocityChange = spawnDir.clone();
   velocityChange.normalize();
@@ -99,7 +99,7 @@ function doThrow(api) {
  * @param {HandlerApi} api
  */
 export function playerCanThrow(api) {
-  return api.isValidActor(api.getProps().ObjectToThrow) && !api.isValidActor(api.memory.grabbed);
+  return api.isValidActor(api.props.ObjectToThrow) && !api.isValidActor(api.memory.grabbed);
 }
 
 /**
@@ -108,14 +108,14 @@ export function playerCanThrow(api) {
 export function OnTick(api) {
   const me = api.getActor();
 
-  if (!api.isValidActor(api.getProps().ObjectToThrow)) {
+  if (!api.isValidActor(api.props.ObjectToThrow)) {
     if (me.getIsPlayerControllable()) {
       api.addPlayerToolTip(api.name, 'action1', `(No ObjectToThrow set)`);
     }
     return;
   }
 
-  if (api.getProps().ObjectToThrow == api.name) {
+  if (api.props.ObjectToThrow == api.name) {
     if (me.getIsPlayerControllable()) {
       api.addPlayerToolTip(api.name, 'action1', `(Can't throw yourself)`);
     }
@@ -128,7 +128,7 @@ export function OnTick(api) {
     }
     else {
       // Auto-throw for NPCs
-      const autoFire = valueOr(api.getProps().AutoFire, true);
+      const autoFire = valueOr(api.props.AutoFire, true);
       if (autoFire) {
         doThrow(api);
         // Limit how fast we fire.

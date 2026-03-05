@@ -37,7 +37,7 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  */
 export function OnResetGame(api) {
   api.memory.isTaken = false;
-  const enablePhysics = valueOr(api.getProps().EnablePhysics, false);
+  const enablePhysics = valueOr(api.props.EnablePhysics, false);
   api.getActor().setIsSolid(enablePhysics);
   api.getActor().setEnablePhysics(enablePhysics);
   api.getActor().setHideInPlayMode(false);
@@ -61,12 +61,12 @@ export function OnTouchEnter(api) {
     return;
   }
 
-  if (api.getProps().points) {
-    api.sendMessageToAll('PointScored', { player: api.message.other, amount: api.getProps().points });
+  if (api.props.points) {
+    api.sendMessageToAll('PointScored', { player: api.message.other, amount: api.props.points });
   }
 
-  if (api.getProps().HealAmount) {
-    api.sendMessage(other.getName(), 'HitByDamager', { damager: api.name, amount: -1 * api.getProps().HealAmount });
+  if (api.props.HealAmount) {
+    api.sendMessage(other.getName(), 'HitByDamager', { damager: api.name, amount: -1 * api.props.HealAmount });
   }
 
   api.memory.isTaken = true;

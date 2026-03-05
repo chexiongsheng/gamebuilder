@@ -41,7 +41,7 @@ export function OnTouchEnter(api) {
   }
 
   const other = api.message.other;
-  let ky = api.getProps().BounceSpeed;
+  let ky = api.props.BounceSpeed;
   // Cancel out any falling velocity
   let currY = api.getOtherVelocity(other).y;
   if (currY < 0) {

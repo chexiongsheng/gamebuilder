@@ -38,13 +38,13 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
  * @param {HandlerApi} api 
  */
 export function OnTick(api) {
-  const targetname = api.getProps().ObjectToLookAt;
+  const targetname = api.props.ObjectToLookAt;
   if (api.isDead() || !api.isValidActor(targetname)) {
     return;
   }
 
   const targetPos = api.getOtherActor(targetname).getPosition();
-  const yawOnly = valueOr(api.getProps().YawOnly, true);
+  const yawOnly = valueOr(api.props.YawOnly, true);
   api.getActor().lookAt(targetPos, yawOnly);
 
 }
