@@ -3,7 +3,7 @@ label: BouncyPlatform_1x1_Stone
 actors:
 - version: 6
   name: ab06892bfbd04e4fbabbe614e55d6f7a
-  brainName: 54627bcb57f942a083126e152ee97b98
+  brainId: 54627bcb57f942a083126e152ee97b98
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/BouncyPlatform_1x1_Stone"
   memoryJson: "{\"__bulm\":{\"126ec3cd41114616bab8c25ed28b2884\":{},\"42f5da8a5550479e8b7c5bff1ad42474\":{},\"fc99440774d848da825b6a1a9b56cfbf\":{\"actionDeckState\":{\"activeDecksInfo\":{\"moveDeck\":{\"endTime\":9500.0966796875,\"lastActionMessageTime\":9499.5966796875}}}},\"531a48c4c6fa4a9d99928cd99fd2e281\":{},\"cb140bd6e00e439da344d04dc68673e3\":{}}}"

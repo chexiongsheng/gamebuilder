@@ -3,7 +3,7 @@ label: SportCar
 actors:
 - version: 6
   name: 7ae6f03518dc47a68a39f0defaa1b9cf
-  brainName: 571be8ea14fc4dbca8f62261add050ac
+  brainId: 571be8ea14fc4dbca8f62261add050ac
   tags:
   - player
   renderableUri: "builtin:BuiltinAssets/City/SportCar"

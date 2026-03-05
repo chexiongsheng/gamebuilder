@@ -3,7 +3,7 @@ label: Bat
 actors:
 - version: 8
   name: b148e2ec5b1e4aa3a77c67ba25f9a5c6
-  brainName: __DEFAULT_BRAIN__
+  brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/BubblegumDreams/Bat"
   memoryJson: "{\"__bulm\":{}}"

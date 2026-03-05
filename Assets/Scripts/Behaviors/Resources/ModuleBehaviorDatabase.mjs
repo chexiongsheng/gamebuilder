@@ -244,9 +244,9 @@ class ModuleBehaviorDatabase {
     this.brainsByName_ = new Map();
   }
 
-  getBrain(brainName) {
-    assertString(brainName, 'getBrain arg');
-    return this.brainsByName_.get(brainName);
+  getBrain(brainId) {
+    assertString(brainId, 'getBrain arg');
+    return this.brainsByName_.get(brainId);
   }
 
   reset(jsonDb) {

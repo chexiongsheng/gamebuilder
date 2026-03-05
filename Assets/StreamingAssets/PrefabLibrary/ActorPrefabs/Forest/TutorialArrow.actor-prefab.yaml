@@ -3,7 +3,7 @@ label: TutorialArrow
 actors:
 - version: 2
   name: ac69280863834173b866407c2fa7ad2c
-  brainName: 8d2cc0b8129e4393a38db9390557ac0c
+  brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/TutorialArrow"
   memoryJson: "{\"__bulm\":{\"cf7c4b8ced7349d995b592392fe4de62\":{\"actionDeckState\":{\"activeDecksInfo\":{}}},\"3665b2e8ffb44f0d93723c4119077042\":{\"actionDeckState\":{\"activeDecksInfo\":{}}}},\"health\":3,\"__attribs\":{}}"

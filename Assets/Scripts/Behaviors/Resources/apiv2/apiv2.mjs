@@ -269,7 +269,7 @@ class ApiV2Context {
     const db = actor.behaviorSystem.database;
     assert(db && db instanceof ModuleBehaviorDatabase);
 
-    const use = db.getBrain(actor.brainName).getUse(behaviorUseId);
+    const use = db.getBrain(actor.brainId).getUse(behaviorUseId);
     if (!use) {
       // Let's forgive this... maybe this was left as dangling reference after a behavior was deleted.
       return;

@@ -102,7 +102,7 @@ public partial class VoosActor : MonoBehaviour
     public int version;
 
     public string name;
-    public string brainName;
+    public string brainId;
     public string[] tags; // Ideally would be immutable..
 
     public string renderableUri;
@@ -169,7 +169,7 @@ public partial class VoosActor : MonoBehaviour
         rv.tags[i++] = tag;
       }
 
-      rv.brainName = actor.GetBrainName();
+      rv.brainId = actor.GetBrainName();
       rv.memoryJson = bypassMemory ? "" : actor.GetMemoryJsonSlow();
 
       rv.renderableUri = actor.renderableUri;
@@ -228,7 +228,7 @@ public partial class VoosActor : MonoBehaviour
     public void Serialize(NetworkWriter writer)
     {
       writer.WriteVoosName(name);
-      writer.WriteVoosName(brainName);
+      writer.WriteVoosName(brainId);
       writer.WriteUtf16(memoryJson);
       writer.WriteUtf16(renderableUri);
 
@@ -293,7 +293,7 @@ public partial class VoosActor : MonoBehaviour
     public void Deserialize(NetworkReader reader)
     {
       this.name = reader.ReadVoosName();
-      this.brainName = reader.ReadVoosName();
+      this.brainId = reader.ReadVoosName();
       this.memoryJson = reader.ReadUtf16();
       this.renderableUri = reader.ReadUtf16();
 
@@ -561,7 +561,7 @@ public partial class VoosActor : MonoBehaviour
   // TODO TODO this really should just use the PersistedState struct..? At least share some?
 
   HashSet<string> tags = new HashSet<string>();
-  [SerializeField] string brainName = null;
+  [SerializeField] string brainId = null;
   [SerializeField] Color tint;
   [SerializeField] string renderableUri;
 
@@ -1267,7 +1267,7 @@ public partial class VoosActor : MonoBehaviour
       // TODO is this assert kinda irrelevant..?
       Debug.Assert(serialized.name == this.GetName(), "Serialized name did not match expected name");
 
-      this.SetBrainName(serialized.brainName);
+      this.SetBrainName(serialized.brainId);
       this.SetTags(serialized.tags);
       SetMemoryJson(serialized.memoryJson);
       SetRenderableUri(serialized.renderableUri);
@@ -1700,8 +1700,8 @@ public partial class VoosActor : MonoBehaviour
 
   public void SetBrainName(string name)
   {
-    if (brainName == name) return;
-    brainName = name;
+    if (brainId == name) return;
+    brainId = name;
     UpdateCollisionHandling();
     this.onBrainChanged?.Invoke(false);
     MarkForScriptSync();
@@ -1789,7 +1789,7 @@ public partial class VoosActor : MonoBehaviour
 
   public string GetBrainName()
   {
-    return brainName;
+    return brainId;
   }
 
   // Returns true if the current model is or will be the given URI.

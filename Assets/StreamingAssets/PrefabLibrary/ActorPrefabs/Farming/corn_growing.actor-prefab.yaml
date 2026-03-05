@@ -3,7 +3,7 @@ label: corn_growing
 actors:
 - version: 8
   name: 8136df2bc46241cfb35143921e331c82
-  brainName: __DEFAULT_BRAIN__
+  brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/corn_growing"
   memoryJson: "{\"__bulm\":{}}"

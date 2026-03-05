@@ -290,7 +290,7 @@ function tickWorld(request, binaryBytes) {
       // sendMessage只是入队列，在update才调用pumpMessageQueue_统一分发消息
       // pumpMessageQueue_会调用到Actor的handleMessage
       // handleMessage调用handleMessageImmediate_
-      // handleMessageImmediate_会根据brainName获取brain
+      // handleMessageImmediate_会根据brainId获取brain
       // 然后根据每个use去调用handleMessageForUse
       // handleMessageForUse会从contextMapsByUse_[use][message] 获取MessageHandlingContext，MessageHandlingContext会持有回调函数
       // 然后调用MessageHandlingContext的handleMessage

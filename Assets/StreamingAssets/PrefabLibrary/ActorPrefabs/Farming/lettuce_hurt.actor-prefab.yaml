@@ -3,7 +3,7 @@ label: lettuce_hurt
 actors:
 - version: 8
   name: 070ed8dbc4b94ba0a224efd701d3e904
-  brainName: 76391bbf9f914e98b5e9cff32b2dc4f3
+  brainId: 76391bbf9f914e98b5e9cff32b2dc4f3
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/lettuce_hurt"
   memoryJson: "{\"__bulm\":{}}"

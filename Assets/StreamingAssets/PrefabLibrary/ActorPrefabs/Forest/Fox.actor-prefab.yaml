@@ -3,7 +3,7 @@ label: Fox
 actors:
 - version: 6
   name: 7cb8805c04104aa8a76c7e19a212d69f
-  brainName: e66a183ef74b4cc8be314f5886c7a699
+  brainId: e66a183ef74b4cc8be314f5886c7a699
   tags:
   - player
   renderableUri: "builtin:BuiltinAssets/Forest/Fox"

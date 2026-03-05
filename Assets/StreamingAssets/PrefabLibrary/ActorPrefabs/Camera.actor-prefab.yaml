@@ -3,7 +3,7 @@ label: Camera
 actors:
 - version: 4
   name: 24de2532ef9d4c1a99ea1ad1ce43c763
-  brainName: 7438a378cfd44e9fb3feb6ebe3588a5b
+  brainId: 7438a378cfd44e9fb3feb6ebe3588a5b
   tags:
   - camera
   renderableUri: "builtin:BuiltinAssets/World/Gizmo_Camera"

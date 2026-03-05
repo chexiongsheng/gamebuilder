@@ -83,7 +83,7 @@ class ModuleBehaviorSystem {
     }
     assert(actor instanceof Actor, `Couldn't get actor for ID ${actorId}`);
 
-    const brain = this.database_.getBrain(actor.brainName);
+    const brain = this.database_.getBrain(actor.brainId);
     const use = brain.getUse(useId);
     assert(use, "Couldn't get use for useId");
     assert(use instanceof ModuleBehaviorUse, `Couldn't get use for useId ${useId}`);
@@ -172,7 +172,7 @@ class ModuleBehaviorSystem {
         else {
           const actor = this.actors_.get(item.toActorName);
           assert(actor !== undefined);
-          if (actor.brainName === undefined) {
+          if (actor.brainId === undefined) {
             // Takes this to mean it's not ready yet, but don't drop the message.
             deferredMessages.enqueue(item);
           }
@@ -461,7 +461,7 @@ class ModuleBehaviorSystem {
     // This is intentional. This signals that this actor was just instantiated
     // and is not ready to receive messages, since the behavior DB is not
     // updated yet (with its brains, behaviors, etc)
-    instActor.brainName = undefined;
+    instActor.brainId = undefined;
 
     // NOTE HACK TEMP TODO: not sure how memory comes in here...if the prefab has memory..
 
@@ -499,7 +499,7 @@ class ModuleBehaviorSystem {
       const tempId = result.tempIds.get_Item(i);
       const originalName = result.baseActorNames.get_Item(i);
       const childBaseActor = this.getActor(originalName);
-      cloneActor.setupClone(childBaseActor.brainName, tempId, childBaseActor.getMemoryJson());
+      cloneActor.setupClone(childBaseActor.brainId, tempId, childBaseActor.getMemoryJson());
 
       // This is debatable..but generally makes sense I think. Why even bother
       // with spawn**, since script clones are destroyed upon reset? Well, spawn
@@ -561,8 +561,8 @@ class ModuleBehaviorSystem {
 
   initNewBehaviorUsesForLocalActor_(actor, gameTime) {
     assert(actor.isLocalActor, `init uses called for nonlocal actor..${actor.displayName}`);
-    const brain = this.database_.getBrain(actor.brainName);
-    assert(brain, `could not find brain ${actor.brainName}`);
+    const brain = this.database_.getBrain(actor.brainId);
+    assert(brain, `could not find brain ${actor.brainId}`);
     brain.forUsesHandling("Init", use => {
       // If the actor does not yet have behavior-use-local-memory for this use,
       // create it now, and also deliver the Init message to the behavior use so

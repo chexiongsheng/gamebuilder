@@ -173,20 +173,20 @@ public class ActorPrefabImpl : ActorPrefab
     // Use the new brain IDs..
     for (int i = 0; i < saved.actors.Length; i++)
     {
-      if (brainIdMap.ContainsKey(saved.actors[i].brainName))
+      if (brainIdMap.ContainsKey(saved.actors[i].brainId))
       {
-        saved.actors[i].brainName = brainIdMap[saved.actors[i].brainName];
+        saved.actors[i].brainId = brainIdMap[saved.actors[i].brainId];
       }
       else
       {
         // Always default to default brain. Some prefabs have dangling brain
         // IDs, and bad stuff can happen if we just keep those.
-        Util.LogWarning($"WARNING: Actor prefab '{saved.actors[i].displayName}' ({saved.actors[i].name}) had dangling brainName: {saved.actors[i].brainName}");
-        saved.actors[i].brainName = VoosEngine.DefaultBrainUid;
+        Util.LogWarning($"WARNING: Actor prefab '{saved.actors[i].displayName}' ({saved.actors[i].name}) had dangling brainId: {saved.actors[i].brainId}");
+        saved.actors[i].brainId = VoosEngine.DefaultBrainUid;
       }
     }
 
-    var expectedBrainIds = new HashSet<string>(from actor in this.saved.actors select actor.brainName);
+    var expectedBrainIds = new HashSet<string>(from actor in this.saved.actors select actor.brainId);
     behaviorSystem.MergeNonOverwrite(saved.brainDatabase, expectedBrainIds);
 
     // Instantiate the actor hierarchy - very important we update the parent

@@ -3,7 +3,7 @@ label: Projectile
 actors:
 - version: 8
   name: 467ca499727d4649bba39fc02124c4c6
-  brainName: c3c7d9474ffe46bfab427130f06cd433
+  brainId: c3c7d9474ffe46bfab427130f06cd433
   tags: []
   renderableUri: "builtin:BuiltinAssets/BubblegumDreams/Projectile"
   memoryJson: "{\"__bulm\":{\"ed0ab3baf8e94e6a95ce46b9ec1d79ae\":{\"actionDeckState\":{}},\"9250f9adba2142adb9ae490195d4dcbb\":{\"actionDeckState\":{\"decksInfo\":{}}},\"e469218d0ad74263b3c2dbccd23b61cf\":{\"actionDeckState\":{\"decksInfo\":{}}},\"36359688427a449092cac3c0fdbca854\":{\"actionDeckState\":{\"decksInfo\":{}}},\"5ccabb7c00684af7a9a8b58b62cdfa62\":{\"actionDeckState\":{}},\"e691480987224274a9239b06bbc0957c\":{\"actionDeckState\":{\"decksInfo\":{}}}}}"

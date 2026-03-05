@@ -3,7 +3,7 @@ label: Laser Bolt
 actors:
 - version: 2
   name: a66f7a7a26584baa933a586333d39c6e
-  brainName: 6869cbecf4c7442eaf0c22ba904a828d
+  brainId: 6869cbecf4c7442eaf0c22ba904a828d
   tags: []
   renderableUri: "builtin:BuiltinAssets/LaserBolt"
   memoryJson: "{\"__bulm\":{\"21861e0981cd48599a2664f1e2306758\":{},\"0f2e590ca8ea473baf3f2bb6ca7a837e\":{},\"46dbf4d0e5b9488ea494a0f7e326d86a\":{},\"dbb3f3264b2e4020b87cd0f3b27e46af\":{},\"5d5f0c89cc10478b87aa264b4bf1be11\":{},\"8cdc22cdf2424634be501f50ef25e41f\":{}}}"

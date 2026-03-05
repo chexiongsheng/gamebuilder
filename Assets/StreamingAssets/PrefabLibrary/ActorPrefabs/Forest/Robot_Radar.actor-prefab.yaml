@@ -3,7 +3,7 @@ label: Robot_Radar
 actors:
 - version: 8
   name: 264bd699eece4c2e8007b0a55c576b86
-  brainName: 9f640c9178d248b494f56d0f69bbe337
+  brainId: 9f640c9178d248b494f56d0f69bbe337
   tags:
   - player
   renderableUri: "builtin:BuiltinAssets/Forest/Robot_Radar"

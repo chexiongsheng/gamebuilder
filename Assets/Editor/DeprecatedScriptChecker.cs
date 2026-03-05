@@ -88,9 +88,9 @@ public class DeprecatedScriptChecker : EditorWindow
                 {
                     foreach (var actor in saveGame.voosEngineState.actors)
                     {
-                        if (string.IsNullOrEmpty(actor.brainName)) continue;
+                        if (string.IsNullOrEmpty(actor.brainId)) continue;
 
-                        if (brainMap.TryGetValue(actor.brainName, out Behaviors.Brain brain))
+                        if (brainMap.TryGetValue(actor.brainId, out Behaviors.Brain brain))
                         {
                             if (brain.behaviorUses != null)
                             {

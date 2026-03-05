@@ -3,7 +3,7 @@ label: Hoop
 actors:
 - version: 8
   name: fb1cf849409c46dfa3f49ddff01931f3
-  brainName: __DEFAULT_BRAIN__
+  brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/BubblegumDreams/Hoop"
   memoryJson: "{\"__bulm\":{}}"

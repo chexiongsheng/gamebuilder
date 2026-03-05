@@ -3,7 +3,7 @@ label: Spaceship
 actors:
 - version: 6
   name: a0ff0d4f24a045f9b048c536fdb9e5b2
-  brainName: 175afe7f0a1e44eba0fae6690565d429
+  brainId: 175afe7f0a1e44eba0fae6690565d429
   tags:
   - player
   renderableUri: "builtin:BuiltinAssets/Space/Spaceship"

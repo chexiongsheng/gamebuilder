@@ -3,7 +3,7 @@ label: carrot_hurt
 actors:
 - version: 8
   name: b5a5163054254a6f91ba58c98049b537
-  brainName: d63daf43a1ab4a379c9149ae15e38545
+  brainId: d63daf43a1ab4a379c9149ae15e38545
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/carrot_hurt"
   memoryJson: "{\"__bulm\":{}}"

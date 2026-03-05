@@ -220,9 +220,9 @@ class Actor {
     return this.behaviorSystem_.database;
   }
 
-  setupClone(brainName, tempId, memoryJson) {
+  setupClone(brainId, tempId, memoryJson) {
     this.tempId_ = tempId;
-    this.brainName = brainName;
+    this.brainId = brainId;
     this.memory = unpackObj(JSON.parse(memoryJson));
     this.memoryDirty_ = true;
     this.wasClonedByScript = true;
@@ -232,7 +232,7 @@ class Actor {
   }
 
   deserialize(reader) {
-    this.brainName = reader.readUtf16();
+    this.brainId = reader.readUtf16();
     this.isLocalActor = reader.readBoolean();
     this.isOffstageEffective = reader.readBoolean();
     const acceptMemoryJson = reader.readBoolean();
@@ -308,13 +308,13 @@ class Actor {
   }
 
   hasHandlersFor(messageName) {
-    const brainName = this.brainName;
-    const validBrainName = brainName !== undefined && brainName !== null && brainName.length > 0;
+    const brainId = this.brainId;
+    const validBrainName = brainId !== undefined && brainId !== null && brainId.length > 0;
     if (!validBrainName) {
       return false;
     }
 
-    const brain = this.behaviorDatabase.getBrain(this.brainName);
+    const brain = this.behaviorDatabase.getBrain(this.brainId);
     if (!brain) {
       return false;
     }
@@ -363,7 +363,7 @@ class Actor {
   }
 
   handleMessage(deliveredMessage) {
-    if (!this.brainName) {
+    if (!this.brainId) {
       return;
     }
 
@@ -378,11 +378,11 @@ class Actor {
 
   // Handles an immediate (that is, not delayed) message.
   handleMessageImmediate_(deliveredMessage) {
-    const brain = this.behaviorDatabase.getBrain(this.brainName);
+    const brain = this.behaviorDatabase.getBrain(this.brainId);
 
     if (!brain) {
       // Don't consider this strictly an error/warning worth logging for now.
-      // sysLog(`WARNING: actor ${this.displayName} (${this.name}) has a brain id, but we could not find it: ${this.brainName}.`);
+      // sysLog(`WARNING: actor ${this.displayName} (${this.name}) has a brain id, but we could not find it: ${this.brainId}.`);
       return;
     }
 
@@ -523,7 +523,7 @@ class Actor {
     if (!this.memory.__bulm) {
       return;
     }
-    const brain = this.behaviorDatabase.getBrain(this.brainName);
+    const brain = this.behaviorDatabase.getBrain(this.brainId);
     for (const useId in this.memory.__bulm) {
       // If the behavior use no longer exists, delete it.
       if (!brain.hasUse(useId)) {

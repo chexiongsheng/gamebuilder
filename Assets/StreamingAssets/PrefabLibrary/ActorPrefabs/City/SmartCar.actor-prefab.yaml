@@ -3,7 +3,7 @@ label: SmartCar
 actors:
 - version: 6
   name: 6cad6a98cbee49258bbd7a10bf135a9d
-  brainName: e480972001d44ac6a4bb900546ecf041
+  brainId: e480972001d44ac6a4bb900546ecf041
   tags:
   - player
   renderableUri: "builtin:BuiltinAssets/City/SmartCar"

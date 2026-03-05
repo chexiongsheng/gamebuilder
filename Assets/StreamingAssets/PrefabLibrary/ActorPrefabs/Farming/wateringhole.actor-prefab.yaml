@@ -3,7 +3,7 @@ label: wateringhole
 actors:
 - version: 8
   name: ffc0fbd6bab64b82a2a95bf836fc27bc
-  brainName: __DEFAULT_BRAIN__
+  brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/wateringhole"
   memoryJson: "{\"__bulm\":{}}"

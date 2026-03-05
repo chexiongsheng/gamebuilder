@@ -3,7 +3,7 @@ label: pumpkin_dead
 actors:
 - version: 8
   name: 6f9c3d5a127f4089a014cdf747570201
-  brainName: __DEFAULT_BRAIN__
+  brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/pumpkin_dead"
   memoryJson: "{\"__bulm\":{}}"

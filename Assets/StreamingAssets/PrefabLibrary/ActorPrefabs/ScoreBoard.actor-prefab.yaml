@@ -3,7 +3,7 @@ label: Score Board
 actors:
 - version: 4
   name: 0dc485b57e204bbdb7432762424ce027
-  brainName: 4e59614ff938464cbd5b76fba9e90647
+  brainId: 4e59614ff938464cbd5b76fba9e90647
   tags: []
   renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
   memoryJson: "{\"__bulm\":{\"2cee40a445c5497183757f196afbe3d3\":{},\"f2d8cb1c5dd248cf910bad6ac5cef116\":{},\"ec0c1a048fed4c5799fde828ae3dd49c\":{\"scores\":{}}},\"health\":3,\"__attribs\":{\"isDead\":false},\"isDead\":false}"

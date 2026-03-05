@@ -3,7 +3,7 @@ label: carrot
 actors:
 - version: 8
   name: 0d56c339a07e410ab34f47224c7d4be4
-  brainName: f6ed407177914fe9a11a2ad160eb1424
+  brainId: f6ed407177914fe9a11a2ad160eb1424
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/carrot"
   memoryJson: "{\"__bulm\":{\"2b1c612ee360497d975ce2d1a4888f66\":{\"actionDeckState\":{\"decksInfo\":{}}}},\"__variables\":{\"grabbable\":true,\"owner\":null}}"

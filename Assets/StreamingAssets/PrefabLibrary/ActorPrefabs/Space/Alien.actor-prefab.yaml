@@ -3,7 +3,7 @@ label: Alien
 actors:
 - version: 6
   name: bbc0dfa52a4b4caab17e96c714727e1f
-  brainName: 7afa0c4876d5443e83b89a0e77a05c63
+  brainId: 7afa0c4876d5443e83b89a0e77a05c63
   tags:
   - player
   renderableUri: "builtin:BuiltinAssets/Space/Alien"
