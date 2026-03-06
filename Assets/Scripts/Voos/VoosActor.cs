@@ -169,7 +169,7 @@ public partial class VoosActor : MonoBehaviour
         rv.tags[i++] = tag;
       }
 
-      rv.brainId = actor.GetBrainName();
+      rv.brainId = actor.GetBrainId();
       rv.memoryJson = bypassMemory ? "" : actor.GetMemoryJsonSlow();
 
       rv.renderableUri = actor.renderableUri;
@@ -1244,7 +1244,7 @@ public partial class VoosActor : MonoBehaviour
   {
     // These values here are frequently accessed for every actor, so it's best
     // to NOT use cross-domain accessors for them.
-    writer.WriteUtf16(this.GetBrainName());
+    writer.WriteUtf16(this.GetBrainId());
     writer.WriteVoosBoolean(this.IsLocallyOwned());
     lastSyncedIsLocalValue = this.IsLocallyOwned();
     writer.WriteVoosBoolean(this.GetIsOffstageEffective());
@@ -1790,7 +1790,7 @@ public partial class VoosActor : MonoBehaviour
     engine.EnqueueMessage(new VoosEngine.ActorMessage { targetActor = this.GetId(), name = name, argsJson = argsJson });
   }
 
-  public string GetBrainName()
+  public string GetBrainId()
   {
     return brainId;
   }
@@ -2108,7 +2108,7 @@ public partial class VoosActor : MonoBehaviour
   // foreach(string label in actor.EnumerateBehaviorLabels()) { ... }
   public IEnumerable<string> EnumerateBehaviorLabels()
   {
-    var brain = behaviors.GetBrain(GetBrainName());
+    var brain = behaviors.GetBrain(GetBrainId());
     foreach (var use in brain.behaviorUses)
     {
       yield return behaviors.GetBehaviorData(use.behaviorUri).GetInlineCommentLabel();
@@ -2581,7 +2581,7 @@ public partial class VoosActor : MonoBehaviour
       }
 
       clone.RequestOwnership();
-      clone.SetBrainName(GetBrainName());
+      clone.SetBrainName(GetBrainId());
     }
   }
 
@@ -2966,7 +2966,7 @@ public partial class VoosActor : MonoBehaviour
       // descendants might want to.
       // TODO: Optimize this. We could do all hierarchy-iteration on the JS side
       // to make it fast.
-      (HasChildrenActors() || behaviors.DoesBrainHandleCollisions(GetBrainName()));
+      (HasChildrenActors() || behaviors.DoesBrainHandleCollisions(GetBrainId()));
 
     if (isHandlingCollisions == handling)
     {

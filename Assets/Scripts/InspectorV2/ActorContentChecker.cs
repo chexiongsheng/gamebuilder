@@ -165,7 +165,7 @@ public class ActorContentChecker : MonoBehaviour
     {
       // Setup undo item
       string actorName = actor.GetId();
-      string newBrain = actor.GetBrainName();
+      string newBrain = actor.GetBrainId();
       undo.Push(new UndoStack.Item
       {
         actionLabel = $"Break copy-link of {actor.GetDisplayName()}",
@@ -194,7 +194,7 @@ public class ActorContentChecker : MonoBehaviour
           var prevParentActor = voosEngine.GetActor(prevParent);
           Debug.Assert(prevParent != null, "BreakLink undo action: prevParent does not exist anymore");
           undoActor.SetCloneParent(prevParent);
-          undoActor.SetBrainName(prevParentActor.GetBrainName());
+          undoActor.SetBrainName(prevParentActor.GetBrainId());
           OnBreakLinkChanged(undoActor);
         }
       });

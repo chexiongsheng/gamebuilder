@@ -73,7 +73,7 @@ public class BehaviorsTest
     Assert.NotNull(actor);
     Assert.AreEqual(1.0, actor.GetTint().r, 1e-4);
 
-    string brainId = actor.GetBrainName();
+    string brainId = actor.GetBrainId();
     string behaviorId = NewGUID();
     string js = @"
         export function onTick(api) {
@@ -107,7 +107,7 @@ public class BehaviorsTest
     Assert.NotNull(actor);
     Assert.AreEqual(1.0, actor.transform.position.x, 1e-4);
 
-    string brainId = actor.GetBrainName();
+    string brainId = actor.GetBrainId();
     string behaviorId = behaviorSystem.GenerateUniqueId();
     string js = @"
     export function onMoveRight() {

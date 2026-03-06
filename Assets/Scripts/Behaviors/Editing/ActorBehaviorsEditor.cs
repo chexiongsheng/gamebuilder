@@ -52,7 +52,7 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
 
   public bool IsValid()
   {
-    return this.actor != null && behaviorSystem.HasBrain(this.actor.GetBrainName());
+    return this.actor != null && behaviorSystem.HasBrain(this.actor.GetBrainId());
   }
 
   public bool CanWrite()
@@ -89,7 +89,7 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
   public void CreateOwnCopyOfBrain()
   {
     Debug.Log($"{actor.GetDisplayName()} ({actor.GetId()}) is cloning its brain to have its own copy");
-    string newBrainId = BehaviorSystem.CloneBrain(GetBehaviorSystem(), actor.GetBrainName());
+    string newBrainId = BehaviorSystem.CloneBrain(GetBehaviorSystem(), actor.GetBrainId());
     actor.SetBrainName(newBrainId);
     actor.ApplyBrainNameToClones();
   }
@@ -104,9 +104,9 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
     // Enforce copy-on-write. Or just create brain on write.
     // NOTE: This will never be undone - that's OK. Just slightly wasteful.
 
-    Debug.AssertFormat(!actor.GetBrainName().IsNullOrEmpty(), "{0} had null/empty brain..?", actor.GetDebugName());
+    Debug.AssertFormat(!actor.GetBrainId().IsNullOrEmpty(), "{0} had null/empty brain..?", actor.GetDebugName());
 
-    if (actor.GetBrainName() == VoosEngine.DefaultBrainUid)
+    if (actor.GetBrainId() == VoosEngine.DefaultBrainUid)
     {
       CreateOwnCopyOfBrain();
     }
@@ -123,15 +123,15 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
 
   public string GetMetadataJson()
   {
-    return GetBehaviorSystem().GetBrain(actor.GetBrainName()).metadataJson;
+    return GetBehaviorSystem().GetBrain(actor.GetBrainId()).metadataJson;
   }
 
   public void SetMetadataJson(string json)
   {
     OnBeforeAnyChange();
-    var brain = GetBehaviorSystem().GetBrain(actor.GetBrainName());
+    var brain = GetBehaviorSystem().GetBrain(actor.GetBrainId());
     brain.metadataJson = json;
-    GetBehaviorSystem().PutBrain(actor.GetBrainName(), brain);
+    GetBehaviorSystem().PutBrain(actor.GetBrainId(), brain);
   }
 
   public AssignedBehavior AddBehavior(UnassignedBehavior behavior)
@@ -321,7 +321,7 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
 
   public string GetBrainId()
   {
-    return actor.GetBrainName();
+    return actor.GetBrainId();
   }
 
   public override bool Equals(object obj)

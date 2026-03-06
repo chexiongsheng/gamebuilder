@@ -657,7 +657,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
       return new InstantiatePrefab.Response
       {
         name = actor.GetId(),
-        brainId = actor.GetBrainName(),
+        brainId = actor.GetBrainId(),
         actorId = actor.lastTempId
       };
     }
@@ -2685,7 +2685,7 @@ setVoosModule('{moduleKey}', module);
     var db = engine.behaviorSystem.SaveDatabase();
     HashSet<string> usedBrainIds = new HashSet<string>(
       from a in engine.EnumerateActors()
-      select a.GetBrainName());
+      select a.GetBrainId());
 
     HashSet<string> usedBehaviorIds = new HashSet<string>();
 
@@ -2796,7 +2796,7 @@ setVoosModule('{moduleKey}', module);
   {
     foreach (var actor in this.EnumerateActors())
     {
-      var brain = behaviorSystem.GetBrain(actor.GetBrainName());
+      var brain = behaviorSystem.GetBrain(actor.GetBrainId());
       foreach (var use in brain.behaviorUses)
       {
         if (use.behaviorUri == behaviorUri)

@@ -92,7 +92,7 @@ public class GameBuilderLogHandler : MonoBehaviour
                                                         select entry.id);
 
     VoosActor oneActor = (from actor in voosEngine.EnumerateActors()
-                          where usingBrainIds.Contains(actor.GetBrainName())
+                          where usingBrainIds.Contains(actor.GetBrainId())
                           select actor).FirstOrDefault();
 
     string actorsUsing = oneActor == null ? "No actors using it" : $"One actor using it: {oneActor.GetDebugName()}";
@@ -134,7 +134,7 @@ public class GameBuilderLogHandler : MonoBehaviour
       MaybeNotifyUserOfBehaviorError(item);
     }
     VoosActor actor = voosEngine.GetActor(item.actorId);
-    string behDesc = GetBehaviorTitle(actor.GetBrainName(), item.useId);
+    string behDesc = GetBehaviorTitle(actor.GetBrainId(), item.useId);
     CommandTerminal.HeadlessTerminal.Buffer.HandleLog($"<color=#666666>[{actor.GetDisplayName()} '{behDesc}' on{item.messageName}:{item.lineNum}]</color> <color=white>{item.message}</color>", TerminalLogType.Message, null);
   }
 
@@ -142,7 +142,7 @@ public class GameBuilderLogHandler : MonoBehaviour
   {
     MaybeNotifyUserOfBehaviorError(item);
     VoosActor actor = voosEngine.GetActor(item.actorId);
-    string behDesc = GetBehaviorTitle(actor.GetBrainName(), item.useId);
+    string behDesc = GetBehaviorTitle(actor.GetBrainId(), item.useId);
     CommandTerminal.HeadlessTerminal.Buffer.HandleLog($"<color=yellow>[{actor.GetDisplayName()} '{behDesc}' on{item.messageName}:{item.lineNum}]</color> <color=red>{item.message}</color>", TerminalLogType.Error, null);
   }
 
@@ -171,12 +171,12 @@ public class GameBuilderLogHandler : MonoBehaviour
     {
       lastErrorPopupTime = Time.unscaledTime;
 
-      var brainId = voosEngine.GetActor(item.actorId).GetBrainName();
+      var brainId = voosEngine.GetActor(item.actorId).GetBrainId();
 
       var uri = behaviorSystem.GetBrain(brainId).GetUse(item.useId).behaviorUri;
 
       VoosActor actor = voosEngine.GetActor(item.actorId);
-      string behDesc = GetBehaviorTitle(actor.GetBrainName(), item.useId);
+      string behDesc = GetBehaviorTitle(actor.GetBrainId(), item.useId);
       var niceMsg = $"Script error for actor '{actor.GetDisplayName()}' from card '{behDesc}':\n{item.message}";
       string fullMessage = $"{niceMsg}\n<color=yellow>'on{item.messageName}' will be disabled until the script is edited or the game is reset.</color>\nYou may want to pause the game if the error is repeating.";
       onDisplayCodeError?.Invoke(fullMessage, uri, item);

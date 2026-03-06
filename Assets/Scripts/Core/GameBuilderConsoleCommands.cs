@@ -698,7 +698,7 @@ public class GameBuilderConsoleCommands : MonoBehaviour
       var rb = actor.GetComponent<Rigidbody>();
       if (rbOnly && rb.isKinematic) return false;
 
-      if (actor.GetBrainName() == VoosEngine.DefaultBrainUid) return true;
+      if (actor.GetBrainId() == VoosEngine.DefaultBrainUid) return true;
 
       if (cards.GetCardManager(actor).GetAssignedPanels().Sum(p => p.GetDecks().Sum(d => d.GetAssignedCards().Count())) == 0) return true;
 

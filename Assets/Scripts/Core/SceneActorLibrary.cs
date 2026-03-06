@@ -130,7 +130,7 @@ public class SceneActorLibrary : MonoBehaviour
     void ExportActorRecursive(VoosActor actor)
     {
       savedActors.Add(actor.Save());
-      actor.GetBehaviorSystem().ExportBrain(actor.GetBrainName(), brainDatabase);
+      actor.GetBehaviorSystem().ExportBrain(actor.GetBrainId(), brainDatabase);
 
       foreach (string sojoId in GetUsedSojoIds(actor))
       {

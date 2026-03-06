@@ -336,7 +336,7 @@ public class BehaviorSystem : MonoBehaviour
     }
 
     foreach (VoosActor actor in voosEngine.EnumerateActors().
-      Where(actor => actor.GetBrainName() == brainId))
+      Where(actor => actor.GetBrainId() == brainId))
     {
       // Only call for my local actors (remote owners will take care of calling this for their actors).
       if (actor.IsLocallyOwned())

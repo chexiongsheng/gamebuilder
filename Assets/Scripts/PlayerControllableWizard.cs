@@ -90,12 +90,12 @@ public class PlayerControllableWizard : Photon.PunBehaviour
 
   private static Behaviors.BehaviorUse TryGetPlayerControlsPanel(VoosActor actor)
   {
-    Behaviors.Brain brain = actor.GetBehaviorSystem().GetBrain(actor.GetBrainName());
+    Behaviors.Brain brain = actor.GetBehaviorSystem().GetBrain(actor.GetBrainId());
     if (brain == null)
     {
       return null;
     }
-    foreach (Behaviors.BehaviorUse use in actor.GetBehaviorSystem().GetBrain(actor.GetBrainName()).GetUses())
+    foreach (Behaviors.BehaviorUse use in actor.GetBehaviorSystem().GetBrain(actor.GetBrainId()).GetUses())
     {
       if (use.behaviorUri == PLAYER_CONTROLS_PANEL_URI) return use;
     }
@@ -161,14 +161,14 @@ public class PlayerControllableWizard : Photon.PunBehaviour
   {
     use = use.DeepClone();
     use.SetPropertyValue(PLAYER_NUMBER_PROP_NAME, playerNumber);
-    Behaviors.Brain brain = actor.GetBehaviorSystem().GetBrain(actor.GetBrainName());
+    Behaviors.Brain brain = actor.GetBehaviorSystem().GetBrain(actor.GetBrainId());
     if (brain == null)
     {
       Debug.LogErrorFormat("Could not set player# on actor {0} ({1}). No brain.", actor.GetId(), actor.GetDisplayName());
       return;
     }
     brain.SetUse(use);
-    actor.GetBehaviorSystem().PutBrain(actor.GetBrainName(), brain);
+    actor.GetBehaviorSystem().PutBrain(actor.GetBrainId(), brain);
   }
 
   private void DeletePlayerControlsPanel(VoosActor actor)
@@ -176,7 +176,7 @@ public class PlayerControllableWizard : Photon.PunBehaviour
     Debug.Assert(actor.IsLocallyOwned(), "Actor should be locally owned");
     Behaviors.BehaviorUse playerControlsPanel = TryGetPlayerControlsPanel(actor);
     if (playerControlsPanel == null) return;
-    Behaviors.Brain brain = actor.GetBehaviorSystem().GetBrain(actor.GetBrainName());
+    Behaviors.Brain brain = actor.GetBehaviorSystem().GetBrain(actor.GetBrainId());
     if (brain == null)
     {
       Debug.LogErrorFormat("Could not set player# on actor {0} ({1}). No brain.", actor.GetId(), actor.GetDisplayName());
@@ -187,6 +187,6 @@ public class PlayerControllableWizard : Photon.PunBehaviour
     // in any decks used by the Player Controls panel, so if in the future we do add decks to it,
     // we need to update this logic to remove the panel properly.
     brain.DeleteUse(playerControlsPanel.id);
-    actor.GetBehaviorSystem().PutBrain(actor.GetBrainName(), brain);
+    actor.GetBehaviorSystem().PutBrain(actor.GetBrainId(), brain);
   }
 }
