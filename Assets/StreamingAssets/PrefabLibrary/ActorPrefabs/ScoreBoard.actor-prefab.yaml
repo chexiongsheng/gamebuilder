@@ -2,7 +2,7 @@ version: 2
 label: Score Board
 actors:
 - version: 4
-  name: 0dc485b57e204bbdb7432762424ce027
+  id: 0dc485b57e204bbdb7432762424ce027
   brainId: 4e59614ff938464cbd5b76fba9e90647
   tags: []
   renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"

@@ -2,7 +2,7 @@ version: 2
 label: Axe
 actors:
 - version: 2
-  name: b37e38f5ca334f6cb1d55a55adae1788
+  id: b37e38f5ca334f6cb1d55a55adae1788
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Axe"

@@ -124,8 +124,8 @@ public class BehaviorsTest
     });
 
     // We expect x to increment by 2..
-    voosEngine.EnqueueMessage(new VoosEngine.ActorMessage { name = "MoveRight", targetActor = actor.GetName() });
-    voosEngine.EnqueueMessage(new VoosEngine.ActorMessage { name = "MoveRight", targetActor = actor.GetName() });
+    voosEngine.EnqueueMessage(new VoosEngine.ActorMessage { name = "MoveRight", targetActor = actor.GetId() });
+    voosEngine.EnqueueMessage(new VoosEngine.ActorMessage { name = "MoveRight", targetActor = actor.GetId() });
 
     // Let it run at least one voos update
     yield return new WaitForEndOfFrame();

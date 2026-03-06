@@ -274,18 +274,18 @@ public class RotateTool : Tool
 
       // Save off map of name to state
       Dictionary<string, UndoState> name2undoState = actorUndoStates.ToDictionary(
-        entry => entry.Key.GetName(),
+        entry => entry.Key.GetId(),
         entry => entry.Value
       );
       Dictionary<string, UndoState> name2redoState = actorUndoStates.ToDictionary(
-        entry => entry.Key.GetName(),
+        entry => entry.Key.GetId(),
         entry => new UndoState(entry.Key)
       );
       undoStack.PushUndoForMany(engine,
         actorUndoStates.Keys,
         $"Rotate",
-        redoActor => name2redoState[redoActor.GetName()].PushTo(redoActor, autosetSpawn),
-        undoActor => name2undoState[undoActor.GetName()].PushTo(undoActor, autosetSpawn));
+        redoActor => name2redoState[redoActor.GetId()].PushTo(redoActor, autosetSpawn),
+        undoActor => name2undoState[undoActor.GetId()].PushTo(undoActor, autosetSpawn));
 
       // Propagate spawn positions to all children of all moved objects.
       if (autosetSpawn)

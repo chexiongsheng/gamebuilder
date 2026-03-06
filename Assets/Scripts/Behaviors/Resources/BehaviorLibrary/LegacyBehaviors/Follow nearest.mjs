@@ -56,7 +56,7 @@ export function OnTick(api) {
     }
     const target = api.getOtherActor(targetName);
     if (target.hasTag(api.props.Tag)) {
-      const currDist = api.distanceBetween(me.getName(), targetName);
+      const currDist = api.distanceBetween(me.getId(), targetName);
       if (bestTarget == null || currDist < bestDist) {
         bestDist = currDist;
         bestTarget = target;

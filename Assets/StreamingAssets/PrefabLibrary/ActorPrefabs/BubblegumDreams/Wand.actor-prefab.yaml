@@ -2,7 +2,7 @@ version: 2
 label: Wand
 actors:
 - version: 8
-  name: 6c9d157650884041bcb1c7b2c432b094
+  id: 6c9d157650884041bcb1c7b2c432b094
   brainId: 30035435d1d44ca892f17bef0308f65f
   tags: []
   renderableUri: "builtin:BuiltinAssets/BubblegumDreams/Wand"

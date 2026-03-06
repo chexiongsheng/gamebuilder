@@ -43,7 +43,7 @@ import { getProps } from "../../apiv2/actors/properties.mjs";
 export function OnTick(api) {
   const me = api.getActor();
 
-  if (me.getName() == "RedPlayer" && getControllingPlayer(me.getName()) == '') {
+  if (me.getId() == "RedPlayer" && getControllingPlayer(me.getId()) == '') {
     setControllingPlayer(getPlayerByNumber(1));
   }
 
@@ -76,6 +76,7 @@ export function OnJumpTriggered(api) {
   if (api.getActor().getIsGrounded() && api.memory.jumpCooldown == 0) {
     api.memory.jumpCooldown = 0.1;
     var jumpSpeed = valueOr(api.props.JumpSpeed, 15);
-    kick(api.actor.name, new THREE.Vector3(0, jumpSpeed, 0));
+    kick(api.actor.id, new THREE.Vector3(0, jumpSpeed, 0));
+
   }
 }

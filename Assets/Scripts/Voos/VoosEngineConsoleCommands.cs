@@ -39,7 +39,7 @@ public partial class VoosEngine
     {
       if (substring == null || (actor.GetDisplayName() ?? "").ToLowerInvariant().Contains(substring))
       {
-        HeadlessTerminal.Log($"#{i}: {actor.GetDisplayName()} ({actor.GetName()})");
+        HeadlessTerminal.Log($"#{i}: {actor.GetDisplayName()} ({actor.GetId()})");
       }
       i++;
     }
@@ -58,7 +58,7 @@ public partial class VoosEngine
     {
       if (actor.IsLockWantedLocally())
       {
-        HeadlessTerminal.Log($"#{i}: {actor.GetDisplayName()} ({actor.GetName()})");
+        HeadlessTerminal.Log($"#{i}: {actor.GetDisplayName()} ({actor.GetId()})");
         i++;
       }
     }

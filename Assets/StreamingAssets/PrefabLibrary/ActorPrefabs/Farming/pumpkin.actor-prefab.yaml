@@ -2,7 +2,7 @@ version: 2
 label: pumpkin
 actors:
 - version: 8
-  name: aee2dd7e59984f0eb8a8b8cfceb71eba
+  id: aee2dd7e59984f0eb8a8b8cfceb71eba
   brainId: 9bfe04bc8c39499085425f15101de2c8
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/pumpkin"

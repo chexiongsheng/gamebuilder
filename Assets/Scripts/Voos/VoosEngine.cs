@@ -295,7 +295,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   Queue<VoosActor> actorsToReplicate = new Queue<VoosActor>();
 
   // Cache for others to use.
-  private Dictionary<string, VoosActor> actorsByName = new Dictionary<string, VoosActor>();
+  private Dictionary<string, VoosActor> actorsById = new Dictionary<string, VoosActor>();
 
   // If this is not null, this is the pending request to set the player actor.
   private TransferPlayerControlRequest? transferPlayerControlRequest = null;
@@ -353,7 +353,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
 
   public IEnumerable<VoosActor> EnumerateActors()
   {
-    foreach (var pair in actorsByName)
+    foreach (var pair in actorsById)
     {
       yield return pair.Value;
     }
@@ -361,7 +361,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
 
   public IEnumerable<VoosActor> EnumerateActorsWhere(System.Predicate<VoosActor> predicate)
   {
-    foreach (var pair in actorsByName)
+    foreach (var pair in actorsById)
     {
       if (predicate.Invoke(pair.Value))
       {
@@ -384,7 +384,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     }
 
     VoosActor foundInTable = null;
-    if (actorsByName.TryGetValue(actorName, out foundInTable))
+    if (actorsById.TryGetValue(actorName, out foundInTable))
     {
       return foundInTable;
     }
@@ -444,7 +444,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     photonViewIdTrash.Clear();
   }
 
-  void OnActorsByNameChanged()
+  void OnActorsByIdChanged()
   {
     orderedActorsDirty = true;
   }
@@ -456,14 +456,14 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
       return;
     }
 
-    Debug.Assert(actor.GetName() != null, "DestroyLocalActor: null actor name");
+    Debug.Assert(actor.GetId() != null, "DestroyLocalActor: null actor name");
 
     // Util.Log($"destroying {actor.name}");
 
     // Util.Log($"Destroying {actor.name}. is a replicant? {actor.GetNetworking().IsRemoteReplicant()}");
     globalUnreliableData.RemoveActor(actor);
-    actorsByName.Remove(actor.GetName());
-    OnActorsByNameChanged();
+    actorsById.Remove(actor.GetId());
+    OnActorsByIdChanged();
     // Important to do this after RemoveActor, since it uses the viewID.
     if (actor.reliablePhotonView != null)
     {
@@ -629,7 +629,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     try
     {
       Debug.Assert(!prefabUri.IsNullOrEmpty(), $"InstantiatePrefabForScript: Script wants to instantiate a prefab, but it did not provide a prefab URI to use. Creator name: {creatorName}");
-      Debug.Assert(actorsByName.ContainsKey(creatorName), "InstantiatePrefabForScript: Invalid creatorName given: " + creatorName);
+      Debug.Assert(actorsById.ContainsKey(creatorName), "InstantiatePrefabForScript: Invalid creatorName given: " + creatorName);
 
       // TEMP TEMP TODO we should actually treat this like a URI, cuz we may have scene-embedded prefabs too.
       // NOTE: this may be weird in multiplayer, since it will probably get replicated in the wrong position first.
@@ -656,7 +656,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
 
       return new InstantiatePrefab.Response
       {
-        name = actor.GetName(),
+        name = actor.GetId(),
         brainId = actor.GetBrainName(),
         actorId = actor.lastTempId
       };
@@ -674,11 +674,11 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     rv.gameTime = gameTime;
     List<VoosActor.PersistedState> persistedStates = new List<VoosActor.PersistedState>();
 
-    foreach (var pair in actorsByName)
+    foreach (var pair in actorsById)
     {
       if (pair.Value != null && pair.Value.transform == null)
       {
-        Util.LogError($"An actor in actorsByName was not null, but its transform was...? Actor GO name: {pair.Value.name}");
+        Util.LogError($"An actor in actorsBysId was not null, but its transform was...? Actor GO name: {pair.Value.name}");
       }
 
       if (pair.Value.ShouldPersist())
@@ -707,14 +707,14 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
     {
       // Note: because of a bug in an earlier version, sometimes an actor with an empty
       // name may be on the file. We can ignore those.
-      if (actorData.name.IsNullOrEmpty())
+      if (actorData.id.IsNullOrEmpty())
       {
         Debug.LogWarning("File has actor with empty name (written by known bug in previous version). Ignoring.");
         continue;
       }
 
       // HACK - work around bug that left some files with placeholders saved in them.
-      if (actorData.name.StartsWith(VoosActor.PLAYER_PLACEHOLDER_NAME_PREFIX))
+      if (actorData.id.StartsWith(VoosActor.PLAYER_PLACEHOLDER_NAME_PREFIX))
       {
         continue;
       }
@@ -723,22 +723,22 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
       // messages..or onActorCreated calls...heh. Especially since we are doing
       // our special 2-pass approach.
       VoosActor actor = CreateLocalActor(actorData.position, actorData.rotation, PhotonNetwork.AllocateViewID());
-      actor.SetName(actorData.name);
+      actor.SetId(actorData.id);
     }
 
     // Phase 2: Initialize all actors.
     foreach (VoosActor.PersistedState actorData in state.actors)
     {
-      if (actorData.name.IsNullOrEmpty())
+      if (actorData.id.IsNullOrEmpty())
       {
         continue;
       }
       // HACK - work around bug that left some files with placeholders saved in them.
-      if (actorData.name.StartsWith(VoosActor.PLAYER_PLACEHOLDER_NAME_PREFIX))
+      if (actorData.id.StartsWith(VoosActor.PLAYER_PLACEHOLDER_NAME_PREFIX))
       {
         continue;
       }
-      VoosActor actor = actorsByName[actorData.name];
+      VoosActor actor = actorsById[actorData.id];
       actor.UpdateFrom(actorData);
     }
 
@@ -753,10 +753,10 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   public PlayerInitPayload GetPlayerInitPayload()
   {
     PlayerInitPayload rv;
-    rv.actorViewIds = new int[actorsByName.Count];
-    rv.actorStates = new VoosActor.PersistedState[actorsByName.Count];
+    rv.actorViewIds = new int[actorsById.Count];
+    rv.actorStates = new VoosActor.PersistedState[actorsById.Count];
     int i = 0;
-    foreach (var entry in actorsByName)
+    foreach (var entry in actorsById)
     {
       if (entry.Value.reliablePhotonView != null)
       {
@@ -774,7 +774,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
   {
 #if USE_PUN
     Debug.Assert(state == State.Uninit, "SetPlayerInitPayload before init'd?");
-    Debug.Assert(actorsByName.Count == 0, "There should be no actors before we're initialized!!");
+    Debug.Assert(actorsById.Count == 0, "There should be no actors before we're initialized!!");
 
     Util.AssertAllUnique(payload.actorViewIds);
     for (int i = 0; i < payload.actorViewIds.Length; i++)
@@ -790,7 +790,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
       var state = payload.actorStates[i];
 
       VoosActor actor = CreateLocalActor(state.position, state.rotation, viewId);
-      actor.SetName(state.name);
+      actor.SetId(state.id);
       actor.UpdateFrom(state);
     }
 
@@ -809,7 +809,7 @@ public partial class VoosEngine : MonoBehaviour, IPunObservable
       rv.memCheckMode = MemCheckMode;
       rv.enableProfilingService = EnableProfilingFromScript;
       rv.runtimeState = new RuntimeState();
-      PushPlayerActorStateToSerialized(ref rv.runtimeState, actorsByName);
+      PushPlayerActorStateToSerialized(ref rv.runtimeState, actorsById);
       rv.deltaSeconds = Time.deltaTime;
       rv.messagesFromUnity = messagesFromUnity.ToArray();
       rv.operation = "tickWorld";
@@ -1043,7 +1043,7 @@ setVoosModule('{moduleKey}', module);
     foreach (var change in changes)
     {
       VoosActor ent;
-      if (actorsByName.TryGetValue(change.entityName, out ent))
+      if (actorsById.TryGetValue(change.entityName, out ent))
       {
         if (ent != null)
         {
@@ -1059,7 +1059,7 @@ setVoosModule('{moduleKey}', module);
     foreach (var req in torques)
     {
       VoosActor actor;
-      if (actorsByName.TryGetValue(req.actorId, out actor) && actor != null)
+      if (actorsById.TryGetValue(req.actorId, out actor) && actor != null)
       {
         actor.RequestTorque(req.torque);
       }
@@ -1111,7 +1111,7 @@ setVoosModule('{moduleKey}', module);
 
         // Don't worry about if the actor is no longer owned by us. The script
         // layer will take care of that.
-        EnqueueMessage(new ActorMessage { fromRemote = true, name = msg.messageName, targetActor = target.GetName(), argsJson = msg.argsJson });
+        EnqueueMessage(new ActorMessage { fromRemote = true, name = msg.messageName, targetActor = target.GetId(), argsJson = msg.argsJson });
       }
     }
 #endif
@@ -1129,18 +1129,18 @@ setVoosModule('{moduleKey}', module);
       int yId = -1;
       if (!x.targetActor.IsNullOrEmpty())
       {
-        xId = actorsByName[x.targetActor].GetPhotonOwnerId();
+        xId = actorsById[x.targetActor].GetPhotonOwnerId();
       }
       if (!y.targetActor.IsNullOrEmpty())
       {
-        yId = actorsByName[y.targetActor].GetPhotonOwnerId();
+        yId = actorsById[y.targetActor].GetPhotonOwnerId();
       }
       return xId.CompareTo(yId);
     }));
 
     // Now send out one RPC per unique owner.
     Util.ForSortedGroups(messages,
-    msg => msg.targetActor.IsNullOrEmpty() ? -1 : actorsByName[msg.targetActor].GetPhotonOwnerId(),
+    msg => msg.targetActor.IsNullOrEmpty() ? -1 : actorsById[msg.targetActor].GetPhotonOwnerId(),
     (ownerId, messagesForOwner) =>
     {
       if (ownerId == -1)
@@ -1175,7 +1175,7 @@ setVoosModule('{moduleKey}', module);
         foreach (ActorMessage msg in messagesForOwner)
         {
           Debug.Assert(msg.name != "ResetGame", "SendMessagesToRemotes: JS side should not be forwarding ResetGame messages..");
-          VoosActor target = actorsByName[msg.targetActor];
+          VoosActor target = actorsById[msg.targetActor];
           Debug.Assert(ownerId == target.GetPhotonOwnerId(), "SendMessagesToRemotes: ownerId did not match target's actual owner");
           Debug.Assert(owner == target.GetPhotonOwner(), "SendMessagesToRemotes: owner did not match target's actual owner");
           remoteMessagesTemp.Add(new RemoteMessage
@@ -1408,17 +1408,18 @@ setVoosModule('{moduleKey}', module);
     wOut = rv.w;
   }
 
-  internal void NotifyNameChange(VoosActor voosActor, string oldName)
+  internal void NotifyIdChange(VoosActor voosActor, string oldId)
   {
-    if (oldName != null && actorsByName.ContainsKey(oldName))
+    if (oldId != null && actorsById.ContainsKey(oldId))
     {
-      actorsByName.Remove(oldName);
+      actorsById.Remove(oldId);
     }
-    if (voosActor.GetName() != null)
+
+    if (voosActor.GetId() != null)
     {
-      actorsByName[voosActor.GetName()] = voosActor;
+      actorsById[voosActor.GetId()] = voosActor;
     }
-    OnActorsByNameChanged();
+    OnActorsByIdChanged();
   }
 
   public void SetActorQuaternion(ushort actorId, ushort fieldId, float newX, float newY, float newZ, float newW)
@@ -1462,7 +1463,7 @@ setVoosModule('{moduleKey}', module);
 
   bool RunVoosUpdate()
   {
-    MaybeShowActorCountWarning(actorsByName.Count);
+    MaybeShowActorCountWarning(actorsById.Count);
     using (InGameProfiler.Section("Actors OnPreVoosUpdate"))
     {
       foreach (VoosActor actor in EnumerateActors())
@@ -1520,9 +1521,9 @@ setVoosModule('{moduleKey}', module);
               Util.LogError($"Unknown system message from VOOS to Unity: ${msg.name}. Args: ${msg.argsJson}");
             }
           }
-          else if (actorsByName.ContainsKey(msg.targetActor))
+          else if (actorsById.ContainsKey(msg.targetActor))
           {
-            VoosActor target = actorsByName[msg.targetActor];
+            VoosActor target = actorsById[msg.targetActor];
             target.HandleMessageFromScript(msg);
           }
           else
@@ -1567,8 +1568,8 @@ setVoosModule('{moduleKey}', module);
         orderedActorsDirty = false;
         latestActorsInSerializedOrder.Clear();
 
-        writer.Write((int)actorsByName.Count);
-        foreach (var pair in actorsByName)
+        writer.Write((int)actorsById.Count);
+        foreach (var pair in actorsById)
         {
           writer.WriteUtf16(pair.Key);
           latestActorsInSerializedOrder.Add(pair.Value);
@@ -1589,7 +1590,7 @@ setVoosModule('{moduleKey}', module);
       foreach (var actor in actorsNeedScriptSync)
       {
         // It's possible this actor is no longer valid..ie. it was JUST destroyed.
-        if (actor == null || !actorsByName.ContainsKey(actor.GetName()))
+        if (actor == null || !actorsById.ContainsKey(actor.GetId()))
         {
           // Write -1, indicating to skip
           writer.Write(ushort.MaxValue);
@@ -1898,7 +1899,7 @@ setVoosModule('{moduleKey}', module);
     // RPC.
 
     VoosActor actor = CreateLocalActor(position, rotation, PhotonNetwork.AllocateViewID());
-    actor.SetName(actorName ?? GenerateUniqueId());
+    actor.SetId(actorName ?? GenerateUniqueId());
     actor.SetBrainName(DefaultBrainUid);
     // This actor is not immediately in the JS system yet, so we need to have
     // some valid memory in C# land for our SaveActor call later. setupActor may
@@ -1954,10 +1955,10 @@ setVoosModule('{moduleKey}', module);
       RpcLog($"received CreateActorReplicateRPC, viewId {viewId}");
       VoosActor.PersistedState serialized = JsonUtility.FromJson<VoosActor.PersistedState>(serializedJson);
       VoosActor actor = CreateLocalActor(serialized.position, serialized.rotation, viewId);
-      actor.SetName(serialized.name);
+      actor.SetId(serialized.id);
       actor.UpdateFrom(serialized);
       Debug.Assert(actor.GetNetworking().IsRemoteReplicant(), "CreateActorReplicateRPC: created actor is not a replicant?");
-      Debug.Assert(!actor.GetName().IsNullOrEmpty(), "CreateActorReplicateRPC: created actor has no name");
+      Debug.Assert(!actor.GetId().IsNullOrEmpty(), "CreateActorReplicateRPC: created actor has no name");
     }
     catch (System.Exception e)
     {
@@ -1994,13 +1995,13 @@ setVoosModule('{moduleKey}', module);
     // Now make the requested copies.
     foreach (CopyPasteActorRequest request in requests)
     {
-      string pastedName = nameDict[request.source.GetName()];
+      string pastedName = nameDict[request.source.GetId()];
       Debug.Assert(pastedName != null, "pastedName was null?");
       VoosActor pastedActor = CreateActor(request.pastedPosition, request.pastedRotation, clone =>
       {
         VoosActor.PersistedState state = VoosActor.PersistedState.NewFrom(request.source);
         // We want to use the new clone's newly generated name.
-        state.name = pastedName;
+        state.id = pastedName;
         state.displayName = request.pastedDisplayName;
         state.position = request.pastedPosition;
         state.rotation = request.pastedRotation;
@@ -2008,7 +2009,7 @@ setVoosModule('{moduleKey}', module);
         // IMPORTANT: If the source is already part of a clone group, use that! Otherwise, start a new group.
         if (request.source.GetCloneParentActor() == null)
         {
-          state.cloneParent = request.source.GetName();
+          state.cloneParent = request.source.GetId();
         }
         else
         {
@@ -2291,10 +2292,10 @@ setVoosModule('{moduleKey}', module);
     if (cloneParent.IsNullOrEmpty())
     {
       // This is an original - not a clone.
-      cloneParent = actor.GetName();
+      cloneParent = actor.GetId();
     }
 
-    foreach (var entry in actorsByName)
+    foreach (var entry in actorsById)
     {
       VoosActor other = entry.Value;
 
@@ -2305,7 +2306,7 @@ setVoosModule('{moduleKey}', module);
 
       // We want to apply this to other clones of the original, but also the
       // original itself.
-      bool isCopy = other.GetCloneParent() == cloneParent || other.GetName() == cloneParent;
+      bool isCopy = other.GetCloneParent() == cloneParent || other.GetId() == cloneParent;
 
       if (isCopy)
       {
@@ -2337,7 +2338,7 @@ setVoosModule('{moduleKey}', module);
     // If they differ, it's because this request is meant for another player in a
     // multiplayer game, so we can ignore it.
     VoosActor playerActor = GetPlayerActor();
-    if (playerActor == null || playerActor.GetName() != request.fromActor)
+    if (playerActor == null || playerActor.GetId() != request.fromActor)
     {
       // We can safely ignore the request.
       return;
@@ -2370,7 +2371,7 @@ setVoosModule('{moduleKey}', module);
       return;
     }
 
-    if (oldActor != null && oldActor.GetName() != request.fromActor)
+    if (oldActor != null && oldActor.GetId() != request.fromActor)
     {
       // Shouldn't happen, as we gate this earlier, but...
       Debug.LogWarning("Can't set player actor. Current actor is not set correctly.");
@@ -2378,7 +2379,7 @@ setVoosModule('{moduleKey}', module);
     }
 
     userMain.MigrateUserTo(newActor);
-    Debug.Log("Successfully migrated player to actor " + (newActor != null ? newActor.GetName() : "(default)"));
+    Debug.Log("Successfully migrated player to actor " + (newActor != null ? newActor.GetId() : "(default)"));
     // If requested, destroy the original actor.
     if (request.destroy)
     {
@@ -2389,8 +2390,8 @@ setVoosModule('{moduleKey}', module);
   internal void NotifyActorDestroyed(VoosActor voosActor)
   {
     onBeforeActorDestroy?.Invoke(voosActor);
-    actorsByName.Remove(voosActor.GetName());
-    OnActorsByNameChanged();
+    actorsById.Remove(voosActor.GetId());
+    OnActorsByIdChanged();
   }
 
   private VoosActor FindNewPlayerPrefabActor()
@@ -2440,12 +2441,12 @@ setVoosModule('{moduleKey}', module);
   public CloneActorResponse CloneActorForScript(string baseActorName, string creatorName, Vector3 position, Quaternion rotation)
   {
     Debug.Assert(!baseActorName.IsNullOrEmpty(), $"CloneActorForScript: Script wanted to clone something, but did not tell us the actor to clone from.");
-    Debug.Assert(actorsByName.ContainsKey(baseActorName), "CloneActorForScript: Clone-parent does not exist.");
+    Debug.Assert(actorsById.ContainsKey(baseActorName), "CloneActorForScript: Clone-parent does not exist.");
 
-    VoosActor rootActor = actorsByName[baseActorName];
+    VoosActor rootActor = actorsById[baseActorName];
     VoosActor rootClone = CloneActorAndDescendantsForScript(rootActor, rootActor.GetParentActor(), position, rotation);
 
-    string[] actorNames = (from actor in rootClone.DepthFirstSearch() select actor.GetName()).ToArray();
+    string[] actorNames = (from actor in rootClone.DepthFirstSearch() select actor.GetId()).ToArray();
 
     ushort[] tempIds = new ushort[actorNames.Length];
     string[] baseActorNames = new string[actorNames.Length];
@@ -2495,14 +2496,14 @@ setVoosModule('{moduleKey}', module);
     VoosActor clone = CreateActor(worldPosition, worldRotation, cloneToSetup =>
     {
       // Do NOT copy over everything...only a subset of fields.
-      state.name = cloneToSetup.GetName();
-      state.cloneParent = actorToClone.GetName();
+      state.id = cloneToSetup.GetId();
+      state.cloneParent = actorToClone.GetId();
       state.position = worldPosition;
       state.rotation = worldRotation;
       state.preferOffstage = false;
       state.wasClonedByScript = true;
-      state.transformParent = parentActor != null ? parentActor.GetName() : null;
-      state.spawnTransformParent = parentActor != null ? parentActor.GetName() : null;
+      state.transformParent = parentActor != null ? parentActor.GetId() : null;
+      state.spawnTransformParent = parentActor != null ? parentActor.GetId() : null;
       cloneToSetup.UpdateFrom(state);
 
       // Note: when the clone goes from off-stage to on-stage, we are resetting its position/rotation to
@@ -2527,10 +2528,10 @@ setVoosModule('{moduleKey}', module);
     Dictionary<string, string> dict = new Dictionary<string, string>();
     foreach (VoosActor actor in actorsToClone)
     {
-      dict[actor.GetName()] = GenerateUniqueId();
+      dict[actor.GetId()] = GenerateUniqueId();
       foreach (VoosActor descendant in actor.gameObject.GetComponentsInChildren<VoosActor>())
       {
-        dict[actor.GetName()] = GenerateUniqueId();
+        dict[actor.GetId()] = GenerateUniqueId();
       }
     }
     return dict;
@@ -2671,7 +2672,7 @@ setVoosModule('{moduleKey}', module);
   {
     return CreateActor(savedState.position, savedState.rotation, restored =>
     {
-      restored.SetName(savedState.name);
+      restored.SetId(savedState.id);
       restored.UpdateFrom(savedState);
     });
   }
@@ -2858,7 +2859,7 @@ setVoosModule('{moduleKey}', module);
     }
     string[] dontRender = cameraActor.GetCameraSettings().dontRenderActors;
 
-    if (dontRender != null && Array.IndexOf(dontRender, actor.GetName()) >= 0)
+    if (dontRender != null && Array.IndexOf(dontRender, actor.GetId()) >= 0)
     {
       // Actor is in the camera's "do not render" list.
       return false;
@@ -2886,7 +2887,7 @@ setVoosModule('{moduleKey}', module);
 
   public int GetNumActors()
   {
-    return actorsByName.Count;
+    return actorsById.Count;
   }
 
   byte PINIT_END_SENTINEL = 79;
@@ -2910,7 +2911,7 @@ setVoosModule('{moduleKey}', module);
   {
 #if USE_PUN
     Debug.Assert(state == State.Uninit, "DeserializePlayerInitV2 called before init'd?");
-    Debug.Assert(actorsByName.Count == 0, "There should be no actors before we're initialized!!");
+    Debug.Assert(actorsById.Count == 0, "There should be no actors before we're initialized!!");
 
     int numActors = reader.ReadInt32();
 
@@ -2921,7 +2922,7 @@ setVoosModule('{moduleKey}', module);
       var state = new VoosActor.PersistedState();
       state.Deserialize(reader);
       VoosActor actor = CreateLocalActor(state.position, state.rotation, viewId);
-      actor.SetName(state.name);
+      actor.SetId(state.id);
       actor.UpdateFrom(state);
     }
 

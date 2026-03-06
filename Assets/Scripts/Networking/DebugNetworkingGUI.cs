@@ -51,7 +51,7 @@ public class DebugNetworkingGUI : MonoBehaviour
       PlayerBody playerBody = actor.GetPlayerBody();
       //string pbodyInfo = playerBody == null ? "" : $"Claimed? {playerBody.IsClaimed()} ..play mode? {playerBody.GetIsClaimerPlaying()}";
       string color = photonView.isMine ? "yellow" : "grey";
-      string hash = actor.GetName().Substring(0, 9);
+      string hash = actor.GetId().Substring(0, 9);
       bool locked = actor.IsLockedByAnother() || actor.IsLockWantedLocally();
       string lockingString = locked ? " LOCKED" : "";
       string lastPos = actor.unrel == null ? "" : actor.unrel.lastPosition.x.ToFourDecimalPlaces();

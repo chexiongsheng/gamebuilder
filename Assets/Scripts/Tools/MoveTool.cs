@@ -307,11 +307,11 @@ public class MoveTool : Tool
 
       // Save off map of name to state
       var name2undoState = actorMoveDataList.ToDictionary(
-        data => data.actor.GetName(),
+        data => data.actor.GetId(),
         data => data.undoState
       );
       var name2redoState = actorMoveDataList.ToDictionary(
-        data => data.actor.GetName(),
+        data => data.actor.GetId(),
         data => new UndoState(data.actor)
       );
 
@@ -327,8 +327,8 @@ public class MoveTool : Tool
       undoStack.PushUndoForMany(engine,
         actorMoveDataList.Select(a => a.actor),
         $"Move",
-        redoActor => name2redoState[redoActor.GetName()].PushTo(redoActor, autosetSpawn),
-        undoActor => name2undoState[undoActor.GetName()].PushTo(undoActor, autosetSpawn));
+        redoActor => name2redoState[redoActor.GetId()].PushTo(redoActor, autosetSpawn),
+        undoActor => name2undoState[undoActor.GetId()].PushTo(undoActor, autosetSpawn));
     }
 
     actorMoveDataList.Clear();

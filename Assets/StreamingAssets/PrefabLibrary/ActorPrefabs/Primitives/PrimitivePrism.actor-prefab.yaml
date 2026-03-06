@@ -2,7 +2,7 @@ version: 2
 label: PrimitivePrism
 actors:
 - version: 8
-  name: ac7a042585a44db8ba792a5ed71a4a5b
+  id: ac7a042585a44db8ba792a5ed71a4a5b
   brainId: 263222b897094cda843ff0538facb210
   tags: []
   renderableUri: "builtin:BuiltinAssets/Primitives/PrimitivePrism"

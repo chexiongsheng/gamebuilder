@@ -2,7 +2,7 @@ version: 2
 label: Empty
 actors:
 - version: 6
-  name: ce35e1e989274b63b50627106c43a0dc
+  id: ce35e1e989274b63b50627106c43a0dc
   brainId: 9b8a176be87b4ef5ad531bc55916e4db
   tags:
   - particleeffect

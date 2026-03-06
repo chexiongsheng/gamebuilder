@@ -39,7 +39,7 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
 
   public static ActorBehaviorsEditor FromActor(VoosActor actor)
   {
-    return new ActorBehaviorsEditor(actor.GetName(), actor.GetEngine(), null);
+    return new ActorBehaviorsEditor(actor.GetId(), actor.GetEngine(), null);
   }
 
   public ActorBehaviorsEditor(string actorId, VoosEngine engine, UndoStack undoStack)
@@ -88,7 +88,7 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
 
   public void CreateOwnCopyOfBrain()
   {
-    Debug.Log($"{actor.GetDisplayName()} ({actor.GetName()}) is cloning its brain to have its own copy");
+    Debug.Log($"{actor.GetDisplayName()} ({actor.GetId()}) is cloning its brain to have its own copy");
     string newBrainId = BehaviorSystem.CloneBrain(GetBehaviorSystem(), actor.GetBrainName());
     actor.SetBrainName(newBrainId);
     actor.ApplyBrainNameToClones();
@@ -98,7 +98,7 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
   {
     if (!actor.IsLocallyOwned())
     {
-      throw new System.Exception($"You may not edit the behaviors of an actor you do not own - sorry! Tried to edit actor {actor.GetDisplayName()} ({actor.GetName()})");
+      throw new System.Exception($"You may not edit the behaviors of an actor you do not own - sorry! Tried to edit actor {actor.GetDisplayName()} ({actor.GetId()})");
     }
 
     // Enforce copy-on-write. Or just create brain on write.
@@ -278,7 +278,7 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
 
       System.Action<VoosActor> doFunc = redoActor =>
       {
-        Debug.Assert(redoActor.GetName() == undoEditor.actor.GetName());
+        Debug.Assert(redoActor.GetId() == undoEditor.actor.GetId());
         undoEditor.SetBrain(currBrain);
         redoActor.NotifyBrainUndoRedo();
       };
@@ -289,7 +289,7 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
         doFunc,
         undoActor =>
         {
-          Debug.Assert(undoActor.GetName() == undoEditor.actor.GetName());
+          Debug.Assert(undoActor.GetId() == undoEditor.actor.GetId());
           undoEditor.SetBrain(undoBrain);
           undoActor.NotifyBrainUndoRedo();
         },
@@ -311,7 +311,7 @@ public class ActorBehaviorsEditor : IEquatable<ActorBehaviorsEditor>
 
   public string GetActorName()
   {
-    return actor.GetName();
+    return actor.GetId();
   }
 
   public string GetActorDisplayName()

@@ -3,7 +3,7 @@ voosEngineState:
   gameTime: 14072.2686
   actors:
   - version: 8
-    name: a0cd0762bd5e4585a0e0499371cc7ecb
+    id: a0cd0762bd5e4585a0e0499371cc7ecb
     brainId: e9066c2c405641ac86a961c47112d05a
     tags:
     - player
@@ -107,7 +107,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 8
-    name: "builtin:LaserBolt"
+    id: "builtin:LaserBolt"
     brainId: f1c78779b3a940c1a6d683cc60ede25d
     tags: []
     renderableUri: "builtin:BuiltinAssets/LaserBolt"
@@ -210,7 +210,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 8
-    name: "builtin:PopupText"
+    id: "builtin:PopupText"
     brainId: 6cea514759cd443ea7956aa90c091445
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -314,7 +314,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 8
-    name: d4c745b49fb3403892a256eddca8033d
+    id: d4c745b49fb3403892a256eddca8033d
     brainId: 021c401af4e84628a4bfc8898e6c159b
     tags: []
     renderableUri: "builtin:BuiltinAssets/Space/CommandConsole_Large"
@@ -417,7 +417,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 8
-    name: 126e775100d641fdb59981bcabeca55c
+    id: 126e775100d641fdb59981bcabeca55c
     brainId: 7aadf58945104aaf8093a92effb610bc
     tags: []
     renderableUri: "builtin:BuiltinAssets/Primitives/PrimitiveCube"
@@ -520,7 +520,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 8
-    name: b605e889bcce4a8198644f4a126c07e0
+    id: b605e889bcce4a8198644f4a126c07e0
     brainId: 0f13f164f9584e94a874091304f3de2a
     tags: []
     renderableUri: "builtin:BuiltinAssets/Primitives/PrimitiveCube"
@@ -623,7 +623,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 8
-    name: 931578a3f5c44688aa407d347f799c3e
+    id: 931578a3f5c44688aa407d347f799c3e
     brainId: 73d3948bd70e4fd084341bd36ea44133
     tags: []
     renderableUri: "builtin:BuiltinAssets/Primitives/PrimitiveCylinder"
@@ -726,7 +726,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 8
-    name: 4984649ab6ae4fd2926a7fe43b80b843
+    id: 4984649ab6ae4fd2926a7fe43b80b843
     brainId: 9b8e4adc7c7f454c86bb5415fb70795c
     tags: []
     renderableUri: "builtin:BuiltinAssets/Primitives/PrimitiveCube"

@@ -2,7 +2,7 @@ version: 2
 label: Projectile
 actors:
 - version: 8
-  name: 467ca499727d4649bba39fc02124c4c6
+  id: 467ca499727d4649bba39fc02124c4c6
   brainId: c3c7d9474ffe46bfab427130f06cd433
   tags: []
   renderableUri: "builtin:BuiltinAssets/BubblegumDreams/Projectile"

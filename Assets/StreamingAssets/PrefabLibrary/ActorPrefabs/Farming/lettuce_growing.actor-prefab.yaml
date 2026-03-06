@@ -2,7 +2,7 @@ version: 2
 label: lettuce_growing
 actors:
 - version: 8
-  name: 2537d81cc5de4fa4a1febefec30ba8fe
+  id: 2537d81cc5de4fa4a1febefec30ba8fe
   brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/lettuce_growing"

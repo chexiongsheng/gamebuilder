@@ -2,7 +2,7 @@ version: 2
 label: Potion
 actors:
 - version: 8
-  name: 77b537e6bde14a1f8dacad8b2ee25a35
+  id: 77b537e6bde14a1f8dacad8b2ee25a35
   brainId: 405054c8f3ef41c7b5e9c34b70d1db20
   tags: []
   renderableUri: "builtin:BuiltinAssets/BubblegumDreams/Potion"

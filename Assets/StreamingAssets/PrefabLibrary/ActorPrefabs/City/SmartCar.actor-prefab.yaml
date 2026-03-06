@@ -2,7 +2,7 @@ version: 2
 label: SmartCar
 actors:
 - version: 6
-  name: 6cad6a98cbee49258bbd7a10bf135a9d
+  id: 6cad6a98cbee49258bbd7a10bf135a9d
   brainId: e480972001d44ac6a4bb900546ecf041
   tags:
   - player

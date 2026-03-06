@@ -2,7 +2,7 @@ version: 2
 label: pumpkin_growing
 actors:
 - version: 8
-  name: 23dcb85e284c4dc797a413de8b449884
+  id: 23dcb85e284c4dc797a413de8b449884
   brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/pumpkin_growing"

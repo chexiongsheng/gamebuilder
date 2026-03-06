@@ -2,7 +2,7 @@ version: 2
 label: Butterfly
 actors:
 - version: 6
-  name: 17d5ddc72522404f8caae6981fcd7638
+  id: 17d5ddc72522404f8caae6981fcd7638
   brainId: ab9081fa0f954754939cb91daef29fc3
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Butterfly"

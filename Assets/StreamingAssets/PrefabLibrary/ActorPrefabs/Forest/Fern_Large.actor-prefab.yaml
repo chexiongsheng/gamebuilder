@@ -2,7 +2,7 @@ version: 2
 label: Fern_Large
 actors:
 - version: 3
-  name: fe2881dd6cfa4524a92e9c4d10387923
+  id: fe2881dd6cfa4524a92e9c4d10387923
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Fern_Large"

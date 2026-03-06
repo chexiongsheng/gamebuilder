@@ -2,7 +2,7 @@ version: 2
 label: corn_dead
 actors:
 - version: 8
-  name: 1ce6868de32343de824133a47d32ad3d
+  id: 1ce6868de32343de824133a47d32ad3d
   brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/corn_dead"

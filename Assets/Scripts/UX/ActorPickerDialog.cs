@@ -109,7 +109,7 @@ public class ActorPickerDialog : MonoBehaviour
 
   private bool ShouldActorBeListed(bool isOffstageList, VoosActor actor)
   {
-    return actor.GetName() != "__GameRules__" &&
+    return actor.GetId() != "__GameRules__" &&
       (actor.GetIsOffstageEffective() == isOffstageList) &&
       !actor.GetWasClonedByScript() &&
       (actor.GetDisplayName().ToLower().Contains(searchInput.text.ToLower()));
@@ -146,6 +146,6 @@ public class ActorPickerDialog : MonoBehaviour
   {
     VoosActor actor = assetSearch.RequestActor(searchResult, Vector3.zero, Quaternion.identity, Vector3.one);
     actor.SetPreferOffstage(true);
-    CloseAndReturn(true, actor.GetName());
+    CloseAndReturn(true, actor.GetId());
   }
 }

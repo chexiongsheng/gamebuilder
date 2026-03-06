@@ -2,7 +2,7 @@ version: 2
 label: corn
 actors:
 - version: 8
-  name: 9c459e50eb6145a180c760544800660c
+  id: 9c459e50eb6145a180c760544800660c
   brainId: a9dc7e2ea6cc45c0bcf006b02bd84f26
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/corn"

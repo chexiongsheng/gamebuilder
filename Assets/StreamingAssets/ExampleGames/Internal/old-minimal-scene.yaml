@@ -3,7 +3,7 @@ voosEngineState:
   gameTime: 8803.86523
   actors:
   - version: 6
-    name: RedPlayer
+    id: RedPlayer
     brainId: Player
     tags:
     - player
@@ -107,7 +107,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 0dc485b57e204bbdb7432762424ce027
+    id: 0dc485b57e204bbdb7432762424ce027
     brainId: 4e59614ff938464cbd5b76fba9e90647
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -212,7 +212,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 861db9f3f8784702a2971b5680d0ae0c
+    id: 861db9f3f8784702a2971b5680d0ae0c
     brainId: 5ab0b22de9754baf9a96db10280af14a
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Collectable_Star"
@@ -315,7 +315,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: "builtin:LaserBolt"
+    id: "builtin:LaserBolt"
     brainId: f1c78779b3a940c1a6d683cc60ede25d
     tags: []
     renderableUri: "builtin:BuiltinAssets/LaserBolt"
@@ -418,7 +418,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: "builtin:PopupText"
+    id: "builtin:PopupText"
     brainId: 6cea514759cd443ea7956aa90c091445
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -522,7 +522,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: e42fd5e81b734817a1f60438a8ade63b
+    id: e42fd5e81b734817a1f60438a8ade63b
     brainId: 19062d4d214c4c9ca8e971f9f1973f5c
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Collectable_Star"
@@ -625,7 +625,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 59bbdda832db4d54bf52053b284790da
+    id: 59bbdda832db4d54bf52053b284790da
     brainId: 47fbb2e04e234361b75247f790d8ca38
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Collectable_Star"
@@ -728,7 +728,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: f3fbf8b01a7f4f4cb9a424e68f11bde9
+    id: f3fbf8b01a7f4f4cb9a424e68f11bde9
     brainId: 7c69280360f9412fa922e711d10c0688
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Tree_01"
@@ -831,7 +831,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 1c842169ec264e11a0adc73bf3764519
+    id: 1c842169ec264e11a0adc73bf3764519
     brainId: 75905e1794914ffbbe64e4cb07058005
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Collectable_Star"
@@ -934,7 +934,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 07f8fa599db7428e9ab756da596b01c1
+    id: 07f8fa599db7428e9ab756da596b01c1
     brainId: 0a7ed88da1b74a78bc99b64f6de694ca
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Tree_01"
@@ -1037,7 +1037,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 205e6d3377904ab5953a1651ddca01c1
+    id: 205e6d3377904ab5953a1651ddca01c1
     brainId: bd4f16d2e6d54a34bdc086f810bd674c
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Collectable_Star"
@@ -1140,7 +1140,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 6c84c7349acd49cdbb8f0b0b2f00a795
+    id: 6c84c7349acd49cdbb8f0b0b2f00a795
     brainId: 9c7a25e197e94ac6bce3b4ac10c113e2
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -1245,7 +1245,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 9f3e97b45d554cd5bcdf0555bb840be7
+    id: 9f3e97b45d554cd5bcdf0555bb840be7
     brainId: d633b08d256e4ba7b9bbbf634f8c7ec3
     tags:
     - player
@@ -1349,7 +1349,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 00866b06a31142a0b2c5218183e6cc27
+    id: 00866b06a31142a0b2c5218183e6cc27
     brainId: e3b116e6f8bf43c89526ccb8978ca905
     tags:
     - player
@@ -1453,7 +1453,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 93fc3a71ca9e4a65935da4065cb0b767
+    id: 93fc3a71ca9e4a65935da4065cb0b767
     brainId: 5a9c831f8bd345ed8f96483370dac278
     tags:
     - player
@@ -1557,7 +1557,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: f0b5c51219cf446db3f582a3d84072de
+    id: f0b5c51219cf446db3f582a3d84072de
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -1669,7 +1669,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 1e3b010fcc7b4e38bff6dfe6692d7020
+    id: 1e3b010fcc7b4e38bff6dfe6692d7020
     brainId: 3a37797919c8453c835558789155d409
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -1775,7 +1775,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: a127980a1452443abc1a58885ba40860
+    id: a127980a1452443abc1a58885ba40860
     brainId: e7c1c9fd9abe4248a208d5cf05b88007
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -1881,7 +1881,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 19a76198d9524d50973afb4a4aaa2778
+    id: 19a76198d9524d50973afb4a4aaa2778
     brainId: 7ba388eb203246b6a95d9196774e6387
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Tree_01"
@@ -1984,7 +1984,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 4789cf6ede7148b3add0499e8eb4f4e0
+    id: 4789cf6ede7148b3add0499e8eb4f4e0
     brainId: 0cb4391c7e1a4c24997b7d5dee43663e
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Tree_01"
@@ -2087,7 +2087,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 34eb7986147446efb98d3e245ba2c318
+    id: 34eb7986147446efb98d3e245ba2c318
     brainId: 773e51e6eb0d4944b70c7fb08d25d21e
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Flag"
@@ -2190,7 +2190,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: ecd507858b44460b8bb7bf451b47dbd8
+    id: ecd507858b44460b8bb7bf451b47dbd8
     brainId: d15fd92583ab4e4a8e36e2fd404714d3
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/StackingBlock_2x3_Thin_Stone"

@@ -2,7 +2,7 @@ version: 2
 label: pumpkin_hurt
 actors:
 - version: 8
-  name: 9aface536a094df99e818bcd0b6304da
+  id: 9aface536a094df99e818bcd0b6304da
   brainId: d7e4c4d548c249998c0ecc4755de1d7e
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/pumpkin_hurt"

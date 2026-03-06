@@ -2,7 +2,7 @@ version: 2
 label: BouncyPlatform_2x4_Stone
 actors:
 - version: 6
-  name: 70ea704b5ef942af951c505c6e53b199
+  id: 70ea704b5ef942af951c505c6e53b199
   brainId: f4e45b16394149ba852624c93fe50a70
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/BouncyPlatform_2x4_Stone"

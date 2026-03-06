@@ -2,7 +2,7 @@ version: 2
 label: BouncyPlatform_1x1_Metal
 actors:
 - version: 6
-  name: 0192602f98ba4f60b533d5a7a8df2512
+  id: 0192602f98ba4f60b533d5a7a8df2512
   brainId: 960dbf8e997f4b918725846b0f181dc0
   tags: []
   renderableUri: "builtin:BuiltinAssets/Space/BouncyPlatform_1x1_Metal"

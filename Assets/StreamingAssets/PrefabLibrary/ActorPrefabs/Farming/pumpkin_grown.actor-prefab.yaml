@@ -2,7 +2,7 @@ version: 2
 label: pumpkin_grown
 actors:
 - version: 8
-  name: dd6fe7442631458f93fee922aa82ff29
+  id: dd6fe7442631458f93fee922aa82ff29
   brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/pumpkin_grown"

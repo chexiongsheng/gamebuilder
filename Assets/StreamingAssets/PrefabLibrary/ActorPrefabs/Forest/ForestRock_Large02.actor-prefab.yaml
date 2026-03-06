@@ -2,7 +2,7 @@ version: 2
 label: ForestRock_Large02
 actors:
 - version: 2
-  name: c018f3ae25d5419885dbbd10128c2aac
+  id: c018f3ae25d5419885dbbd10128c2aac
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/ForestRock_Large02"

@@ -72,7 +72,7 @@ import { Actor } from "../../ModuleBehaviorsActor.mjs";
  * @return {ActorRef} The current actor (the one on which this script is running).
  */
 function myself() {
-  return ApiV2Context.instance.getActor().getName();
+  return ApiV2Context.instance.getActor().getId();
 }
 
 /**

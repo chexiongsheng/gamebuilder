@@ -2,7 +2,7 @@ version: 2
 label: corn_baby
 actors:
 - version: 8
-  name: b8583bd9971d42ff88ef60d2e0efb6f2
+  id: b8583bd9971d42ff88ef60d2e0efb6f2
   brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/corn_baby"

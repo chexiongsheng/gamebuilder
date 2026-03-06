@@ -2,7 +2,7 @@ version: 2
 label: WoodenFence
 actors:
 - version: 3
-  name: c6e567c7467444c99bf9de8df60ad600
+  id: c6e567c7467444c99bf9de8df60ad600
   brainId: 1814cbbeb99a43b4a13c2eca4438912b
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/WoodenFence"

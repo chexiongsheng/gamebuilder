@@ -116,11 +116,11 @@ class OtherActor {
   }
 
   /**
-   * Get the name of this actor, for sending messages, etc.
+   * Get the id of this actor, for sending messages, etc.
    * @returns {string}
    */
-  getName() {
-    return this.actor_.name;
+  getId() {
+    return this.actor_.id;
   }
 
   /**

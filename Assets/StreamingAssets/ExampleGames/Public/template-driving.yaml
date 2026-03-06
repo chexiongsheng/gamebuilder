@@ -3,7 +3,7 @@ voosEngineState:
   gameTime: 9554.6709
   actors:
   - version: 6
-    name: bff26ed907b34363813a5b3339a68a15
+    id: bff26ed907b34363813a5b3339a68a15
     brainId: a48f3c9e25084baaa601db2bdf380521
     tags:
     - player
@@ -107,7 +107,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: a5883f3ee7914723885fdc198f393ab7
+    id: a5883f3ee7914723885fdc198f393ab7
     brainId: 7532274875d844cc9a58f30f8387833e
     tags:
     - player
@@ -211,7 +211,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: "builtin:LaserBolt"
+    id: "builtin:LaserBolt"
     brainId: f1c78779b3a940c1a6d683cc60ede25d
     tags: []
     renderableUri: "builtin:BuiltinAssets/LaserBolt"
@@ -314,7 +314,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: "builtin:PopupText"
+    id: "builtin:PopupText"
     brainId: 6cea514759cd443ea7956aa90c091445
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -418,7 +418,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 0d6c83dff0b74d53b12b9dc28ecf6c2a
+    id: 0d6c83dff0b74d53b12b9dc28ecf6c2a
     brainId: 8a5430b7ca9045618149742301b8fc64
     tags:
     - player
@@ -522,7 +522,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: fe434a895d1f4277819aa9f5b602b200
+    id: fe434a895d1f4277819aa9f5b602b200
     brainId: 72faa1d279e94af78c267fbe4e245126
     tags:
     - player
@@ -626,7 +626,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: b0959c3338294ccc9c667729a5f9ff6f
+    id: b0959c3338294ccc9c667729a5f9ff6f
     brainId: 7e101ebf8e7d43c3b3931741d3dc0d77
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Tree_01"
@@ -729,7 +729,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: ed3a6213644747a29db87a427a88db74
+    id: ed3a6213644747a29db87a427a88db74
     brainId: c87c951c809644e5a847e4dff73abecc
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Tree_01_Variant"
@@ -832,7 +832,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 4e77c980e6e949b081dbc7baabafab6a
+    id: 4e77c980e6e949b081dbc7baabafab6a
     brainId: 5890d05c33754cd2a9af42ffe3c0991f
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Tree_01_Variant"
@@ -935,7 +935,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: ab886b02f82b4d50877ff698d6d4c848
+    id: ab886b02f82b4d50877ff698d6d4c848
     brainId: fd48275b4c3947f4a8bc4cc682253d74
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Tree_01_Variant"
@@ -1038,7 +1038,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 451d7461f07d4225a7456c0f7cbe14f8
+    id: 451d7461f07d4225a7456c0f7cbe14f8
     brainId: 13a8c96693e04030a6491993651525d7
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Tree_01_Variant"
@@ -1141,7 +1141,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 4c95347b239b4b2cbc8704dc1551be53
+    id: 4c95347b239b4b2cbc8704dc1551be53
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -2152,7 +2152,7 @@ sojoDatabase:
       label: SmartCar
       actors:
       - version: 6
-        name: 0d6c83dff0b74d53b12b9dc28ecf6c2a
+        id: 0d6c83dff0b74d53b12b9dc28ecf6c2a
         brainId: 8a5430b7ca9045618149742301b8fc64
         tags:
         - player

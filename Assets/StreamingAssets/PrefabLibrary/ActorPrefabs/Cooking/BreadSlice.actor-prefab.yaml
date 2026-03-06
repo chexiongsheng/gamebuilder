@@ -2,7 +2,7 @@ version: 2
 label: BreadSlice
 actors:
 - version: 8
-  name: a9b729234b3745478e57f492a780c5d7
+  id: a9b729234b3745478e57f492a780c5d7
   brainId: a334fc3f8b144e3e807b0f4ffd57096c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Cooking/BreadSlice"

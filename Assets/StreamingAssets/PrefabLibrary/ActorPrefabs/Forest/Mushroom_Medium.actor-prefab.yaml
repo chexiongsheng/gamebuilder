@@ -2,7 +2,7 @@ version: 2
 label: Mushroom_Medium
 actors:
 - version: 2
-  name: 68902a789f514fa9860babe0df1abe4d
+  id: 68902a789f514fa9860babe0df1abe4d
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Mushroom_Medium"

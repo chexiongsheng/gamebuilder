@@ -2,7 +2,7 @@ version: 2
 label: corn_grown
 actors:
 - version: 8
-  name: 518d2a9376c74ab6b1a1b6113dd215f4
+  id: 518d2a9376c74ab6b1a1b6113dd215f4
   brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/corn_grown"

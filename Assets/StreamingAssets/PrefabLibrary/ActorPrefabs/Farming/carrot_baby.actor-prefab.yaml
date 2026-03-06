@@ -2,7 +2,7 @@ version: 2
 label: carrot_baby
 actors:
 - version: 8
-  name: 3e4cb6a380da4b998ff4a326c41f1331
+  id: 3e4cb6a380da4b998ff4a326c41f1331
   brainId: 61714bccad8d42a6be911ef4e3b7e2ec
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/carrot_baby"

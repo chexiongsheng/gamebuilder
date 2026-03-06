@@ -74,7 +74,7 @@ public class MoveToolSettings : MonoBehaviour
   public static void SetCurrentParentForActor(
     VoosActor actor, VoosActor selectedActor, UndoStack undoStack, bool autosetParent = false)
   {
-    string newParentName = selectedActor?.GetName();
+    string newParentName = selectedActor?.GetId();
     string prevParentName = actor.GetTransformParent();
     string prevSpawnParentName = actor.GetSpawnTransformParent();
     undoStack.PushUndoForActor(
@@ -83,7 +83,7 @@ public class MoveToolSettings : MonoBehaviour
       (undoActor) =>
       {
         VoosActor newParent = undoActor.GetEngine().GetActor(newParentName);
-        string parentName = VoosActor.IsValidParent(undoActor, newParent) ? newParent?.GetName() : null;
+        string parentName = VoosActor.IsValidParent(undoActor, newParent) ? newParent?.GetId() : null;
         undoActor.SetTransformParent(parentName);
         if (autosetParent)
         {
@@ -93,12 +93,12 @@ public class MoveToolSettings : MonoBehaviour
       (undoActor) =>
       {
         VoosActor prevParent = undoActor.GetEngine().GetActor(prevParentName);
-        undoActor.SetTransformParent(VoosActor.IsValidParent(undoActor, prevParent) ? prevParent?.GetName() : null);
+        undoActor.SetTransformParent(VoosActor.IsValidParent(undoActor, prevParent) ? prevParent?.GetId() : null);
         if (autosetParent)
         {
           VoosActor prevSpawnParent = undoActor.GetEngine().GetActor(prevSpawnParentName);
           undoActor.SetSpawnTransformParent(
-            VoosActor.IsValidParent(undoActor, prevSpawnParent) ? prevSpawnParent?.GetName() : null);
+            VoosActor.IsValidParent(undoActor, prevSpawnParent) ? prevSpawnParent?.GetId() : null);
         }
       });
   }
@@ -108,7 +108,7 @@ public class MoveToolSettings : MonoBehaviour
     VoosActor actor = editMain.GetSingleTargetActor();
     SelectActor((selectedActor) =>
     {
-      string newParentName = selectedActor?.GetName();
+      string newParentName = selectedActor?.GetId();
       string prevParentName = actor.GetSpawnTransformParent();
       undoStack.PushUndoForActor(
         actor,
@@ -116,12 +116,12 @@ public class MoveToolSettings : MonoBehaviour
         (undoActor) =>
         {
           VoosActor newParent = undoActor.GetEngine().GetActor(newParentName);
-          undoActor.SetSpawnTransformParent(VoosActor.IsValidParent(undoActor, newParent) ? newParent?.GetName() : null);
+          undoActor.SetSpawnTransformParent(VoosActor.IsValidParent(undoActor, newParent) ? newParent?.GetId() : null);
         },
         (undoActor) =>
         {
           VoosActor prevParent = undoActor.GetEngine().GetActor(prevParentName);
-          undoActor.SetSpawnTransformParent(VoosActor.IsValidParent(undoActor, prevParent) ? prevParent?.GetName() : null);
+          undoActor.SetSpawnTransformParent(VoosActor.IsValidParent(undoActor, prevParent) ? prevParent?.GetId() : null);
         }
       );
     });
@@ -199,7 +199,7 @@ public class MoveToolSettings : MonoBehaviour
         if (setParent)
         {
           VoosActor setSpawnParent = undoActor.GetEngine().GetActor(spawnParent);
-          undoActor.SetSpawnTransformParent(setSpawnParent?.GetName());
+          undoActor.SetSpawnTransformParent(setSpawnParent?.GetId());
         }
       },
       (undoActor) =>
@@ -209,7 +209,7 @@ public class MoveToolSettings : MonoBehaviour
         if (setParent)
         {
           VoosActor setSpawnParent = undoActor.GetEngine().GetActor(currParent);
-          undoActor.SetSpawnTransformParent(setSpawnParent?.GetName());
+          undoActor.SetSpawnTransformParent(setSpawnParent?.GetId());
         }
       }
     );

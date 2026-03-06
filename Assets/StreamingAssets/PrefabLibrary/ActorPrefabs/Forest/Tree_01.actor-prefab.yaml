@@ -2,7 +2,7 @@ version: 2
 label: Tree
 actors:
 - version: 2
-  name: 1d15adf5faeb48d0a1a0593346c8af9c
+  id: 1d15adf5faeb48d0a1a0593346c8af9c
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Tree_01"

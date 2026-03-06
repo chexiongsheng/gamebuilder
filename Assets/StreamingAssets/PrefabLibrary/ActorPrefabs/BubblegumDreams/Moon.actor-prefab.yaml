@@ -2,7 +2,7 @@ version: 2
 label: Moon
 actors:
 - version: 8
-  name: cc0e97d7d2f2450c8710d89b708320e4
+  id: cc0e97d7d2f2450c8710d89b708320e4
   brainId: 7b8fd5d46e8d4c80bd2a24d3f3a8de82
   tags: []
   renderableUri: "builtin:BuiltinAssets/BubblegumDreams/Moon"

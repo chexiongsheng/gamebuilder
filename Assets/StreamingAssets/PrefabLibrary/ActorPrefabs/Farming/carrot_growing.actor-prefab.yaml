@@ -2,7 +2,7 @@ version: 2
 label: carrot_growing
 actors:
 - version: 8
-  name: c1cee8238080448a802a69af56adfafa
+  id: c1cee8238080448a802a69af56adfafa
   brainId: 63ff47395bdb423bbe098254ee5898bd
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/carrot_growing"

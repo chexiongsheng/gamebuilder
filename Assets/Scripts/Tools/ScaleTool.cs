@@ -191,7 +191,7 @@ public class ScaleTool : Tool
     // Filter out deleted actors
     var nonNullStartScales = actorStartScales.
       // OK kinda gross we need this extra GetActor check..
-      Where(p => p.Key != null && p.Key.GetEngine().GetActor(p.Key.GetName()) != null).
+      Where(p => p.Key != null && p.Key.GetEngine().GetActor(p.Key.GetId()) != null).
       ToDictionary(p => p.Key, p => p.Value);
 
     actorStartScales.Clear();
@@ -200,18 +200,18 @@ public class ScaleTool : Tool
     {
       // Save off map of name to state
       Dictionary<string, Vector3> name2undoState = nonNullStartScales.ToDictionary(
-        entry => entry.Key.GetName(),
+        entry => entry.Key.GetId(),
         entry => entry.Value
       );
       Dictionary<string, Vector3> name2redoState = nonNullStartScales.ToDictionary(
-        entry => entry.Key.GetName(),
+        entry => entry.Key.GetId(),
         entry => entry.Key.GetLocalScale()
       );
       undoStack.PushUndoForMany(engine,
         nonNullStartScales.Keys,
         $"Scale",
-        redoActor => redoActor.SetLocalScale(name2redoState[redoActor.GetName()]),
-        undoActor => undoActor.SetLocalScale(name2undoState[undoActor.GetName()]));
+        redoActor => redoActor.SetLocalScale(name2redoState[redoActor.GetId()]),
+        undoActor => undoActor.SetLocalScale(name2undoState[undoActor.GetId()]));
 
       foreach (VoosActor actor in nonNullStartScales.Keys)
       {

@@ -2,7 +2,7 @@ version: 2
 label: hoe
 actors:
 - version: 8
-  name: 1f4c54df16c44a5ab976c1f9dfa83435
+  id: 1f4c54df16c44a5ab976c1f9dfa83435
   brainId: 9aae609cf95e4c799a97c7400f491089
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/hoe"

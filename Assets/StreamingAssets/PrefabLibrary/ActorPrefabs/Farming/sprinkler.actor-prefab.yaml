@@ -2,7 +2,7 @@ version: 2
 label: sprinkler
 actors:
 - version: 8
-  name: ba9f33e1af9d4e6a9958bad404d53ce2
+  id: ba9f33e1af9d4e6a9958bad404d53ce2
   brainId: 8d3d7ca079f6495785b1318c91004d7a
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/sprinkler"

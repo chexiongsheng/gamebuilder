@@ -2,7 +2,7 @@ version: 2
 label: ForestRock_Tiny01
 actors:
 - version: 2
-  name: 2f88c157bb97406a8d7edf61d80b6a8b
+  id: 2f88c157bb97406a8d7edf61d80b6a8b
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/ForestRock_Tiny01"

@@ -2,7 +2,7 @@ version: 2
 label: soil_tilled
 actors:
 - version: 8
-  name: 8d339d90b81f4b549c4ed1b35bc9264b
+  id: 8d339d90b81f4b549c4ed1b35bc9264b
   brainId: 2e8a454a7430437f9053abf697b8257e
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/soil_tilled"

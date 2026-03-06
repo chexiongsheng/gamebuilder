@@ -2,7 +2,7 @@ version: 2
 label: Laser Bolt
 actors:
 - version: 2
-  name: a66f7a7a26584baa933a586333d39c6e
+  id: a66f7a7a26584baa933a586333d39c6e
   brainId: 6869cbecf4c7442eaf0c22ba904a828d
   tags: []
   renderableUri: "builtin:BuiltinAssets/LaserBolt"

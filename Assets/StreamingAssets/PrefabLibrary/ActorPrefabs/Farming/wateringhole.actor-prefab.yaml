@@ -2,7 +2,7 @@ version: 2
 label: wateringhole
 actors:
 - version: 8
-  name: ffc0fbd6bab64b82a2a95bf836fc27bc
+  id: ffc0fbd6bab64b82a2a95bf836fc27bc
   brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/wateringhole"

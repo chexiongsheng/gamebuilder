@@ -76,7 +76,7 @@ class HandlerApi {
 
     // See VoosEngine.VelocityChange
     response.velocityChanges.push({
-      entityName: this.getActor().getName(),
+      entityName: this.getActor().getId(),
       delta: velocityChange
     });
   }
@@ -94,7 +94,7 @@ class HandlerApi {
 
     // See VoosEngine.TorqueRequest
     response.torqueRequests.push({
-      actorId: this.getActor().getName(),
+      actorId: this.getActor().getId(),
       torque: torque
     });
   }
@@ -163,12 +163,12 @@ class HandlerApi {
   }
 
   /**
-   * DEPRECATED - Please use getActor().getName() instead.
+   * DEPRECATED - Please use getActor().getId() instead.
    * @deprecated
    * @ignore
    */
   get name() {
-    return this.actor_.name;
+    return this.actor_.id;
   }
 
   /**
@@ -259,7 +259,7 @@ class HandlerApi {
   sendMessage(targetActorName, messageName, messageData = {}) {
     assertString(targetActorName, 'targetActorName');
     assertString(messageName, 'messageName');
-    this.actor_.behaviorSystem.sendMessage(targetActorName, messageName, messageData, this.getActor().getName());
+    this.actor_.behaviorSystem.sendMessage(targetActorName, messageName, messageData, this.getActor().getId());
   }
 
   getTimeSinceReset() {
@@ -280,7 +280,7 @@ class HandlerApi {
     if (messageName == 'ResetGame') {
       queueMessageToUnity(null, "ResetTriggeredByHandler");
     }
-    this.actor_.behaviorSystem.sendMessageToAll(messageName, messageData, this.getActor().getName(), sendMessageOptions);
+    this.actor_.behaviorSystem.sendMessageToAll(messageName, messageData, this.getActor().getId(), sendMessageOptions);
   }
 
   /**
@@ -289,7 +289,7 @@ class HandlerApi {
    * @param {object} messageData 
    */
   sendSelfMessage(messageName, messageData = {}) {
-    this.sendMessage(this.actor_.name, messageName, messageData);
+    this.sendMessage(this.actor_.id, messageName, messageData);
   }
 
   /**
@@ -297,7 +297,7 @@ class HandlerApi {
    * @param {number} seconds 
    */
   async sleep(seconds) {
-    return this.actor_.behaviorSystem.sleepManager.for(this.actor_.name, seconds);
+    return this.actor_.behaviorSystem.sleepManager.for(this.actor_.id, seconds);
   }
 
   /**
@@ -641,8 +641,9 @@ class HandlerApi {
     const behUri = this.use_.getBehaviorUri();
     const lineNum = parseInt(cs.match(new RegExp(`${behUri}:(\\\d+)`))[1]);
     getVoosEngine().services.LogBehaviorMessage(JSON.stringify({
-      actorId: this.actor_.name,
+      actorId: this.actor_.id,
       message: message === undefined ? "" : message,
+
       senderId: this.deliveredMessage_.senderActorName,
       useId: this.use_.id,
       messageName: this.deliveredMessage_.name,

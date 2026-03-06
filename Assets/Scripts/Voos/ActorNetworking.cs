@@ -48,7 +48,7 @@ public class ActorNetworking : MonoBehaviour, IPunObservable
     {
       Debug.Assert(actor.IsLocallyOwned());
 
-      stream.SendNext(actor.GetName());
+      stream.SendNext(actor.GetId());
       stream.SendNext(actor.GetBrainName());
 
       // IMPORTANT: URIs can be local paths, and we *never* want to send those over the network for privacy. So obscure it.
@@ -117,7 +117,7 @@ public class ActorNetworking : MonoBehaviour, IPunObservable
     }
     else
     {
-      actor.SetName((string)stream.ReceiveNext());
+      actor.SetId((string)stream.ReceiveNext());
       actor.SetBrainName((string)stream.ReceiveNext());
       actor.SetRenderableUri((string)stream.ReceiveNext());
 

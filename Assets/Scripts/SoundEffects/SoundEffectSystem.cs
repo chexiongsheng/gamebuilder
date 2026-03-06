@@ -190,7 +190,7 @@ public class SoundEffectSystem : MonoBehaviour
     PlaySoundEffectLocal(sfx, actor, position);
     unreliableMessageSystem.Send<SfxPlayRequest>(NetworkingEventCodes.SFX, new SfxPlayRequest
     {
-      actorName = actor != null ? actor.GetName() : null,
+      actorName = actor != null ? actor.GetId() : null,
       sfxId = sfx.id,
       position = position
     });

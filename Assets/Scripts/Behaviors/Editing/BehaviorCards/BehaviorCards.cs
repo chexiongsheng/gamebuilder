@@ -238,7 +238,7 @@ public partial class BehaviorCards : MonoBehaviour
     // this object for the same actor? Then users could use reference equality,
     // hold on to old instances, etc...what if the brain changes? There is
     // implicit state in ABE..
-    return new ManagerImpl(new ActorBehaviorsEditor(actor.GetName(), engine, undo));
+    return new ManagerImpl(new ActorBehaviorsEditor(actor.GetId(), engine, undo));
   }
 
 }

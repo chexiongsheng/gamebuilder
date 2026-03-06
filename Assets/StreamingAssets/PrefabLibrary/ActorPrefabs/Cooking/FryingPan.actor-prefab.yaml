@@ -2,7 +2,7 @@ version: 2
 label: FryingPan
 actors:
 - version: 6
-  name: ef55a2d4f7834c6c970f96316aa1c6a2
+  id: ef55a2d4f7834c6c970f96316aa1c6a2
   brainId: 0e927eedef024fb18d7a50b51f20e309
   tags: []
   renderableUri: "builtin:BuiltinAssets/Cooking/FryingPan"

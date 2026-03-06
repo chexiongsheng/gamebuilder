@@ -3,7 +3,7 @@ voosEngineState:
   gameTime: 8851.88574
   actors:
   - version: 7
-    name: "builtin:LaserBolt"
+    id: "builtin:LaserBolt"
     brainId: f1c78779b3a940c1a6d683cc60ede25d
     tags: []
     renderableUri: "builtin:BuiltinAssets/LaserBolt"
@@ -106,7 +106,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: "builtin:PopupText"
+    id: "builtin:PopupText"
     brainId: 6cea514759cd443ea7956aa90c091445
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -210,7 +210,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 9f3e97b45d554cd5bcdf0555bb840be7
+    id: 9f3e97b45d554cd5bcdf0555bb840be7
     brainId: d633b08d256e4ba7b9bbbf634f8c7ec3
     tags:
     - player
@@ -314,7 +314,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 24de2532ef9d4c1a99ea1ad1ce43c763
+    id: 24de2532ef9d4c1a99ea1ad1ce43c763
     brainId: 7438a378cfd44e9fb3feb6ebe3588a5b
     tags:
     - camera
@@ -418,7 +418,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: c8ae268f88e14b12ae92a7af02fb96a0
+    id: c8ae268f88e14b12ae92a7af02fb96a0
     brainId: 71462881abc14b869c180eb01d57381e
     tags:
     - camera
@@ -522,7 +522,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 401f496c33ff4ef6af186cc9035b1269
+    id: 401f496c33ff4ef6af186cc9035b1269
     brainId: c25bc31027d54fc5992ab084df83b7ab
     tags:
     - camera
@@ -626,7 +626,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 44ae2a9391bc4544ae88dfbc9966e4cc
+    id: 44ae2a9391bc4544ae88dfbc9966e4cc
     brainId: 771f878be713414d9e070fe6da39d32f
     tags:
     - camera
@@ -730,7 +730,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 2aed600597a74431915e3f9499eba858
+    id: 2aed600597a74431915e3f9499eba858
     brainId: 8486a87d8e4940efb9f3724303340cfd
     tags:
     - enemy
@@ -834,7 +834,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 3332b6fa6eaf4cb6bf8d35e554035c6a
+    id: 3332b6fa6eaf4cb6bf8d35e554035c6a
     brainId: 40be0591404242899b822670fea90527
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Tree_01"
@@ -937,7 +937,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: a91d763e01a640459b3b3bb72fe12eb9
+    id: a91d763e01a640459b3b3bb72fe12eb9
     brainId: 4283144c1baf466583b886f65d56b57c
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -1040,7 +1040,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: fa279ead833043058ce68a2430392666
+    id: fa279ead833043058ce68a2430392666
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -1143,7 +1143,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 8a5bae1935024b07966248ff903b1dd8
+    id: 8a5bae1935024b07966248ff903b1dd8
     brainId: 26a9e77fb3254f3e87e322e951f6e1cd
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Stump_01_Variant"
@@ -1246,7 +1246,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 4e53b6696b3149178524137fe5e43ee2
+    id: 4e53b6696b3149178524137fe5e43ee2
     brainId: 26a9e77fb3254f3e87e322e951f6e1cd
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Stump_01_Variant"
@@ -1349,7 +1349,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 55c86e93603444ed9c0c6703957d78d2
+    id: 55c86e93603444ed9c0c6703957d78d2
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -1452,7 +1452,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 8c7a365031f84411be2ddc8d503d8055
+    id: 8c7a365031f84411be2ddc8d503d8055
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -1555,7 +1555,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 7
-    name: 8a673f96dcdb48f0b57c23239912abd0
+    id: 8a673f96dcdb48f0b57c23239912abd0
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"

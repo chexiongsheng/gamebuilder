@@ -66,7 +66,7 @@ export function OnTouchEnter(api) {
   }
 
   if (api.props.HealAmount) {
-    api.sendMessage(other.getName(), 'HitByDamager', { damager: api.name, amount: -1 * api.props.HealAmount });
+    api.sendMessage(other.getId(), 'HitByDamager', { damager: api.name, amount: -1 * api.props.HealAmount });
   }
 
   api.memory.isTaken = true;

@@ -114,7 +114,7 @@ public class HierarchyActorEntry : MonoBehaviour, IDragHandler
 
   public string GetActorName()
   {
-    return actor != null ? actor.GetName() : null;
+    return actor != null ? actor.GetId() : null;
   }
 
   public void AddClickListener(OnActorEntryClicked listener)

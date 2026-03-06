@@ -2,7 +2,7 @@ version: 2
 label: corn_hurt
 actors:
 - version: 8
-  name: 396ecf6d98f640e2896f7621da7ac478
+  id: 396ecf6d98f640e2896f7621da7ac478
   brainId: 8f6d3f2537654d26a61cc5324487ae07
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/corn_hurt"

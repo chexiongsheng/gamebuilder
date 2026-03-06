@@ -2,7 +2,7 @@ version: 2
 label: Stump
 actors:
 - version: 2
-  name: 4ad8f70bba4e4e4ea76298b73f7b87ae
+  id: 4ad8f70bba4e4e4ea76298b73f7b87ae
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Stump_01"

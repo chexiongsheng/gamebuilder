@@ -2,7 +2,7 @@ version: 2
 label: PrimitiveCylinder
 actors:
 - version: 8
-  name: df0417766c734f53afdfa2dfac1a2809
+  id: df0417766c734f53afdfa2dfac1a2809
   brainId: c9930100599f432c995268f55633df2e
   tags: []
   renderableUri: "builtin:BuiltinAssets/Primitives/PrimitiveCylinder"

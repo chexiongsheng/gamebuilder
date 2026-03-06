@@ -2,7 +2,7 @@ version: 2
 label: lettuce
 actors:
 - version: 8
-  name: 2f40cada59bb48a5b75c70823a887841
+  id: 2f40cada59bb48a5b75c70823a887841
   brainId: a05b8e1229044fb4bf5e30bc025a90dd
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/lettuce"

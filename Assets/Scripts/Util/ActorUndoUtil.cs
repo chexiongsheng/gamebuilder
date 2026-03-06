@@ -49,7 +49,7 @@ public static class ActorUndoUtil
   {
     // IMPORTANT: Do *NOT* use a reference to the actor! It may be deleted,
     // un-deleted, etc. So use its name, which is stable.
-    string actorName = theActor.GetName();
+    string actorName = theActor.GetId();
 
     // Assume the VoosEngine instance is stable.
     VoosEngine engineRef = theActor.GetEngine();
@@ -92,7 +92,7 @@ public static class ActorUndoUtil
         foreach (var actorData in actorDataArray)
         {
           // Return the first one if any
-          string reason = GetUnableToEditActorReason(engineRef, actorData.name);
+          string reason = GetUnableToEditActorReason(engineRef, actorData.id);
           if (reason != null)
           {
             return reason;
@@ -114,7 +114,7 @@ public static class ActorUndoUtil
       {
         foreach (var actorData in actorDataArray)
         {
-          VoosActor currentActor = engineRef.GetActor(actorData.name);
+          VoosActor currentActor = engineRef.GetActor(actorData.id);
           if (currentActor != null)
           {
             engineRef.DestroyActor(currentActor);
@@ -129,7 +129,7 @@ public static class ActorUndoUtil
 
   public static void PushUndoForMany(this UndoStack stack, VoosEngine engine, IEnumerable<VoosActor> actors, string verb, System.Action<VoosActor> doIt, System.Action<VoosActor> undo)
   {
-    List<string> actorNames = (from actor in actors select actor.GetName()).ToList();
+    List<string> actorNames = (from actor in actors select actor.GetId()).ToList();
 
     if (actorNames.Count == 1)
     {

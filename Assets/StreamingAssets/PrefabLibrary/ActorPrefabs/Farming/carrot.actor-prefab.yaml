@@ -2,7 +2,7 @@ version: 2
 label: carrot
 actors:
 - version: 8
-  name: 0d56c339a07e410ab34f47224c7d4be4
+  id: 0d56c339a07e410ab34f47224c7d4be4
   brainId: f6ed407177914fe9a11a2ad160eb1424
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/carrot"

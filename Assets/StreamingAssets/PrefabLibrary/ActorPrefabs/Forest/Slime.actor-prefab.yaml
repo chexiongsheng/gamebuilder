@@ -2,7 +2,7 @@ version: 2
 label: Slime
 actors:
 - version: 6
-  name: 35a1e97adfe14221940ed812d1e01927
+  id: 35a1e97adfe14221940ed812d1e01927
   brainId: 62d944d3d3844ff8b2fb0408d6602787
   tags:
   - enemy

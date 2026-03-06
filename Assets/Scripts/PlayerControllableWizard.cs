@@ -48,7 +48,7 @@ public class PlayerControllableWizard : Photon.PunBehaviour
   public void Show(VoosActor actor)
   {
     // Start with player 0 to avoid warnings/etc.
-    AssignPlayerToActor(0, actor.GetName());
+    AssignPlayerToActor(0, actor.GetId());
 
     string name = actor.GetDisplayName();
     List<PopupButton.Params> buttons = new List<PopupButton.Params>();
@@ -80,12 +80,12 @@ public class PlayerControllableWizard : Photon.PunBehaviour
 
   void OnClickedPlayerNumber(VoosActor actor, int playerNumber)
   {
-    AssignPlayerToActor(playerNumber, actor.GetName());
+    AssignPlayerToActor(playerNumber, actor.GetId());
   }
 
   void OnClickedIsNpc(VoosActor actor)
   {
-    AssignPlayerToActor(ASSIGN_ACTOR_AS_NPC, actor.GetName());
+    AssignPlayerToActor(ASSIGN_ACTOR_AS_NPC, actor.GetId());
   }
 
   private static Behaviors.BehaviorUse TryGetPlayerControlsPanel(VoosActor actor)
@@ -137,11 +137,11 @@ public class PlayerControllableWizard : Photon.PunBehaviour
         // If this actor is set to this player#, set it 0 unless it's the desired actor.
         // If this actor is the desired actor, set its player#.
         int thisPlayerNumber = playerControlsPanel.GetPropertyValue<int>(PLAYER_NUMBER_PROP_NAME, PLAYER_NUMBER_PROP_DEFAULT_VALUE);
-        if (thisPlayerNumber == playerNumber && actor.GetName() != actorName)
+        if (thisPlayerNumber == playerNumber && actor.GetId() != actorName)
         {
           SetPlayerNumberOnPlayerControlsPanel(actor, playerControlsPanel, 0);
         }
-        else if (thisPlayerNumber != playerNumber && actor.GetName() == actorName)
+        else if (thisPlayerNumber != playerNumber && actor.GetId() == actorName)
         {
           SetPlayerNumberOnPlayerControlsPanel(actor, playerControlsPanel, playerNumber);
         }
@@ -149,7 +149,7 @@ public class PlayerControllableWizard : Photon.PunBehaviour
       else
       {
         // Our mission is just to make the desired actor an NPC.
-        if (actor.GetName() == actorName)
+        if (actor.GetId() == actorName)
         {
           DeletePlayerControlsPanel(actor);
         }
@@ -164,7 +164,7 @@ public class PlayerControllableWizard : Photon.PunBehaviour
     Behaviors.Brain brain = actor.GetBehaviorSystem().GetBrain(actor.GetBrainName());
     if (brain == null)
     {
-      Debug.LogErrorFormat("Could not set player# on actor {0} ({1}). No brain.", actor.GetName(), actor.GetDisplayName());
+      Debug.LogErrorFormat("Could not set player# on actor {0} ({1}). No brain.", actor.GetId(), actor.GetDisplayName());
       return;
     }
     brain.SetUse(use);
@@ -179,7 +179,7 @@ public class PlayerControllableWizard : Photon.PunBehaviour
     Behaviors.Brain brain = actor.GetBehaviorSystem().GetBrain(actor.GetBrainName());
     if (brain == null)
     {
-      Debug.LogErrorFormat("Could not set player# on actor {0} ({1}). No brain.", actor.GetName(), actor.GetDisplayName());
+      Debug.LogErrorFormat("Could not set player# on actor {0} ({1}). No brain.", actor.GetId(), actor.GetDisplayName());
       return;
     }
     // PLAYER_CONTROLS_PANEL_HAS_NO_DECKS_ASSUMPTION

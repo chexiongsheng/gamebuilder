@@ -93,7 +93,7 @@ export function OnAction1Triggered(api) {
     const grabbed = api.getOtherActor(api.memory.grabbed);
 
     if (grabbed.hasTag('usable')) {
-      api.sendMessage(grabbed.getName(), 'TriggerUse');
+      api.sendMessage(grabbed.getId(), 'TriggerUse');
     }
     else {
       const droppedName = dropGrabbed(api);

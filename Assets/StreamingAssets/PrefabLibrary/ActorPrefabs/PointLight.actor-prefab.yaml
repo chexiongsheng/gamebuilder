@@ -2,7 +2,7 @@ version: 2
 label: Light
 actors:
 - version: 6
-  name: 0b5ef76029594269b343de14821d7359
+  id: 0b5ef76029594269b343de14821d7359
   brainId: 9b8a176be87b4ef5ad531bc55916e4db
   tags:
   - light

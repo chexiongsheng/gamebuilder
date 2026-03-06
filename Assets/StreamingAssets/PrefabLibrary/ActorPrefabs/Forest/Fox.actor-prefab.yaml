@@ -2,7 +2,7 @@ version: 2
 label: Fox
 actors:
 - version: 6
-  name: 7cb8805c04104aa8a76c7e19a212d69f
+  id: 7cb8805c04104aa8a76c7e19a212d69f
   brainId: e66a183ef74b4cc8be314f5886c7a699
   tags:
   - player

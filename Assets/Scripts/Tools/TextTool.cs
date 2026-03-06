@@ -259,7 +259,7 @@ public class TextTool : Tool
         else
         {
           string currText = lastActorEdited.GetCommentText();
-          if (ActorUndoUtil.GetUnableToEditActorReason(lastActorEdited.GetEngine(), lastActorEdited.GetName()) == null)
+          if (ActorUndoUtil.GetUnableToEditActorReason(lastActorEdited.GetEngine(), lastActorEdited.GetId()) == null)
           {
             undoStack.PushUndoForActor(
               lastActorEdited,

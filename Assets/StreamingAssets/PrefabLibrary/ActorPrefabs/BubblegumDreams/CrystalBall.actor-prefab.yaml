@@ -2,7 +2,7 @@ version: 2
 label: CrystalBall
 actors:
 - version: 8
-  name: 077a70cd90d649cc9fe09549809ceba2
+  id: 077a70cd90d649cc9fe09549809ceba2
   brainId: __DEFAULT_BRAIN__
   tags: []
   renderableUri: "builtin:BuiltinAssets/BubblegumDreams/CrystalBall"

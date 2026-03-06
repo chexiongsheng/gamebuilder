@@ -2,7 +2,7 @@ version: 2
 label: Star
 actors:
 - version: 2
-  name: bfe2f4bb58ee436aba08588b3f83d729
+  id: bfe2f4bb58ee436aba08588b3f83d729
   brainId: d7ae001db69b448bbd196133d1244bd9
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Collectable_Star"

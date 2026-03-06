@@ -49,7 +49,7 @@ export function OnTouchEnter(api) {
     // If no specific winner is set, we assume it's whoever touched.
     const winner = stringOr(api.props.WhoWinsOrScores, api.message.other);
     if (api.props.Wins) {
-      api.sendMessageToAll('PlayerWon', { player: winner, reason: `${api.message.other} touched ${me.getName()} FTW` });
+      api.sendMessageToAll('PlayerWon', { player: winner, reason: `${api.message.other} touched ${me.getId()} FTW` });
     }
     else {
       api.sendMessageToAll('PointScored', { player: winner, amount: points });

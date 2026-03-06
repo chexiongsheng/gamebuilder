@@ -2,7 +2,7 @@ version: 2
 label: FinishLine
 actors:
 - version: 8
-  name: 8ccc363bf04741628e82391a4257d8ae
+  id: 8ccc363bf04741628e82391a4257d8ae
   brainId: 098331dbc59e40adabb812a20b7fc6b8
   tags: []
   renderableUri: "builtin:BuiltinAssets/BubblegumDreams/FinishLine"

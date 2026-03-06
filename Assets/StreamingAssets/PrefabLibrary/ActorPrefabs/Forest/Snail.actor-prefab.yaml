@@ -2,7 +2,7 @@ version: 2
 label: Snail
 actors:
 - version: 6
-  name: e2c2f0f748d94c9cb1c8db742dfacbd5
+  id: e2c2f0f748d94c9cb1c8db742dfacbd5
   brainId: 2d5f06138b1f4525bd0e825310e0d56e
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Snail"

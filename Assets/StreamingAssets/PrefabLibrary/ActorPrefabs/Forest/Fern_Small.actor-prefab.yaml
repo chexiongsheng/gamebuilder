@@ -2,7 +2,7 @@ version: 2
 label: Fern_Small
 actors:
 - version: 2
-  name: 7f89c069794c4083aa1e228ebf24d306
+  id: 7f89c069794c4083aa1e228ebf24d306
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Fern_Small"

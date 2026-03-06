@@ -3,7 +3,7 @@ voosEngineState:
   gameTime: 9454.57422
   actors:
   - version: 6
-    name: a0cd0762bd5e4585a0e0499371cc7ecb
+    id: a0cd0762bd5e4585a0e0499371cc7ecb
     brainId: e9066c2c405641ac86a961c47112d05a
     tags:
     - player
@@ -107,7 +107,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 0dc485b57e204bbdb7432762424ce027
+    id: 0dc485b57e204bbdb7432762424ce027
     brainId: 4e59614ff938464cbd5b76fba9e90647
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -212,7 +212,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: "builtin:LaserBolt"
+    id: "builtin:LaserBolt"
     brainId: f1c78779b3a940c1a6d683cc60ede25d
     tags: []
     renderableUri: "builtin:BuiltinAssets/LaserBolt"
@@ -315,7 +315,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: "builtin:PopupText"
+    id: "builtin:PopupText"
     brainId: 6cea514759cd443ea7956aa90c091445
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -419,7 +419,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 6c84c7349acd49cdbb8f0b0b2f00a795
+    id: 6c84c7349acd49cdbb8f0b0b2f00a795
     brainId: 9c7a25e197e94ac6bce3b4ac10c113e2
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -524,7 +524,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 22d5b11354bb4245912d3cef966bbdba
+    id: 22d5b11354bb4245912d3cef966bbdba
     brainId: bb131989e0aa4363b1d919c50faa59a0
     tags:
     - player
@@ -628,7 +628,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 8fe376a717714512adc126146436f1f5
+    id: 8fe376a717714512adc126146436f1f5
     brainId: b30dcab90c91481284bf82fd86ac68fb
     tags:
     - player
@@ -732,7 +732,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: e5aed0bca4d9400398d07cb83f48185c
+    id: e5aed0bca4d9400398d07cb83f48185c
     brainId: 494f5e33a90a42f2b3d31e47cb57b28b
     tags:
     - player

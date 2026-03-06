@@ -181,7 +181,7 @@ public class ActorPrefabImpl : ActorPrefab
       {
         // Always default to default brain. Some prefabs have dangling brain
         // IDs, and bad stuff can happen if we just keep those.
-        Util.LogWarning($"WARNING: Actor prefab '{saved.actors[i].displayName}' ({saved.actors[i].name}) had dangling brainId: {saved.actors[i].brainId}");
+        Util.LogWarning($"WARNING: Actor prefab '{saved.actors[i].displayName}' ({saved.actors[i].id}) had dangling brainId: {saved.actors[i].brainId}");
         saved.actors[i].brainId = VoosEngine.DefaultBrainUid;
       }
     }
@@ -196,7 +196,7 @@ public class ActorPrefabImpl : ActorPrefab
     var actorNameMap = new Dictionary<string, string>();
     foreach (var savedActor in saved.actors)
     {
-      actorNameMap[savedActor.name] = engine.GenerateUniqueId();
+      actorNameMap[savedActor.id] = engine.GenerateUniqueId();
     }
 
     // Compute xform to go from saved to instance... then just apply to all.
@@ -214,19 +214,19 @@ public class ActorPrefabImpl : ActorPrefab
     List<VoosActor> instances = new List<VoosActor>();
     foreach (var savedActor in saved.actors)
     {
-      string instanceName = actorNameMap[savedActor.name];
+      string instanceName = actorNameMap[savedActor.id];
 
       Vector3 instPos = savedToInstance * savedActor.position.ToHomogeneousPosition();
       Quaternion instRot = savedToInstance.rotation * savedActor.rotation;
 
       System.Action<VoosActor> setupThisActor = actor =>
       {
-        Debug.Assert(actor.GetName() == instanceName, "New instance did not have the new name we generated");
+        Debug.Assert(actor.GetId() == instanceName, "New instance did not have the new name we generated");
         // Push the saved data to this new actor
         var actorDataCopy = savedActor;
         actorDataCopy.position = instPos;
         actorDataCopy.rotation = instRot;
-        actorDataCopy.name = instanceName;
+        actorDataCopy.id = instanceName;
 
         // Make sure we update the transform parent!
         if (!actorDataCopy.transformParent.IsNullOrEmpty()

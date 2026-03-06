@@ -343,7 +343,7 @@ public class BehaviorSystem : MonoBehaviour
       {
         CallBehaviorUseMethod<object, object>(
           useId,
-          actor.GetName(),
+          actor.GetId(),
           "onCardRemoved",
           null);
       }

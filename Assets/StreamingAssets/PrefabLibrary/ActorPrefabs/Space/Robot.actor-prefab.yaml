@@ -2,7 +2,7 @@ version: 2
 label: Robot
 actors:
 - version: 6
-  name: 44aaa6cd9ba24442bfc48e507992959e
+  id: 44aaa6cd9ba24442bfc48e507992959e
   brainId: ce7945b23e444ad8b9bd8418a0fcc36d
   tags:
   - player

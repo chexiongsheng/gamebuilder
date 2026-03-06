@@ -3,7 +3,7 @@ voosEngineState:
   gameTime: 28764.0371
   actors:
   - version: 6
-    name: "builtin:LaserBolt"
+    id: "builtin:LaserBolt"
     brainId: f1c78779b3a940c1a6d683cc60ede25d
     tags: []
     renderableUri: "builtin:BuiltinAssets/LaserBolt"
@@ -106,7 +106,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: "builtin:PopupText"
+    id: "builtin:PopupText"
     brainId: 6cea514759cd443ea7956aa90c091445
     tags: []
     renderableUri: "builtin:BuiltinAssets/BillboardTextPanel"
@@ -210,7 +210,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: f548d9d628ae4ddf9f756405d83f6fc9
+    id: f548d9d628ae4ddf9f756405d83f6fc9
     brainId: 2a70bcd62ddc465b91e2fe9acc6c79a4
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -315,7 +315,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 4c4590988e054a368625dd10290bf2b8
+    id: 4c4590988e054a368625dd10290bf2b8
     brainId: 5cb6362242844282a1c83005713f8184
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -423,7 +423,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 742705ea37ce416f8e70af0f86ac4573
+    id: 742705ea37ce416f8e70af0f86ac4573
     brainId: b91d9d0d44314ebdb2529428f08fe892
     tags: []
     renderableUri: "builtin:BuiltinAssets/Space/LaserBlaster"
@@ -526,7 +526,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 01a454aaf31e4f9cb36db0fd9e17ce11
+    id: 01a454aaf31e4f9cb36db0fd9e17ce11
     brainId: f23ff4eb41444d78bd8b001a3ee62dcc
     tags: []
     renderableUri: "builtin:BuiltinAssets/Space/LaserBlaster"
@@ -629,7 +629,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 0e75890afc1c4c84bc62720c9034cdd1
+    id: 0e75890afc1c4c84bc62720c9034cdd1
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -735,7 +735,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 20a9e8ec2922498990b99f582215fe1f
+    id: 20a9e8ec2922498990b99f582215fe1f
     brainId: 81085a4037e344e1a97aac784f8ba1c2
     tags:
     - enemy
@@ -839,7 +839,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 6b31a8a50c3443d2b21a07cb49b89678
+    id: 6b31a8a50c3443d2b21a07cb49b89678
     brainId: 2dcefbfedd394c9f8a2201b50ba33e39
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Lantern"
@@ -942,7 +942,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 4b88ab6133554d119ca520ef9fa7cbe3
+    id: 4b88ab6133554d119ca520ef9fa7cbe3
     brainId: 13794023400f45f19e7a1fdaef226d6a
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/Chest"
@@ -1045,7 +1045,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: e48d4a1b7495403f91b2ffd18b50aabc
+    id: e48d4a1b7495403f91b2ffd18b50aabc
     brainId: ee174c707d6644dc8816a5cd69974a59
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/ForestRock_Small03"
@@ -1148,7 +1148,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 5ef4f5f9fd1e427f9e2d2c7861c05d36
+    id: 5ef4f5f9fd1e427f9e2d2c7861c05d36
     brainId: 3ed7690d001341ee99f978caa37e97ff
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/ForestRock_Small03"
@@ -1251,7 +1251,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: c05e6ed9b6c74a2aa3528c3b2e9b6082
+    id: c05e6ed9b6c74a2aa3528c3b2e9b6082
     brainId: 812381e787f7436bb3d0baa43d23deb8
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/WoodenWall"
@@ -1354,7 +1354,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: e58cb75ae0e347ce97d36184c7828e00
+    id: e58cb75ae0e347ce97d36184c7828e00
     brainId: 304fc64d3a4a4b92a1103af807436bb9
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -1457,7 +1457,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: bbb12da54989415bb4a35a7c8688a0bb
+    id: bbb12da54989415bb4a35a7c8688a0bb
     brainId: 50b0e325310d43469d5c75b82867b16d
     tags: []
     renderableUri: "builtin:BuiltinAssets/Space/MetalDoor"
@@ -1560,7 +1560,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: ba4ae303bf524996a87477db160d53e3
+    id: ba4ae303bf524996a87477db160d53e3
     brainId: bb9debec8dda477ca495ba4407d8551b
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -1665,7 +1665,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 1a88e3ae22b046588f9f1b6aacdd566a
+    id: 1a88e3ae22b046588f9f1b6aacdd566a
     brainId: 7929a3c3665848549d3faf17b66121be
     tags: []
     renderableUri: "builtin:BuiltinAssets/LaserBolt"
@@ -1768,7 +1768,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: e7ec68e9659d4f5c91dd2873181f0edf
+    id: e7ec68e9659d4f5c91dd2873181f0edf
     brainId: cb5384d0ed43425482ed3bb7aa13470f
     tags:
     - enemy
@@ -1872,7 +1872,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 815ee4323475439bb6581b1de591f7d2
+    id: 815ee4323475439bb6581b1de591f7d2
     brainId: 2cd9e27efcc64cb497b8be39428e3df9
     tags: []
     renderableUri: "builtin:BuiltinAssets/Space/MetalDoor"
@@ -1975,7 +1975,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: f7f9dc27f9624ec9b8e85e8268a09550
+    id: f7f9dc27f9624ec9b8e85e8268a09550
     brainId: dfa9518f0e9b4e62aee9b81b4f389178
     tags: []
     renderableUri: "builtin:BuiltinAssets/Space/InteractiveButton_Metal"
@@ -2078,7 +2078,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 494cc6c6f3454a64a3b68a4a6c39ce80
+    id: 494cc6c6f3454a64a3b68a4a6c39ce80
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -2183,7 +2183,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 8050d367e828467395b31c52b62cedc9
+    id: 8050d367e828467395b31c52b62cedc9
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -2286,7 +2286,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: bd30fcd0e1764e7cb8833c8e324b0043
+    id: bd30fcd0e1764e7cb8833c8e324b0043
     brainId: 62d32b6d80a3467ab5b6ef931d53965c
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/StackingBlock_1x1x1_Stone"
@@ -2389,7 +2389,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 31f48683ac4f4e438c7f8008502fa84c
+    id: 31f48683ac4f4e438c7f8008502fa84c
     brainId: 23e6464157a340519da95958bf0855a1
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/StackingBlock_1x1x1_Stone"
@@ -2492,7 +2492,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: e41da3cc025c4bd881adcdeeb12f6ee0
+    id: e41da3cc025c4bd881adcdeeb12f6ee0
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -2597,7 +2597,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 7cb72d9b64d74008a32dfd5d4a99a4bb
+    id: 7cb72d9b64d74008a32dfd5d4a99a4bb
     brainId: fa036b5498cb41b694169a36775e6116
     tags:
     - checkpoint
@@ -2701,7 +2701,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 0ea42e104e1f43299ccd6845a7a1381a
+    id: 0ea42e104e1f43299ccd6845a7a1381a
     brainId: fd0c6e792783408f97bb0b3bcd49b510
     tags: []
     renderableUri: "builtin:BuiltinAssets/Space/MetalDoor"
@@ -2804,7 +2804,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 578f2c03d4cf4500b3450165496eb736
+    id: 578f2c03d4cf4500b3450165496eb736
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -2907,7 +2907,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 1758c77f41784d02a49e63dc2f955431
+    id: 1758c77f41784d02a49e63dc2f955431
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -3012,7 +3012,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 2f37e8de48ba4fb3b1e25381c5c64ae0
+    id: 2f37e8de48ba4fb3b1e25381c5c64ae0
     brainId: d6d8fbde75f741f2a75cac76d585c2ca
     tags:
     - enemy
@@ -3116,7 +3116,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 8270403b84cc4030b000005d4368b4d0
+    id: 8270403b84cc4030b000005d4368b4d0
     brainId: d6d8fbde75f741f2a75cac76d585c2ca
     tags:
     - enemy
@@ -3220,7 +3220,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: dad4a034d7ef4b5b8a5debe7482fcd9b
+    id: dad4a034d7ef4b5b8a5debe7482fcd9b
     brainId: d6d8fbde75f741f2a75cac76d585c2ca
     tags:
     - enemy
@@ -3324,7 +3324,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: c33d27223bba4e6798ab109a8f30ed3b
+    id: c33d27223bba4e6798ab109a8f30ed3b
     brainId: d6d8fbde75f741f2a75cac76d585c2ca
     tags:
     - enemy
@@ -3428,7 +3428,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: bb4dbaae363f4ea7a6632d828c1093c6
+    id: bb4dbaae363f4ea7a6632d828c1093c6
     brainId: d6d8fbde75f741f2a75cac76d585c2ca
     tags:
     - enemy
@@ -3532,7 +3532,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: e0ff4c8dc1864b94b880b450f4e4d40c
+    id: e0ff4c8dc1864b94b880b450f4e4d40c
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -3635,7 +3635,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 7611f63dcf2b4eedbc31affa9c12e0cf
+    id: 7611f63dcf2b4eedbc31affa9c12e0cf
     brainId: fcb2033a55584d8d8907e45ae9711c85
     tags:
     - enemy
@@ -3739,7 +3739,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 599da0539aca41c7b93d1895760dbc53
+    id: 599da0539aca41c7b93d1895760dbc53
     brainId: 72e4f3c9947f4d609dbf90b05db5f3fd
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -3842,7 +3842,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: ed1bcfc183074fcb8a5d580d3ac58a2d
+    id: ed1bcfc183074fcb8a5d580d3ac58a2d
     brainId: 07f6fe9ad5fb425198a0a04d09977bd2
     tags: []
     renderableUri: "builtin:BuiltinAssets/Space/InteractiveButton_Metal"
@@ -3945,7 +3945,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 5978157c79a24f75844e9d24114dba42
+    id: 5978157c79a24f75844e9d24114dba42
     brainId: 27c476710e594e44985e7d612e8e1210
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -4048,7 +4048,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 0b11676ce3a940058d3b08d376f52d95
+    id: 0b11676ce3a940058d3b08d376f52d95
     brainId: 833e4fa2391e490eb9874199cab06730
     tags:
     - particleeffect
@@ -4152,7 +4152,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 8d6c6b54577045e9bdabcbd8802dfc00
+    id: 8d6c6b54577045e9bdabcbd8802dfc00
     brainId: b04723be3fbe4de79a6be8b0947dc8d0
     tags:
     - particleeffect
@@ -4256,7 +4256,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 358080b77752461a9deb6d847d6aac95
+    id: 358080b77752461a9deb6d847d6aac95
     brainId: b4372a4857de41fb9e03e5c44604c008
     tags:
     - particleeffect
@@ -4360,7 +4360,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: ed02567543a24c7b9cd3330e0e51617a
+    id: ed02567543a24c7b9cd3330e0e51617a
     brainId: 588752bda6144fd7a802c46bb2806525
     tags: []
     renderableUri: "builtin:BuiltinAssets/Forest/FloatingPlatform_2x4_Stone"
@@ -4463,7 +4463,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: a7dd6fc2bf914676a62703f02084371b
+    id: a7dd6fc2bf914676a62703f02084371b
     brainId: 1413b98258564b979b63bb171d2cc182
     tags: []
     renderableUri: "builtin:BuiltinAssets/Space/CommandConsole_Large"
@@ -4566,7 +4566,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 15efec1573e14c8ca0e62e5b7b4298d1
+    id: 15efec1573e14c8ca0e62e5b7b4298d1
     brainId: 8e1a817171ed42fb9a27fc53cd461c3c
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -4671,7 +4671,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 2ddec71c8b60448a866357e0b441bba7
+    id: 2ddec71c8b60448a866357e0b441bba7
     brainId: ef0dd385d59f4592a92a90c32c82af9c
     tags:
     - player
@@ -4775,7 +4775,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 8f4a65b7691442d0b2c0f6f02554e9ef
+    id: 8f4a65b7691442d0b2c0f6f02554e9ef
     brainId: 5950cfff4acf4a32a541b8fb82a40293
     tags:
     - player
@@ -4879,7 +4879,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: f1c688a65c6b4b4f80ae4de3c4022e27
+    id: f1c688a65c6b4b4f80ae4de3c4022e27
     brainId: 8ee58b91d8164402aa45051a0b565118
     tags:
     - player
@@ -4983,7 +4983,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: d264265e8c404fb188501a933d541006
+    id: d264265e8c404fb188501a933d541006
     brainId: fc20bbcbe06a4931b64c42eb81c10d30
     tags:
     - player
@@ -5087,7 +5087,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 2d7b12cf0654479289a2c72e94624092
+    id: 2d7b12cf0654479289a2c72e94624092
     brainId: __DEFAULT_BRAIN__
     tags: []
     renderableUri: "builtin:BuiltinAssets/CommentPanel"
@@ -5192,7 +5192,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 9f406c29e3ea45949a56f4788a906782
+    id: 9f406c29e3ea45949a56f4788a906782
     brainId: cb5384d0ed43425482ed3bb7aa13470f
     tags:
     - enemy
@@ -5296,7 +5296,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 0c94675ded8d49278da0f840cdc50303
+    id: 0c94675ded8d49278da0f840cdc50303
     brainId: cb5384d0ed43425482ed3bb7aa13470f
     tags:
     - enemy
@@ -5400,7 +5400,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: 5a719b84837c481bb9b6ad636ed5274d
+    id: 5a719b84837c481bb9b6ad636ed5274d
     brainId: cb5384d0ed43425482ed3bb7aa13470f
     tags:
     - enemy
@@ -5504,7 +5504,7 @@ voosEngineState:
       y: 0
       z: 0
   - version: 6
-    name: d3a0760cc9244d04a8f6fc522434fb69
+    id: d3a0760cc9244d04a8f6fc522434fb69
     brainId: 2829a58872a948baaffae4da56d7424d
     tags: []
     renderableUri: "builtin:BuiltinAssets/LaserBolt"

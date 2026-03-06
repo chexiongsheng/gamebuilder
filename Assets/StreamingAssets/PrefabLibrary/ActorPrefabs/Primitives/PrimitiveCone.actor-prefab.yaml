@@ -2,7 +2,7 @@ version: 2
 label: PrimitiveCone
 actors:
 - version: 8
-  name: f26c8562f3354c9ca6f87c43bff7db87
+  id: f26c8562f3354c9ca6f87c43bff7db87
   brainId: 12752392fb8241fa988d7ee1a6cdbc47
   tags: []
   renderableUri: "builtin:BuiltinAssets/Primitives/PrimitiveCone"

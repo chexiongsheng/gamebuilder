@@ -2,7 +2,7 @@ version: 2
 label: wateringcan
 actors:
 - version: 8
-  name: 0015064cde744c15a17db75c1609f547
+  id: 0015064cde744c15a17db75c1609f547
   brainId: cc488ff303fb4da59268c6d5e8bc7442
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/wateringcan"

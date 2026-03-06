@@ -196,7 +196,7 @@ namespace V8InUnity
 
     string GetActorName(Collider collider)
     {
-      return collider.GetComponentInParent<VoosActor>()?.GetName();
+      return collider.GetComponentInParent<VoosActor>()?.GetId();
     }
 
     VoosEngine GetEngine()
@@ -224,7 +224,7 @@ namespace V8InUnity
         {
           if (!actor.HasTag(tag)) continue;
         }
-        result.Add(actor.GetName());
+        result.Add(actor.GetId());
       }
       return result.ToArray();
     }
@@ -236,7 +236,7 @@ namespace V8InUnity
       {
         if (actor.GetIsPlayerControllable())
         {
-          result.Add(actor.GetName());
+          result.Add(actor.GetId());
         }
       }
       return result.ToArray();
@@ -245,7 +245,7 @@ namespace V8InUnity
     public string GetPlayerControlledActorForScript()
     {
       VoosActor actor = GetUserMain().GetPlayerActor();
-      return actor?.GetName();
+      return actor?.GetId();
     }
 
     public string GetPlayersInfo()
@@ -279,7 +279,7 @@ namespace V8InUnity
 
     public string GetCameraActor()
     {
-      return GetUserMain().GetCameraActor()?.GetName();
+      return GetUserMain().GetCameraActor()?.GetId();
     }
 
     public bool SpawnParticleEffect(string pfxId, Vector3 position, Vector3 rotation, float scale)
@@ -466,7 +466,7 @@ namespace V8InUnity
 
     public void RequestTempCameraOffset(string actor, Vector3 offset)
     {
-      if (actor == GetUserMain().GetPlayerActor()?.GetName())
+      if (actor == GetUserMain().GetPlayerActor()?.GetId())
       {
         GetUserMain().GetNavigationControls().RequestTemporaryCameraOffset(offset);
       }

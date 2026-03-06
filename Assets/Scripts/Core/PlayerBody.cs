@@ -474,7 +474,7 @@ public class PlayerBody : MonoBehaviour, IBipedDriver
           clickedActor.GetEngine().EnqueueMessage(new VoosEngine.ActorMessage
           {
             name = "ActorClicked",
-            targetActor = clickedActor.GetName(),
+            targetActor = clickedActor.GetId(),
             argsJson = "{}"
           });
         }

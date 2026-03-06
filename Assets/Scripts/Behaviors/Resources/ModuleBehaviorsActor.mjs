@@ -160,7 +160,7 @@ class MessageHandlingContext {
     const matches = exception.stack.match(new RegExp(`${behUri}:(\\\d+)`));
     const lineNum = matches != null ? parseInt(matches[1]) : -1;
     getVoosEngine().services.ReportBehaviorException(JSON.stringify({
-      actorId: this.actor_.name,
+      actorId: this.actor_.id,
       message: msg,
       senderId: deliveredMessage.senderActorName,
       useId: use.id,
@@ -173,10 +173,10 @@ class MessageHandlingContext {
 class Actor {
   /**
    * 
-   * @param {string} name 
+   * @param {string} id 
    * @param {ModuleBehaviorSystem} behaviorSystem 
    */
-  constructor(name, behaviorSystem) {
+  constructor(id, behaviorSystem) {
     assert(behaviorSystem instanceof ModuleBehaviorSystem);
     // Persistent memory of this actor. This gets persisted and synced across the network.
     this.memory = {};
@@ -184,7 +184,7 @@ class Actor {
     this.tempMemory_ = {};
     this.memoryDirty_ = false;
     this.behaviorSystem_ = behaviorSystem;
-    this.name = name;
+    this.id = id;
     this.tempId_ = 0;
 
     this.handlerCooldownMap_ = new Map();
@@ -382,7 +382,7 @@ class Actor {
 
     if (!brain) {
       // Don't consider this strictly an error/warning worth logging for now.
-      // sysLog(`WARNING: actor ${this.displayName} (${this.name}) has a brain id, but we could not find it: ${this.brainId}.`);
+      // sysLog(`WARNING: actor ${this.displayName} (${this.id}) has a brain id, but we could not find it: ${this.brainId}.`);
       return;
     }
 

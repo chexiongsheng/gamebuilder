@@ -2,7 +2,7 @@ version: 2
 label: Chest
 actors:
 - version: 3
-  name: afc9f3e9d53d4bbe9b1d5d172fb26016
+  id: afc9f3e9d53d4bbe9b1d5d172fb26016
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Chest"

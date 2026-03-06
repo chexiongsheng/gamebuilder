@@ -2,7 +2,7 @@ version: 2
 label: pumpkin_baby
 actors:
 - version: 8
-  name: 5941bb097bb04e5d8f18a9f8e874d052
+  id: 5941bb097bb04e5d8f18a9f8e874d052
   brainId: 7d825e2dacf24a8889abd57c14965ab3
   tags: []
   renderableUri: "builtin:BuiltinAssets/Farming/pumpkin_baby"

@@ -2,7 +2,7 @@ version: 2
 label: Knife
 actors:
 - version: 6
-  name: 2dfd98fb00de4f1591d2e4039912a0fe
+  id: 2dfd98fb00de4f1591d2e4039912a0fe
   brainId: d404577c3ebb4421b3fff3d2ec05ce0e
   tags: []
   renderableUri: "builtin:BuiltinAssets/Cooking/Knife"

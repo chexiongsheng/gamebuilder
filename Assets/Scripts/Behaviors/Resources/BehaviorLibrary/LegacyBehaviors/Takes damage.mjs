@@ -64,7 +64,7 @@ export function OnTick(api) {
 export async function OnHitByDamager(api) {
   const memory = api.memory;
   const actor = api.actor;
-  const name = actor.name;
+  const name = actor.id;
   const properties = api.props;
 
   if (memory.health > 0) {

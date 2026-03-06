@@ -2,7 +2,7 @@ version: 2
 label: Camera
 actors:
 - version: 4
-  name: 24de2532ef9d4c1a99ea1ad1ce43c763
+  id: 24de2532ef9d4c1a99ea1ad1ce43c763
   brainId: 7438a378cfd44e9fb3feb6ebe3588a5b
   tags:
   - camera

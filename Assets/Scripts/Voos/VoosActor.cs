@@ -101,7 +101,7 @@ public partial class VoosActor : MonoBehaviour
 
     public int version;
 
-    public string name;
+    public string id;
     public string brainId;
     public string[] tags; // Ideally would be immutable..
 
@@ -161,7 +161,7 @@ public partial class VoosActor : MonoBehaviour
       PersistedState rv;
       rv.version = CurrentVersionNumber;
 
-      rv.name = actor.GetName();
+      rv.id = actor.GetId();
       rv.tags = new string[actor.tags.Count];
       int i = 0;
       foreach (string tag in actor.tags)
@@ -227,7 +227,7 @@ public partial class VoosActor : MonoBehaviour
 
     public void Serialize(NetworkWriter writer)
     {
-      writer.WriteVoosName(name);
+      writer.WriteVoosName(id);
       writer.WriteVoosName(brainId);
       writer.WriteUtf16(memoryJson);
       writer.WriteUtf16(renderableUri);
@@ -292,7 +292,7 @@ public partial class VoosActor : MonoBehaviour
 
     public void Deserialize(NetworkReader reader)
     {
-      this.name = reader.ReadVoosName();
+      this.id = reader.ReadVoosName();
       this.brainId = reader.ReadVoosName();
       this.memoryJson = reader.ReadUtf16();
       this.renderableUri = reader.ReadUtf16();
@@ -469,7 +469,7 @@ public partial class VoosActor : MonoBehaviour
 
   internal void MakeOwnCopyOfBrain()
   {
-    (new ActorBehaviorsEditor(this.GetName(), this.engine, null)).CreateOwnCopyOfBrain();
+    (new ActorBehaviorsEditor(this.GetId(), this.engine, null)).CreateOwnCopyOfBrain();
   }
 
   // All data that is relevant to runtime, serialized to script.
@@ -477,7 +477,7 @@ public partial class VoosActor : MonoBehaviour
   [System.Serializable]
   public struct RuntimeState
   {
-    public string name;
+    public string id;
 
     // BEGIN_GAME_BUILDER_CODE_GEN RUNTIME_STATE_CSHARP_DECLS
     public bool isSprinting;    // GENERATED
@@ -497,7 +497,7 @@ public partial class VoosActor : MonoBehaviour
     {
       RuntimeState rv = new RuntimeState();
 
-      rv.name = actor.GetName();
+      rv.id = actor.GetId();
 
       PlayerBody body = actor.GetPlayerBody();
       rv.aimDirection = body != null ? body.GetAimDirection() : actor.transform.forward;
@@ -528,7 +528,7 @@ public partial class VoosActor : MonoBehaviour
           VoosActor hitEnt = hit.transform.GetComponent<VoosActor>();
           if (hitEnt != null)
           {
-            rv.aimingAtName = hitEnt.GetName();
+            rv.aimingAtName = hitEnt.GetId();
           }
 
           rv.lastAimHitPoint = hit.point;
@@ -565,8 +565,8 @@ public partial class VoosActor : MonoBehaviour
   [SerializeField] Color tint;
   [SerializeField] string renderableUri;
 
-  // Internal VoosEngine name/GUID. Do NOT rely on gameObject.name to be the same.
-  string voosName = null;
+  // Internal VoosEngine id/GUID. Do NOT rely on gameObject.name to be the same.
+  string id = null;
 
   // Cache variables.
 
@@ -841,7 +841,8 @@ public partial class VoosActor : MonoBehaviour
 
   void UpdateTransformParent(string oldTransformParent)
   {
-    if (this.GetTransformParent() == this.GetName())
+    if (this.GetTransformParent() == this.GetId())
+
     {
       throw new System.Exception("Transform parent set to self. Not allowed.");
     }
@@ -1138,7 +1139,7 @@ public partial class VoosActor : MonoBehaviour
         return authoritativeMemoryJson;
       }
 
-      var request = new GetMemoryJsonRequest { actorId = this.GetName() };
+      var request = new GetMemoryJsonRequest { actorId = this.GetId() };
       var response = engine.CommunicateWithAgent<GetMemoryJsonRequest, GetMemoryJsonResponse>(request);
 
       if (response.IsEmpty())
@@ -1265,7 +1266,7 @@ public partial class VoosActor : MonoBehaviour
     try
     {
       // TODO is this assert kinda irrelevant..?
-      Debug.Assert(serialized.name == this.GetName(), "Serialized name did not match expected name");
+      Debug.Assert(serialized.id == this.GetId(), "Serialized id did not match expected id");
 
       this.SetBrainName(serialized.brainId);
       this.SetTags(serialized.tags);
@@ -1371,7 +1372,7 @@ public partial class VoosActor : MonoBehaviour
     }
     catch (System.Exception e)
     {
-      Debug.LogError("Error while merging for entity " + serialized.name);
+      Debug.LogError("Error while merging for entity " + serialized.id);
       Debug.LogException(e);
       throw e;
     }
@@ -1709,24 +1710,26 @@ public partial class VoosActor : MonoBehaviour
 
   public VoosScene GetScene() { return scene; }
 
-  public string GetName() { return voosName; }
+  public string GetId() { return id; }
+
 
   void UpdateGameObjectName()
   {
-    this.name = $"{this.GetDisplayName()} ({voosName.Substring(0, 9)})";
+    this.name = $"{this.GetDisplayName()} ({id.Substring(0, 9)})";
+
     if (onDisplayNameChanged != null)
     {
       onDisplayNameChanged();
     }
   }
 
-  public void SetName(string newName)
+  public void SetId(string newId)
   {
-    if (voosName != newName)
+    if (id != newId)
     {
-      string oldName = voosName;
-      voosName = newName;
-      engine.NotifyNameChange(this, oldName);
+      string oldId = id;
+      id = newId;
+      engine.NotifyIdChange(this, oldId);
       UpdateGameObjectName();
     }
   }
@@ -1784,7 +1787,7 @@ public partial class VoosActor : MonoBehaviour
 
   public void EnqueueMessage(string name, string argsJson = null)
   {
-    engine.EnqueueMessage(new VoosEngine.ActorMessage { targetActor = this.GetName(), name = name, argsJson = argsJson });
+    engine.EnqueueMessage(new VoosEngine.ActorMessage { targetActor = this.GetId(), name = name, argsJson = argsJson });
   }
 
   public string GetBrainName()
@@ -2550,7 +2553,7 @@ public partial class VoosActor : MonoBehaviour
       copy.RequestOwnership();
 
       // Overwrite all properties, with some sensible exceptions.
-      props.name = copy.GetName();
+      props.id = copy.GetId();
       props.localScale = copy.GetLocalScale(); // TODO do we want to keep this or let it get overwritten?
       props.cloneParent = copy.GetCloneParent();
       props.displayName = copy.GetDisplayName();
@@ -2631,7 +2634,7 @@ public partial class VoosActor : MonoBehaviour
 
   public override string ToString()
   {
-    return $"{displayName} ({voosName.Substring(0, 9)})";
+    return $"{displayName} ({id.Substring(0, 9)})";
   }
 
   public bool GetIsOffstageEffective()
@@ -2678,11 +2681,11 @@ public partial class VoosActor : MonoBehaviour
 
   public bool IsBuiltinActor()
   {
-    if (voosName.IsNullOrEmpty())
+    if (id.IsNullOrEmpty())
     {
       return false;
     }
-    return voosName.StartsWith("builtin:", StringComparison.InvariantCulture);
+    return id.StartsWith("builtin:", StringComparison.InvariantCulture);
   }
 
   public bool CanGoOffstage()
@@ -2691,7 +2694,7 @@ public partial class VoosActor : MonoBehaviour
     {
       return false;
     }
-    if (GetName() == "__GameRules__")
+    if (GetId() == "__GameRules__")
     {
       return false;
     }
@@ -2784,12 +2787,12 @@ public partial class VoosActor : MonoBehaviour
 
   public bool IsSystemActor()
   {
-    return voosName != null && voosName.StartsWith(SYSTEM_ACTOR_NAME_PREFIX);
+    return id != null && id.StartsWith(SYSTEM_ACTOR_NAME_PREFIX);
   }
 
   public bool IsPlayerPlaceholder()
   {
-    return voosName != null && voosName.StartsWith(PLAYER_PLACEHOLDER_NAME_PREFIX);
+    return id != null && id.StartsWith(PLAYER_PLACEHOLDER_NAME_PREFIX);
   }
 
   public bool IsCenterOnScreen(Camera camera)
@@ -2877,7 +2880,7 @@ public partial class VoosActor : MonoBehaviour
     if (wantLight && null == actorLight)
     {
       // I don't have a light but should have. So create it.
-      GameObject lightObj = new GameObject("LIGHT:" + GetName());
+      GameObject lightObj = new GameObject("LIGHT:" + GetId());
       actorLight = lightObj.AddComponent<Light>();
       actorLight.type = LightType.Point;
       actorLight.intensity = 1;

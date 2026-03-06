@@ -2,7 +2,7 @@ version: 2
 label: Mushroom_Large
 actors:
 - version: 2
-  name: a63d4e8676744cf881659578f2176034
+  id: a63d4e8676744cf881659578f2176034
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Mushroom_Large"

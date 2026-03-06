@@ -164,7 +164,7 @@ public class ActorContentChecker : MonoBehaviour
     if (withUndo)
     {
       // Setup undo item
-      string actorName = actor.GetName();
+      string actorName = actor.GetId();
       string newBrain = actor.GetBrainName();
       undo.Push(new UndoStack.Item
       {

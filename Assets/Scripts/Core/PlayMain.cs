@@ -172,7 +172,7 @@ public class PlayMain : AvatarMain, PlayerBody.Controller
     {
       return null;
     }
-    return playerBody.GetComponent<VoosActor>().GetName();
+    return playerBody.GetComponent<VoosActor>().GetId();
   }
 
   private readonly System.Text.StringBuilder PromptBuilder = new System.Text.StringBuilder();

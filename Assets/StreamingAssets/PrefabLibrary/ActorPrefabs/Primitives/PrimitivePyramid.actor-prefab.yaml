@@ -2,7 +2,7 @@ version: 2
 label: PrimitivePyramid
 actors:
 - version: 8
-  name: 068cbb16b9744c96adfb8dafc986f3e9
+  id: 068cbb16b9744c96adfb8dafc986f3e9
   brainId: bd84d689975d480da4278e6bb9851fe6
   tags: []
   renderableUri: "builtin:BuiltinAssets/Primitives/PrimitivePyramid"

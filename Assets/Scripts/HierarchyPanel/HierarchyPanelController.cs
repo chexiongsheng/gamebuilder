@@ -240,8 +240,8 @@ public class HierarchyPanelController : MonoBehaviour
         {
           if (VoosActor.IsValidParent(draggingActor, onstageHint))
           {
-            draggingActor.SetTransformParent(onstageHint.GetName());
-            draggingActor.SetSpawnTransformParent(onstageHint.GetName());
+            draggingActor.SetTransformParent(onstageHint.GetId());
+            draggingActor.SetSpawnTransformParent(onstageHint.GetId());
           }
         }
         else
@@ -257,8 +257,8 @@ public class HierarchyPanelController : MonoBehaviour
         {
           if (VoosActor.IsValidParent(draggingActor, offstageHint))
           {
-            draggingActor.SetTransformParent(offstageHint.GetName());
-            draggingActor.SetSpawnTransformParent(offstageHint.GetName());
+            draggingActor.SetTransformParent(offstageHint.GetId());
+            draggingActor.SetSpawnTransformParent(offstageHint.GetId());
           }
         }
         else

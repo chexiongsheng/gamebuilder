@@ -2,7 +2,7 @@ version: 2
 label: Mushroom_Small
 actors:
 - version: 2
-  name: 7ed0403ca44342b0a19d4c14fcae0c89
+  id: 7ed0403ca44342b0a19d4c14fcae0c89
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Mushroom_Small"

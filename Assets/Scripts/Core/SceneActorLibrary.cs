@@ -335,7 +335,7 @@ public class SceneActorLibrary : MonoBehaviour
     if (!pfxId.IsNullOrEmpty()) yield return pfxId;
     if (!sfxId.IsNullOrEmpty()) yield return sfxId;
 
-    var brain = new ActorBehaviorsEditor(actor.GetName(), actor.GetEngine(), null);
+    var brain = new ActorBehaviorsEditor(actor.GetId(), actor.GetEngine(), null);
     foreach (var beh in brain.GetAssignedBehaviors())
     {
       foreach (var prop in beh.GetProperties())

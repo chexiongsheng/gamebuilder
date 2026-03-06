@@ -1339,7 +1339,7 @@ public class EditMain : AvatarMain
         foreach (var state in actorStates)
         {
           ActorUndoUtil.GetValidActorThen(
-            engine, state.name,
+            engine, state.id,
             validActor => this.DeleteActor(validActor));
         }
       },
@@ -1400,9 +1400,9 @@ public class EditMain : AvatarMain
         new Dictionary<string, Transforms.TransformUndoState>();
     foreach (VoosActor actor in GetTargetActors())
     {
-      undoTransformStates[actor.GetName()] =
+      undoTransformStates[actor.GetId()] =
           new Transforms.TransformUndoState(actor.GetPosition(), actor.GetRotation(), actor.GetTransformParent());
-      redoTransformStates[actor.GetName()] = GetQuickRotateTransformState(actor, averagePosition);
+      redoTransformStates[actor.GetId()] = GetQuickRotateTransformState(actor, averagePosition);
     }
 
     undoStack.PushUndoForMany(engine,
@@ -1410,11 +1410,11 @@ public class EditMain : AvatarMain
         $"Rotate",
         redoActor =>
         {
-          redoTransformStates[redoActor.GetName()].PushTo(redoActor);
+          redoTransformStates[redoActor.GetId()].PushTo(redoActor);
         },
         undoActor =>
         {
-          undoTransformStates[undoActor.GetName()].PushTo(undoActor);
+          undoTransformStates[undoActor.GetId()].PushTo(undoActor);
         });
   }
 

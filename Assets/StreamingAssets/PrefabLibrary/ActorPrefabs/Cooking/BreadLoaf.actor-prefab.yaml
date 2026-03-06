@@ -2,7 +2,7 @@ version: 2
 label: BreadLoaf
 actors:
 - version: 8
-  name: 5cdd4c1f124e4171a61dacd798ee6550
+  id: 5cdd4c1f124e4171a61dacd798ee6550
   brainId: a3da08aedf204de794754815ecf876a1
   tags: []
   renderableUri: "builtin:BuiltinAssets/Cooking/BreadLoaf"

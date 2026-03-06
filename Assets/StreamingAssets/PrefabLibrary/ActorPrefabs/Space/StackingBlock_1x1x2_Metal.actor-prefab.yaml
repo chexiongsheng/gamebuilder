@@ -2,7 +2,7 @@ version: 2
 label: StackingBlock_1x1x2_Metal
 actors:
 - version: 4
-  name: 72b42f457fae42168c03e79b4446c35d
+  id: 72b42f457fae42168c03e79b4446c35d
   brainId: 58e1c7d3ff8640238ebac948900d4630
   tags: []
   renderableUri: "builtin:BuiltinAssets/Space/StackingBlock_1x1x2_Metal"

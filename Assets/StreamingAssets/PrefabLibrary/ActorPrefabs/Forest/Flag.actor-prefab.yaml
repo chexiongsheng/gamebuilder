@@ -2,7 +2,7 @@ version: 2
 label: Flag
 actors:
 - version: 3
-  name: 1960ff72e4d64bde8f67e77c3b760663
+  id: 1960ff72e4d64bde8f67e77c3b760663
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/Flag"

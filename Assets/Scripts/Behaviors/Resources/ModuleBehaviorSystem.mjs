@@ -182,7 +182,7 @@ class ModuleBehaviorSystem {
               actor.handleMessage(deliveredMessage);
             }
             else if (shouldRemoteForward) {
-              enqueueRemoteMessage(actor.name, deliveredMessage.name, deliveredMessage.data);
+              enqueueRemoteMessage(actor.id, deliveredMessage.name, deliveredMessage.data);
             }
           }
         }
@@ -266,8 +266,9 @@ class ModuleBehaviorSystem {
   mergeActorJsonObjects(actorRuntimeJsonObjects) {
     for (let i = 0; i < actorRuntimeJsonObjects.length; i++) {
       const runtimeObj = actorRuntimeJsonObjects[i];
-      const actor = mapGetOrCreate(this.actors_, runtimeObj.name, () => new Actor(runtimeObj.name, this));
+      const actor = mapGetOrCreate(this.actors_, runtimeObj.id, () => new Actor(runtimeObj.id, this));
       actor.mergeJsonObject(runtimeObj);
+
     }
   }
 
@@ -291,10 +292,11 @@ class ModuleBehaviorSystem {
     const inputNames = new Set(namesArray);
     const namesToRemove = [];
     this.actors_.forEach(actor => {
-      if (!inputNames.has(actor.name)) {
-        namesToRemove.push(actor.name);
+      if (!inputNames.has(actor.id)) {
+        namesToRemove.push(actor.id);
       }
     });
+
     namesToRemove.forEach(name => this.actors_.delete(name));
     endProfileSample();
 
@@ -328,10 +330,11 @@ class ModuleBehaviorSystem {
     // wasn't much of a bottle neck. We cache the handler info, so
     // actor.hasHandlersFor is pretty fast.
     this.actors_.forEach((actor, _) => {
-      if (actor.name !== this.cameraActorName_ && actor.hasHandlersFor(messageName)) {
+      if (actor.id !== this.cameraActorName_ && actor.hasHandlersFor(messageName)) {
         func(actor);
       }
     });
+
     // Do the camera actor last (to prevent jittering, it must update after everything).
     if (this.cameraActorName_) {
       const cameraActor = this.actors_.get(this.cameraActorName_);
@@ -532,7 +535,8 @@ class ModuleBehaviorSystem {
     assert(Array.isArray(actors));
     if (actors.length < 1) return;
     // Non-local actors cannot be destroyed.
-    const actorNames = actors.filter(actor => actor.isLocalActor).map(actor => actor.name);
+    const actorNames = actors.filter(actor => actor.isLocalActor).map(actor => actor.id);
+
 
     const csActorNames = CS.System.Array.CreateInstance(puer.$typeof(CS.System.String), actorNames.length);
     for (let i = 0; i < actorNames.length; i++) {

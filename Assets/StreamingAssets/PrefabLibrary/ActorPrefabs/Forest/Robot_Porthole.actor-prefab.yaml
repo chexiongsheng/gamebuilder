@@ -2,7 +2,7 @@ version: 2
 label: Robot_Porthole
 actors:
 - version: 8
-  name: e693ec880ff8443789fa417e935f257e
+  id: e693ec880ff8443789fa417e935f257e
   brainId: 42cf5c3741fc4eb8a948f14cc24fc6a1
   tags:
   - player

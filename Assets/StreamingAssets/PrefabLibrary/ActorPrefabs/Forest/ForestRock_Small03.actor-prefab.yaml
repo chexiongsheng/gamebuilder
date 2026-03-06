@@ -2,7 +2,7 @@ version: 2
 label: ForestRock_Small03
 actors:
 - version: 2
-  name: 36f567a21b254311a4b18ae56c013750
+  id: 36f567a21b254311a4b18ae56c013750
   brainId: 8d2cc0b8129e4393a38db9390557ac0c
   tags: []
   renderableUri: "builtin:BuiltinAssets/Forest/ForestRock_Small03"
